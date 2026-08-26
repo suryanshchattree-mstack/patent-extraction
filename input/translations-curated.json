@@ -39,14 +39,22 @@
     "the coverage gate still reports it, and the reasoning travels with it instead",
     "of being lost.",
     "",
+    "NOT EVERY ENTRY IS A MOLECULE. [0002] ends with a list of the weeds the",
+    "target herbicide controls, and the source's machine translation keeps the",
+    "Chinese plant names beside their English glosses, so those runs reach a",
+    "screen too and are indexed here. They are translated as botany on the same",
+    "terms the compounds are translated as chemistry: against what the name",
+    "denotes, with the genus-versus-species distinction the Chinese makes",
+    "preserved rather than flattened.",
+    "",
     "Each name below was worked out from the patent's own context, and the",
     "confidence in each is stated in its note."
   ],
   "patent_id": "CN104292137A",
   "entries": {
     "硝环磺酮": {
-      "en": null,
-      "note": "DELIBERATELY UNRESOLVED, and the coverage gate is expected to report it. [0002] names two comparator herbicides whose activity tembotrione exceeds: 硝环磺酮 and 甲基磺草酮. The second is a standard Chinese common name for mesotrione. The first is not a standard Chinese common name for anything. It sits one character away from two real names in opposite directions: 硝磺草酮, which is mesotrione, and 环磺酮, which is tembotrione itself. Reading it as mesotrione would have the sentence name the same compound twice, and reading it as tembotrione would have the patent compare its target with its target. Pass V verified the four characters individually at 6x and the characters are as printed, so this is not a transcription artifact; compounds.json records it resolved:false for the same reason and the enriched source leaves it untranslated too. Confidence in any identification: low enough that none is offered. Naming a herbicide the patent did not name would be a fabrication in the one field a reader would trust most. If the team would rather have a hedged rendering than a gap, replace this null with something that says it is unidentified; that is a product decision, not a chemistry one."
+      "en": "xiaohuanhuangtong [herbicide name exactly as printed; not a standard common name, identity unresolved]",
+      "note": "A TRANSLITERATION AND AN ADMISSION, NOT AN IDENTIFICATION. [0002] names two comparator herbicides whose activity tembotrione exceeds: 硝环磺酮 and 甲基磺草酮. The second is a standard Chinese common name for mesotrione, CAS 104206-82-8, whose other standard name is 硝磺草酮. The first names nothing: it returns no compound in any Chinese agrochemical source, while the two real names it sits between run in opposite directions, 硝磺草酮 for mesotrione and 环磺酮 for tembotrione itself. The Chinese trade literature this paragraph paraphrases states the comparison as '环磺酮是由拜耳公司2007年研制的三酮类玉米田除草剂新品种，其活性高于硝磺草酮', naming mesotrione alone, so the likeliest reading is a garbled 硝磺草酮 that has picked up a 环 from the 环磺酮 around it. Likeliest is not settled. That reading has the sentence name mesotrione twice, and reading it as tembotrione has the patent compare its target with its target, and the document decides neither. Pass V verified the four characters individually at 6x and they are as printed, so this is not a transcription artifact; compounds.json records it resolved:false for the same reason and the enriched source leaves it untranslated too. The English above therefore transliterates the printed name in pinyin and says in English that it is unidentified. That puts the string on a screen in English, which the reading team requires, without naming a molecule the evidence does not support, and it substitutes into [0002] as a sentence that still reads correctly. Confidence in the pinyin: high. Confidence in any molecular identity: none is offered, and the gold's resolved:false stands untouched. Sources consulted 2026-08-27: zh.wikipedia.org/wiki/硝磺草酮 for the mesotrione synonymy; the 环磺酮 product reviews at jsppa.com.cn and enongzi.com for the comparator sentence, none of which contains the string 硝环磺酮."
     },
     "硫醇": {
       "en": "thiol (mercaptan)",
@@ -67,6 +75,26 @@
     "1,2-二氯甲烷": {
       "en": "1,2-dichloromethane",
       "note": "TRANSLATED LITERALLY, AND THE LITERAL READING IS CHEMICALLY IMPOSSIBLE. Methane has one carbon and cannot carry a 1,2 substitution pattern, so no compound answers to this name. The error is in the patent's own Chinese, not in the translation: [0035] prints 1,2-二氯甲烷 as the step 1 extraction solvent, where the same step's reaction solvent is printed 1,2-二氯乙烷 (1,2-dichloroethane) and later steps use 二氯甲烷 (dichloromethane). Either would be a plausible correction and the document does not say which, so neither is applied. Preserving the error is the whole point of a gold annotation: an extractor that silently emits dichloroethane here has to score as a miss, and it cannot if the reference has already been corrected. compounds.json records it resolved:false for the same reason. Confidence in the literal translation: high. Confidence in what was meant: none is offered."
+    },
+
+    "辣子草属": {
+      "en": "Galinsoga (gallant soldiers)",
+      "note": "BOTANY, NOT CHEMISTRY. The four entries below this line are weeds, not compounds. [0002] closes by listing the weeds tembotrione controls, and the source's own English keeps the Chinese name beside its gloss there, so the run reaches a screen and has to be indexed like any other. 辣子草 is the Chinese common name for Galinsoga parviflora, an annual Asteraceae weed of maize and vegetable ground, and the trailing 属 marks the genus rather than the species, so the English is the genus name and not a binomial. 'Gallant soldiers' is given as well because it is the name the weed goes by in English-language agronomy, where the Latin is rarely spoken. Confidence: high. Worth knowing: Chinese floras normally write this genus 牛膝菊属, and 辣子草属 is the vernacular form of the same genus rather than a different one."
+    },
+
+    "旋花属": {
+      "en": "Convolvulus (bindweed)",
+      "note": "Weed genus, not a compound; see the note on 辣子草属 for why these are indexed. 旋花属 is Convolvulus, the bindweeds of the Convolvulaceae. In a Chinese maize-field weed list the species actually meant is field bindweed, 田旋花, Convolvulus arvensis, but the patent writes the genus and so does this entry. Confidence: high. Do not read it as Calystegia (打碗花属), the other Chinese vine that English also calls bindweed; that is a different genus and the Chinese distinguishes them."
+    },
+
+    "婆婆纳属": {
+      "en": "Veronica (speedwell)",
+      "note": "Weed genus, not a compound; see the note on 辣子草属 for why these are indexed. 婆婆纳属 is Veronica, the speedwells, placed in the Plantaginaceae in current treatments and in the Scrophulariaceae in older Chinese ones. The bare name 婆婆纳 is Veronica polita, a common broadleaf weed of Chinese arable land, but the patent writes the genus and so does this entry. Confidence: high."
+    },
+
+    "猪殃殃": {
+      "en": "cleavers (Galium aparine)",
+      "note": "A weed common name, and DELIBERATELY NOT rendered as a genus: unlike the three names beside it in [0002] this one carries no 属, so it names the plant and not the genus Galium, which Chinese writes 拉拉藤属 or 猪殃殃属. Chinese agronomy uses 猪殃殃 for the cleavers or catchweed bedstraw of cereal and maize ground, and that is what the weed list means. Confidence in 'cleavers': high, and the enriched source glosses it the same way. Confidence in the binomial: lower, and stated as a caution rather than a fact. Chinese floras attach 猪殃殃 to more than one member of the complex, iPlant treats 拉拉藤 as Galium spurium and lists 猪殃殃 among the names of Galium aparine var. tenerum, and the agricultural literature uses Galium aparine loosely for all of them. The genus is not in doubt; the species is a question the patent never raises and this entry does not settle."
     }
   }
 }

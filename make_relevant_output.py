@@ -6,25 +6,35 @@ reads, the enriched markdown) or working state (raw-*.json, the per-section stag
 files, the rollup handed to A4). Those are kept because they make the run auditable
 and re-runnable, but they are not the deliverable.
 
-The deliverable is a gold reference annotation of CN104292137A in LiteratureIQ's own
+The deliverable is a gold reference annotation of one patent in LiteratureIQ's own
 schema, plus the evidence that it is worth trusting.
+
+Usage:  python3 make_relevant_output.py [--patent-id ID]
 """
 from __future__ import annotations
 
 import json
 import shutil
+import sys
 from collections import Counter
 from pathlib import Path
+
+from pipeline_context import ContextError, resolve_patent_id
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "output"
 REL = OUT / "relevant_output"
 
+try:
+    PATENT_ID = resolve_patent_id()
+except ContextError as e:
+    raise SystemExit(f"FAIL  {e}")
+
 for sub in ("gold", "provenance", "verification", "svg", "structures"):
     (REL / sub).mkdir(parents=True, exist_ok=True)
 
 GOLD = ["compounds.json", "reactions.json", "pathways.json", "patent.json",
-        "structures.json", "structures-resolved.json"]
+        "structures.json", "structures-resolved.json", "translations.json"]
 PROV = ["compounds-provenance.json", "reactions-provenance.json",
         "compounds-sections.json", "compounds-equivalence.json"]
 
@@ -70,7 +80,7 @@ disc = [(v["page"], d) for v in vision for d in (v.get("discrepancies") or [])]
 
 lines = []
 A = lines.append
-A("# What is wrong with CN104292137A\n")
+A(f"# What is wrong with {PATENT_ID}\n")
 A("Produced by annotating the patent by hand, against the scanned pages rather than")
 A("against anyone's OCR. Every item below is a defect in the **patent**, not in the")
 A("annotation. The annotation records them and changes nothing.\n")
@@ -95,32 +105,44 @@ MEAN = {
 for k, v in flags.most_common():
     A(f"| `{k}` | {v} | {MEAN.get(k, '')} |")
 
-A("\n## The three that matter\n")
-A("### 1. The molar masses are those of the des-chloro compounds\n")
-A("Across Example 1 the printed mass/mole pairs imply a molecular weight roughly")
-A("34.5 lower than the compound the text names and the page draws. That is exactly a")
-A("chlorine-for-hydrogen substitution. The reagent charges are all correct; only the")
-A("chlorinated aromatic intermediates carry the offset. Steps 5, 7 and 8 carry a")
-A("second, different shortfall of about 44.7 that propagates forward.\n")
-A("Working, per step, is in `provenance/reactions-provenance.json` under")
-A("`arithmetic_check`.\n")
-A("### 2. The drawn route is not the route the text describes\n")
-A("Page 6 carries the whole synthesis drawn as structures. Its first arrow uses")
-A("CH3SNa, which [0031] says the invention **replaced**. It contains a")
-A("sulfide-to-sulfone oxidation, which [0031] says the invention **eliminated**,")
-A("drawn with no arrow and no reagent. But it also uses Br2, which [0031] claims")
-A("**as** the invention's own improvement over NBS. It starts from")
-A("2,6-dichlorotoluene where Example 1 starts from 2-chlorotoluene.\n")
-A("So the scheme is neither cleanly the prior art nor cleanly the invention. The")
-A("annotation refuses to decide: all nine scheme records carry")
-A("`route_attribution_unclear` and both readings are in their notes.\n")
-A("### 3. The final-step catalyst is drawn as one compound and written as another\n")
-A("The last arrow's catalyst is **drawn** as a quaternary carbon bearing CN and OH")
-A("with two methyls, i.e. (CH3)2C(CN)OH, acetone cyanohydrin. The text names")
-A("cyanoacetone, a different molecule. Acetone cyanohydrin is the reagent normally")
-A("used for this enol-ester rearrangement.\n")
-A("Only a pass that looks at the drawing can catch this. It is the single clearest")
-A("argument for reading the pages rather than the OCR.\n")
+# Hand-authored narrative about ONE patent's defects. It used to print
+# unconditionally, so a run on a second patent would have asserted this patent's
+# three findings over that patent's data, in the deliverable, as fact. Keyed by
+# patent id instead: a patent nobody has written this up for gets the generated
+# sections only, and says so.
+HEADLINE_FINDINGS = {"CN104292137A"}
+if PATENT_ID in HEADLINE_FINDINGS:
+    A("\n## The three that matter\n")
+    A("### 1. The molar masses are those of the des-chloro compounds\n")
+    A("Across Example 1 the printed mass/mole pairs imply a molecular weight roughly")
+    A("34.5 lower than the compound the text names and the page draws. That is exactly a")
+    A("chlorine-for-hydrogen substitution. The reagent charges are all correct; only the")
+    A("chlorinated aromatic intermediates carry the offset. Steps 5, 7 and 8 carry a")
+    A("second, different shortfall of about 44.7 that propagates forward.\n")
+    A("Working, per step, is in `provenance/reactions-provenance.json` under")
+    A("`arithmetic_check`.\n")
+    A("### 2. The drawn route is not the route the text describes\n")
+    A("Page 6 carries the whole synthesis drawn as structures. Its first arrow uses")
+    A("CH3SNa, which [0031] says the invention **replaced**. It contains a")
+    A("sulfide-to-sulfone oxidation, which [0031] says the invention **eliminated**,")
+    A("drawn with no arrow and no reagent. But it also uses Br2, which [0031] claims")
+    A("**as** the invention's own improvement over NBS. It starts from")
+    A("2,6-dichlorotoluene where Example 1 starts from 2-chlorotoluene.\n")
+    A("So the scheme is neither cleanly the prior art nor cleanly the invention. The")
+    A("annotation refuses to decide: all nine scheme records carry")
+    A("`route_attribution_unclear` and both readings are in their notes.\n")
+    A("### 3. The final-step catalyst is drawn as one compound and written as another\n")
+    A("The last arrow's catalyst is **drawn** as a quaternary carbon bearing CN and OH")
+    A("with two methyls, i.e. (CH3)2C(CN)OH, acetone cyanohydrin. The text names")
+    A("cyanoacetone, a different molecule. Acetone cyanohydrin is the reagent normally")
+    A("used for this enol-ester rearrangement.\n")
+    A("Only a pass that looks at the drawing can catch this. It is the single clearest")
+    A("argument for reading the pages rather than the OCR.\n")
+else:
+    A("\n## The headline findings\n")
+    A(f"No hand-written analysis exists for {PATENT_ID}. The generated sections "
+      "above and below are complete; this section is not, and is omitted rather "
+      "than filled with another patent's findings.\n")
 
 A("## Everything the page-vision pass raised\n")
 for page, d in disc:
@@ -139,7 +161,10 @@ A("")
 import itertools
 reports = {p.stem: json.loads(p.read_text())
            for p in sorted((OUT / "stages" / "A5-verify").glob("*.json"))}
-FIXED = {
+# What a previous iteration of THIS patent's run acted on, recorded by hand. Also
+# used to suppress those findings from the outstanding list below. Keyed by patent
+# because a second patent's audit has its own history and inherits none of this.
+FIXED_BY_PATENT = {"CN104292137A": {
     "Three of the five pathways carry the identical pathway_uuid":
         "FIXED. finalise.py now seeds pathway_uuid the way PathwaysBuilder actually "
         "does, folding in the ordered step signature. The PathwayRecord javadoc we "
@@ -157,12 +182,13 @@ FIXED = {
         "would make the gold set disagree with production for a reason unrelated to "
         "extraction quality. The equivalence is written out to "
         "provenance/compounds-equivalence.json so a benchmark can join on it.",
-}
+}}
+FIXED = FIXED_BY_PATENT.get(PATENT_ID, {})
 
 lines = []
 A = lines.append
-A("# A5 adversarial audit\n")
-A("Four independent audits, each in a fresh context, each re-opening the page images.")
+A(f"# A5 adversarial audit of {PATENT_ID}\n")
+A(f"{len(reports)} independent audits, each in a fresh context, each re-opening the page images.")
 A("None of them produced the artifact it audited.\n")
 sev = {}
 for name, d in reports.items():
@@ -182,8 +208,11 @@ A(f"| **total** | | **{tot['critical']}** | **{tot['major']}** | **{tot['minor']
   f"**{sum(len(d.get('checks_passed') or []) for d in reports.values())}** |\n")
 
 A("## Acted on\n")
-for k, v in FIXED.items():
-    A(f"- **{k}** - {v}")
+if FIXED:
+    for k, v in FIXED.items():
+        A(f"- **{k}** - {v}")
+else:
+    A(f"Nothing recorded for {PATENT_ID}. Every finding below is outstanding.")
 A("")
 
 A("## Outstanding, by severity\n")
@@ -221,6 +250,7 @@ A("")
 (REL / "AUDIT.md").write_text("\n".join(lines))
 print(f"  AUDIT.md  ({len(lines)} lines)")
 
+print(f"patent    : {PATENT_ID}")
 print(f"output/relevant_output/ assembled: {len(copied)} files")
 for c in copied:
     print(f"  {c}")

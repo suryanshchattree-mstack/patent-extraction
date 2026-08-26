@@ -55,9 +55,15 @@ is on screen rather than latent.
 Reads the gold artifacts and the curated table. Writes only new files: no gold JSON
 and no provenance file is modified.
 
-Usage:  python3 resolve_structures.py                  # defaults to CN104292137A
+Usage:  python3 resolve_structures.py                  # discovers the patent id
         python3 resolve_structures.py CN104292137A     # any patent id
+        python3 resolve_structures.py --patent-id CN104292137A
         python3 resolve_structures.py --check          # resolve and report, write nothing
+
+With no id given the pack is asked which patent it holds, from the one
+input/<id>-biblio.json in it. It used to fall back to a literal instead, so a pack
+holding a different patent silently resolved that patent's names against this
+patent's curated table until the patent_id guard below caught it.
 """
 
 from __future__ import annotations
@@ -67,6 +73,7 @@ import re
 import sys
 from pathlib import Path
 
+from pipeline_context import ContextError, resolve_patent_id
 from rdkit import Chem, RDLogger
 from rdkit.Chem import Descriptors, rdMolDescriptors
 from rdkit.Chem.Draw import rdMolDraw2D
@@ -78,7 +85,6 @@ OUT = HERE / "output"
 REL = OUT / "relevant_output"
 CURATED = HERE / "input" / "structures-curated.json"
 
-DEFAULT_PATENT_ID = "CN104292137A"
 
 # Rendered at the size the artifacts are read at, monochrome. See render().
 WIDTH, HEIGHT = 320, 240
@@ -664,9 +670,12 @@ ORIGIN_MEANING = {
 
 
 def main() -> int:
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
     check = "--check" in sys.argv
-    patent_id = args[0] if args else DEFAULT_PATENT_ID
+    try:
+        patent_id = resolve_patent_id()
+    except ContextError as e:
+        print(f"FAIL  {e}", file=sys.stderr)
+        return 2
 
     compounds, reactions, drawings, equivalence, curated = load_inputs(patent_id)
     no_structure_needed = {normalise_name(s)

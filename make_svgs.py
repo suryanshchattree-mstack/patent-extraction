@@ -13,11 +13,29 @@ House rules kept from earlier work:
 
 from __future__ import annotations
 
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+import pipeline_context as ctx
+
 OUT = Path(__file__).resolve().parent / "svg"
 OUT.mkdir(exist_ok=True)
+
+# Every caption that names a page, a page count or a step count is as
+# patent-specific as the patent id is. They used to be typed into the source, so a
+# second patent got a diagram asserting the first patent's numbers about it. They
+# are counted from the run now. PATENT/FACTS/ROUTE are filled by generate().
+PATENT = ""
+FACTS: dict = {}
+ROUTE: dict | None = None
+
+WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six",
+         7: "seven", 8: "eight", 9: "nine", 10: "ten", 11: "eleven", 12: "twelve"}
+
+
+def word(n, fallback="several"):
+    return WORDS.get(n, str(n)) if n is not None else fallback
 
 # Okabe-Ito
 BLUE, ORANGE, GREEN = "#0072B2", "#E69F00", "#009E73"
@@ -178,7 +196,7 @@ def m1():
             ("R3 reaction pass 3", "classify + link"),
             ("PathwaysBuilder", "deterministic Java"),
             ("patent-tagger", "narrative + tags")]
-    ours = [("V", "page vision read", "9 in parallel"),
+    ours = [("V", "page vision read", f"{FACTS.get('page_count', '?')} in parallel"),
             ("A0", "section map", "1 call"),
             ("A1", "compounds", "per section"),
             ("A2", "reactions", "per section"),
@@ -219,43 +237,117 @@ def m1():
     c.poly([(606, y5 - 6), (618, y5), (606, y5 + 6)], VERM)
 
     c.note(40, 900, [
-        "V is not a shortcut. The PDF has no text layer at all, so OCR is mandatory, and the drawings carry the route: page 6 alone",
+        f"V is not a shortcut. The PDF has no text layer at all, so OCR is mandatory, and the drawings carry the route: page {FACTS.get('scheme_page','?')} alone",
         "holds the whole synthesis as structural formulae. Apple Vision read the Chinese prose acceptably but returned only orphaned",
         "fragments for every scheme, so a vision model reads the rendered pages instead and emits the same [IMAGE_EXTRACT: ...] spans",
-        "MolScribe and RxnScribe produce. Merging A1/A2 is safe only because this patent is 27 kB; production splits R2 per step to",
+        f"MolScribe and RxnScribe produce. Merging A1/A2 is safe only because this patent is {FACTS.get('source_kb','?')} kB; production splits R2 per step to",
         "bound token cost, not to improve accuracy. A5 is the one genuine addition, and it re-opens the page images to check V.",
     ])
     return c.save("m1-pass-map.svg")
 
 
 # ====================================================================
-# m2 - the actual route in CN104292137A
+# m2 - the route the patent actually discloses
 # ====================================================================
+#
+# This is the one figure that is about the chemistry rather than about the method,
+# so it is the one figure that cannot be written once and reused. Two ways to get
+# one, in order:
+#
+#   1. a hand-authored spec keyed by patent id. Richer than the gold can be: the
+#      condition strings are what a chemist would write on an arrow, and the
+#      closing note argues about specific numbers on specific steps.
+#   2. failing that, generated from pathways.json and reactions.json. Thinner, but
+#      it is derived from the annotation rather than typed next to it, and it
+#      exists - which is the whole complaint that started this. A new patent gets
+#      a route diagram instead of the previous patent's route diagram.
+#
+# What is NOT allowed is the third thing, which is what this used to do: print one
+# patent's eight hand-typed steps under whatever patent id happened to be running.
+
+HAND_DRAWN_ROUTES = {
+    "CN104292137A": {
+        "source": "Example 1",
+        # n, precursor, transformation, conditions, yield, one_pot, arithmetic_flag
+        "steps": [
+            ("1", "2-chlorotoluene", "Friedel-Crafts sulfonylation", "MsCl, AlCl3, DCE, 5 C", "84%", False, False),
+            ("2", "aryl sulfone", "Friedel-Crafts acylation", "AcCl, AlCl3, DCM, 15-20 C", "86%", False, False),
+            ("3", "aryl methyl ketone", "haloform oxidation", "NaOCl 15%, THF, reflux", "72%", False, True),
+            ("4", "benzoic acid", "Fischer esterification", "MeOH, pTSA, reflux", "97%", False, False),
+            ("5", "methyl ester", "benzylic bromination", "Br2, peroxide, CCl4, reflux", "70%", False, True),
+            ("6", "benzyl bromide", "etherification then saponification", "NaOCH2CF3 / NaOH", "92%", True, False),
+            ("7", "carboxylic acid", "acid chloride then O-acylation", "SOCl2 / cyclohexane-1,3-dione", "92%", True, False),
+            ("8", "enol ester", "Fries-type rearrangement", "cyanoacetone, Et3N, MeCN", "95%", False, True),
+        ],
+        "closing": "A3 produced exactly this for overall_yield_pct, on Example 1 and on the patent-scope pathway.",
+        "note": [
+            "The three flagged steps are the point of the exercise. Step 3 reports 82 g from 0.24 mol, which exceeds the theoretical",
+            "mass at 100% conversion. Step 5 produces 41.6 g but step 6 charges 55.8 g of it. Step 8 charges 0.5 mol where step 7",
+            "delivered 0.2 mol, and its stated mass and yield disagree. A gold annotation records all of this verbatim and raises",
+            "mass_balance_implausible and scale_discontinuity. It never quietly repairs the patent - an extractor that also fails to",
+            "notice must score as a miss, and it cannot if the reference has been silently corrected.",
+        ],
+    },
+}
+
+
+def _route_spec():
+    """(steps, source_label, ksm, product, closing, note) for the current patent."""
+    spec = HAND_DRAWN_ROUTES.get(PATENT)
+    r = ROUTE or {}
+    ksm = r.get("ksm") or "the starting material"
+    product = r.get("product") or "the target"
+    if spec:
+        return (spec["steps"], spec["source"], ksm, product,
+                spec["closing"], spec["note"])
+    if not r.get("steps"):
+        return None
+    steps = [(s["n"], "", s["transformation"], s["conditions"],
+              f"{s['yield_pct']:g}%" if s.get("yield_pct") is not None else "no yield",
+              s["one_pot"], s["flagged"]) for s in r["steps"]]
+    source = r.get("section") or f"{r.get('scope','patent')} scope"
+    return (steps, source, ksm, product,
+            "Generated from pathways.json and reactions.json. No route diagram has been "
+            "hand-authored for this patent.",
+            ["Every box on this diagram is read out of the gold annotation, not typed beside it: the transformation is the",
+             "reaction's named_reaction or its class, the conditions are its reagents and solvent, the yield is its stated",
+             "product_yield_pct, and a step is flagged when the annotation put a validation_flag on it. Nothing here is a",
+             "second opinion about the chemistry. For a richer figure, add an entry to HAND_DRAWN_ROUTES in make_svgs.py."])
+
+
 def m2():
-    c = Canvas(1000, 700, "m2", "The eight-step route to tembotrione disclosed in CN104292137A",
-               "A linear chain of eight reaction steps from 2-chlorotoluene to tembotrione. "
+    spec = _route_spec()
+    if spec is None:
+        print(f"  {'m2-route.svg':34} SKIPPED - no hand-drawn route for {PATENT} and no "
+              f"pathways.json to generate one from", file=sys.stderr)
+        return False
+    steps, source, ksm, product, closing, note = spec
+
+    n = len(steps)
+    n_flag = sum(1 for st in steps if st[6])
+    cols = min(4, n)
+    rows = (n + 3) // 4
+    x0, bw, bh, gap = 34, 224, 96, 18
+    W = max(1000, x0 + cols * bw + (cols - 1) * gap + 16)
+    H = max(700, 96 + rows * 190 + 210)
+
+    mid = W // 2 if W % 2 == 0 else W / 2
+    c = Canvas(W, H, "m2", f"The {word(n)}-step route to {product} disclosed in {PATENT}",
+               f"A linear chain of {word(n)} reaction steps from {ksm} to {product}. "
                "Each step box gives the step number, the transformation and the stated yield. "
                "Steps flagged as one-pot are marked with a double outline and the word one-pot. "
                "Steps whose stated arithmetic does not close are marked with a warning triangle "
                "and the word check.")
-    c.text(500, 30, "CN104292137A, Example 1: eight steps to tembotrione", size=17, weight="600")
-    c.text(500, 51, "Yields as printed in the patent. Three steps carry arithmetic that does not close.",
+    c.text(mid, 30, f"{PATENT}, {source}: {word(n)} steps to {product}", size=17, weight="600")
+    flag_sentence = ("No step carries arithmetic that does not close."
+                     if not n_flag else
+                     f"{word(n_flag).capitalize()} step{'s' if n_flag != 1 else ''} "
+                     f"carr{'y' if n_flag != 1 else 'ies'} arithmetic that does not close.")
+    c.text(mid, 51, f"Yields as printed in the patent. {flag_sentence}",
            size=12.5, fill=MUTE)
 
-    steps = [
-        ("1", "2-chlorotoluene", "Friedel-Crafts sulfonylation", "MsCl, AlCl3, DCE, 5 C", "84%", False, False),
-        ("2", "aryl sulfone", "Friedel-Crafts acylation", "AcCl, AlCl3, DCM, 15-20 C", "86%", False, False),
-        ("3", "aryl methyl ketone", "haloform oxidation", "NaOCl 15%, THF, reflux", "72%", False, True),
-        ("4", "benzoic acid", "Fischer esterification", "MeOH, pTSA, reflux", "97%", False, False),
-        ("5", "methyl ester", "benzylic bromination", "Br2, peroxide, CCl4, reflux", "70%", False, True),
-        ("6", "benzyl bromide", "etherification then saponification", "NaOCH2CF3 / NaOH", "92%", True, False),
-        ("7", "carboxylic acid", "acid chloride then O-acylation", "SOCl2 / cyclohexane-1,3-dione", "92%", True, False),
-        ("8", "enol ester", "Fries-type rearrangement", "cyanoacetone, Et3N, MeCN", "95%", False, True),
-    ]
-
-    x0, bw, bh, gap = 34, 224, 96, 18
     positions = []
-    for i, (n, src, tf, cond, y, onepot, flag) in enumerate(steps):
+    for i, (num, src, tf, cond, y, onepot, flag) in enumerate(steps):
         col, row = i % 4, i // 4
         x = x0 + col * (bw + gap)
         yy = 96 + row * 190
@@ -266,7 +358,7 @@ def m2():
             c.rect(x + 4, yy + 4, bw - 8, bh - 8, fill="none",
                    stroke=GREEN, sw=1.0, rx=4)
         c.circle(x + 22, yy + 22, 13, INK)
-        c.text(x + 22, yy + 26, n, size=12, weight="700", fill="#ffffff", mono=True)
+        c.text(x + 22, yy + 26, num, size=12, weight="700", fill="#ffffff", mono=True)
         c.wrap(x + bw / 2 + 14, yy + 26, tf, 24, size=11.8, weight="600", lh=13)
         c.wrap(x + bw / 2, yy + 58, cond, 32, size=10.3, fill=MUTE, lh=12)
         c.text(x + bw - 12, yy + bh - 9, y, size=13, anchor="end", weight="700", fill=GREEN if not flag else VERM)
@@ -277,37 +369,41 @@ def m2():
             c.text(x + 21, yy + bh - 9, "!", size=10, weight="700", fill=VERM)
             c.text(x + 36, yy + bh - 9, "check", size=10, anchor="start", weight="600", fill=VERM)
 
-    # arrows within a row
-    for i in range(len(steps) - 1):
+    # arrows within a row, then the wrap arrow at every row boundary
+    for i in range(n - 1):
         if i % 4 == 3:
             continue
         x, yy = positions[i]
         c.line(x + bw + 2, yy + bh / 2, x + bw + gap - 4, yy + bh / 2, sw=1.8)
-    # wrap arrow from step 4 to step 5
-    x4, y4 = positions[3]
-    x5, y5 = positions[4]
-    c.path(f"M {x4 + bw / 2} {y4 + bh + 4} L {x4 + bw / 2} {y4 + bh + 28} "
-           f"L {x5 + bw / 2} {y4 + bh + 28} L {x5 + bw / 2} {y5 - 6}", sw=1.8)
+    for i in range(3, n - 1, 4):
+        xa, ya = positions[i]
+        xb, yb = positions[i + 1]
+        c.path(f"M {xa + bw / 2} {ya + bh + 4} L {xa + bw / 2} {ya + bh + 28} "
+               f"L {xb + bw / 2} {ya + bh + 28} L {xb + bw / 2} {yb - 6}", sw=1.8)
 
-    xE, yE = positions[7]
+    xE, yE = positions[-1]
     c.rect(xE - 6, yE + bh + 26, bw + 12, 46, fill="#efe6f1", stroke=PURPLE, sw=2)
-    c.text(xE + bw / 2, yE + bh + 48, "tembotrione", size=14, weight="700")
+    c.wrap(xE + bw / 2, yE + bh + 48, product, 26, size=14, weight="700", lh=15)
     c.text(xE + bw / 2, yE + bh + 64, "the target", size=10.5, fill=MUTE)
     c.line(xE + bw / 2, yE + bh + 4, xE + bw / 2, yE + bh + 22, sw=1.8)
 
-    c.text(60, 466, "cumulative yield across all eight steps, as printed:", size=12, anchor="start", fill=MUTE)
-    c.text(60, 488, "0.84 x 0.86 x 0.72 x 0.97 x 0.70 x 0.92 x 0.92 x 0.95  =  28.40%",
-           size=13.5, anchor="start", weight="700", mono=True)
-    c.text(60, 510, "A3 produced exactly this for overall_yield_pct, on Example 1 and on the patent-scope pathway.",
-           size=11.5, anchor="start", fill=MUTE)
+    ytext = yE + bh + 26 + 46 + 12
+    known = [st[4] for st in steps if st[4].endswith("%")]
+    c.text(60, ytext, f"cumulative yield across all {word(n)} steps, as printed:",
+           size=12, anchor="start", fill=MUTE)
+    if len(known) == n:
+        vals = [float(v.rstrip("%")) / 100 for v in known]
+        prod = 1.0
+        for v in vals:
+            prod *= v
+        c.text(60, ytext + 22, " x ".join(f"{v:.2f}" for v in vals) + f"  =  {prod * 100:.2f}%",
+               size=13.5, anchor="start", weight="700", mono=True)
+    else:
+        c.text(60, ytext + 22, f"not computable: {n - len(known)} of {n} steps print no yield",
+               size=13.5, anchor="start", weight="700", mono=True)
+    c.wrap(60, ytext + 44, closing, 104, size=11.5, anchor="start", fill=MUTE, lh=14)
 
-    c.note(34, 932, [
-        "The three flagged steps are the point of the exercise. Step 3 reports 82 g from 0.24 mol, which exceeds the theoretical",
-        "mass at 100% conversion. Step 5 produces 41.6 g but step 6 charges 55.8 g of it. Step 8 charges 0.5 mol where step 7",
-        "delivered 0.2 mol, and its stated mass and yield disagree. A gold annotation records all of this verbatim and raises",
-        "mass_balance_implausible and scale_discontinuity. It never quietly repairs the patent - an extractor that also fails to",
-        "notice must score as a miss, and it cannot if the reference has been silently corrected.",
-    ])
+    c.note(34, W - 68, note)
     return c.save("m2-route.svg")
 
 
@@ -448,14 +544,15 @@ def m4():
 # ====================================================================
 def m5():
     c = Canvas(980, 620, "m5", "What each text-recovery route recovers from a scanned patent page",
-               "Three routes compared on page 6, the page carrying the whole synthetic "
+               f"Three routes compared on page {FACTS.get('scheme_page','?')}, the page carrying the whole synthetic "
                "route as drawn structures. The PDF text layer yields nothing. Apple's "
                "Vision framework yields prose but reduces every scheme to orphaned "
                "fragments. A vision model yields prose, structures and the reagents on "
                "each arrow. Filled circles mark what a route recovers, hollow circles "
                "with a cross mark what it loses.")
     c.text(490, 30, "Why OCR alone loses this patent", size=17, weight="600")
-    c.text(490, 51, "Measured on page 6, which carries the entire eight-step route as structural formulae.",
+    c.text(490, 51, f"Measured on page {FACTS.get('scheme_page','?')}, which carries the entire "
+           f"{word(len((ROUTE or {}).get('steps') or []) or None)}-step route as structural formulae.",
            size=12.5, fill=MUTE)
 
     routes = [
@@ -463,7 +560,7 @@ def m5():
          "0 characters. All 9 pages are scans.", VERM),
         ("Apple Vision OCR", "zh-Hans + en-US, accurate mode", [1, 0, 0, 0],
          "60 lines on p6: 36 low-confidence, 37 of six characters or fewer.", ORANGE),
-        ("Vision model on the page", "pass V, 9 agents in parallel", [1, 1, 1, 1],
+        ("Vision model on the page", f"pass V, {FACTS.get('page_count','?')} agents in parallel", [1, 1, 1, 1],
          "Prose, ring systems, substituent positions, and reagents per arrow.", GREEN),
     ]
     cols = ["Chinese prose", "structures", "substituent positions", "reagents above vs below arrow"]
@@ -507,7 +604,24 @@ def m5():
     return c.save("m5-ocr-comparison.svg")
 
 
-if __name__ == "__main__":
+def generate(patent_id: str) -> bool:
+    global PATENT, FACTS, ROUTE
+    PATENT = patent_id
+    FACTS = ctx.facts(patent_id)
+    ROUTE = ctx.route(patent_id)
+    print(f"patent    : {patent_id}")
+    print(f"counted   : {FACTS.get('page_count')} pages, source {FACTS.get('source_kb')} kB, "
+          f"scheme page {FACTS.get('scheme_page')}, "
+          f"{len((ROUTE or {}).get('steps') or [])} route steps")
     print("generating:")
-    ok = all([m1(), m2(), m3(), m4(), m5()])
+    return all([m1(), m2(), m3(), m4(), m5()])
+
+
+if __name__ == "__main__":
+    try:
+        pid = ctx.resolve_patent_id()
+    except ctx.ContextError as e:
+        raise SystemExit(f"FAIL  {e}")
+    ok = generate(pid)
     print("\nall clean" if ok else "\nfix the problems above")
+    raise SystemExit(0 if ok else 1)

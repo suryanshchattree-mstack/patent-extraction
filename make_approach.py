@@ -10,14 +10,44 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import pipeline_context as ctx
 from make_svgs import (Canvas, BLUE, ORANGE, GREEN, VERM, PURPLE, SKY,
                        INK, MUTE, PAPER, LINE, OUT)
 
 W, H = 1460, 800
 
+# The one part of this poster that is an argument rather than a count. It is about
+# one patent's chemistry and it used to print under any patent id, which would have
+# put three false assertions in the summary figure of a second patent's deliverable.
+HAND_WRITTEN_FINDINGS = {
+    "CN104292137A": [
+        ("The molar masses are des-chloro",
+         "Every printed mass/mole pair across Example 1 implies a weight ~34.5 lower "
+         "than the compound named and drawn. That is exactly Cl-for-H. The reagent "
+         "charges are all correct; only the chlorinated aromatics carry the offset."),
+        ("The drawn route is not the written one",
+         "The scheme starts from 2,6-dichlorotoluene with CH3SNa, which the text says "
+         "the invention replaced, and contains an oxidation it says was eliminated. "
+         "Yet it also uses Br2, claimed as the invention's own improvement."),
+        ("The catalyst is drawn as (CH3)2C(CN)OH",
+         "Acetone cyanohydrin, drawn. The text names cyanoacetone, a different "
+         "molecule. Nothing that reads only characters could ever see this."),
+    ],
+}
 
-def approach():
-    c = Canvas(W, H, "ap", "How the gold annotation of CN104292137A was built",
+
+def approach(patent_id: str):
+    # Every number on this poster used to be a literal, so it kept asserting the
+    # first patent's counts over whatever patent was actually run. They are read
+    # off the run now: the page count from input/vision/, the record counts from
+    # the gold, the cumulative yield from the pathway the annotation stands behind.
+    f = ctx.facts(patent_id)
+    g = ctx.gold_counts(patent_id)
+    pages = f.get("page_count")
+    office = ctx.patent_office(f.get("jurisdiction"))
+    fmt = lambda v: "?" if v is None else f"{v:g}" if isinstance(v, float) else str(v)
+
+    c = Canvas(W, H, "ap", f"How the gold annotation of {patent_id} was built",
                "A left-to-right pipeline of six stages: a scanned PDF with no text "
                "layer, vision agents reading the rendered pages, assembly into "
                "enriched markdown in production's format, five extraction passes, "
@@ -26,19 +56,19 @@ def approach():
                "findings only a vision pass reaches.")
 
     c.text(W / 2, 40, "How the gold annotation was built", size=25, weight="700")
-    c.text(W / 2, 68, "CN104292137A  ·  9 scanned pages  ·  zero text layer  ·  DOCDB family 52312131",
-           size=13, fill=MUTE)
+    c.text(W / 2, 68, f"{patent_id}  ·  {fmt(pages)} scanned pages  ·  zero text layer  "
+           f"·  DOCDB family {f.get('family_id') or 'unknown'}", size=13, fill=MUTE)
 
     stages = [
         ("1", "The input", VERM, [
-            "9-page CNIPA scan",
+            f"{fmt(pages)}-page {office} scan",
             "0 characters of text",
             "the route is drawn,",
             "not written",
         ], "there is nothing to parse"),
         ("2", "Look at it", ORANGE, [
             "render 200 dpi PNG",
-            "9 vision agents,",
+            f"{fmt(pages)} vision agents,",
             "one per page,",
             "reading pixels",
         ], "not OCR: OCR loses the drawings"),
@@ -61,7 +91,7 @@ def approach():
             "PersistentRecordBuilder",
         ], "never ask a model for a join key"),
         ("6", "Attack it", PURPLE, [
-            "4 audits, fresh context,",
+            f"{fmt(g['audits'])} audits, fresh context,",
             "re-opening the page",
             "images, told to assume",
             "the work is wrong",
@@ -104,9 +134,12 @@ def approach():
     c.text(34, ry, "What came out", size=15, anchor="start", weight="700")
     c.line(34, ry + 10, W - 34, ry + 10, stroke=LINE, sw=1, marker=False)
 
-    results = [("75", "compounds"), ("33", "reactions"), ("5", "pathways"),
-               ("1", "patent record"), ("18", "structures read\noff the drawings"),
-               ("28.40%", "cumulative yield,\nExample 1")]
+    yield_pct = g["overall_yield_pct"]
+    results = [(fmt(g["compounds"]), "compounds"), (fmt(g["reactions"]), "reactions"),
+               (fmt(g["pathways"]), "pathways"), (fmt(g["patents"]), "patent record"),
+               (fmt(g["drawn_structures"]), "structures read\noff the drawings"),
+               (f"{yield_pct:.2f}%" if yield_pct is not None else "n/a",
+                "cumulative yield,\nExample 1")]
     rx, rw = 34, 190
     for i, (num, lab) in enumerate(results):
         x = rx + i * (rw + 14)
@@ -116,31 +149,31 @@ def approach():
             c.text(x + rw / 2, ry + 82 + j * 14, part, size=10.8, fill=MUTE)
 
     c.rect(rx + 6 * (rw + 14), ry + 24, 152, 84, fill="#fdf3ee", stroke=VERM, sw=1.6)
-    c.text(rx + 6 * (rw + 14) + 76, ry + 60, "24 / 33", size=21, weight="700", fill=VERM)
+    c.text(rx + 6 * (rw + 14) + 76, ry + 60,
+           f"{fmt(g['flagged_reactions'])} / {fmt(g['reactions'])}",
+           size=21, weight="700", fill=VERM)
     c.text(rx + 6 * (rw + 14) + 76, ry + 82, "reactions carry a", size=10.4, fill=MUTE)
     c.text(rx + 6 * (rw + 14) + 76, ry + 96, "validation flag", size=10.4, fill=MUTE)
 
     # ---- the payoff ---------------------------------------------------------
     fy = ry + 138
-    c.text(34, fy, "Three findings that only a pass which looks at the page can reach",
-           size=15, anchor="start", weight="700")
+    heading = ("Three findings that only a pass which looks at the page can reach"
+               if patent_id in HAND_WRITTEN_FINDINGS
+               else "Findings that only a pass which looks at the page can reach")
+    c.text(34, fy, heading, size=15, anchor="start", weight="700")
     c.line(34, fy + 10, W - 34, fy + 10, stroke=LINE, sw=1, marker=False)
 
-    finds = [
-        ("The molar masses are des-chloro",
-         "Every printed mass/mole pair across Example 1 implies a weight ~34.5 lower "
-         "than the compound named and drawn. That is exactly Cl-for-H. The reagent "
-         "charges are all correct; only the chlorinated aromatics carry the offset."),
-        ("The drawn route is not the written one",
-         "The scheme starts from 2,6-dichlorotoluene with CH3SNa, which the text says "
-         "the invention replaced, and contains an oxidation it says was eliminated. "
-         "Yet it also uses Br2, claimed as the invention's own improvement."),
-        ("The catalyst is drawn as (CH3)2C(CN)OH",
-         "Acetone cyanohydrin, drawn. The text names cyanoacetone, a different "
-         "molecule. Nothing that reads only characters could ever see this."),
+    finds = HAND_WRITTEN_FINDINGS.get(patent_id) or [
+        ("No findings written up yet",
+         f"The findings row on this poster is hand-authored per patent and none has "
+         f"been written for {patent_id}. Every count above is read from the gold and "
+         f"is current; this row is not, so it says so rather than repeating another "
+         f"patent's findings. Add an entry to HAND_WRITTEN_FINDINGS."),
     ]
     fw = 456
     for i, (t, b) in enumerate(finds):
+        if not t:
+            continue
         x = 34 + i * (fw + 12)
         c.rect(x, fy + 24, fw, 116, fill="#fbfbfb", stroke=PURPLE, sw=1.6)
         c.circle(x + 22, fy + 48, 12, PURPLE)
@@ -155,5 +188,10 @@ def approach():
 
 
 if __name__ == "__main__":
+    try:
+        pid = ctx.resolve_patent_id()
+    except ctx.ContextError as e:
+        raise SystemExit(f"FAIL  {e}")
+    print(f"patent    : {pid}")
     print("generating:")
-    raise SystemExit(0 if approach() else 1)
+    raise SystemExit(0 if approach(pid) else 1)

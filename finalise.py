@@ -15,8 +15,14 @@ uuid.uuid5(uuid.NAMESPACE_DNS, s) is the same construction. Verify against one
 real production artifact before joining on uuid in anger - it has not been
 checked against a live record, only against the source of both implementations.
 
-Usage:  python3 finalise.py            # reads output/raw-*, writes output/*.json
-        python3 finalise.py --check    # validate only, write nothing
+Usage:  python3 finalise.py                       # reads output/raw-*, writes output/*.json
+        python3 finalise.py --patent-id CN1234A   # any patent id
+        python3 finalise.py --check               # validate only, write nothing
+
+The patent id is load-bearing here in a way it is nowhere else: every id and every
+UUID in every artifact is seeded with it. It used to be a module constant, so a run
+on a second patent silently minted the first patent's join keys over the second
+patent's chemistry, and nothing downstream could tell.
 """
 
 from __future__ import annotations
@@ -27,10 +33,15 @@ import sys
 import uuid
 from pathlib import Path
 
+from pipeline_context import ContextError, biblio_path, resolve_patent_id
+
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "output"
-BIBLIO = HERE / "input" / "CN104292137A-biblio.json"
-PATENT_ID = "CN104292137A"
+
+# Set by main() before any id is built. Kept as module state rather than threaded
+# through twenty call sites, because every builder below is a pure function of it.
+PATENT_ID: str = ""
+BIBLIO: Path = Path()
 
 
 # ---------------------------------------------------------------- id builders
@@ -366,7 +377,18 @@ def finalise_patent(llm, mols, rxns, pws):
 
 
 def main() -> int:
+    global PATENT_ID, BIBLIO
     check = "--check" in sys.argv
+    try:
+        PATENT_ID = resolve_patent_id()
+    except ContextError as e:
+        print(f"FAIL  {e}", file=sys.stderr)
+        return 2
+    BIBLIO = biblio_path(PATENT_ID)
+    if not BIBLIO.exists():
+        print(f"FAIL  {BIBLIO} not found", file=sys.stderr)
+        return 2
+    print(f"patent    : {PATENT_ID}")
     mols, rxns, pws, pat = (load_raw("compounds"), load_raw("reactions"),
                             load_raw("pathways"), load_raw("patent"))
     missing = [n for n, v in [("compounds", mols), ("reactions", rxns),

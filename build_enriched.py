@@ -29,6 +29,8 @@ import json
 import sys
 from pathlib import Path
 
+from pipeline_context import ContextError, resolve_patent_id
+
 HERE = Path(__file__).resolve().parent
 VIS = HERE / "input" / "vision"
 OUT = HERE / "input"
@@ -124,6 +126,15 @@ def image_extract_block(dr, page):
 
 
 def main() -> int:
+    # The patent id names the two files this stage writes. It used to be a literal in
+    # three places here, so a second patent overwrote the first one's enriched
+    # markdown under the first one's name.
+    try:
+        patent_id = resolve_patent_id()
+    except ContextError as e:
+        print(f"FAIL  {e}", file=sys.stderr)
+        return 2
+
     files = sorted(VIS.glob("p*.json"))
     if not files:
         print(f"no vision output in {VIS} yet")
@@ -140,7 +151,7 @@ def main() -> int:
     body, structures = [], []
     n_img = n_par = 0
 
-    body.append(f"# CN104292137A\n")
+    body.append(f"# {patent_id}\n")
     for stem, p in pages:
         body.append(f"\n<!-- page {stem} :: {p.get('page_label','')} :: "
                     f"{p.get('doc_part','')} :: confidence={p.get('page_confidence','')} -->\n")
@@ -192,14 +203,15 @@ def main() -> int:
     text = "\n".join(body)
     numbered = "\n".join(f"{i:4} | {ln}" for i, ln in enumerate(text.split("\n"), 1))
 
-    (OUT / "CN104292137A-enriched.md").write_text(text)
-    (OUT / "CN104292137A-enriched-numbered.md").write_text(numbered)
+    (OUT / f"{patent_id}-enriched.md").write_text(text)
+    (OUT / f"{patent_id}-enriched-numbered.md").write_text(numbered)
     (HERE / "output" / "structures.json").write_text(
         json.dumps(structures, indent=2, ensure_ascii=False))
 
     disc = [(stem, d) for stem, p in pages for d in (p.get("discrepancies") or [])]
     illeg = [(stem, x) for stem, p in pages for x in (p.get("illegible") or [])]
 
+    print(f"patent              : {patent_id}")
     print(f"pages merged        : {len(pages)}")
     print(f"paragraphs          : {n_par}")
     print(f"IMAGE_EXTRACT blocks: {n_img}")

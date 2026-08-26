@@ -1,6 +1,6 @@
-# A5 adversarial audit
+# A5 adversarial audit of CN104292137A
 
-Four independent audits, each in a fresh context, each re-opening the page images.
+4 independent audits, each in a fresh context, each re-opening the page images.
 None of them produced the artifact it audited.
 
 | artifact | records | critical | major | minor | checks passed |

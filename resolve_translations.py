@@ -59,9 +59,17 @@ in `aliases` instead (N-溴琥珀酸亚胺 -> N-bromosuccinimide).
 
 THE COVERAGE GATE is the point of the whole stage. It exits non-zero when a Chinese
 string that CAN REACH A SCREEN has no English: any compound identifier, any alias on
-a compound, any provenance `quote_zh`, any `quote` in a verification report. It also
-gates on source lines that carry Chinese and have no English pairing at all, because
-a reader who lands on one of those gets Chinese or a blank and both are failures.
+a compound, any provenance `quote_zh`, any `quote` in a verification report, any run
+of Chinese left inside the source's own English, and any run on a source line the
+source never translated.
+
+IT GATES ON WHAT SURVIVES SUBSTITUTION, not on whether a line has a "> EN:" partner.
+Those are different questions and the second one gets line 76 wrong: line 76 is the
+second line of the translation of paragraph 8, so it has no partner and needs none,
+and the only Chinese in it is 环磺草酮, which the index resolves to "tembotrione". A
+consumer substitutes and the reader sees English. The failure worth catching is a run
+the index CANNOT replace, wherever it sits, and that is what the gate asks.
+
 On failure the report prints the exact missing strings grouped by where they surface
 and a JSON stub ready to paste into input/translations-curated.json, the way
 resolve_structures.py does for SMILES.
@@ -222,7 +230,16 @@ def read_numbered(patent_id: str) -> dict[int, str]:
 
 
 def english_by_line(patent_id: str, lines: dict[int, str]):
-    """line number -> the English the enriched source already pairs with that line.
+    """The English pairing of every line, and which lines ARE that English.
+
+    Returns (english, en_lines, walk). `english` maps a Chinese line number to the
+    English the enriched source pairs with it. `en_lines` is the line numbers that
+    are themselves English output, which is not a thing a regex can decide: the
+    FIRST line of a translation carries "    > EN: " and every continuation line
+    after it carries nothing at all, so line 76 looks exactly like a line of the
+    patent. Only this walk knows the difference, and the gate needs it to tell a
+    Chinese term left inside a translation apart from a line of source that was
+    never translated. Those are different defects with different fixes.
 
     Rebuilt by walking the vision paragraphs against the file rather than by pattern
     matching the file alone, because the two cannot be told apart by eye. A paragraph
@@ -252,6 +269,7 @@ def english_by_line(patent_id: str, lines: dict[int, str]):
             and not t.startswith("[IMAGE_EXTRACT")]
 
     english: dict[int, str] = {}
+    en_lines: set[int] = set()
     i = 0
     no_english: list[int] = []
     aligned = unaligned = 0
@@ -272,17 +290,18 @@ def english_by_line(patent_id: str, lines: dict[int, str]):
             no_english.extend(zh_numbers)
             continue
 
-        en_lines = (EN_MARK + en).split("\n")
+        en_written = (EN_MARK + en).split("\n")
         en_text = []
-        for text in en_lines:
+        for text in en_written:
             if i >= len(body) or body[i][1] != text:
                 die(f"enriched source and {VISION.name}/ have diverged at the English "
                     f"for line {zh_numbers[0]}")
             en_text.append(body[i][1][len(EN_MARK):] if body[i][1].startswith(EN_MARK)
                            else body[i][1].strip())
+            en_lines.add(body[i][0])
             i += 1
 
-        if len(en_lines) == len(zh_lines):
+        if len(en_written) == len(zh_lines):
             aligned += 1
             for n, t in zip(zh_numbers, en_text):
                 english[n] = t
@@ -295,8 +314,43 @@ def english_by_line(patent_id: str, lines: dict[int, str]):
     if i != len(body):
         die(f"{len(body) - i} paragraph lines in the enriched source were not "
             f"accounted for by {VISION.name}/")
-    return english, {"paragraphs": len(paragraphs), "aligned": aligned,
-                     "unaligned": unaligned, "no_english": sorted(no_english)}
+    return english, en_lines, {"paragraphs": len(paragraphs), "aligned": aligned,
+                               "unaligned": unaligned, "no_english": sorted(no_english)}
+
+
+# Lines build_enriched.py emits that no reader is ever shown as prose. The page
+# markers are HTML comments and the UI prints only the page id out of them; the
+# IMAGE_EXTRACT lines are the vision pass's JSON and render as drawn structures.
+# Both are skipped here for that reason and for no other: skipping a line because
+# its Chinese looked unimportant is how Chinese gets on a screen.
+SKIP_PREFIXES = ("# ", "<!-- page", "[IMAGE_EXTRACT")
+
+
+def source_runs(lines: dict[int, str], english: dict[int, str], en_lines: set[int]):
+    """Every run of Chinese a reader can still meet in the source pane, by shape.
+
+        a Chinese line the source translates ....... the reader gets the English
+        a Chinese run inside that English .......... en_runs      <- must resolve
+        a line with no English at all .............. bare_runs    <- must resolve
+
+    The first needs nothing from this stage. The other two are the only two ways
+    Chinese survives to a screen from the source, and both are gated the same way:
+    the index must be able to replace the run. That is what makes the gate a
+    statement about residual Chinese rather than about whether a "> EN:" line
+    happens to exist, which is the wrong question. Line 76 is a translation whose
+    only Chinese is a term the index resolves, so it is fine; a line of untranslated
+    patent prose is not, and neither is a translation that kept a term the index
+    has never heard of.
+    """
+    en_runs: dict[str, list[int]] = {}
+    bare_runs: dict[str, list[int]] = {}
+    for n, text in sorted(lines.items()):
+        if n in english or not has_chinese(text) or text.startswith(SKIP_PREFIXES):
+            continue
+        bucket = en_runs if n in en_lines else bare_runs
+        for run in re.findall(CJK.pattern + "+", text):
+            bucket.setdefault(run, []).append(n)
+    return en_runs, bare_runs
 
 
 # ---------------------------------------------------------------- the universe
@@ -305,17 +359,21 @@ def english_by_line(patent_id: str, lines: dict[int, str]):
 # the split exists so the failure report can say WHICH screen loses its text, which
 # is the difference between "fix the compound table" and "fix the evidence panel".
 POPULATIONS = ["compound_identifier", "compound_alias",
-               "provenance_quote", "verification_quote"]
+               "provenance_quote", "verification_quote",
+               "source_en_run", "source_bare_run"]
 
 POPULATION_MEANING = {
     "compound_identifier": "the identifier of a gold compound record",
     "compound_alias": "an alias on a gold compound record",
     "provenance_quote": "quote_zh on a provenance row, the evidence for a record",
     "verification_quote": "quote on an A5 audit finding, the evidence for a defect",
+    "source_en_run": "a Chinese term left inside the English of a translated "
+                     "source line",
+    "source_bare_run": "a Chinese term on a source line that carries no English",
 }
 
 
-def string_universe(compounds, prov_rows, verification):
+def string_universe(compounds, prov_rows, verification, en_runs, bare_runs):
     """Every distinct Chinese string the gold can render, in first-appearance order.
 
     Union over the four populations, never intersection: a quote that names no
@@ -351,6 +409,16 @@ def string_universe(compounds, prov_rows, verification):
             line = finding.get("source_line")
             add(finding.get("quote"), "verification_quote",
                 lines=[line] if isinstance(line, int) else [])
+
+    # DELIBERATELY WITHOUT `lines`, even though the line each run sits on is known.
+    # These are bare terms, and giving them a line would let tier 1 answer 环磺草酮
+    # with the paragraph of procedure it appears in. A name is resolved as a name:
+    # the gold's own English if it has one, otherwise the curated table. Same rule
+    # as compound identifiers, for the same reason.
+    for run in en_runs:
+        add(run, "source_en_run")
+    for run in bare_runs:
+        add(run, "source_bare_run")
 
     for s in sites.values():
         s["lines"] = sorted(s["lines"])
@@ -623,44 +691,40 @@ def gate(universe, sites, entries):
     return {p: v for p, v in missing.items() if v}
 
 
-def untranslated_source_lines(lines: dict[int, str], english: dict[int, str]):
-    """Source lines that carry Chinese and have no English pairing at all.
+def unresolved_lines(en_runs, bare_runs, entries):
+    """Source lines the index cannot clear of Chinese, line -> the runs it leaves.
 
-    Its own category and its own gate, because the failure is different in kind. A
-    string with no translation loses one cell of one table; a source line with no
-    translation loses the evidence panel entirely for everything that cites it, and
-    a reader who follows a citation there gets Chinese or a blank. Both are failures
-    for a team that cannot read Chinese, so this gates too.
-
-    Reported alongside it, and deliberately NOT gating: lines with no English that
-    carry no Chinese either. Those are the bare paragraph markers a drawing hangs
-    under, and lines of NMR shifts that are already the same in both languages.
+    THE GATE IS ABOUT RESIDUAL CHINESE, NOT ABOUT PAIRING. An earlier version asked
+    whether a line carried a "> EN:" partner and failed line 76 for having none.
+    Line 76 IS English; it is the second line of the translation of paragraph 8,
+    and its only Chinese is 环磺草酮, which the index resolves to "tembotrione". A
+    consumer substitutes and the reader sees English, so there is nothing wrong with
+    it. What is wrong is a run the index cannot replace, wherever it sits, because
+    that is the case where substitution leaves Chinese on the screen. This asks that
+    question and only that question, so nothing is excused and nothing is invented.
     """
-    silent, harmless = [], []
-    for n, text in sorted(lines.items()):
-        if n in english or text.startswith(EN_MARK) or text.startswith("[IMAGE_EXTRACT") \
-                or text.startswith("<!-- page") or text.startswith("# ") or not text.strip():
-            continue
-        (silent if has_chinese(text) else harmless).append(n)
-    return silent, harmless
+    bad: dict[int, set[str]] = {}
+    for runs in (en_runs, bare_runs):
+        for run, numbers in runs.items():
+            if (entries.get(run) or {}).get("en"):
+                continue
+            for n in numbers:
+                bad.setdefault(n, set()).add(run)
+    return {n: sorted(bad[n]) for n in sorted(bad)}
 
 
-def residual_chinese(lines: dict[int, str], entries):
-    """Chinese still sitting inside the "> EN:" lines themselves.
+def untranslated_no_loss(lines: dict[int, str], english: dict[int, str],
+                         en_lines: set[int]):
+    """Lines with no English that carry no Chinese either, so nothing is lost.
 
-    Not gated, and worth knowing: an English line that has kept a Chinese name in it
-    hands a reader the same problem the rest of this stage exists to remove. Every
-    run of Chinese found here is checked against the index, so the report can say
-    whether it is a gap or a name the index already resolves.
+    Reported and deliberately not gated. These are the bare paragraph markers a
+    drawing hangs under, and lines of NMR shifts that read the same in both
+    languages. Counted out loud so that "no failures" is visibly a statement about
+    every line rather than about the lines this stage chose to look at.
     """
-    runs: dict[str, int] = {}
-    for text in lines.values():
-        if not text.startswith(EN_MARK):
-            continue
-        for run in re.findall(CJK.pattern + "+", text):
-            runs[run] = runs.get(run, 0) + 1
-    indexed = {r: (entries.get(r) or {}).get("en") for r in runs}
-    return runs, indexed
+    return [n for n, text in sorted(lines.items())
+            if n not in english and n not in en_lines and text.strip()
+            and not text.startswith(SKIP_PREFIXES) and not has_chinese(text)]
 
 
 def stub(missing) -> str:
@@ -692,10 +756,12 @@ def main() -> int:
 
     compounds, equivalence, prov_rows, verification, curated = load_inputs(patent_id)
     lines = read_numbered(patent_id)
-    english, walk = english_by_line(patent_id, lines)
+    english, en_lines, walk = english_by_line(patent_id, lines)
     source_norm = {n: normalise(lines[n]) for n in english if normalise(lines[n])}
+    en_runs, bare_runs = source_runs(lines, english, en_lines)
 
-    universe, sites = string_universe(compounds, prov_rows, verification)
+    universe, sites = string_universe(compounds, prov_rows, verification,
+                                      en_runs, bare_runs)
     table = index_curated(curated, universe)
     entries, partial = resolve(universe, sites, compounds, equivalence,
                                source_norm, english, table)
@@ -706,8 +772,8 @@ def main() -> int:
             json.dumps(entries, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     missing = gate(universe, sites, entries)
-    silent, harmless = untranslated_source_lines(lines, english)
-    runs, indexed = residual_chinese(lines, entries)
+    stranded = unresolved_lines(en_runs, bare_runs, entries)
+    harmless = untranslated_no_loss(lines, english, en_lines)
 
     # ---- report -------------------------------------------------------------
     print(f"patent    : {patent_id}")
@@ -757,41 +823,34 @@ def main() -> int:
     else:
         print("\n--check: nothing written")
 
-    print(f"\nsource lines: {len(silent)} carry Chinese and have no English pairing")
-    if silent:
-        print("  " + ", ".join(str(n) for n in silent))
+    print(f"\nsource pane: {len(en_runs)} distinct Chinese runs sit inside the "
+          f"English of a translated line, {len(bare_runs)} on lines with no English")
+    for label, runs in (("in the English", en_runs), ("no English", bare_runs)):
+        for r, ns in sorted(runs.items(), key=lambda kv: (-len(kv[1]), kv[0])):
+            mark = (entries.get(r) or {}).get("en") or "NOT IN THE INDEX"
+            print(f"  {r}  x{len(ns)}  {label}, line {ns[0]}  -> {mark}")
     if harmless:
-        print(f"  {len(harmless)} more have no English and no Chinese either, so "
+        print(f"  {len(harmless)} lines have no English and no Chinese either, so "
               f"nothing is lost: {', '.join(str(n) for n in harmless)}")
 
-    if runs:
-        unresolved = sorted(r for r in runs if not indexed.get(r))
-        print(f"\nreported, not gated: {len(runs)} distinct Chinese runs still sit "
-              f"inside the \"> EN:\" lines themselves")
-        for r, n in sorted(runs.items(), key=lambda kv: (-kv[1], kv[0])):
-            mark = indexed.get(r) or "NOT IN THE INDEX"
-            print(f"  {r}  x{n}  -> {mark}")
-        if unresolved:
-            print(f"  {len(unresolved)} of them are not indexed. They are glossed in "
-                  f"place by the English around them, so a reader is not stuck; add "
-                  f"them to the curated table if you want them looked up.")
-
     print(f"\ncoverage gate: every one of the {len(universe)} strings above must have "
-          f"an English form, and every source line carrying Chinese must have one too")
-    if not missing and not silent:
-        print(f"  all {len(universe)} strings and all {len(english)} translated lines "
-              f"resolve. PASS")
+          f"an English form, so that substituting the index leaves no Chinese anywhere")
+    if not missing and not stranded:
+        print(f"  all {len(universe)} strings resolve, and all {len(lines)} source "
+              f"lines come out of the substitution in English. PASS")
         return 0
 
     total = len({t for v in missing.values() for t in v})
-    print(f"\n  {total} strings and {len(silent)} source lines have NO English. FAIL")
+    print(f"\n  {total} strings have NO English, leaving Chinese on "
+          f"{len(stranded)} source lines. FAIL")
     for p in POPULATIONS:
         if p in missing:
             print(f"\n    {p} ({len(missing[p])}) - {POPULATION_MEANING[p]}")
             for text in missing[p]:
                 print(f"      {text}")
-    for n in silent:
-        print(f"\n    source line {n} carries Chinese and has no English pairing:")
+    for n, runs in stranded.items():
+        print(f"\n    source line {n} still reads as Chinese after substitution "
+              f"({', '.join(runs)}):")
         print(f"      {lines[n][:120]}")
     if missing:
         print("\n  Translate them as chemistry, checking each name against the "
