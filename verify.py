@@ -161,6 +161,8 @@ from resolve_translations import (
     normalise,
     read_numbered,
     sorted_keys,
+    PERCENT,
+    QUALIFIERS,
 )
 
 RDLogger.DisableLog("rdApp.*")
@@ -1085,6 +1087,11 @@ class Engine:
             self.compound_prov.setdefault(row["identifier"], []).append(row)
         self.reaction_prov = {row["reaction_id"]: row for row in data["reaction_prov"]}
 
+        # name -> what to look for, built once. English needles are kept long
+        # enough not to fire inside another name: "water" would otherwise match
+        # every occurrence of "washed with water" and name a reagent on 40 lines.
+        self._name_index: list[tuple[str, str, str]] = []
+        self._names_cache: dict[int, list[str]] = {}
         self.records: list[Record] = []
         self.claims: list[dict] = []
         self.record_of: dict[int, Record] = {}
@@ -1360,6 +1367,14 @@ class Engine:
                 claim["tier"] = 2
             elif claim["auto"] in ("not_found", "not_reconciled", "partial"):
                 claim["tier"] = 1
+            elif claim.get("_finding"):
+                # `not_checkable` means the machine had NO OPINION, and tier 4 is
+                # sampled on that basis. A claim that REPORTS a failing check is
+                # the opposite: the machine looked and found something specific,
+                # and it cannot be settled by a string match only because the
+                # judgement is a human one. Sampling those would be sampling the
+                # findings, which is the one population that must be a census.
+                claim["tier"] = 1
             elif claim["auto"] == "not_checkable":
                 claim["tier"] = 4
             elif any(claim["field"].startswith(pre) for pre in prefixes):
@@ -1488,6 +1503,57 @@ class Engine:
         for n in lines:
             self.cited_lines.setdefault(n, set()).add(record_id)
 
+    def names_on(self, n: int) -> list[str]:
+        """The substances the annotation knows that this line names, in English.
+
+        THE ONE FACT A MISATTACHMENT TURNS ON, and the only help available for it.
+        A planted defect moved a real 40.5 g from aluminium trichloride onto
+        2-chlorotoluene. Both are real, both are on line 187, so grounding passes
+        and the verdict `found` is correct. No cheap machine test separates them:
+        requiring the cited line to name the compound passes too, because line 187
+        names both.
+
+        What a reviewer is missing is not evidence, it is the fact that the line
+        names three substances and the number belongs to one of them. This does not
+        settle the question and is not meant to. It hands over the missing fact and
+        leaves the judgement where it belongs.
+        """
+        cached = self._names_cache.get(n)
+        if cached is not None:
+            return cached
+        norm = self.source.norm.get(n, "")
+        english = (self.source.text_en.get(n, "") or "").lower()
+        hits: list[tuple[str, str]] = []
+        for label, zh_needle, en_needle in self._name_index:
+            # Word boundaries, so "toluene" does not fire inside
+            # "2-chlorotoluene". Chinese has no boundaries and needs none: the
+            # names are long enough to be unambiguous.
+            if (zh_needle and zh_needle in norm) or (
+                    en_needle and re.search(r"\b" + re.escape(en_needle) + r"\b",
+                                            english)):
+                if not any(label == l for l, _, _ in hits):
+                    hits.append((label, zh_needle, en_needle))
+        # A needle contained in another needle that also matched is the same
+        # mention read twice: "water" inside "ice water", "dichloromethane" inside
+        # "1,2-dichloromethane", "aluminium trichloride" inside "anhydrous
+        # aluminium trichloride". Naming both tells the reviewer the line mentions
+        # two substances where it mentions one, which is a worse error here than
+        # naming too few: the whole point is to say what the number might belong to.
+        def swallowed(mine: str, index: int) -> bool:
+            """Is this string a proper part of another hit's string at the same
+            position? Compared on the LABEL too, because the two halves of a pair
+            can match in different languages: `dichloromethane` matched the English
+            and `1,2-dichloromethane` matched the Chinese, so neither needle could
+            see the other and the line named a solvent it does not contain."""
+            return any(mine and mine != other[index] and mine in other[index]
+                       for other in hits)
+
+        found = [label for label, zh, en in hits
+                 if not swallowed(label, 0)
+                 and not swallowed(zh, 1) and not swallowed(en, 2)]
+        self._names_cache[n] = found
+        return found
+
     def evidence(self, cited: list[int], hit_lines: set[int]) -> list[dict]:
         """The evidence panel: every line that mattered, then the rest, capped.
 
@@ -1503,6 +1569,7 @@ class Engine:
                  "is_translation": self.source.is_translation.get(n, False),
                  "kind": self.source.label_kind(n, self.claim_lines),
                  "pairing": self.source.pairing.get(n, "self"),
+                 "names_en": self.names_on(n),
                  "matched": n in hit_lines}
                 for n in shown]
 
@@ -2062,6 +2129,13 @@ def is_yield(line: str, start: int) -> bool:
     return any(w in window for w in YIELD_WORDS)
 
 
+# `title_en` is the QUESTION THE CHECK ASKS, never the answer, and every title in
+# this file is phrased "Whether ..." for that reason. Phrasing it as the assertion
+# reads correctly on a pass and states a falsehood on a fail: the report page showed
+# "The page drawing and the gold agree about this molecule" as the heading above a
+# body explaining that they do not. That is the same failure as a banner reading
+# "Machine could NOT find this" over a value printed plainly on the page. A reviewer
+# skimming headings would have read the opposite of every finding.
 def check(cid: str, family: str, status: str, title: str, detail: str,
           needs_human: bool = False, about_fields=()) -> dict:
     """One machine finding about one record.
@@ -2158,7 +2232,29 @@ class Run(Engine):
 
     # ------------------------------------------------------------ records
 
+    def build_name_index(self) -> None:
+        """Every compound the gold knows, with what to search a line for."""
+        for c in self.data["compounds"]:
+            ident = c["identifier"]
+            if not ident or looks_like_smiles(ident):
+                continue
+            label = self.english_name(ident)
+            # From the IDENTIFIER only, never from the alias list. Two gold records
+            # can share aliases - `water` and `ice water` both carry 冰水 and "ice
+            # water" - and taking needles from aliases gave the `water` record
+            # ice-water needles, so every mention of ice water named two substances.
+            # The identifier is the one string that belongs to this record alone.
+            zh = normalise(ident) if has_chinese(ident) else ""
+            en = "" if has_chinese(ident) else (ident.lower()
+                                                if len(ident) >= 4 else "")
+            if zh or en:
+                self._name_index.append((label, zh, en))
+        # Longest English needle first so a containing name wins over a contained
+        # one and the list reads as the page reads.
+        self._name_index.sort(key=lambda t: (-len(t[2]), t[0]))
+
     def build(self) -> None:
+        self.build_name_index()
         self.build_compounds()
         self.build_reactions()
         self.build_pathways()
@@ -2167,11 +2263,14 @@ class Run(Engine):
         self.structure_checks()
         self.drawing_checks()
         self.consistency_checks()
+        self.naming_checks()
         self.yield_identity()
         self.build_coverage()
         # The quantity sweep reads every claim built above, so it runs last of the
         # builders and before anything that scores them.
         self.quantity_coverage()
+        # Runs after every check family, so nothing that failed is left unspoken.
+        self.claims_for_findings()
         # Order matters from here. Bases rewrite verdicts, the agreement matrix
         # reads the checks those verdicts sit beside, and tiering reads both.
         self.resolve_bases()
@@ -2395,7 +2494,7 @@ class Run(Engine):
                     "quantity.overall_yield", "quantity",
                     "pass" if ok else ("skip" if computed is None or stated is None
                                        else "fail"),
-                    "The route yield is the product of its step yields",
+                    "Whether the route yield is the product of its step yields",
                     (f"The record states {stated}%. " if stated is not None
                      else "The record states no overall yield. ")
                     + ("At least one step has no yield, so there is nothing to "
@@ -2446,7 +2545,7 @@ class Run(Engine):
             rec.checks.append(check(
                 "quantity.best_overall_yield", "quantity",
                 "pass" if ok else ("skip" if best is None else "fail"),
-                "The best overall yield is the product of the step yields",
+                "Whether the best overall yield is the product of the step yields",
                 f"The record states {stated}%."
                 + (" No route in the gold has a yield on every step, so there is "
                    "nothing to multiply." if best is None else
@@ -2495,7 +2594,7 @@ class Run(Engine):
             rec.checks.append(check(
                 "reference.compounds", "reference",
                 "pass" if not missing else "fail",
-                "Every compound this step names has a record",
+                "Whether every compound this step names has a record",
                 (f"All {len({n for n in names if n})} named compounds resolve to a "
                  f"compound record.") if not missing else
                 (f"{len(missing)} named compounds have no record: "
@@ -2513,7 +2612,7 @@ class Run(Engine):
             rec.checks.append(check(
                 "reference.reactions", "reference",
                 "pass" if not missing else "fail",
-                "Every step of this route has a reaction record",
+                "Whether every step of this route has a reaction record",
                 f"All {len(steps)} steps resolve to a reaction record."
                 if not missing else
                 f"{len(missing)} steps name a reaction that does not exist: "
@@ -2528,7 +2627,7 @@ class Run(Engine):
             rec.checks.append(check(
                 "reference.compounds", "reference",
                 "pass" if not gone else "fail",
-                "Every molecule this route names has a record",
+                "Whether every molecule this route names has a record",
                 f"All {len([n for n in names if n])} named molecules resolve."
                 if not gone else
                 f"{len(gone)} named molecules have no record: "
@@ -2540,7 +2639,7 @@ class Run(Engine):
             used = self.canon_name(c["identifier"]) in referenced_compounds
             rec.checks.append(check(
                 "reference.orphan", "reference", "pass" if used else "warn",
-                "Some reaction or route uses this compound",
+                "Whether any reaction or route uses this compound",
                 "At least one reaction or route names it." if used else
                 "No reaction and no route names this compound. It is either a "
                 "molecule the annotation invented, or a step the extraction did "
@@ -2552,7 +2651,7 @@ class Run(Engine):
             used = r["reaction_id"] in referenced_reactions
             rec.checks.append(check(
                 "reference.orphan", "reference", "pass" if used else "warn",
-                "Some route uses this reaction",
+                "Whether any route uses this reaction",
                 "At least one route lists it as a step." if used else
                 "No route lists this reaction as a step.",
                 needs_human=not used))
@@ -2581,14 +2680,14 @@ class Run(Engine):
             if not smiles:
                 rec.checks.append(check(
                     "structure.smiles", "structure", "skip",
-                    "A 2D structure is resolved for this compound",
+                    "Whether a 2D structure is resolved for this compound",
                     "No structure is resolved. " + (entry.get("note") or "")))
                 continue
             mol = Chem.MolFromSmiles(smiles)
             if mol is None:
                 rec.checks.append(check(
                     "structure.smiles", "structure", "fail",
-                    "The resolved SMILES parses",
+                    "Whether the resolved SMILES parses",
                     f"RDKit cannot parse {smiles!r}.", needs_human=True))
                 continue
             formula = rdMolDescriptors.CalcMolFormula(mol)
@@ -2596,7 +2695,7 @@ class Run(Engine):
             ok = stated is None or stated == formula
             rec.checks.append(check(
                 "structure.formula", "structure", "pass" if ok else "fail",
-                "The molecular formula agrees with the drawn structure",
+                "Whether the molecular formula agrees with the drawn structure",
                 f"RDKit computes {formula} from the structure, molecular weight "
                 f"{Descriptors.MolWt(mol):.2f}."
                 + ("" if ok else f" The record states {stated}, which disagrees."),
@@ -2629,7 +2728,7 @@ class Run(Engine):
         status = "pass" if not problems else "fail"
         patent_rec.checks.append(check(
             "structure.drawn_formula", "structure", status,
-            "Every drawn structure's stated formula matches its SMILES",
+            "Whether every drawn structure's stated formula matches its SMILES",
             f"{agree} of {agree + disagree + unparseable} structures read off the "
             f"page drawings have a stated molecular formula that RDKit reproduces "
             f"from the SMILES read beside it."
@@ -2651,7 +2750,7 @@ class Run(Engine):
                 rec.checks.append(check(
                     "consistency.equivalence", "consistency",
                     "pass" if ok else "fail",
-                    "Every spelling of this molecule resolves to one structure",
+                    "Whether every spelling of this molecule resolves to one structure",
                     f"The gold spells this molecule {len(members)} ways and all "
                     f"resolved spellings give one structure."
                     if ok else
@@ -2678,7 +2777,7 @@ class Run(Engine):
                 rec.checks.append(check(
                     "consistency.duplicate", "consistency",
                     "warn" if duplicate else "pass",
-                    "No other compound record is this same molecule",
+                    "Whether any other compound record is this same molecule",
                     "No other record resolves to this structure."
                     if not others else
                     (f"{len(others)} other records resolve to the same structure: "
@@ -2736,7 +2835,7 @@ class Run(Engine):
             if hit is None or not entry.get("canonical"):
                 rec.checks.append(check(
                     "drawing.smiles", "drawing", "skip",
-                    "The page drawing and the gold agree about this molecule",
+                    "Whether the page drawing and the gold agree about this molecule",
                     "No structure drawn on any page carries this molecule's name, "
                     "so there is no second reading to compare against."
                     if hit is None else
@@ -2748,7 +2847,7 @@ class Run(Engine):
             disagree += 0 if same else 1
             rec.checks.append(check(
                 "drawing.smiles", "drawing", "pass" if same else "fail",
-                "The page drawing and the gold agree about this molecule",
+                "Whether the page drawing and the gold agree about this molecule",
                 f"The vision pass read this molecule off page {hit['page']} as "
                 f"{hit['canonical']}."
                 + (" The gold resolves the same structure." if same else
@@ -2789,6 +2888,122 @@ class Run(Engine):
                     f"Mass and moles agree for {self.english_name(ident)}",
                     detail, needs_human=status == "fail",
                     about_fields=[f"compounds[{ascii_key(ident)}].quantity."]))
+
+    # ------------------------------------------------------------ findings
+
+    # Checks that already speak through a claim of their own, so the sweep below
+    # must not raise a second one about the same thing.
+    SPOKEN_FOR = ("naming.qualifier",)
+
+    def claims_for_findings(self) -> None:
+        """Every failing check a reviewer would otherwise never be shown.
+
+        Measured, not supposed. A structure was swapped for a different real
+        molecule and the cross-check fired perfectly - "which is a different
+        molecule" - and then NO claim mentioned it. The two claims the reviewer met
+        on that record both asked "is the text this record quotes actually on the
+        source lines it cites?", with the action "a check on this row failed, so it
+        is worth reading". It never said which check, or what was wrong. The
+        detection was real and undeliverable.
+
+        `about_fields` is what normally carries a check into the queue, by promoting
+        the claims it names. A check that names no field promotes nothing, which is
+        correct for keeping tier 1 small and wrong when the check IS the finding. So
+        those get a claim of their own, worded from the check, and land in the
+        census like any other thing the machine looked at and did not like.
+        """
+        for rec in list(self.records):
+            for c in rec.checks:
+                if (c["status"] != "fail" or c["about_fields"]
+                        or c["id"] in self.SPOKEN_FOR):
+                    continue
+                self._claim(
+                    rec, c["id"],
+                    f"The machine checked {c['title_en'][0].lower()}"
+                    f"{c['title_en'][1:]}, and the answer is no. Is it right?",
+                    "a machine finding, not a number", None, None,
+                    rec.cited, [], "not_checkable", c["detail_en"],
+                    ["A check on this record failed and no other claim reports it."],
+                    "name", set(), about="extraction", load_bearing=True,
+                    extra={"_finding": True})
+
+    # ------------------------------------------------------------ naming
+
+    def naming_checks(self) -> None:
+        """A fact the Chinese name carries that the record's English name drops.
+
+        The gap this closes was measured by planting a defect and following it to a
+        screen: removing "anhydrous" from a record produced NO check, NO claim and
+        NO change in risk, and not one check in the whole file mentioned an alias.
+        The engine had nothing to say about it and did not know that it did not.
+
+        It is not a small class. Wet aluminium trichloride does not catalyse a
+        Friedel-Crafts at all; saturated sodium bicarbonate is a workup and the
+        solid is not; dilute hydrochloric acid is not concentrated hydrochloric
+        acid. The qualifier IS the fact.
+
+        The table and the percent rule are imported from resolve_translations rather
+        than restated, because two tables that are meant to agree will not. That
+        module applies them to the translation INDEX; this asks the same question of
+        a record's own alias set, which is where a reviewer would have to notice it.
+
+        Scoped to names and to percent signs, for the reasons that module records: a
+        systematic name is full of locants and a locant is not a quantity.
+        """
+        by_record = {r.record_id: r for r in self.records}
+        for c in self.data["compounds"]:
+            rec = by_record.get(safe_record_id(self.patent_id, c["id"],
+                                               c["identifier"]))
+            if rec is None:
+                continue
+            names = [c["identifier"], *(c.get("aliases") or [])]
+            chinese = [n for n in names if n and has_chinese(n)]
+            english = [n for n in names if n and not has_chinese(n)]
+            lost = None
+            for zh in chinese:
+                if (any(p in zh for p in PERCENT)
+                        and not any(any(p in e for p in PERCENT) for e in english)):
+                    lost = (zh, "a strength", "the percentage it is used at")
+                    break
+                hit = next((w for pfx, w in QUALIFIERS.items()
+                            if zh.startswith(pfx) and not any(w in e.lower()
+                                                              for e in english)),
+                           None)
+                if hit:
+                    lost = (zh, f"the word {hit!r}", f"whether it is {hit}")
+                    break
+
+            if lost is None:
+                rec.checks.append(check(
+                    "naming.qualifier", "naming", "pass",
+                    "Whether the English name keeps every fact the Chinese name "
+                    "carries",
+                    "No name on this record drops a strength or a qualifier."
+                    if chinese else
+                    "This record carries no Chinese name to compare against.",
+                    about_fields=[]))
+                continue
+
+            zh, what, plainly = lost
+            zh_en = self.english_name(zh)
+            detail = (f"The patent calls this {zh_en!r}. The record's English "
+                      f"names are " + english_list([repr(e) for e in english])
+                      + f", none of which says {what}. The qualifier is not "
+                      f"decoration: it is what was charged.")
+            rec.checks.append(check(
+                "naming.qualifier", "naming", "fail",
+                "Whether the English name keeps every fact the Chinese name "
+                "carries", detail, needs_human=True, about_fields=[]))
+            self._claim(
+                rec, "naming.qualifier",
+                f"The patent calls this {zh_en!r}. The record calls it "
+                f"{english[0]!r}. Is {plainly} a fact that has been lost?",
+                zh_en, None, None, rec.cited, [], "not_checkable", detail,
+                [f"The record's English name drops {what} its Chinese name "
+                 f"carries.",
+                 "A qualifier on a reagent name changes what was charged."],
+                "name", set(), about="extraction", load_bearing=True,
+                extra={"_finding": True})
 
     # ------------------------------------------------------------ yield identity
 
@@ -2835,7 +3050,7 @@ class Run(Engine):
             if not (product and mass and charges and yield_pct and mw):
                 rec.checks.append(check(
                     "quantity.yield_identity", "quantity", "skip",
-                    "The product mass agrees with the charge and the yield",
+                    "Whether the product mass agrees with the charge and the yield",
                     "This step does not print all four of a product mass, a "
                     "reactant molar charge, a yield and a resolved product "
                     "structure, so the identity cannot be applied to it.",
@@ -2855,7 +3070,7 @@ class Run(Engine):
             if abs(delta) <= tol:
                 rec.checks.append(check(
                     "quantity.yield_identity", "quantity", "pass",
-                    "The product mass agrees with the charge and the yield",
+                    "Whether the product mass agrees with the charge and the yield",
                     f"{arithmetic}, and the patent prints {fmt_value(mass)} g. "
                     f"Implied molecular weight {implied:.2f} against {mw:.2f}, "
                     f"within tolerance {tol:.2f}.", about_fields=[]))
@@ -2873,7 +3088,7 @@ class Run(Engine):
                       f"outside the tolerance of {tol:.2f}.{tail}")
             rec.checks.append(check(
                 "quantity.yield_identity", "quantity", "fail",
-                "The product mass agrees with the charge and the yield",
+                "Whether the product mass agrees with the charge and the yield",
                 detail, needs_human=True, about_fields=["product_yield_pct"]))
 
             self._claim(
@@ -3326,7 +3541,7 @@ SEVERITY_MEANING = {
 VERDICTS = ["not_found", "not_reconciled", "partial", "not_checkable", "found"]
 CHECK_STATUSES = ["fail", "warn", "pass", "skip"]
 FAMILIES = ["grounding", "reference", "structure", "drawing", "quantity",
-            "consistency", "completeness", "schema_loss"]
+            "naming", "consistency", "completeness", "schema_loss"]
 
 TIERS = [1, 2, 3, 4]
 
@@ -3341,7 +3556,7 @@ TIER_MEANING = {
 # contract, and are stripped before the file is written so a consumer can never
 # come to depend on one.
 PRIVATE = ("_field_name", "_matched", "_derive", "_value", "_unit",
-           "_subject", "_elsewhere")
+           "_subject", "_elsewhere", "_finding")
 
 # Which family a claim belongs to, for the roll-up. Everything a claim can be is a
 # grounding question except the coverage sweep, which asks the opposite question.
@@ -3436,16 +3651,24 @@ def assemble(run: Run) -> dict:
                    if c["tier"] == 1 and c["auto"] == "found")
     no_opinion = sum(1 for c in claims
                      if c["tier"] != 2 and c["auto"] == "not_checkable")
+    # A failing check that names no claim field gets a claim of its own, and that
+    # claim is a FINDING rather than an absence of opinion, so it is censused in
+    # tier 1 and not sampled in tier 4. Counted off the checks, which is where the
+    # claims came from, rather than off the queue they landed in.
+    findings = sum(1 for r in records for c in r["checks"]
+                   if c["status"] == "fail" and not c["about_fields"])
     # Tier 2's two feeders, counted from the sweep rather than from the queue. The
     # schema losses are pooled into tickets by (limitation, field), so the ticket
     # count and not the instance count is what a reviewer will actually work.
     quantities = sum(cov_qty.get(k, 0) for k in ("gap", "unmapped"))
     tickets = len(run.schema_tickets)
     feeders = {
-        "1": {"population": unconfirmed + promoted,
+        "1": {"population": unconfirmed + promoted + findings,
               "from_en": f"{unconfirmed} claims the machine looked at and could "
-                         f"not confirm plus {promoted} it matched cleanly on a "
-                         f"record whose own checks failed"},
+                         f"not confirm, plus {promoted} it matched cleanly on a "
+                         f"record whose own checks failed, plus {findings} failing "
+                         f"checks that name no claim field and so speak for "
+                         f"themselves"},
         "2": {"population": len(run.uncited_chemistry) + quantities + tickets,
               "from_en": f"{len(run.uncited_chemistry)} source lines no record "
                          f"cites, plus {quantities} quantities on cited lines no "
@@ -3454,8 +3677,9 @@ def assemble(run: Run) -> dict:
         "3": {"population": len(claims) - tiers["1"] - tiers["2"] - tiers["4"],
               "from_en": "every claim the machine matched cleanly, which is the "
                          "only population the sampled bound may be drawn from"},
-        "4": {"population": no_opinion,
-              "from_en": f"{no_opinion} claims the machine had no opinion about, "
+        "4": {"population": no_opinion - findings,
+              "from_en": f"{no_opinion - findings} claims the machine had no "
+                         f"opinion about, "
                          f"demoted out of the census because they are a different "
                          f"population from claims it looked at and failed"},
     }
@@ -3825,6 +4049,7 @@ FAMILY_MEANING = {
     "reference": "a name pointing at a record that does not exist",
     "structure": "a SMILES or a formula that does not hold",
     "drawing": "the page drawing against the gold's structure for one molecule",
+    "naming": "a fact the Chinese name carries that the English name drops",
     "quantity": "mass and moles against the molecular weight",
     "consistency": "the annotation against itself",
     "completeness": "something the patent states that no record holds",

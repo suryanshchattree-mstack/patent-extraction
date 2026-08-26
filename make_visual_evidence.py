@@ -876,6 +876,7 @@ def build(root: Path, patent_id: str) -> int:
 
     out = inp.visual
     (out / "comparisons").mkdir(parents=True, exist_ok=True)
+    (out / "crops").mkdir(parents=True, exist_ok=True)
 
     paras = ordered_paragraphs(inp)
     src_lines = marker_source_lines(inp.source_md)
@@ -1075,6 +1076,18 @@ def build(root: Path, patent_id: str) -> int:
             crop_name = f"{rid}-patent.png"
             img_full.crop(bx).save(out / "comparisons" / crop_name)
 
+            # The same crop again, cut in to the drawing, as its own file.
+            #
+            # The uncut band runs the full width of the text column, and on page 8 that
+            # sweeps up a line of Chinese heading printed level with the structure. It
+            # is baked into the pixels, where no gate over strings can see it, and this
+            # deliverable's whole promise is that a reader with no Chinese can use it.
+            # The composed picture already trims the sides; this makes that trimmed
+            # picture addressable, so a UI showing only the patent's half shows the
+            # trimmed one and reaches for the uncut band only when the trim looks wrong.
+            drawing_name = f"{rid}.png"
+            img_full.crop(tb).save(out / "crops" / drawing_name)
+
             structures = dr.get("structures") or []
             single = len(structures) == 1
             anchor = anchor_for(inp, paras, page, between) if single else None
@@ -1227,6 +1240,7 @@ def build(root: Path, patent_id: str) -> int:
                 "structure_count": len(structures),
                 "comparison_image": f"comparisons/{comp_name}",
                 "patent_crop_image": f"comparisons/{crop_name}",
+                "patent_drawing_image": f"crops/{drawing_name}",
                 "crop_box_uncut": {"x_left": bx[0], "y_top": bx[1],
                                    "x_right": bx[2], "y_bot": bx[3]},
                 "crop_box_shown": {"x_left": tb[0], "y_top": tb[1],
@@ -1265,8 +1279,9 @@ def build(root: Path, patent_id: str) -> int:
                     if plural else
                     "Do these two pictures show the same molecule?"),
                 claimed_en="; ".join(
-                    f"{i}. {p.get('gold_identifier') or p.get('drawn_name_en') or 'no record'}"
-                    for i, p in enumerate(panels, 1)) or "nothing recorded",
+                    f"{i}. {b['label_en']}" for i, b in enumerate(
+                        comparison_block(comp_rec)["ours"]["structures"], 1)
+                ) or "nothing recorded",
                 evidence_en=(
                     f"The patent prints this drawing on page {int(page[1:])} {where}. "
                     "The right-hand picture is that region of the scanned page and the "
@@ -1454,11 +1469,41 @@ def build(root: Path, patent_id: str) -> int:
                         "all, instead of quietly correcting it."),
                     "drawing_says_en": fields["drawing_says"],
                     "text_says_en": fields["text_says"],
+                    # The same two statements again, nested, because a queue that
+                    # renders this as a two-column quote needs them as one object and
+                    # should not have to know that they are top-level keys here.
+                    "disagreement": {
+                        "drawing_says_en": fields["drawing_says"],
+                        "text_says_en": fields["text_says"],
+                        "we_followed": (
+                            "text" if not page_comps else
+                            "drawing" if all(p.get("gold_identifier")
+                                             for c in page_comps
+                                             for p in c["panels"]) else "unknown"),
+                        "we_followed_note_en": (
+                            "No drawing is involved: both sides of this conflict are "
+                            "printed words, and our annotation was read from the words."
+                            if not page_comps else
+                            "Every structure drawn on this page resolved into a record "
+                            "we hold, so on the structural question our annotation "
+                            "follows the drawing. Whether that was the right call for "
+                            "THIS conflict is what is being asked."
+                            if all(p.get("gold_identifier") for c in page_comps
+                                   for p in c["panels"]) else
+                            "Which side our annotation took could not be determined "
+                            "without guessing. Read what we recorded, below, against "
+                            "the two quotations."),
+                    },
                     "page": page,
                     "page_number": page_no,
                     "markers_mentioned": markers,
                     "related_records": related,
                     "drawings_on_this_page": [c["record_id"] for c in page_comps],
+                    # Present only where this page actually carries a drawing, so a
+                    # queue can show the picture beside the quotations. Absent, not
+                    # empty, on the text-only conflicts.
+                    "comparison": (comparison_block(page_comps[0])
+                                   if page_comps else None),
                 },
             ))
 
@@ -1488,6 +1533,12 @@ def build(root: Path, patent_id: str) -> int:
                 "A cross-check runs only where our record was chosen by the compound "
                 "name in the patent's text rather than by the drawing, because only "
                 "then can the two readings genuinely disagree."),
+            # Every drawing is a review item in its own right, whether or not the
+            # machine found fault with it: on this document the gold SMILES and the
+            # drawn SMILES mostly come from the same reading, so their agreement is
+            # not independent evidence and only a human looking closes the gap.
+            "drawing_comparisons_to_review": sum(
+                1 for c in claims if c["field"] == "drawing.same_molecule"),
             "structure_disagreements": sum(
                 1 for c in claims if c["field"] == "structure.drawn_vs_recorded"),
             "drawn_but_not_recorded": sum(
@@ -1613,13 +1664,24 @@ def comparison_block(comp: dict) -> dict:
     panels = comp.get("panels") or []
     named = [p for p in panels if p.get("structure_svg_path")]
     exact = comp["crop_confidence"] == "region_detected"
+    # Every src in this block is relative to the annotations root, because that is
+    # what serves them. The sibling fields on the comparison record stay relative to
+    # this directory, so the two are never mixed inside one path.
+    here = "output/relevant_output/visual/"
     return {
         "ours": {
             "src": named[0]["structure_svg_path"] if named else None,
             "label_en": "What we extracted",
             "structures": [{
-                "label_en": (p.get("gold_identifier") or p.get("drawn_name_en")
-                             or "no record"),
+                # Three gold records carry a SMILES where a name should be, because
+                # the patent draws the molecule and never names it. Printing that
+                # string as the caption of a picture tells a non-chemist nothing.
+                "label_en": (
+                    "we recorded this one with no name, only a structure"
+                    if p.get("gold_identifier")
+                    and p["gold_identifier"] == p.get("gold_smiles")
+                    else p.get("gold_identifier") or p.get("drawn_name_en")
+                    or "no record"),
                 "src": p.get("structure_svg_path"),
                 "smiles": p.get("gold_smiles") or p.get("drawn_smiles"),
                 "in_gold": bool(p.get("gold_identifier")),
@@ -1627,7 +1689,11 @@ def comparison_block(comp: dict) -> dict:
             } for p in panels],
         },
         "theirs": {
-            "src": comp["patent_crop_image"],
+            # The trimmed crop, not the uncut band: the band runs the full width of the
+            # text column and on one page that carries a line of Chinese printed level
+            # with the structure, which no gate over strings can catch.
+            "src": here + (comp.get("patent_drawing_image") or comp["patent_crop_image"]),
+            "uncut_src": here + comp["patent_crop_image"],
             "label_en": "What the patent draws",
             "confidence": "exact" if exact else "coarse",
             "confidence_note_en": comp["crop_confidence_en"],
@@ -1638,7 +1704,7 @@ def comparison_block(comp: dict) -> dict:
         },
         # Both halves already drawn side by side with the question under them, for a
         # reader who would rather open one file than lay two out.
-        "composite_src": comp["comparison_image"],
+        "composite_src": here + comp["comparison_image"],
     }
 
 
@@ -1673,6 +1739,9 @@ def related_records(inp: Inputs, disc: dict, fields: dict) -> list[dict]:
 
 
 def write_readme(out: Path, page_index: dict, doc: dict, patent_id: str) -> None:
+    pages = page_index["pages"]
+    placed = sum(1 for p in pages if p.get("marker_positions_available"))
+    withy = sum(1 for m in page_index["markers"].values() if m.get("y_frac") is not None)
     lines = [
         f"# Visual evidence for {patent_id}",
         "",
@@ -1685,9 +1754,15 @@ def write_readme(out: Path, page_index: dict, doc: dict, patent_id: str) -> None
         "|---|---|---|",
         ("| `page-index.json` marker to page | EXACT. Read off the per-page paragraph "
          "lists of the vision pass. | nothing |"),
-        ("| `page-index.json` marker to position down the page | nothing | NOT PROVIDED. "
-         "The scan has no text layer and no OCR engine is installed. A guessed y that "
-         "points at the wrong paragraph is worse than no pointer. |"),
+        (f"| `page-index.json` marker to position down the page | CORROBORATED on {placed} "
+         f"of {len(pages)} pages, covering {withy} of {len(page_index['markers'])} "
+         "markers: the paragraph openings "
+         "measured in the ink were counted against the printed markers the vision pass "
+         "recorded, and only pages where the two agreed are placed. | the measurement "
+         "itself. Where the counts disagreed the whole page is left unplaced, because a "
+         "y that points at the wrong paragraph is worse than no y. |"),
+        ("| `page-index.json` line to page | EXACT. Read off the page comments the "
+         "numbered source writes ahead of each page's lines. | nothing |"),
         ("| `page-index.json` drawing regions | the page, and that a drawing is on it | "
          "APPROXIMATE. Found by measuring ink. Deliberately loose. |"),
         ("| `comparisons/*.png` left half | EXACT. Rendered by RDKit from the SMILES "
@@ -1852,10 +1927,16 @@ def write_readme(out: Path, page_index: dict, doc: dict, patent_id: str) -> None
         "",
         "- `page-index.json` - marker to page, page to image, plus detected drawing regions.",
         "- `comparisons/<record_id>.png` - the full comparison, captioned and self-describing.",
+        "- `crops/<record_id>.png` - the patent's half on its own, trimmed to the",
+        "  drawing. This is what `comparison.theirs.src` points at, because the uncut",
+        "  band below runs the full width of the text column and on page 8 that sweeps",
+        "  up a line of Chinese heading printed level with the structure. Baked into",
+        "  pixels, no gate over strings can see it, so the trimmed file is the one a",
+        "  reviewer is shown.",
         "- `comparisons/<record_id>-patent.png` - the UNCUT band from the page, running",
-        "  the full width of the text column. The comparison trims the sides in so the",
-        "  drawing is big enough to compare; this file is what was there before the trim,",
-        "  so nothing that was cut off is lost.",
+        "  the full width of the text column, reachable as `comparison.theirs.uncut_src`.",
+        "  Nothing that was trimmed off the sides is lost; open this if the trim looks",
+        "  like it cut into the molecule.",
         "- `drawing-claims.json` - review queue, conforming to `claims[]` in the",
         "  verification contract, all `tier: 1`.",
         "- `quote-translations.json` - hand-written English for the quoted Chinese.",

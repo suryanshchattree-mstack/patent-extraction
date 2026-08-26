@@ -146,6 +146,38 @@ lines the record itself cites and exits non-zero when a `grounding` check fails.
 non-zero when what they are grading is wrong, which is the point: a stage that
 produces nothing cannot be skipped for being current.
 
+### Which gates block, and the rule for deciding
+
+**A stage blocks only if everything downstream genuinely consumes its output.**
+
+| gate | blocks | why |
+|---|:--:|---|
+| `structures` | yes | nothing downstream is meaningful without a structure per molecule |
+| `translations` | yes | the same; every English string in the deliverable comes from the index |
+| `visual` | no | produces a terminal artifact nothing else reads |
+| `verify` | no | the same |
+
+That leaves no blocking gate after `translations`, and that is the right answer
+rather than a gap.
+
+We got this wrong twice, in opposite directions, and both times the failure was
+the same shape: a stage that produced a **terminal** artifact was given the power
+to stop stages that do not consume it.
+
+First `visual` sat after `verify`, so a grounding failure suppressed the page
+index and the structure comparisons, which are exactly what a human reaches for
+when grounding is in doubt. Moving `visual` ahead of `verify` fixed that and,
+because `visual` was still blocking, **relocated the blockage onto the more
+important artifact**: `verify` produces `checks-<ID>.json`, and every page of the
+reviewer UI except the route spine is derived from that one file. A red `visual`
+would have meant the checks file was never produced and the UI had nothing to
+render at all. Making a stage reachable must not give it the power to starve the
+thing that matters most.
+
+Verified by forcing both gates red at once: both print, both set the exit code,
+the checks file is produced anyway, and the run reaches the end and reports them
+together.
+
 ### One gate does not stop the run
 
 `verify` is a gate and sets the exit code, but the stages after it still run.
@@ -174,6 +206,8 @@ Their output is current for this gold. The gold itself is what the gate is
 questioning, so read the gate's message above before trusting any of it.
 ```
 
+`visual` is the same: a Chinese leak is still caught, still sets the exit code,
+still prints loudly, and `verify` gets to produce the file the whole UI reads.
 `structures` and `translations` stay fully blocking, because everything downstream
 genuinely consumes what they produce.
 
@@ -376,21 +410,51 @@ Nothing below mentions `CN104292137A`, and nothing in the scripts does either. T
 id comes from `--patent-id`, from `$ANNOTATION_PATENT_ID`, or from the one
 `input/<id>-biblio.json` in the pack.
 
-1. **Put the source in place.** The PDF in `input/pdf/<ID>.pdf`, and every page of
-   it rendered to PNG at 200 dpi in `input/pages/`, named `p01.png` onward. Pass V
-   reads those pixels, because the PDF has no text layer.
+**This procedure was followed literally, on a clean pack and a real patent
+(CN102351735A, Preparation method of Iopromide), by someone holding themselves to
+not using knowledge of the code to get unstuck. Every step below that changed,
+changed because it stopped them.**
+
+1. **Start a clean pack. This is first, and it is not optional.** This pack holds
+   one patent at a time, for the reasons in the section below. Pointing it at a
+   second patent id in place does not mean "also do this one", it means "overwrite
+   that one".
 
    ```bash
-   pdftoppm -r 200 -png input/pdf/<ID>.pdf input/pages/p
+   mkdir -p newpack && cd newpack
+   cp /path/to/manual_annotations/*.py .
+   cp -a /path/to/manual_annotations/{prompts,schemas,contracts} .
+   mkdir -p input/pdf input/pages input/vision output
    ```
 
-   The runner reports both of these as missing, with that command, so you do not
-   have to remember it.
+   The runner refuses, with exit 4, if you skip this and run against a pack that
+   still holds another patent's work. But it should not have to.
 
-2. **Write `input/<ID>-biblio.json`.** `schemas/biblio.schema.json` is the
+2. **Put the source in place.** The PDF in `input/pdf/<ID>.pdf`, then render every
+   page to PNG at 200 dpi in `input/pages/`, named `p01.png` onward. Pass V reads
+   those pixels.
+
+   ```bash
+   python3 render_pages.py --patent-id <ID>
+   ```
+
+   That uses PyMuPDF, which this pack already requires. It also tells you whether
+   the PDF has a text layer at all, which is worth knowing before you start: a
+   CNIPA scan usually has none, and pass V is the only way in; a US or EP patent is
+   normally born digital and carries its full text, in which case the V prompt's
+   framing does not describe your document. `pdftoppm -r 200 -png input/pdf/<ID>.pdf
+   input/pages/p` does the same job if you have poppler, which is not a dependency
+   of this pack and was not installed on the machine this was written on.
+
+3. **Write `input/<ID>-biblio.json`.** `schemas/biblio.schema.json` is the
    contract and documents every field. The runner validates it as a whole before
    any stage runs and reports every problem at once, rather than failing at one
    bare `b["key"]` at a time several stages in.
+
+   `family_id` is the one required field whose source is not obvious. On a Google
+   Patents page it is the literal string `Family ID=` in the page source, not a
+   labelled field in the rendered page; Espacenet shows it directly. Do not invent
+   one: nothing downstream checks it.
 
    Two things worth knowing. `grant_date` is nullable, because most published
    applications are never granted and making it fatal made the pack unusable for
@@ -398,7 +462,7 @@ id comes from `--patent-id`, from `$ANNOTATION_PATENT_ID`, or from the one
    bare name, so a wrong value there mislabels every inventor; give inventors as
    `{"name": ..., "country": ...}` objects where it matters.
 
-3. **Start the two curated tables empty.** The gates will tell you what goes in
+4. **Start the two curated tables empty.** The gates will tell you what goes in
    them; guessing first wastes the trip.
 
    ```bash
@@ -406,21 +470,31 @@ id comes from `--patent-id`, from `$ANNOTATION_PATENT_ID`, or from the one
    echo '{"patent_id":"<ID>","entries":{}}'                          > input/translations-curated.json
    ```
 
-4. **Run the passes.** `python3 run_pipeline.py --patent-id <ID>` renders the
+5. **Run the passes.** `python3 run_pipeline.py --patent-id <ID>` renders the
    prompts for this patent into `output/prompts/<ID>/`, then exits 3 printing
    exactly which passes are missing and where their output goes. Work through that
    list, following the rendered prompts rather than the templates.
 
-5. **Run the pipeline.** It will get as far as `structures` and stop, listing the
+   Do pass V first, then run the pipeline again before doing A0. That second run
+   turns your vision files into `input/<ID>-enriched-numbered.md`, which is what
+   the A0 prompt reads and what every later pass counts line numbers against. The
+   runner does it automatically, as a bootstrap stage, and says so.
+
+   A rendered prompt is still a template. Each one carries per-call placeholders
+   you fill yourself: `{SECTION_LABEL}` and `{SECTION_TEXT}` come from A0's output,
+   `{CHEMISTRY_ROLLUP}` from `merge_stages.py`, `{ARTIFACT_JSON}` from whichever
+   artifact A5 is auditing. Each prompt names its own inputs at the top.
+
+6. **Run the pipeline.** It will get as far as `structures` and stop, listing the
    molecules the patent names but never draws. Fill them in, atom by atom.
 
    ```bash
    python3 run_pipeline.py --patent-id <ID> --from structures
    ```
 
-6. **Repeat for `translations`, then `verify`.** Each stops with its own list.
+7. **Repeat for `translations`, then `verify`.** Each stops with its own list.
 
-7. **Read `output/relevant_output/`.** Start at `manifest.json` to see what was
+8. **Read `output/relevant_output/`.** Start at `manifest.json` to see what was
    produced, then `FINDINGS.md`.
 
 `python3 run_pipeline.py --list` is the authoritative stage list. If it disagrees

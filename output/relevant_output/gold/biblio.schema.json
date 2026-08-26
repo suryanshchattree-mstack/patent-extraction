@@ -17,17 +17,17 @@
     },
     "family_id": {
       "type": ["string", "integer"],
-      "description": "DOCDB simple family id. Carried into tags as patent_family:<id>."
+      "description": "DOCDB simple family id, carried into tags as patent_family:<id>. Where to find it, because it is the one required field whose source is not obvious: on a Google Patents page it is the literal string \"Family ID=\" inside the Family section of the page source, not shown as a labelled field in the rendered page. Espacenet shows it directly. Do not invent one; nothing downstream checks it."
     },
     "title_en": {"type": "string", "minLength": 1},
     "title_zh": {"type": ["string", "null"]},
     "language": {
-      "type": "string", "minLength": 2,
-      "description": "Language of the patent text, not of the annotation."
+      "type": "string", "pattern": "^[a-z]{2}$",
+      "description": "Two-letter lower-case ISO 639-1 code for the language of the patent TEXT, not of the annotation. Patterned because \"Chinese\" and \"zh-CN\" both used to validate."
     },
     "jurisdiction": {
-      "type": "string", "minLength": 2,
-      "description": "Issuing office, lower case: cn, us, ep, jp. Also the fallback country for an inventor given as a bare name, so a wrong value here mislabels every inventor."
+      "type": "string", "pattern": "^[a-z]{2}$",
+      "description": "Two-letter lower-case issuing office: cn, us, ep, jp. Also the fallback country stamped on every inventor given as a bare name, so a wrong value here mislabels all of them. Patterned for that reason: \"China\" used to validate and would have produced country \"CHINA\" on every inventor."
     },
     "publication_date": {"$ref": "#/$defs/date"},
     "priority_date": {"$ref": "#/$defs/date"},
@@ -56,8 +56,8 @@
           "name": {"type": "string", "minLength": 1},
           "country": {"type": ["string", "null"]},
           "type": {
-            "type": "string",
-            "description": "company, university, individual, institute, government."
+            "enum": ["company", "university", "individual", "institute", "government", "hospital", "foundation"],
+            "description": "An enum rather than prose, because the prose version accepted \"Co Ltd\" and \"pharma\" and this value is carried into a tag."
           }
         }
       }

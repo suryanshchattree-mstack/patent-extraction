@@ -4,8 +4,7 @@
 **Input:** one rendered page image from `input/pages/`
 **Runs:** once per page, in parallel, each in a fresh context.
 
-This pass replaces OCR. It exists because CN104292137A has **no text layer at all** -
-all 9 pages are scanned images - and because the information that matters most is
+This pass replaces OCR. It exists because CN104292137A has **no text layer at all** - all 9 pages are scanned images, measured at 0 characters of extractable text - and because the information that matters most is
 drawn, not written. On a synthesis patent one scheme page commonly carries the
 whole route as structural formulae. A text OCR engine returns fragments like
 `SO_2CH_3` and `Br_2` scraped off those drawings and silently loses the

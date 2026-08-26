@@ -8,7 +8,8 @@ A SMILES string is unreadable to them. Two drawings side by side are not.
 | asset | what is exact | what is a guess |
 |---|---|---|
 | `page-index.json` marker to page | EXACT. Read off the per-page paragraph lists of the vision pass. | nothing |
-| `page-index.json` marker to position down the page | nothing | NOT PROVIDED. The scan has no text layer and no OCR engine is installed. A guessed y that points at the wrong paragraph is worse than no pointer. |
+| `page-index.json` marker to position down the page | CORROBORATED on 6 of 9 pages, covering 61 of 94 markers: the paragraph openings measured in the ink were counted against the printed markers the vision pass recorded, and only pages where the two agreed are placed. | the measurement itself. Where the counts disagreed the whole page is left unplaced, because a y that points at the wrong paragraph is worse than no y. |
+| `page-index.json` line to page | EXACT. Read off the page comments the numbered source writes ahead of each page's lines. | nothing |
 | `page-index.json` drawing regions | the page, and that a drawing is on it | APPROXIMATE. Found by measuring ink. Deliberately loose. |
 | `comparisons/*.png` left half | EXACT. Rendered by RDKit from the SMILES text in the gold, with the same settings as `resolve_structures.py`. | nothing |
 | `comparisons/*.png` right half | that it is a piece of the real scanned page | APPROXIMATE. Which piece was chosen by image analysis. |
@@ -137,10 +138,16 @@ reaches any file here.
 
 - `page-index.json` - marker to page, page to image, plus detected drawing regions.
 - `comparisons/<record_id>.png` - the full comparison, captioned and self-describing.
+- `crops/<record_id>.png` - the patent's half on its own, trimmed to the
+  drawing. This is what `comparison.theirs.src` points at, because the uncut
+  band below runs the full width of the text column and on page 8 that sweeps
+  up a line of Chinese heading printed level with the structure. Baked into
+  pixels, no gate over strings can see it, so the trimmed file is the one a
+  reviewer is shown.
 - `comparisons/<record_id>-patent.png` - the UNCUT band from the page, running
-  the full width of the text column. The comparison trims the sides in so the
-  drawing is big enough to compare; this file is what was there before the trim,
-  so nothing that was cut off is lost.
+  the full width of the text column, reachable as `comparison.theirs.uncut_src`.
+  Nothing that was trimmed off the sides is lost; open this if the trim looks
+  like it cut into the molecule.
 - `drawing-claims.json` - review queue, conforming to `claims[]` in the
   verification contract, all `tier: 1`.
 - `quote-translations.json` - hand-written English for the quoted Chinese.

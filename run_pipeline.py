@@ -317,9 +317,19 @@ def stages(pid: str) -> list[Stage]:
                      "output/relevant_output/visual/comparisons/*.png",
                      "output/relevant_output/visual/crops/*.png"],
             optional_tool="make_visual_evidence.py",
-            # it refuses to ship Chinese into a tree whose entire promise is that a
-            # reader with no Chinese can open it
+            # It refuses to ship Chinese into a tree whose entire promise is that a
+            # reader with no Chinese can open it. But NON-BLOCKING, for the same
+            # reason verify is.
+            #
+            # Moving this stage ahead of verify made it reachable and, because it
+            # was still blocking, moved the blockage onto the more important
+            # artifact: verify produces checks-<pid>.json, and every page of the
+            # reviewer UI except the route spine is derived from that one file. A
+            # red visual gate would mean the checks file is never produced and the
+            # UI has nothing to render at all. Making a stage reachable must not
+            # give it the power to starve the thing that matters most.
             gate=True,
+            blocking=False,
         ),
         Stage(
             name="verify",
@@ -410,8 +420,8 @@ def hand_inputs(pid: str) -> list[tuple[str, str]]:
          "paid source"),
         ("input/pages/*.png",
          "every page of that PDF rendered to PNG at 200 dpi, named p01.png, p02.png "
-         "and so on. Pass V reads these pixels, because the PDF has no text layer."
-         f"\n           run    : pdftoppm -r 200 -png input/pdf/{pid}.pdf input/pages/p"),
+         "and so on, plus a report of whether this PDF has a text layer at all."
+         f"\n           run    : python3 render_pages.py --patent-id {pid}"),
         (f"input/{pid}-biblio.json",
          "bibliographic record: family_id, dates, assignees, inventors, ipc_codes, abstract_zh"),
         ("input/structures-curated.json",
@@ -989,10 +999,17 @@ def main() -> int:
         if not (st.bootstrap or st.name == "prompts"):
             continue
         act = actions[st.name]
-        # A bootstrap stage runs when its own inputs are satisfied, whatever else is
-        # missing. expand() returns only files that exist, so an empty result means
-        # the stage has nothing to work from and is skipped quietly.
-        if act == "run" and expand(st.inputs):
+        # A bootstrap stage runs when EVERY ONE of its declared input patterns is
+        # satisfied, whatever else is missing.
+        #
+        # Every pattern, not the union. The first version asked whether expand() of
+        # the whole input list was non-empty, which is true the moment
+        # build_enriched.py exists on disk, so on a pack with no vision files at all
+        # it ran enrich, got "no vision output yet", and killed the run with exit 1
+        # in place of the exit-3 list that tells a newcomer what to do. That is a
+        # worse failure than the deadlock it was added to fix, and it appeared on
+        # the very first command of a clean pack.
+        if act == "run" and all(expand([pat]) for pat in st.inputs):
             print(f"=== {st.name} " + "=" * max(0, 66 - len(st.name)))
             if run_stage(st, pid, ctx) != 0:
                 ctx["results"][st.name] = "failed"
@@ -1000,8 +1017,13 @@ def main() -> int:
                 return 1
             _SHA.clear()
             ctx["results"][st.name] = "ran"
+        elif act == "run":
+            # planned to run, but its own inputs are not all there yet. It is not
+            # "ran" and it is not "current"; saying either would put a claim in the
+            # manifest and in the exit-3 message that is simply untrue.
+            ctx["results"][st.name] = "waiting on its inputs"
         else:
-            ctx["results"][st.name] = {"run": "ran", "skip": "current", "absent": "absent",
+            ctx["results"][st.name] = {"skip": "current", "absent": "absent",
                                        "not selected": "not selected"}[act]
 
     # A malformed biblio before either. Every id, every uuid and half the patent
