@@ -114,6 +114,26 @@ itself cites.
 
 **Zero of twelve were real.**
 
+### The root cause is presentation, not matching
+
+My first diagnosis - that the matcher has false negatives - was **wrong for most of these**, and the correct one is worse in a more fixable way.
+
+Counted from the engine file directly: tier 1 is **49 claims** (5 `not_found`, 8
+`not_reconciled`, 12 `partial`, 24 `found`). **24 of the 49 carry `auto: "found"`.**
+The machine *did* locate the value. They sit in tier 1 only because their record has
+some other failing check.
+
+So the banner is keying off **tier membership** rather than the claim's own `auto`
+value. Half of tier 1 is shown "Machine could NOT find this in the cited lines" and
+told to answer Wrong about values the machine successfully found and could highlight.
+
+That is why 7 of my 12 had the exact string sitting in the evidence: not a matcher
+failure, a label attached to the wrong thing. Those 24 should carry the
+`[=] matched here` highlight and never the accusatory banner.
+
+The genuine matcher gaps are the smaller remainder: the 2 unit cases below, and the
+prose claims that were never string-matchable.
+
 ### The worked example
 
 > The patent's own numbers for this step do not agree with each other. Does the page
@@ -167,8 +187,23 @@ visual search over 2.5 screens of dense procedure text, 87 times.
   3.4 s each.**
 - Observed floor for an unaided scan of 2.5 screens: **~20 s each = 1,740 s.**
 
-**Tier 1 alone is roughly twice the entire budget**, and it is a census, so it cannot
-be sampled down.
+**As measured, tier 1 alone was roughly twice the entire budget**, and it is a census,
+so it cannot be sampled down.
+
+### The budget closes once the banner is fixed
+
+That arithmetic was taken against the 87-claim tier 1 I saw, before the restructure.
+Recomputed against the real composition, and given the presentation fix above:
+
+- **24 claims have `auto: "found"`.** With the `[=] matched here` highlight they are
+  tier-3 speed: **~3.6 s each = 86 s.**
+- **25 claims genuinely did not match** and need the unaided scan: **~20 s each =
+  500 s.**
+- **Total 586 s**, inside the 900 s budget with room for tiers 2 and 3.
+
+So the pace problem and the false-positive problem are the same problem, and one fix
+closes both. The tier-1 population does not need to shrink; it needs to stop lying
+about which half of itself the machine already confirmed.
 
 ### The design inversion
 
@@ -284,28 +319,35 @@ the log by hand, because it is the evidence for sections 5 and 6.
 
 ## 10. What I would change, in order
 
-1. **Unbind the digits from the queue tabs**, or move the answer keys. A shortcut that
+1. **Key the banner off the claim's own `auto`, not off tier membership.** The 24
+   tier-1 claims with `auto: "found"` must show `[=] matched here`, not "Machine could
+   NOT find this". This one change removes half the false positives and closes the
+   time budget at the same time. Everything else on this list is smaller than it.
+2. **Unbind the digits from the queue tabs**, or move the answer keys. A shortcut that
    silently writes a verdict when the user meant to navigate is the most damaging
    class of bug in a tool whose entire output is verdicts.
-2. **Make undo append a retraction** so the report stops counting retracted verdicts.
-3. **Wire bulk accept, and verify `attention: "batch"` reaches disk before it ships.**
-4. **Make the grounding check unit-aware, or stop calling the result `not_found`.**
+3. **Make undo append a retraction** so the report stops counting retracted verdicts.
+4. **Wire bulk accept, and verify `attention: "batch"` reaches disk before it ships.**
+5. **Make the grounding check unit-aware**, or stop calling the result `not_found`.
    `200 mmol` vs `0.2 mol` is not a hallucination and must not be shown to a
-   non-chemist as one.
-5. **Soften "answer Wrong", or move the evidence above the fold.** A confident
+   non-chemist as one. This is the genuine matcher gap, smaller than it looked.
+6. **Soften "answer Wrong", or move the evidence above the fold.** A confident
    instruction sitting above evidence that routinely refutes it trains the reviewer to
    distrust the screen.
-6. **Give tier 1 something to aim at.** Highlight near misses and numerically-equal
-   values in other units. This is the change that makes the budget close.
 7. **Reconcile the tier-2 count** across engine, coverage page and queue.
 8. **Version the checks contract** so a producer change fails at write time, not at
    read time mid-review.
-9. **Re-measure tier 1 after 4 and 6.** If the false-positive rate in my sample holds,
-   the census is far smaller than 87 and the budget problem may solve itself.
 
 ---
 
-## 11. Two things I got wrong, recorded so the method is visible
+## 11. Three things I got wrong, recorded so the method is visible
+
+**I misdiagnosed the tier-1 false positives as a matcher failure.** They are mostly a
+labelling failure: 24 of the 49 tier-1 claims carry `auto: "found"` and are shown the
+"could NOT find" banner anyway, because it keys off tier rather than the claim. I had
+the symptom right and the cause wrong, and the correct cause is both cheaper to fix
+and fixes the pace problem too. Section 3 carries the corrected version; this note
+stays so the original error is not silently overwritten.
 
 **The evidence pane does not truncate.** I first read it as stopping at line 187 and
 silently dropping cited line 188. All seven cited lines render; my own text extraction
