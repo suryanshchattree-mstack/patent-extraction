@@ -89,6 +89,7 @@ A claim is one field of one record paired with the evidence for it.
                         "kind": "prose", "pairing": "exact", "matched": true } ],
   "highlights": [ { "line": 187, "start": 39, "end": 43, "kind": "value" } ],
   "auto": "found | not_found | not_reconciled | partial | not_checkable",
+  "work_kind": "judgement | comparison",
   "auto_reason_en": "The number 25.3 appears with its unit grams on the Chinese line 187 and on the English translation on line 188.",
   "needs_human": true,
   "load_bearing": false,
@@ -122,11 +123,35 @@ stands between the team and a fabricated number in a future run.
 - `tier: 1` - a human must see it. Anything `not_found` or `partial`, any load-bearing
   `not_checkable` judgement, and any claim on a record with a failed structure,
   quantity or reference check. Small population, worked as a census.
-- `tier: 2` - the candidate misses. The recall side, also a census, and it has TWO
-  feeders: `__coverage__` claims for a whole line no record cites, and `__quantity__`
-  claims for one quantity on a cited line that no claim asserts. Read only the first
-  and you compute the denominator as zero while the queue holds fifteen.
-- `tier: 3` - the machine matched it cleanly. Sampled, never exhausted.
+- `tier: 2` - the candidate misses. The recall side, also a census, and it has THREE
+  feeders: `__coverage__` claims for a whole line no record cites, `__quantity__`
+  claims for one quantity on a cited line that no claim asserts, and `__schema__`
+  tickets. Read only the first and you compute the denominator as zero while the
+  queue holds work.
+- `tier: 3` - the machine matched it cleanly. Sampled, never exhausted. This is the
+  ONLY population the residual-defect bound may be drawn from, so nothing the
+  machine failed to match may appear in it.
+- `tier: 4` - the machine had NO OPINION: every `not_checkable` claim outside the
+  recall census. Sampled, and deliberately NOT part of tier 3's bound.
+
+**Why tier 4 exists.** The census was tier 1 plus tier 2, 93 claims, and the queue
+has been timed at a 5.3 s median and an 8.7 s p90 over 20 claims. At the pessimistic
+rate 93 claims consume the entire 15 minutes, tier 3 is sampled zero times, and the
+report carries **no confidence bound at all**. That is the failure, not slowness.
+Demoting the 29 `not_checkable` claims and pooling the schema tickets brings the
+census to 55, which fits at every rate measured and leaves 48 tier 3 claims
+samplable at the p90.
+
+It is also correct rather than merely convenient. "The machine had no opinion" is a
+different population with a different prior from "the machine looked and failed";
+they should never have shared a census. And they must not join tier 3 either, whose
+bound is specifically the residual defect rate among claims the machine MATCHED - a
+claim it never matched would silently widen an estimate it carries no evidence about.
+
+Read the 5.3 s with the caveat its author attached: measured by an agent, who reads
+faster than a person, so treat it as a floor for a fast reader rather than an
+average one. That makes the margin thinner than the median suggests, which is an
+argument for the demotion and not against it.
 
 `summary.tier_population` carries each tier's size twice: `claims`, counted off the
 queue, and `population`, derived from where the work came from - the verdicts and
@@ -237,6 +262,26 @@ otherwise. `severity` draws the same distinction one layer up, but a consumer th
 filters on `auto` never reaches `severity`, which is why the split has to exist at
 both layers rather than only at the one a careful reader of this contract would find.
 
+`work_kind` is what the reviewer DOES with the row, which is not what `about` says.
+56 of this patent's original tier-1 claims were labelled `about: patent` and only 8
+were judgements; the rest were "does the patent say 34 g" comparisons that happened
+to sit on a record carrying a patent-defect flag. `about` describes the record;
+`work_kind` describes the work, and the measured cost differs by a factor of 2.3:
+
+| `work_kind` | measured median | what the reviewer does |
+|---|---|---|
+| `judgement` | 8.3 s | read the evidence and form an opinion; nothing is highlighted because the machine had nothing to locate |
+| `comparison` | 3.6 s | look at the highlighted span and agree or overrule |
+
+The test is whether the machine has a located thing to put on screen, NOT whether
+there is a number. A quote it located and highlighted is a comparison even though it
+carries no `claimed_value`. Keying on the value instead classified all 176 quote
+claims as judgements and put 163 of them in tier 3, which would have told a UI that
+sampling tier 3 costs twice what it does.
+
+`summary.claims_by_work_kind` and `summary.work_seconds_measured` carry the counts
+and the timings, so a UI can show a real budget rather than a flat per-claim guess.
+
 `needs_human` is the queue filter. `risk` orders it, descending. It is normally
 `auto != "found"`; a claim promoted into tier 1 because a check on its own row failed
 also gets `needs_human: true` while keeping `auto: "found"`, because the number is
@@ -323,6 +368,16 @@ An unaccounted quantity becomes a tier-2 claim with `field: "__quantity__[<line>
 | `unmapped` | `extraction` | no field of that kind exists on any record citing the line. Design question. |
 
 `summary.quantity_coverage` carries the tally and every finding.
+
+**Schema losses are pooled into tickets, one per (limitation, field).** Eight of this
+patent's twelve schema losses are the SAME question - a range against a single-float
+`conditions.time_h` - asked against eight different lines. A reviewer answering one
+question eight times is the clearest waste the queue can contain, so the twelve
+instances become three claims with `field: "__schema__[<kind>:<path>]"`, each
+carrying every instance in `schema_instances` and in its reason text. Every affected
+record still carries its own failing check, so nothing is hidden; only the question
+is asked once. `quantity_coverage.schema_loss` counts INSTANCES and the tier 2
+population counts TICKETS, which is why they differ.
 
 ## The yield identity - the arithmetic `mass_check` structurally cannot see
 

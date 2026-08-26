@@ -40,6 +40,28 @@ per-record check can see it. Also a census, also small.
 
 Budget roughly a sixth of the time.
 
+### Tier 4 - the machine had no opinion
+
+Every `not_checkable` claim outside the recall census: a role, a reaction class, the
+annotation's own validation flags. Sampled, never censused, and **excluded from tier
+3's bound**.
+
+This tier was created by a measurement rather than by taste. The census used to be
+tier 1 plus tier 2 at 93 claims, and the queue was then timed over 20 claims at a
+**5.3 s median, 8.7 s p90, 15.1 s worst**.
+
+    census        @5.3s median   @8.7s p90     @10.4s gross
+    93 as built   8.3min FITS    13.4min FITS  16.1min OVER, tier 3 = 0
+    55 today      2.9min FITS     8.0min FITS   9.5min FITS, tier 3 = 48
+
+The old census survives on the median and dies on the pessimistic reading, in the
+way that matters most: the budget is gone, tier 3 is sampled zero times, and the
+report can state **no bound at all**. A protocol that works only if the reviewer is
+fast is not a protocol.
+
+Treat the 5.3 s as a floor rather than an average: it was measured by an agent, who
+reads faster than a person. That thins the margin and argues for the demotion.
+
 ### Tier 3 - stratified random sample of what the machine passed
 
 Whatever time is left goes to a random sample of the claims the machine already
@@ -65,6 +87,17 @@ it in these terms:
 Three separate populations, three separate statements, never merged into one
 percentage. A machine string match is not a human confirmation and the report must
 never let the two blur.
+
+## Order the census by work, not by subject
+
+`about` describes the record and does not predict cost. `work_kind` does, and the
+two kinds differ by a factor of 2.3: **judgement 8.3 s, comparison 3.6 s**. The UI
+should order on it and tell the reviewer which they are about to do, because a queue
+that mixes them without warning makes the remaining-time estimate wrong in both
+directions.
+
+As it now falls out, the census is entirely comparison work and tier 4 is entirely
+judgement work, which is what the tier split was for.
 
 ## The arithmetic
 

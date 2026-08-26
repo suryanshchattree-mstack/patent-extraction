@@ -123,6 +123,7 @@ def stages(pid: str) -> list[Stage]:
     # because the input that changed was not one it had declared. A stage's
     # declared inputs have to be what it actually reads, or the skip logic is
     # confidently wrong.
+    global COPY_PAIRS
     COPIED_TO_GOLD = [f"output/{n}.json" for n in artifacts] + [
         "output/structures.json", "output/structures-resolved.json",
         "output/translations.json"]
@@ -130,6 +131,8 @@ def stages(pid: str) -> list[Stage]:
                       "output/reactions-provenance.json",
                       "output/compounds-sections.json",
                       "output/compounds-equivalence.json"]
+    COPY_PAIRS = ([(src, f"{gold}/{Path(src).name}") for src in COPIED_TO_GOLD]
+                  + [(src, f"{prov}/{Path(src).name}") for src in COPIED_TO_PROV])
 
     return [
         Stage(
@@ -502,6 +505,37 @@ def expand(patterns: list[str]) -> list[Path]:
 
 MANIFEST = "output/relevant_output/manifest.json"
 
+# (source in output/, copy in the deliverable). Filled by stages(); the manifest
+# asserts every pair agrees before it certifies anything.
+COPY_PAIRS: list[tuple[str, str]] = []
+
+
+def stale_copies() -> list[str]:
+    """Files whose deliverable copy no longer matches the source in output/.
+
+    The deliverable holds a SECOND copy of eleven artifacts, with a stage in
+    between. That is a staleness generator, and it hid a real correction for ten
+    minutes tonight: resolve_translations.py fixed two concentrations in
+    output/translations.json, the copy stage had not run, and the fix was live in
+    the pipeline and invisible on every screen and in the export while looking
+    applied everywhere else.
+
+    The declared-inputs fix stops that arising. This is the assertion that catches
+    it if some future stage reintroduces it, and it belongs in the manifest because
+    the manifest's whole job is to answer "are these assets current for this gold".
+    A manifest that cannot tell is worse than no manifest.
+    """
+    bad = []
+    for src, dst in COPY_PAIRS:
+        a, b = HERE / src, HERE / dst
+        if not a.exists():
+            continue
+        if not b.exists():
+            bad.append(f"{dst} is missing; {src} exists")
+        elif sha256(a) != sha256(b):
+            bad.append(f"{dst} does not match {src}")
+    return bad
+
 _SHA: dict[Path, str] = {}
 
 
@@ -755,6 +789,12 @@ def write_manifest(pid: str, ctx: dict) -> int:
             "bytes_produced": sum(a["bytes"] for a in artifacts),
         },
     }
+    # Asserted before the file is written, and recorded in it, so a consumer never
+    # has to take the manifest's word for the thing the manifest is for.
+    stale = stale_copies()
+    manifest["deliverable_matches_output"] = not stale
+    manifest["stale_copies"] = stale
+
     out = rel_root / "manifest.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
@@ -771,6 +811,18 @@ def write_manifest(pid: str, ctx: dict) -> int:
         for u in strays:
             print(f"    {u['path']}")
     print(f"  wrote {rel(out)}")
+    if stale:
+        print(f"\n  FAIL  {len(stale)} artifact(s) in the deliverable do not match "
+              f"their source in output/.")
+        for x in stale:
+            print(f"    {x}")
+        print(f"\n  The pipeline holds a second copy of these, and the screen and the "
+              f"export read\n  the copy. A fix landed in output/ is invisible until the "
+              f"copy stage runs, so a\n  divergence here means something is fixed "
+              f"everywhere except where it is read.\n\n"
+              f"  Run: {PY} run_pipeline.py --patent-id {pid} --from publish-gold")
+        return 1
+    print(f"  deliverable matches output/ on all {len(COPY_PAIRS)} copied artifacts")
     return 0
 
 
