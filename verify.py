@@ -736,6 +736,47 @@ HIGHLIGHT_KIND = {
 
 BASE_RISK = {"not_found": 0.90, "partial": 0.55, "not_checkable": 0.30, "found": 0.05}
 
+# The quantity fields a record can carry, and the unit each is stated in.
+QUANTITY_FIELDS = (("mass_g", "g"), ("volume_ml", "ml"), ("mmol", "mmol"),
+                   ("equivalents", None), ("yield_pct", "%"))
+
+# What each of the annotation's own validation flags says, in English. These are
+# statements about the PATENT, and the wording has to keep that straight: a reviewer
+# asked to mark a mass_balance_implausible reaction "wrong" would be being asked to
+# reject a correct annotation of a defective document.
+FLAG_MEANING_EN = {
+    "no_conditions": "the patent states no reaction conditions for this step",
+    "route_attribution_unclear": "it is unclear whether this step belongs to the "
+                                 "prior art or to the invention",
+    "mass_balance_implausible": "the masses printed for this step do not balance",
+    "molar_mass_inconsistent": "the mass and the molar amount printed for a "
+                               "reagent imply the wrong molecular weight",
+    "drawing_text_conflict": "the drawn scheme and the written procedure disagree",
+    "reagent_written_not_drawn": "a reagent named in the text is missing from the "
+                                 "drawing",
+    "reagent_drawn_not_written": "a reagent in the drawing is missing from the text",
+    "scale_discontinuity": "the amount carried into this step does not match the "
+                           "amount the previous step produced",
+}
+
+
+def derivation(field: str, quantity: dict, mw: float | None,
+               name_en: str) -> dict | None:
+    """How a field's value could be recomputed, if it is not quoted at all.
+
+    Only `mmol` has one in this schema, and it is the important one. A row printing
+    both a mass and a molar amount is an implicit claim about molecular weight, and
+    the arithmetic is the same arithmetic verifier/lib/checks.ts already runs from
+    the other side, so the tolerance is taken from there rather than reinvented.
+    """
+    if field != "mmol":
+        return None
+    mass = quantity.get("mass_g")
+    if mass is None:
+        return None
+    return {"kind": "mmol_from_mass", "mass_g": float(mass), "mw": mw,
+            "name_en": name_en}
+
 
 def fmt_value(value: float) -> str:
     """The shortest honest rendering. 34.0 prints as 34, 25.25 stays 25.25."""
@@ -800,6 +841,229 @@ class Engine:
         if entry and entry.get("svg"):
             return f"output/relevant_output/{entry['svg']}"
         return None
+
+    def cumulative_yield(self, pathway) -> float | None:
+        """The product of every step yield along a route, as a percentage.
+
+        None when any step has no yield, because a route with a hole in it has no
+        overall yield and reporting the product of the steps that do have one would
+        silently overstate it.
+        """
+        product = 1.0
+        for st in pathway.get("steps") or []:
+            y = st.get("product_yield_pct")
+            if y is None:
+                return None
+            product *= float(y) / 100.0
+        return round(product * 100.0, 1)
+
+    # ------------------------------------------------- quoted versus derived
+
+    def resolve_bases(self) -> None:
+        """Which numeric fields this document QUOTES, and which it DERIVES.
+
+        Measured, never declared. For every numeric field name, count how many of
+        its values are literally printed on the lines the record itself cites. On
+        this patent the split is total:
+
+            mass_g      22 of 22 printed        volume_ml   8 of 8 printed
+            yield_pct    7 of 7  printed        mmol        0 of 10 printed
+
+        `mmol` is never written in this patent. Every molar amount in the gold was
+        calculated by the annotator from a mass and a molecular weight. A grounding
+        check that does not know this reports ten hallucinations that are not
+        hallucinations, at the top of a queue with about forty real items in it, and
+        a reviewer whose first five rows are all the machine being wrong stops
+        trusting it. Nothing after that matters.
+
+        So a field nothing ever quotes is not checked for grounding at all. It is
+        checked by RECOMPUTING it, which is a stronger test than the string match
+        would have been and catches things no string match could. Bromine is the
+        one that fails here: 39.6 g against 220 mmol implies 180.0 g/mol and bromine
+        is 159.81, so either the mass or the amount is wrong and they cannot both be
+        right. That is what tier 1 should be full of.
+
+        Inferred per patent rather than hardcoded, because the next document may
+        state its molar amounts and omit its masses, and a constant list would then
+        be wrong in the direction that hides defects.
+        """
+        tally: dict[str, dict] = {}
+        for claim in self.claims:
+            name = claim.get("_field_name")
+            if name is None:
+                continue
+            t = tally.setdefault(name, {"total": 0, "matched": 0})
+            t["total"] += 1
+            t["matched"] += 1 if claim.get("_matched") else 0
+
+        for name, t in tally.items():
+            t["basis"] = ("derived" if t["matched"] == 0 and t["total"] >= 3
+                          else "quoted")
+        self.bases = tally
+
+        for claim in self.claims:
+            name = claim.get("_field_name")
+            if name is None:
+                continue
+            basis = tally[name]["basis"]
+            claim["basis"] = basis
+            if basis == "quoted" or claim.get("_matched"):
+                continue
+            self.rescore_derived(claim, name, tally[name])
+
+    def rescore_derived(self, claim: dict, name: str, tally: dict) -> None:
+        """Re-ask a derived field the only question there is about it."""
+        d = claim.get("_derive")
+        value = claim["_value"]
+        preface = (f"This patent never prints a value for {name}: none of the "
+                   f"{tally['total']} in the annotation appears on any line any "
+                   f"record cites. It is calculated, not quoted, so the question "
+                   f"is whether the calculation holds. ")
+        claim["question_en"] = (f"The annotation calculated {claim['claimed_en']} "
+                                f"for {claim['_subject']}. Does that calculation "
+                                f"hold?")
+        if d is None:
+            claim["auto"] = "not_checkable"
+            claim["auto_reason_en"] = (
+                preface + "This stage has no way to recompute it from the other "
+                "fields on the record, so a human must check it against the "
+                "patent.")
+            claim["risk_reasons_en"] = ["A calculated number with nothing to check "
+                                        "it against."]
+            claim["risk"] = 0.35
+            claim["load_bearing"] = True
+            claim["needs_human"] = True
+            return
+
+        if d["mw"] is None:
+            claim["auto"] = "not_checkable"
+            claim["auto_reason_en"] = (
+                preface + f"It should be the {d['mass_g']} g charged divided by the "
+                f"molecular weight of {d['name_en']}, but no structure is resolved "
+                f"for that molecule, so there is no molecular weight to divide by.")
+            claim["risk_reasons_en"] = ["A calculated number whose molecule has no "
+                                        "resolved structure."]
+            claim["risk"] = 0.35
+            claim["load_bearing"] = True
+            claim["needs_human"] = True
+            return
+
+        implied = d["mass_g"] / (value / 1000.0)
+        delta = implied - d["mw"]
+        tol = max(ABS_TOL_FLOOR, REL_TOL * d["mw"])
+        arithmetic = (f"{d['mass_g']} g of {d['name_en']} at "
+                      f"{d['mw']:.2f} g/mol is "
+                      f"{d['mass_g'] / d['mw'] * 1000:.1f} mmol")
+        if abs(delta) <= tol:
+            claim["auto"] = "not_checkable"
+            claim["auto_reason_en"] = (
+                preface + f"The calculation checks out: {arithmetic}, and the "
+                f"annotation records {fmt_value(value)} mmol. Implied molecular "
+                f"weight {implied:.2f} against {d['mw']:.2f}, within tolerance "
+                f"{tol:.2f}.")
+            claim["risk_reasons_en"] = []
+            claim["risk"] = 0.10
+            claim["load_bearing"] = False
+            claim["needs_human"] = True
+            return
+
+        rec = self.record_of.get(id(claim))
+        flagged = bool(rec and ({"molar_mass_inconsistent",
+                                 "mass_balance_implausible"} & set(rec.flags)))
+        cl_for_h = abs(delta + CL_FOR_H) < CL_WINDOW
+        claim["auto"] = "not_found"
+        claim["risk"] = 0.95
+        claim["load_bearing"] = True
+        claim["needs_human"] = True
+        tail = ""
+        if cl_for_h:
+            tail = (f" The shortfall of {delta:+.2f} is very close to the "
+                    f"{-CL_FOR_H:+.2f} that swapping one chlorine for one hydrogen "
+                    f"would cost, which is a lead for the reviewer and not a "
+                    f"diagnosis.")
+        if flagged:
+            claim["about"] = "patent"
+            claim["question_en"] = (
+                f"The patent's own numbers for {claim['_subject']} do not agree "
+                f"with each other. The annotation recorded them as printed and "
+                f"flagged it. Was that the right call?")
+            claim["auto_reason_en"] = (
+                preface + f"It does not: {arithmetic}, but the annotation records "
+                f"{fmt_value(value)} mmol, an implied molecular weight of "
+                f"{implied:.2f} against {d['mw']:.2f}.{tail} The annotation flagged "
+                f"this step itself, so this is very likely a defect in the patent "
+                f"that was correctly recorded rather than an extraction error.")
+            claim["risk_reasons_en"] = [
+                "The mass and the molar amount printed for this reagent cannot "
+                "both be right.",
+                "The annotation already flagged this step, so confirming it is "
+                "quick."]
+        else:
+            claim["auto_reason_en"] = (
+                preface + f"It does not: {arithmetic}, but the annotation records "
+                f"{fmt_value(value)} mmol, an implied molecular weight of "
+                f"{implied:.2f} against {d['mw']:.2f}, outside the tolerance of "
+                f"{tol:.2f}.{tail} The annotation did NOT flag this step, so either "
+                f"it missed a defect in the patent or one of the two numbers was "
+                f"read wrong.")
+            claim["risk_reasons_en"] = [
+                "The mass and the molar amount cannot both be right.",
+                "The annotation did not flag this step, so nobody has looked at "
+                "it yet."]
+
+    # ------------------------------------------------- the agreement matrix
+
+    def agreement_matrix(self) -> None:
+        """This stage's arithmetic findings against the annotation's own flags.
+
+        Three buckets, and the two disagreements are where the information is.
+        Rediscovering `molar_mass_inconsistent` and presenting it as a new finding
+        would be this stage taking credit for a defect the annotator had already
+        found and written up. What is worth a reviewer's time is a step this stage
+        fails that the annotation passed, and what is worth THIS STAGE's authors'
+        time is a step the annotation flagged that this stage could not see.
+        """
+        machine = {r.record_id for r in self.records
+                   if r.kind == "reaction"
+                   and any(c["family"] == "quantity" and c["status"] == "fail"
+                           for c in r.checks)}
+        annotated = {r.record_id for r in self.records
+                     if r.kind == "reaction"
+                     and {"molar_mass_inconsistent", "mass_balance_implausible"}
+                     & set(r.flags)}
+        label = {r.record_id: r.label_en for r in self.records}
+        self.agreement = {
+            "both": sorted(label[i] for i in machine & annotated),
+            "machine_only": sorted(label[i] for i in machine - annotated),
+            "annotation_only": sorted(label[i] for i in annotated - machine),
+        }
+
+    # ------------------------------------------------- the three review queues
+
+    def assign_tiers(self) -> None:
+        """Which of the three queues in REVIEW-PROTOCOL.md each claim belongs to.
+
+        Tier is the queue and risk is the order within it. They answer different
+        questions: risk says how alarming one claim is, tier says which census a
+        reviewer with 900 seconds is working through when they meet it.
+
+            1  everything the machine could not confirm, plus every claim sitting
+               on a record with a failed check. A census, not a sample.
+            2  the uncited chemistry lines. The recall side. Also a census.
+            3  what the machine matched cleanly, sampled rather than read.
+        """
+        failing = {r.record_id for r in self.records if r.failing()}
+        for claim in self.claims:
+            if claim["field"] == "__coverage__":
+                claim["tier"] = 2
+            elif claim["auto"] in ("not_found", "partial"):
+                claim["tier"] = 1
+            elif claim["auto"] == "not_checkable" and claim["load_bearing"]:
+                claim["tier"] = 1
+            elif claim["record_id"] in failing:
+                claim["tier"] = 1
+            else:
+                claim["tier"] = 3
 
     def note_citation(self, record_id: str, lines) -> None:
         for n in lines:
@@ -1337,14 +1601,16 @@ class Run(Engine):
             self.note_citation(rec.record_id, cited)
 
             q = c.get("quantity") or {}
-            for field, unit in (("mass_g", "g"), ("volume_ml", "ml"),
-                                ("mmol", "mmol"), ("equivalents", None),
-                                ("yield_pct", "%")):
+            mw = (self.structures.get(c["identifier"]) or {}).get("mw")
+            for field, unit in QUANTITY_FIELDS:
                 if q.get(field) is not None:
                     self.numeric_claim(rec, f"quantity.{field}", float(q[field]),
                                        unit, rec.label_en,
                                        HIGHLIGHT_KIND.get(f"quantity.{field}",
-                                                          "value"))
+                                                          "value"),
+                                       field_name=field,
+                                       derive=derivation(field, q, mw,
+                                                         rec.label_en))
             mp = c.get("melting_point") or {}
             for bound in ("min_c", "max_c"):
                 if mp.get(bound) is not None:
@@ -1435,37 +1701,66 @@ class Run(Engine):
                 key = ascii_key(ident)
                 tag = key if seen[ident] == 1 else f"{key}#{seen[ident]}"
                 q = c.get("quantity") or {}
-                for field, unit in (("mass_g", "g"), ("volume_ml", "ml"),
-                                    ("mmol", "mmol"), ("equivalents", None),
-                                    ("yield_pct", "%")):
+                mw = (self.structures.get(ident) or {}).get("mw")
+                for field, unit in QUANTITY_FIELDS:
                     if q.get(field) is not None:
                         self.numeric_claim(
                             rec, f"compounds[{tag}].quantity.{field}",
                             float(q[field]), unit, self.english_name(ident),
-                            HIGHLIGHT_KIND.get(f"quantity.{field}", "value"))
+                            HIGHLIGHT_KIND.get(f"quantity.{field}", "value"),
+                            field_name=field,
+                            derive=derivation(field, q, mw,
+                                              self.english_name(ident)))
 
             if row.get("quote_zh"):
                 self.quote_claim(rec, "provenance.quote", row["quote_zh"], cited)
 
-            triggers = []
-            if (r.get("reaction_class_confidence") or "high") != "high":
-                triggers.append(("reaction_class_confidence",
-                                 r.get("reaction_class_confidence")))
-            if not r.get("linkage_confirmed"):
-                triggers.append(("linkage_confirmed", None))
-            if r.get("cross_reference_unresolved"):
-                triggers.append(("cross_reference_unresolved", None))
+            # The annotation's own doubts. Only the validation flags become a
+            # claim, because only they name a specific thing wrong with the
+            # DOCUMENT. Confidence, linkage and completeness are recorded as
+            # checks: they are true of most of this patent, they discriminate
+            # nothing, and 58 judgement calls in a 15-minute queue would crowd out
+            # the dozen findings that are actually worth the reviewer's time.
+            for key, en, ok in (
+                    ("reaction_class_confidence",
+                     f"The annotation records its own confidence in the reaction "
+                     f"class as {r.get('reaction_class_confidence')}, not high.",
+                     (r.get("reaction_class_confidence") or "high") == "high"),
+                    ("linkage_confirmed",
+                     "The annotation could not confirm which step this one follows.",
+                     bool(r.get("linkage_confirmed"))),
+                    ("cross_reference_unresolved",
+                     "The annotation records an unresolved cross-reference.",
+                     not r.get("cross_reference_unresolved")),
+                    ("is_complete",
+                     "The annotation records this step as not fully captured, "
+                     "usually because the patent states no conditions for it.",
+                     bool(r.get("is_complete", True)))):
+                rec.checks.append(check(
+                    f"consistency.{key}", "consistency",
+                    "pass" if ok else "warn",
+                    "The annotation is confident about this step"
+                    if key == "reaction_class_confidence" else
+                    FIELD_LABELS.get(f"judgement.{key}", key),
+                    "The annotation raises nothing here." if ok else en,
+                    needs_human=False))
+
             if r.get("validation_flags"):
-                triggers.append(("validation_flags",
-                                 ", ".join(r["validation_flags"])))
-            if not r.get("is_complete", True):
-                triggers.append(("is_complete", None))
-            for key, value in triggers:
-                self.judgement_claim(
-                    rec, f"judgement.{key}",
-                    f"Is the annotation right about this step, given what it says "
-                    f"about itself?",
-                    JUDGEMENT_TRIGGERS_EN[key].format(value=value))
+                flags_en = english_list([FLAG_MEANING_EN.get(f, f)
+                                         for f in sorted(r["validation_flags"])])
+                self._claim(
+                    rec, "validation_flags",
+                    "The annotation says the PATENT is defective here. Reading the "
+                    "evidence, was it right to say so?",
+                    flags_en, None, None, cited, [], "not_checkable",
+                    "This is not a claim that the annotation got something wrong. "
+                    "The annotation read this step and recorded that the document "
+                    "itself does not hold together: " + flags_en + ". A reviewer "
+                    "confirms that the document really does say what the flag "
+                    "says, and marks the annotation correct if it does.",
+                    ["The annotation flagged the patent here and a human should "
+                     "confirm the flag."],
+                    "name", about="patent", load_bearing=True)
 
     def build_pathways(self) -> None:
         for p in self.data["pathways"]:
@@ -1517,10 +1812,27 @@ class Run(Engine):
                 f"The patent record's count of {name}",
                 f"The record states {stated}; the gold holds {actual}."
                 + ("" if ok else " These disagree.")))
-        if rollup.get("best_overall_yield_pct") is not None:
-            self.numeric_claim(rec, "extraction_rollup.best_overall_yield_pct",
-                               float(rollup["best_overall_yield_pct"]), "%",
-                               "the best overall yield in the patent", "yield")
+        # Not a grounding claim. 28.4 is the product of the eight step yields and
+        # is printed nowhere in the patent, so asking whether it is on a cited line
+        # would put a guaranteed false alarm at the top of the queue. Checked as
+        # arithmetic instead, which is the only question there is about it.
+        stated = rollup.get("best_overall_yield_pct")
+        if stated is not None:
+            best = max([y for y in (self.cumulative_yield(pw)
+                                    for pw in self.data["pathways"])
+                        if y is not None] or [None]) if self.data["pathways"] else None
+            ok = best is not None and abs(best - float(stated)) <= 0.15
+            rec.checks.append(check(
+                "quantity.best_overall_yield", "quantity",
+                "pass" if ok else ("skip" if best is None else "fail"),
+                "The best overall yield is the product of the step yields",
+                f"The record states {stated}%."
+                + (" No route in the gold has a yield on every step, so there is "
+                   "nothing to multiply." if best is None else
+                   f" Multiplying the step yields of the best route gives "
+                   f"{best:.1f}%."
+                   + ("" if ok else " These disagree.")),
+                needs_human=not ok and best is not None))
 
     def judgement_claim(self, rec: Record, field: str, question: str,
                         why: str) -> dict:

@@ -1,7 +1,7 @@
 # A0 - Section map
 
 **Artifact produced:** `output/00-sections.json`
-**Input:** `input/{PATENT_ID}-enriched-numbered.md`
+**Input:** `input/CN104292137A-enriched-numbered.md`
 **Runs:** once, over the whole document.
 
 ---

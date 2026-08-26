@@ -331,6 +331,69 @@ def expand(patterns: list[str]) -> list[Path]:
     return list(seen)
 
 
+MANIFEST = "output/relevant_output/manifest.json"
+
+_SHA: dict[Path, str] = {}
+
+
+def sha256(path: Path) -> str:
+    """Cached, because the plan hashes some files as several stages' inputs."""
+    if path not in _SHA:
+        h = hashlib.sha256()
+        with path.open("rb") as fh:
+            for chunk in iter(lambda: fh.read(1 << 20), b""):
+                h.update(chunk)
+        _SHA[path] = h.hexdigest()
+    return _SHA[path]
+
+
+def rel(p: Path) -> str:
+    return str(p.relative_to(HERE))
+
+
+def previous_run() -> dict[str, dict]:
+    """What each stage did last time, and the hashes it did it with.
+
+    The manifest is the state store, and currency is decided on CONTENT, not on
+    file times. Two things force that, and both were found by watching a run refuse
+    to settle:
+
+    1. `make_relevant_output.py` copies with shutil.copy2, which PRESERVES the
+       source mtime. A copied schema file therefore carries the schema's own
+       mtime, which is older than the gold it sits next to, so "is every output
+       newer than every input" is false immediately after a successful copy and
+       stays false forever. The stage never settles and re-runs on every
+       invocation.
+
+    2. Every gated stage writes its artifact and THEN fails. A minute later every
+       output is present and newer than every input, and an mtime rule walks past
+       the failure it just had. The status recorded here is the only memory of it.
+
+    Hashing the tree costs a fraction of a second and buys a skip decision that
+    survives a `touch`, a copy, a checkout and a clock change.
+    """
+    p = HERE / MANIFEST
+    if not p.exists():
+        return {}
+    try:
+        return {row["stage"]: row
+                for row in json.loads(p.read_text(encoding="utf-8")).get("stages", [])}
+    except (json.JSONDecodeError, KeyError, TypeError):
+        return {}
+
+
+def _delta(was: dict[str, str], now: dict[str, str]) -> str:
+    """First difference between two path -> sha256 maps, in words."""
+    for path in sorted(set(was) | set(now)):
+        if path not in was:
+            return f"{path} is new"
+        if path not in now:
+            return f"{path} is gone"
+        if was[path] != now[path]:
+            return f"{path} changed"
+    return ""
+
+
 def literal_outputs(patterns: list[str]) -> list[str]:
     return [p for p in patterns if not any(ch in p for ch in "*?[")]
 
@@ -339,62 +402,33 @@ def glob_outputs(patterns: list[str]) -> list[str]:
     return [p for p in patterns if any(ch in p for ch in "*?[")]
 
 
-def sha256(path: Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as fh:
-        for chunk in iter(lambda: fh.read(1 << 20), b""):
-            h.update(chunk)
-    return h.hexdigest()
+def hashed(patterns: list[str]) -> dict[str, str]:
+    return {rel(p): sha256(p) for p in expand(patterns)}
 
 
-def rel(p: Path) -> str:
-    return str(p.relative_to(HERE))
-
-
-MANIFEST = "output/relevant_output/manifest.json"
-
-
-def previous_status() -> dict[str, str]:
-    """What each stage did last time, from the manifest it wrote.
-
-    This exists because of a trap that mtimes alone walk straight into. Every gated
-    stage WRITES ITS ARTIFACT AND THEN FAILS: resolve_structures.py writes
-    structures-resolved.json before it reports what is still missing, and verify.py
-    writes a 3 MB checks file before it reports a grounding failure. So a minute
-    after a gate stopped the run, every output is present and newer than every
-    input, and a purely mtime-based runner calls the stage current and walks past
-    the failure it just had. The manifest is the only record that it failed, so it
-    is read back here and a stage that failed last time always runs again.
-    """
-    p = HERE / MANIFEST
-    if not p.exists():
-        return {}
-    try:
-        return {row["stage"]: row.get("status", "")
-                for row in json.loads(p.read_text(encoding="utf-8")).get("stages", [])}
-    except (json.JSONDecodeError, KeyError, TypeError):
-        return {}
-
-
-def is_current(st: Stage) -> tuple[bool, str]:
-    """True when every output is present and no input is newer than any of them."""
+def is_current(st: Stage, prior: dict[str, dict]) -> tuple[bool, str]:
+    """True when this stage's inputs and outputs are exactly what it last ran with."""
     if st.always or not st.outputs:
         return False, "produces no tracked artifact, always runs"
+    row = prior.get(st.name)
+    if row is None:
+        return False, "no record of a previous run in the manifest"
+    status = str(row.get("status", ""))
+    if status.startswith("failed") or status == "not reached":
+        return False, f"last run: {status}"
     for pat in literal_outputs(st.outputs):
         if not (HERE / pat).exists():
             return False, f"missing output {pat}"
     for pat in glob_outputs(st.outputs):
         if not expand([pat]):
             return False, f"nothing matches output {pat}"
-    outs = expand(st.outputs)
-    ins = expand(st.inputs)
-    if not ins:
-        return True, "no inputs declared, outputs present"
-    newest_in = max(ins, key=lambda p: p.stat().st_mtime)
-    oldest_out = min(outs, key=lambda p: p.stat().st_mtime)
-    if newest_in.stat().st_mtime > oldest_out.stat().st_mtime:
-        return False, f"{rel(newest_in)} is newer than {rel(oldest_out)}"
-    return True, f"all {len(outs)} outputs newer than all {len(ins)} inputs"
+    d = _delta({e["path"]: e["sha256"] for e in row.get("inputs") or []}, hashed(st.inputs))
+    if d:
+        return False, f"input {d}"
+    d = _delta({e["path"]: e["sha256"] for e in row.get("outputs") or []}, hashed(st.outputs))
+    if d:
+        return False, f"output {d}"
+    return True, "every input and output matches the manifest"
 
 
 # ============================================================= internal stages

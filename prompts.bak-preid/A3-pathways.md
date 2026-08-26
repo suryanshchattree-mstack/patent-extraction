@@ -14,7 +14,7 @@ You are assembling synthetic pathways from an already-annotated reaction set.
 
 ## Input
 
-PATENT_ID: `{PATENT_ID}`
+PATENT_ID: `CN104292137A`
 
 REACTIONS (full `reactions.json`):
 ---
@@ -140,7 +140,7 @@ upload. Follow the code.
 ```json
 [
   {
-    "patent_id":     "{PATENT_ID}",
+    "patent_id":     "CN104292137A",
     "scope":         "section | patent",
     "section_label": "string | null",
     "ksm":           { "identifier": "string", "smiles": null, "compound_uuid": null },

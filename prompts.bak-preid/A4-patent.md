@@ -1,12 +1,12 @@
 # A4 - Patent record
 
 **Artifact produced:** `output/patent.json` (one `PatentRecord`)
-**Input:** `input/{PATENT_ID}-biblio.json`, the abstract and claims, and a rollup
+**Input:** `input/CN104292137A-biblio.json`, the abstract and claims, and a rollup
 computed from the other three artifacts
 **Runs:** once.
 
 Bibliographic fields are NOT produced by this prompt. They come from
-`input/{PATENT_ID}-biblio.json`, which was scraped from Google Patents, and are
+`input/CN104292137A-biblio.json`, which was scraped from Google Patents, and are
 merged in by `finalise.py`. `extraction_rollup` is computed arithmetically by
 `finalise.py` from `compounds.json` / `reactions.json` / `pathways.json`. This
 prompt produces only the narrative and the 5 LLM-derived tag categories, matching
@@ -18,10 +18,10 @@ You are a chemistry patent analyst. Emit the patent-level narrative and tags.
 
 ## Input
 
-PATENT_ID: `{PATENT_ID}`
+PATENT_ID: `CN104292137A`
 
-TITLE (zh): `{TITLE_ZH}`
-TITLE (en): `{TITLE_EN}`
+TITLE (zh): `三酮类除草剂环磺草酮的合成工艺`
+TITLE (en): `Process for synthesizing triketone herbicide cyclic sulcotrione`
 
 ABSTRACT:
 ---

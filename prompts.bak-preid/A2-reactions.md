@@ -1,7 +1,7 @@
 # A2 - Reactions
 
 **Artifact produced:** `output/reactions.json` (array of `ReactionRecord`)
-**Input:** one section of `input/{PATENT_ID}-enriched-numbered.md` + its A0 entry
+**Input:** one section of `input/CN104292137A-enriched-numbered.md` + its A0 entry
 + the A1 compounds for that section + the running registry of reactions already
 annotated in earlier sections
 **Runs:** once per section where A0 set `contains_procedure = true`.
@@ -19,7 +19,7 @@ missed step is a recall failure and an invented step is a precision failure.
 
 ## Input
 
-PATENT_ID: `{PATENT_ID}`
+PATENT_ID: `CN104292137A`
 SECTION_LABEL: `{SECTION_LABEL}`
 SECTION_TYPE: `{SECTION_TYPE}`
 LINES: `{START_LINE}`-`{END_LINE}`
@@ -332,7 +332,7 @@ extraction, and a gold set must not contain fields extraction cannot produce.
 ```json
 [
   {
-    "patent_id":                 "{PATENT_ID}",
+    "patent_id":                 "CN104292137A",
     "reaction_id":               "Example 1_Step 1",
     "section_label":             "string",
     "section_type":              "string",

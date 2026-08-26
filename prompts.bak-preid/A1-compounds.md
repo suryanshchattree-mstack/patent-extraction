@@ -1,7 +1,7 @@
 # A1 - Compounds
 
 **Artifact produced:** `output/compounds.json` (array of `CompoundRecord`)
-**Input:** one section of `input/{PATENT_ID}-enriched-numbered.md` + its A0 entry
+**Input:** one section of `input/CN104292137A-enriched-numbered.md` + its A0 entry
 **Runs:** once per section where A0 set `contains_procedure = true`, plus once each
 over `claims`, `background`, `summary_of_invention` and `abstract`.
 
@@ -19,7 +19,7 @@ bad. Extract what is written; never what you happen to know.
 
 ## Input
 
-PATENT_ID: `{PATENT_ID}`
+PATENT_ID: `CN104292137A`
 SECTION_LABEL: `{SECTION_LABEL}`
 SECTION_TYPE: `{SECTION_TYPE}`
 LINES: `{START_LINE}`-`{END_LINE}`
@@ -199,7 +199,7 @@ to production's.
 ```json
 [
   {
-    "patent_id":              "{PATENT_ID}",
+    "patent_id":              "CN104292137A",
     "identifier":             "string",
     "identifier_type":        "iupac | smiles | local_label | functional_ref | abbreviation | formula | trivial_name | other",
     "aliases":                ["string"],
