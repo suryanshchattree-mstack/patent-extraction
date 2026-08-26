@@ -851,6 +851,24 @@ def prose_ratio_gate(universe, sites, entries):
 # A percent sign, in both widths. The patent writes 36％ and 36%.
 PERCENT = ("％", "%")
 
+# Chinese modifiers that change WHAT WAS CHARGED rather than describing it, with the
+# English that has to survive. Every one of these is a fact a chemist would act on:
+# wet aluminium trichloride hydrolyses and will not catalyse a Friedel-Crafts,
+# saturated sodium bicarbonate is a workup and solid sodium bicarbonate is not, and
+# dilute hydrochloric acid is not concentrated hydrochloric acid.
+#
+# APPLIED ONLY TO gold_alias ENTRIES, which are NAMES. 浓 also opens 浓缩, "to
+# concentrate", the verb that starts a dozen procedure quotations, and those resolve
+# through source_mt to a whole paragraph where a prefix test means nothing. Scoping
+# to names is what keeps this rule at four hits instead of twenty.
+QUALIFIERS = {
+    "无水": "anhydrous",
+    "饱和": "saturated",
+    "稀": "dilute",
+    "浓": "concentrated",
+    "冰": "ice",
+}
+
 
 def name_fidelity_gate(entries, biblio, patent, keys):
     """Where the gold's own English disagrees with this index about a molecule.
@@ -877,6 +895,14 @@ def name_fidelity_gate(entries, biblio, patent, keys):
        `15％的次氯酸钠溶液` to "sodium hypochlorite" the same way. A concentration is a
        fact, and a translation that drops it has changed what was charged.
 
+       The same shape without a number: 无水三氯化铝 is ANHYDROUS aluminium
+       trichloride and resolves to "aluminium trichloride", 饱和碳酸氢钠 is SATURATED
+       sodium bicarbonate and resolves to "sodium bicarbonate", 稀盐酸 is DILUTE
+       hydrochloric acid and resolves to "hydrochloric acid". Wet aluminium
+       trichloride will not catalyse a Friedel-Crafts. In three of those four the
+       gold's own record already carries the fuller English, so the fact was never
+       missing from the annotation, only from the index.
+
        Scoped to PERCENT SIGNS and not to digits generally, because a systematic
        name is full of digits that a common name correctly discards:
        2-(2-氯4-甲磺酰基-3-[(2,2,2-三氟乙氧基)甲基]苯甲酰基)环己烷-1,3-二酮 resolves to
@@ -900,8 +926,14 @@ def name_fidelity_gate(entries, biblio, patent, keys):
     for text, entry in entries.items():
         if entry["origin"] != "gold_alias" or not entry["en"]:
             continue
+        english = entry["en"].lower()
         if any(p in text for p in PERCENT) and not any(p in entry["en"] for p in PERCENT):
-            dropped.append((text, entry["en"]))
+            dropped.append((text, entry["en"], "a strength"))
+            continue
+        for zh, word in QUALIFIERS.items():
+            if text.startswith(zh) and word not in english:
+                dropped.append((text, entry["en"], f"{zh!r}, {word}"))
+                break
 
     # THE PAIRS, DECLARED RATHER THAN DISCOVERED. Each is a place where the same
     # sentence exists in both languages, written by different hands, so the two can
@@ -1095,10 +1127,10 @@ def main() -> int:
     if not dropped and not title_gaps:
         print("  the gold's names and this index agree. PASS")
     else:
-        for text, en in dropped:
-            print(f"  a name loses its concentration: {text}  ->  {en!r}")
-            print(f"      The substance is right and the strength is gone. A "
-                  f"concentration is a fact.")
+        for text, en, what in dropped:
+            print(f"  a name loses {what}: {text}  ->  {en!r}")
+            print(f"      The substance is right and the qualifier is gone, and the "
+                  f"qualifier is a fact\n      about what was charged.")
         for label, english, molecules in title_gaps:
             print(f"  {label} names no molecule its own Chinese names.")
             print(f"      english  : {english}")

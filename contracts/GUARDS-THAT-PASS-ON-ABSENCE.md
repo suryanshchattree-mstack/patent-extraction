@@ -168,3 +168,43 @@ their own green result rather than by anything going red.
 
 The habit worth keeping is not any of these fixes. It is: **when a check passes, ask
 what it would take for it to pass while being wrong.** That question found all six.
+
+---
+
+## A fourth form, and the one I caused twice: a strict enum on someone else's vocabulary
+
+Not a guard that passes wrongly. A guard that FAILS wrongly, and takes everything with
+it.
+
+Twice tonight a producer added a value to a vocabulary it owns, and a consumer parsing
+that vocabulary with a strict enum rejected the entire artifact:
+
+    about gained "schema"            -> three pages down
+    auto gained "not_reconciled"     -> 8 of 394 claims carried it,
+                                        and the enum took the other 386 down too
+
+Both were consequences of a ruling I made without requiring the consumer to change in
+the same step. The rulings were right. The sequencing was mine and it was wrong.
+
+**The structural fix, which two agents arrived at independently:** read an
+engine-owned vocabulary as a string and narrow it in the transform. Never as an enum.
+
+    auto: z.string()          then narrow, with the raw word kept as auto_raw
+    unknown value             -> partial
+
+`partial` is the right landing place for an unrecognised value because it routes the
+claim to a human and keeps it out of the sampled tier, so the confidence bound never
+speaks for a claim nobody understood. **Degrade toward more human attention, never
+less.**
+
+Two rules fall out:
+
+1. **A strict enum is only safe on a vocabulary you own.** If another process writes
+   the value, its next commit is your next outage.
+2. **Keep the raw value.** A card that fell back should be able to say which word it
+   fell back from, otherwise the fallback is itself a silent data loss.
+
+The general shape, which is the same as everything above it in this document: **the
+failure is always in what the check does with the case it did not anticipate.** Passing
+silently, failing totally, or checking nothing at all are three ways of not having
+thought about it.

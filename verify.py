@@ -2946,6 +2946,13 @@ class Run(Engine):
         self.quantity_tally = {"tokens": 0, "accounted": 0, "vessel": 0,
                                "schema_loss": 0, "gap": 0, "unmapped": 0}
         self.quantity_findings: list[dict] = []
+        # (kind, field path) -> every instance of that one schema limitation.
+        # Eight of this patent's twelve schema losses are the SAME ticket, range
+        # against a single-float `time_h`, asked against eight different lines. A
+        # reviewer answering one question eight times is the clearest waste in the
+        # queue, and collapsing it at render time would be the UI guessing which
+        # rows are the same question. Grouped here, where the answer is known.
+        self.schema_tickets: dict[tuple, list] = {}
         seen: dict[tuple, set] = {}
         missed: list[tuple] = []
 
@@ -2974,6 +2981,7 @@ class Run(Engine):
 
         for line, block, group in merge_ranges(missed):
             self.record_quantity_miss(line, block, group, by_record)
+        self.emit_schema_tickets()
 
     def record_quantity_miss(self, line: int, block: tuple, group: list,
                              by_record: dict) -> None:
@@ -3023,6 +3031,26 @@ class Run(Engine):
                             else ("gap" if kind == "gap" else "unmapped")] += 1
 
         tag = f"{line}:{fmt_value(low.value)}{low.unit}"
+        if kind.startswith("schema_loss"):
+            # The CHECK stays on the record, because the loss really did happen
+            # there. Only the QUESTION is pooled, because it is one question.
+            ticket = (kind, path)
+            cid = claim_id(f"{self.patent_id}_patent",
+                           f"__schema__[{kind}:{path}]")
+            self.schema_tickets.setdefault(ticket, []).append(
+                {"line": line, "printed_en": printed, "record_id": rec.record_id,
+                 "record_label_en": rec.label_en})
+            rec.checks.append(check(
+                f"{family}.{path or 'unmapped'}[{tag}]", family, "warn",
+                f"The quantity {printed} printed on line {line}",
+                (f"It is not asserted by any claim on any record citing line "
+                 f"{line}. The field that would hold it is {path}. " + why),
+                needs_human=True, about_fields=[path] if path else []))
+            self.quantity_findings.append(
+                {"line": line, "printed_en": printed, "verdict": kind,
+                 "record_id": rec.record_id, "record_label_en": rec.label_en,
+                 "field": path or None, "claim_id": cid})
+            return
         rec.checks.append(check(
             f"{family}.{path or 'unmapped'}[{tag}]", family,
             "warn" if family == "schema_loss" else "fail",
