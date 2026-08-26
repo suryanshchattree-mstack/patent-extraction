@@ -333,7 +333,22 @@ PREREQS = [
 
 
 def hand_inputs(pid: str) -> list[tuple[str, str]]:
+    """Files a human puts there, in the order a human actually does them.
+
+    The PDF and the page renders come first because they are the literal first
+    physical step of onboarding a patent, and they were missing from this list. The
+    pass V entry says "one agent per rendered page in input/pages/" while nothing
+    ever told anyone to create input/pages/, so the one instruction a person needed
+    before any of the rest could happen was the one instruction not given.
+    """
     return [
+        (f"input/pdf/{pid}.pdf",
+         "the patent PDF. Google Patents or the issuing office; no login and no "
+         "paid source"),
+        ("input/pages/*.png",
+         "every page of that PDF rendered to PNG at 200 dpi, named p01.png, p02.png "
+         "and so on. Pass V reads these pixels, because the PDF has no text layer."
+         f"\n           run    : pdftoppm -r 200 -png input/pdf/{pid}.pdf input/pages/p"),
         (f"input/{pid}-biblio.json",
          "bibliographic record: family_id, dates, assignees, inventors, ipc_codes, abstract_zh"),
         ("input/structures-curated.json",
@@ -343,6 +358,32 @@ def hand_inputs(pid: str) -> list[tuple[str, str]]:
          f'{{"patent_id": "{pid}", "entries": {{}}}} to start; '
          f"the translations stage tells you what to add"),
     ]
+
+
+def wrap_what(what: str, width: int = 74) -> str:
+    """Wrap a `what` line to the column the message is laid out in.
+
+    These lines are read by somebody who is stuck, on a terminal, and a
+    160-column run-on is the format least likely to be read. A newline the caller
+    put in is honoured as-is, so a shell command keeps its own line.
+    """
+    indent = " " * len("           what   : ")
+    out = []
+    for i, para in enumerate(what.split("\n")):
+        if para.startswith(" "):          # the caller laid this one out itself
+            out.append(para)
+            continue
+        line = ""
+        for w in para.split():
+            if line and len(line) + 1 + len(w) > width:
+                out.append(line if not out or out[-1].startswith(" ") else line)
+                line = w
+            else:
+                line = f"{line} {w}".strip()
+        if line:
+            out.append(line)
+    return "\n".join(l if l.startswith(" ") else (indent + l if i else l)
+                     for i, l in enumerate(out))
 
 
 def check_prereqs(pid: str) -> list[str]:
@@ -364,10 +405,12 @@ def check_prereqs(pid: str) -> list[str]:
                            f"           writes : {pattern}\n"
                            f"           how    : {how}")
     for path, what in hand_inputs(pid):
-        if not (HERE / path).exists():
+        # expand() handles both a literal path and a glob, so input/pages/*.png is
+        # reported missing when the directory is empty as well as when it is absent
+        if not expand([path]):
             missing.append(f"  {'input':8} MISSING\n"
                            f"           file   : {path}\n"
-                           f"           what   : {what}")
+                           f"           what   : {wrap_what(what)}")
     return missing
 
 
@@ -809,9 +852,12 @@ def main() -> int:
               "This run cannot start until\nthe following exist. Nothing has been "
               "written except the rendered prompts above.\n")
         print("\n".join(missing))
-        print(f"\nEach pass writes into output/stages/<pass>/ and nothing later "
-              f"rewrites it.\nSee output/stages/README.md for the layout.\n"
-              f"Then: python3 run_pipeline.py --patent-id {pid}")
+        tail = ("\nEach pass writes into output/stages/<pass>/, one folder per pass, "
+                "and nothing\nlater rewrites it, so each stage stays the record of "
+                "what that pass returned.")
+        if (HERE / "output" / "stages" / "README.md").exists():
+            tail += "\nSee output/stages/README.md for the layout."
+        print(f"{tail}\nThen: python3 run_pipeline.py --patent-id {pid}")
         return 3
 
     def finish(rc: int) -> int:

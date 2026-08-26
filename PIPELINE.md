@@ -182,6 +182,27 @@ input and an mtime rule walks straight past the failure. Hashing the tree costs 
 fraction of a second and gives an answer that survives a `touch`, a copy, a
 checkout and a clock change.
 
+**The printed plan is a forecast, not the decision.** Currency is re-evaluated
+immediately before each stage runs, because running a stage rewrites the next
+stage's inputs. Judging all sixteen up front and then executing that frozen list
+produced a real and quiet failure: change one field in `input/<ID>-biblio.json` and
+the forecast says "RUN finalise, skip publish-gold", which is true when it is
+computed and false one second later, because `finalise` has just rewritten
+`patent.json`. The result was `output/patent.json` holding the new value,
+`gold/patent.json` holding the old one, and the manifest recording `publish-gold:
+current` - the one question the manifest exists to answer, answered wrongly.
+
+A stage that changes its mind says so, in both directions:
+
+```
+--- publish-gold: forecast said skip, running it: input output/patent.json changed
+--- assemble: forecast said run, now current: every input and output matches the manifest
+```
+
+The second line is the same mechanism saving work: delete one structure SVG,
+`structures` rebuilds it byte-identically, and `assemble` correctly declines to run
+because nothing it consumes actually moved.
+
 The plan is printed before anything executes, always:
 
 ```
@@ -240,6 +261,20 @@ its sha256 and its size, and the sha256 of every input it was built from.
   "input_sha256": ["…", "…"]
 }
 ```
+
+**`stages[]` and `artifacts[]` answer different questions and are allowed to
+disagree.** A `stages[]` row means *this stage last ran with these hashes*, so a
+stage that did not run this time carries its previous row forward untouched.
+`artifacts[]` is what is on disk right now, always re-read. When an artifact's live
+hash differs from what its stage last produced, the row says so in a `note`:
+somebody edited an artifact by hand, and that is worth seeing rather than
+smoothing over.
+
+Rewriting a skipped stage's row from today's tree is how the frozen-plan bug
+survived a second run. The buggy run left `publish-gold` stale, then wrote
+`publish-gold`'s row from the tree it had just failed to update. The row agreed
+with disk, `is_current()` called the stage current, and the staleness was laundered
+into the record. A stage's row is now only rewritten by that stage running.
 
 That is what lets a consumer ask *are these assets current for this gold* and get
 an answer from hashes rather than from file times. It is also what lets the

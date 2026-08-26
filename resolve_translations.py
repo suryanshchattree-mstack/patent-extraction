@@ -784,6 +784,50 @@ def gate(universe, sites, entries):
     return {p: v for p, v in missing.items() if v}
 
 
+# How much longer than its Chinese an English form may be before it stops being a
+# translation of that string and starts being a translation of its surroundings.
+#
+# MEASURED, not chosen. Over the 37 keys that are actually substituted into the
+# annotator's prose the highest ratio is 10.5, 适量 against "an appropriate amount",
+# and the entry this gate was written for sat at 49.6: 14 characters of Chinese
+# answered with the 695-character translation of the whole paragraph it was quoted
+# out of. 20 sits in the middle of that gap with room on both sides.
+#
+# DELIBERATELY ONLY FOR annotator_prose. 70 of the 274 entries exceed 20 and none of
+# them is used in prose: they are quotations shown AS quotations, where covering the
+# quote with its source line's translation is the designed and correct answer. The
+# defect is not a long English form, it is a long English form spliced into the
+# middle of somebody's sentence.
+MAX_PROSE_RATIO = 20
+
+
+def prose_ratio_gate(universe, sites, entries):
+    """Entries that a consumer substitutes into prose but that answer a paragraph.
+
+    Tier 1 covers a quotation with the translation of the source line it sits on,
+    which is right for a quotation and wrong for a phrase quoted inside somebody
+    else's English sentence. Both surfaces share one entry, so the artifact cannot
+    be right for both, and the ratio is what tells them apart. On failure the fix is
+    a curated entry with "override": true, which beats tier 1 and carries its own
+    reasoning.
+
+    Nothing here is about Chinese. Every string this catches produces output with no
+    Chinese character in it at all, which is why the coverage gate above passes it
+    and why a consumer's own CJK check passes it too.
+    """
+    bad = []
+    for text in universe:
+        if "annotator_prose" not in sites[text]["counts"]:
+            continue
+        en = entries[text]["en"]
+        if not en:
+            continue
+        ratio = len(en) / len(text)
+        if ratio > MAX_PROSE_RATIO:
+            bad.append((text, ratio, en))
+    return bad
+
+
 def unresolved_lines(en_runs, bare_runs, entries):
     """Source lines the index cannot clear of Chinese, line -> the runs it leaves.
 
@@ -935,12 +979,28 @@ def main() -> int:
         print(f"  {len(harmless)} lines have no English and no Chinese either, so "
               f"nothing is lost: {', '.join(str(n) for n in harmless)}")
 
+    oversized = prose_ratio_gate(universe, sites, entries)
+    print(f"\nprose ratio gate: an entry a consumer splices into the annotator's own "
+          f"English\n  must translate its own string, not the paragraph around it. "
+          f"Limit {MAX_PROSE_RATIO}x its length.")
+    if not oversized:
+        print(f"  all {sum(1 for t in universe if 'annotator_prose' in sites[t]['counts'])} "
+              f"entries used in prose are within it. PASS")
+    else:
+        print(f"  {len(oversized)} entries answer a phrase with a paragraph. FAIL")
+        for text, ratio, en in oversized:
+            print(f"    {text}  {len(text)}zh -> {len(en)}en, {ratio:.1f}x")
+            print(f"      currently: {en[:90]}...")
+        print("\n  Give each one a curated entry with \"override\": true, translating "
+              "the phrase\n  as a phrase. See the note on 革除了硫醚的过氧化氢氧化步骤 for "
+              "the worked example.")
+
     print(f"\ncoverage gate: every one of the {len(universe)} strings above must have "
           f"an English form, so that substituting the index leaves no Chinese anywhere")
     if not missing and not stranded:
         print(f"  all {len(universe)} strings resolve, and all {len(lines)} source "
               f"lines come out of the substitution in English. PASS")
-        return 0
+        return 1 if oversized else 0
 
     total = len({t for v in missing.values() for t in v})
     print(f"\n  {total} strings have NO English, leaving Chinese on "

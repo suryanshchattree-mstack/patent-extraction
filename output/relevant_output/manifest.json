@@ -786,7 +786,7 @@
     {
       "stage": "structures",
       "title": "identifier -> drawable molecule over five tiers, plus the coverage gate",
-      "status": "failed (1)",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_structures.py --patent-id CN104292137A"
       ],
@@ -949,7 +949,7 @@
     {
       "stage": "translations",
       "title": "Chinese string -> English for everything that can reach a screen, plus the coverage gate",
-      "status": "not reached",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_translations.py CN104292137A"
       ],
@@ -957,8 +957,8 @@
       "inputs": [
         {
           "path": "resolve_translations.py",
-          "sha256": "f9487097fbc381f44a1635a44ba24dadb4381e848c3606260e1b12e3cc5b7918",
-          "bytes": 45692
+          "sha256": "603501022a4baab757b4330eaa731a3f25dcde672311a820a3ea88e3d22841a5",
+          "bytes": 48737
         },
         {
           "path": "resolve_structures.py",
@@ -1012,7 +1012,7 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "not reached",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN104292137A",
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN104292137A"
@@ -1171,7 +1171,7 @@
     {
       "stage": "rasterise",
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
-      "status": "not reached",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 svg2jpg.py --all"
       ],
@@ -1259,7 +1259,7 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "not reached",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -1692,7 +1692,7 @@
     {
       "stage": "verify",
       "title": "the verification contract file the reviewer UI reads",
-      "status": "not reached",
+      "status": "failed (1)",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 verify.py CN104292137A"
       ],
@@ -5144,7 +5144,7 @@
     },
     {
       "path": "output/relevant_output/verification/checks-CN104292137A.json",
-      "sha256": "240c9a2ef6286ecaf140a8c111c9dee632fe46b8fb00209a89b16816a1a345f7",
+      "sha256": "6c8baa76174359903630b1198720e3a5e9c406110de53fc78e6d2fd1031ed581",
       "bytes": 3329498,
       "stage": "verify",
       "input_sha256": [
@@ -5328,8 +5328,8 @@
     },
     {
       "path": "output/relevant_output/visual/README.md",
-      "sha256": "34cfec34069b611e71f4f86b343b27b129af570057c36e64d3f87627822ea860",
-      "bytes": 6609,
+      "sha256": "b6e392d0bea29c1ef76f99d7158e759c224381447495699a91fe26d1816ac9f1",
+      "bytes": 7544,
       "stage": "visual",
       "input_sha256": [
         "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
@@ -5358,7 +5358,8 @@
         "1e81d3f1fe0cce373c053da57bdf754b5f282d87a315a8c56deb7ad1bced194d",
         "62d3025aba7234a3f1029634dd9064aee8e53b5944c7f8c2b4eb084188f519eb",
         "a3f3588714c77355237e63a6594927f52ce47a7d5f6fcb7f217caabb2ea46021"
-      ]
+      ],
+      "note": "on disk now, but the visual stage last ran producing sha256 34cfec34069b611e..."
     },
     {
       "path": "output/relevant_output/visual/comparisons/CN104292137A_p06_d1-patent.png",
@@ -6008,8 +6009,8 @@
     },
     {
       "path": "output/relevant_output/visual/page-index.json",
-      "sha256": "7f841665094b59010fa5578550e74824d27a7a6a13bbc56ce864fe2a1b905883",
-      "bytes": 50633,
+      "sha256": "8e8f2cbfe1d48d2ee8564b61321f4017cd6cfaf854247abe63661ddb1d5fca6f",
+      "bytes": 50954,
       "stage": "visual",
       "input_sha256": [
         "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
@@ -6038,7 +6039,8 @@
         "1e81d3f1fe0cce373c053da57bdf754b5f282d87a315a8c56deb7ad1bced194d",
         "62d3025aba7234a3f1029634dd9064aee8e53b5944c7f8c2b4eb084188f519eb",
         "a3f3588714c77355237e63a6594927f52ce47a7d5f6fcb7f217caabb2ea46021"
-      ]
+      ],
+      "note": "on disk now, but the visual stage last ran producing sha256 7f841665094b5901..."
     },
     {
       "path": "output/relevant_output/visual/quote-translations.json",
@@ -6049,8 +6051,8 @@
     },
     {
       "path": "output/structures-resolved.json",
-      "sha256": "8603461211c8bf55396a682476b1a945f54907e95db9346d0462e29925a0c019",
-      "bytes": 34847,
+      "sha256": "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
+      "bytes": 34939,
       "stage": "structures",
       "input_sha256": [
         "2786f5e6f625d0298b318a2eee96c0201261aeeb6e119f0e676c8e43da69a042",
@@ -6060,8 +6062,7 @@
         "23f9f77efd3f1a069f3cd7656aaa50b868b46e765572a285f1249360e93790d7",
         "773aa26f8679c359da6be3de922e1ed353f7bb4d478c65d5901ac19e0eef7fad",
         "faeeec600ec1a45acc70358af53e13525c0f6932a2a01c38ceab6dbcc80c0031"
-      ],
-      "note": "on disk now, but the structures stage last ran producing sha256 d9ff75828fc5d5c3..."
+      ]
     },
     {
       "path": "output/structures.json",
@@ -6398,12 +6399,27 @@
       ]
     },
     {
+      "path": "output/structures/triethylamine.svg",
+      "sha256": "1fbc8b15f88c64ff5eb9378c967ab64aa91de042027b62bdcdc7b8b1f982b9c2",
+      "bytes": 2432,
+      "stage": "structures",
+      "input_sha256": [
+        "2786f5e6f625d0298b318a2eee96c0201261aeeb6e119f0e676c8e43da69a042",
+        "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
+        "e6f3c7beafeb1e412c3f3b417517540e190697845a7d6b05b526dbe386395881",
+        "1e81d3f1fe0cce373c053da57bdf754b5f282d87a315a8c56deb7ad1bced194d",
+        "23f9f77efd3f1a069f3cd7656aaa50b868b46e765572a285f1249360e93790d7",
+        "773aa26f8679c359da6be3de922e1ed353f7bb4d478c65d5901ac19e0eef7fad",
+        "faeeec600ec1a45acc70358af53e13525c0f6932a2a01c38ceab6dbcc80c0031"
+      ]
+    },
+    {
       "path": "output/translations.json",
       "sha256": "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
       "bytes": 237599,
       "stage": "translations",
       "input_sha256": [
-        "f9487097fbc381f44a1635a44ba24dadb4381e848c3606260e1b12e3cc5b7918",
+        "603501022a4baab757b4330eaa731a3f25dcde672311a820a3ea88e3d22841a5",
         "2786f5e6f625d0298b318a2eee96c0201261aeeb6e119f0e676c8e43da69a042",
         "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
         "04a2cf430df2adddcc8cf221049ac3e420c6abf9d8d6e7000b5383c5481d0825",
@@ -6715,9 +6731,9 @@
   ],
   "totals": {
     "stages": 15,
-    "artifacts_produced": 140,
+    "artifacts_produced": 141,
     "artifacts_unclaimed": 4,
     "artifacts_stray": 3,
-    "bytes_produced": 18193643
+    "bytes_produced": 18197423
   }
 }
