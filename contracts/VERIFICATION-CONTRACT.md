@@ -68,9 +68,24 @@ A claim is one field of one record paired with the evidence for it.
   "needs_human": true,
   "risk": 0.0,
   "risk_reasons_en": ["..."],
-  "structure_svg_path": "output/relevant_output/structures/xxx.svg or null"
+  "structure_svg_path": "output/relevant_output/structures/xxx.svg or null",
+  "tier": 1,
+  "stratum": "compound:Example 1"
 }
 ```
+
+`tier` is the QUEUE, `risk` is the order within it. See `REVIEW-PROTOCOL.md`.
+
+- `tier: 1` - a human must see it. Anything `not_found` or `partial`, any load-bearing
+  `not_checkable` judgement, and any claim on a record with a failed structure,
+  quantity or reference check. Small population, worked as a census.
+- `tier: 2` - the `__coverage__` candidate-miss claims. The recall side. Also a census.
+- `tier: 3` - the machine matched it cleanly. Sampled, never exhausted.
+
+`stratum` is `<record_kind>:<section_en>`, so tier 3 can be sampled proportionally
+instead of being dominated by whichever section is largest. `summary` must carry the
+population size of each tier and the tier 3 breakdown by stratum, because a confidence
+bound needs the denominator and it cannot be safely derived from a filtered list.
 
 `highlights` are offsets into `evidence_lines[i].text_en`, so the UI highlights without
 re-deriving anything. `kind` is one of `value`, `unit`, `name`, `condition`, `yield`.
