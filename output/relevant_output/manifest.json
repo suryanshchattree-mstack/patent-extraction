@@ -6,7 +6,7 @@
     {
       "stage": "prompts",
       "title": "render the annotation prompts for THIS patent, for the agent to follow",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 render_prompts.py --patent-id CN104292137A"
       ],
@@ -149,7 +149,7 @@
     {
       "stage": "enrich",
       "title": "vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 build_enriched.py --patent-id CN104292137A"
       ],
@@ -232,7 +232,7 @@
     {
       "stage": "collect",
       "title": "publish the A0, A3 and A4 stage files under the names finalise.py reads",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "<internal>"
       ],
@@ -275,7 +275,7 @@
     {
       "stage": "merge",
       "title": "concatenate the per-section A1 and A2 stage files into the raw arrays",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 merge_stages.py"
       ],
@@ -428,7 +428,7 @@
     {
       "stage": "finalise",
       "title": "deterministic ids and uuids, rollup, bibliographic merge",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 finalise.py --patent-id CN104292137A"
       ],
@@ -856,7 +856,7 @@
     {
       "stage": "structures",
       "title": "identifier -> drawable molecule over five tiers, plus the coverage gate",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_structures.py --patent-id CN104292137A"
       ],
@@ -1082,7 +1082,7 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN104292137A",
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN104292137A"
@@ -1241,7 +1241,7 @@
     {
       "stage": "rasterise",
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 svg2jpg.py --all"
       ],
@@ -1872,7 +1872,7 @@
     {
       "stage": "visual",
       "title": "the page index, the structure comparisons and the drawing claims the UI shows",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_visual_evidence.py --patent-id CN104292137A"
       ],
@@ -6311,8 +6311,8 @@
     },
     {
       "path": "output/relevant_output/verification/checks-CN104292137A.json",
-      "sha256": "dc0153699ea8760dfc35f34cd0aab3d050e30f7846c1e6863d1df83bc81d0974",
-      "bytes": 3430304,
+      "sha256": "b2ff68a7ee75f32e036507dfd161ec435ffcc3f8340585ad3cc49a94e36d338b",
+      "bytes": 3443506,
       "stage": "verify",
       "input_sha256": [
         "ddad51350b6f6ae23cca831f5f762b56fd9752d157b7e057e1044687687bd151",
@@ -6493,8 +6493,8 @@
     },
     {
       "path": "output/relevant_output/verification/verdicts-CN104292137A.jsonl",
-      "sha256": "299c43ff89a9fae8c83e329baa1ffe6c1d8d9d724378130d43a90b320f917fb9",
-      "bytes": 713,
+      "sha256": "fde65f91dc7c5b0d460a6f7cbf64199d8f7ec24de7256599adc0e8ba7bb5b76d",
+      "bytes": 1122,
       "stage": null,
       "note": "present in the deliverable, produced by no declared stage and read by none"
     },
@@ -7911,6 +7911,6 @@
     "artifacts_produced": 142,
     "artifacts_unclaimed": 4,
     "artifacts_stray": 3,
-    "bytes_produced": 18421341
+    "bytes_produced": 18434543
   }
 }

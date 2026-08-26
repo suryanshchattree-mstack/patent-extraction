@@ -929,6 +929,44 @@ HIGHLIGHT_KIND = {
     "conditions.temperature": "condition", "conditions.time_h": "condition",
 }
 
+# What the reviewer actually DOES with a row, which is not what `about` says. 56 of
+# this patent's tier-1 claims were labelled `about: patent` and only 8 of them were
+# judgements; the rest were "does the patent say 34 g" comparisons that happened to
+# sit on a record carrying a patent-defect flag. `about` describes the record, this
+# describes the work, and the measured cost differs by a factor of 2.3:
+#
+#     judgement    8.3 s median    read the evidence and form an opinion
+#     comparison   3.6 s median    look at the highlighted number and agree
+#
+# So the queue can order on it and a UI can warn the reviewer what they are in for.
+# Timings measured over 20 claims by an agent reader; treat them as a floor for a
+# fast human rather than an average one.
+WORK_SECONDS_MEASURED = {"judgement": 8.3, "comparison": 3.6}
+
+# Fields where there is nothing to compare against and an opinion is the answer.
+JUDGEMENT_FIELDS = ("validation_flags", "resolved", "judgement.",
+                    "__coverage__", "__quantity__", "__schema__")
+
+
+def work_kind(field: str, auto: str) -> str:
+    """`judgement` or `comparison`: has the machine got something to SHOW you?
+
+    Not "is there a number". A quote the machine located and highlighted is a
+    comparison - the reviewer looks at the marked span and agrees - even though it
+    carries no `claimed_value`. Keying on the value classified all 176 quote claims
+    as judgements and put 163 of them in tier 3, which would have told a UI that
+    sampling tier 3 costs twice what it does.
+
+    So the test is whether the machine has a located thing to put on screen. It
+    does for anything it settled; it does not for a field where an opinion is the
+    only possible answer, or for a verdict of `not_checkable`, which means exactly
+    "no opinion available".
+    """
+    if field.startswith(JUDGEMENT_FIELDS):
+        return "judgement"
+    return "judgement" if auto == "not_checkable" else "comparison"
+
+
 BASE_RISK = {"not_found": 0.90, "not_reconciled": 0.85, "partial": 0.55,
              "not_checkable": 0.30, "found": 0.05}
 
@@ -1907,6 +1945,7 @@ class Engine:
             "risk": round(risk, 2),
             "risk_reasons_en": risk_reasons,
             "structure_svg_path": rec.svg,
+            "work_kind": work_kind(field, auto),
             "evidence_width": len(cited),
             "evidence_class": "wide" if len(cited) > WIDE_CITATION else "narrow",
             "basis": None,
@@ -3377,6 +3416,8 @@ def assemble(run: Run) -> dict:
     verdicts = {v: sum(1 for c in claims if c["auto"] == v) for v in VERDICTS}
     severities = {v: sum(1 for c in claims if c["severity"] == v)
                   for v in SEVERITIES}
+    work_kinds = {k: sum(1 for c in claims if c["work_kind"] == k)
+                  for k in ("judgement", "comparison")}
     families = {f: sum(1 for c in claims if claim_family(c) == f) for f in FAMILIES}
     tiers = {str(t): sum(1 for c in claims if c["tier"] == t) for t in TIERS}
 
@@ -3388,27 +3429,35 @@ def assemble(run: Run) -> dict:
     # consumer can check instead of trusting either number on its own.
     cov_qty = run.quantity_tally
     unconfirmed = sum(1 for c in claims
-                      if c["tier"] != 2 and (c["auto"] in ("not_found",
-                                                            "not_reconciled",
-                                                            "partial")
-                                             or c["load_bearing"]))
+                      if c["tier"] != 2 and c["auto"] in ("not_found",
+                                                          "not_reconciled",
+                                                          "partial"))
     promoted = sum(1 for c in claims
                    if c["tier"] == 1 and c["auto"] == "found")
+    no_opinion = sum(1 for c in claims
+                     if c["tier"] != 2 and c["auto"] == "not_checkable")
+    # Tier 2's two feeders, counted from the sweep rather than from the queue. The
+    # schema losses are pooled into tickets by (limitation, field), so the ticket
+    # count and not the instance count is what a reviewer will actually work.
+    quantities = sum(cov_qty.get(k, 0) for k in ("gap", "unmapped"))
+    tickets = len(run.schema_tickets)
     feeders = {
         "1": {"population": unconfirmed + promoted,
-              "from_en": f"{unconfirmed} claims the machine could not confirm plus "
-                         f"{promoted} it matched cleanly on a record whose own "
-                         f"checks failed"},
-        "2": {"population": len(run.uncited_chemistry)
-                            + sum(cov_qty.get(k, 0)
-                                  for k in ("gap", "schema_loss", "unmapped")),
+              "from_en": f"{unconfirmed} claims the machine looked at and could "
+                         f"not confirm plus {promoted} it matched cleanly on a "
+                         f"record whose own checks failed"},
+        "2": {"population": len(run.uncited_chemistry) + quantities + tickets,
               "from_en": f"{len(run.uncited_chemistry)} source lines no record "
-                         f"cites plus "
-                         f"{sum(cov_qty.get(k, 0) for k in ('gap', 'schema_loss', 'unmapped'))}"
-                         f" quantities on cited lines no claim asserts"},
-        "3": {"population": len(claims) - tiers["1"] - tiers["2"],
-              "from_en": "every remaining claim, which is what the sampled bound "
-                         "is drawn from"},
+                         f"cites, plus {quantities} quantities on cited lines no "
+                         f"claim asserts, plus {tickets} schema tickets pooled "
+                         f"from {cov_qty.get('schema_loss', 0)} instances"},
+        "3": {"population": len(claims) - tiers["1"] - tiers["2"] - tiers["4"],
+              "from_en": "every claim the machine matched cleanly, which is the "
+                         "only population the sampled bound may be drawn from"},
+        "4": {"population": no_opinion,
+              "from_en": f"{no_opinion} claims the machine had no opinion about, "
+                         f"demoted out of the census because they are a different "
+                         f"population from claims it looked at and failed"},
     }
     tier_population = {t: {**feeders[t], "claims": tiers[t],
                            "agrees": feeders[t]["population"] == tiers[t]}
@@ -3535,6 +3584,8 @@ def assemble(run: Run) -> dict:
             "claims_by_tier": tiers,
             "tier_population": tier_population,
             "claims_by_severity": severities,
+            "claims_by_work_kind": work_kinds,
+            "work_seconds_measured": WORK_SECONDS_MEASURED,
             "tier3_population_by_stratum": dict(sorted(strata.items())),
             "tier3_population_by_width": widths,
             "claims_by_subject": about,

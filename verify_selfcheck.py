@@ -283,10 +283,11 @@ def test_census(artifact: dict) -> None:
         print(f"     {v:22}  {verdicts.get(v, 0)}")
 
     tiers = Counter(c.get("tier") for c in claims)
-    print(f"     tier 1 (census, suspicious)   {tiers.get(1, 0)}")
-    print(f"     tier 2 (census, candidate miss) {tiers.get(2, 0)}")
-    print(f"     tier 3 (sampled, machine ok)  {tiers.get(3, 0)}")
-    print(f"     tier unset                    {tiers.get(None, 0)}")
+    print(f"     tier 1  census, looked and failed   {tiers.get(1, 0)}")
+    print(f"     tier 2  census, candidate misses    {tiers.get(2, 0)}")
+    print(f"     tier 3  sampled, matched cleanly    {tiers.get(3, 0)}")
+    print(f"     tier 4  sampled, no opinion         {tiers.get(4, 0)}")
+    print(f"     tier unset                          {tiers.get(None, 0)}")
 
     record("every claim carries a tier",
            PASS if not tiers.get(None) else FAIL,
@@ -306,26 +307,39 @@ def test_census(artifact: dict) -> None:
     # denominator comes from the tallies and never from counting the queue,
     # because a queue counting itself cannot detect a claim that failed to be
     # emitted at all, which is the exact failure this check exists for.
-    cov = artifact["source_coverage"]["summary"]
-    qty = artifact["summary"].get("quantity_coverage") or {}
-    uncited = cov.get("uncited_with_chemistry", 0)
-    unaccounted = sum(qty.get(k, 0) for k in ("gap", "schema_loss", "unmapped"))
-    print(f"     uncited chemistry lines       {uncited}")
-    print(f"     unaccounted quantities        {unaccounted}"
-          f"  (of {qty.get('tokens', 0)} tokens, {qty.get('accounted', 0)} "
-          f"accounted, {qty.get('vessel', 0)} glassware)")
-    tier2 = tiers.get(2, 0)
-    record("tier 2 population equals its two feeders",
-           PASS if tier2 == uncited + unaccounted else FAIL,
-           f"tier 2 has {tier2} claims; {uncited} uncited lines plus "
-           f"{unaccounted} unaccounted quantities is {uncited + unaccounted}")
+    # Every tier's size, twice: counted off the queue and derived from where the
+    # work came from. A denominator recovered from the list it measures cannot
+    # detect the one failure that matters, a claim never emitted at all.
+    pops = artifact["summary"].get("tier_population") or {}
+    disagreeing = [t for t, p in pops.items() if not p.get("agrees")]
+    record("every tier's population is derived, not counted, and agrees",
+           PASS if pops and not disagreeing else FAIL,
+           ", ".join(f"tier {t}: {p['claims']}" for t, p in sorted(pops.items()))
+           if pops and not disagreeing else
+           f"missing or disagreeing: {disagreeing or 'tier_population absent'}")
 
-    # The protocol budgets tier 1 as a census inside 15 minutes at ~6s a claim.
-    budget = 900 / 6
-    record("tier 1 is small enough to be worked as a census",
-           PASS if tiers.get(1, 0) <= budget else WARN,
-           f"{tiers.get(1, 0)} claims at 6s each is "
-           f"{tiers.get(1, 0) * 6 / 60:.0f} minutes of a 15 minute budget")
+    # The census is tier 1 PLUS tier 2, and it has to survive the pessimistic
+    # rate, not the median. Timed at 5.3s median and 8.7s p90 over 20 claims. The
+    # failure that matters is not slowness: it is the census eating the whole
+    # budget so tier 3 is sampled zero times and the report carries no bound.
+    seconds = artifact["summary"].get("work_seconds_measured") or {}
+    census = [c for c in claims if c["tier"] in (1, 2)]
+    modelled = sum(seconds.get(c.get("work_kind"), 6.0) for c in census)
+    p90 = len(census) * 8.7
+    print(f"     census (tier 1 + 2)                 {len(census)} claims")
+    print(f"       at the measured per-kind medians  {modelled / 60:.1f} min")
+    print(f"       at a flat 8.7s p90                {p90 / 60:.1f} min")
+    record("the census fits the 15 minute budget at the P90 rate, not just the median",
+           PASS if p90 <= 900 else FAIL,
+           f"{p90 / 60:.1f} min of 15.0, leaving "
+           f"{max(0, int((900 - p90) / 8.7))} tier 3 claims samplable")
+
+    record("no claim the machine never matched sits in tier 3",
+           PASS if not [c for c in claims
+                        if c["tier"] == 3 and c["auto"] == "not_checkable"]
+           else FAIL,
+           "tier 3 is only claims the machine matched, which is the only "
+           "population its bound may be drawn from")
 
     strata = artifact["summary"].get("tier3_population_by_stratum")
     if strata:
@@ -347,12 +361,12 @@ CONTRACT_CLAIM_KEYS = {
     "question_en", "claimed_en", "claimed_value", "claimed_unit", "basis",
     "cited_lines", "evidence_en", "evidence_lines", "highlights", "auto",
     "auto_reason_en", "needs_human", "load_bearing", "risk", "risk_reasons_en",
-    "structure_svg_path", "evidence_width", "evidence_class",
+    "structure_svg_path", "work_kind", "evidence_width", "evidence_class",
     "tier", "stratum", "severity", "severity_action_en",
 }
 
 # Documented, but only on the claims it applies to, so not required of all of them.
-OPTIONAL_CLAIM_KEYS = {"quantity_verdict"}
+OPTIONAL_CLAIM_KEYS = {"quantity_verdict", "schema_instances"}
 
 # `schema` is the third subject: the annotation read the page correctly and the
 # field it had to put the answer in could not hold it. Nobody is wrong and
