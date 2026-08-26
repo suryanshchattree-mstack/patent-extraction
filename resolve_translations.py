@@ -681,10 +681,18 @@ def index_curated(curated, universe: list[str]):
                     "Chinese in 'note' instead.")
         # OVERRIDE IS A CLAIM ABOUT THE OTHER TIERS, not a preference, so it is
         # allowed only where it can be true. The source and the gold are both
-        # better provenance than we are, and the single case where they are not
-        # is a short phrase whose source-line answer is the whole paragraph it
-        # was quoted out of. Requiring an 'en' and a 'note' keeps the reasoning
-        # attached to the decision in the artifact.
+        # better provenance than we are. Two shapes so far where they are not:
+        #
+        #   tier 1 answers a PHRASE with the PARAGRAPH it was quoted out of,
+        #     because covering a quotation with its source line is right for a
+        #     quotation and wrong for a phrase spliced into somebody's sentence
+        #   tier 2 answers a NAMED SOLUTION with the SUBSTANCE, because the gold
+        #     record is named for the substance and the alias carries a strength,
+        #     so 36％的盐酸 comes back as "hydrochloric acid" and the 36% is gone
+        #
+        # Both are the right rule reaching for the wrong granularity. Requiring an
+        # 'en' and a 'note' keeps the reasoning attached to the decision in the
+        # artifact rather than in a commit message.
         override = bool(entry.get("override"))
         if override and (en is None or not note):
             die(f"curated {key!r}: 'override' needs both an 'en' and a 'note' "
@@ -1023,7 +1031,8 @@ def main() -> int:
     forced = [k for k, v in table.items() if v.get("override")]
     if forced:
         print(f"\n  {len(forced)} curated entries were preferred OVER a stronger "
-              f"tier, because the stronger tier answers a phrase with a paragraph:")
+              f"tier, which is\n  allowed only where that tier answers the wrong "
+              f"question. Each note says which:")
         for key in forced:
             print(f"    {key}  ->  {entries[key]['en'][:60]!r}")
 
