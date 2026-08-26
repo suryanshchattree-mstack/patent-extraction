@@ -8,7 +8,7 @@ python3 run_pipeline.py --patent-id CN104292137A
 
 ![The stage graph of run_pipeline.py](svg/p1-pipeline-stages.svg)
 
-> Thirteen deterministic stages, in the only order that satisfies the real
+> Fourteen deterministic stages, in the only order that satisfies the real
 > dependencies between them. Three of them are gates: they exit non-zero and stop
 > the run rather than shipping something a human has not supplied. The top band is
 > what the runner does **not** do, and refuses to start without.
@@ -38,17 +38,23 @@ This is that order, written down, executed, and hashed.
 the rendered page images and an agent; A0 to A4 need the prompts and a context. A
 subprocess cannot do any of it.
 
-What the runner does instead is check, before it writes anything, whether their
-output is there. If it is not, it prints which pass is missing, which prompt
-produces it, where the result must land, and how many times to run it, then exits 3
-having written nothing.
+What the runner does instead is render this patent's prompts, then check whether
+each pass's output is there. If it is not, it prints which pass is missing, which
+prompt produces it, where the result must land, and how many times to run it, then
+exits 3.
 
 ```
 pass V   MISSING
-         prompt : prompts/V-page-vision.md
+         prompt : output/prompts/CN104292137A/V-page-vision.md
          writes : input/vision/p*.json
          how    : one agent per rendered page in input/pages/, in parallel
 ```
+
+The prompt it names is the **rendered** one, not the template. `prompts/*.md` still
+carries a patent id, because a prompt is read by an agent rather than imported by a
+process, and an agent following a template faithfully would stamp the wrong id into
+the new patent's gold. `render_prompts.py` fills it in, and it is stage 1 so that
+the file this message names exists by the time the message is printed.
 
 It never half-runs. Either every prerequisite is present and the run proceeds, or
 none of it does.
@@ -59,19 +65,20 @@ none of it does.
 
 | # | stage | runs | produces | gate |
 |---:|---|---|---|:--:|
-| 1 | `enrich` | `build_enriched.py` | `input/<ID>-enriched.md`, `-numbered.md`, `output/structures.json` | |
-| 2 | `collect` | internal copy | `output/00-sections.json`, `raw-pathways.json`, `raw-patent.json` | |
-| 3 | `merge` | `merge_stages.py` | `output/raw-compounds.json`, `raw-reactions.json`, the two provenance files, the A4 rollup | |
-| 4 | `finalise` | `finalise.py` | `compounds.json`, `reactions.json`, `pathways.json`, `patent.json`, the equivalence and sections indices | |
-| 5 | `validate` | `schemas/validate.py` | nothing; exits non-zero on a schema violation | |
-| 6 | `publish-gold` | `make_relevant_output.py` | `relevant_output/gold/`, `provenance/`, `verification/`, `FINDINGS.md`, `AUDIT.md` | |
-| 7 | `structures` | `resolve_structures.py` | `output/structures-resolved.json`, `output/structures/<slug>.svg` | yes |
-| 8 | `translations` | `resolve_translations.py` | `output/translations.json` | yes |
-| 9 | `diagrams` | `make_svgs.py`, `make_approach.py` | `svg/m1` to `m5`, `svg/approach.svg` | |
-| 10 | `rasterise` | `svg2jpg.py --all` | `svg/*.jpg` | |
-| 11 | `assemble` | `make_relevant_output.py` | the deliverable again, now including structures, translations and diagrams | |
-| 12 | `verify` | `verify.py` | `relevant_output/verification/checks-<ID>.json` | yes |
-| 13 | `manifest` | internal | `relevant_output/manifest.json` | |
+| 1 | `prompts` | `render_prompts.py` | `output/prompts/<ID>/*.md`, the annotation prompts with this patent's id in them | |
+| 2 | `enrich` | `build_enriched.py` | `input/<ID>-enriched.md`, `-numbered.md`, `output/structures.json` | |
+| 3 | `collect` | internal copy | `output/00-sections.json`, `raw-pathways.json`, `raw-patent.json` | |
+| 4 | `merge` | `merge_stages.py` | `output/raw-compounds.json`, `raw-reactions.json`, the two provenance files, the A4 rollup | |
+| 5 | `finalise` | `finalise.py` | `compounds.json`, `reactions.json`, `pathways.json`, `patent.json`, the equivalence and sections indices | |
+| 6 | `validate` | `schemas/validate.py` | nothing; exits non-zero on a schema violation | |
+| 7 | `publish-gold` | `make_relevant_output.py` | `relevant_output/gold/`, `provenance/`, `verification/`, `FINDINGS.md`, `AUDIT.md` | |
+| 8 | `structures` | `resolve_structures.py` | `output/structures-resolved.json`, `output/structures/<slug>.svg` | yes |
+| 9 | `translations` | `resolve_translations.py` | `output/translations.json` | yes |
+| 10 | `diagrams` | `make_svgs.py`, `make_approach.py` | `svg/m1` to `m5`, `svg/approach.svg` | |
+| 11 | `rasterise` | `svg2jpg.py --all` | `svg/*.jpg` | |
+| 12 | `assemble` | `make_relevant_output.py` | the deliverable again, now including structures, translations and diagrams | |
+| 13 | `verify` | `verify.py` | `relevant_output/verification/checks-<ID>.json` | yes |
+| 14 | `manifest` | internal | `relevant_output/manifest.json` | |
 
 ### Two things about that order that are not obvious
 
@@ -79,7 +86,7 @@ none of it does.
 `resolve_translations.py` read the gold from `output/relevant_output/gold/` first
 and fall back to `output/` only when it is absent. So on any re-run they would
 resolve against the *previous* run's gold unless the deliverable is republished
-first. Stage 6 publishes the gold the resolvers read; stage 11 picks up what they
+first. Stage 7 publishes the gold the resolvers read; stage 12 picks up what they
 produced. The script is a pure copy plus two regenerated markdown files, so running
 it twice costs nothing and changes nothing on the second pass.
 
@@ -154,8 +161,18 @@ at plan time, and **a stage that failed last time always runs again.**
 
 ## Skipping, and the plan
 
-Every stage declares its inputs and its outputs. A stage is skipped when all its
-outputs exist and none of its inputs is newer than any of them.
+Every stage declares its inputs and its outputs. A stage is skipped when every
+output exists and the sha256 of every input and every output is exactly what the
+manifest says it last ran with.
+
+**Not mtimes.** Two things rule them out, and both were found by watching a run
+refuse to settle. `make_relevant_output.py` copies with `shutil.copy2`, which
+*preserves* the source mtime, so a copied file is never newer than what it was
+copied from and the stage re-runs forever. And a gated stage writes its artifact
+and then fails, so a minute later every output is present and newer than every
+input and an mtime rule walks straight past the failure. Hashing the tree costs a
+fraction of a second and gives an answer that survives a `touch`, a copy, a
+checkout and a clock change.
 
 The plan is printed before anything executes, always:
 
@@ -165,7 +182,7 @@ plan     3 to run, 9 current, 0 absent, 1 not selected
 
   ---- enrich                vision page reads -> enriched markdown ...
   RUN  finalise              deterministic ids and uuids, rollup, bibliographic merge
-                             output/raw-compounds.json is newer than output/patent.json
+                             input output/raw-compounds.json changed
   RUN  structures     [gate] identifier -> drawable molecule over five tiers ...
                              last run: failed (1)
 ```
@@ -182,8 +199,16 @@ plan     3 to run, 9 current, 0 absent, 1 not selected
 Exit codes: `0` ok, `1` a stage failed, `2` a coverage gate stopped the run, `3`
 the LLM passes have not been run.
 
-Running twice changes nothing. The second run skips every stage and rewrites the
-manifest to identical bytes.
+Running twice changes nothing. Verified three ways: two `--force` runs produce a
+byte-identical tree including the manifest; a `--force` run followed by a plain run
+moves only the per-stage `status` fields in the manifest; and two plain runs are
+byte-identical.
+
+`verify.py` stamps its output with a build timestamp, so the runner pins
+`SOURCE_DATE_EPOCH` to the newest mtime among the hand-authored inputs
+(`input/*-biblio.json`, `input/*-curated.json`, `input/vision/`). That is still an
+honest "as of", it moves when somebody changes an input, and it does not move
+merely because the pipeline rebuilt itself.
 
 ---
 
@@ -242,8 +267,10 @@ id comes from `--patent-id`, from `$ANNOTATION_PATENT_ID`, or from the one
    echo '{"patent_id":"<ID>","entries":{}}'                          > input/translations-curated.json
    ```
 
-4. **Run the passes.** `python3 run_pipeline.py --patent-id <ID>` will exit 3 and
-   print exactly which ones and where their output goes. Work through that list.
+4. **Run the passes.** `python3 run_pipeline.py --patent-id <ID>` renders the
+   prompts for this patent into `output/prompts/<ID>/`, then exits 3 printing
+   exactly which passes are missing and where their output goes. Work through that
+   list, following the rendered prompts rather than the templates.
 
 5. **Run the pipeline.** It will get as far as `structures` and stop, listing the
    molecules the patent names but never draws. Fill them in, atom by atom.

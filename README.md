@@ -330,6 +330,15 @@ manual_annotations/
 
 ## Running it
 
+**One command.** `python3 run_pipeline.py --patent-id <ID>` runs every deterministic
+stage in the right order, skips what is already current, stops on a coverage gate
+with the message that says what a human owes, and writes a manifest of every
+artifact with the hashes it was built from. It does not run the LLM passes; it tells
+you exactly which are missing and which prompt produces each. See **[PIPELINE.md](PIPELINE.md)**
+and the stage graph in [`svg/p1-pipeline-stages.svg`](svg/p1-pipeline-stages.svg).
+
+The steps below are what that script automates, kept as the record of the order.
+
 ```bash
 # 1. download PDF, render pages                      done
 # 2. run pass V, 9 agents in parallel                -> input/vision/pNN.json

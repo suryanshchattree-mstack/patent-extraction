@@ -305,6 +305,52 @@ def crop_box(block, strips, box):
     return (x0, max(y0, top), x1, min(y1, bot))
 
 
+COLUMN_GAP = 120        # blank columns that still count as one drawing
+SIDE_PAD = 60           # padding left and right of the drawing
+MIN_INK_SHARE = 0.7     # the group kept must hold this much of the band's ink
+
+
+def tight_box(png: Path, loose, box):
+    """The same vertical band, cut in from the sides to the drawing itself.
+
+    The band runs the full width of the text column, and a paragraph marker
+    sitting at the far left drags the drawing down to a fifth of the panel,
+    which is small enough that a reviewer cannot compare it to anything. So the
+    columns carrying ink are grouped, gaps under COLUMN_GAP bridged, and the
+    widest group taken as the drawing. A marker is separated from a centred
+    structure by far more than that and drops out; a substituent label is joined
+    to its bond by far less and cannot.
+
+    Never used alone. The full loose band is always written out beside it as
+    `<record_id>-patent.png`, so a reviewer who suspects the sides were cut too
+    close has the uncut band to hand.
+    """
+    x0, x1, y0, y1 = box
+    arr = np.asarray(Image.open(png).convert("L"))
+    band = (arr[loose[1]:loose[3], x0:x1] < INK_THRESHOLD)
+    cols = np.nonzero(band.sum(axis=0) > 0)[0]
+    if len(cols) == 0:
+        return loose, False
+    groups, start, prev = [], cols[0], cols[0]
+    for c in cols[1:]:
+        if c - prev > COLUMN_GAP:
+            groups.append((start, prev))
+            start = c
+        prev = c
+    groups.append((start, prev))
+
+    # Pick the group by INK, not by how wide it is. A paragraph marker sitting
+    # at the far left is only six small glyphs but it doubles the band's span,
+    # and judging by span throws away the cut exactly when it is most needed.
+    per_col = band.sum(axis=0)
+    total = per_col.sum()
+    left, right = max(groups, key=lambda g: per_col[g[0]:g[1] + 1].sum())
+    if not total or per_col[left:right + 1].sum() / total < MIN_INK_SHARE:
+        return loose, False
+    return (max(x0, x0 + int(left) - SIDE_PAD), loose[1],
+            min(x1, x0 + int(right) + SIDE_PAD), loose[3]), True
+
+
 # ================================================================== gold linkage
 
 def find_compound(inp: Inputs, para: dict):
@@ -429,6 +475,21 @@ def fit(img: Image.Image, width: int) -> Image.Image:
     return img.resize((width, h), Image.LANCZOS)
 
 
+def fit_box(img: Image.Image, width: int, height: int) -> Image.Image:
+    """Scale to fit inside the box, keep the aspect, centre on white.
+
+    Both halves get the same box, so the two molecules come out at comparable
+    size. A structure the reviewer has to squint at is a structure they will
+    wave through.
+    """
+    scale = min(width / img.width, height / img.height)
+    w, h = max(1, round(img.width * scale)), max(1, round(img.height * scale))
+    canvas = Image.new("RGB", (width, height), "white")
+    canvas.paste(img.resize((w, h), Image.LANCZOS),
+                 ((width - w) // 2, (height - h) // 2))
+    return canvas
+
+
 def compose(patent_img, ours, header, left_caption, right_caption,
             question, notes, side_by_side):
     """One self-describing picture. Every claim it makes is written on it."""
@@ -440,8 +501,11 @@ def compose(patent_img, ours, header, left_caption, right_caption,
 
     pad = 26
     if side_by_side:
-        left = fit(ours[0][0], PANEL_W)
-        right = fit(patent_img, PANEL_W)
+        # A page crop is wide and short; a rendered structure is nearly square.
+        # Give both the same box so neither is dwarfed by the other.
+        box_h = max(420, min(620, round(PANEL_W * patent_img.height / patent_img.width)))
+        left = fit_box(ours[0][0], PANEL_W, box_h)
+        right = fit_box(patent_img, PANEL_W, box_h)
         body_w = PANEL_W * 2 + pad
     else:
         right = fit(patent_img, PANEL_W * 2 + pad)
@@ -646,7 +710,8 @@ def build(root: Path, patent_id: str) -> int:
             if agrees:
                 block = lay["blocks"][k]
                 bx = crop_box(block, lay["strips"], lay["box"])
-                patent_img = img_full.crop(bx)
+                tb, tightened = tight_box(inp.page_png(page), bx, lay["box"])
+                patent_img = img_full.crop(tb)
                 how_found = (
                     "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no "
                     "text layer, so a machine measured the ink on page {n} and cut out "
@@ -662,6 +727,7 @@ def build(root: Path, patent_id: str) -> int:
             else:
                 patent_img = img_full
                 bx = (0, 0, img_full.width, img_full.height)
+                tb, tightened = bx, False
                 how_found = (
                     "HOW THE PICTURE ABOVE WAS FOUND: it was NOT found. The machine "
                     "counted {a} drawing-shaped blocks on page {n} but the reading of "
@@ -671,8 +737,10 @@ def build(root: Path, patent_id: str) -> int:
                 ).format(a=len(lay["blocks"]), n=int(page[1:]), b=len(v["drawings"]))
                 crop_conf = "whole_page_fallback"
 
+            # The sidecar is always the UNCUT band, so nothing that was trimmed
+            # off the sides of the composed picture is lost to the reviewer.
             crop_name = f"{rid}-patent.png"
-            patent_img.save(out / "comparisons" / crop_name)
+            img_full.crop(bx).save(out / "comparisons" / crop_name)
 
             structures = dr.get("structures") or []
             single = len(structures) == 1
@@ -759,8 +827,13 @@ def build(root: Path, patent_id: str) -> int:
                 question = ("Does every molecule below appear in the drawing above, in "
                             "the same order?")
 
-            right_caption = (f"Cut from the scan of page {int(page[1:])}, at "
-                             f"y {bx[1]} to {bx[3]} of {img_full.height}.")
+            right_caption = (
+                f"Cut from the scan of page {int(page[1:])}, at y {bx[1]} to {bx[3]} "
+                f"of {img_full.height}." +
+                (f" The sides were then cut in to the drawing, from x {bx[0]} to "
+                 f"{bx[2]} down to x {tb[0]} to {tb[2]}, so that it is not too small "
+                 f"to compare. The uncut band is the file "
+                 f"{rid}-patent.png in this folder." if tightened else ""))
             notes = [how_found, link_note,
                      "This picture answers one question and no other. It does not say "
                      "the chemistry is right, only whether we wrote down the molecule "
@@ -782,8 +855,11 @@ def build(root: Path, patent_id: str) -> int:
                 "structure_count": len(structures),
                 "comparison_image": f"comparisons/{comp_name}",
                 "patent_crop_image": f"comparisons/{crop_name}",
-                "crop_box": {"x_left": bx[0], "y_top": bx[1],
-                             "x_right": bx[2], "y_bot": bx[3]},
+                "crop_box_uncut": {"x_left": bx[0], "y_top": bx[1],
+                                   "x_right": bx[2], "y_bot": bx[3]},
+                "crop_box_shown": {"x_left": tb[0], "y_top": tb[1],
+                                   "x_right": tb[2], "y_bot": tb[3]},
+                "sides_cut_in_to_drawing": tightened,
                 "crop_confidence": crop_conf,
                 "crop_confidence_en": how_found,
                 "pairing": link,

@@ -70,22 +70,29 @@ A claim is one field of one record paired with the evidence for it.
 {
   "claim_id": "sha256 of (record_id, field) truncated to 16 hex - STABLE across runs",
   "record_id": "CN104292137A_2-chlorotoluene",
-  "record_kind": "compound | reaction | pathway | patent",
+  "record_kind": "compound | reaction | pathway | patent | source_line",
+  "rec": "cmp:e63b6978-e898-5387-9bda-fde3f362ec1e",
+  "rec_field": "quantity.mass_g",
   "record_label_en": "2-chlorotoluene",
+  "section_en": "Example 1",
+  "about": "extraction | patent",
   "field": "quantity.mass_g",
-  "field_label_en": "Mass used",
-  "question_en": "Does the patent say 12.6 g of 2-chlorotoluene was used?",
-  "claimed_en": "12.6 g",
-  "claimed_value": 12.6,
+  "field_label_en": "Mass charged",
+  "question_en": "Does the patent say 25.3 g of 2-chlorotoluene?",
+  "claimed_en": "25.3 g",
+  "claimed_value": 25.3,
   "claimed_unit": "g",
-  "cited_lines": [32, 33],
+  "basis": "quoted | derived",
+  "cited_lines": [182, 183, 184, 185, 186, 187, 188],
   "evidence_en": "full English text of the cited lines, already translated",
-  "evidence_lines": [ { "n": 32, "text_en": "...", "is_translation": true } ],
-  "highlights": [ { "line": 32, "start": 14, "end": 18, "kind": "value" } ],
+  "evidence_lines": [ { "n": 187, "text_en": "...", "is_translation": true,
+                        "kind": "prose", "pairing": "exact", "matched": true } ],
+  "highlights": [ { "line": 187, "start": 39, "end": 43, "kind": "value" } ],
   "auto": "found | not_found | partial | not_checkable",
-  "auto_reason_en": "The number 12.6 appears on line 32 next to the word grams.",
+  "auto_reason_en": "The number 25.3 appears with its unit grams on the Chinese line 187 and on the English translation on line 188.",
   "needs_human": true,
-  "risk": 0.0,
+  "load_bearing": false,
+  "risk": 0.05,
   "risk_reasons_en": ["..."],
   "structure_svg_path": "output/relevant_output/structures/xxx.svg or null",
   "tier": 1,
@@ -106,8 +113,59 @@ instead of being dominated by whichever section is largest. `summary` must carry
 population size of each tier and the tier 3 breakdown by stratum, because a confidence
 bound needs the denominator and it cannot be safely derived from a filtered list.
 
+`rec` and `rec_field` are the verdict key `verifier/lib/verdict.ts` `resolveRec()`
+understands: `rx:<reaction_id>`, `cmp:<compound_uuid>`, `pw:<pathway_uuid>`,
+`pt:<patent_id>`. Emitted rather than left for the UI to reconstruct, because
+reactions key on `reaction_id` and everything else keys on a uuid, and a consumer
+that guesses one rule for all four writes verdicts that never load again. A
+`__coverage__` claim has no slot in that convention, so it keys on the patent with
+the line number in `rec_field`: `pt:CN104292137A` plus `__coverage__.line_48`.
+
+`record_id` is the gold `id` wherever that is ASCII. Five of the 75 compound
+identifiers in this gold are Chinese; those records get
+`<patent_id>_zh-<10 hex of sha256(identifier)>` instead. The readable name is
+`label_en`, the join key is `uuid`. The id is deliberately NOT derived from the
+translation table: `claim_id` hashes it, this contract promises `claim_id` is stable,
+and a hand-edited translation improving would otherwise orphan every verdict already
+recorded against that record.
+
+`about` is which question the claim asks, and it is not decoration:
+
+- `extraction` - the annotation says X and the patent says Y. **We** are wrong.
+- `patent` - the annotation says the patent contradicts itself. The annotation is
+  **right** and the document is defective.
+
+Blurring them asks a reviewer to mark a correct annotation as wrong. `FINDINGS.md` is
+explicit that its items are defects in the patent and that the annotation records them
+and changes nothing; that posture survives into `question_en`, which is worded from
+`about`. `summary.claims_by_subject` counts both.
+
+`basis` says whether a numeric field is one this patent QUOTES or one the annotator
+DERIVED, inferred per patent from the data rather than hardcoded: a field where no
+value at all appears on any cited line is derived. A derived field is never scored as
+ungrounded - it is recomputed instead, and `auto` reports whether the arithmetic
+holds. `summary.field_basis` shows the inference and its evidence. On CN104292137A
+every numeric field turns out to be quoted, `mmol` included, because the patent prints
+molar amounts in mol and the matcher is unit-aware.
+
 `highlights` are offsets into `evidence_lines[i].text_en`, so the UI highlights without
 re-deriving anything. `kind` is one of `value`, `unit`, `name`, `condition`, `yield`.
+
+`evidence_lines[].pairing` is `exact` where the Chinese line and its English paired one
+for one, `approximate` where the block lengths differed and the English had to be
+clamped, `none` where the block has no English at all, `self` where the line is its own
+translation. `matched` marks the lines that carried the match. `is_translation` is true
+when what is shown came out of a translator - the machine translation of a Chinese
+line, or a `> EN:` line, which is that translation written into the file - and false
+for a line whose own characters are already English: the NMR shifts, the drawn-
+structure spans, the page markers. The Chinese is the authoritative text in this
+document, so a reviewer weighing evidence has to know which of the two they are
+reading.
+
+An `[IMAGE_EXTRACT]` line is rendered as a sentence, not as its JSON: "Drawn on the
+page: 1 structure. C8H9ClO2S (Cc1c(Cl)cccc1S(C)(=O)=O)." The drawn scheme is the only
+evidence a Scheme Step record has, and handing a reviewer 4 kB of raw span and asking
+them to find the chemistry in it is not evidence.
 
 `auto`:
 - `found` - the machine located the claimed value in the cited evidence. Low risk. The
@@ -123,7 +181,11 @@ re-deriving anything. `kind` is one of `value`, `unit`, `name`, `condition`, `yi
   but is not evidence of a defect. `load_bearing` separates the ones a human must
   actually see from the ones that are merely unmatchable.
 
-`needs_human` is the queue filter. `risk` orders it, descending.
+`needs_human` is the queue filter. `risk` orders it, descending. It is normally
+`auto != "found"`; a claim promoted into tier 1 because a check on its own row failed
+also gets `needs_human: true` while keeping `auto: "found"`, because the number is
+printed where the record says it is AND the row does not add up, and both are true at
+once.
 
 ## `records[]` - the per-record roll-up
 
