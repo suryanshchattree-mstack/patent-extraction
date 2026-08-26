@@ -188,7 +188,10 @@ FIXED = FIXED_BY_PATENT.get(PATENT_ID, {})
 lines = []
 A = lines.append
 A(f"# A5 adversarial audit of {PATENT_ID}\n")
-A(f"{len(reports)} independent audits, each in a fresh context, each re-opening the page images.")
+_COUNT = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven",
+          8: "Eight", 9: "Nine", 10: "Ten"}
+A(f"{_COUNT.get(len(reports), len(reports))} independent audits, each in a fresh "
+  f"context, each re-opening the page images.")
 A("None of them produced the artifact it audited.\n")
 sev = {}
 for name, d in reports.items():

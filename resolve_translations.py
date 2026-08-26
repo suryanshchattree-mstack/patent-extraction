@@ -360,7 +360,7 @@ def source_runs(lines: dict[int, str], english: dict[int, str], en_lines: set[in
 # is the difference between "fix the compound table" and "fix the evidence panel".
 POPULATIONS = ["compound_identifier", "compound_alias",
                "provenance_quote", "verification_quote",
-               "source_en_run", "source_bare_run"]
+               "source_en_run", "source_bare_run", "annotator_prose"]
 
 POPULATION_MEANING = {
     "compound_identifier": "the identifier of a gold compound record",
@@ -370,10 +370,62 @@ POPULATION_MEANING = {
     "source_en_run": "a Chinese term left inside the English of a translated "
                      "source line",
     "source_bare_run": "a Chinese term on a source line that carries no English",
+    "annotator_prose": "a Chinese term quoted inside the annotator's English "
+                       "commentary on a provenance row",
 }
 
+# The two provenance fields that are the annotator's OWN prose, written in English
+# with the patent's Chinese quoted inside it:
+#
+#     "the prose names 浓硫酸 or 对甲苯磺酸"
+#     "matches the heading name 2-氯-3-甲基-4-甲磺酰基苯甲酸"
+#
+# A consumer cannot look a sentence like that up as one string, so it substitutes
+# instead, and this is the population that makes substitution safe. DELIBERATELY
+# ONLY THESE TWO. `notes`, `procedure_text` and `molar_ratio_text` also mix the two
+# languages, but what they mix in is whole verbatim sentences of the patent, whose
+# English is the enriched source's job and is already on the screen beside them;
+# pulling those in would turn this table into a second translation of the document.
+# The gate covers what it covers, and this comment is the statement of where it stops.
+PROSE_FIELDS = ("arithmetic_check", "drawing_evidence")
 
-def string_universe(compounds, prov_rows, verification, en_runs, bare_runs):
+
+def substitute(text: str, keys: list[str]):
+    """Replace the longest key that fits at each position; return what is left over.
+
+    THE ORDER IS THE WHOLE POINT. 2-氯-6-甲磺酰基甲苯 is an alias the gold already
+    names in English, and 氯 and 甲磺酰基甲苯 are the fragments it falls into when a
+    shorter key wins. Taking the fragments and joining their English gives Chinese
+    word order in Latin script: 甲磺酰基苯甲酸甲酯 comes out as "methylsulfonylbenzoic
+    acid methyl ester" with the "methyl" at the wrong end of the name. Longest first
+    keeps whole names whole, which is what "translate chemistry as chemistry" means
+    here. `keys` must be sorted the same way the consumer sorts them, longest first,
+    so the artifact and the screen agree about which name was looked up.
+
+    Returns (matched keys in order, leftover Chinese runs).
+    """
+    matched: list[str] = []
+    rest: list[str] = []
+    i = 0
+    while i < len(text):
+        for k in keys:
+            if text.startswith(k, i):
+                matched.append(k)
+                i += len(k)
+                break
+        else:
+            rest.append(text[i])
+            i += 1
+    return matched, re.findall(CJK.pattern + "+", "".join(rest))
+
+
+def sorted_keys(strings) -> list[str]:
+    """Longest first, then lexicographic, so the cover is a function of the input."""
+    return sorted(strings, key=lambda s: (-len(s), s))
+
+
+def string_universe(compounds, prov_rows, verification, en_runs, bare_runs,
+                    curated_keys):
     """Every distinct Chinese string the gold can render, in first-appearance order.
 
     Union over the four populations, never intersection: a quote that names no
@@ -419,6 +471,23 @@ def string_universe(compounds, prov_rows, verification, en_runs, bare_runs):
         add(run, "source_en_run")
     for run in bare_runs:
         add(run, "source_bare_run")
+
+    # LAST, and after everything else is in, because it covers the annotator's prose
+    # with the strings already in the universe and only the leftovers are new. The
+    # curated keys join the cover set so that an entry hand-authored for a leftover
+    # is found on the next run instead of being reported as an entry for a string
+    # nothing looks up. Both the keys that matched and the runs that did not are
+    # added: the matched ones because a consumer substituting them is relying on this
+    # gate having checked them, the leftovers because they are the gaps.
+    keys = sorted_keys(set(order) | set(curated_keys))
+    for row in prov_rows:
+        for field in PROSE_FIELDS:
+            text = row.get(field)
+            if not isinstance(text, str) or not has_chinese(text):
+                continue
+            matched, leftover = substitute(text, keys)
+            for s in matched + leftover:
+                add(s, "annotator_prose")
 
     for s in sites.values():
         s["lines"] = sorted(s["lines"])
@@ -761,7 +830,8 @@ def main() -> int:
     en_runs, bare_runs = source_runs(lines, english, en_lines)
 
     universe, sites = string_universe(compounds, prov_rows, verification,
-                                      en_runs, bare_runs)
+                                      en_runs, bare_runs,
+                                      (curated.get("entries") or {}).keys())
     table = index_curated(curated, universe)
     entries, partial = resolve(universe, sites, compounds, equivalence,
                                source_norm, english, table)

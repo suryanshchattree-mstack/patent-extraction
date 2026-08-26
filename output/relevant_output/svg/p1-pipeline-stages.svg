@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 880" width="100%" role="img" aria-labelledby="p1t p1d"><title id="p1t">The stage graph of run_pipeline.py</title><desc id="p1d">Three bands. The top band, drawn with dashed borders and a marked spine, is what an agent owes before the runner can start: pass V over the rendered pages, passes A0 to A4, pass A5, and three hand-curated input files. The middle and lower bands are the thirteen deterministic stages the runner executes in order, from enrich through to manifest, wrapping left to right across three rows. Three stages are gates that exit non-zero and stop the run: structures, translations and verify. A dotted line links stage 6 to stage 11, which run the same script twice, once to publish the gold the resolvers read and once to pick up what they produced.</desc>
+<defs>
+<marker id="p1arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1a1a1a"/></marker>
+<marker id="p1arrowmute" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5c5c5c"/></marker>
+<pattern id="p1hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#E69F00" stroke-width="2.4"/></pattern>
+</defs>
+<rect width="1240" height="880" fill="#ffffff"/>
+
+<text x="620" y="34" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="19" font-weight="700" fill="#1a1a1a" text-anchor="middle">One patent in, a complete deliverable out</text>
+<text x="620" y="56" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="12.5" font-weight="normal" fill="#5c5c5c" text-anchor="middle">python3 run_pipeline.py --patent-id &lt;ID&gt;   ·   thirteen deterministic stages   ·   three of them refuse to pass until a human supplies something</text>
+
+<!-- ============ band 1: what the runner does NOT do ============ -->
+<text x="40" y="92" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#E69F00" text-anchor="start">NOT RUN BY THIS SCRIPT   ·   an agent owes these before the runner will start</text>
+<line x1="40" y1="100" x2="1200" y2="100" stroke="#c9c9c9" stroke-width="1"/>
+
+<rect x="40" y="112" width="272" height="82" rx="6" fill="#fdf6e9" stroke="#E69F00" stroke-width="2" stroke-dasharray="6 4"/>
+<rect x="40" y="112" width="14" height="82" rx="0" fill="url(#p1hatch)"/>
+<text x="64" y="136" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">pass V   ·   agent, one per page</text>
+<text x="64" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#5c5c5c" text-anchor="start">prompts/V-page-vision.md</text>
+<text x="64" y="174" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#5c5c5c" text-anchor="start">-&gt; input/vision/pNN.json</text>
+<text x="64" y="188" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">reads the rendered page images, not the OCR</text>
+
+<rect x="336" y="112" width="272" height="82" rx="6" fill="#fdf6e9" stroke="#E69F00" stroke-width="2" stroke-dasharray="6 4"/>
+<rect x="336" y="112" width="14" height="82" rx="0" fill="url(#p1hatch)"/>
+<text x="360" y="136" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">passes A0 to A4   ·   agent</text>
+<text x="360" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#5c5c5c" text-anchor="start">prompts/A0..A4-*.md</text>
+<text x="360" y="174" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#5c5c5c" text-anchor="start">-&gt; output/stages/&lt;pass&gt;/</text>
+<text x="360" y="188" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">sections, compounds, reactions, pathways, patent</text>
+
+<rect x="632" y="112" width="272" height="82" rx="6" fill="#fdf6e9" stroke="#E69F00" stroke-width="2" stroke-dasharray="6 4"/>
+<rect x="632" y="112" width="14" height="82" rx="0" fill="url(#p1hatch)"/>
+<text x="656" y="136" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">pass A5   ·   agent, fresh context</text>
+<text x="656" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#5c5c5c" text-anchor="start">prompts/A5-verify.md</text>
+<text x="656" y="174" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#5c5c5c" text-anchor="start">-&gt; output/stages/A5-verify/</text>
+<text x="656" y="188" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">assumes the annotation is wrong until proven</text>
+
+<rect x="928" y="112" width="272" height="82" rx="6" fill="#fdf6e9" stroke="#E69F00" stroke-width="2" stroke-dasharray="6 4"/>
+<rect x="928" y="112" width="14" height="82" rx="0" fill="url(#p1hatch)"/>
+<text x="952" y="136" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">hand-authored input   ·   human</text>
+<text x="952" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#5c5c5c" text-anchor="start">input/&lt;ID&gt;-biblio.json</text>
+<text x="952" y="174" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#5c5c5c" text-anchor="start">input/*-curated.json</text>
+<text x="952" y="188" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">the curated tables start empty; the gates fill the list</text>
+
+<text x="620" y="216" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#5c5c5c" text-anchor="middle">If any of the four is missing the runner prints which pass, which prompt and which path, and stops before writing anything.</text>
+
+<!-- ============ band 2: the deterministic chain ============ -->
+<text x="40" y="252" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#0072B2" text-anchor="start">RUN BY THIS SCRIPT   ·   in this order, skipping any stage whose outputs are newer than its inputs</text>
+<line x1="40" y1="260" x2="1200" y2="260" stroke="#c9c9c9" stroke-width="1"/>
+
+<!-- row 1 -->
+<rect x="40" y="276" width="210" height="92" rx="6" fill="#eef5fb" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="64" cy="300" r="13" fill="#1a1a1a"/><text x="64" y="304" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<text x="84" y="304" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">enrich</text>
+<text x="54" y="328" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">build_enriched.py</text>
+<text x="54" y="345" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">vision reads -&gt; enriched md</text>
+<text x="54" y="359" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">+ structures.json</text>
+
+<rect x="278" y="276" width="210" height="92" rx="6" fill="#eef5fb" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="302" cy="300" r="13" fill="#1a1a1a"/><text x="302" y="304" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<text x="322" y="304" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">collect</text>
+<text x="292" y="328" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">internal copy</text>
+<text x="292" y="345" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">A0, A3, A4 stage files -&gt;</text>
+<text x="292" y="359" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">the raw-*.json names</text>
+
+<rect x="516" y="276" width="210" height="92" rx="6" fill="#eef5fb" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="540" cy="300" r="13" fill="#1a1a1a"/><text x="540" y="304" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+<text x="560" y="304" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">merge</text>
+<text x="530" y="328" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">merge_stages.py</text>
+<text x="530" y="345" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">per-section A1 / A2 files</text>
+<text x="530" y="359" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">-&gt; one array each</text>
+
+<rect x="754" y="276" width="210" height="92" rx="6" fill="#eef5fb" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="778" cy="300" r="13" fill="#1a1a1a"/><text x="778" y="304" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+<text x="798" y="304" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">finalise</text>
+<text x="768" y="328" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">finalise.py</text>
+<text x="768" y="345" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">ids, uuids, rollup, biblio</text>
+<text x="768" y="359" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">every key seeded with the ID</text>
+
+<rect x="992" y="276" width="208" height="92" rx="6" fill="#eef5fb" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="1016" cy="300" r="13" fill="#1a1a1a"/><text x="1016" y="304" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">5</text>
+<text x="1036" y="304" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">validate</text>
+<text x="1006" y="328" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">schemas/validate.py</text>
+<text x="1006" y="345" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">JSON Schema conformance</text>
+<text x="1006" y="359" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">produces nothing, always runs</text>
+
+<line x1="252" y1="322" x2="274" y2="322" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+<line x1="490" y1="322" x2="512" y2="322" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+<line x1="728" y1="322" x2="750" y2="322" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+<line x1="966" y1="322" x2="988" y2="322" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+<path d="M 1096 370 L 1096 392 L 145 392 L 145 414" fill="none" stroke="#1a1a1a" stroke-width="1.8" marker-end="url(#p1arrow)"/>
+
+<!-- row 2 -->
+<rect x="40" y="418" width="210" height="92" rx="6" fill="#eef5fb" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="64" cy="442" r="13" fill="#1a1a1a"/><text x="64" y="446" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">6</text>
+<text x="84" y="446" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">publish-gold</text>
+<text x="54" y="470" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">make_relevant_output.py</text>
+<text x="54" y="487" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">the resolvers read gold from</text>
+<text x="54" y="501" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">the deliverable, so publish first</text>
+
+<rect x="278" y="418" width="210" height="92" rx="6" fill="#fdf1eb" stroke="#D55E00" stroke-width="2.6"/>
+<circle cx="302" cy="442" r="13" fill="#1a1a1a"/><text x="302" y="446" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">7</text>
+<text x="322" y="446" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">structures</text>
+<polygon points="450,432 460,432 467,439 467,449 460,456 450,456 443,449 443,439" fill="#ffffff" stroke="#D55E00" stroke-width="2"/>
+<text x="455" y="447" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="9" font-weight="700" fill="#D55E00" text-anchor="middle">GATE</text>
+<text x="292" y="470" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">resolve_structures.py</text>
+<text x="292" y="487" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">stops if a molecule that</text>
+<text x="292" y="501" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">carries chemistry has no SMILES</text>
+
+<rect x="516" y="418" width="210" height="92" rx="6" fill="#fdf1eb" stroke="#D55E00" stroke-width="2.6"/>
+<circle cx="540" cy="442" r="13" fill="#1a1a1a"/><text x="540" y="446" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">8</text>
+<text x="560" y="446" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">translations</text>
+<polygon points="688,432 698,432 705,439 705,449 698,456 688,456 681,449 681,439" fill="#ffffff" stroke="#D55E00" stroke-width="2"/>
+<text x="693" y="447" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="9" font-weight="700" fill="#D55E00" text-anchor="middle">GATE</text>
+<text x="530" y="470" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">resolve_translations.py</text>
+<text x="530" y="487" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">stops if Chinese that can reach</text>
+<text x="530" y="501" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">a screen has no English</text>
+
+<rect x="754" y="418" width="210" height="92" rx="6" fill="#eef5fb" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="778" cy="442" r="13" fill="#1a1a1a"/><text x="778" y="446" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">9</text>
+<text x="798" y="446" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">diagrams</text>
+<text x="768" y="470" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">make_svgs.py, make_approach.py</text>
+<text x="768" y="487" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">counts read off the run, route</text>
+<text x="768" y="501" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">from pathways.json if not drawn</text>
+
+<rect x="992" y="418" width="208" height="92" rx="6" fill="#eef5fb" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="1016" cy="442" r="13" fill="#1a1a1a"/><text x="1016" y="446" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">10</text>
+<text x="1036" y="446" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">rasterise</text>
+<text x="1006" y="470" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">svg2jpg.py --all</text>
+<text x="1006" y="487" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">every SVG also as a JPG, for</text>
+<text x="1006" y="501" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">readers that will not render SVG</text>
+
+<line x1="252" y1="464" x2="274" y2="464" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+<line x1="490" y1="464" x2="512" y2="464" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+<line x1="728" y1="464" x2="750" y2="464" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+<line x1="966" y1="464" x2="988" y2="464" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+<path d="M 1096 512 L 1096 534 L 145 534 L 145 556" fill="none" stroke="#1a1a1a" stroke-width="1.8" marker-end="url(#p1arrow)"/>
+
+<!-- row 3 -->
+<rect x="40" y="560" width="210" height="92" rx="6" fill="#eef5fb" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="64" cy="584" r="13" fill="#1a1a1a"/><text x="64" y="588" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">11</text>
+<text x="84" y="588" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">assemble</text>
+<text x="54" y="612" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">make_relevant_output.py</text>
+<text x="54" y="629" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">the same script as stage 6, run</text>
+<text x="54" y="643" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">again to pick up 7, 8, 9 and 10</text>
+
+<rect x="278" y="560" width="210" height="92" rx="6" fill="#fdf1eb" stroke="#D55E00" stroke-width="2.6"/>
+<circle cx="302" cy="584" r="13" fill="#1a1a1a"/><text x="302" y="588" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">12</text>
+<text x="322" y="588" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">verify</text>
+<polygon points="450,574 460,574 467,581 467,591 460,598 450,598 443,591 443,581" fill="#ffffff" stroke="#D55E00" stroke-width="2"/>
+<text x="455" y="589" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="9" font-weight="700" fill="#D55E00" text-anchor="middle">GATE</text>
+<text x="292" y="612" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">verify.py</text>
+<text x="292" y="629" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">the review queue the UI reads;</text>
+<text x="292" y="643" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">stops on a grounding failure</text>
+
+<rect x="516" y="560" width="210" height="92" rx="6" fill="#eef5fb" stroke="#0072B2" stroke-width="1.8"/>
+<circle cx="540" cy="584" r="13" fill="#1a1a1a"/><text x="540" y="588" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">13</text>
+<text x="560" y="588" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">manifest</text>
+<text x="530" y="612" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">internal</text>
+<text x="530" y="629" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">sha256 of every artifact and of</text>
+<text x="530" y="643" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">every input it came from</text>
+
+<line x1="252" y1="606" x2="274" y2="606" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+<line x1="490" y1="606" x2="512" y2="606" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+
+<rect x="754" y="560" width="446" height="92" rx="6" fill="#eef7f2" stroke="#009E73" stroke-width="2.2"/>
+<text x="774" y="588" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13.5" font-weight="700" fill="#1a1a1a" text-anchor="start">output/relevant_output/   ·   the deliverable</text>
+<text x="774" y="610" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" fill="#5c5c5c" text-anchor="start">gold/  provenance/  verification/  structures/  svg/  manifest.json</text>
+<text x="774" y="629" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">Every file here is listed in manifest.json with the stage that made it and the hashes it came from.</text>
+<text x="774" y="643" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10.5" fill="#5c5c5c" text-anchor="start">Anything present that no stage produced is listed with a null stage, not quietly counted as current.</text>
+<line x1="728" y1="606" x2="750" y2="606" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+
+<!-- the same-script link, 6 to 11 -->
+<path d="M 34 464 C 12 464, 12 606, 34 606" fill="none" stroke="#5c5c5c" stroke-width="1.5" stroke-dasharray="2 4" marker-end="url(#p1arrowmute)"/>
+<text x="26" y="540" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="10" fill="#5c5c5c" text-anchor="middle" transform="rotate(-90 26 540)">same script, twice</text>
+
+<!-- ============ legend ============ -->
+<rect x="40" y="680" width="1160" height="176" rx="6" fill="#f6f6f6" stroke="#c9c9c9" stroke-width="1"/>
+<text x="60" y="706" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="12" font-weight="700" fill="#5c5c5c" text-anchor="start">LEGEND   ·   every distinction below is carried by a shape or a word as well as by a colour, so the diagram survives greyscale</text>
+
+<rect x="60" y="720" width="30" height="20" rx="4" fill="#eef5fb" stroke="#0072B2" stroke-width="1.8"/>
+<text x="102" y="735" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="start">solid thin border   ·   deterministic stage, run by run_pipeline.py</text>
+
+<rect x="60" y="750" width="30" height="20" rx="4" fill="#fdf1eb" stroke="#D55E00" stroke-width="2.6"/>
+<polygon points="107,750 117,750 124,757 124,767 117,774 107,774 100,767 100,757" fill="#ffffff" stroke="#D55E00" stroke-width="2"/>
+<text x="112" y="765" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="8" font-weight="700" fill="#D55E00" text-anchor="middle">GATE</text>
+<text x="134" y="765" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="start">thick border, octagon marked GATE   ·   exits non-zero and stops the run</text>
+
+<rect x="60" y="780" width="30" height="20" rx="4" fill="#fdf6e9" stroke="#E69F00" stroke-width="2" stroke-dasharray="6 4"/>
+<rect x="60" y="780" width="11" height="20" fill="url(#p1hatch)"/>
+<text x="102" y="795" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="start">dashed border, marked spine   ·   NOT run by the script; an agent or a human produces it</text>
+
+<rect x="60" y="810" width="30" height="20" rx="4" fill="#eef7f2" stroke="#009E73" stroke-width="2.2"/>
+<text x="102" y="825" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="start">medium border, no number   ·   the deliverable tree, not a stage</text>
+
+<line x1="640" y1="730" x2="686" y2="730" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" marker-end="url(#p1arrow)"/>
+<text x="698" y="734" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="start">solid arrow   ·   the next stage consumes what this one wrote</text>
+
+<line x1="640" y1="760" x2="686" y2="760" stroke="#5c5c5c" stroke-width="1.5" stroke-dasharray="2 4" marker-end="url(#p1arrowmute)"/>
+<text x="698" y="764" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#1a1a1a" text-anchor="start">dotted arrow   ·   the same script, run a second time over more inputs</text>
+
+<text x="640" y="794" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#5c5c5c" text-anchor="start">--from &lt;stage&gt; starts at a stage and runs everything after.  --only &lt;stage&gt; runs one.</text>
+<text x="640" y="812" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#5c5c5c" text-anchor="start">--plan prints this graph as text and stops.  --force ignores every up-to-date check.</text>
+<text x="640" y="830" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#5c5c5c" text-anchor="start">A stage that failed last time always runs again: the manifest remembers, mtimes do not.</text>
+</svg>

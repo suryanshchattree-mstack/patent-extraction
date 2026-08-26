@@ -332,6 +332,11 @@ NO_ENGLISH = ("[This source line is Chinese and the pipeline carries no English 
 PAGE_MARKER = re.compile(r"^<!-- page (?P<page>\S+) :: (?P<label>.*?) :: "
                          r"(?P<type>\S+) :: confidence=(?P<conf>\S+) -->$")
 
+# What build_enriched.py puts at the head of a source paragraph: the patent's own
+# [00NN] number, or the literal "None" where the page printed no marker. Only ever
+# on the Chinese side, so it is proof that a line is source and not translation.
+PARAGRAPH_MARKER = re.compile(r"^(?:\[\d{4}\]|None\s)")
+
 # "tembotrione (tembotrione)", which is what folding 环磺草酮 into English leaves
 # behind wherever the source already glossed it. Collapsed rather than shipped.
 GLOSS = re.compile(r"(?P<before>[^\s()][^()]*?)\s*\((?P<inner>[^()]+)\)")
@@ -385,10 +390,14 @@ class Source:
         self.lines = read_numbered(patent_id)
         # resolve_translations.py owns the paragraph walk and is still being
         # worked on; it has already grown a third return value once. Unpacked by
-        # position at both ends so a fourth does not stop this stage dead, since the
-        # only two things needed here are the line-to-English map and the summary.
+        # position at both ends so a fourth does not stop this stage dead. The
+        # middle value, when there is one, is the set of lines that ARE English
+        # output, which no regex can decide: only the first line of a translation
+        # carries "    > EN: " and every continuation line after it looks exactly
+        # like a line of the patent.
         walked = english_by_line(patent_id, self.lines)
         self.english, self.walk = walked[0], walked[-1]
+        self.en_hint: set[int] = set(walked[1]) if len(walked) > 2 else set()
         self.index = index
         self.numbers = sorted(self.lines)
         self.sha256 = hashlib.sha256(
@@ -397,7 +406,6 @@ class Source:
         self.kind: dict[int, str] = {}
         self.text_en: dict[int, str] = {}
         self.is_translation: dict[int, bool] = {}
-        self.en_partner: dict[int, int] = {}
 
         for n in self.numbers:
             raw = self.lines[n]
@@ -406,19 +414,15 @@ class Source:
             self.text_en[n] = text
             self.is_translation[n] = translated
 
-        # A Chinese line and the "> EN:" line immediately under it are one unit of
-        # evidence. Citing the first without the second hides the English half from
-        # a reviewer who can only read the English half.
-        for n in self.numbers:
-            nxt = n + 1
-            if self.kind[n] in ("prose", "claim") and self.kind.get(nxt) == "translation":
-                self.en_partner[n] = nxt
+        self.en_for, self.zh_for, self.pairing = self._pair_blocks()
 
         # Match forms, computed once. Every line is offered to the quote cover, not
         # only the translated ones, so a quote sitting on an untranslated line is
         # still located and reported rather than silently called missing.
         self.norm = {n: normalise(self.lines[n]) for n in self.numbers
                      if normalise(self.lines[n])}
+
+    # ------------------------------------------------------------ line kinds
 
     def _kind(self, raw: str) -> str:
         if not raw.strip():
@@ -430,6 +434,104 @@ class Source:
         if raw.startswith("[IMAGE_EXTRACT"):
             return "image_extract"
         return "prose"
+
+    def is_zh(self, n: int) -> bool:
+        return self.kind[n] == "prose" and has_chinese(self.lines[n])
+
+    def is_en_output(self, n: int, run_open: bool) -> bool:
+        """Is line `n` part of the English a Chinese block was translated into?
+
+        The paragraph walk in resolve_translations.py is the authority and is used
+        alone wherever it is available, INCLUDING as a negative. Line 199 is the
+        NMR shifts of Example 1 step 2, printed in the patent, carrying no Han
+        character at all; it looks exactly like an English continuation line and it
+        is not one. Absorbing it into line 197's translation would make every one
+        of its shift values part of 197's evidence, and a claim of 3.14 g would
+        then match an NMR peak.
+
+        The fallback, for a corpus that has no walk, is the same rule spelled out
+        by shape: the "    > EN: " mark opens a run, and a line with no Chinese and
+        no paragraph marker continues one.
+        """
+        if self.en_hint:
+            return n in self.en_hint or self.kind[n] == "translation"
+        if self.kind[n] == "translation":
+            return True
+        return (run_open and self.kind[n] == "prose"
+                and not has_chinese(self.lines[n])
+                and not PARAGRAPH_MARKER.match(self.lines[n]))
+
+    # ------------------------------------------------------------ block pairing
+
+    def _pair_blocks(self):
+        """Which English line translates which Chinese line. See SOURCE-PAIRING.md.
+
+        Not n + 1. The source alternates Chinese and English 53 times, which is why
+        n + 1 looks right, but where the chemistry is it does this:
+
+            45 | 1) ...的合成                        zh, a heading
+            46 | 将2-氯甲苯...25.3g(0.2mol)...       zh, THE PROCEDURE
+            47 |     > EN: 1) Synthesis of ...       en, the heading
+            48 | 2-Chlorotoluene, 25.3 g (0.2 mol)   en, THE PROCEDURE
+
+        Line 46 carries every mass, temperature and time in step 1, and n + 1 hands
+        back line 47, a heading with no number in it. A reviewer shown that would
+        correctly conclude the evidence does not support "25.3 g of 2-chlorotoluene"
+        - and the extraction was right, the pairing was wrong. That is the worst
+        failure this tool has, because it accuses a correct extraction and leaves
+        the reviewer no way to see it was the tool's fault. Measured at 19% of the
+        288 compound citations that point at a Chinese line.
+
+        So: take each maximal run of Chinese lines and the run of English lines
+        immediately after it. Equal lengths pair positionally, i-th to i-th, and
+        that is exact. Unequal lengths pair what they can and clamp the remainder
+        onto the last English line, marked `approximate` so a screen can say so. No
+        English in the block at all means no translation, said in English.
+        """
+        en_for: dict[int, list[int]] = {}
+        zh_for: dict[int, list[int]] = {}
+        pairing: dict[int, str] = {}
+
+        nums = self.numbers
+        i = 0
+        while i < len(nums):
+            if not self.is_zh(nums[i]):
+                i += 1
+                continue
+            zh_run = []
+            while i < len(nums) and self.is_zh(nums[i]):
+                zh_run.append(nums[i])
+                i += 1
+            en_run: list[int] = []
+            j = i
+            while j < len(nums) and self.is_en_output(nums[j], bool(en_run)):
+                en_run.append(nums[j])
+                j += 1
+
+            if not en_run:
+                for n in zh_run:
+                    pairing[n] = "none"
+                continue
+            exact = len(en_run) == len(zh_run)
+            for k, n in enumerate(zh_run):
+                partner = en_run[k] if k < len(en_run) else en_run[-1]
+                en_for[n] = [partner]
+                zh_for.setdefault(partner, []).append(n)
+                pairing[n] = "exact" if exact else "approximate"
+            # An English run longer than its Chinese run is one paragraph broken
+            # over more English lines than Chinese ones. Every leftover English
+            # line still belongs to the block, so it hangs off the last Chinese
+            # line rather than being orphaned into the uncited pile.
+            if len(en_run) > len(zh_run):
+                last = zh_run[-1]
+                for extra in en_run[len(zh_run):]:
+                    en_for[last].append(extra)
+                    zh_for.setdefault(extra, []).append(last)
+                pairing[last] = "approximate"
+            i = j
+        return en_for, zh_for, pairing
+
+    # ------------------------------------------------------------ English text
 
     def _english(self, n: int, raw: str) -> tuple[str, bool]:
         if not raw.strip():
@@ -452,13 +554,19 @@ class Source:
         return "claim" if k == "prose" and n in claim_lines else k
 
     def with_partners(self, lines) -> list[int]:
+        """A citation, plus the English of every Chinese line in it.
+
+        A Chinese line and the English it was translated into are one unit of
+        evidence. Citing the first without the second hides the English half from
+        the only reader this file has.
+        """
         out = set()
         for n in lines:
             if n not in self.lines:
                 continue
             out.add(n)
-            if n in self.en_partner:
-                out.add(self.en_partner[n])
+            out.update(self.en_for.get(n, ()))
+            out.update(self.zh_for.get(n, ()))
         return sorted(out)
 
 
@@ -510,10 +618,10 @@ class Record:
     """One gold record, with its identity, its citation and its check results."""
 
     __slots__ = ("record_id", "kind", "label_en", "section_en", "cited",
-                 "claims", "checks", "svg", "uuid")
+                 "claims", "checks", "svg", "uuid", "rec", "flags")
 
     def __init__(self, record_id, kind, label_en, section_en, cited, svg=None,
-                 uuid=None):
+                 uuid=None, rec=None, flags=()):
         self.uuid = uuid
         self.record_id = record_id
         self.kind = kind
@@ -521,8 +629,25 @@ class Record:
         self.section_en = section_en
         self.cited = cited
         self.svg = svg
+        # The verdict key verifier/lib/verdict.ts resolveRec() understands. Emitted
+        # rather than left for the UI to reconstruct, because reactions key on
+        # reaction_id and everything else keys on a uuid, and a consumer that
+        # guesses one rule for all four writes verdicts that never load again.
+        self.rec = rec
+        # The annotation's own validation_flags. Carried on the record so a check
+        # that rediscovers one can say "the annotation flagged this too" instead of
+        # presenting it as a new finding.
+        self.flags = list(flags)
         self.claims: list[dict] = []
         self.checks: list[dict] = []
+
+    @property
+    def stratum(self) -> str:
+        return f"{self.kind}:{self.section_en}"
+
+    def failing(self) -> bool:
+        return any(c["status"] == "fail" for c in self.checks)
+
 
 
 def ascii_key(text: str) -> str:
@@ -652,7 +777,10 @@ class Engine:
 
         self.records: list[Record] = []
         self.claims: list[dict] = []
+        self.record_of: dict[int, Record] = {}
         self.cited_lines: dict[int, set[str]] = {}
+        self.bases: dict[str, dict] = {}
+        self.agreement = {"both": [], "machine_only": [], "annotation_only": []}
 
     # -------------------------------------------------------------- helpers
 
@@ -678,43 +806,35 @@ class Engine:
             self.cited_lines.setdefault(n, set()).add(record_id)
 
     def evidence(self, cited: list[int], hit_lines: set[int]) -> list[dict]:
-        """The evidence panel: every line that mattered, then the rest, capped."""
+        """The evidence panel: every line that mattered, then the rest, capped.
+
+        `pairing` says how the English on a Chinese line was arrived at, so a screen
+        can mark the four lines in this document whose translation had to be clamped
+        rather than paired one for one. `is_translation` says whether what is shown
+        is a translation at all or the literal characters on the line.
+        """
         ordered = sorted(cited, key=lambda n: (n not in hit_lines, n))
         shown = sorted(ordered[:EVIDENCE_LINE_CAP])
         return [{"n": n,
                  "text_en": self.source.text_en.get(n, ""),
-                 "is_translation": self.source.is_translation.get(n, False)}
+                 "is_translation": self.source.is_translation.get(n, False),
+                 "kind": self.source.label_kind(n, self.claim_lines),
+                 "pairing": self.source.pairing.get(n, "self"),
+                 "matched": n in hit_lines}
                 for n in shown]
 
     # -------------------------------------------------------------- numeric claim
 
-    def numeric_claim(self, rec: Record, field: str, value: float,
-                      unit: str | None, subject_en: str,
-                      highlight_kind: str = "value") -> dict:
-        """One number, asked of the lines its own record cites.
+    def locate(self, cited, value: float, unit: str | None):
+        """Where on the cited lines this quantity is printed, if it is at all.
 
-        Four verdicts and what each means to a reviewer who cannot read the patent:
-
-            found        the number and its unit are both printed on a cited line
-            partial      the number is there without its unit, or only in one of the
-                         two languages, or only as a comma-decimal reading
-            not_found    the number is on none of the cited lines. Read this one
-            not_checkable the record cites no line at all, so nothing can be asked
+        Three strengths, and the difference between them is what a reviewer needs.
+        `exact` is the number with its unit beside it. `loose` is the number with
+        no unit, which is a real state in this document: the patent prints thionyl
+        chloride as "71.4(0.6mol)" with no g anywhere. `comma` is the number only
+        if a comma on the line is read as a decimal point, which is offered last
+        and never silently, because this document is full of 1,2-dichloroethane.
         """
-        cited = rec.cited
-        claimed_en = fmt_quantity(value, unit)
-        question = (f"Does the patent say {claimed_en} of {subject_en}?"
-                    if unit in ("g", "ml", "mmol")
-                    else f"Does the patent say {claimed_en} for {subject_en}?")
-
-        if not cited:
-            return self._claim(rec, field, question, claimed_en, value, unit,
-                               [], [], "not_checkable",
-                               "This record cites no source line, so there is "
-                               "nothing to check the number against.",
-                               ["The record carries no provenance."],
-                               highlight_kind)
-
         exact, loose, comma = [], [], []
         for n in cited:
             text = self.source.lines.get(n, "")
@@ -728,7 +848,47 @@ class Engine:
             if not exact and not loose:
                 if any(same_number(v, value) for v in comma_decimals(text)):
                     comma.append(n)
+        return exact, loose, comma
 
+    def numeric_claim(self, rec: Record, field: str, value: float,
+                      unit: str | None, subject_en: str,
+                      highlight_kind: str = "value",
+                      field_name: str | None = None,
+                      derive: dict | None = None) -> dict:
+        """One number, asked of the lines its own record cites.
+
+        Four verdicts and what each means to a reviewer who cannot read the patent:
+
+            found        the number and its unit are both printed on a cited line
+            partial      the number is there without its unit, or only in one of the
+                         two languages, or only as a comma-decimal reading
+            not_found    the number is on none of the cited lines. Read this one
+            not_checkable the record cites no line at all, so nothing can be asked
+
+        The verdict is provisional until `resolve_bases()` has run. A field that no
+        record ever quotes is DERIVED rather than absent, and scoring it here as
+        ungrounded would fill the review queue with the machine being wrong about a
+        field the patent never states. See resolve_bases().
+        """
+        cited = rec.cited
+        claimed_en = fmt_quantity(value, unit)
+        question = (f"Does the patent say {claimed_en} of {subject_en}?"
+                    if unit in ("g", "ml", "mmol")
+                    else f"Does the patent say {claimed_en} for {subject_en}?")
+        extra = {"basis": "quoted", "_field_name": field_name or field.split(".")[-1],
+                 "_derive": derive, "_value": value, "_unit": unit,
+                 "_subject": subject_en}
+
+        if not cited:
+            return self._claim(rec, field, question, claimed_en, value, unit,
+                               [], [], "not_checkable",
+                               "This record cites no source line, so there is "
+                               "nothing to check the number against.",
+                               ["The record carries no provenance."],
+                               highlight_kind, load_bearing=True, extra=extra)
+
+        exact, loose, comma = self.locate(cited, value, unit)
+        extra["_matched"] = bool(exact or loose or comma)
         hits = exact or loose
         hit_lines = {n for n, _ in hits} | set(comma)
         zh = sorted(n for n in hit_lines if self.source.kind[n] != "translation")
@@ -787,7 +947,8 @@ class Engine:
                 highlights.append(h)
         return self._claim(rec, field, question, claimed_en, value, unit,
                            cited, highlights, auto, reason, risk_reasons,
-                           highlight_kind, hit_lines)
+                           highlight_kind, hit_lines, extra=extra)
+
 
     def highlights_for(self, line: int, value: float, unit: str | None,
                        kind: str) -> list[dict]:
@@ -970,7 +1131,22 @@ class Engine:
     def _claim(self, rec: Record, field: str, question: str, claimed_en: str,
                claimed_value, claimed_unit, cited, highlights, auto, reason,
                risk_reasons, highlight_kind, hit_lines=frozenset(),
-               panel_lines=None) -> dict:
+               panel_lines=None, about="extraction", load_bearing=False,
+               rec_field=None, extra=None) -> dict:
+        """Assemble one claim. Every field a reviewer or a sampler needs, inline.
+
+        `about` is the question being asked, and it is not decoration. There are two
+        completely different things a reviewer can be shown:
+
+            extraction   the annotation says X and the patent says Y. We are wrong.
+            patent       the annotation says the patent contradicts itself. We are
+                         RIGHT and the document is defective.
+
+        Blurring them asks a reviewer to mark a correct annotation as wrong, which
+        is worse than not asking at all. FINDINGS.md is explicit that its items are
+        defects in the patent and that the annotation changes nothing, and that
+        posture has to survive into every question worded here.
+        """
         panel = panel_lines if panel_lines is not None else cited
         risk = BASE_RISK[auto]
         if risk_reasons:
@@ -979,8 +1155,12 @@ class Engine:
             "claim_id": claim_id(rec.record_id, field),
             "record_id": rec.record_id,
             "record_kind": rec.kind,
+            "rec": rec.rec,
+            "rec_field": rec_field if rec_field is not None else field,
             "record_label_en": rec.label_en,
             "section_en": rec.section_en,
+            "stratum": rec.stratum,
+            "about": about,
             "field": field,
             "field_label_en": field_label(field),
             "question_en": question,
@@ -995,13 +1175,19 @@ class Engine:
             "auto": auto,
             "auto_reason_en": reason,
             "needs_human": auto != "found",
+            "load_bearing": bool(load_bearing),
             "risk": round(risk, 2),
             "risk_reasons_en": risk_reasons,
             "structure_svg_path": rec.svg,
+            "basis": None,
+            "tier": None,
         }
+        claim.update(extra or {})
         rec.claims.append(claim)
         self.claims.append(claim)
+        self.record_of[id(claim)] = rec
         return claim
+
 
 
 def compact_lines(lines) -> str:
@@ -1145,7 +1331,8 @@ class Run(Engine):
             rec = Record(safe_record_id(self.patent_id, c["id"], c["identifier"]),
                          "compound", self.english_name(c["identifier"]),
                          self.section_en_of(c.get("section_label")), cited,
-                         self.svg_for(c["identifier"]), c.get("compound_uuid"))
+                         self.svg_for(c["identifier"]), c.get("compound_uuid"),
+                         f"cmp:{c.get('compound_uuid')}")
             self.records.append(rec)
             self.note_citation(rec.record_id, cited)
 
@@ -1204,7 +1391,8 @@ class Run(Engine):
             rec = Record(r["id"], "reaction", label,
                          self.section_en_of(r.get("section_label")), cited,
                          self.svg_for(r.get("product_name") or ""),
-                         r.get("reaction_uuid"))
+                         r.get("reaction_uuid"), f"rx:{r['reaction_id']}",
+                         r.get("validation_flags") or [])
             self.records.append(rec)
             self.note_citation(rec.record_id, cited)
 
@@ -1294,7 +1482,7 @@ class Run(Engine):
             cited = self.source.with_partners(sorted(set(cited)))
             rec = Record(f"{self.patent_id}_pathway_{uuid}", "pathway", label,
                          self.section_en_of(p.get("section_label")), cited,
-                         None, uuid)
+                         None, uuid, f"pw:{uuid}")
             self.records.append(rec)
             self.note_citation(rec.record_id, cited)
             if p.get("overall_yield_pct") is not None:
@@ -1310,7 +1498,7 @@ class Run(Engine):
              and k in ("prose", "translation")])
         rec = Record(f"{self.patent_id}_patent", "patent",
                      p.get("title") or self.patent_id, "Whole patent", cited,
-                     None, p.get("patent_uuid"))
+                     None, p.get("patent_uuid"), f"pt:{self.patent_id}")
         self.records.append(rec)
         self.note_citation(rec.record_id, cited)
 
@@ -1686,10 +1874,15 @@ class Run(Engine):
 
         for n in self.uncited_chemistry:
             sigs = next(l["signals"] for l in self.coverage_lines if l["n"] == n)
+            # A candidate miss belongs to the patent as a whole, so its verdict
+            # keys on the patent with the line number in the field. The convention
+            # in verifier/lib/verdict.ts has no slot for a source line, and
+            # inventing one would write verdicts that resolveRec cannot load.
             rec = Record(f"{self.patent_id}_line_{n}", "source_line",
                          f"Source line {n}",
                          self.section_of_line.get(n, "Unassigned"),
-                         self.source.with_partners([n]))
+                         self.source.with_partners([n]),
+                         None, None, f"pt:{self.patent_id}")
             self.records.append(rec)
             reason = ("No record in the whole annotation cites this line, and it "
                       "carries " + english_list(
@@ -1702,7 +1895,8 @@ class Run(Engine):
                         f"line {n}: " + self.source.text_en[n][:200], None, None,
                         rec.cited, [], "not_checkable", reason,
                         ["An uncited line carrying chemistry is a candidate miss."],
-                        "name", {n})
+                        "name", {n}, load_bearing=True,
+                        rec_field=f"__coverage__.line_{n}")
 
 
 def english_list(items) -> str:

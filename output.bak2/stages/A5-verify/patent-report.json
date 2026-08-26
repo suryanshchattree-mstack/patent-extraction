@@ -1,0 +1,170 @@
+{
+  "artifact": "patent.json",
+  "records_audited": 1,
+  "findings": [
+    {
+      "check": "translation",
+      "severity": "major",
+      "record": "CN104292137A",
+      "field": "title",
+      "problem": "The title names a different herbicide from the one the document is about: 'cyclic sulcotrione' is Google's character-by-character gloss of 环磺草酮 (环 = cyclic, 磺草酮 = sulcotrione) and is not a compound, while sulcotrione itself is a real and different triketone.",
+      "source_line": 107,
+      "quote": "[0002] 除草剂环磺草酮(Tembotrione)，化学名称：2-(2-氯4-甲磺酰基-3-[(2,2,2-三氟乙氧基)甲基]苯甲酰基)环己烷-1,3-二酮。由拜耳公司2007年研制的三酮类玉米田除草剂",
+      "artifact_says": "\"title\": \"Process for synthesizing triketone herbicide cyclic sulcotrione\"",
+      "should_be": "Follow the Chinese. [0002] gives the chemical name 2-(2-chloro-4-methylsulfonyl-3-[(2,2,2-trifluoroethoxy)methyl]benzoyl)cyclohexane-1,3-dione and attributes it to Bayer in 2007, which is tembotrione exactly; sulcotrione is 2-(2-chloro-4-mesylbenzoyl)cyclohexane-1,3-dione and lacks the trifluoroethoxymethyl group. Every other field in this artifact (patent_summary, extraction_rollup.target_compounds, all 5 pathways) says tembotrione. Minimal correction: set title to 'Synthesis process for the triketone herbicide tembotrione' and keep the Google string as an alias, or leave it and add an honest_uncertainty_flag naming the conflict. The biblio scrape being the stated source does not excuse it - A5 check 5 requires the artifact to follow the Chinese.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "CN104292137A",
+      "field": "abstract",
+      "problem": "abstract is null although the source prints the full (57) 摘要 on the front page.",
+      "source_line": 38,
+      "quote": "本发明涉及一种三酮类除草剂环磺草酮的合成工艺,包括有以下步骤:1)2-氯-6-甲磺酰基甲苯的合成;2)2-氯-3-乙酰基-6-甲磺酰基甲苯的合成;3)2-氯-3-甲基-4-甲磺酰基苯甲酸的合成;...8)环磺草酮的合成。本发明的有益效果在于:缩短了反应步骤和时间,提高了中间体的收率;反应条件更温和,更安全;成本降低。",
+      "artifact_says": "\"abstract\": null",
+      "should_be": "Populate abstract with the verbatim Chinese at line 38. The gap is structural: A4's output schema never asks the pass for an abstract, and finalise.py line 300 reads llm.get(\"abstract_text\") - a key the A4 prompt does not define - so the field can only ever be null.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "CN104292137A",
+      "field": "bibliographic.ipc_codes",
+      "problem": "ipc_codes is null although both IPC classifications are printed on the front page of the source.",
+      "source_line": 29,
+      "quote": "C07C 317/24(2006.01)\nC07C 315/04(2006.01)",
+      "artifact_says": "\"ipc_codes\": null",
+      "should_be": "[\"C07C 317/24\", \"C07C 315/04\"]. The biblio scrape (input/CN104292137A-biblio.json) has no ipc_codes key at all and finalise.py hardcodes None, so the codes were never in reach of the merge even though the source text carries them at line 29-30 under (51) Int.Cl.",
+      "confidence": "high"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "CN104292137A",
+      "field": "extraction_rollup.compound_count",
+      "problem": "compound_count 75 is arithmetically correct against compounds.json but is inflated by roughly 16 records, because eight molecules are each held three times under three different English spellings of the same Chinese name.",
+      "source_line": 197,
+      "quote": "在装有搅拌器，温度计和回流冷凝管的500ml四口反应瓶中加入2-氯-6-甲磺酰基甲苯34.0g(0.2mol)",
+      "artifact_says": "\"compound_count\": 75",
+      "should_be": "The count faithfully reports len(compounds.json), so the arithmetic passes; the defect is upstream. Normalising '(methanesulfonyl)' / '(methylsulfonyl)' / 'methylsulfonyl' spellings collapses 24 records to 8 and gives 59 distinct molecules. Any benchmark using compound_count as a recall denominator will be measuring the annotation's own naming inconsistency. Same root cause as the critical finding in pathways-report.json.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "major",
+      "record": "CN104292137A",
+      "field": "extraction_rollup.best_overall_yield_pathway_uuid",
+      "problem": "The pointer ca46f39f-6f64-5bfd-bd5d-256718ff1ac6 is not unique to the winning pathway - three pathways share it, and two of those three have overall_yield_pct null.",
+      "source_line": 0,
+      "quote": "N/A - finalise.py:229 keys pathway_uuid on (patent_id, scope, ksm, product) with no section_label; finalise.py:239 picks best = max(...) which resolves the 28.4 tie to the Example 1 record.",
+      "artifact_says": "\"best_overall_yield_pct\": 28.4, \"best_overall_yield_pathway_uuid\": \"ca46f39f-6f64-5bfd-bd5d-256718ff1ac6\"",
+      "should_be": "Resolve the pathway_uuid collision first (see pathways-report.json finding 1). Until then a consumer dereferencing this uuid gets three pathways back, two of which contradict the 28.4 it is attached to. Note also that the patent-scope pathway carries the same 28.4 under a distinct uuid (284c1d68-1798-504e-95e2-3416ecaa9960), so the tie-break is arbitrary.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "CN104292137A",
+      "field": "bibliographic.patent_type",
+      "problem": "patent_type is null although the source's INID (12) field states the document kind.",
+      "source_line": 8,
+      "quote": "(12) 发明专利申请",
+      "artifact_says": "\"patent_type\": null",
+      "should_be": "'invention_patent_application' or equivalent. Line 10 also gives the kind code directly: '(10) 申请公布号 CN 104292137 A'.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "CN104292137A",
+      "field": "tags",
+      "problem": "A4 rule 4 lists six metadata-derived tag categories that finalise.py unions in, but only four of them are actually emitted.",
+      "source_line": 0,
+      "quote": "N/A - A4-patent.md rule 4: 'jurisdiction, patent_family, assignee, time_period, patent_type and legal_status are metadata-derived and finalise.py unions them in from the biblio file'; finalise.py:262-268 adds jurisdiction, patent_family, time_period, assignee and assignee_type only.",
+      "artifact_says": "tags contains jurisdiction:cn, patent_family:52312131, time_period:2015, assignee:wuhan_institute_of_technology, assignee_type:university - no patent_type: or legal_status: tag",
+      "should_be": "Add a legal_status tag (bibliographic.legal_status is populated: 'Expired - Fee Related (terminated 2018-10-15)'), and a patent_type tag once patent_type is populated. Note assignee_type is emitted although rule 4 does not list it - harmless but undocumented.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "CN104292137A",
+      "field": "extraction_rollup.key_starting_materials",
+      "problem": "One of the three key starting materials is presented as a bare SMILES string with no name.",
+      "source_line": 174,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"Cc1c(Cl)cccc1Cl\", \"molecular_formula\": \"C7H6Cl2\", \"inchi_key\": \"DMEDNTFWIHCBRK-UHFFFAOYSA-N\"}]",
+      "artifact_says": "key_starting_materials = ['2-chlorotoluene', 'cyclohexane-1,3-dione', 'Cc1c(Cl)cccc1Cl']",
+      "should_be": "Defensible at the compound layer - the prose never names this compound, it exists only in the drawn scheme, A1 rule 5 permits identifier_type 'smiles', and compounds.json carries '2,6-dichlorotoluene' as an alias with a DRAWING-ONLY note. But at patent level it is a headline field with no alias slot, so surface the alias: '2,6-dichlorotoluene'. Also note the rollup derivation is correct - the three entries are exactly the compounds tagged compound_class:starting_material, per finalise.py:249 - even though cyclohexane-1,3-dione is not the KSM of any pathway.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "CN104292137A",
+      "field": "tags",
+      "problem": "The full-inheritance union puts mutually contradictory values of the same tag category on one record, so no consumer can read the category as a value.",
+      "source_line": 0,
+      "quote": "N/A - finalise.py:270 '# full inheritance: union every reaction / compound / pathway tag'",
+      "artifact_says": "tags contains both 'is_one_pot:false' and 'is_one_pot:true'; both 'chain_length:8' and 'chain_length:9'; 'scale:not_specified', 'scale:lab' and 'scale:pilot' together",
+      "should_be": "This is finalise.py behaving as written, not an A4 error, so no correction to the LLM output. If PatentRecord.tags is meant to be queryable, single-valued categories inherited from children should be dropped or namespaced (e.g. has_step_one_pot:true) rather than unioned raw.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "CN104292137A",
+      "field": "novelty_claims",
+      "problem": "A phrase presented inside quotation marks as what [0031] 'states' does not match the English on that line.",
+      "source_line": 177,
+      "quote": "this process uses methanesulfonyl chloride in place of the chloro-substitution reaction of the methyl sulfide, doing away with the hydrogen-peroxide oxidation step of the thioether",
+      "artifact_says": "which [0031] states \"does away with the hydrogen-peroxide oxidation step of the thioether\"",
+      "should_be": "Either 'doing away with...' to match the EN line, or drop the quotation marks. Weak finding: the Chinese at line 176 is 革除了硫醚的过氧化氢氧化步骤 and the artifact's finite-verb rendering is a faithful translation of the authoritative Chinese, so this is a quotation-mark convention issue rather than a misquotation of substance.",
+      "confidence": "low"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "vocabulary - A4 rule 4, exactly five LLM tag categories",
+      "what_was_verified": "raw-patent.json (the pre-finalise LLM output) contains exactly eight tags and no others: domain:agrochemical, target_class:herbicide, claim_type:process, novelty:new_process, novelty:improved_yield, novelty:green_chemistry, process_focus:batch, process_focus:green_chemistry. That is one domain, one target_class, one claim_type, three novelty and two process_focus - every category permitted by rule 4 and no category outside them. Every value is inside its closed list. Cardinality respected: domain and target_class are 'one' and exactly one was emitted; claim_type, novelty and process_focus are 'many'. No jurisdiction, patent_family, assignee, time_period, patent_type or legal_status tag was emitted by the LLM, as rule 4 requires. All 113 further tags in the finalised patent.json are traceable to finalise_patent (finalise.py:260-278): five metadata-derived tags from the biblio file plus the raw union of every compound, reaction and pathway tag. I found no LLM-emitted tag outside the five permitted categories."
+    },
+    {
+      "check": "precision - A4 rule 1, no yields, masses or temperatures in patent_summary",
+      "what_was_verified": "Read the summary word by word. It contains no percentage, no gram or mole figure and no temperature. The only numerals are 'eight-step' (a step count), 'claims 2-8' (a claim range), and locants inside chemical names (2,2,2-trifluoroethoxide, cyclohexane-1,3-dione, 2-aroylcyclohexane-1,3-dione, 2-chlorotoluene). It is two sentences, as rule 1 requires, and it makes no usefulness or novelty claim - 'discloses', 'recite', no evaluative adjective. Chemistry checked step by step against claim 1: sulfonylation with MsCl over AlCl3 (line 46), Friedel-Crafts acetylation with acetyl chloride (line 50), hypochlorite haloform oxidation (line 54), acid-catalysed esterification with methanol (line 58), radical benzylic bromination with bromine (line 62), trifluoroethoxide displacement then saponification (line 66), SOCl2 then O-acylation of cyclohexane-1,3-dione (line 70), cyanide-source rearrangement (line 74). The dependent-claim sentence is accurate: claims 2, 3, 4, 5 and 6 recite molar ratios; claims 2, 3, 4 recite chlorinated solvents and claim 5 adds THF; claims 7 and 8 give the inorganic and organic bases for step 7, which is indeed the acylation step."
+    },
+    {
+      "check": "precision - A4 rule 3, key_examples",
+      "what_was_verified": "Read all eight claims in full at lines 43-95 of the source. Claim 1 is the standalone process claim; claims 2, 3, 4, 5 and 6 are '根据权利要求1所述的...' (according to claim 1) and claims 7 and 8 are '根据权利要求6所述的...' (according to claim 6). No claim contains 实施例, 'Example', 'Embodiment' or any example label. key_examples: [] is correct and no example was manufactured, exactly as rule 3's caution directs. The accompanying honest_uncertainty_flag key_examples_not_referenced is a legal code from rule 6's list and accurately describes the state."
+    },
+    {
+      "check": "precision - A4 rule 2, novelty_claims addresses the three background objections",
+      "what_was_verified": "Three sentences, inside the 2-4 required. All five quoted fragments verified verbatim against the source: 'gives off a comparatively strong odour, and the mercaptan in the waste water is hard to treat' and 'the production cost is too high' and 'N-bromosuccinimide is used as the brominating agent, and this brominating agent is expensive' all at line 110; 'the reaction of methyl 2-chloro-4-methylsulfonyl-3-methylbenzoate with bromine' at line 87 (claim 4); 'does away with ... the highly toxic cyanoacetone' at line 114 ([0004]). All three [0003] objections are answered: the thiolate odour by direct MsCl sulfonylation, the NBS expense by elemental bromine, and cost by that same substitution. The final sentence is a genuine and correctly-attributed contradiction: [0004] at line 113 claims the process 革除了...剧毒氰基丙酮 yet claim 1 step 8) at line 74 still recites 氰基丙酮, while the drawn scheme at line 174 shows acetone cyanohydrin instead. Rule 7 was applied correctly - the pass declined patent_summary_truncated_input and stated explicitly that the inconsistency is 'as drafted rather than as translated', which is right: the Chinese at 113 and 74 is unambiguous and it is the drafting that conflicts."
+    },
+    {
+      "check": "arithmetic - extraction_rollup counts recomputed from the artifacts",
+      "what_was_verified": "reaction_count 33 = len(reactions.json) exactly. pathway_count 5 = len(pathways.json) exactly. compound_count 75 = len(compounds.json) exactly, and all 75 identifiers are distinct. section_summary {claims: 8, experimental_example: 8, summary_of_invention: 17} recomputed as a Counter over reactions.json section_type and matches exactly; 8+8+17 = 33 = reaction_count. scale_distribution {not_specified: 25, lab: 7, pilot: 1} recomputed the same way and matches exactly; 25+7+1 = 33. chemistry_focus ['ester_formation', 'acylation', 'oxidation', 'halogenation', 'hydrolysis'] recomputed as the top five reaction_class values by count (8, 7, 5, 4, 4) and matches exactly, with electrophilic_substitution at 3 correctly falling below the cut. target_compounds ['tembotrione'] recomputed as the compounds with is_section_product true and matches exactly (the two other active_ingredient-tagged compounds, 硝环磺酮 and mesotrione, are prior-art mentions at line 107 and correctly excluded). key_starting_materials recomputed as the compounds tagged compound_class:starting_material and matches exactly. best_overall_yield_pct 28.4 is the maximum non-null overall_yield_pct across pathways and matches my independent recomputation of the eight Example 1 yields to two decimal places (28.397445... -> 28.40). Every rollup number is arithmetically sound; only the uuid pointer is defective, reported above."
+    },
+    {
+      "check": "fidelity - bibliographic block internal consistency",
+      "what_was_verified": "filing_date 2014-10-15 matches the source's (22) 申请日 2014.10.15 at line 16. publication_date 2015-01-21 matches (43) 申请公布日 2015.01.21 at line 12. priority_date 2014-10-15 equals the filing date, which is correct for a CN domestic first filing with no foreign or earlier priority claimed anywhere on the front page. jurisdiction 'cn' and language 'zh' match '(10) 申请公布号 CN 104292137 A' at line 10. Chronology closes: filing 2014-10-15 < publication 2015-01-21 (3 months, normal for CN early publication) < grant 2016-04-13; the biblio's grant_publication CN104292137B is the expected B-series counterpart of this A publication. legal_status 'Expired - Fee Related (terminated 2018-10-15)' terminates on 2018-10-15, exactly four years after the filing date - a CN annuity-lapse anniversary, so the date is internally consistent rather than arbitrary. parties match the source: assignee 武汉工程大学 / Wuhan Institute of Technology at line 18, inventors 刘安昌 贺晓露 冯佳丽 / Liu Anchang, He Xiaolu, Feng Jiali at line 22, all country CN. family_id '52312131' is a plausible 8-digit DOCDB simple-family id and is internally consistent with the record, but I could not verify it against DOCDB offline; nothing in the artifact contradicts it."
+    },
+    {
+      "check": "schema - assignee_type omitted from the LLM output",
+      "what_was_verified": "A4 rule 5 instructs the pass to omit assignee_type. raw-patent.json has no assignee_type key. The finalised patent.json carries the assignee type only where finalise.py puts it: parties.assignees[0].type = 'university', sourced from the biblio file. There is no stray top-level assignee_type field."
+    },
+    {
+      "check": "schema - honest_uncertainty_flags vocabulary",
+      "what_was_verified": "honest_uncertainty_flags contains exactly one code, key_examples_not_referenced, which is one of the five codes rule 6 names. No invented code, no code outside the list, correct snake_case ASCII."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 14,
+    "present_in_artifact": 11,
+    "missing": [
+      "abstract - full (57) 摘要 at line 38, field exists in schema and is null",
+      "bibliographic.ipc_codes - C07C 317/24(2006.01) and C07C 315/04(2006.01) at lines 29-30, field exists in schema and is null",
+      "bibliographic.patent_type - (12) 发明专利申请 at line 8 and kind code A at line 10, field exists in schema and is null",
+      "NOT COUNTED AS MISSING, no schema slot exists: patent agency 湖北武汉永嘉专利代理有限公司 42102 (line 24), agent 崔友明 (line 26), applicant address 430074 湖北省武汉市洪山区雄楚大街693号 (line 20), application number 201410547223.X (line 14, present in the biblio file but not surfaced on PatentRecord), page counts 权利要求书2页 说明书6页 (line 32)"
+    ]
+  }
+}

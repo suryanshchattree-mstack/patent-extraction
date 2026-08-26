@@ -168,10 +168,11 @@ def stages(pid: str) -> list[Stage]:
                     "schemas/*.schema.json", "input/vision/p*.json"]
                    + [f"output/{n}.json" for n in artifacts],
             outputs=[f"{gold}/{n}.json" for n in artifacts]
-                    + [f"{gold}/structures.json", f"{gold}/compounds.schema.json",
+                    + [f"{gold}/structures.json", f"{gold}/*.schema.json",
                        f"{prov}/compounds-provenance.json", f"{prov}/reactions-provenance.json",
                        f"{prov}/compounds-sections.json", f"{prov}/compounds-equivalence.json",
-                       f"{verif}/compounds-report.json",
+                       # one per A5 report, named after the artifact it audited
+                       f"{verif}/*-report.json",
                        "output/relevant_output/FINDINGS.md",
                        "output/relevant_output/AUDIT.md"],
         ),
@@ -229,7 +230,7 @@ def stages(pid: str) -> list[Stage]:
                     "output/structures/*.svg", "svg/*.svg", "svg/*.jpg",
                     "output/stages/A5-verify/*.json"]
                    + [f"output/{n}.json" for n in artifacts],
-            outputs=[f"{gold}/structures-resolved.json",
+            outputs=[f"{gold}/structures-resolved.json", f"{gold}/translations.json",
                      "output/relevant_output/structures/*.svg",
                      "output/relevant_output/svg/*.svg",
                      "output/relevant_output/svg/*.jpg"],
@@ -350,6 +351,31 @@ def rel(p: Path) -> str:
     return str(p.relative_to(HERE))
 
 
+MANIFEST = "output/relevant_output/manifest.json"
+
+
+def previous_status() -> dict[str, str]:
+    """What each stage did last time, from the manifest it wrote.
+
+    This exists because of a trap that mtimes alone walk straight into. Every gated
+    stage WRITES ITS ARTIFACT AND THEN FAILS: resolve_structures.py writes
+    structures-resolved.json before it reports what is still missing, and verify.py
+    writes a 3 MB checks file before it reports a grounding failure. So a minute
+    after a gate stopped the run, every output is present and newer than every
+    input, and a purely mtime-based runner calls the stage current and walks past
+    the failure it just had. The manifest is the only record that it failed, so it
+    is read back here and a stage that failed last time always runs again.
+    """
+    p = HERE / MANIFEST
+    if not p.exists():
+        return {}
+    try:
+        return {row["stage"]: row.get("status", "")
+                for row in json.loads(p.read_text(encoding="utf-8")).get("stages", [])}
+    except (json.JSONDecodeError, KeyError, TypeError):
+        return {}
+
+
 def is_current(st: Stage) -> tuple[bool, str]:
     """True when every output is present and no input is newer than any of them."""
     if st.always or not st.outputs:
@@ -439,6 +465,11 @@ def write_manifest(pid: str, ctx: dict) -> int:
             "outputs": outs,
         })
         for o in outs:
+            # Two stages run make_relevant_output.py, so they declare overlapping
+            # outputs on purpose. An artifact is attributed to the first stage that
+            # produces it, and listed once.
+            if o["path"] in produced:
+                continue
             produced.add(o["path"])
             artifacts.append({**o, "stage": st.name, "input_sha256": input_sha})
 
@@ -499,6 +530,15 @@ def run_stage(st: Stage, pid: str, ctx: dict) -> int:
 
 
 def main() -> int:
+    # Subprocess output goes straight to the terminal while the parent's own prints
+    # sit in a block buffer, so redirecting a run to a file used to interleave the
+    # plan into the middle of a stage's report. Line buffering puts them back in
+    # the order they happened.
+    try:
+        sys.stdout.reconfigure(line_buffering=True)
+    except AttributeError:
+        pass
+
     ap = argparse.ArgumentParser(
         description="Run every deterministic stage of the manual annotation pipeline.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -556,6 +596,7 @@ def main() -> int:
         selected = all_stages
 
     # ---- plan ----------------------------------------------------------------
+    prior = previous_status()
     plan = []
     for st in all_stages:
         if st not in selected:
@@ -566,6 +607,10 @@ def main() -> int:
             continue
         if st.optional_tool and not (HERE / st.optional_tool).exists():
             plan.append((st, "absent", f"{st.optional_tool} does not exist yet"))
+            continue
+        was = prior.get(st.name, "")
+        if was.startswith("failed") or was == "not reached":
+            plan.append((st, "run", f"last run: {was}"))
             continue
         current, why = is_current(st)
         plan.append((st, "skip" if current else "run", why))
@@ -587,16 +632,32 @@ def main() -> int:
 
     # ---- run -----------------------------------------------------------------
     ctx = {"stages": all_stages, "results": {}}
+
+    def finish(rc: int) -> int:
+        """Write the manifest even on a stop, then return rc.
+
+        The manifest is an observation of what is on disk, not a product of the
+        run, and a stopped run is exactly when a consumer most needs to be told
+        that the assets are not current for the gold. It records the failing
+        stage's status, so nothing is being papered over.
+        """
+        if by_name["manifest"] in selected:
+            print("=== manifest " + "=" * 60)
+            write_manifest(pid, ctx)
+        return rc
+
     for st, action, _ in plan:
         ctx["results"][st.name] = {"run": "ran", "skip": "current",
                                    "absent": "absent", "not selected": "not selected"}[action]
-        if action != "run":
+        if action != "run" or st.name == "manifest":
             continue
         print(f"=== {st.name} " + "=" * max(0, 66 - len(st.name)))
         code = run_stage(st, pid, ctx)
         if code == 0:
             continue
         ctx["results"][st.name] = f"failed ({code})"
+        for later in all_stages[all_stages.index(st) + 1:]:
+            ctx["results"][later.name] = "not reached"
         print()
         if st.gate:
             print(f"STOP  the {st.name} stage gate did not pass (exit {code}).")
@@ -606,9 +667,11 @@ def main() -> int:
                   f"it corrupts the deliverable quietly.")
             print(f"\n      Supply it, then: {PY} run_pipeline.py --patent-id {pid} "
                   f"--from {st.name}")
-            return 2
+            return finish(2)
         print(f"STOP  stage {st.name!r} failed with exit {code}. Nothing after it ran.")
-        return 1
+        return finish(1)
+
+    finish(0)
 
     print("=" * 72)
     print(f"pipeline complete: {pid}")
