@@ -207,13 +207,6 @@ UNIT_CANON = {
     CELSIUS_MARK: ("C", 1.0),
 }
 
-# Field -> the canonical unit its value is stated in.
-FIELD_UNIT = {
-    "mass_g": "g", "volume_ml": "ml", "mmol": "mmol", "yield_pct": "%",
-    "purity_pct": "%", "time_h": "h", "celsius": "C", "percent": "%",
-    "equivalents": None,
-}
-
 # How near two quantities must sit to be the same quantity. Relative, because 0.2 mol
 # converts to 200.00000000000003 mmol in binary floating point and an absolute
 # epsilon that works there is meaningless at 500 g.
@@ -398,6 +391,33 @@ def scrub(text: str, index: dict) -> str:
     return re.sub(r"\s{2,}", " ", out).strip()
 
 
+def describe_drawing(raw: str) -> str:
+    """An IMAGE_EXTRACT span, said in a sentence rather than shown as JSON.
+
+    These lines are cited evidence: the drawn scheme on line 174 is the only source
+    a Scheme Step record has. Putting the raw span in an evidence panel hands a
+    reviewer 4 kB of JSON and asks them to find the chemistry in it. The molecular
+    formula and the SMILES are what is actually being claimed, so those are what is
+    said, and the reader is told plainly that this line is a drawing.
+    """
+    mols = image_extract_molecules(raw)
+    if not mols:
+        return "A drawn structure on the page, which could not be read as data."
+    if any(m.get("broken") for m in mols):
+        return "A drawn structure on the page whose data span is malformed."
+    seen, parts = set(), []
+    for m in mols:
+        smiles = m.get("smiles")
+        if not smiles or smiles in seen:
+            continue
+        seen.add(smiles)
+        formula = m.get("molecular_formula")
+        parts.append(f"{formula} ({smiles})" if formula else smiles)
+    head = (f"Drawn on the page: {len(parts)} structure"
+            f"{'s' if len(parts) != 1 else ''}. ")
+    return head + "; ".join(parts) + "."
+
+
 class Source:
     """The numbered source, with an English rendering and a kind for every line."""
 
@@ -550,14 +570,26 @@ class Source:
     # ------------------------------------------------------------ English text
 
     def _english(self, n: int, raw: str) -> tuple[str, bool]:
+        """The English for one line, and whether that English is a translation.
+
+        `is_translation` is true when what the panel shows came out of a translator
+        rather than off the page: the machine translation of a Chinese line, and the
+        "    > EN: " lines, which are that translation written into the file. It is
+        false for a line whose own characters are already English - the NMR shifts,
+        the drawn-structure spans, the page markers - because a reviewer weighing
+        evidence needs to know which of the two they are looking at, and the Chinese
+        is the authoritative text in this document.
+        """
         if not raw.strip():
             return "", False
         if raw.startswith(EN_MARK):
-            return scrub(raw[len(EN_MARK):], self.index), False
+            return scrub(raw[len(EN_MARK):], self.index), True
         m = PAGE_MARKER.match(raw.strip())
         if m:
             return (f"Page {m.group('page')}, section type {m.group('type')}, "
-                    f"transcription confidence {m.group('conf')}."), True
+                    f"transcription confidence {m.group('conf')}."), False
+        if raw.startswith("[IMAGE_EXTRACT"):
+            return describe_drawing(raw), False
         if n in self.english:
             return scrub(self.english[n], self.index), True
         if not has_chinese(raw):
@@ -1335,19 +1367,56 @@ class Engine:
                                ["The quote is a note, not patent text."],
                                "name", set(found))
 
-        spans, total, uncovered = cover(quote, cited, self.source.norm)
+        text = normalise(quote)
+        spans, total, _ = cover(quote, cited, self.source.norm)
         cited_set = set(cited)
-        on, off = 0, 0
+        covered: dict[int, int] = {}
+        for a, b, n in spans:
+            for k in range(a, b):
+                covered[k] = n
+
+        on, off, uncovered = 0, 0, 0
         off_lines: set[int] = set()
         on_lines: set[int] = set()
-        for a, b, n in spans:
-            chars = sum(1 for k in range(a, b) if CJK.match(normalise(quote)[k]))
-            if n in cited_set:
-                on += chars
-                on_lines.add(n)
+        for k, ch in enumerate(text):
+            if not CJK.match(ch) or k not in covered:
+                continue
+            if covered[k] in cited_set:
+                on += 1
+                on_lines.add(covered[k])
             else:
-                off += chars
-                off_lines.add(n)
+                off += 1
+                off_lines.add(covered[k])
+
+        # The cover refuses any span shorter than MIN_SPAN, because a five-character
+        # locant occurs on twenty lines and crediting a quote to whichever of them
+        # sorted first would be worse than not crediting it. But a leftover shorter
+        # than that is NOT evidence of absence, and reporting it as "found nowhere"
+        # is the matcher crying wolf: the water record's quote leaves 有机层水洗 (five
+        # characters, "the organic layer is washed with water") uncovered, and it is
+        # plainly there on line 227. So every residue is looked up directly, and
+        # only what survives that is called absent.
+        short = 0
+        for frag_start, frag_end in residue_runs(text, set(covered)):
+            frag = trim_joiners(text[frag_start:frag_end])
+            zh = sum(1 for ch in frag if CJK.match(ch))
+            if not zh:
+                continue
+            here = next((n for n in cited if frag in self.source.norm.get(n, "")),
+                        None)
+            if here is not None:
+                on += zh
+                on_lines.add(here)
+                short += 1
+                continue
+            there = next((n for n in sorted(self.source.norm)
+                          if frag in self.source.norm[n]), None)
+            if there is not None:
+                off += zh
+                off_lines.add(there)
+                short += 1
+            else:
+                uncovered += zh
 
         risk_reasons: list[str] = []
         if total == 0:
@@ -1502,6 +1571,31 @@ class Engine:
 
 
 
+# The elisions a stitched quote is joined with, folded to their normalised forms.
+# Trimmed off a residue before it is looked up, or "...有机层水洗..." is searched for
+# verbatim and of course not found.
+_JOINER_CHARS = ".|/,;: "
+
+
+def trim_joiners(fragment: str) -> str:
+    return fragment.strip(_JOINER_CHARS)
+
+
+def residue_runs(text: str, covered: set[int]):
+    """Maximal runs of `text` that no span of the cover explained."""
+    runs, start = [], None
+    for k in range(len(text)):
+        if k in covered:
+            if start is not None:
+                runs.append((start, k))
+                start = None
+        elif start is None:
+            start = k
+    if start is not None:
+        runs.append((start, len(text)))
+    return runs
+
+
 def compact_lines(lines) -> str:
     """"45, 46, 77, 82" for a citation, "182-188" for a span."""
     ns = sorted(set(lines))
@@ -1611,23 +1705,6 @@ def image_extract_molecules(raw: str):
 
 # ---------------------------------------------------------------- the run
 
-# Fields whose value no string match can settle. They are emitted as claims only
-# where the annotation has already said it is unsure, because the queue is a budget:
-# a reviewer with twenty minutes and 114 records cannot be handed 141 judgement
-# calls beside the hallucinations, and a judgement the annotator was confident about
-# is not what that budget should buy.
-JUDGEMENT_TRIGGERS_EN = {
-    "reaction_class_confidence": "The annotation records its own confidence in the "
-                                 "reaction class as {value}, not high.",
-    "linkage_confirmed": "The annotation could not confirm which step this one "
-                         "follows.",
-    "cross_reference_unresolved": "The annotation records an unresolved "
-                                  "cross-reference.",
-    "validation_flags": "The annotation raised its own validation flags: {value}.",
-    "is_complete": "The annotation records this step as incomplete.",
-}
-
-
 class Run(Engine):
     """Builds every record, every claim and every check, then the artifact."""
 
@@ -1694,13 +1771,20 @@ class Run(Engine):
                                        f"{rec.label_en}", "value",
                                        field_name="analytics_value")
 
+            # One quote claim per provenance row, each asked of the lines THAT ROW
+            # declares rather than of the union. A compound quoted in seven places
+            # has seven citations and seven chances to point at the wrong line, and
+            # unioning them first would let a right citation cover for a wrong one.
+            # The stand-in record carries the real record's identity so the claim
+            # keys, labels and verdict key are the real record's, and shares its
+            # claims list so the claim lands on it.
             for i, row in enumerate(rows):
                 sub = Record(rec.record_id, "compound", rec.label_en,
                              rec.section_en,
                              self.source.with_partners(
                                  [n for n in (row.get("source_lines") or [])
                                   if isinstance(n, int)]),
-                             rec.svg)
+                             rec.svg, rec.uuid, rec.rec, rec.flags)
                 sub.claims = rec.claims
                 self.quote_claim(sub, f"provenance[{i}].quote",
                                  row.get("quote_zh") or "", sub.cited)

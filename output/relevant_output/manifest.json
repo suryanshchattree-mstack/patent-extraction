@@ -4,9 +4,107 @@
   "note": "No timestamp anywhere in this file, on purpose: the pipeline is idempotent to the byte and a generated_at field would make every second run a diff. Currency is established by hash, not by clock.",
   "stages": [
     {
+      "stage": "prompts",
+      "title": "render the annotation prompts for THIS patent, for the agent to follow",
+      "status": "ran",
+      "commands": [
+        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 render_prompts.py --patent-id CN104292137A"
+      ],
+      "gate": false,
+      "inputs": [
+        {
+          "path": "render_prompts.py",
+          "sha256": "55799372d51ba9a020a5092715402a150f539bc8aa3139cdad2f3d54e5c07ee0",
+          "bytes": 5148
+        },
+        {
+          "path": "pipeline_context.py",
+          "sha256": "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
+          "bytes": 10756
+        },
+        {
+          "path": "prompts/A0-section-map.md",
+          "sha256": "d2da50254da8422f855bbbb0a0ca9c11cfdfb7c519f36104a2459246caf5a280",
+          "bytes": 6460
+        },
+        {
+          "path": "prompts/A1-compounds.md",
+          "sha256": "41bdee251e5f25a00b3d49e44119b8f985e0daf8fdb87ddb0c6e5dac36ed3028",
+          "bytes": 14209
+        },
+        {
+          "path": "prompts/A2-reactions.md",
+          "sha256": "25e9ae2dc51be3babe96bb3f4c3afdf1c26a48cc8f566eb9df26186253729008",
+          "bytes": 24315
+        },
+        {
+          "path": "prompts/A3-pathways.md",
+          "sha256": "531cbf6c803b88ebbacc6405ae6ebe7f356ec209e91616c6cf97a9b7ec15656f",
+          "bytes": 7833
+        },
+        {
+          "path": "prompts/A4-patent.md",
+          "sha256": "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
+          "bytes": 4091
+        },
+        {
+          "path": "prompts/A5-verify.md",
+          "sha256": "5969459f329d893f47ac69caace880c7153272772a5fd169cba51f61596c6b3e",
+          "bytes": 6288
+        },
+        {
+          "path": "prompts/V-page-vision.md",
+          "sha256": "695d2bce3bc922f1c850b839a7cd7d62fe0e734880fdcf890ecdac6fa017ad7c",
+          "bytes": 5612
+        },
+        {
+          "path": "input/CN104292137A-biblio.json",
+          "sha256": "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e",
+          "bytes": 1872
+        }
+      ],
+      "outputs": [
+        {
+          "path": "output/prompts/CN104292137A/A0-section-map.md",
+          "sha256": "2b2bd75f6ed22ddbe4990c7b17fd01d050cf9fa5d0287a619cbc774714e8ce96",
+          "bytes": 6461
+        },
+        {
+          "path": "output/prompts/CN104292137A/A1-compounds.md",
+          "sha256": "0e3bd5cb9fff53ee8b4868d81c2ee969e0cef5bc950ce849d4c19a16914dfa34",
+          "bytes": 14212
+        },
+        {
+          "path": "output/prompts/CN104292137A/A2-reactions.md",
+          "sha256": "c0c26cfc68448371f34fe187876334196d1d97347e9adeebdd3077eaed7d97e5",
+          "bytes": 24318
+        },
+        {
+          "path": "output/prompts/CN104292137A/A3-pathways.md",
+          "sha256": "13941639a727efa343c9a9f36f5de56f1fef33772e8df591e6e3d4f3cce653f5",
+          "bytes": 7835
+        },
+        {
+          "path": "output/prompts/CN104292137A/A4-patent.md",
+          "sha256": "1b4b0b216aa07a7c14dd0debffaa11dd2b5ad7649bcce770135693fd8eac4b81",
+          "bytes": 4182
+        },
+        {
+          "path": "output/prompts/CN104292137A/A5-verify.md",
+          "sha256": "5969459f329d893f47ac69caace880c7153272772a5fd169cba51f61596c6b3e",
+          "bytes": 6288
+        },
+        {
+          "path": "output/prompts/CN104292137A/V-page-vision.md",
+          "sha256": "182eef0b651e6a02f17dc83dedafc8a45cbadec693a69ab3ebb76a49891cb585",
+          "bytes": 5602
+        }
+      ]
+    },
+    {
       "stage": "enrich",
       "title": "vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 build_enriched.py --patent-id CN104292137A"
       ],
@@ -89,7 +187,7 @@
     {
       "stage": "collect",
       "title": "publish the A0, A3 and A4 stage files under the names finalise.py reads",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "<internal>"
       ],
@@ -132,7 +230,7 @@
     {
       "stage": "merge",
       "title": "concatenate the per-section A1 and A2 stage files into the raw arrays",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 merge_stages.py"
       ],
@@ -285,7 +383,7 @@
     {
       "stage": "finalise",
       "title": "deterministic ids and uuids, rollup, bibliographic merge",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 finalise.py --patent-id CN104292137A"
       ],
@@ -430,7 +528,7 @@
     {
       "stage": "publish-gold",
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -688,7 +786,7 @@
     {
       "stage": "structures",
       "title": "identifier -> drawable molecule over five tiers, plus the coverage gate",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_structures.py --patent-id CN104292137A"
       ],
@@ -851,7 +949,7 @@
     {
       "stage": "translations",
       "title": "Chinese string -> English for everything that can reach a screen, plus the coverage gate",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_translations.py CN104292137A"
       ],
@@ -914,7 +1012,7 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN104292137A",
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN104292137A"
@@ -1073,7 +1171,7 @@
     {
       "stage": "rasterise",
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 svg2jpg.py --all"
       ],
@@ -1161,7 +1259,7 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -1860,6 +1958,132 @@
         "30371663309683cdfc8fb87751c97fc1c4e73ef1476265274322712ca9a10256",
         "1d0e11b78d9b6068de34f39e33ddfe414f66f0faf40eb4a1fb8858be30fa50b3",
         "5f605e662450f93b6da77197b81eb0ff5c40ffc68ce0b9a9ceeaef02bb7f53bd"
+      ]
+    },
+    {
+      "path": "output/prompts/CN104292137A/A0-section-map.md",
+      "sha256": "2b2bd75f6ed22ddbe4990c7b17fd01d050cf9fa5d0287a619cbc774714e8ce96",
+      "bytes": 6461,
+      "stage": "prompts",
+      "input_sha256": [
+        "55799372d51ba9a020a5092715402a150f539bc8aa3139cdad2f3d54e5c07ee0",
+        "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
+        "d2da50254da8422f855bbbb0a0ca9c11cfdfb7c519f36104a2459246caf5a280",
+        "41bdee251e5f25a00b3d49e44119b8f985e0daf8fdb87ddb0c6e5dac36ed3028",
+        "25e9ae2dc51be3babe96bb3f4c3afdf1c26a48cc8f566eb9df26186253729008",
+        "531cbf6c803b88ebbacc6405ae6ebe7f356ec209e91616c6cf97a9b7ec15656f",
+        "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
+        "5969459f329d893f47ac69caace880c7153272772a5fd169cba51f61596c6b3e",
+        "695d2bce3bc922f1c850b839a7cd7d62fe0e734880fdcf890ecdac6fa017ad7c",
+        "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e"
+      ]
+    },
+    {
+      "path": "output/prompts/CN104292137A/A1-compounds.md",
+      "sha256": "0e3bd5cb9fff53ee8b4868d81c2ee969e0cef5bc950ce849d4c19a16914dfa34",
+      "bytes": 14212,
+      "stage": "prompts",
+      "input_sha256": [
+        "55799372d51ba9a020a5092715402a150f539bc8aa3139cdad2f3d54e5c07ee0",
+        "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
+        "d2da50254da8422f855bbbb0a0ca9c11cfdfb7c519f36104a2459246caf5a280",
+        "41bdee251e5f25a00b3d49e44119b8f985e0daf8fdb87ddb0c6e5dac36ed3028",
+        "25e9ae2dc51be3babe96bb3f4c3afdf1c26a48cc8f566eb9df26186253729008",
+        "531cbf6c803b88ebbacc6405ae6ebe7f356ec209e91616c6cf97a9b7ec15656f",
+        "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
+        "5969459f329d893f47ac69caace880c7153272772a5fd169cba51f61596c6b3e",
+        "695d2bce3bc922f1c850b839a7cd7d62fe0e734880fdcf890ecdac6fa017ad7c",
+        "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e"
+      ]
+    },
+    {
+      "path": "output/prompts/CN104292137A/A2-reactions.md",
+      "sha256": "c0c26cfc68448371f34fe187876334196d1d97347e9adeebdd3077eaed7d97e5",
+      "bytes": 24318,
+      "stage": "prompts",
+      "input_sha256": [
+        "55799372d51ba9a020a5092715402a150f539bc8aa3139cdad2f3d54e5c07ee0",
+        "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
+        "d2da50254da8422f855bbbb0a0ca9c11cfdfb7c519f36104a2459246caf5a280",
+        "41bdee251e5f25a00b3d49e44119b8f985e0daf8fdb87ddb0c6e5dac36ed3028",
+        "25e9ae2dc51be3babe96bb3f4c3afdf1c26a48cc8f566eb9df26186253729008",
+        "531cbf6c803b88ebbacc6405ae6ebe7f356ec209e91616c6cf97a9b7ec15656f",
+        "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
+        "5969459f329d893f47ac69caace880c7153272772a5fd169cba51f61596c6b3e",
+        "695d2bce3bc922f1c850b839a7cd7d62fe0e734880fdcf890ecdac6fa017ad7c",
+        "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e"
+      ]
+    },
+    {
+      "path": "output/prompts/CN104292137A/A3-pathways.md",
+      "sha256": "13941639a727efa343c9a9f36f5de56f1fef33772e8df591e6e3d4f3cce653f5",
+      "bytes": 7835,
+      "stage": "prompts",
+      "input_sha256": [
+        "55799372d51ba9a020a5092715402a150f539bc8aa3139cdad2f3d54e5c07ee0",
+        "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
+        "d2da50254da8422f855bbbb0a0ca9c11cfdfb7c519f36104a2459246caf5a280",
+        "41bdee251e5f25a00b3d49e44119b8f985e0daf8fdb87ddb0c6e5dac36ed3028",
+        "25e9ae2dc51be3babe96bb3f4c3afdf1c26a48cc8f566eb9df26186253729008",
+        "531cbf6c803b88ebbacc6405ae6ebe7f356ec209e91616c6cf97a9b7ec15656f",
+        "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
+        "5969459f329d893f47ac69caace880c7153272772a5fd169cba51f61596c6b3e",
+        "695d2bce3bc922f1c850b839a7cd7d62fe0e734880fdcf890ecdac6fa017ad7c",
+        "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e"
+      ]
+    },
+    {
+      "path": "output/prompts/CN104292137A/A4-patent.md",
+      "sha256": "1b4b0b216aa07a7c14dd0debffaa11dd2b5ad7649bcce770135693fd8eac4b81",
+      "bytes": 4182,
+      "stage": "prompts",
+      "input_sha256": [
+        "55799372d51ba9a020a5092715402a150f539bc8aa3139cdad2f3d54e5c07ee0",
+        "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
+        "d2da50254da8422f855bbbb0a0ca9c11cfdfb7c519f36104a2459246caf5a280",
+        "41bdee251e5f25a00b3d49e44119b8f985e0daf8fdb87ddb0c6e5dac36ed3028",
+        "25e9ae2dc51be3babe96bb3f4c3afdf1c26a48cc8f566eb9df26186253729008",
+        "531cbf6c803b88ebbacc6405ae6ebe7f356ec209e91616c6cf97a9b7ec15656f",
+        "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
+        "5969459f329d893f47ac69caace880c7153272772a5fd169cba51f61596c6b3e",
+        "695d2bce3bc922f1c850b839a7cd7d62fe0e734880fdcf890ecdac6fa017ad7c",
+        "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e"
+      ]
+    },
+    {
+      "path": "output/prompts/CN104292137A/A5-verify.md",
+      "sha256": "5969459f329d893f47ac69caace880c7153272772a5fd169cba51f61596c6b3e",
+      "bytes": 6288,
+      "stage": "prompts",
+      "input_sha256": [
+        "55799372d51ba9a020a5092715402a150f539bc8aa3139cdad2f3d54e5c07ee0",
+        "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
+        "d2da50254da8422f855bbbb0a0ca9c11cfdfb7c519f36104a2459246caf5a280",
+        "41bdee251e5f25a00b3d49e44119b8f985e0daf8fdb87ddb0c6e5dac36ed3028",
+        "25e9ae2dc51be3babe96bb3f4c3afdf1c26a48cc8f566eb9df26186253729008",
+        "531cbf6c803b88ebbacc6405ae6ebe7f356ec209e91616c6cf97a9b7ec15656f",
+        "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
+        "5969459f329d893f47ac69caace880c7153272772a5fd169cba51f61596c6b3e",
+        "695d2bce3bc922f1c850b839a7cd7d62fe0e734880fdcf890ecdac6fa017ad7c",
+        "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e"
+      ]
+    },
+    {
+      "path": "output/prompts/CN104292137A/V-page-vision.md",
+      "sha256": "182eef0b651e6a02f17dc83dedafc8a45cbadec693a69ab3ebb76a49891cb585",
+      "bytes": 5602,
+      "stage": "prompts",
+      "input_sha256": [
+        "55799372d51ba9a020a5092715402a150f539bc8aa3139cdad2f3d54e5c07ee0",
+        "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
+        "d2da50254da8422f855bbbb0a0ca9c11cfdfb7c519f36104a2459246caf5a280",
+        "41bdee251e5f25a00b3d49e44119b8f985e0daf8fdb87ddb0c6e5dac36ed3028",
+        "25e9ae2dc51be3babe96bb3f4c3afdf1c26a48cc8f566eb9df26186253729008",
+        "531cbf6c803b88ebbacc6405ae6ebe7f356ec209e91616c6cf97a9b7ec15656f",
+        "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
+        "5969459f329d893f47ac69caace880c7153272772a5fd169cba51f61596c6b3e",
+        "695d2bce3bc922f1c850b839a7cd7d62fe0e734880fdcf890ecdac6fa017ad7c",
+        "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e"
       ]
     },
     {
@@ -5507,9 +5731,9 @@
     }
   ],
   "totals": {
-    "stages": 12,
-    "artifacts_produced": 113,
+    "stages": 13,
+    "artifacts_produced": 120,
     "artifacts_unclaimed": 3,
-    "bytes_produced": 15273306
+    "bytes_produced": 15342204
   }
 }

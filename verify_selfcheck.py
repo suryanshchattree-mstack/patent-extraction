@@ -24,6 +24,9 @@ corruption test safe: the gold is mutated in a dict, never on disk.
                         computed over claims that do not distinguish them
     F  agreement        the engine's quantity failures against the annotation's
                         own validation flags, all three ways round
+    G  contract        the claim shape against VERIFICATION-CONTRACT.md
+    H  blind spot      the arithmetic the engine cannot currently see, and
+                        whether it explains what F says it missed
 
 Usage:  python3 verify_selfcheck.py            # defaults to CN104292137A
         python3 verify_selfcheck.py CN104292137A
@@ -250,6 +253,49 @@ def test_census(artifact: dict) -> None:
                "absent, so the UI cannot compute a confidence denominator")
 
 
+# Exactly the keys VERIFICATION-CONTRACT.md puts on a claim, plus the four the
+# review protocol added. A key outside this set is either an undocumented feature
+# the UI cannot know about, or a working variable that leaked into a 3 MB file.
+CONTRACT_CLAIM_KEYS = {
+    "claim_id", "record_id", "record_kind", "record_label_en", "field",
+    "field_label_en", "question_en", "claimed_en", "claimed_value",
+    "claimed_unit", "cited_lines", "evidence_en", "evidence_lines",
+    "highlights", "auto", "auto_reason_en", "needs_human", "risk",
+    "risk_reasons_en", "structure_svg_path", "tier", "stratum",
+    "about", "severity",
+}
+
+
+def test_contract_shape(artifact: dict) -> None:
+    print("\nG  the artifact against VERIFICATION-CONTRACT.md")
+    keys: Counter = Counter()
+    for c in artifact["claims"]:
+        keys.update(c.keys())
+    n = len(artifact["claims"])
+
+    missing = {k for k in CONTRACT_CLAIM_KEYS if keys.get(k, 0) < n}
+    record("every contract key is on every claim",
+           PASS if not missing else FAIL,
+           "all present" if not missing else
+           ", ".join(f"{k} on {keys.get(k, 0)}/{n}" for k in sorted(missing)))
+
+    extra = {k: v for k, v in keys.items() if k not in CONTRACT_CLAIM_KEYS}
+    record("no key outside the contract reaches the artifact",
+           PASS if not extra else WARN,
+           "none" if not extra else
+           ", ".join(f"{k} on {v}/{n}" for k, v in sorted(extra.items())))
+
+    private = {k: v for k, v in extra.items() if k.startswith("_")}
+    record("no working variable leaked into the artifact",
+           PASS if not private else FAIL,
+           "none" if not private else ", ".join(sorted(private)))
+
+    for key in ("summary", "records", "source_coverage", "completeness",
+                "source", "patent_id", "engine_version", "generated_at"):
+        if key not in artifact:
+            record(f"top level carries `{key}`", FAIL, "absent")
+
+
 def test_citation_width(artifact: dict) -> None:
     print("\nE  how much evidence a `found` actually rests on")
     claims = artifact["claims"]
@@ -283,39 +329,117 @@ def test_agreement(artifact: dict, data: dict) -> None:
     print("     the annotation's flags: "
           + ", ".join(f"{k}={v}" for k, v in sorted(theirs.items())))
 
+    # The engine compares against the UNION of the two flags that are about
+    # arithmetic. Recounted the same way, because a recount that uses a
+    # different definition is not a check on the engine, it is a second opinion
+    # about what the question was.
+    ARITHMETIC_FLAGS = ("molar_mass_inconsistent", "mass_balance_implausible")
     ours = {r["record_id"] for r in artifact["records"]
+            if r["record_kind"] == "reaction"
             for c in r["checks"]
             if c["family"] == "quantity" and c["status"] == "fail"}
-    mm = flagged_records.get("molar_mass_inconsistent", set())
-    both = ours & mm
-    machine_only = ours - mm
-    annotation_only = mm - ours
-    print(f"     both flag it                {len(both)}")
-    print(f"     engine flags, annotation did not  {len(machine_only)}"
-          + (f"  {sorted(machine_only)}" if machine_only else ""))
+    annotated = set().union(*(flagged_records.get(f, set())
+                              for f in ARITHMETIC_FLAGS))
+    both, machine_only = ours & annotated, ours - annotated
+    annotation_only = annotated - ours
+    print(f"     both flag it                      {len(both)}")
+    print(f"     engine flags, annotation did not  {len(machine_only)}")
     print(f"     annotation flags, engine passed   {len(annotation_only)}"
           + (f"  {sorted(annotation_only)}" if annotation_only else ""))
 
     reported = artifact["summary"].get("agreement_with_annotation")
     if reported:
-        agrees = (reported.get("both") == len(both)
-                  and reported.get("machine_only") == len(machine_only)
-                  and reported.get("annotation_only") == len(annotation_only))
-        record("summary.agreement_with_annotation matches a recount",
+        def size(v):
+            return len(v) if isinstance(v, list) else v
+        agrees = (size(reported.get("both")) == len(both)
+                  and size(reported.get("machine_only")) == len(machine_only)
+                  and size(reported.get("annotation_only")) == len(annotation_only))
+        record("summary.agreement_with_annotation matches an independent recount",
                PASS if agrees else FAIL,
-               f"artifact says {reported}, recount says "
-               f"{{'both': {len(both)}, 'machine_only': {len(machine_only)}, "
-               f"'annotation_only': {len(annotation_only)}}}")
+               f"engine says both={size(reported.get('both'))} "
+               f"machine_only={size(reported.get('machine_only'))} "
+               f"annotation_only={size(reported.get('annotation_only'))}; "
+               f"recount says both={len(both)} machine_only={len(machine_only)} "
+               f"annotation_only={len(annotation_only)}")
     else:
         record("summary carries an agreement matrix", FAIL, "absent")
 
-    uncompared = {k: v for k, v in theirs.items()
-                  if k != "molar_mass_inconsistent"}
+    # `annotation_only` is the honest half: a defect the annotator saw and this
+    # engine did not. It is graded as a warning rather than a pass because the
+    # engine having missed it is the finding.
+    record("the engine sees every arithmetic defect the annotation saw",
+           PASS if not annotation_only else WARN,
+           f"{len(annotation_only)} reaction(s) the annotation flags as "
+           f"{' or '.join(ARITHMETIC_FLAGS)} pass every engine quantity check")
+
+    uncompared = {k: v for k, v in theirs.items() if k not in ARITHMETIC_FLAGS}
     record("every annotation flag family has an engine check to compare against",
            WARN if uncompared else PASS,
            f"{sum(uncompared.values())} flags across "
            f"{len(uncompared)} families have no counterpart check: "
            + ", ".join(sorted(uncompared)))
+    return annotation_only
+
+
+def test_missed_arithmetic(data: dict, artifact: dict, missed: set) -> None:
+    """Why the engine passed a step the annotation flagged, and what would not.
+
+    `mass_check` needs a mass AND a mole count ON THE SAME ROW, so a product row
+    that states a mass and no moles is invisible to it. That is not a rare shape:
+    it is how every one of this patent's example steps writes its product. The
+    arithmetic those rows DO support is the yield identity
+
+        limiting reactant mmol  x  yield  x  MW(product)  =  product mass
+
+    which needs no mole count on the product row at all. Measured here rather
+    than asserted, because the claim being made is that adding it would close
+    the gap, and that claim is checkable.
+    """
+    print("\nH  the arithmetic the engine cannot currently see")
+    structures = {e["identifier"]: e for e in data["structures"]}
+    label = {r["record_id"]: r["label_en"] for r in artifact["records"]}
+
+    rows, unusable = [], 0
+    for r in data["reactions"]:
+        product = mass = None
+        reactant_mmol = []
+        for c in (r.get("compounds") or []):
+            q = c.get("quantity") or {}
+            if c.get("role") == "product" and q.get("mass_g") is not None:
+                product, mass = c.get("identifier"), float(q["mass_g"])
+            elif c.get("role") == "reactant" and q.get("mmol"):
+                reactant_mmol.append(float(q["mmol"]))
+        yield_pct = r.get("product_yield_pct")
+        mw = (structures.get(product) or {}).get("mw") if product else None
+        if not (product and mass and reactant_mmol and yield_pct and mw):
+            unusable += 1
+            continue
+        limiting = min(reactant_mmol)
+        predicted = limiting / 1000.0 * mw * (yield_pct / 100.0)
+        rows.append((r["id"], product, mw, mass, predicted,
+                     mass / (limiting / 1000.0 * yield_pct / 100.0)))
+
+    off = [t for t in rows if abs(t[3] / t[4] - 1) > 0.02]
+    print(f"     reactions the identity can be applied to   {len(rows)}"
+          f"  ({unusable} lack a product mass, a reactant mole count, a yield "
+          f"or a resolved structure)")
+    print(f"     of those, product mass disagrees by >2%    {len(off)}")
+    for rid, product, mw, mass, predicted, implied in off:
+        delta = implied - mw
+        note = ("  consistent with chlorine-for-hydrogen"
+                if abs(delta + V.CL_FOR_H) < V.CL_WINDOW else "")
+        print(f"       {label.get(rid, rid)[:42]:44} stated {mass:7.2f} g, "
+              f"identity predicts {predicted:7.2f} g, implied MW "
+              f"{implied:7.2f} against {mw:7.2f}{note}")
+
+    would_catch = {t[0] for t in off}
+    closed = missed & would_catch
+    record("the yield identity would close the annotation_only gap",
+           PASS if not missed or closed == missed else WARN,
+           "nothing was missed" if not missed else
+           f"{len(closed)} of {len(missed)} missed reactions "
+           f"({', '.join(sorted(label.get(i, i) for i in closed))[:90]}) "
+           f"disagree under the yield identity")
 
 
 # ------------------------------------------------------------------ main
@@ -334,8 +458,10 @@ def main() -> int:
     test_no_chinese(artifact)
     test_sensitivity(patent_id, data, artifact)
     test_census(artifact)
+    test_contract_shape(artifact)
     test_citation_width(artifact)
-    test_agreement(artifact, data)
+    missed = test_agreement(artifact, data)
+    test_missed_arithmetic(data, artifact, missed)
 
     print()
     tally = Counter(s for _, s, _ in results)

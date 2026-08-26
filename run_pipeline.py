@@ -113,6 +113,14 @@ def stages(pid: str) -> list[Stage]:
 
     return [
         Stage(
+            name="prompts",
+            title="render the annotation prompts for THIS patent, for the agent to follow",
+            cmds=[[PY, "render_prompts.py", "--patent-id", pid]],
+            inputs=["render_prompts.py", "pipeline_context.py", "prompts/*.md",
+                    f"input/{pid}-biblio.json"],
+            outputs=[f"output/prompts/{pid}/*.md"],
+        ),
+        Stage(
             name="enrich",
             title="vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
             cmds=[[PY, "build_enriched.py", "--patent-id", pid]],
@@ -275,19 +283,19 @@ def stages(pid: str) -> list[Stage]:
 # Nothing in this list can be produced by a subprocess. Each entry is a pass that
 # needs an agent holding the prompt and, for V and A5, the rendered page images.
 PREREQS = [
-    ("pass V", "prompts/V-page-vision.md", "input/vision/p*.json",
+    ("pass V", "V-page-vision.md", "input/vision/p*.json",
      "one agent per rendered page in input/pages/, in parallel"),
-    ("pass A0", "prompts/A0-section-map.md", "output/stages/A0-sections/00-sections.json",
+    ("pass A0", "A0-section-map.md", "output/stages/A0-sections/00-sections.json",
      "one call over the whole enriched document"),
-    ("pass A1", "prompts/A1-compounds.md", "output/stages/A1-compounds/*.json",
+    ("pass A1", "A1-compounds.md", "output/stages/A1-compounds/*.json",
      "one call per section, each writing <section>.json and <section>-provenance.json"),
-    ("pass A2", "prompts/A2-reactions.md", "output/stages/A2-reactions/*.json",
+    ("pass A2", "A2-reactions.md", "output/stages/A2-reactions/*.json",
      "one call per section that carries procedures"),
-    ("pass A3", "prompts/A3-pathways.md", "output/stages/A3-pathways/pathways.json",
+    ("pass A3", "A3-pathways.md", "output/stages/A3-pathways/pathways.json",
      "one call"),
-    ("pass A4", "prompts/A4-patent.md", "output/stages/A4-patent/patent-llm.json",
+    ("pass A4", "A4-patent.md", "output/stages/A4-patent/patent-llm.json",
      "one call"),
-    ("pass A5", "prompts/A5-verify.md", "output/stages/A5-verify/*.json",
+    ("pass A5", "A5-verify.md", "output/stages/A5-verify/*.json",
      "one call per artifact, each in a FRESH context, each re-opening the page images"),
 ]
 
@@ -306,12 +314,21 @@ def hand_inputs(pid: str) -> list[tuple[str, str]]:
 
 
 def check_prereqs(pid: str) -> list[str]:
-    """Everything a human or an agent owes before any of this can run."""
+    """Everything a human or an agent owes before any of this can run.
+
+    The prompt named for each pass is the RENDERED copy under
+    output/prompts/<id>/, not the template. The templates still carry a patent id,
+    because a prompt is read by an agent rather than imported by a process, and an
+    agent following the template faithfully would stamp the wrong id into the new
+    patent's gold. `render_prompts.py` fills it in; the prompts stage runs before
+    this check so the file named here exists.
+    """
     missing = []
+    rendered = f"output/prompts/{pid}"
     for label, prompt, pattern, how in PREREQS:
         if not expand([pattern]):
             missing.append(f"  {label:8} MISSING\n"
-                           f"           prompt : {prompt}\n"
+                           f"           prompt : {rendered}/{prompt}\n"
                            f"           writes : {pattern}\n"
                            f"           how    : {how}")
     for path, what in hand_inputs(pid):
@@ -640,21 +657,6 @@ def main() -> int:
                   f"{', '.join(by_name)}", file=sys.stderr)
             return 1
 
-    # ---- what a human owes, checked before anything runs --------------------
-    missing = check_prereqs(pid)
-    if missing:
-        print(f"\npipeline: {pid}\n")
-        print("The LLM annotation passes are not run by this script - they need an "
-              "agent holding\nthe prompt and, for V and A5, the rendered page images. "
-              "This run cannot start until\nthe following exist. Nothing has been "
-              "written.\n")
-        print("\n".join(missing))
-        print(f"\nEach pass writes into output/stages/<pass>/ and nothing later "
-              f"rewrites it.\nSee prompts/ for the instructions and "
-              f"output/stages/README.md for the layout.\n"
-              f"Then: python3 run_pipeline.py --patent-id {pid}")
-        return 3
-
     # ---- select --------------------------------------------------------------
     if args.only:
         selected = [by_name[args.only]]
@@ -698,6 +700,35 @@ def main() -> int:
     # ---- run -----------------------------------------------------------------
     ctx = {"stages": all_stages, "results": {}}
 
+    # ---- the prompts stage, then what a human owes ---------------------------
+    #
+    # Ordered this way on purpose. The prerequisite message names the prompt that
+    # produces each missing pass, and the prompt it must name is the one rendered
+    # for THIS patent. So the prompts stage runs first, and only then is the check
+    # made. Nothing else has run at this point.
+    pst = by_name["prompts"]
+    pact = dict((s_.name, a) for s_, a, _ in plan)["prompts"]
+    if pact == "run":
+        print("=== prompts " + "=" * 61)
+        if run_stage(pst, pid, ctx) != 0:
+            ctx["results"]["prompts"] = "failed"
+            print("\nSTOP  the prompts could not be rendered for this patent.")
+            return 1
+    ctx["results"]["prompts"] = {"run": "ran", "skip": "current", "absent": "absent",
+                                 "not selected": "not selected"}[pact]
+
+    missing = check_prereqs(pid)
+    if missing:
+        print("\nThe LLM annotation passes are not run by this script - they need an "
+              "agent holding\nthe prompt and, for V and A5, the rendered page images. "
+              "This run cannot start until\nthe following exist. Nothing has been "
+              "written except the rendered prompts above.\n")
+        print("\n".join(missing))
+        print(f"\nEach pass writes into output/stages/<pass>/ and nothing later "
+              f"rewrites it.\nSee output/stages/README.md for the layout.\n"
+              f"Then: python3 run_pipeline.py --patent-id {pid}")
+        return 3
+
     def finish(rc: int) -> int:
         """Write the manifest even on a stop, then return rc.
 
@@ -721,7 +752,7 @@ def main() -> int:
         if action != "run" and (was.startswith("failed") or was == "not reached"):
             label = was
         ctx["results"][st.name] = label
-        if action != "run" or st.name == "manifest":
+        if action != "run" or st.name in ("manifest", "prompts"):
             continue
         print(f"=== {st.name} " + "=" * max(0, 66 - len(st.name)))
         code = run_stage(st, pid, ctx)
