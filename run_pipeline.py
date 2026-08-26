@@ -114,6 +114,23 @@ def stages(pid: str) -> list[Stage]:
     verif = "output/relevant_output/verification"
     artifacts = ["compounds", "reactions", "pathways", "patent"]
 
+    # Exactly what make_relevant_output.py copies, in its GOLD and PROV lists.
+    # Kept here as one list because both stages that run that script have to
+    # declare every file it reads. They did not: `assemble` copied
+    # output/translations.json into the gold without declaring it as an input, so
+    # a translation fixed at stage 9 left the gold copy stale and every screen and
+    # the export went on showing the old English. The stage looked current,
+    # because the input that changed was not one it had declared. A stage's
+    # declared inputs have to be what it actually reads, or the skip logic is
+    # confidently wrong.
+    COPIED_TO_GOLD = [f"output/{n}.json" for n in artifacts] + [
+        "output/structures.json", "output/structures-resolved.json",
+        "output/translations.json"]
+    COPIED_TO_PROV = ["output/compounds-provenance.json",
+                      "output/reactions-provenance.json",
+                      "output/compounds-sections.json",
+                      "output/compounds-equivalence.json"]
+
     return [
         Stage(
             name="prompts",
@@ -180,11 +197,9 @@ def stages(pid: str) -> list[Stage]:
             title="mirror gold and provenance into the deliverable, so the resolvers read current gold",
             cmds=[[PY, "make_relevant_output.py", "--patent-id", pid]],
             inputs=["make_relevant_output.py", "pipeline_context.py",
-                    "output/structures.json", "output/compounds-sections.json",
-                    "output/compounds-equivalence.json", "output/compounds-provenance.json",
-                    "output/reactions-provenance.json", "output/stages/A5-verify/*.json",
-                    "schemas/*.schema.json", "input/vision/p*.json"]
-                   + [f"output/{n}.json" for n in artifacts],
+                    "output/stages/A5-verify/*.json", "schemas/*.schema.json",
+                    "input/vision/p*.json"]
+                   + COPIED_TO_GOLD + COPIED_TO_PROV,
             outputs=[f"{gold}/{n}.json" for n in artifacts]
                     + [f"{gold}/structures.json", f"{gold}/*.schema.json",
                        f"{prov}/compounds-provenance.json", f"{prov}/reactions-provenance.json",
@@ -244,10 +259,11 @@ def stages(pid: str) -> list[Stage]:
             name="assemble",
             title="assemble the deliverable: gold, provenance, audits, structures, diagrams",
             cmds=[[PY, "make_relevant_output.py", "--patent-id", pid]],
-            inputs=["make_relevant_output.py", "output/structures-resolved.json",
+            inputs=["make_relevant_output.py", "pipeline_context.py",
                     "output/structures/*.svg", "svg/*.svg", "svg/*.jpg",
-                    "output/stages/A5-verify/*.json"]
-                   + [f"output/{n}.json" for n in artifacts],
+                    "output/stages/A5-verify/*.json", "schemas/*.schema.json",
+                    "input/vision/p*.json"]
+                   + COPIED_TO_GOLD + COPIED_TO_PROV,
             outputs=[f"{gold}/structures-resolved.json", f"{gold}/translations.json",
                      "output/relevant_output/structures/*.svg",
                      "output/relevant_output/svg/*.svg",

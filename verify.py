@@ -1287,27 +1287,43 @@ class Engine:
         return out
 
     def assign_tiers(self) -> None:
-        """Which of the three queues in REVIEW-PROTOCOL.md each claim belongs to.
+        """Which queue in REVIEW-PROTOCOL.md each claim belongs to.
 
         Tier is the queue and risk is the order within it. They answer different
         questions: risk says how alarming one claim is, tier says which census a
         reviewer with 900 seconds is working through when they meet it.
 
-            1  everything the machine could not confirm, plus every claim sitting
-               on a record with a failed check. A census, not a sample.
-            2  the uncited chemistry lines. The recall side. Also a census.
-            3  what the machine matched cleanly, sampled rather than read.
+            1  the machine LOOKED AND FAILED. A census, not a sample.
+            2  the candidate misses, the recall side. Also a census.
+            3  the machine matched it cleanly, sampled rather than read.
+            4  the machine had NO OPINION. Sampled, and not part of tier 3's bound.
+
+        Tier 4 exists because of a measurement. The census was tier 1 plus tier 2,
+        93 claims, and the queue has now been timed at a 5.3 s median and an 8.7 s
+        p90. At the pessimistic rate 93 claims eat the whole 15 minutes and tier 3
+        is sampled ZERO times, which does not merely slow the reviewer down: it
+        leaves the report with no confidence bound at all. Demoting the 29
+        `not_checkable` claims brings the census to 64, which fits at every rate
+        measured and leaves budget for the sample.
+
+        The reason it is right and not merely convenient: "the machine had no
+        opinion" is a different population with a different prior from "the machine
+        looked and failed". They should never have shared a census. They must also
+        not join tier 3, whose bound is specifically the residual defect rate among
+        claims the machine MATCHED - a claim it never matched would silently widen
+        the very estimate it has no evidence about.
         """
         promoted = self.promoted_fields()
         for claim in self.claims:
             prefixes = promoted.get(claim["record_id"], [])
             if (claim["field"] == "__coverage__"
-                    or claim["field"].startswith("__quantity__")):
+                    or claim["field"].startswith("__quantity__")
+                    or claim["field"].startswith("__schema__")):
                 claim["tier"] = 2
             elif claim["auto"] in ("not_found", "not_reconciled", "partial"):
                 claim["tier"] = 1
-            elif claim["auto"] == "not_checkable" and claim["load_bearing"]:
-                claim["tier"] = 1
+            elif claim["auto"] == "not_checkable":
+                claim["tier"] = 4
             elif any(claim["field"].startswith(pre) for pre in prefixes):
                 claim["tier"] = 1
                 claim["needs_human"] = True
@@ -3093,6 +3109,46 @@ class Run(Engine):
              "field": path or None, "claim_id": claim["claim_id"]})
 
 
+    def emit_schema_tickets(self) -> None:
+        """One claim per schema limitation, not one per time it bit.
+
+        The reviewer is answering "is a schema change worth it for this field?".
+        That question has one answer however many lines provoked it, and the eight
+        instances are evidence for it rather than eight separate decisions. Every
+        instance is still listed inside the one claim, and every affected record
+        still carries its own failing check, so nothing is hidden - only the
+        question is asked once.
+        """
+        patent_rec = next((r for r in self.records if r.kind == "patent"), None)
+        if patent_rec is None:
+            return
+        for (kind, path), hits in sorted(self.schema_tickets.items()):
+            lines = sorted({h["line"] for h in hits})
+            printed = sorted({h["printed_en"] for h in hits})
+            records = sorted({h["record_label_en"] for h in hits})
+            shape = ("states a range where the field holds a single number"
+                     if kind == "schema_loss_range" else
+                     "has more than one stage where the field holds one value")
+            reason = (
+                f"On {len(hits)} occasion{'s' if len(hits) > 1 else ''} the patent "
+                f"{shape}, and `{path}` could not carry it. The quantities lost are "
+                + english_list(printed) + f", on line{'s' if len(lines) > 1 else ''} "
+                + compact_lines(lines)
+                + f". {len(records)} record{'s are' if len(records) > 1 else ' is'} "
+                f"affected. Nothing was misread and re-running the extraction "
+                f"changes nothing: the field cannot hold the answer.")
+            self._claim(
+                patent_rec, f"__schema__[{kind}:{path}]",
+                f"`{path}` cannot hold what the patent prints, {len(hits)} times "
+                f"over. Is widening it worth it?",
+                english_list(printed), None, None,
+                self.source.with_partners(lines), [], "not_checkable", reason,
+                [f"One schema limitation, hit {len(hits)} times."],
+                "value", set(lines), about="schema", load_bearing=True,
+                rec_field=f"__schema__.{kind}.{path}",
+                extra={"quantity_verdict": kind,
+                       "schema_instances": hits})
+
     def build_coverage(self) -> None:
         reagent_names: dict[str, str] = {}
         for c in self.data["compounds"]:
@@ -3233,12 +3289,13 @@ CHECK_STATUSES = ["fail", "warn", "pass", "skip"]
 FAMILIES = ["grounding", "reference", "structure", "drawing", "quantity",
             "consistency", "completeness", "schema_loss"]
 
-TIERS = [1, 2, 3]
+TIERS = [1, 2, 3, 4]
 
 TIER_MEANING = {
-    1: "census of the suspicious: every claim the machine could not confirm",
-    2: "census of the candidate misses: chemistry on a line no record cites",
-    3: "what the machine matched cleanly, to be sampled rather than read",
+    1: "census: the machine looked and could not confirm it",
+    2: "census: a candidate miss, chemistry nothing in the annotation holds",
+    3: "the machine matched it cleanly, to be sampled rather than read",
+    4: "the machine had no opinion. Sampled, and NOT in tier 3's bound",
 }
 
 # Keys the engine uses to carry a claim between passes. They are working state, not

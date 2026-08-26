@@ -110,9 +110,9 @@
     "note": "The gold already carries this molecule in English. Surfaces as: an alias on a gold compound record; a Chinese term quoted inside the annotator's English commentary on a provenance row."
   },
   "无水三氯化铝": {
-    "en": "aluminium trichloride",
-    "origin": "gold_alias",
-    "note": "The gold already carries this molecule in English. It is spelled 'aluminium trichloride', 'anhydrous aluminium trichloride' across the records. They are not in one equivalence group, so the spread is a spelling split the gold has not indexed. Surfaces as: an alias on a gold compound record (x2); a Chinese term quoted inside the annotator's English commentary on a provenance row (x2)."
+    "en": "anhydrous aluminium trichloride",
+    "origin": "curated",
+    "note": "Hand-authored, and deliberately preferred over the source's own translation of the line: the source translates the whole paragraph this phrase was quoted out of, which is not a translation of the phrase. Surfaces as: an alias on a gold compound record (x2); a Chinese term quoted inside the annotator's English commentary on a provenance row (x2). OVERRIDES gold_alias, which returns 'aluminium trichloride' and drops 无水, anhydrous. This is the step 1 and step 2 Friedel-Crafts catalyst and the qualifier is the whole point of it: aluminium trichloride hydrolyses on contact with water to the hydrate and hydrogen chloride, and the hydrate does not catalyse the reaction, so 'anhydrous' is a statement about whether the step works rather than a description of the reagent. The gold's own compound record already carries 'anhydrous aluminium trichloride' as its identifier, so the fact was never missing from the annotation, only from this index, where tier 2 picked the shorter alias. Confidence: high. 无水 is literally 'no water' and is the standard Chinese prefix for the anhydrous form."
   },
   "冰水": {
     "en": "ice water",
@@ -135,9 +135,9 @@
     "note": "The gold already carries this molecule in English. Surfaces as: an alias on a gold compound record."
   },
   "稀盐酸": {
-    "en": "hydrochloric acid",
-    "origin": "gold_alias",
-    "note": "The gold already carries this molecule in English. Surfaces as: an alias on a gold compound record."
+    "en": "dilute hydrochloric acid",
+    "origin": "curated",
+    "note": "Hand-authored, and deliberately preferred over the source's own translation of the line: the source translates the whole paragraph this phrase was quoted out of, which is not a translation of the phrase. Surfaces as: an alias on a gold compound record. OVERRIDES gold_alias, which returns 'hydrochloric acid' and drops 稀, dilute. The patent distinguishes three strengths of the same acid across the document, 稀盐酸 for the step 3 acidification and 36％的盐酸 for the step 6 workup, and collapsing them all to 'hydrochloric acid' loses a distinction the document is deliberately making. This entry does not put a number on it, because the Chinese does not: 稀 says dilute and says no more. Confidence: high. See 36％的盐酸, the same substance at a stated strength."
   },
   "36％的盐酸": {
     "en": "36% hydrochloric acid",
@@ -305,9 +305,9 @@
     "note": "The gold already carries this molecule in English. Surfaces as: an alias on a gold compound record."
   },
   "饱和碳酸氢钠": {
-    "en": "sodium bicarbonate",
-    "origin": "gold_alias",
-    "note": "The gold already carries this molecule in English. Surfaces as: an alias on a gold compound record."
+    "en": "saturated sodium bicarbonate",
+    "origin": "curated",
+    "note": "Hand-authored, and deliberately preferred over the source's own translation of the line: the source translates the whole paragraph this phrase was quoted out of, which is not a translation of the phrase. Surfaces as: an alias on a gold compound record. OVERRIDES gold_alias, which returns 'sodium bicarbonate' and drops 饱和, saturated. Saturated sodium bicarbonate is an aqueous wash used to neutralise a reaction mixture; solid sodium bicarbonate is a different operation with a different result. The Chinese says which one, so the English should. The gold's record carries 'saturated sodium bicarbonate'. Confidence: high; 饱和 is the standard term for a saturated solution."
   },
   "乙酸乙酯": {
     "en": "ethyl acetate",
@@ -320,9 +320,9 @@
     "note": "The gold already carries this molecule in English. Surfaces as: an alias on a gold compound record."
   },
   "无水硫酸镁": {
-    "en": "magnesium sulfate",
-    "origin": "gold_alias",
-    "note": "The gold already carries this molecule in English. Surfaces as: an alias on a gold compound record."
+    "en": "anhydrous magnesium sulfate",
+    "origin": "curated",
+    "note": "Hand-authored, and deliberately preferred over the source's own translation of the line: the source translates the whole paragraph this phrase was quoted out of, which is not a translation of the phrase. Surfaces as: an alias on a gold compound record. OVERRIDES gold_alias for the same reason as 无水三氯化铝. Used as the drying agent in the step 7 and step 8 workups, where anhydrous is the only form that dries anything: the heptahydrate is what it becomes after it has worked. The gold's record carries 'anhydrous magnesium sulfate' already. Note that the neighbouring alias 硫酸镁 without the prefix resolves to plain 'magnesium sulfate' and is correct as it stands, which is why this is fixed per alias and not per record. Confidence: high."
   },
   "2-氯-3-(2,2,2-三氟乙氧基）甲基-4-甲磺酰基苯甲酸乙酯": {
     "en": "ethyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate",
