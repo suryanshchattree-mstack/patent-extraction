@@ -134,6 +134,10 @@ recorded against that record.
 - `extraction` - the annotation says X and the patent says Y. **We** are wrong.
 - `patent` - the annotation says the patent contradicts itself. The annotation is
   **right** and the document is defective.
+- `schema` - the annotation read the document correctly and the field it had to put
+  the answer in could not hold it. Nobody is wrong and re-running the extraction
+  fixes nothing. This one needs a schema change, which is a different fix from the
+  other two, which is the whole reason it is a separate value.
 
 Blurring them asks a reviewer to mark a correct annotation as wrong. `FINDINGS.md` is
 explicit that its items are defects in the patent and that the annotation records them
@@ -211,7 +215,8 @@ Check families, and what each one catches:
 | `quantity` | mass and mmol that disagree with the molecular weight. |
 | `consistency` | the same molecule given two different structures, or two records for one thing. |
 | `drawing` | the structure read off the page image against the gold's structure for the same named molecule. Two independent readings disagreeing is a hard defect. |
-| `completeness` | a record missing a field its own section clearly states. |
+| `completeness` | something the patent states that no record holds. |
+| `schema_loss` | the patent states it, the annotation read it right, and the field that would hold it is too small. |
 
 Each check also carries `about_fields`: the claim-field prefixes it concerns, or
 empty for a check about the whole record. This is what keeps tier 1 readable.
@@ -223,6 +228,54 @@ because one row of the same reaction failed a mass balance.
 `annotation_flags_en`, the last being the annotation's own `validation_flags` said in
 English, so a check that rediscovers one can say the annotation flagged it too rather
 than presenting it as new.
+
+## Quantity coverage - the stronger recall test
+
+Line coverage answers "did any record look at this line". It cannot answer "did any
+record take what was on it": a line can be cited by one record while carrying three
+facts with two of them dropped, and `uncited_with_chemistry` still reads zero.
+
+So every cited line is tokenised into (value, unit) pairs and each one is matched
+against what a claim on a record citing that line **structurally asserts** -
+`claimed_value` and `claimed_unit`, never the prose of a quotation. Matching against
+quoted text is the trap that makes this check meaningless: a "16" occurring anywhere
+inside any quotation would count as coverage of a sixteen-hour reaction, and the
+sweep returns a clean zero that means nothing.
+
+Rules that make the number trustworthy, each of which removed a false alarm when it
+was added:
+
+- Only tokens carrying a unit count. A bare number is a locant, an index or an NMR
+  proton count, and sweeping those reports the whole of Example 1 as dropped.
+- Matching is unit-aware. 0.22 mol on the page answers 220 mmol in the record.
+- A Chinese line and the English it was translated into are one block, so one
+  printed quantity is not counted twice.
+- A range is one fact. Its endpoints merge before anything is queued, so "1-10 h"
+  is one row and not two.
+- A volume printed immediately before the word for a flask is glassware, not a
+  charge. Counted, never queued.
+- A percentage is a yield or a concentration by the words beside it, never by which
+  field happens to be free. 36% HCl read as a yield because `product_yield_pct` was
+  occupied is a false second stage.
+- Quantities are said back in the unit the page prints. "50 min" rendered as "50 h"
+  is the matcher lying about the document.
+
+An unaccounted quantity becomes a tier-2 claim with `field: "__quantity__[<line>:
+<value><unit>]"` and a `quantity_verdict`, which is the finding:
+
+| `quantity_verdict` | `about` | what it means and what fixes it |
+|---|---|---|
+| `schema_loss_range` | `schema` | the patent prints a range, the field is one number. Widen the schema. |
+| `schema_loss_second` | `schema` | the step has two stages and the field has one slot. Make the field a list. |
+| `gap` | `extraction` | the field exists and is empty. Re-extract. |
+| `unmapped` | `extraction` | no field of that kind exists on any record citing the line. Design question. |
+
+`summary.quantity_coverage` carries the tally and every finding.
+
+**What this does NOT establish.** Matching is by VALUE, not by attachment. It shows
+no quantity was ignored. It does not show each quantity was attached to the right
+compound: "25.3 g" being present somewhere in the annotation is not evidence that it
+was attached to 2-chlorotoluene. That is precisely what the human reviewer is for.
 
 ## `source_coverage` - "what did we MISS"
 

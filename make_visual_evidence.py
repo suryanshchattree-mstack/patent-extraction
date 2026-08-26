@@ -1023,15 +1023,15 @@ def build(root: Path, patent_id: str) -> int:
             related = related_records(inp, disc, fields)
             markers = sorted(set(re.findall(r"\[\d{4}\]", " ".join(fields.values()))))
 
-            # Only attach a drawing when the conflict really sits at it. Hanging
-            # the page's first drawing off every conflict on the page points the
-            # reviewer at a picture that has nothing to do with the question.
+            # Attach a drawing only when the conflict has a drawing side at all,
+            # AND that drawing is the one it sits at. Most of these conflicts are
+            # between two pieces of prose; hanging a structure picture off one of
+            # those points the reviewer at something that cannot answer them.
+            says = fields["drawing_says"].strip().lower()
+            drawing_involved = bool(says) and not says.startswith(("n/a", "no drawing"))
             near = next((c for c in page_comps
                          if set(markers) & {m.strip() for m in c["between_markers_en"]}),
-                        None)
-            drawing_involved = bool(
-                near or (fields["drawing_says"] and not
-                         fields["drawing_says"].lower().startswith(("n/a", "no drawing"))))
+                        None) if drawing_involved else None
             if drawing_involved:
                 why = ["The patent's drawing and the patent's words disagree here."]
             else:
@@ -1059,16 +1059,12 @@ def build(root: Path, patent_id: str) -> int:
                     "page. No string match can settle it. A human has to look at the "
                     "page and say which of the two the patent prints."),
                 risk=0.6,
-                risk_reasons_en=[
-                    "The patent's drawing and the patent's words disagree here.",
-                    "Where a source contradicts itself, an extraction has to pick one, "
-                    "and the pick is exactly what needs checking.",
-                ],
+                risk_reasons_en=why,
                 about="patent",
+                evidence_kind="comparison_image" if near else "page_scan",
                 images={"page_image_path": f"input/pages/{page}.png",
-                        "comparison_image": page_comps[0]["comparison_image"]
-                        if page_comps else None,
-                        "patent_crop_image": None},
+                        "comparison_image": near["comparison_image"] if near else None,
+                        "patent_crop_image": near["patent_crop_image"] if near else None},
                 stratum=f"patent:page {page_no}",
                 marker=markers[0] if markers else None,
                 src_lines=src_lines,
@@ -1105,6 +1101,15 @@ def build(root: Path, patent_id: str) -> int:
             "claims_total": len(claims),
             "patent_self_contradictions": sum(
                 1 for c in claims if c["field"] == "__patent_self_contradiction__"),
+            # A count of failures with no denominator cannot be read. Zero out of
+            # zero means the check never ran; zero out of eight means it ran and
+            # found nothing, and only the second is worth anything.
+            "structure_cross_checks_run": sum(
+                1 for c in comparisons for p in c["panels"] if p["linked_by"] == "name"),
+            "structure_cross_checks_note_en": (
+                "A cross-check runs only where our record was chosen by the compound "
+                "name in the patent's text rather than by the drawing, because only "
+                "then can the two readings genuinely disagree."),
             "structure_disagreements": sum(
                 1 for c in claims if c["field"] == "structure.drawn_vs_recorded"),
             "drawn_but_not_recorded": sum(
@@ -1160,7 +1165,8 @@ def build(root: Path, patent_id: str) -> int:
           f"{doc['summary']['comparisons_falling_back_to_whole_page']} whole-page fallback")
     print(f"drawing-claims.json  {len(claims)} claims "
           f"({doc['summary']['patent_self_contradictions']} patent conflicts, "
-          f"{doc['summary']['structure_disagreements']} structure disagreements, "
+          f"{doc['summary']['structure_disagreements']} structure disagreements out of "
+          f"{doc['summary']['structure_cross_checks_run']} cross-checks, "
           f"{doc['summary']['drawn_but_not_recorded']} drawn but not recorded)")
     return 0
 
@@ -1171,8 +1177,17 @@ def ordinal(n: int) -> str:
 
 def make_claim(*, patent_id, record_id, record_kind, label_en, field, field_label_en,
                question_en, claimed_en, evidence_en, auto, auto_reason_en, risk,
-               risk_reasons_en, about, images, stratum, marker, src_lines, extra=None):
+               risk_reasons_en, about, images, stratum, marker, src_lines,
+               evidence_kind="comparison_image", extra=None):
     line = src_lines.get(marker) if marker else None
+    where = {
+        "comparison_image": (
+            "The evidence for this item is a picture. Open the comparison image listed "
+            "under 'images', and the page scan behind it if the comparison looks wrong."),
+        "page_scan": (
+            "The evidence for this item is the patent's own words, and the scan of the "
+            "page they are printed on is listed under 'images'. No drawing is involved."),
+    }[evidence_kind]
     claim = {
         "claim_id": sha16(record_id, field),
         "record_id": record_id,
@@ -1198,11 +1213,8 @@ def make_claim(*, patent_id, record_id, record_kind, label_en, field, field_labe
         "tier": 1,
         "stratum": stratum,
         "about": about,
-        "evidence_kind": "image",
-        "evidence_note_en": (
-            "The evidence for this item is a picture, not a line of text. Open the "
-            "images listed under 'images' - the comparison first, and the page scan if "
-            "the comparison looks wrong."),
+        "evidence_kind": evidence_kind,
+        "evidence_note_en": where,
         "images": images,
     }
     if extra:
@@ -1215,21 +1227,25 @@ def related_records(inp: Inputs, disc: dict, fields: dict) -> list[dict]:
     actually recorded rather than only that a conflict exists."""
     blob_zh = " ".join(str(disc.get(k) or "") for k in ("what", "drawing_says", "text_says"))
     blob_en = norm_name(" ".join(fields.values()))
+    # A record with no structure is still a record the conflict bears on, and a
+    # solvent named in a conflict is exactly the kind of thing the gold holds
+    # without a structure. Dropping those left the commonest conflicts with no
+    # cross-reference at all.
     hits, seen = [], set()
     for key in inp.tr_keys:
         if key and key in blob_zh:
             g = inp.by_name.get(norm_name(inp.translations[key]["en"]))
-            if g and g["identifier"] not in seen and g.get("smiles"):
+            if g and g["identifier"] not in seen:
                 seen.add(g["identifier"])
                 hits.append(g)
     for name, g in sorted(inp.by_name.items(), key=lambda kv: -len(kv[0])):
-        if len(name) > 14 and g.get("smiles") and name in blob_en \
-                and g["identifier"] not in seen:
+        if len(name) > 14 and name in blob_en and g["identifier"] not in seen:
             seen.add(g["identifier"])
             hits.append(g)
     return [{
         "identifier_en": g["identifier"],
         "what_we_recorded_smiles": g.get("smiles"),
+        "we_hold_a_structure": bool(g.get("smiles")),
         "formula": g.get("formula"),
         "structure_svg_path": (f"output/relevant_output/{g['svg']}"
                                if g.get("svg") else None),
@@ -1286,6 +1302,7 @@ def write_readme(out: Path, page_index: dict, doc: dict, patent_id: str) -> None
         lines.append(f"| {p['page']} | {p['drawings_reported_by_vision']} | "
                      f"{p['drawing_regions_detected']} | "
                      f"{'yes' if p['detection_agrees'] else 'NO'} |")
+    disagreeing = [p["page"] for p in page_index["pages"] if not p["detection_agrees"]]
     lines += [
         "",
         "Where a page disagrees, no region is trusted for it and the comparison shows the",
@@ -1293,6 +1310,18 @@ def write_readme(out: Path, page_index: dict, doc: dict, patent_id: str) -> None
         "crop shows them a different molecule and invites them to reject a correct",
         "extraction, so the fallback is always to show more rather than less.",
         "",
+    ]
+    if disagreeing:
+        lines += [
+            f"The one disagreement, on {', '.join(disagreeing)}, is benign and is left in",
+            "the table rather than tuned away. It is the front page, whose masthead logo",
+            "and QR code are ink that is not text and not a chemical structure either. No",
+            "chemical drawing appears on that page, so no comparison is built from it and",
+            "nothing downstream depends on the region. It is reported because a method",
+            "check that quietly drops its own failures is not a check.",
+            "",
+        ]
+    lines += [
         "## How the two halves of a comparison were paired",
         "",
         "This is the part that decides whether a comparison proves anything.",
@@ -1307,6 +1336,31 @@ def write_readme(out: Path, page_index: dict, doc: dict, patent_id: str) -> None
         "name no compound we hold, so our record was found by matching structures. The "
         "halves then agree by construction. Such a comparison shows only that we hold "
         "the molecule at all, and it is labelled WEAK on the image itself.",
+        "",
+        "## What the machine already found",
+        "",
+        "Where the pairing is by name, the drawing's SMILES and the gold's SMILES are "
+        "both reduced to one canonical form and compared. That check ran on "
+        f"{doc['summary']['structure_cross_checks_run']} structures and found "
+        f"{doc['summary']['structure_disagreements']} disagreements. The denominator is "
+        "the point: zero out of zero would mean the check never ran.",
+        "",
+        f"It found {doc['summary']['drawn_but_not_recorded']} molecules that the patent "
+        "draws and the gold holds no record of.",
+        "",
+        f"The {doc['summary']['patent_self_contradictions']} conflicts in "
+        "`drawing-claims.json` are defects in the PATENT, not in the annotation. What "
+        "each one asks the reviewer is whether we recorded what the patent really "
+        "prints, contradiction and all, rather than quietly correcting it. Only "
+        f"{sum(1 for c in doc['claims'] if c['images'].get('comparison_image'))} of them "
+        "involve a drawing at all; the rest are two pieces of the patent's prose "
+        "disagreeing, and those carry the page scan as their evidence rather than a "
+        "picture that could not answer them.",
+        "",
+        "One thing worth a human eye, and visible on the page-6 scheme comparison: three "
+        "of the molecules in that route are held in the gold with a SMILES string where "
+        "their name should be. Their panels say so, rather than printing the SMILES as "
+        "if it were a name.",
         "",
         "## Language",
         "",

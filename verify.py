@@ -256,9 +256,11 @@ def canon_unit(raw: str | None) -> tuple[str | None, float]:
 class Token:
     """One quantity read off one line: a number, and the unit printed beside it."""
 
-    __slots__ = ("value", "unit", "factor", "raw_unit", "start", "end", "in_range")
+    __slots__ = ("value", "unit", "factor", "raw_unit", "start", "end", "in_range",
+                 "folded")
 
     def __init__(self, value, raw_unit, start, end, in_range=False):
+        self.folded = ""
         self.value = value
         self.raw_unit = raw_unit
         self.unit, self.factor = canon_unit(raw_unit)
@@ -297,6 +299,28 @@ def tokenise(text: str) -> list[Token]:
                          m.start("value"), m.end("value")))
     out.sort(key=lambda t: (t.start, t.end))
     return out
+
+
+def merge_ranges(missed):
+    """A range is one fact. Queue it once, not once per endpoint.
+
+    "reflux for 1-10 h" is a single statement the schema could not hold, and
+    handing a reviewer a row for the 1 and another row for the 10 doubles the queue
+    to say one thing twice. Endpoints of the same range, on the same block, in the
+    same unit, merge into one entry carrying both ends.
+    """
+    out, ranges = [], {}
+    for line, block, tok, folded in missed:
+        tok.folded = folded
+        if not tok.in_range:
+            out.append((line, block, [tok]))
+            continue
+        ranges.setdefault((block, tok.unit), (line, block, []))[2].append(tok)
+    for (block, _), (line, blk, toks) in sorted(
+            ranges.items(), key=lambda kv: (kv[1][0], kv[0][1])):
+        toks.sort(key=lambda t: t.value)
+        out.append((line, blk, toks))
+    return sorted(out, key=lambda e: (e[0], e[2][0].unit, e[2][0].value))
 
 
 def comma_decimals(text: str) -> list[float]:
@@ -797,6 +821,8 @@ FIELD_LABELS = {
     "judgement.validation_flags": "The annotation's own validation flags",
     "judgement.is_complete": "Whether this step is fully recorded",
     "__coverage__": "Source line no record cites",
+    "__quantity__": "A quantity the patent prints that nothing records",
+    "quantity_verdict": "Why the quantity has nowhere to live",
 }
 
 # A field name carries the row it came from: `compounds[toluene].quantity.mass_g`.
@@ -862,6 +888,26 @@ VESSEL_WORDS = ("反应瓶", "反应容器", "反应釜", "四口", "三口", "�
                 "flask", "reactor", "vessel", "autoclave", "necked")
 VESSEL_WINDOW = 12
 
+# A percentage is a yield or a concentration and the schema has a different field
+# for each. Decided from the words beside it, never from which field happens to be
+# free: 36%HCl is the strength of the acid, and reading it as a yield because
+# `product_yield_pct` was occupied would report a false second stage.
+YIELD_WORDS = ("收率", "产率", "得率", "yield")
+YIELD_WINDOW = 12
+
+# How a quantity is SAID back to the reviewer: in the unit the page prints, not the
+# unit this stage converts to. "50 min" printed as "50 h" is the matcher lying about
+# the document, and 50 min is exactly what line 227 says.
+RAW_UNIT_EN = {"g": "g", "kg": "kg", "mg": "mg", "ml": "ml", "l": "L", "L": "L",
+               "mol": "mol", "mmol": "mmol", "h": "h", "hr": "h", "hrs": "h",
+               "min": "min", "%": "%", CELSIUS_MARK: "degrees C"}
+
+
+def say_quantity(value: float, raw_unit: str | None, high: float | None = None) -> str:
+    unit = RAW_UNIT_EN.get(raw_unit or "", raw_unit or "")
+    head = fmt_value(value) if high is None else f"{fmt_value(value)}-{fmt_value(high)}"
+    return f"{head}{unit}" if unit == "%" else f"{head} {unit}".strip()
+
 
 def derivation(field: str, quantity: dict, mw: float | None,
                name_en: str) -> dict | None:
@@ -922,6 +968,10 @@ class Engine:
         self.records: list[Record] = []
         self.claims: list[dict] = []
         self.record_of: dict[int, Record] = {}
+        # record_id -> the gold dict it was built from. The quantity sweep needs to
+        # ask a record which of its fields would have held a number, and that is a
+        # question about the gold shape rather than about anything this stage keeps.
+        self.raw_of: dict[str, dict] = {}
         self.cited_lines: dict[int, set[str]] = {}
         self.bases: dict[str, dict] = {}
         self.agreement = {"both": [], "machine_only": [], "annotation_only": []}
@@ -1169,7 +1219,8 @@ class Engine:
         promoted = self.promoted_fields()
         for claim in self.claims:
             prefixes = promoted.get(claim["record_id"], [])
-            if claim["field"] == "__coverage__":
+            if (claim["field"] == "__coverage__"
+                    or claim["field"].startswith("__quantity__")):
                 claim["tier"] = 2
             elif claim["auto"] in ("not_found", "partial"):
                 claim["tier"] = 1
@@ -1797,7 +1848,7 @@ def compact_lines(lines) -> str:
 
 # ---------------------------------------------------------------- record checks
 
-def quantity_holder(record: dict, kind: str, unit: str):
+def quantity_holder(record: dict, kind: str, unit: str, percent_is: str = ""):
     """Which field of `record` would hold a quantity in `unit`, and what is in it.
 
     Returns (field path, current value or None, whether the field can hold a RANGE),
@@ -1810,6 +1861,7 @@ def quantity_holder(record: dict, kind: str, unit: str):
     """
     if kind == "reaction":
         cond = record.get("conditions") or {}
+        kind = percent_is or kind
         if unit == "h":
             return "conditions.time_h", cond.get("time_h"), False
         if unit == "C":
@@ -1818,10 +1870,10 @@ def quantity_holder(record: dict, kind: str, unit: str):
                          if t.get(k) is not None), None)
             return "conditions.temperature", held, True
         if unit == "%":
+            if kind == "yield":
+                return "product_yield_pct", record.get("product_yield_pct"), False
             conc = cond.get("concentration") or {}
-            if conc.get("value") is not None or record.get("product_yield_pct") is None:
-                return ("conditions.concentration.value", conc.get("value"), False)
-            return "product_yield_pct", record.get("product_yield_pct"), False
+            return "conditions.concentration.value", conc.get("value"), False
         return None
     if kind == "compound":
         if unit == "C":
@@ -1840,6 +1892,12 @@ def is_vessel(line: str, end: int) -> bool:
     """Does a volume token sit immediately before the word for a flask?"""
     window = line[end:end + VESSEL_WINDOW]
     return any(w in window for w in VESSEL_WORDS)
+
+
+def is_yield(line: str, start: int) -> bool:
+    """Is a percentage introduced by the word for yield?"""
+    window = line[max(0, start - YIELD_WINDOW):start]
+    return any(w in window for w in YIELD_WORDS)
 
 
 def check(cid: str, family: str, status: str, title: str, detail: str,
@@ -1972,6 +2030,7 @@ class Run(Engine):
                          f"cmp:{c.get('compound_uuid')}")
             self.records.append(rec)
             self.note_citation(rec.record_id, cited)
+            self.raw_of[rec.record_id] = c
 
             q = c.get("quantity") or {}
             mw = (self.structures.get(c["identifier"]) or {}).get("mw")
@@ -2043,6 +2102,7 @@ class Run(Engine):
                          r.get("validation_flags") or [])
             self.records.append(rec)
             self.note_citation(rec.record_id, cited)
+            self.raw_of[rec.record_id] = r
 
             cond = r.get("conditions") or {}
             temp = cond.get("temperature") or {}
@@ -2639,8 +2699,8 @@ class Run(Engine):
 
         Line coverage cannot see this. A line can be cited by one record while
         carrying three facts with two of them dropped, and `uncited_with_chemistry`
-        still reads zero. So each cited line is tokenised and every (value, unit)
-        is matched against what a claim on a record citing that line STRUCTURALLY
+        still reads zero. So each cited line is tokenised and every (value, unit) is
+        matched against what a claim on a record citing that line STRUCTURALLY
         asserts - `claimed_value` and `claimed_unit`, never the prose of a quote.
         Matching against quoted text instead is the trap: a "16" occurring anywhere
         inside any quotation would then count as coverage of a sixteen-hour
@@ -2648,17 +2708,17 @@ class Run(Engine):
 
         Matching is unit-aware, so 0.22 mol on the page answers 220 mmol in the
         record, and a Chinese line is matched together with the English it was
-        translated into, so one printed quantity is not counted twice.
+        translated into, so one printed quantity is not counted twice. A range is
+        one fact, not two, so its endpoints are merged before anything is queued.
 
         What comes back is not one number but four, and the four need different
-        fixes. See QUANTITY_VERDICT_EN. The one that matters most is
-        `schema_loss`: the annotator read the document correctly and the container
-        could not hold the answer. Example 1 step 6 is one numbered step with two
-        transformations in one flask, 16 h of etherification then 4 h of
-        hydrolysis; `conditions.time_h` is a single float and holds 4.0. A consumer
-        reads a four-hour step where the truth is twenty hours over two stages, and
-        that is a factor of five on the most expensive input to any throughput
-        model. Re-running the extraction would not fix it.
+        fixes. The one that matters most is `schema_loss`: the annotator read the
+        document correctly and the container could not hold the answer. Example 1
+        step 6 is one numbered step with two transformations in one flask, 16 h of
+        etherification then 4 h of hydrolysis; `conditions.time_h` is a single float
+        and holds 4.0. A consumer reads a four-hour step where the truth is twenty
+        hours over two stages, which is a factor of five on the most expensive input
+        to any throughput model. Re-running the extraction would not fix it.
         """
         asserted: dict[int, set] = {}
         for c in self.claims:
@@ -2678,9 +2738,11 @@ class Run(Engine):
                                "schema_loss": 0, "gap": 0, "unmapped": 0}
         self.quantity_findings: list[dict] = []
         seen: dict[tuple, set] = {}
+        missed: list[tuple] = []
 
         for n in sorted(self.cited_lines):
             block = blocks[n]
+            folded = fold(self.source.lines[n])
             for tok in tokenise(self.source.lines[n]):
                 if tok.unit not in QUANTITY_UNITS:
                     continue
@@ -2690,90 +2752,99 @@ class Run(Engine):
                 seen[block].add(key)
                 self.quantity_tally["tokens"] += 1
 
-                held_keys = set()
+                held = set()
                 for m in block:
-                    held_keys |= asserted.get(m, set())
-                if key in held_keys:
+                    held |= asserted.get(m, set())
+                if key in held:
                     self.quantity_tally["accounted"] += 1
                     continue
-                if tok.unit == "ml" and is_vessel(fold(self.source.lines[n]),
-                                                  tok.end):
+                if tok.unit == "ml" and is_vessel(folded, tok.end):
                     self.quantity_tally["vessel"] += 1
                     continue
-                self.record_quantity_miss(n, block, tok, by_record)
+                missed.append((n, block, tok, folded))
 
-    def record_quantity_miss(self, line: int, block: tuple, tok: Token,
+        for line, block, group in merge_ranges(missed):
+            self.record_quantity_miss(line, block, group, by_record)
+
+    def record_quantity_miss(self, line: int, block: tuple, group: list,
                              by_record: dict) -> None:
         """Attach one unaccounted quantity to the record that should have held it."""
+        low, high = group[0], (group[-1] if len(group) > 1 else None)
+        percent_is = "yield" if (low.unit == "%" and is_yield(low.folded, low.start)) \
+            else "concentration"
         citers = sorted({r for m in block for r in self.cited_lines.get(m, ())})
+
         best = None
         for rid in citers:
-            rec = by_record.get(rid)
-            raw = self.raw_of.get(rid)
+            rec, raw = by_record.get(rid), self.raw_of.get(rid)
             if rec is None or raw is None:
                 continue
-            holder = quantity_holder(raw, rec.kind, tok.unit)
+            holder = quantity_holder(raw, rec.kind, low.unit, percent_is)
             if holder is None:
                 continue
             # A reaction owns the conditions of its own step; a compound record
             # citing the same line owns only its own row. Prefer the reaction, then
-            # the lowest id, so the claim lands somewhere a fix can be made and the
-            # choice is a function of the inputs.
+            # the lowest id, so the claim lands where a fix can be made and the
+            # choice is a function of the inputs and nothing else.
             rank = (0 if rec.kind == "reaction" else 1, rid)
             if best is None or rank < best[0]:
                 best = (rank, rec, holder)
+
         if best is None:
             rec = next((by_record[r] for r in citers if r in by_record), None)
             if rec is None:
                 return
-            holder = ("", None, False)
-            kind = "unmapped"
+            path, occupied, kind = "", None, "unmapped"
         else:
-            _, rec, holder = best
-            path, held, supports_range = holder
-            if tok.in_range and not supports_range:
+            _, rec, (path, occupied, supports_range) = best
+            if high is not None and not supports_range:
                 kind = "schema_loss_range"
-            elif held is not None:
+            elif occupied is not None:
                 kind = "schema_loss_second"
             else:
                 kind = "gap"
 
-        path, held, _ = holder
+        printed = say_quantity(low.value, low.raw_unit,
+                               high.value if high is not None else None)
+        why = self.QUANTITY_VERDICT_EN[kind].format(
+            held=say_quantity(float(occupied), low.raw_unit)
+            if occupied is not None else "")
         family = "schema_loss" if kind.startswith("schema_loss") else "completeness"
         self.quantity_tally["schema_loss" if family == "schema_loss"
                             else ("gap" if kind == "gap" else "unmapped")] += 1
 
-        printed = fmt_quantity(tok.value, tok.unit)
-        why = self.QUANTITY_VERDICT_EN[kind].format(
-            held=fmt_quantity(float(held), tok.unit) if held is not None else "")
-        field = f"__quantity__[{line}:{fmt_value(tok.value)}{tok.unit}]"
-        about = "schema" if family == "schema_loss" else "extraction"
-        question = (
-            f"Line {line} prints {printed}. The annotation does not record it "
-            f"anywhere. Should it have?")
+        tag = f"{line}:{fmt_value(low.value)}{low.unit}"
         rec.checks.append(check(
-            f"{family}.{path or 'unmapped'}[{line}:{fmt_value(tok.value)}"
-            f"{tok.unit}]", family, "warn" if family == "schema_loss" else "fail",
+            f"{family}.{path or 'unmapped'}[{tag}]", family,
+            "warn" if family == "schema_loss" else "fail",
             f"The quantity {printed} printed on line {line}",
             (f"It is not asserted by any claim on any record citing line {line}. "
-             + (f"The field that would hold it is {path}. " if path else "")
-             + why), needs_human=True,
-            about_fields=[path] if path else []))
+             + (f"The field that would hold it is {path}. " if path else "") + why),
+            needs_human=True, about_fields=[path] if path else []))
         claim = self._claim(
-            rec, field, question, printed, tok.value, tok.unit,
-            self.source.with_partners([line]), [], "not_found",
-            f"The number {fmt_value(tok.value)} is printed on line {line} with the "
-            f"unit {UNIT_WORDS.get(tok.unit, tok.unit)}, and no claim on any record "
-            f"citing that line asserts it. " + why,
+            rec, f"__quantity__[{tag}]",
+            f"Line {line} prints {printed}. The annotation does not record it "
+            f"anywhere. Should it have?",
+            printed, low.value, low.unit, self.source.with_partners([line]), [],
+            "not_checkable",
+            f"{printed} is printed on line {line} and no claim on any record citing "
+            f"that line asserts it. " + why,
             ["A quantity the patent prints that nothing in the annotation holds."],
-            "value", {line}, about=about, load_bearing=True,
-            rec_field=f"__quantity__.line_{line}."
-                      f"{fmt_value(tok.value)}{tok.unit}")
+            "value", {line}, about="schema" if family == "schema_loss"
+            else "extraction", load_bearing=True,
+            rec_field=f"__quantity__.line_{line}.{fmt_value(low.value)}{low.unit}")
         claim["quantity_verdict"] = kind
+        # Ordered within tier 2 by what a fix would take: an empty field is a
+        # re-extraction, a schema loss is a schema change, and a number with nowhere
+        # at all to go is a design question.
+        claim["risk"] = {"gap": 0.70, "unmapped": 0.65,
+                         "schema_loss_second": 0.60,
+                         "schema_loss_range": 0.55}[kind]
         self.quantity_findings.append(
             {"line": line, "printed_en": printed, "verdict": kind,
-             "record_id": rec.record_id, "field": path or None,
-             "claim_id": claim["claim_id"]})
+             "record_id": rec.record_id, "record_label_en": rec.label_en,
+             "field": path or None, "claim_id": claim["claim_id"]})
+
 
     def build_coverage(self) -> None:
         reagent_names: dict[str, str] = {}
@@ -2905,7 +2976,7 @@ SEVERITY_MEANING = {
 VERDICTS = ["not_found", "partial", "not_checkable", "found"]
 CHECK_STATUSES = ["fail", "warn", "pass", "skip"]
 FAMILIES = ["grounding", "reference", "structure", "drawing", "quantity",
-            "consistency", "completeness"]
+            "consistency", "completeness", "schema_loss"]
 
 TIERS = [1, 2, 3]
 
@@ -2926,6 +2997,8 @@ PRIVATE = ("_field_name", "_matched", "_derive", "_value", "_unit",
 def claim_family(claim: dict) -> str:
     if claim["field"] == "__coverage__":
         return "completeness"
+    if claim["field"].startswith("__quantity__"):
+        return "schema_loss" if claim.get("about") == "schema" else "completeness"
     if claim["field"] in ("validation_flags", "resolved"):
         return "consistency"
     if claim["basis"] == "derived":
@@ -3114,6 +3187,8 @@ def assemble(run: Run) -> dict:
             "checks": {"total": len(all_checks), **statuses},
             "checks_by_family": check_families,
             "source_coverage": cov_summary,
+            "quantity_coverage": {**run.quantity_tally,
+                                  "findings": run.quantity_findings},
             "grounding_failed": bool(not_found),
         },
         "claims": claims,
@@ -3254,6 +3329,28 @@ def report(run: Run, artifact: dict, out_path: Path, check_only: bool) -> int:
           f"{disagree} disagree, over the names that appear in both")
     print()
 
+    # Line coverage answers "did any record look here". Quantity coverage answers
+    # "did any record take what was here", which is the stronger question and the
+    # only one that can see a line cited by one record with two of its three facts
+    # dropped.
+    q = s["quantity_coverage"]
+    print(f"quantity coverage over {q['tokens']} distinct quantities on cited lines:")
+    print(f"  asserted by a claim      {q['accounted']:5}   the annotation holds it")
+    print(f"  glassware, not a charge  {q['vessel']:5}   the size of the flask, "
+          f"never queued")
+    print(f"  schema could not hold it {q['schema_loss']:5}   the annotation read it "
+          f"right and the field is too small")
+    print(f"  field empty              {q['gap']:5}   the patent prints it and "
+          f"nothing records it")
+    if q["unmapped"]:
+        print(f"  nowhere to put it        {q['unmapped']:5}   no field of that kind "
+              f"on any record citing the line")
+    for f in q["findings"]:
+        print(f"    line {f['line']:<4} {f['printed_en']:>14}  {f['verdict']:19} "
+              f"{f['field'] or 'no field'}")
+        print(f"      {f['record_label_en'][:88]}")
+    print()
+
     print(f"source coverage over {cov['total']} numbered lines:")
     print(f"  covered                  {cov['covered']:5}   at least one record "
           f"cites the line")
@@ -3320,7 +3417,8 @@ FAMILY_MEANING = {
     "drawing": "the page drawing against the gold's structure for one molecule",
     "quantity": "mass and moles against the molecular weight",
     "consistency": "the annotation against itself",
-    "completeness": "a source line no record cites",
+    "completeness": "something the patent states that no record holds",
+    "schema_loss": "the annotation read it right and the schema cannot hold it",
 }
 
 

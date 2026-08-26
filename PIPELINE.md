@@ -204,6 +204,13 @@ plan     3 to run, 9 current, 0 absent, 1 not selected
 | `--force` | run everything, ignoring every up-to-date check |
 | `--patent-id <ID>` | which patent; discovered from `input/*-biblio.json` if omitted |
 
+**The blast radius is stage-shaped, not file-shaped.** Delete one diagram and the
+`diagrams` stage rebuilds all six, because `make_svgs.py` writes all its outputs in
+one process and the runner cannot ask it for less. The plan names the file that
+went missing, and the rebuild is byte-identical for the five that did not need to
+change, so nothing drifts. But do not read the manifest and expect a one-file
+delete to cause a one-file rebuild.
+
 Exit codes: `0` ok, `1` a stage failed, `2` a coverage gate stopped the run, `3`
 the LLM passes have not been run.
 
@@ -254,6 +261,13 @@ Two deliberate properties:
 The manifest is written even when a gate stops the run, with the failing stage's
 status recorded. A stopped run is exactly when a consumer most needs to be told
 the assets are not current.
+
+**One trap when debugging by hand.** `verify.py` stamps `generated_at` from the wall
+clock unless `SOURCE_DATE_EPOCH` is set, and the runner is what sets it. So a bare
+`python3 verify.py <ID>` writes a checks file whose sha256 disagrees with the
+manifest for no semantic reason at all: the content is identical apart from that one
+line. If you are comparing hashes, go through the runner, or strip `generated_at`
+before you diff. Two people have now lost an hour to this.
 
 ---
 
@@ -329,3 +343,17 @@ one would reintroduce exactly the failure the module exists to remove.
 It also supplies the counted facts the diagrams need - page count, family id,
 scheme page, source size, record counts, the route - so that a caption naming a
 number is naming *this* run's number.
+
+**With one exception, and it is the dangerous one.** `pipeline_context.py` cannot
+reach `prompts/*.md`, because a prompt is read by an agent rather than imported by a
+process. Those templates carry a `{PATENT_ID}` placeholder and stage 1
+(`render_prompts.py`) substitutes it into `output/prompts/<ID>/`. Follow the
+rendered copies, never the templates.
+
+The failure that closes is quiet and total. The runner stops on patent two saying
+"run pass A1, here is the prompt". A template telling the agent to emit
+`"patent_id": "CN104292137A"` would have patent one's id stamped into patent two's
+gold; `finalise.py` builds every id and uuid from `(patent_id, identifier)`, so the
+whole artifact set comes out internally consistent and joins cleanly against the
+wrong document. Nothing crashes. That is worse than a crash, which is at least a
+message.
