@@ -6,8 +6,8 @@ shapes LiteratureIQ writes, so the two can be compared field by field.
 **Status: prompts written, nothing run yet.** The workflow is held until the
 prompts below are reviewed.
 
-- Target patent: **CN104292137A** - *Synthesis process for the triketone
-  herbicide tembotrione*, Wuhan Institute of Technology, filed 2014-10-15,
+- Target patent: **CN104292137A** - *Synthesis process for the
+  triketone-class herbicide tembotrione*, Wuhan Institute of Technology, filed 2014-10-15,
   published 2015-01-21, DOCDB family **52312131**. Google's English title reads
   *...cyclic sulcotrione*, a character-by-character gloss of 环磺草酮 that names a
   real and different herbicide; the title above follows the Chinese.

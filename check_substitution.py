@@ -46,7 +46,8 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-REL = HERE / "output" / "relevant_output"
+OUT = HERE / "output"
+REL = OUT / "relevant_output"
 
 DEFAULT_PATENT_ID = "CN104292137A"
 
@@ -170,12 +171,28 @@ def main() -> int:
     verbose = "--verbose" in sys.argv
     patent_id = args[0] if args else DEFAULT_PATENT_ID
 
+    # THE COPY THE APP READS, not the one the stage writes. resolve_translations.py
+    # writes output/translations.json and make_relevant_output.py copies it into
+    # output/relevant_output/gold/, which is the path verifier/lib/paths.ts resolves.
+    # Two copies means they can differ, and when they do the fix looks applied
+    # everywhere except on the screen. That is checked first, because measuring the
+    # wrong file would make every number below a statement about nothing.
     artifact = REL / "gold" / "translations.json"
+    written = OUT / "translations.json"
     if not artifact.exists():
         print(f"{artifact} not found. Run resolve_translations.py first.")
         return 1
     index = json.loads(artifact.read_text(encoding="utf-8"))
     keys = sorted(index, key=lambda s: (-len(s), s))
+
+    stale = []
+    if written.exists():
+        fresh = json.loads(written.read_text(encoding="utf-8"))
+        for k in sorted(set(fresh) | set(index)):
+            a = (index.get(k) or {}).get("en")
+            b = (fresh.get(k) or {}).get("en")
+            if a != b:
+                stale.append((k, a, b))
 
     rows = []
     for name in ("compounds-provenance.json", "reactions-provenance.json"):
@@ -184,7 +201,16 @@ def main() -> int:
             rows.extend(json.loads(path.read_text(encoding="utf-8")))
 
     print(f"patent   : {patent_id}")
-    print(f"index    : {len(index)} entries")
+    print(f"index    : {len(index)} entries, read from the path the app reads")
+    if stale:
+        print(f"\nSTALE. {len(stale)} entries differ between what the stage wrote and "
+              f"what the app reads.\n  make_relevant_output.py has not copied "
+              f"output/translations.json into gold/ since the\n  last run, so every "
+              f"fix below is live in the pipeline and invisible on the screen.")
+        for k, app, stage in stale[:6]:
+            print(f"    {k}\n      app reads : {app!r}\n      stage wrote: {stage!r}")
+        if len(stale) > 6:
+            print(f"    ... and {len(stale) - 6} more")
     print(f"provenance: {len(rows)} rows, fields {', '.join(PROSE_FIELDS)}")
 
     checked = 0
@@ -258,7 +284,7 @@ def main() -> int:
           f"hand-translating the patent one clause\n  at a time, and assembling a name "
           f"from them gives Chinese word order in Latin script.")
 
-    return 1 if broken else 0
+    return 1 if (broken or stale) else 0
 
 
 if __name__ == "__main__":

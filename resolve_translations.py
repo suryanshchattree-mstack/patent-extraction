@@ -101,6 +101,7 @@ OUT = HERE / "output"
 REL = OUT / "relevant_output"
 VISION = HERE / "input" / "vision"
 CURATED = HERE / "input" / "translations-curated.json"
+BIBLIO = lambda pid: HERE / "input" / f"{pid}-biblio.json"
 
 DEFAULT_PATENT_ID = "CN104292137A"
 
@@ -186,10 +187,17 @@ def load_inputs(patent_id: str):
     prov_rows = (load("compounds-provenance.json", prov, OUT)
                  + load("reactions-provenance.json", prov, OUT))
     verification = load_verification()
-    # For the name-fidelity gate: patent.json carries the Chinese abstract and the
-    # English title, which is the one place in the gold where the same sentence
-    # exists in both languages and can be compared.
-    patent = load("patent.json", gold, OUT)
+    # For the name-fidelity gate. biblio.json is an INPUT and carries title_zh
+    # beside title_en, which is the one place in this pipeline where the same
+    # sentence exists in both languages and was written by different hands.
+    # patent.json is DERIVED from it and may not exist yet on a cold pack, so it is
+    # optional: without it the gate checks the source pair and says so.
+    biblio = json.loads(BIBLIO(patent_id).read_text(encoding="utf-8")) \
+        if BIBLIO(patent_id).exists() else {}
+    patent_path = next((d / "patent.json" for d in (gold, OUT)
+                        if (d / "patent.json").exists()), None)
+    patent = (json.loads(patent_path.read_text(encoding="utf-8"))
+              if patent_path is not None else None)
 
     if not CURATED.exists():
         die(f"{CURATED} not found. Create it with an empty 'entries' object to start.")
@@ -205,7 +213,7 @@ def load_inputs(patent_id: str):
     if wrong:
         die(f"gold compounds.json carries patent_id {sorted(wrong)}, "
             f"this run is {patent_id!r}")
-    return compounds, equivalence, prov_rows, verification, curated, patent
+    return compounds, equivalence, prov_rows, verification, curated, biblio, patent
 
 
 # ---------------------------------------------------------------- the source text
@@ -844,7 +852,7 @@ def prose_ratio_gate(universe, sites, entries):
 PERCENT = ("％", "%")
 
 
-def name_fidelity_gate(entries, patent, keys):
+def name_fidelity_gate(entries, biblio, patent, keys):
     """Where the gold's own English disagrees with this index about a molecule.
 
     THE GAP THIS CLOSES. Everything above asks whether a Chinese string HAS an
@@ -876,11 +884,17 @@ def name_fidelity_gate(entries, patent, keys):
        not a quantity. Measured over this gold: the percent rule catches 2 and the
        digit rule would catch 3, the third being that name.
 
-    2. A TITLE THAT NAMES NO MOLECULE THE ABSTRACT NAMES. patent.json holds the
-       abstract in Chinese and the title in English, so substituting the index into
-       the abstract says which molecules the document is about, and the title can be
-       checked against that list. It is one comparison on one record, which is why
-       it is safe to make it an assertion rather than a heuristic.
+    2. A TITLE THAT NAMES NO MOLECULE ITS OWN CHINESE NAMES. biblio.json holds
+       title_zh beside title_en, so substituting the index into the Chinese says
+       which molecules the title is about and the English can be checked against
+       that list. gold/patent.json's copy is checked against the same Chinese, so a
+       title that drifted in derivation fails too.
+
+       IT ASKS FOR AGREEMENT, NOT FOR EQUALITY. "A process for making tembotrione,
+       a triketone herbicide, in eight steps" passes: an English title may be
+       phrased any way at all as long as it does not name a molecule the Chinese
+       does not. Only naming NONE of them fails, which is what
+       "Process for synthesizing triketone herbicide cyclic sulcotrione" did.
     """
     dropped = []
     for text, entry in entries.items():
@@ -889,12 +903,21 @@ def name_fidelity_gate(entries, patent, keys):
         if any(p in text for p in PERCENT) and not any(p in entry["en"] for p in PERCENT):
             dropped.append((text, entry["en"]))
 
-    abstract = patent.get("abstract") or ""
-    title = patent.get("title") or ""
+    # THE PAIRS, DECLARED RATHER THAN DISCOVERED. Each is a place where the same
+    # sentence exists in both languages, written by different hands, so the two can
+    # be compared without assuming either is a translation of the other word for
+    # word. input/<pid>-biblio.json is the source of the title and holds title_zh
+    # beside title_en; gold/patent.json holds the copy derived from it. Checking
+    # both catches a wrong title AND a title that drifted in derivation.
+    title_zh = (biblio or {}).get("title_zh") or ""
+    pairs = [("biblio title_en", (biblio or {}).get("title_en") or "")]
+    if patent is not None:
+        pairs.append(("gold patent.json title", patent.get("title") or ""))
+
     molecules = set()
     i = 0
-    while i < len(abstract):
-        hit = next((k for k in keys if abstract.startswith(k, i)), None)
+    while i < len(title_zh):
+        hit = next((k for k in keys if title_zh.startswith(k, i)), None)
         if hit is None:
             i += 1
             continue
@@ -903,9 +926,13 @@ def name_fidelity_gate(entries, patent, keys):
         if entries[hit]["origin"] == "gold_alias":
             molecules.add(entries[hit]["en"])
         i += len(hit)
-    title_disagrees = bool(molecules) and not any(
-        m.lower() in title.lower() for m in molecules)
-    return dropped, (title, sorted(molecules)) if title_disagrees else None
+
+    disagreements = []
+    if molecules:
+        for label, english in pairs:
+            if english and not any(m.lower() in english.lower() for m in molecules):
+                disagreements.append((label, english, sorted(molecules)))
+    return dropped, disagreements
 
 
 def unresolved_lines(en_runs, bare_runs, entries):
@@ -972,7 +999,7 @@ def main() -> int:
     patent_id = args[0] if args else DEFAULT_PATENT_ID
 
     (compounds, equivalence, prov_rows, verification, curated,
-     patent) = load_inputs(patent_id)
+     biblio, patent) = load_inputs(patent_id)
     lines = read_numbered(patent_id)
     english, en_lines, walk = english_by_line(patent_id, lines)
     source_norm = {n: normalise(lines[n]) for n in english if normalise(lines[n])}
@@ -1061,24 +1088,24 @@ def main() -> int:
         print(f"  {len(harmless)} lines have no English and no Chinese either, so "
               f"nothing is lost: {', '.join(str(n) for n in harmless)}")
 
-    dropped, title_gap = name_fidelity_gate(entries, patent, sorted_keys(entries))
+    dropped, title_gaps = name_fidelity_gate(entries, biblio, patent,
+                                             sorted_keys(entries))
     print(f"\nname fidelity gate: where the gold's own English disagrees with this "
           f"index\n  about a molecule. Reports, never rewrites.")
-    if not dropped and title_gap is None:
+    if not dropped and not title_gaps:
         print("  the gold's names and this index agree. PASS")
     else:
         for text, en in dropped:
             print(f"  a name loses its concentration: {text}  ->  {en!r}")
             print(f"      The substance is right and the strength is gone. A "
                   f"concentration is a fact.")
-        if title_gap is not None:
-            title, molecules = title_gap
-            print(f"  the title names no molecule the abstract names.")
-            print(f"      title    : {title}")
-            print(f"      abstract : {', '.join(molecules)}")
-            print(f"      The gold's own English contradicts the gold's own Chinese. "
-                  f"Fix it where\n      the title is written, not here: this stage "
-                  f"reports the disagreement and\n      never edits the gold.")
+        for label, english, molecules in title_gaps:
+            print(f"  {label} names no molecule its own Chinese names.")
+            print(f"      english  : {english}")
+            print(f"      chinese  : names {', '.join(molecules)}")
+            print(f"      The English contradicts the Chinese it is a title for. Fix "
+                  f"it where the\n      title is written, not here: this stage "
+                  f"reports the disagreement and never\n      edits the gold.")
         print("  FAIL")
 
     oversized = prose_ratio_gate(universe, sites, entries)
@@ -1102,7 +1129,7 @@ def main() -> int:
     if not missing and not stranded:
         print(f"  all {len(universe)} strings resolve, and all {len(lines)} source "
               f"lines come out of the substitution in English. PASS")
-        return 1 if (oversized or dropped or title_gap) else 0
+        return 1 if (oversized or dropped or title_gaps) else 0
 
     total = len({t for v in missing.values() for t in v})
     print(f"\n  {total} strings have NO English, leaving Chinese on "

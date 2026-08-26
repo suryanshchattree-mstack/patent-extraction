@@ -3,8 +3,8 @@
 A hand-run reference annotation of one patent, in LiteratureIQ's own JSON schemas,
 for scoring the automated extractor against.
 
-Patent: **CN104292137A**, *Synthesis process for the triketone herbicide
-tembotrione*, Wuhan Institute of Technology, filed 2014-10-15, DOCDB family
+Patent: **CN104292137A**, *Synthesis process for the triketone-class
+herbicide tembotrione*, Wuhan Institute of Technology, filed 2014-10-15, DOCDB family
 **52312131**. Its Example 1 is a complete eight-step linear route to tembotrione,
 the same molecule as the Day 2 discovery golden test.
 
