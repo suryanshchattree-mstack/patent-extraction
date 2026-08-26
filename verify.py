@@ -1288,6 +1288,23 @@ class Engine:
                 sev = "medium"
                 action = ("Part of the claim is on the cited lines and part is "
                           "not. Read the evidence and decide.")
+            elif auto == "not_checkable" and claim.get("quantity_verdict"):
+                # A quantity with nowhere to live. The two shapes need opposite
+                # fixes, so they must not share an action: a schema loss is not a
+                # data defect and a reviewer cannot adjudicate it, while an empty
+                # field is a re-extraction they CAN settle by reading the page.
+                if claim["quantity_verdict"].startswith("schema_loss"):
+                    sev = "low"
+                    action = ("Nothing here is wrong and nothing here can be "
+                              "marked wrong. The patent prints this, the "
+                              "annotation read it, and the field it had to go in "
+                              "is too small to hold it. This is a schema ticket, "
+                              "not a review decision.")
+                else:
+                    sev = "medium"
+                    action = ("The patent prints this and the field that would "
+                              "hold it is empty. Decide whether the extraction "
+                              "missed it or left it out on purpose.")
             elif auto == "not_checkable" and claim["field"] == "__coverage__":
                 sev = "medium"
                 action = ("Nothing cites this line. Decide whether the extraction "
@@ -3076,7 +3093,7 @@ def assemble(run: Run) -> dict:
         if c["tier"] == 3:
             strata[c["stratum"]] = strata.get(c["stratum"], 0) + 1
     about = {a: sum(1 for c in claims if c["about"] == a)
-             for a in ("extraction", "patent")}
+             for a in ("extraction", "patent", "schema")}
     all_checks = [c for r in records for c in r["checks"]]
     statuses = {s: sum(1 for c in all_checks if c["status"] == s)
                 for s in CHECK_STATUSES}

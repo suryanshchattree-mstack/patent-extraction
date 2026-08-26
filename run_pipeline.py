@@ -543,33 +543,64 @@ def write_manifest(pid: str, ctx: dict) -> int:
             hashes[r] = {"path": r, "sha256": sha256(p), "bytes": p.stat().st_size}
         return hashes[r]
 
+    prior = ctx.get("prior") or {}
+
     stage_rows, artifacts, produced = [], [], set()
     consumed: dict[str, str] = {}   # in-tree file -> the stage that reads it
     for st in all_stages:
         if st.name == "manifest":
             continue
-        ins = [entry(p) for p in expand(st.inputs)]
-        outs = [entry(p) for p in expand(st.outputs)]
+        status = results.get(st.name, "not planned")
+
+        # A stage row means "this stage last RAN with these hashes". So a stage that
+        # did NOT run this time carries its previous row forward rather than having
+        # today's disk state written under its name.
+        #
+        # Re-reading disk for a skipped stage is how the frozen-plan bug survived a
+        # second run: the buggy run left publish-gold stale, then wrote publish-gold's
+        # row from the tree it had just failed to update. The row then agreed with
+        # disk, is_current() called the stage current, and the staleness was laundered
+        # into the record. A stage's row is now only rewritten by that stage running.
+        old_row = prior.get(st.name)
+        if status == "ran" or old_row is None:
+            ins = [entry(p) for p in expand(st.inputs)]
+            outs = [entry(p) for p in expand(st.outputs)]
+        else:
+            ins = old_row.get("inputs") or []
+            outs = old_row.get("outputs") or []
+            for e in ins + outs:
+                hashes.setdefault(e["path"], e)
+
         input_sha = [i["sha256"] for i in ins]
         for i in ins:
             consumed.setdefault(i["path"], st.name)
         stage_rows.append({
             "stage": st.name,
             "title": st.title,
-            "status": results.get(st.name, "not planned"),
+            "status": status,
             "commands": [" ".join(c) for c in st.cmds] or (["<internal>"] if st.fn else []),
             "gate": st.gate,
             "inputs": ins,
             "outputs": outs,
         })
-        for o in outs:
+        # stages[].outputs is what the stage last ran with; artifacts[] is what is
+        # on disk now. They are usually the same and are allowed to differ: when
+        # they do, somebody edited an artifact by hand and that is worth seeing.
+        for pth in expand(st.outputs):
+            r = rel(pth)
             # Two stages run make_relevant_output.py, so they declare overlapping
             # outputs on purpose. An artifact is attributed to the first stage that
             # produces it, and listed once.
-            if o["path"] in produced:
+            if r in produced:
                 continue
-            produced.add(o["path"])
-            artifacts.append({**o, "stage": st.name, "input_sha256": input_sha})
+            produced.add(r)
+            live = {"path": r, "sha256": sha256(pth), "bytes": pth.stat().st_size}
+            row = {**live, "stage": st.name, "input_sha256": input_sha}
+            recorded = next((o["sha256"] for o in outs if o["path"] == r), None)
+            if recorded is not None and recorded != live["sha256"]:
+                row["note"] = (f"on disk now, but the {st.name} stage last ran "
+                               f"producing sha256 {recorded[:16]}...")
+            artifacts.append(row)
 
     # Anything in the deliverable that no stage claims. Two kinds, and the
     # difference matters: a hand-authored file some stage READS is a legitimate
@@ -752,7 +783,7 @@ def main() -> int:
         return 0
 
     # ---- run -----------------------------------------------------------------
-    ctx = {"stages": all_stages, "results": {}}
+    ctx = {"stages": all_stages, "results": {}, "prior": prior}
 
     # ---- the prompts stage, then what a human owes ---------------------------
     #
@@ -796,21 +827,58 @@ def main() -> int:
             write_manifest(pid, ctx)
         return rc
 
-    for st, action, _ in plan:
-        label = {"run": "ran", "skip": "current",
-                 "absent": "absent", "not selected": "not selected"}[action]
-        # A failure is sticky until the stage actually runs and passes. Without
-        # this, one `--from` past a failed gate would erase the only record that
-        # it failed, and the next full run would call the stage current.
+    # THE PLAN ABOVE IS A FORECAST. THE DECISION IS MADE HERE, ONE STAGE AT A TIME.
+    #
+    # Judging all sixteen stages up front and then executing that frozen list is
+    # wrong, and wrong in the way that matters most. Running a stage rewrites the
+    # next stage's inputs, but the next stage was already judged against the tree
+    # as it looked before any of this ran. Change one field in the biblio and the
+    # forecast says "RUN finalise, skip publish-gold", which was true when it was
+    # computed and false one second later: finalise rewrote patent.json, so
+    # publish-gold's input no longer matches what the manifest recorded.
+    #
+    # The result was a deliverable holding the old value while output/ held the new
+    # one, and a manifest recording publish-gold as current - which is precisely
+    # the one question the manifest exists to answer, answered wrongly.
+    #
+    # So currency is re-evaluated immediately before each stage. A stage that was
+    # forecast to skip and now has to run says so. This costs one re-hash of a
+    # stage's own declared paths, and only after some earlier stage actually wrote
+    # something.
+    for st, forecast, _ in plan:
+        if forecast in ("absent", "not selected") or st.name in ("manifest", "prompts"):
+            label = {"run": "ran", "skip": "current", "absent": "absent",
+                     "not selected": "not selected"}[forecast]
+            was = str(prior.get(st.name, {}).get("status", ""))
+            if forecast != "run" and (was.startswith("failed") or was == "not reached"):
+                label = was
+            ctx["results"][st.name] = label
+            continue
+
+        if args.force:
+            action, why = "run", "--force"
+        else:
+            current, why = is_current(st, prior)
+            action = "skip" if current else "run"
+
+        label = "ran" if action == "run" else "current"
         was = str(prior.get(st.name, {}).get("status", ""))
         if action != "run" and (was.startswith("failed") or was == "not reached"):
             label = was
         ctx["results"][st.name] = label
-        if action != "run" or st.name in ("manifest", "prompts"):
+
+        if action != forecast:
+            print(f"--- {st.name}: forecast said {forecast}, running it: {why}"
+                  if action == "run"
+                  else f"--- {st.name}: forecast said run, now current: {why}")
+        if action != "run":
             continue
         print(f"=== {st.name} " + "=" * max(0, 66 - len(st.name)))
         code = run_stage(st, pid, ctx)
         if code == 0:
+            # This stage has just rewritten files that later stages hash. Anything
+            # cached from the forecast is stale by definition now.
+            _SHA.clear()
             continue
         ctx["results"][st.name] = f"failed ({code})"
         for later in all_stages[all_stages.index(st) + 1:]:

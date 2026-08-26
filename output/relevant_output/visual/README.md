@@ -47,12 +47,29 @@ WHOLE PAGE with a note saying so. A loose crop wastes a reviewer's time. A wrong
 crop shows them a different molecule and invites them to reject a correct
 extraction, so the fallback is always to show more rather than less.
 
+The one disagreement, on p01, is benign and is left in
+the table rather than tuned away. It is the front page, whose masthead logo
+and QR code are ink that is not text and not a chemical structure either. No
+chemical drawing appears on that page, so no comparison is built from it and
+nothing downstream depends on the region. It is reported because a method
+check that quietly drops its own failures is not a check.
+
 ## How the two halves of a comparison were paired
 
 This is the part that decides whether a comparison proves anything.
 
 - `name` (8 of 9): our structure was chosen by the compound name printed in the patent's TEXT near the drawing, and nothing about it came from the drawing. The two halves are independent and can genuinely disagree. This is the pairing that can catch a misread drawing.
 - `structure` (1 of 9): the patent's words near the drawing name no compound we hold, so our record was found by matching structures. The halves then agree by construction. Such a comparison shows only that we hold the molecule at all, and it is labelled WEAK on the image itself.
+
+## What the machine already found
+
+Where the pairing is by name, the drawing's SMILES and the gold's SMILES are both reduced to one canonical form and compared. That check ran on 8 structures and found 0 disagreements. The denominator is the point: zero out of zero would mean the check never ran.
+
+It found 0 molecules that the patent draws and the gold holds no record of.
+
+The 41 conflicts in `drawing-claims.json` are defects in the PATENT, not in the annotation. What each one asks the reviewer is whether we recorded what the patent really prints, contradiction and all, rather than quietly correcting it. Only 11 of them involve a drawing at all; the rest are two pieces of the patent's prose disagreeing, and those carry the page scan as their evidence rather than a picture that could not answer them.
+
+One thing worth a human eye, and visible on the page-6 scheme comparison: three of the molecules in that route are held in the gold with a SMILES string where their name should be. Their panels say so, rather than printing the SMILES as if it were a name.
 
 ## Language
 
@@ -69,7 +86,10 @@ reaches any file here.
 
 - `page-index.json` - marker to page, page to image, plus detected drawing regions.
 - `comparisons/<record_id>.png` - the full comparison, captioned and self-describing.
-- `comparisons/<record_id>-patent.png` - just the cut from the page, uncaptioned.
+- `comparisons/<record_id>-patent.png` - the UNCUT band from the page, running
+  the full width of the text column. The comparison trims the sides in so the
+  drawing is big enough to compare; this file is what was there before the trim,
+  so nothing that was cut off is lost.
 - `drawing-claims.json` - review queue, conforming to `claims[]` in the
   verification contract, all `tier: 1`.
 - `quote-translations.json` - hand-written English for the quoted Chinese.

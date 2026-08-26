@@ -6,7 +6,7 @@
     {
       "stage": "prompts",
       "title": "render the annotation prompts for THIS patent, for the agent to follow",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 render_prompts.py --patent-id CN104292137A"
       ],
@@ -104,7 +104,7 @@
     {
       "stage": "enrich",
       "title": "vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 build_enriched.py --patent-id CN104292137A"
       ],
@@ -187,7 +187,7 @@
     {
       "stage": "collect",
       "title": "publish the A0, A3 and A4 stage files under the names finalise.py reads",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "<internal>"
       ],
@@ -230,7 +230,7 @@
     {
       "stage": "merge",
       "title": "concatenate the per-section A1 and A2 stage files into the raw arrays",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 merge_stages.py"
       ],
@@ -383,7 +383,7 @@
     {
       "stage": "finalise",
       "title": "deterministic ids and uuids, rollup, bibliographic merge",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 finalise.py --patent-id CN104292137A"
       ],
@@ -528,7 +528,7 @@
     {
       "stage": "publish-gold",
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -786,7 +786,7 @@
     {
       "stage": "structures",
       "title": "identifier -> drawable molecule over five tiers, plus the coverage gate",
-      "status": "ran",
+      "status": "failed (1)",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_structures.py --patent-id CN104292137A"
       ],
@@ -949,7 +949,7 @@
     {
       "stage": "translations",
       "title": "Chinese string -> English for everything that can reach a screen, plus the coverage gate",
-      "status": "ran",
+      "status": "not reached",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_translations.py CN104292137A"
       ],
@@ -1012,7 +1012,7 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "ran",
+      "status": "not reached",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN104292137A",
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN104292137A"
@@ -1171,7 +1171,7 @@
     {
       "stage": "rasterise",
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
-      "status": "ran",
+      "status": "not reached",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 svg2jpg.py --all"
       ],
@@ -1259,7 +1259,7 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "ran",
+      "status": "not reached",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -1692,7 +1692,7 @@
     {
       "stage": "verify",
       "title": "the verification contract file the reviewer UI reads",
-      "status": "failed (1)",
+      "status": "not reached",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 verify.py CN104292137A"
       ],
@@ -1700,8 +1700,8 @@
       "inputs": [
         {
           "path": "verify.py",
-          "sha256": "3431411f6e55693e0c7d1b52b7681adaae9ae6fe4b8578f60cc1c1955b3cff07",
-          "bytes": 166418
+          "sha256": "ddad51350b6f6ae23cca831f5f762b56fd9752d157b7e057e1044687687bd151",
+          "bytes": 167809
         },
         {
           "path": "output/translations.json",
@@ -1767,8 +1767,8 @@
       "outputs": [
         {
           "path": "output/relevant_output/verification/checks-CN104292137A.json",
-          "sha256": "3468472fc219fc416c0f9eb81392ad7686996b0e6d4a6599eb0f49d9f367b2a2",
-          "bytes": 3322091
+          "sha256": "b197b9698aaa47ee420700bae29849acd48c8dcb273705d2024cf9fa16e1e47e",
+          "bytes": 3327798
         }
       ]
     },
@@ -1783,8 +1783,8 @@
       "inputs": [
         {
           "path": "make_visual_evidence.py",
-          "sha256": "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
-          "bytes": 64473
+          "sha256": "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+          "bytes": 66993
         },
         {
           "path": "visual_text.py",
@@ -1925,8 +1925,8 @@
         },
         {
           "path": "output/relevant_output/visual/README.md",
-          "sha256": "6a979c0a4f70789f9d4ad27771398156a122359c8f633e6097690e45e38777da",
-          "bytes": 4927
+          "sha256": "34cfec34069b611e71f4f86b343b27b129af570057c36e64d3f87627822ea860",
+          "bytes": 6609
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p06_d1-patent.png",
@@ -2036,13 +2036,13 @@
         },
         {
           "path": "verify.py",
-          "sha256": "3431411f6e55693e0c7d1b52b7681adaae9ae6fe4b8578f60cc1c1955b3cff07",
-          "bytes": 166418
+          "sha256": "ddad51350b6f6ae23cca831f5f762b56fd9752d157b7e057e1044687687bd151",
+          "bytes": 167809
         },
         {
           "path": "output/relevant_output/verification/checks-CN104292137A.json",
-          "sha256": "3468472fc219fc416c0f9eb81392ad7686996b0e6d4a6599eb0f49d9f367b2a2",
-          "bytes": 3322091
+          "sha256": "b197b9698aaa47ee420700bae29849acd48c8dcb273705d2024cf9fa16e1e47e",
+          "bytes": 3327798
         }
       ],
       "outputs": []
@@ -5144,11 +5144,11 @@
     },
     {
       "path": "output/relevant_output/verification/checks-CN104292137A.json",
-      "sha256": "3468472fc219fc416c0f9eb81392ad7686996b0e6d4a6599eb0f49d9f367b2a2",
-      "bytes": 3322091,
+      "sha256": "240c9a2ef6286ecaf140a8c111c9dee632fe46b8fb00209a89b16816a1a345f7",
+      "bytes": 3329498,
       "stage": "verify",
       "input_sha256": [
-        "3431411f6e55693e0c7d1b52b7681adaae9ae6fe4b8578f60cc1c1955b3cff07",
+        "ddad51350b6f6ae23cca831f5f762b56fd9752d157b7e057e1044687687bd151",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "62d3025aba7234a3f1029634dd9064aee8e53b5944c7f8c2b4eb084188f519eb",
         "c6476c132823582c3e28f7d00ede1b74050bc79172dec9406ce6230ff50b705b",
@@ -5161,7 +5161,8 @@
         "23f9f77efd3f1a069f3cd7656aaa50b868b46e765572a285f1249360e93790d7",
         "c9c67647fc3f7d07b95c7d2f6cbc48c8a82a25c4b07f14e4476833234603441e",
         "240b1af08475c0a4634602ab95159f1343dc0289a14bfc96aa4e080fc78c969b"
-      ]
+      ],
+      "note": "on disk now, but the verify stage last ran producing sha256 b197b9698aaa47ee..."
     },
     {
       "path": "output/relevant_output/verification/compounds-report.json",
@@ -5327,11 +5328,11 @@
     },
     {
       "path": "output/relevant_output/visual/README.md",
-      "sha256": "6a979c0a4f70789f9d4ad27771398156a122359c8f633e6097690e45e38777da",
-      "bytes": 4927,
+      "sha256": "34cfec34069b611e71f4f86b343b27b129af570057c36e64d3f87627822ea860",
+      "bytes": 6609,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5365,7 +5366,7 @@
       "bytes": 231689,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5399,7 +5400,7 @@
       "bytes": 628499,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5433,7 +5434,7 @@
       "bytes": 25122,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5467,7 +5468,7 @@
       "bytes": 203283,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5501,7 +5502,7 @@
       "bytes": 30703,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5535,7 +5536,7 @@
       "bytes": 171899,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5569,7 +5570,7 @@
       "bytes": 31082,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5603,7 +5604,7 @@
       "bytes": 174738,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5637,7 +5638,7 @@
       "bytes": 30950,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5671,7 +5672,7 @@
       "bytes": 167172,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5705,7 +5706,7 @@
       "bytes": 28261,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5739,7 +5740,7 @@
       "bytes": 172992,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5773,7 +5774,7 @@
       "bytes": 31550,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5807,7 +5808,7 @@
       "bytes": 172994,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5841,7 +5842,7 @@
       "bytes": 35080,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5875,7 +5876,7 @@
       "bytes": 172054,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5909,7 +5910,7 @@
       "bytes": 37913,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5943,7 +5944,7 @@
       "bytes": 165722,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5977,7 +5978,7 @@
       "bytes": 191783,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -6011,7 +6012,7 @@
       "bytes": 50633,
       "stage": "visual",
       "input_sha256": [
-        "953c8f22c2562e4f420b76e37e45af70e3004c858383518bfb4cce4f0bc2fcec",
+        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -6048,8 +6049,8 @@
     },
     {
       "path": "output/structures-resolved.json",
-      "sha256": "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
-      "bytes": 34939,
+      "sha256": "8603461211c8bf55396a682476b1a945f54907e95db9346d0462e29925a0c019",
+      "bytes": 34847,
       "stage": "structures",
       "input_sha256": [
         "2786f5e6f625d0298b318a2eee96c0201261aeeb6e119f0e676c8e43da69a042",
@@ -6059,7 +6060,8 @@
         "23f9f77efd3f1a069f3cd7656aaa50b868b46e765572a285f1249360e93790d7",
         "773aa26f8679c359da6be3de922e1ed353f7bb4d478c65d5901ac19e0eef7fad",
         "faeeec600ec1a45acc70358af53e13525c0f6932a2a01c38ceab6dbcc80c0031"
-      ]
+      ],
+      "note": "on disk now, but the structures stage last ran producing sha256 d9ff75828fc5d5c3..."
     },
     {
       "path": "output/structures.json",
@@ -6396,21 +6398,6 @@
       ]
     },
     {
-      "path": "output/structures/triethylamine.svg",
-      "sha256": "1fbc8b15f88c64ff5eb9378c967ab64aa91de042027b62bdcdc7b8b1f982b9c2",
-      "bytes": 2432,
-      "stage": "structures",
-      "input_sha256": [
-        "2786f5e6f625d0298b318a2eee96c0201261aeeb6e119f0e676c8e43da69a042",
-        "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
-        "e6f3c7beafeb1e412c3f3b417517540e190697845a7d6b05b526dbe386395881",
-        "1e81d3f1fe0cce373c053da57bdf754b5f282d87a315a8c56deb7ad1bced194d",
-        "23f9f77efd3f1a069f3cd7656aaa50b868b46e765572a285f1249360e93790d7",
-        "773aa26f8679c359da6be3de922e1ed353f7bb4d478c65d5901ac19e0eef7fad",
-        "faeeec600ec1a45acc70358af53e13525c0f6932a2a01c38ceab6dbcc80c0031"
-      ]
-    },
-    {
       "path": "output/translations.json",
       "sha256": "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
       "bytes": 237599,
@@ -6728,9 +6715,9 @@
   ],
   "totals": {
     "stages": 15,
-    "artifacts_produced": 141,
+    "artifacts_produced": 140,
     "artifacts_unclaimed": 4,
     "artifacts_stray": 3,
-    "bytes_produced": 18187078
+    "bytes_produced": 18193643
   }
 }

@@ -181,6 +181,72 @@ class Inputs:
 
 # ================================================================== markers
 
+def norm_id(s: str) -> str:
+    return re.sub(r"[^A-Z0-9]", "", (s or "").upper())
+
+
+def check_identity(inp: Inputs, patent_id: str):
+    """Refuse to build patent two's evidence out of patent one's pages.
+
+    `contracts/GENERALISATION-AUDIT.md` measured that 108 of the pack's 119
+    declared paths carry no patent id, `input/vision/` and `input/pages/` among
+    them. This stage reads both. Run it for a second patent against a pack still
+    holding the first, and every crop, every comparison and every claim would be
+    built from the wrong document while the header said otherwise. Nothing about
+    the output would look wrong.
+
+    The audit's prescription is to assert identity at the first place that
+    touches the data rather than eight stages downstream, so that is done here,
+    before anything is read. Cheap, because the scans identify themselves: the
+    publication number is printed in the running head of all nine pages and the
+    vision pass captured it.
+    """
+    want = norm_id(patent_id)
+    problems, report = [], {}
+
+    pdf = inp.input_dir / "pdf" / f"{patent_id}.pdf"
+    report["scoped_pdf_present"] = pdf.exists()
+    if not pdf.exists():
+        problems.append(f"input/pdf/{patent_id}.pdf is missing.")
+
+    report["scoped_source_present"] = inp.source_md.exists()
+    if inp.source_md.exists():
+        head = inp.source_md.read_text(encoding="utf-8").splitlines()[:1]
+        title = re.sub(r"^\s*\d+\s*\|\s*", "", head[0] if head else "").lstrip("# ").strip()
+        report["source_title"] = title
+        if norm_id(title) != want:
+            problems.append(
+                f"input/{patent_id}-enriched-numbered.md is titled '{title}', "
+                f"which is not {patent_id}.")
+    else:
+        problems.append(f"input/{patent_id}-enriched-numbered.md is missing.")
+
+    # The scans carry their own publication number in the running head.
+    carry = [p for p in sorted(inp.vision)
+             if want in norm_id((inp.vision[p].get("header") or "") +
+                                (inp.vision[p].get("footer") or ""))]
+    report["pages_total"] = len(inp.vision)
+    report["pages_naming_this_patent"] = len(carry)
+    if not carry:
+        problems.append(
+            f"None of the {len(inp.vision)} pages under input/vision/ names {patent_id} "
+            "in its running head. input/vision/ and input/pages/ are not scoped by "
+            "patent, so these are almost certainly another patent's pages.")
+
+    gold_patent = inp.rel / "gold" / "patent.json"
+    if gold_patent.exists():
+        got = json.loads(gold_patent.read_text(encoding="utf-8")).get("patent_id")
+        report["gold_patent_id"] = got
+        if norm_id(got or "") != want:
+            problems.append(
+                f"gold/patent.json carries patent_id '{got}', this run is {patent_id}.")
+
+    report["verdict_en"] = (
+        "Every input this stage read identifies itself as this patent."
+        if not problems else "Inputs do not all belong to this patent.")
+    return report, problems
+
+
 def marker_source_lines(source_md: Path) -> dict[str, int]:
     """Marker -> line number in the numbered bilingual source.
 
@@ -635,6 +701,17 @@ def compose(patent_img, ours, header, left_caption, right_caption,
 
 def build(root: Path, patent_id: str) -> int:
     inp = Inputs(root, patent_id)
+
+    identity, problems = check_identity(inp, patent_id)
+    if problems:
+        print(f"REFUSING TO BUILD: the inputs are not all {patent_id}.", file=sys.stderr)
+        for p in problems:
+            print("   ", p, file=sys.stderr)
+        print("    Nothing was written. Building anyway would produce crops and "
+              "comparisons of the wrong document with this patent's name on them.",
+              file=sys.stderr)
+        return 2
+
     out = inp.visual
     (out / "comparisons").mkdir(parents=True, exist_ok=True)
 
@@ -721,6 +798,7 @@ def build(root: Path, patent_id: str) -> int:
                 "The regions are deliberately loose and may include blank paper or a "
                 "paragraph marker."),
         },
+        "inputs_belong_to_this_patent": identity,
         "source_pdf": {
             "path": f"input/pdf/{patent_id}.pdf",
             "sha256": sha256_file(inp.input_dir / "pdf" / f"{patent_id}.pdf"),
@@ -1377,7 +1455,10 @@ def write_readme(out: Path, page_index: dict, doc: dict, patent_id: str) -> None
         "",
         "- `page-index.json` - marker to page, page to image, plus detected drawing regions.",
         "- `comparisons/<record_id>.png` - the full comparison, captioned and self-describing.",
-        "- `comparisons/<record_id>-patent.png` - just the cut from the page, uncaptioned.",
+        "- `comparisons/<record_id>-patent.png` - the UNCUT band from the page, running",
+        "  the full width of the text column. The comparison trims the sides in so the",
+        "  drawing is big enough to compare; this file is what was there before the trim,",
+        "  so nothing that was cut off is lost.",
         "- `drawing-claims.json` - review queue, conforming to `claims[]` in the",
         "  verification contract, all `tier: 1`.",
         "- `quote-translations.json` - hand-written English for the quoted Chinese.",

@@ -100,6 +100,23 @@ A claim is one field of one record paired with the evidence for it.
 }
 ```
 
+`severity` and `severity_action_en` say what the reviewer will FIND when they get
+there, which is a different question from which queue it is in. Five things must not
+share one badge:
+
+| `severity` | fires on | what the reviewer does |
+|---|---|---|
+| `critical` | the claimed value is on no line of the document at all | read this first; nobody can source the number |
+| `high` | the patent's own numbers disagree with each other | confirm what the page says; the extraction is not at fault |
+| `medium` | a judgement, an uncited line, or a field left empty | read the evidence and decide |
+| `low` | the fact stands and the pointer or the quote is misplaced, or the schema could not hold it | fix the citation, or file a schema ticket |
+| `none` | matched cleanly, or a derivation that checks out | nothing to do |
+
+`critical` is reserved and it fires only on a value found nowhere in the document.
+On CN104292137A it fires zero times, and that is the single most useful fact the
+file states. A label that means everything means nothing, and this label is what
+stands between the team and a fabricated number in a future run.
+
 `tier` is the QUEUE, `risk` is the order within it. See `REVIEW-PROTOCOL.md`.
 
 - `tier: 1` - a human must see it. Anything `not_found` or `partial`, any load-bearing
