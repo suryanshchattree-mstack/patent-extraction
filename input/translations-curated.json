@@ -1,0 +1,72 @@
+{
+  "_readme": [
+    "Hand-authored English for the Chinese strings of one patent that",
+    "resolve_translations.py cannot get any other way. One entry per exact Chinese",
+    "string, keyed by the string as the gold spells it, byte for byte.",
+    "",
+    "WHY THIS FILE EXISTS: the gold keeps the patent's Chinese, because the Chinese",
+    "is the authoritative text and at least one finding in FINDINGS.md was only",
+    "catchable by reading it. The consuming team cannot read Chinese. Almost all of",
+    "the gap closes from data already in the pipeline: the enriched source carries a",
+    "machine translation of nearly every line, and most Chinese aliases sit on a",
+    "record that already names the same molecule in English. What is left is the",
+    "handful of class terms and misprints that neither can reach.",
+    "",
+    "TRANSLATE THESE AS CHEMISTRY, NOT AS TEXT. Check every name against the",
+    "structure or against the context in the patent rather than word by word. There",
+    "is no OPSIN and no network here, so nothing verifies a hand-authored name",
+    "except a human doing it, and a wrong chemical translation reads exactly as",
+    "convincingly as a right one. A wrong translation is worse than an admitted gap:",
+    "the gap is visible in the report, the wrong name is not.",
+    "",
+    "PRESERVE THE PATENT'S ERRORS. Where the Chinese itself is wrong, translate the",
+    "error faithfully and explain it in 'note'. Silently correcting it would make the",
+    "gold agree with chemistry instead of agreeing with the document, which is the",
+    "one thing a reference annotation may never do.",
+    "",
+    "WHAT NOT TO PUT HERE: anything the pipeline already resolves. A quotation whose",
+    "source line carries a '> EN:' line resolves with origin 'source_mt'. A Chinese",
+    "alias of a compound the gold also names in English resolves with origin",
+    "'gold_alias'. Both are stronger provenance claims than 'curated', because both",
+    "are the document's or the annotation's own words rather than ours. An entry here",
+    "for one of those is harmless, and is reported as overridden, but it is work you",
+    "did not need to do.",
+    "",
+    "FIELDS: 'en' is the English form and must contain no Chinese. 'note' is free",
+    "text and is appended to the entry's note whichever tier ends up supplying the",
+    "English, so it is the right place for anything a reader has to know about the",
+    "string. Set 'en' to null, with a note, to record a gap deliberately left open:",
+    "the coverage gate still reports it, and the reasoning travels with it instead",
+    "of being lost.",
+    "",
+    "Each name below was worked out from the patent's own context, and the",
+    "confidence in each is stated in its note."
+  ],
+  "patent_id": "CN104292137A",
+  "entries": {
+    "硝环磺酮": {
+      "en": null,
+      "note": "DELIBERATELY UNRESOLVED, and the coverage gate is expected to report it. [0002] names two comparator herbicides whose activity tembotrione exceeds: 硝环磺酮 and 甲基磺草酮. The second is a standard Chinese common name for mesotrione. The first is not a standard Chinese common name for anything. It sits one character away from two real names in opposite directions: 硝磺草酮, which is mesotrione, and 环磺酮, which is tembotrione itself. Reading it as mesotrione would have the sentence name the same compound twice, and reading it as tembotrione would have the patent compare its target with its target. Pass V verified the four characters individually at 6x and the characters are as printed, so this is not a transcription artifact; compounds.json records it resolved:false for the same reason and the enriched source leaves it untranslated too. Confidence in any identification: low enough that none is offered. Naming a herbicide the patent did not name would be a fabrication in the one field a reader would trust most. If the team would rather have a hedged rendering than a gap, replace this null with something that says it is unidentified; that is a product decision, not a chemistry one."
+    },
+    "硫醇": {
+      "en": "thiol (mercaptan)",
+      "note": "Class term, not a specific compound, and the gold records it resolved:false for that reason. [0003] names it as 废水中的硫醇, the thiol in the waste water that the prior-art route makes hard to treat, immediately after naming 甲硫醇钠 (sodium methanethiolate) as the reagent that produces the odour. The species meant is therefore the free thiol liberated from that reagent, but the Chinese states only the class, so the English states only the class. Confidence: high. 硫醇 is the standard Chinese term for thiols, and the enriched source renders the same phrase as 'the mercaptan in the waste water'; both English words are given because the patent literature uses them interchangeably."
+    },
+    "甲硫醚": {
+      "en": "methyl sulfide (methyl thioether)",
+      "note": "The literal reading, and deliberately as ambiguous in English as it is in Chinese. 甲 is methyl, 硫醚 is thioether or sulfide, so 甲硫醚 read on its own is dimethyl sulfide. But [0031] uses it for 甲硫醚的氯取代反应, the chlorine-substitution reaction the invention replaces with methanesulfonyl chloride, where the substrate is the aryl methyl thioether intermediate rather than dimethyl sulfide. The gold leaves the identity open for exactly that reason. English 'methyl sulfide' carries the same ambiguity as the Chinese, which is why it is used here rather than 'dimethyl sulfide', which would settle a question the patent does not settle. Confidence in the translation: high. Confidence in which molecule is meant: deliberately none, and the gold says so."
+    },
+    "硫醚": {
+      "en": "thioether (sulfide)",
+      "note": "The second of the two adjacent mentions in [0031] that the gold merged into one record, 硫醚的过氧化氢氧化步骤, the hydrogen-peroxide oxidation of the thioether that this process eliminates. Class term with no methyl prefix, so it is one step more general than 甲硫醚. Confidence: high; 硫醚 is the standard Chinese term for the thioether class."
+    },
+    "N-溴琥珀酸亚胺": {
+      "en": "N-bromosuccinimide",
+      "note": "NBS, the brominating agent [0003] names as prior art and calls expensive, and that [0031] claims the invention replaced with 溴素 (bromine, Br2). The printed Chinese deviates from the standard name: the patent writes 琥珀酸亚胺, succinic acid imide, where the standard Chinese common name is 琥珀酰亚胺, succinimide. The English is unaffected, because the compound is unambiguous from the role the text gives it, and the printed form is preserved as the identifier rather than corrected. Confidence: high. Resolved from the gold record's own English alias in the normal run, so this entry only carries the note."
+    },
+    "1,2-二氯甲烷": {
+      "en": "1,2-dichloromethane",
+      "note": "TRANSLATED LITERALLY, AND THE LITERAL READING IS CHEMICALLY IMPOSSIBLE. Methane has one carbon and cannot carry a 1,2 substitution pattern, so no compound answers to this name. The error is in the patent's own Chinese, not in the translation: [0035] prints 1,2-二氯甲烷 as the step 1 extraction solvent, where the same step's reaction solvent is printed 1,2-二氯乙烷 (1,2-dichloroethane) and later steps use 二氯甲烷 (dichloromethane). Either would be a plausible correction and the document does not say which, so neither is applied. Preserving the error is the whole point of a gold annotation: an extractor that silently emits dichloroethane here has to score as a miss, and it cannot if the reference has already been corrected. compounds.json records it resolved:false for the same reason. Confidence in the literal translation: high. Confidence in what was meant: none is offered."
+    }
+  }
+}
