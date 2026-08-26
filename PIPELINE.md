@@ -243,10 +243,13 @@ Two deliberate properties:
 - **No timestamp anywhere.** A `generated_at` field would make every second run a
   diff, and byte-level idempotence is worth more than knowing the wall clock.
 - **Anything in the deliverable that no stage produced is listed with a null
-  stage.** On a healthy run that is exactly two files: the hand-written
-  `README.md` and the reviewer's own `verdicts-<ID>.jsonl`. Anything else
-  appearing there is the failure this pipeline exists to fix, so it is reported
-  rather than hidden.
+  stage**, and split into two kinds, because the difference matters. A
+  hand-authored file that some stage *reads* is a legitimate input that happens to
+  live in the tree, and says so. A file that nothing writes and nothing reads is a
+  **stray**, counted separately as `totals.artifacts_stray`. On a healthy run the
+  strays are exactly the hand-written `README.md` and the reviewer's own
+  `verdicts-<ID>.jsonl`. Anything else appearing there is the failure this
+  pipeline exists to fix, so it is reported rather than hidden.
 
 The manifest is written even when a gate stops the run, with the failing stage's
 status recorded. A stopped run is exactly when a consumer most needs to be told

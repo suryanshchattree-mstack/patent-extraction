@@ -848,6 +848,21 @@ FLAG_MEANING_EN = {
 }
 
 
+# Units that make a number a QUANTITY rather than an index, a locant or an NMR
+# shift. A bare number is deliberately excluded: the NMR lines are full of them and
+# a sweep that counts them reports the whole of Example 1 as dropped.
+QUANTITY_UNITS = ("g", "ml", "mmol", "%", "C", "h")
+
+# Glassware. "500ml four-necked reaction flask" prints a volume that is the size of
+# the vessel and not a charge of anything, and `reactor_type` records the flask
+# without its capacity. Six of them in this patent. Counted and reported, never
+# queued, because asking a reviewer whether we dropped the flask is a waste of the
+# only thing they are short of.
+VESSEL_WORDS = ("反应瓶", "反应容器", "反应釜", "四口", "三口", "烧瓶",
+                "flask", "reactor", "vessel", "autoclave", "necked")
+VESSEL_WINDOW = 12
+
+
 def derivation(field: str, quantity: dict, mw: float | None,
                name_en: str) -> dict | None:
     """How a field's value could be recomputed, if it is not quoted at all.
@@ -1170,6 +1185,101 @@ class Engine:
             else:
                 claim["tier"] = 3
 
+    def assign_severity(self) -> None:
+        """How bad is this one, as distinct from which queue it is in.
+
+        Tier says a human must look. Severity says what they will find when they
+        do, and the whole point is that these five things must not share a badge:
+
+            derived            none      should never have reached the reviewer
+            pointer misplaced  low       fix the citation, the fact stands
+            quote off the line low       fix the quote, the citation stands
+            judgement          medium    only a reader can settle it
+            patent disagrees   high      the document contradicts itself
+            not in the patent  critical  nobody can source this number
+
+        The hand triage of this patent's twelve `not_found` claims found three
+        derived, five misplaced pointers, four loose quotes and ZERO fabrications.
+        One label over all four teaches a reviewer that the label means nothing,
+        and the label is the only thing standing between the team and a fabricated
+        number in a future run. When a real one finally arrives it must not turn up
+        wearing the same badge as a citation that is four paragraphs out.
+
+        `critical` is reserved: it fires only when the claimed value is on no line
+        of the document at all, which `_elsewhere` records at the point the search
+        was actually made.
+        """
+        for claim in self.claims:
+            auto, basis = claim["auto"], claim.get("basis")
+            elsewhere = claim.get("_elsewhere")
+            derived = basis == "derived"
+
+            if auto == "not_found" and derived:
+                # The derivation was recomputed and disagreed. The numbers are the
+                # patent's own, so this is the document contradicting itself.
+                sev = "high"
+                action = ("Two numbers the patent prints for this reagent cannot "
+                          "both be right. Confirm which one the page says.")
+            elif auto == "not_found" and elsewhere:
+                sev = "low"
+                action = ("The fact is right and the pointer is wrong. Move the "
+                          "citation to " + compact_lines(elsewhere) + ".")
+            elif auto == "not_found":
+                sev = "critical"
+                action = ("This value is on no line of the patent. Either it was "
+                          "invented or it came from somewhere nobody recorded. "
+                          "Read this one first.")
+            elif auto == "partial" and elsewhere:
+                sev = "low"
+                action = ("The citation stands and the quoted text does not come "
+                          "from it. Fix the quote rather than the pointer.")
+            elif auto == "partial":
+                sev = "medium"
+                action = ("Part of the claim is on the cited lines and part is "
+                          "not. Read the evidence and decide.")
+            elif auto == "not_checkable" and claim["field"] == "__coverage__":
+                sev = "medium"
+                action = ("Nothing cites this line. Decide whether the extraction "
+                          "missed it or a nearby record already has it.")
+            elif auto == "not_checkable" and claim["load_bearing"]:
+                sev = "medium"
+                action = ("A judgement no string match can settle. Read the "
+                          "evidence and agree or overrule.")
+            elif derived:
+                sev = "none"
+                action = ("A calculated value whose calculation checks out. "
+                          "Nothing to do.")
+            else:
+                sev = "none"
+                action = ("The machine found this where the record says it is. "
+                          "Bulk-acceptable.")
+
+            # A claim the machine matched, sitting on a record whose arithmetic
+            # failed, is not severity none however well the string matched. Where
+            # the failing check is the mass-against-moles arithmetic, the two
+            # numbers are the PATENT's own and cannot both be right, which is the
+            # `high` case: nothing is wrong with the extraction and something is
+            # wrong with the document. Without this branch `high` could never fire
+            # on this patent, and a severity level that cannot fire is decoration.
+            if sev == "none" and claim["tier"] == 1:
+                rec = self.record_of.get(id(claim))
+                arithmetic = [c for c in (rec.checks if rec else [])
+                              if c["family"] == "quantity" and c["status"] == "fail"]
+                if arithmetic:
+                    sev = "high"
+                    claim["about"] = "patent"
+                    action = ("The value is printed exactly where the record says "
+                              "it is. What disagrees is the patent with itself: "
+                              + arithmetic[0]["detail_en"])
+                else:
+                    sev = "medium"
+                    action = ("The value is printed where the record says it is, "
+                              "but a check on this row failed, so it is worth "
+                              "reading.")
+
+            claim["severity"] = sev
+            claim["severity_action_en"] = action
+
     def note_citation(self, record_id: str, lines) -> None:
         for n in lines:
             self.cited_lines.setdefault(n, set()).add(record_id)
@@ -1303,12 +1413,31 @@ class Engine:
                                 "point.")
         else:
             auto = "not_found"
-            reason = (f"The number {fmt_value(value)} is on none of the "
-                      f"{len(cited)} source lines this record cites "
-                      f"({compact_lines(cited)}). Either the patent does not say "
-                      f"it, or the record cites the wrong lines.")
-            risk_reasons.append("The claimed number is absent from every line the "
-                                "record cites.")
+            # "Not on the lines this record cites" and "not in this patent at all"
+            # are the same verdict and completely different defects. The first is a
+            # pointer four paragraphs out and the fact still stands; the second is a
+            # number nobody can source, which is the only thing in this artifact
+            # that deserves the word fabrication. Asked here, once, over the whole
+            # document, so `severity` can tell them apart downstream.
+            far_exact, far_loose, _ = self.locate(self.source.numbers, value, unit)
+            elsewhere = sorted({n for n, _ in far_exact} or {n for n, _ in far_loose})
+            extra["_elsewhere"] = elsewhere
+            if elsewhere:
+                reason = (f"The number {fmt_value(value)} is in the patent, on line"
+                          f"{'s' if len(elsewhere) > 1 else ''} "
+                          + compact_lines(elsewhere)
+                          + f", but on none of the {len(cited)} lines this record "
+                            f"cites ({compact_lines(cited)}). The value is real and "
+                            f"the citation points somewhere else.")
+                risk_reasons.append("The number is in the document but the record "
+                                    "cites the wrong lines.")
+            else:
+                reason = (f"The number {fmt_value(value)} is on none of the "
+                          f"{len(cited)} source lines this record cites "
+                          f"({compact_lines(cited)}), and it is on no other line "
+                          f"of the {len(self.source.lines)}-line document either.")
+                risk_reasons.append("The claimed number is absent from the whole "
+                                    "document, not merely from the lines cited.")
 
         highlights = []
         for n, tok in hits:
@@ -1350,6 +1479,7 @@ class Engine:
                                "not_checkable",
                                "This record cites no source line.",
                                ["The record carries no provenance."], "value")
+        elsewhere: list[int] = []
         if hit_lines:
             reason = (f"The ratio {ratio} is printed on line"
                       f"{'s' if len(hit_lines) > 1 else ''} "
@@ -1370,7 +1500,8 @@ class Engine:
                 risk = ["The claimed ratio is absent from the whole document."]
             auto = "not_found"
         return self._claim(rec, field, question, ratio, None, None, rec.cited, [],
-                           auto, reason, risk, "value", hit_lines)
+                           auto, reason, risk, "value", hit_lines,
+                           extra={"_elsewhere": elsewhere})
 
     # -------------------------------------------------------------- quote claim
 
@@ -1459,6 +1590,7 @@ class Engine:
                 uncovered += zh
 
         risk_reasons: list[str] = []
+        misplaced = False
         if total == 0:
             auto = "not_checkable"
             reason = ("The quotation carries no Chinese characters to locate.")
@@ -1488,12 +1620,16 @@ class Engine:
             reason = " ".join(bits)
         elif off:
             auto = "not_found"
+            # No verdict on WHICH of the two is wrong yet. When the cited line is a
+            # drawing the citation is the right one and the quote is the loose half,
+            # and saying "the record cites the wrong place" there is false. The
+            # closing sentence is chosen below, once that is known.
             reason = (f"The quoted text is in the patent, on line"
                       f"{'s' if len(off_lines) > 1 else ''} "
                       + ", ".join(str(n) for n in sorted(off_lines))
                       + f", but on none of the {len(cited)} lines this record cites "
-                        f"({compact_lines(cited)}). The record cites the wrong "
-                        f"place.")
+                        f"({compact_lines(cited)}).")
+            misplaced = True
             risk_reasons.append("The quotation is real but the citation points "
                                 "somewhere else.")
         else:
@@ -1513,18 +1649,23 @@ class Engine:
                 self.source.kind.get(n) in ("image_extract", "blank")
                 for n in cited):
             auto = "partial"
-            reason += (" This record is anchored to the drawn scheme, which carries "
-                       "no prose at all, so what it quotes is narrative from "
-                       "elsewhere rather than the evidence the record rests on.")
+            misplaced = False
+            reason += (" The citation itself is right: this record is anchored to "
+                       "the drawn scheme, which carries no prose at all, so it is "
+                       "the QUOTE that does not come from the cited line. Fix the "
+                       "quote, not the pointer.")
             risk_reasons = ["The record cites only the drawing, and quotes prose "
                             "that is somewhere else."]
+        elif misplaced:
+            reason += " The record cites the wrong place."
 
         panel = sorted(cited_set | off_lines)
         panel = self.source.with_partners(panel)
         claim = self._claim(rec, field, question,
                             self.quote_gist(quote, on_lines | off_lines),
                             None, None, cited, [], auto, reason, risk_reasons,
-                            "name", on_lines | off_lines, panel_lines=panel)
+                            "name", on_lines | off_lines, panel_lines=panel,
+                            extra={"_elsewhere": sorted(off_lines)})
         return claim
 
     def quote_gist(self, quote: str, lines: set[int]) -> str:
@@ -1602,6 +1743,8 @@ class Engine:
             "structure_svg_path": rec.svg,
             "basis": None,
             "tier": None,
+            "severity": None,
+            "severity_action_en": None,
         }
         claim.update(extra or {})
         rec.claims.append(claim)
@@ -1653,6 +1796,51 @@ def compact_lines(lines) -> str:
 
 
 # ---------------------------------------------------------------- record checks
+
+def quantity_holder(record: dict, kind: str, unit: str):
+    """Which field of `record` would hold a quantity in `unit`, and what is in it.
+
+    Returns (field path, current value or None, whether the field can hold a RANGE),
+    or None where the record has no field of that kind at all. The third value is
+    what separates the two failures the lead cares about: `conditions.temperature`
+    carries `min_c` and `max_c` and can hold "15-20 degrees", so a range going
+    missing there is an extraction gap. `conditions.time_h` is one float and cannot
+    hold "1-10 h" at all, so the same shape of loss there is the schema's fault and
+    needs a schema change rather than a re-extraction.
+    """
+    if kind == "reaction":
+        cond = record.get("conditions") or {}
+        if unit == "h":
+            return "conditions.time_h", cond.get("time_h"), False
+        if unit == "C":
+            t = cond.get("temperature") or {}
+            held = next((t[k] for k in ("value_c", "min_c", "max_c")
+                         if t.get(k) is not None), None)
+            return "conditions.temperature", held, True
+        if unit == "%":
+            conc = cond.get("concentration") or {}
+            if conc.get("value") is not None or record.get("product_yield_pct") is None:
+                return ("conditions.concentration.value", conc.get("value"), False)
+            return "product_yield_pct", record.get("product_yield_pct"), False
+        return None
+    if kind == "compound":
+        if unit == "C":
+            mp = record.get("melting_point") or {}
+            held = next((mp[k] for k in ("min_c", "max_c")
+                         if mp.get(k) is not None), None)
+            return "melting_point", held, True
+        q = record.get("quantity") or {}
+        field = {"g": "mass_g", "ml": "volume_ml", "mmol": "mmol"}.get(unit)
+        if field:
+            return f"quantity.{field}", q.get(field), False
+    return None
+
+
+def is_vessel(line: str, end: int) -> bool:
+    """Does a volume token sit immediately before the word for a flask?"""
+    window = line[end:end + VESSEL_WINDOW]
+    return any(w in window for w in VESSEL_WORDS)
+
 
 def check(cid: str, family: str, status: str, title: str, detail: str,
           needs_human: bool = False, about_fields=()) -> dict:
@@ -1760,11 +1948,15 @@ class Run(Engine):
         self.drawing_checks()
         self.consistency_checks()
         self.build_coverage()
+        # The quantity sweep reads every claim built above, so it runs last of the
+        # builders and before anything that scores them.
+        self.quantity_coverage()
         # Order matters from here. Bases rewrite verdicts, the agreement matrix
         # reads the checks those verdicts sit beside, and tiering reads both.
         self.resolve_bases()
         self.agreement_matrix()
         self.assign_tiers()
+        self.assign_severity()
 
     def section_en_of(self, label) -> str:
         return label or "Whole patent"
@@ -2419,6 +2611,170 @@ class Run(Engine):
                 ordered.append(s)
         return ordered
 
+    # ------------------------------------------------------------ quantity sweep
+
+    QUANTITY_VERDICT_EN = {
+        "schema_loss_range": (
+            "The patent prints this as a RANGE and the field that would hold it is "
+            "a single number, so only one end of it could ever be recorded. The "
+            "annotation is not wrong; the schema cannot hold what the document "
+            "says."),
+        "schema_loss_second": (
+            "This step has more than one stage and the field that would hold this "
+            "number already holds {held} from another stage. The annotation wrote "
+            "both stages out in its notes, where nothing downstream can read them. "
+            "The annotation is not wrong; the schema has one slot and the step has "
+            "two."),
+        "gap": (
+            "The field that would hold this is empty. The patent prints the number "
+            "and the annotation records nothing, so either it was missed or it was "
+            "left out on purpose."),
+        "unmapped": (
+            "No field on this record could hold a quantity of this kind, so if the "
+            "number matters it has nowhere to go."),
+    }
+
+    def quantity_coverage(self) -> None:
+        """Every quantity printed on a cited line, against every quantity claimed.
+
+        Line coverage cannot see this. A line can be cited by one record while
+        carrying three facts with two of them dropped, and `uncited_with_chemistry`
+        still reads zero. So each cited line is tokenised and every (value, unit)
+        is matched against what a claim on a record citing that line STRUCTURALLY
+        asserts - `claimed_value` and `claimed_unit`, never the prose of a quote.
+        Matching against quoted text instead is the trap: a "16" occurring anywhere
+        inside any quotation would then count as coverage of a sixteen-hour
+        reaction, and the sweep reports a clean zero that means nothing.
+
+        Matching is unit-aware, so 0.22 mol on the page answers 220 mmol in the
+        record, and a Chinese line is matched together with the English it was
+        translated into, so one printed quantity is not counted twice.
+
+        What comes back is not one number but four, and the four need different
+        fixes. See QUANTITY_VERDICT_EN. The one that matters most is
+        `schema_loss`: the annotator read the document correctly and the container
+        could not hold the answer. Example 1 step 6 is one numbered step with two
+        transformations in one flask, 16 h of etherification then 4 h of
+        hydrolysis; `conditions.time_h` is a single float and holds 4.0. A consumer
+        reads a four-hour step where the truth is twenty hours over two stages, and
+        that is a factor of five on the most expensive input to any throughput
+        model. Re-running the extraction would not fix it.
+        """
+        asserted: dict[int, set] = {}
+        for c in self.claims:
+            if c.get("claimed_value") is None or not c.get("claimed_unit"):
+                continue
+            key = (c["claimed_unit"], round(float(c["claimed_value"]), 6))
+            for n in c["cited_lines"]:
+                asserted.setdefault(n, set()).add(key)
+
+        by_record = {r.record_id: r for r in self.records}
+        blocks: dict[int, tuple] = {}
+        for n in self.source.numbers:
+            blocks[n] = tuple(sorted({n, *self.source.en_for.get(n, ()),
+                                      *self.source.zh_for.get(n, ())}))
+
+        self.quantity_tally = {"tokens": 0, "accounted": 0, "vessel": 0,
+                               "schema_loss": 0, "gap": 0, "unmapped": 0}
+        self.quantity_findings: list[dict] = []
+        seen: dict[tuple, set] = {}
+
+        for n in sorted(self.cited_lines):
+            block = blocks[n]
+            for tok in tokenise(self.source.lines[n]):
+                if tok.unit not in QUANTITY_UNITS:
+                    continue
+                key = (tok.unit, round(tok.canonical(), 6))
+                if key in seen.setdefault(block, set()):
+                    continue
+                seen[block].add(key)
+                self.quantity_tally["tokens"] += 1
+
+                held_keys = set()
+                for m in block:
+                    held_keys |= asserted.get(m, set())
+                if key in held_keys:
+                    self.quantity_tally["accounted"] += 1
+                    continue
+                if tok.unit == "ml" and is_vessel(fold(self.source.lines[n]),
+                                                  tok.end):
+                    self.quantity_tally["vessel"] += 1
+                    continue
+                self.record_quantity_miss(n, block, tok, by_record)
+
+    def record_quantity_miss(self, line: int, block: tuple, tok: Token,
+                             by_record: dict) -> None:
+        """Attach one unaccounted quantity to the record that should have held it."""
+        citers = sorted({r for m in block for r in self.cited_lines.get(m, ())})
+        best = None
+        for rid in citers:
+            rec = by_record.get(rid)
+            raw = self.raw_of.get(rid)
+            if rec is None or raw is None:
+                continue
+            holder = quantity_holder(raw, rec.kind, tok.unit)
+            if holder is None:
+                continue
+            # A reaction owns the conditions of its own step; a compound record
+            # citing the same line owns only its own row. Prefer the reaction, then
+            # the lowest id, so the claim lands somewhere a fix can be made and the
+            # choice is a function of the inputs.
+            rank = (0 if rec.kind == "reaction" else 1, rid)
+            if best is None or rank < best[0]:
+                best = (rank, rec, holder)
+        if best is None:
+            rec = next((by_record[r] for r in citers if r in by_record), None)
+            if rec is None:
+                return
+            holder = ("", None, False)
+            kind = "unmapped"
+        else:
+            _, rec, holder = best
+            path, held, supports_range = holder
+            if tok.in_range and not supports_range:
+                kind = "schema_loss_range"
+            elif held is not None:
+                kind = "schema_loss_second"
+            else:
+                kind = "gap"
+
+        path, held, _ = holder
+        family = "schema_loss" if kind.startswith("schema_loss") else "completeness"
+        self.quantity_tally["schema_loss" if family == "schema_loss"
+                            else ("gap" if kind == "gap" else "unmapped")] += 1
+
+        printed = fmt_quantity(tok.value, tok.unit)
+        why = self.QUANTITY_VERDICT_EN[kind].format(
+            held=fmt_quantity(float(held), tok.unit) if held is not None else "")
+        field = f"__quantity__[{line}:{fmt_value(tok.value)}{tok.unit}]"
+        about = "schema" if family == "schema_loss" else "extraction"
+        question = (
+            f"Line {line} prints {printed}. The annotation does not record it "
+            f"anywhere. Should it have?")
+        rec.checks.append(check(
+            f"{family}.{path or 'unmapped'}[{line}:{fmt_value(tok.value)}"
+            f"{tok.unit}]", family, "warn" if family == "schema_loss" else "fail",
+            f"The quantity {printed} printed on line {line}",
+            (f"It is not asserted by any claim on any record citing line {line}. "
+             + (f"The field that would hold it is {path}. " if path else "")
+             + why), needs_human=True,
+            about_fields=[path] if path else []))
+        claim = self._claim(
+            rec, field, question, printed, tok.value, tok.unit,
+            self.source.with_partners([line]), [], "not_found",
+            f"The number {fmt_value(tok.value)} is printed on line {line} with the "
+            f"unit {UNIT_WORDS.get(tok.unit, tok.unit)}, and no claim on any record "
+            f"citing that line asserts it. " + why,
+            ["A quantity the patent prints that nothing in the annotation holds."],
+            "value", {line}, about=about, load_bearing=True,
+            rec_field=f"__quantity__.line_{line}."
+                      f"{fmt_value(tok.value)}{tok.unit}")
+        claim["quantity_verdict"] = kind
+        self.quantity_findings.append(
+            {"line": line, "printed_en": printed, "verdict": kind,
+             "record_id": rec.record_id, "field": path or None,
+             "claim_id": claim["claim_id"]})
+
     def build_coverage(self) -> None:
         reagent_names: dict[str, str] = {}
         for c in self.data["compounds"]:
@@ -2533,6 +2889,19 @@ def molar_ratios(text: str) -> list[str]:
 
 RISK_BANDS = (("high", 0.60), ("medium", 0.30), ("low", 0.0))
 
+# The severity ladder. `tier` says which census a claim belongs to and `severity`
+# says what the reviewer will find when they get there. Ordered worst first, which
+# is the order the queue is read in.
+SEVERITIES = ["critical", "high", "medium", "low", "none"]
+
+SEVERITY_MEANING = {
+    "critical": "a value on no line of the patent. The fabrication signal",
+    "high":     "the patent's own numbers contradict each other",
+    "medium":   "a judgement, or a row whose checks failed",
+    "low":      "the fact stands and the pointer or the quote is wrong",
+    "none":     "nothing for a reviewer to act on",
+}
+
 VERDICTS = ["not_found", "partial", "not_checkable", "found"]
 CHECK_STATUSES = ["fail", "warn", "pass", "skip"]
 FAMILIES = ["grounding", "reference", "structure", "drawing", "quantity",
@@ -2549,7 +2918,8 @@ TIER_MEANING = {
 # Keys the engine uses to carry a claim between passes. They are working state, not
 # contract, and are stripped before the file is written so a consumer can never
 # come to depend on one.
-PRIVATE = ("_field_name", "_matched", "_derive", "_value", "_unit", "_subject")
+PRIVATE = ("_field_name", "_matched", "_derive", "_value", "_unit",
+           "_subject", "_elsewhere")
 
 # Which family a claim belongs to, for the roll-up. Everything a claim can be is a
 # grounding question except the coverage sweep, which asks the opposite question.
@@ -2620,6 +2990,8 @@ def assemble(run: Run) -> dict:
             c.pop(k, None)
 
     verdicts = {v: sum(1 for c in claims if c["auto"] == v) for v in VERDICTS}
+    severities = {v: sum(1 for c in claims if c["severity"] == v)
+                  for v in SEVERITIES}
     families = {f: sum(1 for c in claims if claim_family(c) == f) for f in FAMILIES}
     tiers = {str(t): sum(1 for c in claims if c["tier"] == t) for t in TIERS}
     # The denominators ui-report needs. A stratified sample cannot be drawn, and a
@@ -2732,6 +3104,7 @@ def assemble(run: Run) -> dict:
                        **verdicts},
             "claims_by_family": families,
             "claims_by_tier": tiers,
+            "claims_by_severity": severities,
             "tier3_population_by_stratum": dict(sorted(strata.items())),
             "claims_by_subject": about,
             "field_basis": {k: dict(sorted(v.items()))
@@ -2839,6 +3212,13 @@ def report(run: Run, artifact: dict, out_path: Path, check_only: bool) -> int:
           f"needs:")
     for k, v in list(s["tier3_population_by_stratum"].items()):
         print(f"    {k:52} {v:4}")
+    print()
+    print("severity, which is what they will find when they get there:")
+    for v in SEVERITIES:
+        print(f"  {v:14} {s['claims_by_severity'][v]:5}   {SEVERITY_MEANING[v]}")
+    if not s["claims_by_severity"]["critical"]:
+        print("  no claim states a value that is on no line of the patent: "
+              "nothing here is fabricated")
     print()
     print(f"what each claim is ABOUT: {s['claims_by_subject']['extraction']} ask "
           f"whether the annotation is right,")

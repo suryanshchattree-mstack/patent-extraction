@@ -675,7 +675,17 @@ def index_curated(curated, universe: list[str]):
                 die(f"curated {key!r}: 'en' still contains Chinese ({en!r}). This "
                     "table is the last resort for a reader who has none; put the "
                     "Chinese in 'note' instead.")
-        table[key] = {"en": en, "note": note}
+        # OVERRIDE IS A CLAIM ABOUT THE OTHER TIERS, not a preference, so it is
+        # allowed only where it can be true. The source and the gold are both
+        # better provenance than we are, and the single case where they are not
+        # is a short phrase whose source-line answer is the whole paragraph it
+        # was quoted out of. Requiring an 'en' and a 'note' keeps the reasoning
+        # attached to the decision in the artifact.
+        override = bool(entry.get("override"))
+        if override and (en is None or not note):
+            die(f"curated {key!r}: 'override' needs both an 'en' and a 'note' "
+                "saying why the stronger tier is wrong for this string.")
+        table[key] = {"en": en, "note": note, "override": override}
     return table
 
 
@@ -702,9 +712,23 @@ def resolve(universe, sites, compounds, equivalence, source_norm, english, table
         en = origin = None
         note_bits: list[str] = []
 
+        # Tier 3, first, but only when the entry asks for it in so many words.
+        # See index_curated for the one shape that earns this: a short phrase
+        # whose only other English is the translation of the whole paragraph it
+        # was quoted out of. A paragraph is not a translation of a phrase, and
+        # substituting one into a sentence is how "says the invention 革除了硫醚
+        # 的过氧化氢氧化步骤" becomes "says the invention The beneficial effects of
+        # the present invention are: ..." for 695 characters.
+        if (table.get(text) or {}).get("override") and table[text].get("en"):
+            en, origin = table[text]["en"], "curated"
+            note_bits = ["Hand-authored, and deliberately preferred over the "
+                         "source's own translation of the line: the source "
+                         "translates the whole paragraph this phrase was quoted "
+                         "out of, which is not a translation of the phrase."]
+
         # Tier 1. Only for strings the gold pins to a source line: see the module
         # docstring for why a compound name must not be answered with a sentence.
-        if site["lines"]:
+        if en is None and site["lines"]:
             got = source_translation(text, site["lines"], source_norm, english)
             if got:
                 en, note, uncovered = got
@@ -879,8 +903,16 @@ def main() -> int:
     # still travels. A hand-authored translation that DISAGREES with the gold's own
     # English for the same molecule is not fine: one of the two is wrong and neither
     # is visible from the artifact, so it is called out here.
+    forced = [k for k, v in table.items() if v.get("override")]
+    if forced:
+        print(f"\n  {len(forced)} curated entries were preferred OVER a stronger "
+              f"tier, because the stronger tier answers a phrase with a paragraph:")
+        for key in forced:
+            print(f"    {key}  ->  {entries[key]['en'][:60]!r}")
+
     overridden = [(k, v["en"], entries[k]["en"]) for k, v in table.items()
-                  if v.get("en") and entries[k]["origin"] != "curated"]
+                  if v.get("en") and not v.get("override")
+                  and entries[k]["origin"] != "curated"]
     if overridden:
         print(f"\n  {len(overridden)} curated entries were overridden by a stronger "
               f"tier; their notes still travel:")

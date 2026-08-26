@@ -32,6 +32,17 @@
     "for one of those is harmless, and is reported as overridden, but it is work you",
     "did not need to do.",
     "",
+    "OVERRIDE, and when it is honest to use it. An entry may carry",
+    "'override': true, which makes it beat the source and the gold instead of",
+    "losing to them. That is normally exactly backwards, because both are",
+    "better provenance than we are. The one shape that earns it is a SHORT",
+    "PHRASE whose source-line answer is the translation of the WHOLE PARAGRAPH",
+    "it was quoted out of. A consumer substitutes the index into the",
+    "annotator's English commentary, and a 695-character paragraph spliced into",
+    "the middle of a sentence is not a translation of a 14-character phrase, it",
+    "is a different and much worse answer. 'override' requires both an 'en' and",
+    "a 'note', so the reasoning is attached to the decision in the artifact.",
+    "",
     "FIELDS: 'en' is the English form and must contain no Chinese. 'note' is free",
     "text and is appended to the entry's note whichever tier ends up supplying the",
     "English, so it is the right place for anything a reader has to know about the",
@@ -56,6 +67,12 @@
       "en": "xiaohuanhuangtong [herbicide name exactly as printed; not a standard common name, identity unresolved]",
       "note": "A TRANSLITERATION AND AN ADMISSION, NOT AN IDENTIFICATION. [0002] names two comparator herbicides whose activity tembotrione exceeds: 硝环磺酮 and 甲基磺草酮. The second is a standard Chinese common name for mesotrione, CAS 104206-82-8, whose other standard name is 硝磺草酮. The first names nothing: it returns no compound in any Chinese agrochemical source, while the two real names it sits between run in opposite directions, 硝磺草酮 for mesotrione and 环磺酮 for tembotrione itself. The Chinese trade literature this paragraph paraphrases states the comparison as '环磺酮是由拜耳公司2007年研制的三酮类玉米田除草剂新品种，其活性高于硝磺草酮', naming mesotrione alone, so the likeliest reading is a garbled 硝磺草酮 that has picked up a 环 from the 环磺酮 around it. Likeliest is not settled. That reading has the sentence name mesotrione twice, and reading it as tembotrione has the patent compare its target with its target, and the document decides neither. Pass V verified the four characters individually at 6x and they are as printed, so this is not a transcription artifact; compounds.json records it resolved:false for the same reason and the enriched source leaves it untranslated too. The English above therefore transliterates the printed name in pinyin and says in English that it is unidentified. That puts the string on a screen in English, which the reading team requires, without naming a molecule the evidence does not support, and it substitutes into [0002] as a sentence that still reads correctly. Confidence in the pinyin: high. Confidence in any molecular identity: none is offered, and the gold's resolved:false stands untouched. Sources consulted 2026-08-27: zh.wikipedia.org/wiki/硝磺草酮 for the mesotrione synonymy; the 环磺酮 product reviews at jsppa.com.cn and enongzi.com for the comparator sentence, none of which contains the string 硝环磺酮."
     },
+    "革除了硫醚的过氧化氢氧化步骤": {
+      "en": "has done away with the hydrogen-peroxide oxidation step of the thioether",
+      "override": true,
+      "note": "OVERRIDES THE SOURCE, and the reason is length rather than disagreement. This 14-character phrase is quoted twice: once as quote_zh on a provenance row, and once inside the annotator's English commentary on the drawn scheme, 'says the invention 革除了硫醚的过氧化氢氧化步骤, and the prose route contains no such step at all'. The phrase sits inside paragraph [0031] at line 176, and tier 1 answers a quotation by covering it with its source line's English, so without this entry the index returns the whole 695-character translation of [0031] and a consumer substituting it prints 'says the invention The beneficial effects of the present invention are: by improving the process, ...' where a clause belongs. Nothing about that is Chinese, so the English guard cannot see it; it is simply the wrong answer at ten times the length. The English above is the same clause the source's own translation of [0031] uses, 'doing away with the hydrogen-peroxide oxidation step of the thioether', put into the tense 革除了 marks, so this does not disagree with the source at all, it just answers the phrase as a phrase. 革除 is to abolish or do away with, 了 marks it completed, 硫醚 is the thioether, and 过氧化氢 is hydrogen peroxide. Confidence: high. See the notes on 革除了 and 硫醚 for the shorter forms of the same words, which this entry wins against on length, as it must."
+    },
+
     "硫醇": {
       "en": "thiol (mercaptan)",
       "note": "Class term, not a specific compound, and the gold records it resolved:false for that reason. [0003] names it as 废水中的硫醇, the thiol in the waste water that the prior-art route makes hard to treat, immediately after naming 甲硫醇钠 (sodium methanethiolate) as the reagent that produces the odour. The species meant is therefore the free thiol liberated from that reagent, but the Chinese states only the class, so the English states only the class. Confidence: high. 硫醇 is the standard Chinese term for thiols, and the enriched source renders the same phrase as 'the mercaptan in the waste water'; both English words are given because the patent literature uses them interchangeably."

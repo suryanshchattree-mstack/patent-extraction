@@ -275,11 +275,19 @@ def stages(pid: str) -> list[Stage]:
                     "output/translations.json", "output/structures-resolved.json",
                     "input/vision/p*.json", "input/pages/*.png",
                     f"{gold}/structures.json", f"{gold}/compounds.json",
-                    "output/00-sections.json"],
+                    "output/00-sections.json",
+                    # hand-authored, and it lives inside the deliverable because its
+                    # keys are the raw Chinese labels it stands in for. An input to
+                    # this stage, not an output of it.
+                    "output/relevant_output/visual/quote-translations.json"],
             outputs=["output/relevant_output/visual/page-index.json",
                      "output/relevant_output/visual/drawing-claims.json",
+                     "output/relevant_output/visual/README.md",
                      "output/relevant_output/visual/comparisons/*.png"],
             optional_tool="make_visual_evidence.py",
+            # it refuses to ship Chinese into a tree whose entire promise is that a
+            # reader with no Chinese can open it
+            gate=True,
         ),
         Stage(
             name="selfcheck",
@@ -536,12 +544,15 @@ def write_manifest(pid: str, ctx: dict) -> int:
         return hashes[r]
 
     stage_rows, artifacts, produced = [], [], set()
+    consumed: dict[str, str] = {}   # in-tree file -> the stage that reads it
     for st in all_stages:
         if st.name == "manifest":
             continue
         ins = [entry(p) for p in expand(st.inputs)]
         outs = [entry(p) for p in expand(st.outputs)]
         input_sha = [i["sha256"] for i in ins]
+        for i in ins:
+            consumed.setdefault(i["path"], st.name)
         stage_rows.append({
             "stage": st.name,
             "title": st.title,
@@ -560,17 +571,30 @@ def write_manifest(pid: str, ctx: dict) -> int:
             produced.add(o["path"])
             artifacts.append({**o, "stage": st.name, "input_sha256": input_sha})
 
-    # Anything in the deliverable that no stage claims. On a healthy run this is the
-    # hand-written README and the reviewer's own verdict log, and nothing else.
+    # Anything in the deliverable that no stage claims. Two kinds, and the
+    # difference matters: a hand-authored file some stage READS is a legitimate
+    # input that happens to live in the tree, while a file nothing reads and
+    # nothing writes is a stray, and a stray is the exact failure this pipeline
+    # exists to fix. On a healthy run the strays are the hand-written README and
+    # the reviewer's own verdict log, and nothing else.
     rel_root = HERE / "output" / "relevant_output"
-    unclaimed = []
+    unclaimed, strays = [], []
     for p in sorted(rel_root.rglob("*")):
         if not p.is_file() or p.name in (".DS_Store", "manifest.json"):
             continue
-        if rel(p) in produced:
+        r = rel(p)
+        if r in produced:
             continue
-        unclaimed.append({**entry(p), "stage": None,
-                          "note": "present in the deliverable, produced by no declared stage"})
+        if r in consumed:
+            unclaimed.append({**entry(p), "stage": None,
+                              "note": f"hand-authored input to the {consumed[r]} stage, "
+                                      f"not produced by the pipeline"})
+        else:
+            row = {**entry(p), "stage": None,
+                   "note": "present in the deliverable, produced by no declared stage "
+                           "and read by none"}
+            unclaimed.append(row)
+            strays.append(row)
 
     manifest = {
         "schema": 1,
@@ -584,6 +608,7 @@ def write_manifest(pid: str, ctx: dict) -> int:
             "stages": len(stage_rows),
             "artifacts_produced": len(artifacts),
             "artifacts_unclaimed": len(unclaimed),
+            "artifacts_stray": len(strays),
             "bytes_produced": sum(a["bytes"] for a in artifacts),
         },
     }
@@ -593,9 +618,14 @@ def write_manifest(pid: str, ctx: dict) -> int:
                    encoding="utf-8")
     print(f"  {len(artifacts)} artifacts over {len(stage_rows)} stages, "
           f"{sum(a['bytes'] for a in artifacts):,} bytes")
-    if unclaimed:
-        print(f"  {len(unclaimed)} file(s) in the deliverable that no stage produced:")
-        for u in unclaimed:
+    inputs_in_tree = len(unclaimed) - len(strays)
+    if inputs_in_tree:
+        print(f"  {inputs_in_tree} hand-authored input(s) living in the deliverable, "
+              f"read by a stage")
+    if strays:
+        print(f"  {len(strays)} file(s) in the deliverable that no stage produced "
+              f"and none reads:")
+        for u in strays:
             print(f"    {u['path']}")
     print(f"  wrote {rel(out)}")
     return 0

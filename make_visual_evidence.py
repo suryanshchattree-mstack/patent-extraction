@@ -189,8 +189,12 @@ def marker_source_lines(source_md: Path) -> dict[str, int]:
     out = {}
     if not source_md.exists():
         return out
+    # The file prints its own line numbers as "  182 | [0033] ...", so the
+    # marker is not at the head of the raw line and a pattern anchored there
+    # silently matches nothing and leaves every claim with no citation.
+    pat = re.compile(r"^\s*(?:\d+\s*\|\s*)?(\[\d{4}\])")
     for i, line in enumerate(source_md.read_text(encoding="utf-8").splitlines(), 1):
-        m = re.match(r"\s*(\[\d{4}\])", line)
+        m = pat.match(line)
         if m and m.group(1) not in out:
             out[m.group(1)] = i
     return out
@@ -446,8 +450,23 @@ def render_structure(smiles: str, width: int, height: int) -> Image.Image:
 
 
 def wrap(draw, text, font, width):
-    words, lines, cur = text.split(), [], ""
-    for w in words:
+    """Word wrap, breaking mid-word when a single word is wider than the box.
+
+    Systematic chemical names are one unbroken word and routinely wider than the
+    column they sit in, so a wrapper that only ever breaks at spaces leaves them
+    to run out over their neighbour.
+    """
+    lines, cur = [], ""
+    for w in text.split():
+        while draw.textlength(w, font=font) > width:
+            cut = len(w)
+            while cut > 1 and draw.textlength(w[:cut], font=font) > width:
+                cut -= 1
+            if cur:
+                lines.append(cur)
+                cur = ""
+            lines.append(w[:cut])
+            w = w[cut:]
         trial = f"{cur} {w}".strip()
         if draw.textlength(trial, font=font) <= width:
             cur = trial
@@ -457,6 +476,24 @@ def wrap(draw, text, font, width):
             cur = w
     if cur:
         lines.append(cur)
+    return lines
+
+
+def wrap_clip(draw, text, font, width, max_lines):
+    """Wrap to the cell, and cut with an ellipsis rather than overrun it.
+
+    An overrunning caption writes itself across its neighbour and both become
+    unreadable, which on this asset means the reviewer cannot tell which
+    molecule is which.
+    """
+    lines = wrap(draw, text, font, width)
+    if len(lines) <= max_lines:
+        return lines
+    lines = lines[:max_lines]
+    last = lines[-1]
+    while last and draw.textlength(last + "...", font=font) > width:
+        last = last[:-1]
+    lines[-1] = last.rstrip() + "..."
     return lines
 
 
@@ -513,14 +550,23 @@ def compose(patent_img, ours, header, left_caption, right_caption,
         cols = min(5, len(ours))
         cell = (body_w - pad * (cols - 1)) // cols
         rows = (len(ours) + cols - 1) // cols
-        left = Image.new("RGB", (body_w, rows * (cell + 34)), "white")
+        f_n = load_font(FONT_BOLD, 16)
+        label_lines, cap_lines = 3, []
+        probe0 = ImageDraw.Draw(Image.new("RGB", (10, 10), "white"))
+        for _, lab in ours:
+            cap_lines.append(wrap_clip(probe0, lab, f_n, cell - 8, label_lines))
+        band = cell + 12 + (f_n.size + 4) * label_lines + 14
+        left = Image.new("RGB", (body_w, rows * band), "white")
         ld = ImageDraw.Draw(left)
-        f_n = load_font(FONT_BOLD, 19)
-        for i, (im, lab) in enumerate(ours):
+        for i, (im, _) in enumerate(ours):
             r, c = divmod(i, cols)
-            x, y = c * (cell + pad), r * (cell + 34)
+            x, y = c * (cell + pad), r * band
             left.paste(fit(im, cell), (x, y))
-            ld.text((x + 4, y + cell + 6), lab, font=f_n, fill="black")
+            ld.rectangle([x, y, x + cell - 1, y + cell - 1], outline="black", width=1)
+            ty = y + cell + 10
+            for line in cap_lines[i]:
+                ld.text((x + 4, ty), line, font=f_n, fill="black")
+                ty += f_n.size + 4
 
     width = body_w + pad * 2
     probe = Image.new("RGB", (width, 10), "white")
@@ -712,17 +758,20 @@ def build(root: Path, patent_id: str) -> int:
                 bx = crop_box(block, lay["strips"], lay["box"])
                 tb, tightened = tight_box(inp.page_png(page), bx, lay["box"])
                 patent_img = img_full.crop(tb)
+                n_b = len(lay["blocks"])
                 how_found = (
                     "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no "
                     "text layer, so a machine measured the ink on page {n} and cut out "
                     "the {ord} block that is a drawing rather than lines of text. This "
-                    "page holds {a} such blocks and the reading of the page found {b} "
-                    "drawings, so the two agree. The cut is deliberately loose. If it "
+                    "page holds {a} such {blocks}, and reading the page found {b} "
+                    "{draws}, so the two agree. The cut is deliberately loose. If it "
                     "has sliced a molecule in half, or shows a different molecule from "
                     "the one named above, this comparison is broken and should be "
                     "reported as broken rather than answered."
-                ).format(n=int(page[1:]), ord=ordinal(k + 1),
-                         a=len(lay["blocks"]), b=len(v["drawings"]))
+                ).format(n=int(page[1:]), ord=ordinal(k + 1), a=n_b,
+                         blocks="block" if n_b == 1 else "blocks",
+                         b=len(v["drawings"]),
+                         draws="drawing" if len(v["drawings"]) == 1 else "drawings")
                 crop_conf = "region_detected"
             else:
                 patent_img = img_full
@@ -757,7 +806,12 @@ def build(root: Path, patent_id: str) -> int:
                     how = "structure" if gold else "none"
                 if gold and gold.get("smiles"):
                     im = render_structure(gold["smiles"], 700, 560)
-                    label = gold["identifier"]
+                    # Three gold records carry a SMILES string where a name
+                    # should be. Printing that as if it were the compound's name
+                    # tells a non-chemist nothing, so say what is actually true.
+                    label = ("we recorded this one with no name, only a structure"
+                             if gold["identifier"] == gold.get("smiles")
+                             else gold["identifier"])
                 else:
                     im = Image.new("RGB", (700, 560), "white")
                     ImageDraw.Draw(im).text(
@@ -777,10 +831,17 @@ def build(root: Path, patent_id: str) -> int:
                     "linked_by": how,
                 })
 
-            between_en = " and ".join(m for m in between if MARKER.match(m.strip())) \
-                or "no marker on this page"
+            # between_markers can carry prose where a marker is not visible on
+            # the page, so say "between X and Y" only when there really are two.
+            marks = [m.strip() for m in between if MARKER.match(m.strip())]
+            if len(marks) >= 2:
+                where = f"between {marks[0]} and {marks[1]}"
+            elif len(marks) == 1:
+                where = f"just above {marks[0]}"
+            else:
+                where = "no paragraph marker printed beside it"
             header = (f"Drawing {drawing_no} of {total_drawings}   -   page "
-                      f"{int(page[1:])} of the patent, between {between_en}")
+                      f"{int(page[1:])} of the patent, {where}")
 
             if single:
                 if anchor:
@@ -961,6 +1022,23 @@ def build(root: Path, patent_id: str) -> int:
             rid = f"{patent_id}_{page}_x{i + 1}"
             related = related_records(inp, disc, fields)
             markers = sorted(set(re.findall(r"\[\d{4}\]", " ".join(fields.values()))))
+
+            # Only attach a drawing when the conflict really sits at it. Hanging
+            # the page's first drawing off every conflict on the page points the
+            # reviewer at a picture that has nothing to do with the question.
+            near = next((c for c in page_comps
+                         if set(markers) & {m.strip() for m in c["between_markers_en"]}),
+                        None)
+            drawing_involved = bool(
+                near or (fields["drawing_says"] and not
+                         fields["drawing_says"].lower().startswith(("n/a", "no drawing"))))
+            if drawing_involved:
+                why = ["The patent's drawing and the patent's words disagree here."]
+            else:
+                why = ["The patent's own words disagree with each other here. "
+                       "No drawing is involved."]
+            why.append("Where a source contradicts itself, an extraction has to pick "
+                       "one, and the pick is exactly what needs checking.")
             claims.append(make_claim(
                 patent_id=patent_id,
                 record_id=rid,

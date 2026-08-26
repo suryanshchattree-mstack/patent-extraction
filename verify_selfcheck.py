@@ -262,7 +262,7 @@ CONTRACT_CLAIM_KEYS = {
     "claimed_unit", "cited_lines", "evidence_en", "evidence_lines",
     "highlights", "auto", "auto_reason_en", "needs_human", "risk",
     "risk_reasons_en", "structure_svg_path", "tier", "stratum",
-    "about", "severity",
+    "about", "severity", "severity_action_en",
 }
 
 
