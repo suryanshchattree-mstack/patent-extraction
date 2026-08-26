@@ -6,7 +6,7 @@
     {
       "stage": "prompts",
       "title": "render the annotation prompts for THIS patent, for the agent to follow",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 render_prompts.py --patent-id CN104292137A"
       ],
@@ -149,7 +149,7 @@
     {
       "stage": "enrich",
       "title": "vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 build_enriched.py --patent-id CN104292137A"
       ],
@@ -232,7 +232,7 @@
     {
       "stage": "collect",
       "title": "publish the A0, A3 and A4 stage files under the names finalise.py reads",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "<internal>"
       ],
@@ -275,7 +275,7 @@
     {
       "stage": "merge",
       "title": "concatenate the per-section A1 and A2 stage files into the raw arrays",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 merge_stages.py"
       ],
@@ -428,7 +428,7 @@
     {
       "stage": "finalise",
       "title": "deterministic ids and uuids, rollup, bibliographic merge",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 finalise.py --patent-id CN104292137A"
       ],
@@ -578,7 +578,7 @@
     {
       "stage": "publish-gold",
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -846,7 +846,7 @@
     {
       "stage": "structures",
       "title": "identifier -> drawable molecule over five tiers, plus the coverage gate",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_structures.py --patent-id CN104292137A"
       ],
@@ -1009,7 +1009,7 @@
     {
       "stage": "translations",
       "title": "Chinese string -> English for everything that can reach a screen, plus the coverage gate",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_translations.py CN104292137A"
       ],
@@ -1072,7 +1072,7 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN104292137A",
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN104292137A"
@@ -1231,7 +1231,7 @@
     {
       "stage": "rasterise",
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 svg2jpg.py --all"
       ],
@@ -1319,7 +1319,7 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -1752,7 +1752,7 @@
     {
       "stage": "visual",
       "title": "the page index, the structure comparisons and the drawing claims the UI shows",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_visual_evidence.py --patent-id CN104292137A"
       ],
@@ -2091,8 +2091,8 @@
       "inputs": [
         {
           "path": "verify_selfcheck.py",
-          "sha256": "883a9c6ef60277fe8661ebc745a7d8a79cdfc07c124dac600b39f07cea8aaa68",
-          "bytes": 26230
+          "sha256": "9e6f84d11dcdef13909ad2610ff756b6b787d7668fc139a95c32fb9da20bdf99",
+          "bytes": 27970
         },
         {
           "path": "verify.py",
@@ -5321,8 +5321,8 @@
     },
     {
       "path": "output/relevant_output/verification/checks-CN104292137A.json",
-      "sha256": "d1deb18491315f6ce3bec0161296e2beee74010c20c898403a73ecaf743424b1",
-      "bytes": 3436397,
+      "sha256": "e18122e95ad98deed0ba98cff4af2b86b2ad5111f3897b96ff866cdbe8ef6578",
+      "bytes": 3445803,
       "stage": "verify",
       "input_sha256": [
         "ddad51350b6f6ae23cca831f5f762b56fd9752d157b7e057e1044687687bd151",
@@ -6913,6 +6913,6 @@
     "artifacts_produced": 142,
     "artifacts_unclaimed": 4,
     "artifacts_stray": 3,
-    "bytes_produced": 18418214
+    "bytes_produced": 18427620
   }
 }

@@ -1,11 +1,13 @@
-# The failure every guard in this project had
+# The two failures every guard in this project had
 
 Four instances in one night, all the same shape, all found by accident or by an
 independent grader rather than by the guard itself.
 
-## The pattern
+## The pattern, in two halves
 
 **A check that a string is ABSENT cannot tell "translated" from "destroyed".**
+
+**A check that a value is PRESENT cannot tell "confirmed" from "coincidence".**
 
 Every guard here was written to assert that something bad is not present. None of them
 asserted that the corresponding good thing IS present. So each one certified an output
@@ -71,3 +73,58 @@ None of the four was caught by the guard that should have caught it. What caught
 A number nobody has read the failures behind is not evidence. That rule caught my own
 error twice tonight, and both times the correction came from someone re-measuring
 rather than from the check going red.
+
+
+---
+
+## The second half: present is not confirmed
+
+Found by hand-checking wide-citation `found` verdicts. Verified here against the
+source.
+
+A compound record's citation is the union of every provenance row for that identifier,
+so `water` cites 34 lines because water is quoted in seventeen places. Against 34 lines,
+"the claimed number appears on a line this record cites" is close to unfalsifiable.
+
+The example that makes the whole argument, and both verdicts are correct:
+
+| claim | genuine evidence | coincidence |
+|---|---|---|
+| `dichloromethane` 100 ml | line 244, "100 ml dichloromethane" | line 237, where the 100 ml is **THF** |
+| `water` 100 ml | line 206, "100 ml of water was added" | line 237, the same THF |
+
+**One printed quantity, belonging to a third substance, counted as confirming evidence
+for two different compounds.** A reviewer glancing at the highlighted 100 ml on line
+237 is looking at THF while being told it confirms dichloromethane.
+
+### The cheap fix does not work, and this is why it matters
+
+The obvious repair is "require the cited line to also name the compound". It fails.
+Line 237 DOES name dichloromethane, later in the same sentence, as the extraction
+solvent:
+
+    ... and 100 ml THF solvent; stirred at room temperature for 16 h ...
+    ... then extracted with dichloromethane, washed with water ...
+
+So no cheap machine test separates these. **Attachment is genuinely the reviewer's
+job**, and that is the strongest argument yet for why this tool exists rather than a
+script.
+
+### What was done about it
+
+Not a downgrade to `partial`: the match usually IS genuine, so calling it partial
+would be its own kind of lie, and it would move 43 claims into tier 1, taking it from
+78 to 121 and costing a third of the review budget re-confirming numbers that are
+mostly right.
+
+Instead every claim carries `evidence_width` and `evidence_class`, and the tier 3
+denominator splits: **266 narrow, 35 wide**. The bound is reported separately for each,
+so a match against 46 lines is never averaged with a match against one and silently
+presented as equal evidence.
+
+    1-3 cited lines    110
+    4-10 cited lines   236
+    11-30 cited lines   45
+    31+ cited lines      3      widest 46
+
+43 of 316 `found` claims, 13.6%, are wide.

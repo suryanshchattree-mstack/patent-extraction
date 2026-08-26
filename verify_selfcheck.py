@@ -323,7 +323,8 @@ CONTRACT_CLAIM_KEYS = {
     "question_en", "claimed_en", "claimed_value", "claimed_unit", "basis",
     "cited_lines", "evidence_en", "evidence_lines", "highlights", "auto",
     "auto_reason_en", "needs_human", "load_bearing", "risk", "risk_reasons_en",
-    "structure_svg_path", "tier", "stratum", "severity", "severity_action_en",
+    "structure_svg_path", "evidence_width", "evidence_class",
+    "tier", "stratum", "severity", "severity_action_en",
 }
 
 # Documented, but only on the claims it applies to, so not required of all of them.
@@ -379,13 +380,42 @@ def test_citation_width(artifact: dict) -> None:
         print(f"     {key:>6} cited lines   {buckets[key]:>4}")
 
     found = [c for c in claims if c["auto"] == "found"]
-    wide = [c for c in found if len(c["cited_lines"]) > 10]
+    wide = [c for c in found if len(c["cited_lines"]) > V.WIDE_CITATION]
     pct = 100.0 * len(wide) / len(found) if found else 0.0
-    record("`found` mostly rests on a narrow citation",
-           PASS if pct < 10 else WARN,
-           f"{len(wide)} of {len(found)} found claims ({pct:.1f}%) matched "
-           f"against more than 10 cited lines; widest is "
-           f"{max((len(c['cited_lines']) for c in claims), default=0)} lines")
+    print(f"     of {len(found)} `found` claims, {len(wide)} ({pct:.1f}%) rest on "
+          f"more than {V.WIDE_CITATION} cited lines; widest is "
+          f"{max((len(c['cited_lines']) for c in claims), default=0)}")
+
+    # The soft evidence is not the defect. Averaging it into one bound is. So the
+    # test is no longer "are there wide matches" - there always will be - but
+    # "does the file let a consumer keep them separate".
+    mismatched = [c["claim_id"] for c in claims
+                  if c.get("evidence_width") != len(c["cited_lines"])
+                  or c.get("evidence_class") != ("wide" if len(c["cited_lines"])
+                                                 > V.WIDE_CITATION else "narrow")]
+    record("every claim states the width of its own evidence",
+           PASS if not mismatched else FAIL,
+           f"{len(claims)} claims carry evidence_width and evidence_class"
+           + ("" if not mismatched else
+              f"; {len(mismatched)} disagree with cited_lines"))
+
+    split = artifact["summary"].get("tier3_population_by_width")
+    tier3 = [c for c in claims if c["tier"] == 3]
+    recount = {"narrow": sum(1 for c in tier3 if c["evidence_class"] == "narrow"),
+               "wide": sum(1 for c in tier3 if c["evidence_class"] == "wide")}
+    record("the tier 3 bound can be split by evidence width",
+           PASS if split == recount else FAIL,
+           f"summary says {split}, recount says {recount}"
+           if split else
+           "summary carries no tier3_population_by_width, so a consumer must "
+           "average a 46-line match together with a 1-line match")
+
+    wide_flagged = [c for c in wide if any("cited lines" in r
+                                           for r in c["risk_reasons_en"])]
+    record("a wide `found` says so on its own row",
+           PASS if len(wide_flagged) == len(wide) else FAIL,
+           f"{len(wide_flagged)} of {len(wide)} wide found claims carry a risk "
+           f"reason naming the width")
 
 
 def test_agreement(artifact: dict, data: dict) -> None:

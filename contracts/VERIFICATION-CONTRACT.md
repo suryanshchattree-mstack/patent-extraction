@@ -336,6 +336,45 @@ no quantity was ignored. It does not show each quantity was attached to the righ
 compound: "25.3 g" being present somewhere in the annotation is not evidence that it
 was attached to 2-chlorotoluene. That is precisely what the human reviewer is for.
 
+## Evidence width - why `found` is not one thing
+
+`evidence_width` is how many lines the claim cites and `evidence_class` is `wide`
+above ten, `narrow` at or below. Every claim carries both, and they are always
+consistent with `cited_lines`.
+
+A `found` verdict means the claimed value is on SOME line the record cites. Against
+one cited line that is strong. Against 34 it is close to unfalsifiable: a compound
+record's citation is the union over every provenance row for that identifier, so
+`water` cites 34 lines because water is quoted in seventeen places, and almost any
+two-digit number appears somewhere in 34 lines of a chemistry patent.
+
+Measured on this patent: **43 of 316 `found` claims, 13.6%, rest on more than ten
+cited lines, and the widest cites 46.** Two hand-checked examples, both verdicts
+CORRECT and half the cited evidence coincidence:
+
+| claim | genuine | coincidence |
+|---|---|---|
+| `dichloromethane` 100 ml | line 243, "100 ml dichloromethane" | line 236, where the 100 ml is THF |
+| `water` 100 ml | line 206, "100 ml of water was added" | line 236, the same THF |
+
+One printed quantity, belonging to a third substance, counted as confirmation for
+two different compounds. Note what would NOT have caught it: line 236 does name
+dichloromethane, elsewhere in the same sentence, so a "the cited line names the
+compound" test passes it too. Matching is by VALUE and never by attachment, here as
+in the quantity sweep, and attachment is exactly what the human reviewer is for.
+
+**So the tier 3 bound must be reported as two bounds.**
+`summary.tier3_population_by_width` gives the denominators, `{"narrow": 266,
+"wide": 35}` on this patent. Averaging them into one residual-defect rate borrows
+the credibility of the narrow matches to cover the wide ones, which is the kind of
+optimism `REVIEW-PROTOCOL.md` calls a defect rather than a presentation choice.
+
+A wide `found` also says so on its own row, in `risk_reasons_en`, so a reviewer who
+meets one knows to check the attachment rather than the number. The verdict is NOT
+downgraded to `partial`: the match usually is genuine, and moving 43 claims into
+tier 1 would cost the reviewer a third of their budget to re-confirm numbers that
+are mostly right.
+
 ## `source_coverage` - "what did we MISS"
 
 The other half of the job, and the half no per-record check can answer.
