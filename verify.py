@@ -180,6 +180,24 @@ ENGINE_VERSION = 1
 # rendering is bounded.
 EVIDENCE_LINE_CAP = 24
 
+# Above this many cited lines a `found` verdict is materially weaker evidence, and
+# the tier 3 bound must not average the two together. Measured rather than guessed.
+# `water` cites 34 lines because water is quoted in seventeen places, so "100 ml is
+# on a line this record cites" becomes nearly unfalsifiable. Two real examples from
+# this patent, both verdicts CORRECT and half their evidence coincidence:
+#
+#   dichloromethane 100 ml   genuine on 243 ("100 ml dichloromethane")
+#                            coincidence on 236, where the 100 ml is THF
+#   water           100 ml   genuine on 206 ("100 ml of water was added")
+#                            coincidence on 236, the same THF
+#
+# One printed quantity, belonging to a third substance, counted as confirmation for
+# two different compounds. Note what would NOT have caught it: line 236 does name
+# dichloromethane, elsewhere in the same sentence, so a "the line names the
+# compound" test passes it too. Attachment is the reviewer's job and this constant
+# exists to tell them where to spend it, not to decide it for them.
+WIDE_CITATION = 10
+
 
 # ---------------------------------------------------------------- normalisation
 
@@ -1872,11 +1890,19 @@ class Engine:
             "risk": round(risk, 2),
             "risk_reasons_en": risk_reasons,
             "structure_svg_path": rec.svg,
+            "evidence_width": len(cited),
+            "evidence_class": "wide" if len(cited) > WIDE_CITATION else "narrow",
             "basis": None,
             "tier": None,
             "severity": None,
             "severity_action_en": None,
         }
+        if auto == "found" and claim["evidence_class"] == "wide":
+            claim["risk_reasons_en"] = claim["risk_reasons_en"] + [
+                f"The match is one of {len(cited)} cited lines. On a citation that "
+                f"wide a two-digit number is likely to appear somewhere whether or "
+                f"not it belongs to this record, so confirm it is attached to the "
+                f"right substance."]
         claim.update(extra or {})
         rec.claims.append(claim)
         self.claims.append(claim)
@@ -3299,6 +3325,14 @@ def assemble(run: Run) -> dict:
     for c in claims:
         if c["tier"] == 3:
             strata[c["stratum"]] = strata.get(c["stratum"], 0) + 1
+    # The bound needs this split, not just the total. A `found` against 34 cited
+    # lines and a `found` against one are not the same evidence, and averaging them
+    # into a single residual-defect rate quietly borrows the credibility of the
+    # narrow matches to cover the wide ones.
+    widths = {"narrow": 0, "wide": 0}
+    for c in claims:
+        if c["tier"] == 3:
+            widths[c["evidence_class"]] += 1
     about = {a: sum(1 for c in claims if c["about"] == a)
              for a in ("extraction", "patent", "schema")}
     all_checks = [c for r in records for c in r["checks"]]
@@ -3404,6 +3438,7 @@ def assemble(run: Run) -> dict:
             "tier_population": tier_population,
             "claims_by_severity": severities,
             "tier3_population_by_stratum": dict(sorted(strata.items())),
+            "tier3_population_by_width": widths,
             "claims_by_subject": about,
             "field_basis": {k: dict(sorted(v.items()))
                             for k, v in sorted(run.bases.items())},

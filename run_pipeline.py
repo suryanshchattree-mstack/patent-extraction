@@ -119,8 +119,13 @@ def stages(pid: str) -> list[Stage]:
             name="prompts",
             title="render the annotation prompts for THIS patent, for the agent to follow",
             cmds=[[PY, "render_prompts.py", "--patent-id", pid]],
+            # input/pages/ is here because render_prompts.py counts it for
+            # {PAGE_COUNT}. Without it declared, adding a rescanned page to a settled
+            # pack never re-rendered, and the V prompt went on asserting "all 9 pages"
+            # at an agent looking at 10. A stage's declared inputs have to be what it
+            # actually reads, or the skip logic is confidently wrong.
             inputs=["render_prompts.py", "pipeline_context.py", "prompts/*.md",
-                    f"input/{pid}-biblio.json"],
+                    f"input/{pid}-biblio.json", "input/pages/*.png"],
             outputs=[f"output/prompts/{pid}/*.md"],
         ),
         Stage(

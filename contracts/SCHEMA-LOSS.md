@@ -87,3 +87,59 @@ wrong. It is a schema ticket, not a review decision.
 Matching is by VALUE, not by attachment. The 96 accounted-for quantities show that no
 quantity was ignored. They do not show that each was attached to the right compound.
 That remains the reviewer's job and it remains the reason the tool exists.
+
+---
+
+# Addendum: the mass-balance failures are two causes, not eight findings
+
+Found by reading the exported report as its recipient, then verified here.
+
+The engine prints an "implied" molecular weight for each failing mass check and labels
+each one "Unexplained offset", queueing eight separate items for a human.
+
+**All eight implied values are exact integers to three decimal places.**
+
+    implied    true    offset
+    170.000  204.680  +34.68
+    212.000  246.710  +34.71
+    214.000  248.690  +34.69
+    218.000  262.710  +44.71
+    302.000  346.710  +44.71
+    396.000  440.820  +44.82
+    279.000  341.610  +62.61
+    180.000  159.810  -20.19   (bromine, already known)
+
+Eight integers do not happen by chance. **The patent computed with rounded, integer
+molecular weights**, which means the raw offsets are contaminated by up to half a unit
+of rounding and should never be read as chemical differences directly.
+
+Correct for that and the first band becomes exact. Take the true molecular weight,
+subtract Cl minus H = 34.445, and round:
+
+    204.68 - 34.445 = 170.235  ->  170   the patent's implied value
+    246.71 - 34.445 = 212.265  ->  212   the patent's implied value
+    248.69 - 34.445 = 214.245  ->  214   the patent's implied value
+
+**Three for three.** That is not "consistent with a chlorine-for-hydrogen
+substitution", it is a demonstration that the patent computed those three masses from
+the integer molecular weight of the des-chloro analogue.
+
+The second band is consistent and unexplained. Removing the same rounding leaves a
+residual of about 44.46, 44.46 and 44.57 on three steps. That is not a single chlorine
+and this document does not guess at it. It is one question for a chemist, not three.
+
+## Why this matters more than the arithmetic
+
+The report presented these as **eight** unexplained items for a reviewer to read one at
+a time. They are **two** questions: one already answered by the project's own notes,
+and one genuinely open. A chemist would see the clustering in about fifteen seconds and
+wonder why the tool did not.
+
+Worse, the answer was already in the project. `RESUME.md` records "3 consistent with
+Cl-for-H" and the exported report contains **zero occurrences of the string Cl-for-H**.
+An explanation the team already had did not reach the deliverable.
+
+**Group findings by their shared cause before listing them.** Eight items at maybe
+thirty seconds each is four minutes of a fifteen-minute budget spent rediscovering one
+pattern. Two grouped questions is under a minute, and the second one is the only one
+that actually needs a human.
