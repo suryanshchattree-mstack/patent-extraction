@@ -89,6 +89,7 @@ class Stage:
     always: bool = False         # runs every time; produces no tracked artifact
     pin_source_date: bool = False
     blocking: bool = True        # a failing gate stops the run; see verify
+    bootstrap: bool = False      # may run BEFORE the prerequisite check; see below
 
 
 def stages(pid: str) -> list[Stage]:
@@ -151,6 +152,25 @@ def stages(pid: str) -> list[Stage]:
         Stage(
             name="enrich",
             title="vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
+            # BOOTSTRAP. This stage runs before the prerequisite check, whenever
+            # its own inputs are there.
+            #
+            # Without that the documented procedure deadlocks on patent two, and it
+            # was found by following the document rather than by reading the code.
+            # Step 4 says run the pipeline, it lists the seven missing passes, work
+            # through the list. You do pass V. You go to do A0, and A0's prompt says
+            # its input is input/<ID>-enriched-numbered.md, which does not exist:
+            # this stage makes it, from pass V, and depends on nothing else. But the
+            # prerequisite check demanded all seven passes before ANY stage ran, so
+            # A0 needed enrich and enrich needed A0. --only enrich did not help
+            # either, because the check ran before stage selection. The only exit
+            # was calling build_enriched.py by hand, which the document never
+            # mentions.
+            #
+            # Invisible in a pack that already holds a finished patent, because the
+            # enriched markdown is left over from last time. It appears only on the
+            # second patent, which is the case this whole pipeline is for.
+            bootstrap=True,
             cmds=[[PY, "build_enriched.py", "--patent-id", pid]],
             inputs=["build_enriched.py", "pipeline_context.py", "input/vision/p*.json"],
             outputs=[f"input/{pid}-enriched.md", f"input/{pid}-enriched-numbered.md",
@@ -964,16 +984,25 @@ def main() -> int:
     # produces each missing pass, and the prompt it must name is the one rendered
     # for THIS patent. So the prompts stage runs first, and only then is the check
     # made. Nothing else has run at this point.
-    pst = by_name["prompts"]
-    pact = dict((s_.name, a) for s_, a, _ in plan)["prompts"]
-    if pact == "run":
-        print("=== prompts " + "=" * 61)
-        if run_stage(pst, pid, ctx) != 0:
-            ctx["results"]["prompts"] = "failed"
-            print("\nSTOP  the prompts could not be rendered for this patent.")
-            return 1
-    ctx["results"]["prompts"] = {"run": "ran", "skip": "current", "absent": "absent",
-                                 "not selected": "not selected"}[pact]
+    actions = dict((s_.name, a) for s_, a, _ in plan)
+    for st in all_stages:
+        if not (st.bootstrap or st.name == "prompts"):
+            continue
+        act = actions[st.name]
+        # A bootstrap stage runs when its own inputs are satisfied, whatever else is
+        # missing. expand() returns only files that exist, so an empty result means
+        # the stage has nothing to work from and is skipped quietly.
+        if act == "run" and expand(st.inputs):
+            print(f"=== {st.name} " + "=" * max(0, 66 - len(st.name)))
+            if run_stage(st, pid, ctx) != 0:
+                ctx["results"][st.name] = "failed"
+                print(f"\nSTOP  the {st.name} stage failed before the prerequisite check.")
+                return 1
+            _SHA.clear()
+            ctx["results"][st.name] = "ran"
+        else:
+            ctx["results"][st.name] = {"run": "ran", "skip": "current", "absent": "absent",
+                                       "not selected": "not selected"}[act]
 
     # A malformed biblio before either. Every id, every uuid and half the patent
     # record are built from it, and it is the one hand-authored input that used to
@@ -1017,10 +1046,15 @@ def main() -> int:
 
     missing = check_prereqs(pid)
     if missing:
+        ran_first = [n for n in ("prompts", "enrich")
+                     if ctx["results"].get(n) == "ran"]
+        wrote = {"prompts": "the rendered prompts",
+                 "enrich": f"input/{pid}-enriched-numbered.md, which pass A0 reads"}
+        did = " and ".join(wrote[n] for n in ran_first) or "nothing"
         print("\nThe LLM annotation passes are not run by this script - they need an "
               "agent holding\nthe prompt and, for V and A5, the rendered page images. "
-              "This run cannot start until\nthe following exist. Nothing has been "
-              "written except the rendered prompts above.\n")
+              f"This run cannot start until\nthe following exist. So far it has "
+              f"written {did}, and nothing else.\n")
         print("\n".join(missing))
         tail = ("\nEach pass writes into output/stages/<pass>/, one folder per pass, "
                 "and nothing\nlater rewrites it, so each stage stays the record of "
@@ -1084,7 +1118,8 @@ def main() -> int:
     # stage's own declared paths, and only after some earlier stage actually wrote
     # something.
     for st, forecast, _ in plan:
-        if forecast in ("absent", "not selected") or st.name in ("manifest", "prompts"):
+        if (forecast in ("absent", "not selected")
+                or st.name in ("manifest", "prompts") or st.bootstrap):
             label = {"run": "ran", "skip": "current", "absent": "absent",
                      "not selected": "not selected"}[forecast]
             was = str(prior.get(st.name, {}).get("status", ""))

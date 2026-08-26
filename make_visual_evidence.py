@@ -27,6 +27,7 @@ Reads only. Writes only under output/relevant_output/visual/.
 from __future__ import annotations
 
 import argparse
+import collections
 import hashlib
 import io
 import json
@@ -273,6 +274,92 @@ def marker_source_lines(source_md: Path) -> dict[str, int]:
         if m and m.group(1) not in out:
             out[m.group(1)] = i
     return out
+
+
+def source_line_pages(source_md: Path) -> dict[int, str]:
+    """Every line of the numbered source to the scanned page it was read from.
+
+    Marker to page only helps a claim that carries a marker, and most claims in the
+    verification file carry `cited_lines` instead. This is the general index: a line
+    number in, a page id out, so any claim anywhere in the queue can reach the scan
+    behind it. Exact, because the enriched source writes a page comment ahead of each
+    page's lines and this reads that comment rather than inferring anything.
+    """
+    out: dict[int, str] = {}
+    if not source_md.exists():
+        return out
+    page = None
+    for i, line in enumerate(source_md.read_text(encoding="utf-8").splitlines(), 1):
+        m = re.search(r"<!--\s*page\s+(p\d+)\s*::", line)
+        if m:
+            page = m.group(1)
+        if page:
+            out[i] = page
+    return out
+
+
+def paragraph_openings(png: Path, strips) -> list[dict]:
+    """The strips that open a paragraph: `[00NN]` at the margin, then white space.
+
+    This is the one thing on the page a machine can find without reading any
+    characters. A paragraph marker is a fixed-width token set hard against the left
+    margin with a wide gap after it; a continuation line runs from the margin
+    straight into text and has no such gap.
+
+    Two traps, both of which put a marker on the wrong line rather than failing:
+
+    * A short trailing fragment of the paragraph above - `1H).` or `92%.` - is also
+      narrow and also near the margin. It is separated only by sitting a few pixels
+      off the margin, so the tolerance needed to FIND the margin is not allowed to
+      survive into the answer: the margin is re-derived from the candidates
+      themselves and a candidate must then match it exactly.
+    * A page whose layout this does not fit would silently produce a plausible
+      wrong list. The caller therefore counts the result against the markers the
+      vision pass recorded for that page and throws the whole page away if the two
+      disagree, rather than trusting any of it.
+    """
+    arr = np.asarray(Image.open(png).convert("L"))
+    ink = arr < INK_THRESHOLD
+    height, width = arr.shape
+    text = [s for s in strips if s["is_text"]]
+    if not text:
+        return []
+    margin = collections.Counter(s["x_left"] for s in text).most_common(1)[0][0]
+    tol = max(1, round(width * 0.0025))
+    gap = max(1, round(width * 0.024))
+
+    widths = collections.Counter()
+    for s in text:
+        if abs(s["x_left"] - margin) > tol:
+            continue
+        cols = ink[s["y_top"]:s["y_bot"], margin:margin + 5 * gap].sum(axis=0)
+        run = 0
+        for i, v in enumerate(cols):
+            if v == 0:
+                run += 1
+                continue
+            if run >= gap:
+                widths[i - run] += 1
+                break
+            run = 0
+    if not widths:
+        return []
+    token = widths.most_common(1)[0][0]
+
+    cands = []
+    for s in strips:
+        if not s["is_text"] and s["height"] >= MIN_BLOCK_HEIGHT:
+            continue
+        if abs(s["x_left"] - margin) > tol:
+            continue
+        if s["x_right"] < margin + token - max(2, round(width * 0.006)):
+            continue
+        if ink[s["y_top"]:s["y_bot"], margin + token:margin + token + gap].sum() == 0:
+            cands.append(s)
+    if not cands:
+        return []
+    exact = collections.Counter(s["x_left"] for s in cands).most_common(1)[0][0]
+    return [s for s in cands if s["x_left"] == exact]
 
 
 def ordered_paragraphs(inp: Inputs) -> list[dict]:
@@ -792,6 +879,7 @@ def build(root: Path, patent_id: str) -> int:
 
     paras = ordered_paragraphs(inp)
     src_lines = marker_source_lines(inp.source_md)
+    line_pages = source_line_pages(inp.source_md)
 
     # ---------------------------------------------------------- 1. page index
     pages_out, markers_out = [], {}
@@ -805,6 +893,19 @@ def build(root: Path, patent_id: str) -> int:
                         "size": (pw, ph)}
         page_no = int(page[1:])
         rel_img = f"input/pages/{page}.png"
+
+        # Where each printed marker sits down the page. Claimed only where the count
+        # of paragraph openings found in the ink equals the count of markers the
+        # vision pass recorded for this page. The two numbers come from passes that
+        # never saw each other, so agreement is corroboration; disagreement throws
+        # the whole page away rather than placing some markers and hoping.
+        printed = [str(p.get("marker") or "").strip() for p in v["paragraphs"]]
+        printed = [m for m in printed if MARKER.match(m)]
+        openings = paragraph_openings(png, strips)
+        placed = len(printed) == len(openings) and bool(printed)
+        opening_of = dict(zip(printed, openings)) if placed else {}
+        layout[page]["marker_openings"] = opening_of
+
         markers_here = []
         for p in v["paragraphs"]:
             m = str(p.get("marker") or "").strip()
@@ -826,10 +927,25 @@ def build(root: Path, patent_id: str) -> int:
                 "page_width": pw,
                 "page_height": ph,
                 "source_line": src_lines.get(key),
-                "position_en": ("Exact to the page. The marker's position down "
-                                "the page is not given: the scan carries no text "
-                                "layer, so nothing can say where on the page it "
-                                "sits without guessing."),
+                "y_px": opening_of[key]["y_top"] if key in opening_of else None,
+                "y_frac": (round(opening_of[key]["y_top"] / ph, 5)
+                           if key in opening_of else None),
+                "position_en": (
+                    "Exact to the page, and located down the page. The scan carries "
+                    "no text layer, so the line was found by measuring the ink: a "
+                    "paragraph opens with its marker set against the left margin and "
+                    "a wide gap after it, which no continuation line does. This page "
+                    f"yielded {len(openings)} such openings and the vision pass "
+                    f"recorded {len(printed)} printed markers for it, so the two "
+                    "agree and each marker is placed on its own line."
+                    if key in opening_of else
+                    "Exact to the page. The marker's position down the page is not "
+                    "given. The scan carries no text layer, so a position can only "
+                    "come from measuring the ink, and on this page that measurement "
+                    f"found {len(openings)} paragraph openings where the vision pass "
+                    f"recorded {len(printed)} printed markers. They disagree, so no "
+                    "marker on this page is placed: a pointer to the wrong paragraph "
+                    "is worse than no pointer."),
             })
         pages_out.append({
             "page": page,
@@ -843,6 +959,9 @@ def build(root: Path, patent_id: str) -> int:
             "drawings_reported_by_vision": len(v["drawings"]),
             "drawing_regions_detected": len(blocks),
             "detection_agrees": len(blocks) == len(v["drawings"]),
+            "marker_positions_available": placed,
+            "paragraph_openings_found": len(openings),
+            "printed_markers_reported": len(printed),
             "drawing_regions": [
                 {"y_top": b["y_top"], "y_bot": b["y_bot"],
                  "x_left": b["x_left"], "x_right": b["x_right"]}
@@ -863,10 +982,18 @@ def build(root: Path, patent_id: str) -> int:
                 "which read each page separately, so a marker's page is observed and "
                 "not inferred."),
             "marker_to_position_on_page": (
-                "NOT PROVIDED. The PDF is a scan with no text layer and no OCR engine "
-                "is installed, so the y position of a marker could only be guessed. A "
-                "guess that points a reviewer at the wrong paragraph is worse than no "
-                "pointer, so none is given."),
+                "CORROBORATED, WHERE GIVEN. The PDF is a scan with no text layer and "
+                "no OCR engine is installed, so a marker's y position can only come "
+                "from measuring the ink. It is given only on pages where the number "
+                "of paragraph openings found in the ink equals the number of printed "
+                "markers the vision pass recorded, which is a check by a pass that "
+                "never saw the measurement. Where the two disagree the whole page is "
+                "left unplaced, because a pointer to the wrong paragraph is worse "
+                "than no pointer. Read `pages[].marker_positions_available` and each "
+                "marker's own `position_en` before relying on `y_frac`."),
+            "line_to_page": (
+                "EXACT. The numbered source writes a page comment ahead of each "
+                "page's lines, and `lines` is read straight off those comments."),
             "drawing_regions": (
                 "APPROXIMATE. Found by measuring the ink on the page: lines of text "
                 "and drawn structures separate cleanly under a horizontal projection. "
@@ -884,6 +1011,10 @@ def build(root: Path, patent_id: str) -> int:
         },
         "pages": pages_out,
         "markers": dict(sorted(markers_out.items())),
+        # Keyed by line number rather than by marker, because every claim in the
+        # verification file carries cited_lines and only some carry a marker. This is
+        # how a claim that has nothing to do with a drawing still reaches its scan.
+        "lines": {str(n): pg for n, pg in sorted(line_pages.items())},
     }
     (out / "page-index.json").write_text(
         json.dumps(page_index, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -984,6 +1115,8 @@ def build(root: Path, patent_id: str) -> int:
                                       if gold else None,
                     "linked_by": how,
                     "oriented_to_patent_layout": oriented,
+                    "structure_svg_path": (f"output/relevant_output/{gold['svg']}"
+                                           if gold and gold.get("svg") else None),
                 })
 
             # between_markers can carry prose where a marker is not visible on
@@ -1106,6 +1239,73 @@ def build(root: Path, patent_id: str) -> int:
                 "anchor_marker": anchor["marker"] if anchor else None,
                 "panels": panels,
             })
+
+            # ---- the picture itself, as a review item
+            #
+            # The cross-checks below fire only where the two readings disagree, and on
+            # this patent they never do. That silence is not a confirmation: on eight
+            # of the nine drawings the gold SMILES and the drawn SMILES come from the
+            # same vision pass, and the ninth was paired BY structure, so agreement is
+            # what the pairing guarantees rather than what it tests. Nothing except a
+            # human looking at the two pictures can close that gap, so every drawing
+            # enters the queue whether or not the machine found fault with it.
+            plural = len(panels) > 1
+            comp_rec = comparisons[-1]
+            claims.append(make_claim(
+                patent_id=patent_id,
+                record_id=rid,
+                record_kind="drawing",
+                label_en=f"Drawing {drawing_no} of {total_drawings}, page {int(page[1:])}",
+                field="drawing.same_molecule",
+                field_label_en="Our structure against the structure the patent drew",
+                question_en=(
+                    f"Do these two pictures show the same {len(panels)} molecules, in "
+                    "the same order? Ours are numbered in the order the patent prints "
+                    "them, left to right and top to bottom."
+                    if plural else
+                    "Do these two pictures show the same molecule?"),
+                claimed_en="; ".join(
+                    f"{i}. {p.get('gold_identifier') or p.get('drawn_name_en') or 'no record'}"
+                    for i, p in enumerate(panels, 1)) or "nothing recorded",
+                evidence_en=(
+                    f"The patent prints this drawing on page {int(page[1:])} {where}. "
+                    "The right-hand picture is that region of the scanned page and the "
+                    "left-hand one is drawn from the structure we recorded."),
+                auto="not_checkable",
+                auto_reason_en=(
+                    "Whether a drawing shows the molecule we wrote down cannot be "
+                    "settled by matching strings. The machine has put the two side by "
+                    "side so a person can settle it by looking."),
+                risk=round(min(0.99, 0.55
+                               + (0.10 if crop_conf != "region_detected" else 0.0)
+                               + (0.05 if plural else 0.0)
+                               + (0.20 if link != "name" else 0.0)), 3),
+                risk_reasons_en=[
+                    "Reading a structure off a drawing is the one step in this "
+                    "pipeline with no words to check it against.",
+                ] + ([
+                    "The crop of the patent's own drawing is approximate. Judge "
+                    "against the full page if the two pictures disagree."
+                ] if crop_conf != "region_detected" else []) + ([
+                    "The two halves were paired by structure rather than by the name "
+                    "printed in the patent's text, so they will tend to agree and a "
+                    "machine match here is weak evidence."
+                ] if link != "name" else []) + ([
+                    f"One picture carrying {len(panels)} structures is a longer look "
+                    "than a single comparison."
+                ] if plural else []),
+                about="drawing",
+                images={"comparison_image": f"comparisons/{comp_name}",
+                        "patent_crop_image": f"comparisons/{crop_name}",
+                        "page_image_path": f"input/pages/{page}.png"},
+                stratum=f"drawing:page {int(page[1:])}",
+                marker=anchor["marker"] if anchor else None,
+                src_lines=src_lines,
+                extra={"comparison": comparison_block(comp_rec),
+                       "structure_svg_path": next(
+                           (p["structure_svg_path"] for p in panels
+                            if p.get("structure_svg_path")), None)},
+            ))
 
             # ---- SMILES cross-check, only where the pairing is independent
             for si, pn in enumerate(panels):
@@ -1398,6 +1598,48 @@ def make_claim(*, patent_id, record_id, record_kind, label_en, field, field_labe
     if extra:
         claim.update(extra)
     return claim
+
+
+def comparison_block(comp: dict) -> dict:
+    """The two-picture card, in the shape the review queue reads.
+
+    `confidence` is the field the UI leans on hardest and it is never left implicit:
+    `exact` means the count of drawing-shaped blocks measured on the page equalled the
+    count of drawings the vision pass reported for it, so this crop is the drawing it
+    claims to be. `coarse` means it did not, and the whole page is being shown instead.
+    A UI that finds no confidence must treat the crop as coarse, so writing it out on
+    both branches is the point.
+    """
+    panels = comp.get("panels") or []
+    named = [p for p in panels if p.get("structure_svg_path")]
+    exact = comp["crop_confidence"] == "region_detected"
+    return {
+        "ours": {
+            "src": named[0]["structure_svg_path"] if named else None,
+            "label_en": "What we extracted",
+            "structures": [{
+                "label_en": (p.get("gold_identifier") or p.get("drawn_name_en")
+                             or "no record"),
+                "src": p.get("structure_svg_path"),
+                "smiles": p.get("gold_smiles") or p.get("drawn_smiles"),
+                "in_gold": bool(p.get("gold_identifier")),
+                "position_en": p.get("position_en"),
+            } for p in panels],
+        },
+        "theirs": {
+            "src": comp["patent_crop_image"],
+            "label_en": "What the patent draws",
+            "confidence": "exact" if exact else "coarse",
+            "confidence_note_en": comp["crop_confidence_en"],
+            "page": comp["page"],
+            "page_image_path": f"input/pages/{comp['page']}.png",
+            "marker": comp.get("anchor_marker"),
+            "box": comp["crop_box_uncut"],
+        },
+        # Both halves already drawn side by side with the question under them, for a
+        # reader who would rather open one file than lay two out.
+        "composite_src": comp["comparison_image"],
+    }
 
 
 def related_records(inp: Inputs, disc: dict, fields: dict) -> list[dict]:

@@ -101,7 +101,7 @@ Where the pairing is by name, the drawing's SMILES and the gold's SMILES are bot
 
 It found 0 molecules that the patent draws and the gold holds no record of.
 
-The 41 conflicts in `drawing-claims.json` are defects in the PATENT, not in the annotation. What each one asks the reviewer is whether we recorded what the patent really prints, contradiction and all, rather than quietly correcting it. Only 11 of them involve a drawing at all; the rest are two pieces of the patent's prose disagreeing, and those carry the page scan as their evidence rather than a picture that could not answer them.
+The 41 conflicts in `drawing-claims.json` are defects in the PATENT, not in the annotation. What each one asks the reviewer is whether we recorded what the patent really prints, contradiction and all, rather than quietly correcting it. Only 20 of them involve a drawing at all; the rest are two pieces of the patent's prose disagreeing, and those carry the page scan as their evidence rather than a picture that could not answer them.
 
 One thing worth a human eye, and visible on the page-6 scheme comparison: three of the molecules in that route are held in the gold with a SMILES string where their name should be. Their panels say so, rather than printing the SMILES as if it were a name.
 
