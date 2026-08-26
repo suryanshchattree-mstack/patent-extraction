@@ -27,9 +27,31 @@ question. This is the same class as `mmol`, which is also never quoted and alway
 derived from mass and molecular weight.
 
 **Rule.** A derived field gets a DERIVATION check, never a grounding check. Infer the
-classification from the data rather than hardcoding a field list: a field where no
-value appears literally across all records is derived. Then it holds for the next
-patent, whose conventions may differ.
+classification from the data rather than hardcoding a field list. Then it holds for the
+next patent, whose conventions may differ.
+
+### CORRECTION: I got `mmol` wrong, and the inference rule is why it did not matter
+
+I originally wrote that `mmol` was derived too, on the strength of measuring that 0 of
+10 values appeared literally in their cited lines. **That measurement was right and the
+conclusion drawn from it was wrong.** The patent prints the mole count in parentheses
+after the mass:
+
+    line 187:  2-氯甲苯25.3g(0.2mol)          record:  mass_g 25.3, mmol 200
+
+A literal search for "200" finds nothing. A unit-aware matcher converts 0.2 mol to
+200 mmol and finds it immediately. Measured properly across the whole gold, `mmol` is
+29 of 29 present. **Nothing in this patent is derived except the overall yield.**
+
+Two agents caught this independently and both were right. The lesson is not about
+chemistry, it is about the test: I searched for a rendered string when the fact I
+wanted was a quantity, and a string search cannot see a unit conversion. It is the
+same mistake in shape as the one that produced the false alarms in the first place.
+
+It cost nothing only because the engine was told to INFER the classification from the
+data rather than hardcode the field list I handed it. It inferred correctly and
+contradicted me. Instructions that say "derive this rather than take my word for it"
+are worth writing even when you are confident, especially then.
 
 ## Group B - right value, wrong paragraph cited. TRUE but minor. 5 of 12.
 

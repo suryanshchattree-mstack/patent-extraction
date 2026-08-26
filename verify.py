@@ -85,6 +85,34 @@ supply handles all four, and the line each span lands on is what decides the
 verdict: covered entirely from the cited lines is `found`, covered from somewhere
 else in the document is `not_found` and names where the text really is.
 
+NUMBERS ARE ALSO CLASSIFIED QUOTED OR DERIVED, per patent, from the data. A field
+where no value at all appears on any line any record cites was calculated by the
+annotator rather than read off the page, and scoring it as ungrounded would fill the
+review queue with the machine being wrong about a field the document never states.
+Such a field is recomputed instead. On CN104292137A the inference comes out
+all-quoted, `mmol` included, because the patent prints molar amounts in mol and the
+matcher converts: 0.2 mol against a recorded 200 mmol is a match, and a literal
+search for "200" is not.
+
+TWO DIFFERENT QUESTIONS reach the reviewer and every claim says which it is asking.
+
+    about: extraction   the annotation says X and the patent says Y. We are wrong.
+    about: patent       the annotation says the patent contradicts itself. The
+                        annotation is RIGHT and the document is defective.
+
+FINDINGS.md is explicit that its items are defects in the patent and that the
+annotation records them and changes nothing. Blurring the two would ask a reviewer to
+mark a correct annotation of a defective document as wrong, so `question_en` is
+worded from `about` and the two are counted separately.
+
+THREE QUEUES, NOT ONE LIST, because the reviewer has fifteen minutes and there are
+several hundred claims. `tier` is the queue and `risk` is the order within it: tier 1
+is everything the machine could not confirm plus the rows a failing check names, a
+census; tier 2 is the candidate misses, a census; tier 3 is what matched cleanly, to
+be sampled. See REVIEW-PROTOCOL.md. The summary carries each tier's population and
+tier 3's population per stratum, because a confidence bound needs the denominator and
+it cannot be recovered from a filtered list.
+
 WHAT DID WE MISS is the other half, and no per-record check can answer it. Every
 numbered line is walked, marked cited or not, and the uncited ones are scanned for
 chemistry: a quantity with a unit, a temperature, a duration, a yield, a ratio, a
@@ -594,6 +622,17 @@ class Source:
             return scrub(self.english[n], self.index), True
         if not has_chinese(raw):
             return raw, False
+        # An English line carrying one Chinese term is still an English line, and
+        # surrendering it whole is not the same as protecting the reader from
+        # Chinese. Line 76 is 307 characters of the step 8 procedure with a single
+        # term in it that the index resolves; abandoning it hid the step that makes
+        # the product from eleven claims, and told the reviewer to find a Chinese
+        # reader for text they could have read themselves. NO_ENGLISH is now reached
+        # only when scrub cannot resolve what it found, which is the state the
+        # sentence actually describes.
+        rendered = scrub(raw, self.index)
+        if UNTRANSLATED not in rendered:
+            return rendered, False
         return NO_ENGLISH, True
 
     def label_kind(self, n: int, claim_lines: set[int]) -> str:
@@ -749,6 +788,7 @@ FIELD_LABELS = {
     "extraction_rollup.best_overall_yield_pct": "Best overall yield in the patent",
     "molar_ratio_text": "Molar ratio",
     "provenance.quote": "Quoted source text",
+    "validation_flags": "A defect the annotation found in the patent",
     "resolved": "Whether this is a definite molecule",
     "judgement.reaction_class_confidence": "Reaction class, self-declared as "
                                            "uncertain",

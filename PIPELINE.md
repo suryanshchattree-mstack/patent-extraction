@@ -8,7 +8,7 @@ python3 run_pipeline.py --patent-id CN104292137A
 
 ![The stage graph of run_pipeline.py](svg/p1-pipeline-stages.svg)
 
-> Fourteen deterministic stages, in the only order that satisfies the real
+> Sixteen deterministic stages, in the only order that satisfies the real
 > dependencies between them. Three of them are gates: they exit non-zero and stop
 > the run rather than shipping something a human has not supplied. The top band is
 > what the runner does **not** do, and refuses to start without.
@@ -78,7 +78,9 @@ none of it does.
 | 11 | `rasterise` | `svg2jpg.py --all` | `svg/*.jpg` | |
 | 12 | `assemble` | `make_relevant_output.py` | the deliverable again, now including structures, translations and diagrams | |
 | 13 | `verify` | `verify.py` | `relevant_output/verification/checks-<ID>.json` | yes |
-| 14 | `manifest` | internal | `relevant_output/manifest.json` | |
+| 14 | `visual` | `make_visual_evidence.py` | `relevant_output/visual/`: the page index, the structure comparisons, the drawing claims | |
+| 15 | `selfcheck` | `verify_selfcheck.py` | nothing; grades the verification engine's own output | |
+| 16 | `manifest` | internal | `relevant_output/manifest.json` | |
 
 ### Two things about that order that are not obvious
 
@@ -137,6 +139,12 @@ a stub for `input/translations-curated.json`.
 
 The hallucination check. `verify.py` matches every claimed value against the source
 lines the record itself cites and exits non-zero when a `grounding` check fails.
+
+### Two stages that only report
+
+`validate` and `selfcheck` produce no artifact. They run every time and they exit
+non-zero when what they are grading is wrong, which is the point: a stage that
+produces nothing cannot be skipped for being current.
 
 ### What the runner does with a gate
 
@@ -283,6 +291,9 @@ id comes from `--patent-id`, from `$ANNOTATION_PATENT_ID`, or from the one
 
 7. **Read `output/relevant_output/`.** Start at `manifest.json` to see what was
    produced, then `FINDINGS.md`.
+
+`python3 run_pipeline.py --list` is the authoritative stage list. If it disagrees
+with the table above or with the diagram, believe it, and fix them.
 
 ### What is still hand-authored per patent, and says so
 

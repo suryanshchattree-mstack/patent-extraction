@@ -58,8 +58,12 @@ mean anything:
 
     3 h, 1 h, 2 h      NOT REAL. My regex read the "3H" of an NMR proton count
                        ("2.64 (s, 3H)") as three hours. Six occurrences, all NMR.
-    0.22 mol, 0.3 mol  NOT REAL. The source prints mol; the annotation stores mmol.
-    0.23, 0.6, 0.24    0.22 mol IS recorded, as 220 mmol. A unit gap in my test.
+    0.22 mol, 0.3 mol  NOT REAL, and the same mistake twice. The source prints mol,
+    0.23, 0.6, 0.24    the annotation stores mmol, and my test compared rendered
+                       strings instead of quantities. 0.22 mol IS recorded, as
+                       220 mmol. This also means my earlier claim that `mmol` is a
+                       derived field was WRONG: it is quoted, in mol, 29 of 29
+                       present once the comparison is unit-aware.
     250 ml             NOT REAL, and arguable. It is the size of the flask, not a
                        charge. `reactor_type` records "four-necked flask" without
                        its capacity, so the glassware size is dropped everywhere.
