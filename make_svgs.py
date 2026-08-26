@@ -363,7 +363,9 @@ def m2():
         c.wrap(x + bw / 2, yy + 58, cond, 32, size=10.3, fill=MUTE, lh=12)
         c.text(x + bw - 12, yy + bh - 9, y, size=13, anchor="end", weight="700", fill=GREEN if not flag else VERM)
         if onepot:
-            c.text(x + 12, yy + bh - 9, "one-pot", size=10, anchor="start", weight="600", fill=GREEN)
+            # the flag marker owns the corner when a step carries both
+            c.text(x + (74 if flag else 12), yy + bh - 9, "one-pot", size=10,
+                   anchor="start", weight="600", fill=GREEN)
         if flag:
             c.poly([(x + 12, yy + bh - 6), (x + 21, yy + bh - 21), (x + 30, yy + bh - 6)], "#ffffff", VERM, 1.6)
             c.text(x + 21, yy + bh - 9, "!", size=10, weight="700", fill=VERM)

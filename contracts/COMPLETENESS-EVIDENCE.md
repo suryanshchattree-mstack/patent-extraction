@@ -43,13 +43,53 @@ signal detector, and by reading all thirteen.
 **Quantity coverage, which is the stronger test.** Line coverage is not fact coverage:
 a line can be cited by one record while carrying three facts, two of them dropped. So
 every quantity token on every cited line was extracted and matched against the values
-the claims assert:
+the claims assert.
 
-    quantity tokens on cited lines      256 occurrences, 49 distinct values
-    distinct values asserted by claims  86
-    tokens no claim accounts for        0
+The first pass of this reported zero unaccounted tokens. That pass was WRONG, and
+generously so: it harvested numbers out of quoted text as well as out of structured
+fields, so a "16" appearing anywhere inside any quote counted as coverage of a 16-hour
+reaction time. Redone strictly, against only the values claims structurally assert:
 
-Every quantity in the patent is accounted for by some claim.
+    distinct values asserted as structured claims    66
+    quantity tokens on cited lines with no claim     10
+
+Those ten were then read one at a time, which is the only step that makes the number
+mean anything:
+
+    3 h, 1 h, 2 h      NOT REAL. My regex read the "3H" of an NMR proton count
+                       ("2.64 (s, 3H)") as three hours. Six occurrences, all NMR.
+    0.22 mol, 0.3 mol  NOT REAL. The source prints mol; the annotation stores mmol.
+    0.23, 0.6, 0.24    0.22 mol IS recorded, as 220 mmol. A unit gap in my test.
+    250 ml             NOT REAL, and arguable. It is the size of the flask, not a
+                       charge. `reactor_type` records "four-necked flask" without
+                       its capacity, so the glassware size is dropped everywhere.
+    16 h               REAL, and the interesting one. See below.
+
+So: **one genuine loss out of 256 quantity tokens, and it is a schema limitation
+rather than an extraction failure.**
+
+## The one real loss, and why it matters more than its size
+
+Example 1 step 6 is one numbered step containing two sequential transformations in the
+same flask: etherification with sodium trifluoroethoxide at room temperature for
+**16 h**, then hydrolysis with sodium hydroxide at reflux for **4 h**.
+
+`conditions.time_h` is a single float. It holds 4.0. The 16 h survives only in the
+record's prose `notes`, where the annotator wrote the two stages out in full and
+explicitly flagged it as "THE FIRST OF THE TWO ONE-POT STEPS".
+
+The annotator did everything right. The SCHEMA cannot represent it.
+
+This is worth stating carefully, because it cuts against the assumption that keeping
+the JSON schemas fixed is what preserves information. Here the schema is what loses
+it. A downstream consumer reading `time_h` sees a four-hour step; the real answer is
+twenty hours across two stages, and the difference is a factor of five on the most
+expensive input to any throughput or cost model. The information is not gone, but it
+has moved to prose, where nothing downstream can read it.
+
+There are nine `no_conditions` reactions and two one-pot steps in this patent, so this
+is unlikely to be the only instance. It is the first thing I would look at before
+running a second patent through.
 
 ## What this does NOT establish
 

@@ -168,12 +168,28 @@ UNIT_ALTERNATION = r"mmol|mol|min|kg|mg|ml|hrs|hr|[gLl]|h|%|°"
 
 NUMBER = r"\d+(?:\.\d+)?"
 
+# Two different boundaries, and the difference is measured rather than tidy.
+#
+# After a UNIT, only a lowercase letter or a digit disqualifies the match, because
+# the patent writes "100mlTHF" and "36%HCl" with the next reagent jammed straight
+# onto the unit. Requiring any non-letter there loses the 100 ml of solvent in
+# Example 1 step 6 outright, and the check then reports a real quantity as printed
+# only in the translation.
+#
+# After a BARE number the boundary stays strict, because NMR lines are full of
+# "3H" and "2H" and a bare 3 that swallows its H is a number this stage would go on
+# to match against a claimed mass.
+UNIT_BOUNDARY = r"(?![a-z0-9])"
+BARE_BOUNDARY = r"(?![A-Za-z0-9])"
+
 RANGE_TOKEN = re.compile(
     rf"(?P<lo>{NUMBER})\s*(?P<lounit>{UNIT_ALTERNATION})?\s*[-~]\s*"
-    rf"(?P<hi>{NUMBER})\s*(?P<hiunit>{UNIT_ALTERNATION})?(?![A-Za-z0-9])"
+    rf"(?P<hi>{NUMBER})\s*"
+    rf"(?:(?P<hiunit>{UNIT_ALTERNATION}){UNIT_BOUNDARY}|{BARE_BOUNDARY})"
 )
 PLAIN_TOKEN = re.compile(
-    rf"(?P<value>{NUMBER})\s*(?P<unit>{UNIT_ALTERNATION})?(?![A-Za-z0-9])"
+    rf"(?P<value>{NUMBER})\s*"
+    rf"(?:(?P<unit>{UNIT_ALTERNATION}){UNIT_BOUNDARY}|{BARE_BOUNDARY})"
 )
 # A comma used as a decimal point. Read only as a fallback, because this document is
 # full of "1,2-dichloroethane" and "N,N-dimethylformamide" and reading those commas

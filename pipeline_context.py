@@ -226,7 +226,11 @@ def _condition_line(r: dict) -> str:
         if t.get(k) is not None:
             bits.append(f"{t[k]:g} C")
             break
-    return ", ".join(bits)[:76]
+    # Two wrapped lines at the size m2 draws conditions, and no more: a third line
+    # runs into the yield and the flag marker along the bottom of the step box, and
+    # make_svgs.py's collision checker fails the whole figure for it.
+    line = ", ".join(bits)
+    return line if len(line) <= 52 else line[:49].rstrip(" ,") + "..."
 
 
 def gold_counts(patent_id: str) -> dict:
