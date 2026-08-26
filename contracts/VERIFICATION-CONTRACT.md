@@ -88,7 +88,7 @@ A claim is one field of one record paired with the evidence for it.
   "evidence_lines": [ { "n": 187, "text_en": "...", "is_translation": true,
                         "kind": "prose", "pairing": "exact", "matched": true } ],
   "highlights": [ { "line": 187, "start": 39, "end": 43, "kind": "value" } ],
-  "auto": "found | not_found | partial | not_checkable",
+  "auto": "found | not_found | not_reconciled | partial | not_checkable",
   "auto_reason_en": "The number 25.3 appears with its unit grams on the Chinese line 187 and on the English translation on line 188.",
   "needs_human": true,
   "load_bearing": false,
@@ -218,6 +218,24 @@ them to find the chemistry in it is not evidence.
   annotation raised about the patent) that no string match can settle. Needs a human,
   but is not evidence of a defect. `load_bearing` separates the ones a human must
   actually see from the ones that are merely unmatchable.
+
+`not_found` and `not_reconciled` are separate verdicts and must stay separate.
+
+- `not_found` - the claimed value is NOT on the lines this claim cites. This is the
+  hallucination signal and the most load-bearing label in the file. A consumer
+  filtering `auto` to answer "how many possible fabrications" reads this and nothing
+  else, so it must never carry anything but that meaning.
+- `not_reconciled` - the value IS where the record says it is, and the patent's own
+  numbers do not multiply out. `quantity.yield_identity` and a failed derived-field
+  recomputation both land here. It is not about citation at all, it is never the
+  annotation's fault, it carries `about: "patent"`, and it does NOT trip the
+  grounding gate.
+
+On CN104292137A the split is 5 and 8. Folded together the file would report 13
+possible fabrications when the answer is 5, and nothing in the value would say
+otherwise. `severity` draws the same distinction one layer up, but a consumer that
+filters on `auto` never reaches `severity`, which is why the split has to exist at
+both layers rather than only at the one a careful reader of this contract would find.
 
 `needs_human` is the queue filter. `risk` orders it, descending. It is normally
 `auto != "found"`; a claim promoted into tier 1 because a check on its own row failed

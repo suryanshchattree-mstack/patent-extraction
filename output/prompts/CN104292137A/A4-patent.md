@@ -21,7 +21,7 @@ You are a chemistry patent analyst. Emit the patent-level narrative and tags.
 PATENT_ID: `CN104292137A`
 
 TITLE (zh): `三酮类除草剂环磺草酮的合成工艺`
-TITLE (en): `Process for synthesizing triketone herbicide cyclic sulcotrione`
+TITLE (en): `Synthesis process for the triketone herbicide tembotrione`
 
 ABSTRACT:
 ---

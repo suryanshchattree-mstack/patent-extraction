@@ -16,6 +16,7 @@ None of them produced the artifact it audited.
 - **Three of the five pathways carry the identical pathway_uuid** - FIXED. finalise.py now seeds pathway_uuid the way PathwaysBuilder actually does, folding in the ordered step signature. The PathwayRecord javadoc we had transcribed is stale; the code carries a comment explaining that the endpoint-only seed lost 20 distinct routes across a ten-patent set.
 - **abstract is null** - FIXED. A4 is given the abstract, it does not emit one, and finalise.py had no source wired. Now taken from the pass-V read of the front page.
 - **ipc_codes is null** - FIXED. Both IPC classes were transcribed by pass V from the (51) field; finalise.py now reads them.
+- **The title names a different herbicide** - FIXED. input/<patent>-biblio.json carried Google's English title, which glosses 环磺草酮 character by character into 'cyclic sulcotrione' and so names a real and different triketone. finalise.py copies title_en verbatim, so it reached gold/patent.json, the completeness report and the self-contained export, where it was the first line under the patent number. The biblio now carries 'Synthesis process for the triketone herbicide tembotrione', which is what the Chinese title and the gold's own translation index both say, and title_en_note records why it is not the machine title so nobody restores it.
 - **mutually disjoint English spellings** - DOCUMENTED, NOT FIXED. Deliberate: buildCompoundId is a pure function of the identifier string, so production fragments these identically. Merging would make the gold set disagree with production for a reason unrelated to extraction quality. The equivalence is written out to provenance/compounds-equivalence.json so a benchmark can join on it.
 
 ## Outstanding, by severity
@@ -104,71 +105,67 @@ work through them.
    role 'catalyst' is an inference the text does not support, and it contradicts the record's own Claims-section note, which concluded 'the most the text supports is additive'. The Claims extraction had role additive and the merge overwrote it.
    > line 243: N,N-二甲基甲酰胺(0.05g)和100ml二氯甲烷
    fix: Set role to 'additive', which is the most specific value the text supports (rule 9), or make the notes stop asserting otherwise.
-19. **[patent]** `translation` on `CN104292137A`
-   The title names a different herbicide from the one the document is about: 'cyclic sulcotrione' is Google's character-by-character gloss of 环磺草酮 (环 = cyclic, 磺草酮 = sulcotrione) and is not a compound, while sulcotrione itself is a real and different triketone.
-   > line 107: [0002] 除草剂环磺草酮(Tembotrione)，化学名称：2-(2-氯4-甲磺酰基-3-[(2,2,2-三氟乙氧基)甲基]苯甲酰基)环己烷-1,3-二酮。由拜耳公司2007年研制的三酮类玉米田除草剂
-   fix: Follow the Chinese. [0002] gives the chemical name 2-(2-chloro-4-methylsulfonyl-3-[(2,2,2-trifluoroethoxy)methyl]benzoyl)cyclohexane-1,3-dione and attributes it to Bayer in 2007, which is tembotrione 
-20. **[patent]** `arithmetic` on `CN104292137A`
+19. **[patent]** `arithmetic` on `CN104292137A`
    compound_count 75 is arithmetically correct against compounds.json but is inflated by roughly 16 records, because eight molecules are each held three times under three different English spellings of the same Chinese name.
    > line 197: 在装有搅拌器，温度计和回流冷凝管的500ml四口反应瓶中加入2-氯-6-甲磺酰基甲苯34.0g(0.2mol)
    fix: The count faithfully reports len(compounds.json), so the arithmetic passes; the defect is upstream. Normalising '(methanesulfonyl)' / '(methylsulfonyl)' / 'methylsulfonyl' spellings collapses 24 recor
-21. **[patent]** `schema` on `CN104292137A`
+20. **[patent]** `schema` on `CN104292137A`
    The pointer ca46f39f-6f64-5bfd-bd5d-256718ff1ac6 is not unique to the winning pathway - three pathways share it, and two of those three have overall_yield_pct null.
    > line 0: N/A - finalise.py:229 keys pathway_uuid on (patent_id, scope, ksm, product) with no section_label; finalise.py:239 picks best = max(...) which resolves the 28.4
    fix: Resolve the pathway_uuid collision first (see pathways-report.json finding 1). Until then a consumer dereferencing this uuid gets three pathways back, two of which contradict the 28.4 it is attached t
-22. **[pathways]** `vocabulary` on `Claims_Step 1, Claims_Step 2, Claims_Step 3, Claims_Step 5, `
+21. **[pathways]** `vocabulary` on `Claims_Step 1, Claims_Step 2, Claims_Step 3, Claims_Step 5, `
    Rule 11 requires steps[] fields to be copied verbatim from the reaction record, but 10 step projections carry role values that reactions.json no longer holds and that finalise.py itself declares outside CompoundRecord's enum.
    > line 0: N/A - finalise.py:94 VALID_ROLES = {"product", "reactant", "reagent", "solvent", "catalyst", "ligand", ...}; normalise_role() at line 101 is called from finalis
    fix: Apply normalise_role to steps[].compounds in finalise_pathways so the projections match reactions.json: water->'other' or 'solvent', hydrochloric acid->'acid', ethyl ...benzoate->'reactant'.
-23. **[pathways]** `schema` on `30 of the 41 step projections across all five pathways`
+22. **[pathways]** `schema` on `30 of the 41 step projections across all five pathways`
    Rule 12 defines components as 'the identifiers of that step's reactants plus its product', but components carries reagents as well, and does so inconsistently between pathways that describe the same reaction.
    > line 62: 将2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯溶于溶剂中，加入适量的过氧苯甲酸，在回流的条件下，滴加溴素，滴完后继续反应1-10h
    fix: Either apply rule 12 mechanically (role=='reactant' plus is_product) in every step, or state the widened definition once and apply it uniformly. The current field cannot be reproduced by any single ru
-24. **[reactions]** `arithmetic` on `Example 1_Step 4`
+23. **[reactions]** `arithmetic` on `Example 1_Step 4`
    scale_discontinuity is deliberately not raised, but on a molar basis this step charges 0.200 mol of a material of which step 3 states it isolated only 0.1728 mol (0.24 mol x 72%), a 15.7% over-draw; the record's own justification rests on the 82 g figure that the same record declares irreconcilable on any reading.
    > line 215: 在250ml的四口反应瓶中加入2-氯-3-甲基-4-甲磺酰基苯甲酸42.8g(0.2mol)
    fix: add 'scale_discontinuity' to validation_flags and record the molar comparison (step 3 output 0.1728 mol vs step 4 input 0.200 mol) alongside the mass comparison; do not alter any printed number.
-25. **[reactions]** `vocabulary` on `Claims_Step 8`
+24. **[reactions]** `vocabulary` on `Claims_Step 8`
    The same final transformation is classified 'other' here but 'acylation' in Summary of the Invention_Step 8, Example 1_Step 8 and Summary of the Invention_Scheme Step 9, and the two notes give directly opposing reasons for the same decision, so a gold set carries two contradictory labels for one reaction.
    > line 74: 8)在装有干燥管的反应瓶中加入2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸3-氧代-1-环己烯酯、氰基丙酮和三乙胺溶于溶剂中在室温持续搅拌
    fix: pick one value for this transformation and use it in all four records; the reasoning in notes must not contradict itself between sections.
-26. **[reactions]** `vocabulary` on `Summary of the Invention_Step 6`
+25. **[reactions]** `vocabulary` on `Summary of the Invention_Step 6`
    is_one_pot is false here but true in Claims_Step 6 and Example 1_Step 6 for the same two-transformation step, and the stated reason (an interposed water wash and concentration) is present in all three source recitations, so the same evidence produces opposite answers in different sections.
    > line 144: 将2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯溶于溶剂中，加入2,2,2-三氟乙醇钠，在室温下搅拌，然后水洗，浓缩得2-氯-3-(2,2,2-三氟乙氧基）甲基-4-甲磺酰基苯甲酸乙酯，将残余物溶于溶剂中
    fix: apply one one-pot test to all three recitations of step 6; if the interposed 水洗/浓缩 defeats one-pot it defeats it in Claims and Example 1 too.
-27. **[reactions]** `vocabulary` on `Summary of the Invention_Step 5`
+26. **[reactions]** `vocabulary` on `Summary of the Invention_Step 5`
    named_reaction is null here but 'Wohl-Ziegler bromination' in Claims_Step 5 and Example 1_Step 5 for the same bromine-plus-peroxide benzylic bromination, and the notes argue the case both ways in different records.
    > line 140: 将2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯溶于溶剂中，加入适量的过氧苯甲酸，在回流的条件下，滴加溴素
    fix: one value across the three records, and one line of reasoning; the corresponding named_rxn tag must follow it.
-28. **[reactions]** `fidelity` on `Claims_Step 1`
+27. **[reactions]** `fidelity` on `Claims_Step 1`
    The identical Chinese sentence is recorded as type 'range' with min_c and max_c null here, but as min_c 0.0 / max_c 15.0 in Summary of the Invention_Step 1, so one printed temperature range has two different structured values in the gold set.
    > line 46: 在0℃-15℃间滴加甲磺酰氯
    fix: use one reading in both records. Rule 29 (record as printed) favours min_c 0.0 / max_c 15.0 with the sign ambiguity noted, but either choice is acceptable provided the two records agree.
-29. **[reactions]** `recall` on `Summary of the Invention_Step 1`
+28. **[reactions]** `recall` on `Summary of the Invention_Step 1`
    The three permitted solvents are named at line 154, inside this record's own section (lines 111-175), and Claims_Step 1 records all three as solvent compounds from the identical recitation, but this record carries no solvent compound at all.
    > line 154: [0022] 按上述方案，步骤1)中2-氯甲苯，催化剂无水三氯化铝和甲磺酰氯的摩尔配比为1:1-3:1-2，所述溶剂为二氯甲烷、氯仿或1,2-二氯乙烷。
    fix: add dichloromethane, chloroform and 1,2-dichloroethane with role solvent, as Claims_Step 1 does, or drop them from Claims_Step 1; the two sections must not disagree on the same content.
-30. **[reactions]** `recall` on `Summary of the Invention_Step 2`
+29. **[reactions]** `recall` on `Summary of the Invention_Step 2`
    The three permitted solvents for step 2 are named at line 156, inside this record's own section, and Claims_Step 2 records all three, but this record carries no solvent compound.
    > line 156: [0023] 按上述方案，步骤2)中2-氯-6-甲磺酰基甲苯，无水三氯化铝和乙酰氯的摩尔配比为1:1-5:1-2，所述溶剂为二氯甲烷、氯仿或1,2-二氯乙烷。
    fix: add dichloromethane, chloroform and 1,2-dichloroethane with role solvent, matching Claims_Step 2.
-31. **[reactions]** `recall` on `Summary of the Invention_Step 5`
+30. **[reactions]** `recall` on `Summary of the Invention_Step 5`
    The four permitted solvents for step 5 are named at line 158, inside this record's own section, and Claims_Step 5 records all four, but this record carries no solvent compound.
    > line 158: [0024] 按上述方案，步骤5)中2-氯-4-甲磺酰基-3-甲基苯甲酸甲酯与溴素反应的摩尔配比为1:1-1.5，所述的溶剂为四氯化碳，氯仿，二氯甲烷或1,2-二氯乙烷。
    fix: add carbon tetrachloride, chloroform, dichloromethane and 1,2-dichloroethane with role solvent, matching Claims_Step 5.
-32. **[reactions]** `recall` on `Summary of the Invention_Step 6`
+31. **[reactions]** `recall` on `Summary of the Invention_Step 6`
    The four permitted solvents for step 6 are named at line 160, inside this record's own section, and Claims_Step 6 records all four, but this record carries no solvent compound.
    > line 160: [0025] 按上述方案，步骤6)中2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯与三氟乙醇钠的摩尔配比为1:1-1.5，所述的溶剂为四氢呋喃，乙腈，二氯甲烷或甲苯。
    fix: add tetrahydrofuran, acetonitrile, dichloromethane and toluene with role solvent, matching Claims_Step 6.
-33. **[reactions]** `recall` on `Summary of the Invention_Step 7`
+32. **[reactions]** `recall` on `Summary of the Invention_Step 7`
    This record carries no base compound at all, although its own procedure text charges 碱 as part of a mixture with the dione and the six permitted bases are named at lines 162-167 inside this same section; Claims_Step 7 records all six from the identical recitation.
    > line 164: [0027] 按上述方案，所述的无机碱为碳酸钠，碳酸钾，氢氧化钠或氢氧化钾.
    fix: add sodium carbonate, potassium carbonate, sodium hydroxide, potassium hydroxide, pyridine and triethylamine with role base, matching Claims_Step 7, or at minimum a generic base entry for the 碱 the st
-34. **[reactions]** `recall` on `Summary of the Invention_Step 1 through Step 8`
+33. **[reactions]** `recall` on `Summary of the Invention_Step 1 through Step 8`
    Quench, acidification and wash agents (ice water, hydrochloric acid, water) are excluded from compounds[] by a convention declared in the Summary records' notes, but the Claims records and every Example 1 record put the same species in compounds[]; one convention decision, applied to eight records, makes the gold set score identical extractor behaviour as correct in two sections and incorrect in the third. Reported as one finding because it is one decision, not eight independent omissions.
    > line 123: 反应完毕，将反应物倒入冰水和盐酸的混合物中，分出有机层，水层用溶剂萃取，合并有机层，水洗
    fix: adopt one rule for whether workup species appear in compounds[] and apply it to all 24 prose records; affected Summary records are Steps 1, 2, 3, 6, 7 and 8.
-35. **[reactions]** `precision` on `Example 1_Step 1 through Step 8`
+34. **[reactions]** `precision` on `Example 1_Step 1 through Step 8`
    All eight Example 1 records carry computed molecular weights, molecular formulae and derived percentages that appear nowhere in the patent (9 to 15 such numbers per record, e.g. 204.67, 246.71, 474.5, 44.71, 69.9, plus formulae C8H9ClO2S ... C17H16ClF3O6S), which violates A2 rule 32 ('Introduce no number that is absent from the text'), the A2 output rule that the arithmetic_check 'never enters reactions.json', and the A5 precision rule that this annotation may contain no molecular weights or formulae.
    > line 187: 浓缩得淡黄的固体28.6g,收率84％。
    fix: keep the derivation in reactions-provenance.json arithmetic_check, where it already exists in full, and reduce the notes to the qualitative statement plus the printed numbers; the validation_flags alr

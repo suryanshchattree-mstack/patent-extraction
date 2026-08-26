@@ -3,10 +3,13 @@
 A hand-run reference annotation of one patent, in LiteratureIQ's own JSON schemas,
 for scoring the automated extractor against.
 
-Patent: **CN104292137A**, *Process for synthesizing triketone herbicide cyclic
-sulcotrione*, Wuhan Institute of Technology, filed 2014-10-15, DOCDB family
+Patent: **CN104292137A**, *Synthesis process for the triketone herbicide
+tembotrione*, Wuhan Institute of Technology, filed 2014-10-15, DOCDB family
 **52312131**. Its Example 1 is a complete eight-step linear route to tembotrione,
 the same molecule as the Day 2 discovery golden test.
+
+> Google's English title reads *Process for synthesizing triketone herbicide cyclic sulcotrione*, which glosses 环磺草酮 character by character and names sulcotrione, a real and different herbicide this route does not make. The title here follows the Chinese, and the gold's own translation index,
+> which resolve 环磺草酮 to tembotrione.
 
 ## What is here
 

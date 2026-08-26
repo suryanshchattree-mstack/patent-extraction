@@ -176,6 +176,16 @@ FIXED_BY_PATENT = {"CN104292137A": {
     "ipc_codes is null":
         "FIXED. Both IPC classes were transcribed by pass V from the (51) field; "
         "finalise.py now reads them.",
+    "The title names a different herbicide":
+        "FIXED. input/<patent>-biblio.json carried Google's English title, which "
+        "glosses 环磺草酮 character by character into 'cyclic sulcotrione' and so "
+        "names a real and different triketone. finalise.py copies title_en "
+        "verbatim, so it reached gold/patent.json, the completeness report and the "
+        "self-contained export, where it was the first line under the patent "
+        "number. The biblio now carries 'Synthesis process for the triketone "
+        "herbicide tembotrione', which is what the Chinese title and the gold's own "
+        "translation index both say, and title_en_note records why it is not the "
+        "machine title so nobody restores it.",
     "mutually disjoint English spellings":
         "DOCUMENTED, NOT FIXED. Deliberate: buildCompoundId is a pure function of "
         "the identifier string, so production fragments these identically. Merging "

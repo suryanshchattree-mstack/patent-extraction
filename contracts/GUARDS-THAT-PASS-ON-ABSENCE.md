@@ -128,3 +128,43 @@ presented as equal evidence.
     31+ cited lines      3      widest 46
 
 43 of 316 `found` claims, 13.6%, are wide.
+
+---
+
+## The third form: a test that passes by checking nothing
+
+The same failure reaches the tests written to catch it.
+
+Section J of the grader re-derives each verdict from the evidence its claim carries,
+rather than trusting the label, because counting labels proves nothing: a producer
+could emit them at random and the totals would still look plausible.
+
+**Its first version reported "0 checked" and passed.**
+
+All five `not_found` claims are `molar_ratio_text`, which carry `claimed_value: null`.
+The numeric path had nothing to look at, found no violations, and reported green. It
+was vacuously true and indistinguishable, from the outside, from a genuine pass.
+
+That is the same defect as a gate that passes by deletion, one level up. The fix is the
+same: **assert the positive.** A test must report how many things it examined, and a
+count of zero must fail rather than pass.
+
+    [PASS] every not_found value really is absent from its cited lines: 5 checked
+    [PASS] every not_reconciled value really is present on its cited lines: 8 checked
+
+The "N checked" is not decoration. It is the part that cannot be satisfied by an empty
+set.
+
+## The whole pattern, in one place
+
+    a guard   that a string is ABSENT   cannot tell   translated  from  destroyed
+    a guard   that a value is PRESENT   cannot tell   confirmed   from  coincidence
+    a test    that finds no violations  cannot tell   correct     from  vacuous
+
+Six instances tonight, in five different files, written by five different authors. None
+was caught by the check that should have caught it. Every one was caught by something
+that asked the positive question instead, and in three cases by the author re-examining
+their own green result rather than by anything going red.
+
+The habit worth keeping is not any of these fixes. It is: **when a check passes, ask
+what it would take for it to pass while being wrong.** That question found all six.

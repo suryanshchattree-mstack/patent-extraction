@@ -929,7 +929,8 @@ HIGHLIGHT_KIND = {
     "conditions.temperature": "condition", "conditions.time_h": "condition",
 }
 
-BASE_RISK = {"not_found": 0.90, "partial": 0.55, "not_checkable": 0.30, "found": 0.05}
+BASE_RISK = {"not_found": 0.90, "not_reconciled": 0.85, "partial": 0.55,
+             "not_checkable": 0.30, "found": 0.05}
 
 # The quantity fields a record can carry, and the unit each is stated in.
 QUANTITY_FIELDS = (("mass_g", "g"), ("volume_ml", "ml"), ("mmol", "mmol"),
@@ -1205,7 +1206,7 @@ class Engine:
         flagged = bool(rec and ({"molar_mass_inconsistent",
                                  "mass_balance_implausible"} & set(rec.flags)))
         cl_for_h = abs(delta + CL_FOR_H) < CL_WINDOW
-        claim["auto"] = "not_found"
+        claim["auto"] = "not_reconciled"
         claim["risk"] = 0.95
         claim["load_bearing"] = True
         claim["needs_human"] = True
@@ -1303,7 +1304,7 @@ class Engine:
             if (claim["field"] == "__coverage__"
                     or claim["field"].startswith("__quantity__")):
                 claim["tier"] = 2
-            elif claim["auto"] in ("not_found", "partial"):
+            elif claim["auto"] in ("not_found", "not_reconciled", "partial"):
                 claim["tier"] = 1
             elif claim["auto"] == "not_checkable" and claim["load_bearing"]:
                 claim["tier"] = 1
@@ -1346,7 +1347,7 @@ class Engine:
             elsewhere = claim.get("_elsewhere")
             derived = basis == "derived"
 
-            if auto == "not_found" and derived:
+            if auto == "not_reconciled":
                 # The derivation was recomputed and disagreed. The numbers are the
                 # patent's own, so this is the document contradicting itself.
                 sev = "high"
@@ -2826,7 +2827,7 @@ class Run(Engine):
                 f"other. Does the page really print {fmt_value(mass)} g of "
                 f"{name_en} from {fmt_value(limiting)} mmol at "
                 f"{fmt_value(yield_pct)}%?",
-                f"{fmt_value(mass)} g", mass, "g", rec.cited, [], "not_found",
+                f"{fmt_value(mass)} g", mass, "g", rec.cited, [], "not_reconciled",
                 detail,
                 ["The charge, the yield and the product mass printed for this step "
                  "cannot all three be right.",
@@ -3191,7 +3192,15 @@ SEVERITY_MEANING = {
     "none":     "nothing for a reviewer to act on",
 }
 
-VERDICTS = ["not_found", "partial", "not_checkable", "found"]
+# `not_found` and `not_reconciled` are deliberately separate and must stay that way.
+# `not_found` means the claimed value is not on the lines this claim cites: it is the
+# hallucination signal and the most load-bearing label in the artifact. A consumer
+# counting it to answer "how many possible fabrications" must get that number and no
+# other. `not_reconciled` means the value IS where the record says it is and the
+# patent's own numbers do not multiply out, which is not about citation at all and is
+# never the annotation's fault. Folding the second into the first would have made
+# this patent report 13 possible fabrications when the answer is 5.
+VERDICTS = ["not_found", "not_reconciled", "partial", "not_checkable", "found"]
 CHECK_STATUSES = ["fail", "warn", "pass", "skip"]
 FAMILIES = ["grounding", "reference", "structure", "drawing", "quantity",
             "consistency", "completeness", "schema_loss"]
@@ -3294,7 +3303,9 @@ def assemble(run: Run) -> dict:
     # consumer can check instead of trusting either number on its own.
     cov_qty = run.quantity_tally
     unconfirmed = sum(1 for c in claims
-                      if c["tier"] != 2 and (c["auto"] in ("not_found", "partial")
+                      if c["tier"] != 2 and (c["auto"] in ("not_found",
+                                                            "not_reconciled",
+                                                            "partial")
                                              or c["load_bearing"]))
     promoted = sum(1 for c in claims
                    if c["tier"] == 1 and c["auto"] == "found")
@@ -3361,6 +3372,8 @@ def assemble(run: Run) -> dict:
             "found": sum(1 for c in sec_claims if c["auto"] == "found"),
             "partial": sum(1 for c in sec_claims if c["auto"] == "partial"),
             "not_found": sum(1 for c in sec_claims if c["auto"] == "not_found"),
+            "not_reconciled": sum(1 for c in sec_claims
+                                  if c["auto"] == "not_reconciled"),
             "not_checkable": sum(1 for c in sec_claims
                                  if c["auto"] == "not_checkable"),
             "uncited_chemistry_lines": sum(
@@ -3667,6 +3680,7 @@ VERDICT_MEANING = {
     "found": "the value is on a line the record cites. Bulk-acceptable",
     "partial": "some of it is there. Needs a human",
     "not_found": "it is NOT there. The hallucination signal",
+    "not_reconciled": "it is there, and the patent's own numbers do not agree",
     "not_checkable": "a judgement no string match can settle",
 }
 

@@ -27,8 +27,31 @@ corruption test safe: the gold is mutated in a dict, never on disk.
     F  agreement        the engine's quantity failures against the annotation's
                         own validation flags, all three ways round
     G  contract        the claim shape against VERIFICATION-CONTRACT.md
+    J  verdicts       `not_found` re-derived from the evidence, so the label
+                        a consumer filters on cannot drift from its meaning
     H  blind spot      the arithmetic the engine cannot currently see, and
                         whether it explains what F says it missed
+
+WHY SOME CHECKS LOOK REDUNDANT, AND MUST NOT BE DELETED AS DUPLICATION
+
+Section B asserts no Chinese reaches the artifact. Section I asserts that every
+entry the translation index CAN answer, the scrubber does answer. Those look like
+the same check and they are opposites, because:
+
+    a check that a string is ABSENT cannot tell "translated" from "destroyed"
+
+Every guard that failed on this project failed that way. Line 76 was 307 characters
+of English procedure replaced wholesale by "ask a Chinese reader", and it passed the
+Chinese gate, because deleting it satisfies the gate perfectly. `scrub()` mangled 250
+of 325 strings into "[untranslated Chinese term]" markers, 1442 of them, and passed
+the same gate for the same reason. The negative check cannot see either one.
+
+So each negative check here is paired with a positive one that asserts the RIGHT
+thing is present rather than that the wrong thing is absent. Section J is the same
+shape for verdicts: it re-derives `not_found` from the evidence instead of trusting
+the label. A positive assertion cannot be satisfied by deletion, which is the whole
+reason it sits next to its negative twin. Deleting either half restores the blind
+spot it was written to close.
 
 Usage:  python3 verify_selfcheck.py            # defaults to CN104292137A
         python3 verify_selfcheck.py CN104292137A
@@ -255,7 +278,8 @@ def test_census(artifact: dict) -> None:
     claims = artifact["claims"]
     verdicts = Counter(c["auto"] for c in claims)
     print(f"     claims total            {len(claims)}")
-    for v in ("found", "partial", "not_found", "not_checkable"):
+    for v in ("found", "partial", "not_found", "not_reconciled",
+              "not_checkable"):
         print(f"     {v:22}  {verdicts.get(v, 0)}")
 
     tiers = Counter(c.get("tier") for c in claims)
@@ -365,6 +389,66 @@ def test_contract_shape(artifact: dict) -> None:
                 "source", "patent_id", "engine_version", "generated_at"):
         if key not in artifact:
             record(f"top level carries `{key}`", FAIL, "absent")
+
+
+def test_verdict_meaning(artifact: dict) -> None:
+    """`not_found` must mean one thing, and it must be the thing it says.
+
+    Counting the two labels proves nothing; a producer could emit them at random and
+    the totals would still look plausible. So this re-derives each verdict from the
+    evidence the claim itself carries and asserts the label matches:
+
+        not_found       the claimed value is on NONE of the lines this claim cites
+        not_reconciled  the claimed value IS on a cited line, and the arithmetic
+                        about it is what failed
+
+    That is the guarantee a consumer filtering on `auto` to count possible
+    fabrications is relying on, and it is the reason the two verdicts were split.
+    """
+    print("\nJ  does `not_found` mean what it says")
+    src = V.read_numbered(artifact["patent_id"])
+
+    norm = {n: V.normalise(t) for n, t in src.items() if V.normalise(t)}
+
+    def on_cited(claim) -> bool:
+        """Is the thing this claim asserts on any line it cites?"""
+        value, unit = claim.get("claimed_value"), claim.get("claimed_unit")
+        if value is not None:
+            for n in claim["cited_lines"]:
+                for tok in V.tokenise(src.get(n, "")):
+                    if tok.unit == unit and V.same_number(tok.canonical(), value):
+                        return True
+            return False
+        # A ratio carries no single value, so the printed form IS the claim. Covered
+        # here rather than skipped, because on this patent every `not_found` is a
+        # ratio and a test that skipped them would check nothing at all and pass.
+        needle = V.normalise(claim.get("claimed_en") or "")
+        return bool(needle) and any(needle in norm.get(n, "")
+                                    for n in claim["cited_lines"])
+
+    checkable = {"not_found", "not_reconciled"}
+    numeric = [c for c in artifact["claims"]
+               if c["auto"] in checkable
+               and (c.get("claimed_value") is not None
+                    or c["field"].startswith("molar_ratio_text"))]
+    wrong_nf = [c["claim_id"] for c in numeric
+                if c["auto"] == "not_found" and on_cited(c)]
+    wrong_nr = [c["claim_id"] for c in numeric
+                if c["auto"] == "not_reconciled" and not on_cited(c)]
+    record("every `not_found` value really is absent from its cited lines",
+           PASS if not wrong_nf else FAIL,
+           f"{sum(1 for c in numeric if c['auto'] == 'not_found')} checked"
+           + ("" if not wrong_nf else f"; {len(wrong_nf)} are actually present"))
+    record("every `not_reconciled` value really is present on its cited lines",
+           PASS if not wrong_nr else FAIL,
+           f"{sum(1 for c in numeric if c['auto'] == 'not_reconciled')} checked"
+           + ("" if not wrong_nr else f"; {len(wrong_nr)} are actually absent"))
+
+    # The number a consumer will read as "possible fabrications".
+    fab = [c for c in artifact["claims"]
+           if c["auto"] == "not_found" and c.get("severity") == "critical"]
+    print(f"     claims a consumer would count as possible fabrications: "
+          f"{len(fab)}")
 
 
 def test_citation_width(artifact: dict) -> None:
@@ -560,6 +644,7 @@ def main() -> int:
     test_sensitivity(patent_id, data, artifact)
     test_census(artifact)
     test_contract_shape(artifact)
+    test_verdict_meaning(artifact)
     test_citation_width(artifact)
     missed = test_agreement(artifact, data)
     test_missed_arithmetic(data, artifact, missed)
