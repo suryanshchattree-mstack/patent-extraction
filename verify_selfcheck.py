@@ -32,6 +32,32 @@ corruption test safe: the gold is mutated in a dict, never on disk.
     H  blind spot      the arithmetic the engine cannot currently see, and
                         whether it explains what F says it missed
 
+WHAT THIS REFUSES TO MEASURE, AND WHY THE REFUSAL IS THE POINT
+
+Every line below is about the ENGINE. None of it is about whether the annotation
+is right, and a future reader who "fixes" that has broken the tool rather than
+improved it. Specifically, a green run here does NOT say:
+
+  - that the extraction is correct. It says the engine's own claims are internally
+    consistent and its labels mean what they say. A verdict of `found` on a value
+    the annotation attached to the wrong molecule passes every check here.
+  - that a quantity is attached to the right substance. Matching is by VALUE.
+    `dichloromethane 100 ml` and `water 100 ml` are both confirmed by a line where
+    the 100 ml is THF, and that line names dichloromethane too, so no cheap test
+    separates them. Section E measures how much this can be happening and refuses
+    to pretend it can settle it. Attachment is exactly what the human is for.
+  - that the chemistry is right. Nothing here reads a structure or checks a
+    mechanism. RDKit appears only where the engine already used it.
+  - that no defect exists. It can only find defect classes somebody wrote a check
+    for. 38 of the annotation's own flags, across 6 families, have no counterpart
+    check at all, and the agreement matrix reports that gap rather than hiding it.
+
+Section E is the sharpest case of a deliberate refusal. It does NOT fail when a
+`found` rests on 46 cited lines, because those matches are usually genuine and
+failing them would be its own distortion. It fails only if the file stops letting
+a consumer keep wide and narrow matches apart. The check is about the artifact's
+honesty, not about the match.
+
 WHY SOME CHECKS LOOK REDUNDANT, AND MUST NOT BE DELETED AS DUPLICATION
 
 Section B asserts no Chinese reaches the artifact. Section I asserts that every

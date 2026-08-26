@@ -299,6 +299,33 @@ its sha256 and its size, and the sha256 of every input it was built from.
 }
 ```
 
+**The deliverable holds a SECOND copy of eleven artifacts, and that is a staleness
+generator.** `output/translations.json` and `gold/translations.json` are the same
+file with a stage in between, and the screen and the export read the copy. So a fix
+landed in `output/` looks applied everywhere except where anyone can see it, until
+the copy stage runs.
+
+That is not hypothetical. It hid a real correction for ten minutes: two reagent
+concentrations were fixed in `output/translations.json`, `assemble` had not
+re-copied, and the deliverable went on saying "sodium hypochlorite" where the stage
+had written "15% sodium hypochlorite solution". The gold recorded 500 g of the
+reagent rather than 500 g of a 15% solution, which is 28 equivalents against a
+haloform oxidation that needs three, instead of a sensible 4.2.
+
+Two things now stop it. The copy stages declare every file they read, so a change to
+any of the eleven makes them stale. And **the manifest asserts the copies agree
+before it certifies anything**, failing the run if they do not:
+
+```
+FAIL  1 artifact(s) in the deliverable do not match their source in output/.
+  output/relevant_output/gold/translations.json does not match output/translations.json
+```
+
+The manifest records the result either way, as `deliverable_matches_output` and
+`stale_copies`, so a consumer never has to take its word for the one thing it is
+for. The structural fix would be a single copy rather than two; until then this is
+the assertion that makes the second copy safe.
+
 **`stages[]` and `artifacts[]` answer different questions and are allowed to
 disagree.** A `stages[]` row means *this stage last ran with these hashes*, so a
 stage that did not run this time carries its previous row forward untouched.

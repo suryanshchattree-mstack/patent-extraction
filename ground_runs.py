@@ -13,7 +13,12 @@ other. It asks each run, on its own, two questions the patent can answer:
 Both are gold-free, both need no reference run, and both are directly comparable
 across approaches because the patent does not change.
 
-WHAT THIS CANNOT DO, AND WHY THE NUMBER IS NAMED THE WAY IT IS
+WHAT THIS REFUSES TO MEASURE, AND WHY THE NUMBER IS NAMED THE WAY IT IS
+
+Three refusals, and each one is load-bearing. A future reader will be tempted to
+remove them because they make the scorecard look incomplete. They make it true.
+
+FIRST, it refuses to report a grounding rate.
 
 `verify.py` asks the sharp question: is this value on the lines THIS RECORD ITSELF
 CITES? That is the real grounding test and it catches a value that is in the
@@ -35,6 +40,25 @@ bar. The column is called `accounted` and never `grounded` for that reason.
 A checker that never fires is not a checker that passes, so `--selftest` puts
 known-real and known-invented quantities through the same detector and prints what
 it says about each. Run it before believing a column of zeroes.
+
+SECOND, it refuses to rank the runs.
+
+There is no score column and there will not be one. Every run here is at 100%
+`accounted`, and the only thing that separates them is how much they extracted:
+192 numbers against 60, a 3.2x spread at identical accuracy. Rank on accuracy and
+the timid extractor wins; rank on yield and the reckless one does. A single merged
+number would hide exactly the trade-off the comparison exists to expose.
+
+THIRD, it refuses to compute the mass-against-moles arithmetic, and reports the
+refusal as a finding.
+
+No run populates `molecular_weight` or `smiles` on a single compound - the keys are
+present and null in all 142 records of B-singlepass, all 141 of each replicate and
+all 75 of the gold. A row stating a mass and a mole count has nothing to be divided
+by. So the check that found the des-chloro defect cannot be performed by ANY of
+these approaches on their own output, which is a fact about the approaches rather
+than a gap in this file. It prints that sentence instead of a zero, because a zero
+in that column would read as "no arithmetic defects found".
 
 THE POPULATION MATTERS AS MUCH AS THE RATE
 
