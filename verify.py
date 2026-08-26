@@ -488,7 +488,18 @@ def scrub(text: str, index: dict) -> str:
     if not has_chinese(text):
         return text
 
-    out = substitute_longest(text, index)
+    # Substituted to a fixpoint, because an index VALUE can itself carry Chinese.
+    # The abstract's entry resolves whole and its English still says "higher than
+    # that of 硝环磺酮 and 甲基磺草酮", both of which the index also answers. One pass
+    # leaves those as markers and loses two herbicide names; a second resolves them.
+    # Bounded and stopped on no-change, so an entry that quoted its own key could
+    # not spin here.
+    out = text
+    for _ in range(4):
+        nxt = substitute_longest(out, index)
+        if nxt == out:
+            break
+        out = nxt
     out = _collapse_gloss(out)
     out = CJK_PAREN.sub("", out)
     out = re.sub(CJK.pattern + "+", UNTRANSLATED, out)
@@ -2992,10 +3003,20 @@ class Run(Engine):
             (f"It is not asserted by any claim on any record citing line {line}. "
              + (f"The field that would hold it is {path}. " if path else "") + why),
             needs_human=True, about_fields=[path] if path else []))
-        claim = self._claim(
-            rec, f"__quantity__[{tag}]",
+        # The question has to follow from `about` or the axis is decoration. These
+        # two claims look identical on screen and ask opposite things: one asks a
+        # reviewer to judge an omission, the other tells them there is nothing to
+        # judge because the field could not have held the answer. Asking "should it
+        # have?" of a schema loss invites a reviewer to mark correct work wrong,
+        # which is the exact failure `about` exists to prevent.
+        question = (
+            f"Line {line} prints {printed}, and the field that would hold it, "
+            f"{path}, cannot. Nothing was misread. Is a schema change worth it?"
+            if family == "schema_loss" else
             f"Line {line} prints {printed}. The annotation does not record it "
-            f"anywhere. Should it have?",
+            f"anywhere. Should it have?")
+        claim = self._claim(
+            rec, f"__quantity__[{tag}]", question,
             printed, low.value, low.unit, self.source.with_partners([line]), [],
             "not_checkable",
             f"{printed} is printed on line {line} and no claim on any record citing "

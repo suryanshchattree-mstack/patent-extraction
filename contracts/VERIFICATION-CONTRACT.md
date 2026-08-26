@@ -75,7 +75,7 @@ A claim is one field of one record paired with the evidence for it.
   "rec_field": "quantity.mass_g",
   "record_label_en": "2-chlorotoluene",
   "section_en": "Example 1",
-  "about": "extraction | patent",
+  "about": "extraction | patent | schema",
   "field": "quantity.mass_g",
   "field_label_en": "Mass charged",
   "question_en": "Does the patent say 25.3 g of 2-chlorotoluene?",
@@ -122,8 +122,25 @@ stands between the team and a fabricated number in a future run.
 - `tier: 1` - a human must see it. Anything `not_found` or `partial`, any load-bearing
   `not_checkable` judgement, and any claim on a record with a failed structure,
   quantity or reference check. Small population, worked as a census.
-- `tier: 2` - the `__coverage__` candidate-miss claims. The recall side. Also a census.
+- `tier: 2` - the candidate misses. The recall side, also a census, and it has TWO
+  feeders: `__coverage__` claims for a whole line no record cites, and `__quantity__`
+  claims for one quantity on a cited line that no claim asserts. Read only the first
+  and you compute the denominator as zero while the queue holds fifteen.
 - `tier: 3` - the machine matched it cleanly. Sampled, never exhausted.
+
+`summary.tier_population` carries each tier's size twice: `claims`, counted off the
+queue, and `population`, derived from where the work came from - the verdicts and
+failing checks for tier 1, the uncited lines and unaccounted quantities for tier 2 -
+with `from_en` saying so in English and `agrees` asserting the two match. A
+denominator recovered from the list it measures cannot detect the one failure that
+matters, a claim that was never emitted at all, which is exactly how tier 2 came to
+hold fifteen claims while both of its old denominators read zero.
+
+`summary.claims_by_severity` is the same idea for severity, and `summary.grounding_failed`
+is true when any grounding claim is `not_found`, which is what makes the stage exit
+non-zero. A failed DERIVATION does not set it: `quantity.yield_identity` and the
+derived-field recomputations are arithmetic about the patent, not grounding, and
+stopping the pipeline because the document contradicts itself would be wrong.
 
 `stratum` is `<record_kind>:<section_en>`, so tier 3 can be sampled proportionally
 instead of being dominated by whichever section is largest. `summary` must carry the
@@ -229,7 +246,7 @@ Check families, and what each one catches:
 | `grounding` | a quote or a number that is not in the source it cites. Hallucination. |
 | `reference` | a reaction naming a compound that does not exist, a pathway step with no reaction. Orphans. |
 | `structure` | SMILES that will not parse, a formula that disagrees with the drawn structure. |
-| `quantity` | mass and mmol that disagree with the molecular weight. |
+| `quantity` | mass and mmol that disagree with the molecular weight, and the yield identity below. |
 | `consistency` | the same molecule given two different structures, or two records for one thing. |
 | `drawing` | the structure read off the page image against the gold's structure for the same named molecule. Two independent readings disagreeing is a hard defect. |
 | `completeness` | something the patent states that no record holds. |
@@ -288,6 +305,31 @@ An unaccounted quantity becomes a tier-2 claim with `field: "__quantity__[<line>
 | `unmapped` | `extraction` | no field of that kind exists on any record citing the line. Design question. |
 
 `summary.quantity_coverage` carries the tally and every finding.
+
+## The yield identity - the arithmetic `mass_check` structurally cannot see
+
+`quantity.mass_mmol` needs a mass AND a mole count on the SAME row. Every example
+step in this patent writes its product as a mass with no mole count, so the check
+built to find the des-chloro defect cannot see it at the one step where it matters
+most. The annotation flagged Example 1 Step 1; this stage passed it; that single
+disagreement was the whole of `agreement_with_annotation.annotation_only`.
+
+`quantity.yield_identity` asks the question those rows CAN answer:
+
+    limiting reactant mmol  x  yield  x  MW(product)  =  the product mass printed
+
+It applies to 8 of the 33 reactions - the rest lack a product mass, a reactant molar
+charge, a yield or a resolved structure, and are `skip` rather than `pass`. All 8
+disagree. Steps 1, 2 and 4 land within half a unit of the chlorine-for-hydrogen
+shift by a path completely independent of mass-over-moles, which is corroboration of
+the des-chloro finding rather than the same measurement twice. The rest cluster near
+-44.7 and are deliberately left unexplained: naming a cause this stage cannot support
+would be the machine guessing in front of a reviewer who cannot check it.
+
+The three numbers are the PATENT's own, so a disagreement is the document
+contradicting itself and never an extraction error. The claim carries
+`about: "patent"`, `basis: "derived"` and `severity: "high"`, and it does NOT trip
+the grounding gate.
 
 **What this does NOT establish.** Matching is by VALUE, not by attachment. It shows
 no quantity was ignored. It does not show each quantity was attached to the right

@@ -77,8 +77,8 @@ none of it does.
 | 10 | `diagrams` | `make_svgs.py`, `make_approach.py` | `svg/m1` to `m5`, `svg/approach.svg` | |
 | 11 | `rasterise` | `svg2jpg.py --all` | `svg/*.jpg` | |
 | 12 | `assemble` | `make_relevant_output.py` | the deliverable again, now including structures, translations and diagrams | |
-| 13 | `verify` | `verify.py` | `relevant_output/verification/checks-<ID>.json` | yes |
-| 14 | `visual` | `make_visual_evidence.py` | `relevant_output/visual/`: the page index, the structure comparisons, the drawing claims | |
+| 13 | `visual` | `make_visual_evidence.py` | `relevant_output/visual/`: the page index, the structure comparisons, the drawing claims | yes |
+| 14 | `verify` | `verify.py` | `relevant_output/verification/checks-<ID>.json` | yes, non-blocking |
 | 15 | `selfcheck` | `verify_selfcheck.py` | nothing; grades the verification engine's own output | |
 | 16 | `manifest` | internal | `relevant_output/manifest.json` | |
 
@@ -146,7 +146,38 @@ lines the record itself cites and exits non-zero when a `grounding` check fails.
 non-zero when what they are grading is wrong, which is the point: a stage that
 produces nothing cannot be skipped for being current.
 
-### What the runner does with a gate
+### One gate does not stop the run
+
+`verify` is a gate and sets the exit code, but the stages after it still run.
+
+A grounding failure says the **annotation** is suspect. It does not say the page
+images are suspect, and the visual evidence, the page index and the structure
+comparisons are exactly what a human reaches for at that moment. Blocking them
+behind a red gate removes the evidence at the point it is most needed. It also put
+the visual stage back where it started: produced only when somebody ran the script
+by hand, which is the gap this pipeline exists to close, reappearing one stage
+downstream of a gate that is red on purpose and may stay red for a long time.
+
+`visual` now runs *before* `verify` anyway, because it consumes nothing `verify`
+produces; the old order was incidental, not causal. `selfcheck` runs after, because
+grading the engine is exactly what you want when the engine's gate is red.
+
+Nothing is swallowed. The run ends with:
+
+```
+pipeline reached the end: CN104292137A  (A GATE FAILED, see below)
+========================================================================
+GATE FAILED: verify (exit 1). THIS RUN IS NOT CLEAN.
+Stages that ran anyway, because they consume nothing the failed gate
+produces:  selfcheck
+Their output is current for this gold. The gold itself is what the gate is
+questioning, so read the gate's message above before trusting any of it.
+```
+
+`structures` and `translations` stay fully blocking, because everything downstream
+genuinely consumes what they produce.
+
+### What the runner does with a blocking gate
 
 Stops. Prints the stage's own message unmodified, says how to resume, and exits 2.
 
@@ -232,8 +263,14 @@ went missing, and the rebuild is byte-identical for the five that did not need t
 change, so nothing drifts. But do not read the manifest and expect a one-file
 delete to cause a one-file rebuild.
 
-Exit codes: `0` ok, `1` a stage failed, `2` a coverage gate stopped the run, `3`
-the LLM passes have not been run.
+| exit | meaning |
+|---:|---|
+| `0` | everything ran or was already current |
+| `1` | a stage failed |
+| `2` | a gate did not pass |
+| `3` | the LLM annotation passes have not been run |
+| `4` | this pack holds a different patent's work |
+| `5` | the bibliographic record is missing or malformed |
 
 Running twice changes nothing. Verified three ways: two `--force` runs produce a
 byte-identical tree including the manifest; a `--force` run followed by a plain run
@@ -323,9 +360,16 @@ id comes from `--patent-id`, from `$ANNOTATION_PATENT_ID`, or from the one
    The runner reports both of these as missing, with that command, so you do not
    have to remember it.
 
-2. **Write `input/<ID>-biblio.json`.** Same shape as the existing one:
-   `family_id`, `title_en`, the dates, `jurisdiction`, `language`, `assignees`,
-   `inventors`, `legal_status`, `ipc_codes`, `abstract_zh`.
+2. **Write `input/<ID>-biblio.json`.** `schemas/biblio.schema.json` is the
+   contract and documents every field. The runner validates it as a whole before
+   any stage runs and reports every problem at once, rather than failing at one
+   bare `b["key"]` at a time several stages in.
+
+   Two things worth knowing. `grant_date` is nullable, because most published
+   applications are never granted and making it fatal made the pack unusable for
+   them. And `jurisdiction` is the fallback country for any inventor given as a
+   bare name, so a wrong value there mislabels every inventor; give inventors as
+   `{"name": ..., "country": ...}` objects where it matters.
 
 3. **Start the two curated tables empty.** The gates will tell you what goes in
    them; guessing first wastes the trip.
@@ -374,6 +418,46 @@ page carries the most drawn structures, the cumulative yield from the pathway th
 annotation stands behind.
 
 ---
+
+## This pack holds ONE patent at a time
+
+Say it plainly, because the runner reads as though it were multi-patent and it is
+not. **11 of the 119 declared paths carry the patent id.** The other 108 do not:
+`output/stages/A1-compounds/`, `input/vision/`, `output/compounds.json`,
+`output/structures/`, `svg/`, and the whole of `output/relevant_output/` are
+patent-agnostic paths holding one patent's contents.
+
+So `--patent-id <other>` in a pack that already holds a finished patent does not
+mean "also do this one". It means "overwrite that one", and until recently it meant
+something worse.
+
+**The chimera.** A pack holding a complete CN104292137A has, for any other patent
+id, *no missing prerequisites at all*: every A0 to A5 file the check looks for is
+at a patent-agnostic path, so patent one's files satisfy patent two's requirements
+completely. `finalise` then printed "75 unique compounds" for the new patent and
+wrote 75 records whose `id` was built from the new patent and whose `patent_id`
+field still named the old one. Schema validation passed, because no schema says a
+record's patent id must match the run or match `patent.json`. `publish-gold` copied
+it into the deliverable. Nothing crashed. The artifact was internally consistent,
+individually well formed, and about the wrong document.
+
+Three checks close it, in the order they can fire:
+
+| where | catches | exit |
+|---|---|---:|
+| `run_pipeline.py`, before any stage | any `patent_id` under `output/stages/`, `input/vision/` or the curated tables that disagrees with the run | 4 |
+| `finalise.py`, before a single id is built | the same, on the raw arrays it is about to finalise | 2 |
+| `schemas/validate.py` | a record whose `patent_id` is not the run's, or whose `id` is not built from its own `patent_id` | 1 |
+
+The third is the one worth understanding: **JSON Schema cannot express it.** A
+schema can say a record has a `patent_id`. It cannot say that value is the same as
+the run's, or the same as every other record's. So that check lives in code beside
+the schema check, not inside it.
+
+**To run a second patent, start a clean pack.** Copy the scripts, `prompts/`,
+`schemas/` and `contracts/`; leave `output/` and `input/vision/` empty. The runner
+tells you exactly what is then missing. Restructuring the tree to hold several
+patents at once is a real piece of work and has not been done.
 
 ## Where the patent id lives now
 

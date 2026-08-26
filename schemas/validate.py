@@ -52,6 +52,17 @@ for art, sch in PAIRS:
         print(f"      {'.'.join(str(p) for p in e.path) or '<root>'}: {e.message[:110]}")
     bad += len(errs)
 
+# ---------------------------------------------------------------- the input
+# The biblio is an input rather than an artifact, and the runner checks it before
+# any stage runs. Checked here too so that running this script standalone covers
+# every schema the pack has, not just the ones downstream of finalise.
+from pipeline_context import validate_biblio
+biblio_problems = validate_biblio(PATENT_ID)
+print(f"  {'biblio (input)':22} {'ok' if not biblio_problems else f'{len(biblio_problems)} violations'}")
+for x in biblio_problems[:10]:
+    print(f"      {x}")
+bad += len(biblio_problems)
+
 # ---------------------------------------------------------------- identity
 # Every record must be about the patent this run is about, and about the same
 # patent as every other record. No schema expresses this.

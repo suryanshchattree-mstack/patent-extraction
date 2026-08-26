@@ -22,6 +22,8 @@ corruption test safe: the gold is mutated in a dict, never on disk.
                         72-line citation is not the same evidence as `found`
                         against one line, and the contract's confidence bound is
                         computed over claims that do not distinguish them
+    I  fidelity       every index entry the index can answer, the scrubber
+                        answers, because deleting a term passes the Han gate too
     F  agreement        the engine's quantity failures against the annotation's
                         own validation flags, all three ways round
     G  contract        the claim shape against VERIFICATION-CONTRACT.md
@@ -143,6 +145,52 @@ def test_no_chinese(artifact: dict) -> None:
            "none" if not salvageable else
            "; ".join(f"line {n} is {latin} Latin characters against {han} Han"
                      for n, han, latin in salvageable))
+
+
+def test_translation_fidelity(data: dict) -> None:
+    """Does the scrubber actually USE the index, or just delete what it cannot read?
+
+    The no-Chinese gate is satisfied by translating a term and equally satisfied by
+    replacing it with "[untranslated Chinese term]". Those are opposite outcomes and
+    the gate cannot tell them apart, which is the same blind spot that let line 76
+    be thrown away whole. So this asks the sharper question: for every entry the
+    index HAS an English answer for, does the scrubber produce it?
+
+    Stated that way the test cannot be gamed and needs no threshold. A key the index
+    resolves and the scrubber does not is unambiguously the scrubber's defect, never
+    a curation gap.
+    """
+    print("\nI  does the scrubber use the index it was given")
+    index = data["translations"]
+    answerable = {k: (v or {}).get("en") for k, v in index.items()
+                  if V.has_chinese(k) and (v or {}).get("en")}
+    missed = [k for k, en in answerable.items()
+              if V.UNTRANSLATED in V.scrub(k, index)]
+    record("every index entry the index can answer, the scrubber answers",
+           PASS if not missed else FAIL,
+           f"{len(answerable) - len(missed)} of {len(answerable)} resolve"
+           + ("" if not missed else
+              "; unresolved: " + ", ".join(
+                  f"{k} (index says {answerable[k]!r})" for k in missed[:3])))
+
+    # The corpus that actually reaches the scrubber at run time, which is wider
+    # than the index: identifiers, aliases, quotes and raw source lines.
+    corpus = set()
+    for c in data["compounds"]:
+        for s in [c["identifier"], *(c.get("aliases") or [])]:
+            if s and V.has_chinese(s):
+                corpus.add(s)
+    for row in data["compound_prov"] + data["reaction_prov"]:
+        q = row.get("quote_zh")
+        if q and V.has_chinese(q):
+            corpus.add(q)
+    markers = sum(V.scrub(s, index).count(V.UNTRANSLATED) for s in corpus)
+    mangled = [s for s in corpus if V.UNTRANSLATED in V.scrub(s, index)]
+    record("the strings the reviewer actually meets survive scrubbing",
+           PASS if not mangled else WARN,
+           f"{len(mangled)} of {len(corpus)} carry an untranslated marker, "
+           f"{markers} markers in total. Anything left is an index gap, not a "
+           f"scrubber defect, because the check above passed")
 
 
 def test_sensitivity(patent_id: str, data: dict, artifact: dict) -> None:
@@ -478,6 +526,7 @@ def main() -> int:
     data = V.load_inputs(patent_id)
     artifact = test_determinism(patent_id, data)
     test_no_chinese(artifact)
+    test_translation_fidelity(data)
     test_sensitivity(patent_id, data, artifact)
     test_census(artifact)
     test_contract_shape(artifact)
