@@ -28,7 +28,9 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
+import math
 import re
 import sys
 import unicodedata
@@ -36,7 +38,8 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-from rdkit import Chem, RDLogger
+from rdkit import Chem, Geometry, RDLogger
+from rdkit.Chem import rdDepictor
 from rdkit.Chem.Draw import rdMolDraw2D
 
 RDLogger.DisableLog("rdApp.*")
@@ -487,7 +490,70 @@ def anchor_for(inp: Inputs, paras: list[dict], page: str, between: list[str]):
 
 # ================================================================== drawing
 
-def render_structure(smiles: str, width: int, height: int) -> Image.Image:
+# ---------------------------------------------------------------- orientation
+#
+# RDKit picks its own rotation and reflection for a depiction, and for these
+# molecules it picks the mirror image of the way the patent draws them. The
+# molecule is the same; the picture is flipped. That is invisible to a chemist
+# and fatal here, because the reader is a non-chemist matching shapes, and the
+# honest answer from someone matching shapes to a mirrored pair is "no, these
+# are different" - a false rejection of a correct extraction.
+#
+# So our depiction is oriented onto a template whose 2D coordinates reproduce
+# the patent's own layout, read off the drawings: a hexagon with an apex top
+# and bottom and vertical left and right edges, carrying the acyl group at the
+# upper-left vertex, the chlorine at the top, the C3 group at the upper-right
+# and the sulfonyl at the lower-right.
+RING_R, EXO_R = 1.5, 3.0
+
+
+def _template(smiles: str, ring: list, exo: dict) -> Chem.Mol:
+    mol = Chem.MolFromSmiles(smiles)
+    conf = Chem.Conformer(mol.GetNumAtoms())
+    for angle, idx in ring:
+        conf.SetAtomPosition(idx, Geometry.Point3D(
+            RING_R * math.cos(math.radians(angle)),
+            RING_R * math.sin(math.radians(angle)), 0.0))
+    for idx, angle in exo.items():
+        conf.SetAtomPosition(idx, Geometry.Point3D(
+            EXO_R * math.cos(math.radians(angle)),
+            EXO_R * math.sin(math.radians(angle)), 0.0))
+    mol.RemoveAllConformers()
+    mol.AddConformer(conf, assignId=True)
+    Chem.SanitizeMol(mol)
+    return mol
+
+
+# Four substituents on consecutive ring carbons: the whole benzoate series.
+TEMPLATE_FOUR = _template(
+    "Cc1c(Cl)c(C)c(S)cc1",
+    [(150, 1), (90, 2), (30, 4), (-30, 6), (-90, 8), (-150, 9)],
+    {0: 150, 3: 90, 5: 30, 7: -30})
+
+# Three substituents: the step-1 toluene, drawn with the bare ring to the left.
+TEMPLATE_THREE = _template(
+    "Clc1c(C)c(S)ccc1",
+    [(90, 1), (30, 2), (-30, 4), (-90, 6), (-150, 7), (150, 8)],
+    {0: 90, 3: 30, 5: -30})
+
+TEMPLATES = (("four_substituent_benzene", TEMPLATE_FOUR),
+             ("three_substituent_benzene", TEMPLATE_THREE))
+
+
+def orient_like_patent(mol: Chem.Mol) -> str | None:
+    """Lay the molecule out the way the patent draws it. Name of the template
+    used, or None when none of them fits and RDKit's own choice stands."""
+    for name, tmpl in TEMPLATES:
+        if mol.GetSubstructMatch(tmpl):
+            rdDepictor.GenerateDepictionMatching2DStructure(
+                mol, tmpl, acceptFailure=True)
+            if mol.GetNumConformers():
+                return name
+    rdDepictor.Compute2DCoords(mol)
+    return None
+
+
+def render_structure(smiles: str, width: int, height: int):
     """Same renderer settings as resolve_structures.py: flat black, no colour.
 
     Monochrome is not a style choice. No meaning in this project may rest on
@@ -501,7 +567,8 @@ def render_structure(smiles: str, width: int, height: int) -> Image.Image:
         d = ImageDraw.Draw(img)
         d.text((20, height // 2), "this SMILES will not parse",
                font=load_font(FONT_BOLD, 22), fill="black")
-        return img
+        return img, None
+    matched = orient_like_patent(mol)
     drawer = rdMolDraw2D.MolDraw2DCairo(width, height)
     opts = drawer.drawOptions()
     opts.useBWAtomPalette()
@@ -511,8 +578,7 @@ def render_structure(smiles: str, width: int, height: int) -> Image.Image:
     opts.addStereoAnnotation = False
     rdMolDraw2D.PrepareAndDrawMolecule(drawer, mol)
     drawer.FinishDrawing()
-    import io
-    return Image.open(io.BytesIO(drawer.GetDrawingText())).convert("RGB")
+    return Image.open(io.BytesIO(drawer.GetDrawingText())).convert("RGB"), matched
 
 
 def wrap(draw, text, font, width):
@@ -882,8 +948,9 @@ def build(root: Path, patent_id: str) -> int:
                 else:
                     gold = inp.by_canonical.get(drawn_canon) if drawn_canon else None
                     how = "structure" if gold else "none"
+                oriented = None
                 if gold and gold.get("smiles"):
-                    im = render_structure(gold["smiles"], 700, 560)
+                    im, oriented = render_structure(gold["smiles"], 700, 560)
                     # Three gold records carry a SMILES string where a name
                     # should be. Printing that as if it were the compound's name
                     # tells a non-chemist nothing, so say what is actually true.
@@ -907,6 +974,7 @@ def build(root: Path, patent_id: str) -> int:
                     "gold_canonical": (gold.get("canonical") or canonical(gold.get("smiles")))
                                       if gold else None,
                     "linked_by": how,
+                    "oriented_to_patent_layout": oriented,
                 })
 
             # between_markers can carry prose where a marker is not visible on
@@ -965,6 +1033,28 @@ def build(root: Path, patent_id: str) -> int:
                 link = "structure"
                 question = ("Does every molecule below appear in the drawing above, in "
                             "the same order?")
+
+            # The two halves can be the same molecule drawn flipped or turned,
+            # and a reader comparing shapes will call that a mismatch. Our side
+            # is now laid out onto the patent's own geometry where a template
+            # fits, but that has to be said either way, and said above the
+            # question rather than in the small print below it.
+            n_or = sum(1 for p in panels if p["oriented_to_patent_layout"])
+            if n_or and n_or == len(panels):
+                orient_note = (
+                    "BEFORE YOU ANSWER: our side has been turned to sit the same way up "
+                    "as the patent's, so you can compare it position by position. Judge "
+                    "by WHICH groups hang off the ring, not by where they sit on the "
+                    "page.")
+            else:
+                orient_note = (
+                    "BEFORE YOU ANSWER: these two may be drawn flipped or turned round. "
+                    "That is the same molecule, not a different one. Compare WHICH "
+                    "groups are attached to the ring, and to which neighbours, not "
+                    "where they sit on the page."
+                    + (f" {n_or} of {len(panels)} panels are laid out the patent's way; "
+                       "the rest are however our drawing tool chose."
+                       if n_or else ""))
 
             right_caption = (
                 f"Cut from the scan of page {int(page[1:])}, at y {bx[1]} to {bx[3]} "

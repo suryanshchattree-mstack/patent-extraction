@@ -220,7 +220,7 @@ def finalise_compounds(mols):
     order = []
     for m in mols:
         ident = m["identifier"]
-        m.setdefault("patent_id", PATENT_ID)
+        m["patent_id"] = PATENT_ID
         m["id"] = build_compound_id(ident)
         m["compound_uuid"] = uuid5(f"{PATENT_ID}::{ident}")
         if ident in by_ident:
@@ -244,7 +244,7 @@ def finalise_reactions(rxns):
                                     r.get("step_label"), r.get("step_index"))
         norm = normalize_reaction_id(rid)
         r["reaction_uuid"] = uuid5(f"{PATENT_ID}::{norm}") if norm else uuid5(r["id"])
-        r.setdefault("patent_id", PATENT_ID)
+        r["patent_id"] = PATENT_ID
     return rxns
 
 
@@ -262,7 +262,7 @@ def finalise_pathways(pws, mols, rxns):
         return ref
 
     for p in pws:
-        p.setdefault("patent_id", PATENT_ID)
+        p["patent_id"] = PATENT_ID
         fill_ref(p.get("ksm"))
         fill_ref(p.get("product"))
         for i in p.get("intermediates") or []:
@@ -376,6 +376,45 @@ def finalise_patent(llm, mols, rxns, pws):
     }
 
 
+def assert_patent_scope(raw: dict[str, object]) -> list[str]:
+    """Every patent_id already on an incoming record must be the one we are running.
+
+    This is the guard that was missing, and its absence produced the worst artifact
+    this pipeline can produce. Point the runner at a second patent in a pack that
+    still holds the first patent's A0 to A5 output and every stage agrees: the
+    passes are present, so the prerequisite check is satisfied; the schema does not
+    say a record's patent_id must match the run, so validation passes; and this
+    function's absence meant `m.setdefault("patent_id", ...)` left the OLD id in
+    place while `build_compound_id` stamped the NEW one into `id`.
+
+    The result was 75 compound records each carrying id US9999999B2_<name> and
+    patent_id CN104292137A, under a patent record for US9999999B2, published to the
+    deliverable, internally consistent enough that nothing downstream objected. A
+    crash is a message. That is a lie with a schema.
+
+    So: refuse. Loudly, before a single id is built.
+    """
+    def walk(node, out):
+        if isinstance(node, dict):
+            v = node.get("patent_id")
+            if isinstance(v, str) and v:
+                out.add(v)
+            for x in node.values():
+                walk(x, out)
+        elif isinstance(node, list):
+            for x in node:
+                walk(x, out)
+
+    problems = []
+    for name, obj in raw.items():
+        found = set()
+        walk(obj, found)
+        wrong = sorted(found - {PATENT_ID})
+        if wrong:
+            problems.append(f"  raw-{name}.json carries patent_id {wrong}")
+    return problems
+
+
 def main() -> int:
     global PATENT_ID, BIBLIO
     check = "--check" in sys.argv
@@ -397,6 +436,23 @@ def main() -> int:
         print(f"missing raw pass output: {', '.join(missing)}")
         print(f"expected at {OUT}/raw-<name>.json")
         return 1
+
+    wrong = assert_patent_scope({"compounds": mols, "reactions": rxns,
+                                 "pathways": pws, "patent": pat})
+    if wrong:
+        print(f"\nFAIL  this run is {PATENT_ID!r}, but the pass output is not.\n",
+              file=sys.stderr)
+        for w in wrong:
+            print(w, file=sys.stderr)
+        print(f"\n  The A0 to A5 stage folders are not scoped by patent, so a pack that\n"
+              f"  still holds another patent's pass output will satisfy every\n"
+              f"  prerequisite check and then be finalised under {PATENT_ID!r}. The ids\n"
+              f"  would be built from {PATENT_ID!r} while the records kept the other\n"
+              f"  patent's, and nothing downstream would object.\n\n"
+              f"  Clear output/stages/ and input/vision/ and run the passes for\n"
+              f"  {PATENT_ID!r}, or run the pipeline on the patent this pack holds.",
+              file=sys.stderr)
+        return 2
 
     mols = finalise_compounds(mols)
     rxns = finalise_reactions(rxns)

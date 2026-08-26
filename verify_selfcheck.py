@@ -222,18 +222,31 @@ def test_census(artifact: dict) -> None:
     record("every claim carries a stratum",
            PASS if all(c.get("stratum") for c in claims) else FAIL,
            f"{sum(1 for c in claims if not c.get('stratum'))} claims have none")
-    record("every claim carries `about`",
-           PASS if all(c.get("about") in ("extraction", "patent")
-                       for c in claims) else FAIL,
+    record("every claim carries a documented `about`",
+           PASS if all(c.get("about") in SUBJECTS for c in claims) else FAIL,
            str(dict(Counter(c.get("about") for c in claims))))
+    record("every claim carries a severity",
+           PASS if all(c.get("severity") for c in claims) else FAIL,
+           str(dict(Counter(c.get("severity") for c in claims))))
 
+    # Tier 2 is the recall census and it now has TWO feeders: whole lines nobody
+    # cites, and single quantities on a cited line that no claim asserts. The
+    # denominator comes from the tallies and never from counting the queue,
+    # because a queue counting itself cannot detect a claim that failed to be
+    # emitted at all, which is the exact failure this check exists for.
     cov = artifact["source_coverage"]["summary"]
+    qty = artifact["summary"].get("quantity_coverage") or {}
     uncited = cov.get("uncited_with_chemistry", 0)
+    unaccounted = sum(qty.get(k, 0) for k in ("gap", "schema_loss", "unmapped"))
     print(f"     uncited chemistry lines       {uncited}")
+    print(f"     unaccounted quantities        {unaccounted}"
+          f"  (of {qty.get('tokens', 0)} tokens, {qty.get('accounted', 0)} "
+          f"accounted, {qty.get('vessel', 0)} glassware)")
     tier2 = tiers.get(2, 0)
-    record("tier 2 population equals the uncited chemistry lines",
-           PASS if tier2 == uncited else FAIL,
-           f"tier 2 has {tier2} claims, coverage reports {uncited} lines")
+    record("tier 2 population equals its two feeders",
+           PASS if tier2 == uncited + unaccounted else FAIL,
+           f"tier 2 has {tier2} claims; {uncited} uncited lines plus "
+           f"{unaccounted} unaccounted quantities is {uncited + unaccounted}")
 
     # The protocol budgets tier 1 as a census inside 15 minutes at ~6s a claim.
     budget = 900 / 6
@@ -257,13 +270,21 @@ def test_census(artifact: dict) -> None:
 # review protocol added. A key outside this set is either an undocumented feature
 # the UI cannot know about, or a working variable that leaked into a 3 MB file.
 CONTRACT_CLAIM_KEYS = {
-    "claim_id", "record_id", "record_kind", "record_label_en", "field",
-    "field_label_en", "question_en", "claimed_en", "claimed_value",
-    "claimed_unit", "cited_lines", "evidence_en", "evidence_lines",
-    "highlights", "auto", "auto_reason_en", "needs_human", "risk",
-    "risk_reasons_en", "structure_svg_path", "tier", "stratum",
-    "about", "severity", "severity_action_en",
+    "claim_id", "record_id", "record_kind", "rec", "rec_field",
+    "record_label_en", "section_en", "about", "field", "field_label_en",
+    "question_en", "claimed_en", "claimed_value", "claimed_unit", "basis",
+    "cited_lines", "evidence_en", "evidence_lines", "highlights", "auto",
+    "auto_reason_en", "needs_human", "load_bearing", "risk", "risk_reasons_en",
+    "structure_svg_path", "tier", "stratum", "severity", "severity_action_en",
 }
+
+# Documented, but only on the claims it applies to, so not required of all of them.
+OPTIONAL_CLAIM_KEYS = {"quantity_verdict"}
+
+# `schema` is the third subject: the annotation read the page correctly and the
+# field it had to put the answer in could not hold it. Nobody is wrong and
+# re-extracting fixes nothing, which is why it cannot be folded into `extraction`.
+SUBJECTS = {"extraction", "patent", "schema"}
 
 
 def test_contract_shape(artifact: dict) -> None:
@@ -279,7 +300,8 @@ def test_contract_shape(artifact: dict) -> None:
            "all present" if not missing else
            ", ".join(f"{k} on {keys.get(k, 0)}/{n}" for k in sorted(missing)))
 
-    extra = {k: v for k, v in keys.items() if k not in CONTRACT_CLAIM_KEYS}
+    extra = {k: v for k, v in keys.items()
+             if k not in CONTRACT_CLAIM_KEYS and k not in OPTIONAL_CLAIM_KEYS}
     record("no key outside the contract reaches the artifact",
            PASS if not extra else WARN,
            "none" if not extra else

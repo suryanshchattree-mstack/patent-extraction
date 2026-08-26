@@ -312,8 +312,16 @@ Nothing below mentions `CN104292137A`, and nothing in the scripts does either. T
 id comes from `--patent-id`, from `$ANNOTATION_PATENT_ID`, or from the one
 `input/<id>-biblio.json` in the pack.
 
-1. **Put the source in place.** The PDF in `input/pdf/`, the pages rendered to PNG
-   at 200 dpi in `input/pages/`.
+1. **Put the source in place.** The PDF in `input/pdf/<ID>.pdf`, and every page of
+   it rendered to PNG at 200 dpi in `input/pages/`, named `p01.png` onward. Pass V
+   reads those pixels, because the PDF has no text layer.
+
+   ```bash
+   pdftoppm -r 200 -png input/pdf/<ID>.pdf input/pages/p
+   ```
+
+   The runner reports both of these as missing, with that command, so you do not
+   have to remember it.
 
 2. **Write `input/<ID>-biblio.json`.** Same shape as the existing one:
    `family_id`, `title_en`, the dates, `jurisdiction`, `language`, `assignees`,

@@ -431,12 +431,7 @@ def scrub(text: str, index: dict) -> str:
     if not has_chinese(text):
         return text
 
-    def lookup(m):
-        entry = index.get(m.group(0))
-        en = (entry or {}).get("en")
-        return en if en else m.group(0)
-
-    out = re.sub(CJK.pattern + "+", lookup, text)
+    out = substitute_longest(text, index)
     out = _collapse_gloss(out)
     out = CJK_PAREN.sub("", out)
     out = re.sub(CJK.pattern + "+", UNTRANSLATED, out)

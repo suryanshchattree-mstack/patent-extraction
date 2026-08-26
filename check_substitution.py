@@ -89,8 +89,17 @@ def promote(text: str) -> str:
     return PARENTHESISED_CHINESE.sub(r"\1", text)
 
 
-def substitute(text: str, index: dict, keys: list[str], depth: int = 0) -> str:
-    """Longest key first, always, and a space between two replacements that touched."""
+def substitute(text: str, index: dict, keys: list[str], depth: int = 0,
+               space: bool = True) -> str:
+    """Longest key first, always, and a space between two replacements that touched.
+
+    `space` exists to be turned OFF. Two names replaced back to back fuse into
+    "strong-smellingsodium methanethiolate", and no regex over the finished text can
+    see that: the join is between two lowercase letters and English is full of those.
+    The boundary is only knowable here, while it is being made, so the way to prove
+    the rule is load-bearing is to run the field again without it and see the output
+    change.
+    """
     if depth >= MAX_DEPTH or not CJK_RUN.search(text):
         return text
     out: list[str] = []
@@ -103,20 +112,20 @@ def substitute(text: str, index: dict, keys: list[str], depth: int = 0) -> str:
             previous_was_english = False
             i += 1
             continue
-        if previous_was_english:
+        if previous_was_english and space:
             out.append(" ")
-        out.append(substitute(promote(index[hit]["en"]), index, keys, depth + 1))
+        out.append(substitute(promote(index[hit]["en"]), index, keys, depth + 1, space))
         previous_was_english = True
         i += len(hit)
     return "".join(out)
 
 
-def english_prose(text: str, index: dict, keys: list[str]) -> str:
+def english_prose(text: str, index: dict, keys: list[str], space: bool = True) -> str:
     if not CJK_RUN.search(text):
         return text
     whole = (index.get(text.strip()) or {}).get("en")
     out = promote(whole if whole is not None else text)
-    out = substitute(out, index, keys)
+    out = substitute(out, index, keys, space=space)
     return re.sub(r"\s{2,}", " ", CJK_RUN.sub(UNTRANSLATED, out)).strip()
 
 
@@ -131,13 +140,6 @@ DOUBLED = re.compile(
     re.IGNORECASE,
 )
 
-# Two replacements fused with no space, which is what Chinese having no inter-word
-# space does to a naive join. Detected as a lowercase letter immediately followed by
-# an uppercase one INSIDE a word, which ordinary English prose and chemical names in
-# this corpus do not produce.
-FUSED = re.compile(r"[a-z]{3}[A-Z][a-z]{2}")
-
-
 def faults(rewritten: str) -> list[str]:
     out = []
     for run in CJK_RUN.findall(rewritten):
@@ -146,8 +148,6 @@ def faults(rewritten: str) -> list[str]:
         out.append(f"fell back to {UNTRANSLATED}, so the index is stale")
     for m in DOUBLED.finditer(rewritten):
         out.append(f"gloss printed twice: {m.group(0)[:60]}")
-    for m in FUSED.finditer(rewritten):
-        out.append(f"two replacements fused with no space: {m.group(0)}")
     return out
 
 
@@ -188,6 +188,7 @@ def main() -> int:
     print(f"provenance: {len(rows)} rows, fields {', '.join(PROSE_FIELDS)}")
 
     checked = 0
+    needs_space: list[tuple[str, str]] = []
     broken: list[tuple[str, str, list[str], str]] = []
     widest = (0.0, "", "")
     for row in rows:
@@ -200,6 +201,14 @@ def main() -> int:
             found = faults(rewritten)
             if found:
                 broken.append((field, text, found, rewritten))
+            without = english_prose(text, index, keys, space=False)
+            if without != rewritten:
+                # Name the word that actually fused, by diffing the two word lists
+                # rather than excerpting, so the report shows the defect and not
+                # whatever happened to sit near it.
+                spaced = set(rewritten.split())
+                fused = [w for w in without.split() if w not in spaced]
+                needs_space.append((field, ", ".join(fused[:3]) or without[:60]))
             if verbose:
                 print(f"\n--- {field}\n ZH: {text[:150]}\n EN: {rewritten[:220]}")
             # The widest single splice, which is the ratio gate's subject seen from
@@ -216,6 +225,9 @@ def main() -> int:
                 i += len(hit)
 
     print(f"\nannotator-prose fields carrying Chinese: {checked}")
+    print(f"fields that fuse two names without the spacing rule: {len(needs_space)}")
+    for field, fused in needs_space:
+        print(f"  {field}: without it these words run together -> {fused}")
     print(f"widest single splice: {widest[0]:.1f}x  ({widest[1]} -> "
           f"{len(widest[2])} characters)")
 
@@ -229,7 +241,7 @@ def main() -> int:
                 print(f"    !!  {f}")
     else:
         print(f"all {checked} come out as readable English, with no Chinese, no "
-              f"placeholder,\n  no doubled gloss and no fused replacement. PASS")
+              f"placeholder\n  and no doubled gloss. PASS")
 
     # The second question, reported rather than gated: this script does not own
     # verify.py and cannot fix it, but the number should be visible on every run.

@@ -52,6 +52,7 @@ Exit codes
     1  a stage failed
     2  a coverage gate stopped the run; a human owes the pipeline something
     3  the LLM annotation passes have not been run yet
+    4  this pack holds a different patent's work
 """
 
 from __future__ import annotations
@@ -86,6 +87,7 @@ class Stage:
     optional_tool: str = ""      # a script that may not exist yet
     always: bool = False         # runs every time; produces no tracked artifact
     pin_source_date: bool = False
+    blocking: bool = True        # a failing gate stops the run; see verify
 
 
 def stages(pid: str) -> list[Stage]:
@@ -246,28 +248,6 @@ def stages(pid: str) -> list[Stage]:
                      "output/relevant_output/svg/*.jpg"],
         ),
         Stage(
-            name="verify",
-            title="the verification contract file the reviewer UI reads",
-            # positional, not --patent-id: verify.py is owned elsewhere and takes
-            # the id the way resolve_translations.py does.
-            cmds=[[PY, "verify.py", pid]],
-            inputs=["verify.py", "output/translations.json", "output/00-sections.json",
-                    f"input/{pid}-enriched-numbered.md",
-                    f"{gold}/structures-resolved.json", f"{gold}/structures.json",
-                    f"{prov}/compounds-equivalence.json",
-                    f"{prov}/compounds-provenance.json", f"{prov}/reactions-provenance.json"]
-                   + [f"{gold}/{n}.json" for n in artifacts],
-            outputs=[f"{verif}/checks-{pid}.json"],
-            optional_tool="verify.py",
-            gate=True,
-            # verify.py stamps the checks file with the wall clock unless
-            # SOURCE_DATE_EPOCH says otherwise, which makes two runs of an
-            # unchanged pipeline differ by one line. The runner pins it to the
-            # newest input mtime: still an honest "as of", and stable while the
-            # gold is stable, so a diff between two runs is a real diff.
-            pin_source_date=True,
-        ),
-        Stage(
             name="visual",
             title="the page index, the structure comparisons and the drawing claims the UI shows",
             cmds=[[PY, "make_visual_evidence.py", "--patent-id", pid]],
@@ -288,6 +268,37 @@ def stages(pid: str) -> list[Stage]:
             # it refuses to ship Chinese into a tree whose entire promise is that a
             # reader with no Chinese can open it
             gate=True,
+        ),
+        Stage(
+            name="verify",
+            title="the verification contract file the reviewer UI reads",
+            # positional, not --patent-id: verify.py is owned elsewhere and takes
+            # the id the way resolve_translations.py does.
+            cmds=[[PY, "verify.py", pid]],
+            inputs=["verify.py", "output/translations.json", "output/00-sections.json",
+                    f"input/{pid}-enriched-numbered.md",
+                    f"{gold}/structures-resolved.json", f"{gold}/structures.json",
+                    f"{prov}/compounds-equivalence.json",
+                    f"{prov}/compounds-provenance.json", f"{prov}/reactions-provenance.json"]
+                   + [f"{gold}/{n}.json" for n in artifacts],
+            outputs=[f"{verif}/checks-{pid}.json"],
+            optional_tool="verify.py",
+            gate=True,
+            # A grounding failure means the ANNOTATION is suspect. It does not mean
+            # the page images are suspect, and the visual evidence is what a human
+            # reaches for at exactly that moment. Blocking the assets behind this
+            # gate removes the evidence at the point it is most needed, and it put
+            # the visual stage back where it started: only produced when somebody
+            # ran the script by hand. So this gate records the failure and sets the
+            # exit code, and the run continues. The end-of-run summary says loudly
+            # that it did, so nobody reads a finished run as a clean one.
+            blocking=False,
+            # verify.py stamps the checks file with the wall clock unless
+            # SOURCE_DATE_EPOCH says otherwise, which makes two runs of an
+            # unchanged pipeline differ by one line. The runner pins it to the
+            # newest input mtime: still an honest "as of", and stable while the
+            # gold is stable, so a diff between two runs is a real diff.
+            pin_source_date=True,
         ),
         Stage(
             name="selfcheck",
@@ -384,6 +395,42 @@ def wrap_what(what: str, width: int = 74) -> str:
             out.append(line)
     return "\n".join(l if l.startswith(" ") else (indent + l if i else l)
                      for i, l in enumerate(out))
+
+
+# The A0 to A5 stage folders and input/vision/ are NOT scoped by patent: they are
+# output/stages/A1-compounds/, not output/stages/US9999999B2/A1-compounds/. So a pack
+# that still holds patent one's pass output satisfies patent two's prerequisites
+# completely, and the run proceeds on the wrong document. This is the check that
+# notices, and it runs before anything is written.
+SCOPED_SCAN = ["output/stages/**/*.json", "input/vision/p*.json",
+               "input/structures-curated.json", "input/translations-curated.json"]
+
+
+def foreign_patent_ids(pid: str) -> list[str]:
+    """Files under the unscoped paths that claim to be about a different patent."""
+    def walk(node, out):
+        if isinstance(node, dict):
+            v = node.get("patent_id")
+            if isinstance(v, str) and v:
+                out.add(v)
+            for x in node.values():
+                walk(x, out)
+        elif isinstance(node, list):
+            for x in node:
+                walk(x, out)
+
+    bad = []
+    for f in expand(SCOPED_SCAN):
+        try:
+            doc = json.loads(f.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        found = set()
+        walk(doc, found)
+        wrong = sorted(found - {pid})
+        if wrong:
+            bad.append(f"  {rel(f)}  carries patent_id {', '.join(wrong)}")
+    return bad
 
 
 def check_prereqs(pid: str) -> list[str]:
@@ -756,7 +803,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(
         description="Run every deterministic stage of the manual annotation pipeline.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="Exit codes: 0 ok, 1 stage failed, 2 coverage gate, 3 LLM passes not run.")
+        epilog="Exit codes: 0 ok, 1 stage failed, 2 coverage gate, 3 LLM passes not "
+               "run, 4 this pack holds a different patent.")
     ap.add_argument("--patent-id", help="patent to run; discovered from input/*-biblio.json if omitted")
     ap.add_argument("--from", dest="from_stage", metavar="STAGE", help="start here, run everything after")
     ap.add_argument("--only", metavar="STAGE", help="run exactly this stage")
@@ -844,6 +892,26 @@ def main() -> int:
             return 1
     ctx["results"]["prompts"] = {"run": "ran", "skip": "current", "absent": "absent",
                                  "not selected": "not selected"}[pact]
+
+    # Wrong patent BEFORE missing patent. A pack holding a complete annotation of a
+    # different patent has no missing prerequisites at all, so the missing-file
+    # check would pass it straight through.
+    foreign = foreign_patent_ids(pid)
+    if foreign:
+        print(f"\nSTOP  this pack does not hold {pid}. It holds another patent's work.\n")
+        print("\n".join(foreign[:12]))
+        if len(foreign) > 12:
+            print(f"  ... and {len(foreign) - 12} more")
+        print(f"\n  output/stages/ and input/vision/ are not scoped by patent, so this\n"
+              f"  pack satisfies every prerequisite for {pid} using the other patent's\n"
+              f"  files. Finalising that produces records whose ids are built from\n"
+              f"  {pid} while the records themselves belong to the other patent, which\n"
+              f"  is schema-valid, internally consistent and wrong.\n\n"
+              f"  This pack holds one patent at a time. Either run the pipeline on the\n"
+              f"  patent it holds, or start a clean pack for {pid}: copy the scripts,\n"
+              f"  prompts, schemas and contracts, and leave output/ and input/vision/\n"
+              f"  empty.")
+        return 4
 
     missing = check_prereqs(pid)
     if missing:
