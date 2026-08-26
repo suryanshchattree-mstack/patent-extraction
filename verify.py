@@ -1040,6 +1040,17 @@ class Engine:
 
     # ------------------------------------------------- the three review queues
 
+    def promoted_fields(self) -> dict[str, list[str]]:
+        """Record -> the claim-field prefixes some failing check on it names."""
+        out: dict[str, list[str]] = {}
+        for rec in self.records:
+            for c in rec.checks:
+                if c["status"] != "fail":
+                    continue
+                out.setdefault(rec.record_id, [])
+                out[rec.record_id].extend(c["about_fields"] or [""])
+        return out
+
     def assign_tiers(self) -> None:
         """Which of the three queues in REVIEW-PROTOCOL.md each claim belongs to.
 
@@ -1052,16 +1063,22 @@ class Engine:
             2  the uncited chemistry lines. The recall side. Also a census.
             3  what the machine matched cleanly, sampled rather than read.
         """
-        failing = {r.record_id for r in self.records if r.failing()}
+        promoted = self.promoted_fields()
         for claim in self.claims:
+            prefixes = promoted.get(claim["record_id"], [])
             if claim["field"] == "__coverage__":
                 claim["tier"] = 2
             elif claim["auto"] in ("not_found", "partial"):
                 claim["tier"] = 1
             elif claim["auto"] == "not_checkable" and claim["load_bearing"]:
                 claim["tier"] = 1
-            elif claim["record_id"] in failing:
+            elif any(claim["field"].startswith(pre) for pre in prefixes):
                 claim["tier"] = 1
+                claim["needs_human"] = True
+                claim["risk"] = max(claim["risk"], 0.70)
+                claim["risk_reasons_en"] = claim["risk_reasons_en"] + [
+                    "A check on this row failed, so the number is worth reading "
+                    "even though it is printed where the record says it is."]
             else:
                 claim["tier"] = 3
 
@@ -1362,6 +1379,21 @@ class Engine:
             risk_reasons.append("The quotation was not found anywhere in the "
                                 "document.")
 
+        # A record anchored only to the drawn scheme has no prose on its cited
+        # line to match against. The text it quotes is narrative from nearby, which
+        # is a citation pointing at the wrong line and worth reporting, but it is
+        # not an invented quotation and must not sit at the top of a queue whose
+        # top is reserved for those.
+        if auto == "not_found" and cited and all(
+                self.source.kind.get(n) in ("image_extract", "blank")
+                for n in cited):
+            auto = "partial"
+            reason += (" This record is anchored to the drawn scheme, which carries "
+                       "no prose at all, so what it quotes is narrative from "
+                       "elsewhere rather than the evidence the record rests on.")
+            risk_reasons = ["The record cites only the drawing, and quotes prose "
+                            "that is somewhere else."]
+
         panel = sorted(cited_set | off_lines)
         panel = self.source.with_partners(panel)
         claim = self._claim(rec, field, question,
@@ -1473,9 +1505,19 @@ def compact_lines(lines) -> str:
 # ---------------------------------------------------------------- record checks
 
 def check(cid: str, family: str, status: str, title: str, detail: str,
-          needs_human: bool = False) -> dict:
+          needs_human: bool = False, about_fields=()) -> dict:
+    """One machine finding about one record.
+
+    `about_fields` names the claim fields this check is about, and it is what keeps
+    tier 1 small enough to be read. Promoting every claim on a record with one
+    failing check puts about a hundred cleanly-matched numbers in front of a
+    reviewer who has time for fifty items, purely because one row of the same
+    reaction failed a mass balance. The failing check names the row; only that row's
+    claims are promoted. Empty means the check is about the record as a whole.
+    """
     return {"id": cid, "family": family, "status": status, "title_en": title,
-            "detail_en": detail, "needs_human": needs_human}
+            "detail_en": detail, "needs_human": needs_human,
+            "about_fields": list(about_fields)}
 
 
 # Cl (35.453) minus H (1.008), to the two decimals the annotator used. Every
@@ -1582,8 +1624,14 @@ class Run(Engine):
         self.build_patent()
         self.referential_integrity()
         self.structure_checks()
+        self.drawing_checks()
         self.consistency_checks()
         self.build_coverage()
+        # Order matters from here. Bases rewrite verdicts, the agreement matrix
+        # reads the checks those verdicts sit beside, and tiering reads both.
+        self.resolve_bases()
+        self.agreement_matrix()
+        self.assign_tiers()
 
     def section_en_of(self, label) -> str:
         return label or "Whole patent"
@@ -1617,16 +1665,18 @@ class Run(Engine):
                     self.numeric_claim(rec, f"melting_point.{bound}",
                                        float(mp[bound]), "C",
                                        f"the melting point of {rec.label_en}",
-                                       "condition")
+                                       "condition", field_name="melting_point_c")
             if c.get("purity_pct") is not None:
                 self.numeric_claim(rec, "purity_pct", float(c["purity_pct"]), "%",
-                                   f"the purity of {rec.label_en}", "yield")
+                                   f"the purity of {rec.label_en}", "yield",
+                                   field_name="purity_pct")
             for i, a in enumerate(c.get("analytics") or []):
                 if a.get("value") is not None:
                     self.numeric_claim(rec, f"analytics[{i}].value",
                                        float(a["value"]), None,
                                        f"the {a.get('method') or 'analysis'} of "
-                                       f"{rec.label_en}", "value")
+                                       f"{rec.label_en}", "value",
+                                       field_name="analytics_value")
 
             for i, row in enumerate(rows):
                 sub = Record(rec.record_id, "compound", rec.label_en,
@@ -1670,11 +1720,12 @@ class Run(Engine):
                 if temp.get(bound) is not None:
                     self.numeric_claim(rec, f"conditions.temperature.{bound}",
                                        float(temp[bound]), "C",
-                                       f"{tag} of this step", "condition")
+                                       f"{tag} of this step", "condition",
+                                       field_name="temperature_c")
             if cond.get("time_h") is not None:
                 self.numeric_claim(rec, "conditions.time_h", float(cond["time_h"]),
                                    "h", "the reaction time of this step",
-                                   "condition")
+                                   "condition", field_name="time_h")
             conc = cond.get("concentration") or {}
             if conc.get("value") is not None:
                 unit = "%" if (conc.get("unit") or "").strip() in ("%", "％") else None
@@ -1682,13 +1733,13 @@ class Run(Engine):
                                    float(conc["value"]), unit,
                                    f"the concentration of "
                                    f"{self.english_name(conc.get('reagent'))}",
-                                   "condition")
+                                   "condition", field_name="concentration")
             if r.get("product_yield_pct") is not None:
                 self.numeric_claim(rec, "product_yield_pct",
                                    float(r["product_yield_pct"]), "%",
                                    f"the yield of "
                                    f"{self.english_name(r.get('product_name'))}",
-                                   "yield")
+                                   "yield", field_name="product_yield_pct")
             if r.get("molar_ratio_text"):
                 for i, ratio in enumerate(molar_ratios(r["molar_ratio_text"])):
                     self.ratio_claim(rec, f"molar_ratio_text[{i}]", ratio,
@@ -1780,10 +1831,25 @@ class Run(Engine):
                          None, uuid, f"pw:{uuid}")
             self.records.append(rec)
             self.note_citation(rec.record_id, cited)
-            if p.get("overall_yield_pct") is not None:
-                self.numeric_claim(rec, "overall_yield_pct",
-                                   float(p["overall_yield_pct"]), "%",
-                                   "the overall yield of this route", "yield")
+            stated = p.get("overall_yield_pct")
+            computed = self.cumulative_yield(p)
+            if stated is not None or computed is not None:
+                ok = (stated is not None and computed is not None
+                      and abs(float(stated) - computed) <= 0.15)
+                rec.checks.append(check(
+                    "quantity.overall_yield", "quantity",
+                    "pass" if ok else ("skip" if computed is None or stated is None
+                                       else "fail"),
+                    "The route yield is the product of its step yields",
+                    (f"The record states {stated}%. " if stated is not None
+                     else "The record states no overall yield. ")
+                    + ("At least one step has no yield, so there is nothing to "
+                       "multiply." if computed is None else
+                       f"Multiplying the {len(p.get('steps') or [])} step yields "
+                       f"gives {computed}%."
+                       + ("" if ok else " These disagree.")),
+                    needs_human=not ok and computed is not None
+                                and stated is not None))
 
     def build_patent(self) -> None:
         p = self.data["patent"]
@@ -1835,13 +1901,14 @@ class Run(Engine):
                 needs_human=not ok and best is not None))
 
     def judgement_claim(self, rec: Record, field: str, question: str,
-                        why: str) -> dict:
+                        why: str, about: str = "extraction") -> dict:
         return self._claim(
             rec, field, question, "a judgement, not a number", None, None,
             rec.cited, [], "not_checkable",
             why + " No string match can settle it, so a human must read the "
                   "evidence below and decide.",
-            ["The annotation flagged its own uncertainty here."], "name")
+            ["The annotation flagged its own uncertainty here."], "name",
+            about=about, load_bearing=True)
 
     # ------------------------------------------------------------ reference
 
@@ -2068,6 +2135,73 @@ class Run(Engine):
                         "duplicate record.")),
                     needs_human=duplicate))
 
+    # ------------------------------------------------------------ drawing
+
+    def drawing_checks(self) -> None:
+        """The gold's structure for a molecule against the one read off the page.
+
+        gold/structures.json is an INDEPENDENT reading: a vision pass looked at the
+        rendered page and wrote down the substituents and their ring positions,
+        without seeing the compound records. Where that reading and the gold's
+        resolved structure name the same molecule and give different structures,
+        one of the two is wrong, and no amount of text matching would ever find it.
+
+        The join is on the name here, and only here, which is the opposite of what
+        resolve_structures.py does and for the opposite reason. That stage joins on
+        canonical SMILES because it is asking "is this molecule drawn", and a name
+        join would answer no for molecules that plainly are. This check is asking
+        "do the two readings of THIS NAME agree", and a SMILES join would make the
+        question vacuous: it would only ever compare structures that were already
+        equal. So the names are normalised hard - case, brackets, hyphens, spaces
+        and the sulfonyl/sulphonyl and methanesulfonyl/methylsulfonyl spellings all
+        folded - and a pair that survives that is compared.
+        """
+        by_record = {r.record_id: r for r in self.records}
+        drawn: dict[str, dict] = {}
+        for page in self.data["drawings"]:
+            for struct in page.get("structures") or []:
+                name, smiles = struct.get("name"), struct.get("smiles")
+                if not name or not smiles:
+                    continue
+                mol = Chem.MolFromSmiles(smiles)
+                if mol is None:
+                    continue
+                drawn.setdefault(drawing_key(name), {
+                    "canonical": Chem.MolToSmiles(mol), "name": name,
+                    "page": page.get("page", "?")})
+
+        agree = disagree = 0
+        for c in self.data["compounds"]:
+            rec = by_record[safe_record_id(self.patent_id, c["id"],
+                                           c["identifier"])]
+            entry = self.structures.get(c["identifier"]) or {}
+            names = [c["identifier"], *(c.get("aliases") or [])]
+            hit = next((drawn[k] for k in map(drawing_key, names) if k in drawn),
+                       None)
+            if hit is None or not entry.get("canonical"):
+                rec.checks.append(check(
+                    "drawing.smiles", "drawing", "skip",
+                    "The page drawing and the gold agree about this molecule",
+                    "No structure drawn on any page carries this molecule's name, "
+                    "so there is no second reading to compare against."
+                    if hit is None else
+                    "No structure is resolved for this record, so there is nothing "
+                    "to compare the drawing against."))
+                continue
+            same = hit["canonical"] == entry["canonical"]
+            agree += 1 if same else 0
+            disagree += 0 if same else 1
+            rec.checks.append(check(
+                "drawing.smiles", "drawing", "pass" if same else "fail",
+                "The page drawing and the gold agree about this molecule",
+                f"The vision pass read this molecule off page {hit['page']} as "
+                f"{hit['canonical']}."
+                + (" The gold resolves the same structure." if same else
+                   f" The gold resolves {entry['canonical']}, which is a different "
+                   f"molecule. One of the two readings is wrong."),
+                needs_human=not same))
+        self.drawing_tally = (agree, disagree)
+
     # ------------------------------------------------------------ quantity
 
     def consistency_checks(self) -> None:
@@ -2098,7 +2232,8 @@ class Run(Engine):
                 rec.checks.append(check(
                     f"quantity.mass_mmol[{ascii_key(ident)}]", "quantity", status,
                     f"Mass and moles agree for {self.english_name(ident)}",
-                    detail, needs_human=status == "fail"))
+                    detail, needs_human=status == "fail",
+                    about_fields=[f"compounds[{ascii_key(ident)}].quantity."]))
 
     # ------------------------------------------------------------ coverage
 
@@ -2211,6 +2346,21 @@ class Run(Engine):
                         rec_field=f"__coverage__.line_{n}")
 
 
+# Folded before a drawn name is compared with a record name. Every fold here is a
+# spelling of the same thing in this corpus, never a chemical claim: the drawing
+# pass writes "methylsulfonyl" where the records write "methanesulfonyl", and
+# treating those as different names would make the check pass by never running.
+_DRAWING_FOLDS = (("methanesulfon", "methylsulfon"), ("methanesulfan", "methylsulfan"),
+                  ("sulphon", "sulfon"), ("sulphan", "sulfan"))
+
+
+def drawing_key(name: str) -> str:
+    t = name.lower()
+    for a, b in _DRAWING_FOLDS:
+        t = t.replace(a, b)
+    return re.sub(r"[^a-z0-9]+", "", t)
+
+
 def english_list(items) -> str:
     items = list(items)
     if len(items) == 1:
@@ -2245,16 +2395,31 @@ RISK_BANDS = (("high", 0.60), ("medium", 0.30), ("low", 0.0))
 
 VERDICTS = ["not_found", "partial", "not_checkable", "found"]
 CHECK_STATUSES = ["fail", "warn", "pass", "skip"]
-FAMILIES = ["grounding", "reference", "structure", "quantity", "consistency",
-            "completeness"]
+FAMILIES = ["grounding", "reference", "structure", "drawing", "quantity",
+            "consistency", "completeness"]
+
+TIERS = [1, 2, 3]
+
+TIER_MEANING = {
+    1: "census of the suspicious: every claim the machine could not confirm",
+    2: "census of the candidate misses: chemistry on a line no record cites",
+    3: "what the machine matched cleanly, to be sampled rather than read",
+}
+
+# Keys the engine uses to carry a claim between passes. They are working state, not
+# contract, and are stripped before the file is written so a consumer can never
+# come to depend on one.
+PRIVATE = ("_field_name", "_matched", "_derive", "_value", "_unit", "_subject")
 
 # Which family a claim belongs to, for the roll-up. Everything a claim can be is a
 # grounding question except the coverage sweep, which asks the opposite question.
 def claim_family(claim: dict) -> str:
     if claim["field"] == "__coverage__":
         return "completeness"
-    if claim["field"].startswith("judgement."):
+    if claim["field"] in ("validation_flags", "resolved"):
         return "consistency"
+    if claim["basis"] == "derived":
+        return "quantity"
     return "grounding"
 
 
@@ -2290,6 +2455,10 @@ def assemble(run: Run) -> dict:
             "record_id": rec.record_id,
             "record_kind": rec.kind,
             "uuid": rec.uuid,
+            "rec": rec.rec,
+            "stratum": rec.stratum,
+            "annotation_flags_en": [FLAG_MEANING_EN.get(f, f)
+                                    for f in sorted(rec.flags)],
             "label_en": rec.label_en,
             "section_en": rec.section_en,
             "cited_lines": rec.cited,
@@ -2303,12 +2472,26 @@ def assemble(run: Run) -> dict:
     # function of the inputs, so the order is stable across runs and a diff between
     # two artifacts is a diff in the data.
     claims = sorted(run.claims,
-                    key=lambda c: (-c["risk"],
+                    key=lambda c: (c["tier"], -c["risk"],
                                    min(c["cited_lines"]) if c["cited_lines"] else 10**6,
                                    c["record_id"], c["field"]))
+    for c in claims:
+        for k in PRIVATE:
+            c.pop(k, None)
 
     verdicts = {v: sum(1 for c in claims if c["auto"] == v) for v in VERDICTS}
     families = {f: sum(1 for c in claims if claim_family(c) == f) for f in FAMILIES}
+    tiers = {str(t): sum(1 for c in claims if c["tier"] == t) for t in TIERS}
+    # The denominators ui-report needs. A stratified sample cannot be drawn, and a
+    # confidence bound cannot be computed, from a filtered list: both need the
+    # population size of every stratum, including the ones that end up with no
+    # sampled claim at all.
+    strata: dict[str, int] = {}
+    for c in claims:
+        if c["tier"] == 3:
+            strata[c["stratum"]] = strata.get(c["stratum"], 0) + 1
+    about = {a: sum(1 for c in claims if c["about"] == a)
+             for a in ("extraction", "patent")}
     all_checks = [c for r in records for c in r["checks"]]
     statuses = {s: sum(1 for c in all_checks if c["status"] == s)
                 for s in CHECK_STATUSES}
@@ -2408,6 +2591,13 @@ def assemble(run: Run) -> dict:
                        "needs_human": sum(1 for c in claims if c["needs_human"]),
                        **verdicts},
             "claims_by_family": families,
+            "claims_by_tier": tiers,
+            "tier3_population_by_stratum": dict(sorted(strata.items())),
+            "claims_by_subject": about,
+            "field_basis": {k: dict(sorted(v.items()))
+                            for k, v in sorted(run.bases.items())},
+            "agreement_with_annotation": {
+                k: len(v) for k, v in sorted(run.agreement.items())},
             "checks": {"total": len(all_checks), **statuses},
             "checks_by_family": check_families,
             "source_coverage": cov_summary,
@@ -2474,39 +2664,90 @@ def report(run: Run, artifact: dict, out_path: Path, check_only: bool) -> int:
     print(f"source    : {artifact['source']['line_count']} lines, "
           f"{artifact['source']['file']}")
     print(f"            sha256 {artifact['source']['sha256'][:16]}")
+    print(f"            {sum(1 for v in run.source.pairing.values() if v == 'exact')}"
+          f" Chinese lines pair one-for-one with their English, "
+          f"{sum(1 for v in run.source.pairing.values() if v == 'approximate')}"
+          f" had to be clamped, "
+          f"{sum(1 for v in run.source.pairing.values() if v == 'none')}"
+          f" have no English at all")
     print(f"gold      : {s['records']['compound']} compounds, "
           f"{s['records']['reaction']} reactions, {s['records']['pathway']} "
           f"pathways, {s['records']['patent']} patent record "
           f"= {s['records']['total']} records")
     print()
 
+    # Which numeric fields this patent QUOTES and which it DERIVES, inferred from
+    # the data. Printed so a human can sanity-check the inference rather than
+    # trusting it: getting this wrong in one direction fills the queue with false
+    # alarms and in the other hides real ones.
+    print("numeric fields, quoted or derived (measured, not declared):")
+    for name, t in artifact["summary"]["field_basis"].items():
+        print(f"  {name:20} {t['matched']:4}/{t['total']:<4} printed on a cited "
+              f"line   {t['basis']}")
+    print()
+
     print(f"{s['claims']['total']} claims put to the source:")
     for v in VERDICTS:
         print(f"  {v:14} {s['claims'][v]:5}   {VERDICT_MEANING[v]}")
     print(f"  {'needs_human':14} {s['claims']['needs_human']:5}   "
-          f"the review queue, ordered by risk")
+          f"the review queue")
     print()
-    print("by family:")
-    for f in FAMILIES:
-        if s["claims_by_family"][f]:
-            print(f"  {f:14} {s['claims_by_family'][f]:5}   "
-                  f"{FAMILY_MEANING[f]}")
+    print("the three review queues (REVIEW-PROTOCOL.md):")
+    for t in TIERS:
+        print(f"  tier {t}        {s['claims_by_tier'][str(t)]:5}   {TIER_MEANING[t]}")
+    print(f"\n  tier 3 population by stratum, which is what a proportional sample "
+          f"needs:")
+    for k, v in list(s["tier3_population_by_stratum"].items()):
+        print(f"    {k:52} {v:4}")
+    print()
+    print(f"what each claim is ABOUT: {s['claims_by_subject']['extraction']} ask "
+          f"whether the annotation is right,")
+    print(f"                          {s['claims_by_subject']['patent']} ask "
+          f"whether the PATENT is defective and we recorded that correctly")
     print()
 
     print(f"{s['checks']['total']} record checks:")
     for st in CHECK_STATUSES:
         print(f"  {st:14} {s['checks'][st]:5}")
+    for f in FAMILIES:
+        if s["checks_by_family"].get(f):
+            print(f"    {f:12} {s['checks_by_family'][f]:5}   {FAMILY_MEANING[f]}")
+    print()
+
+    # This stage grading itself against the annotator who went first.
+    a = run.agreement
+    print("mass-and-moles arithmetic against the annotation's own flags:")
+    print(f"  both flag it              {len(a['both']):4}   high confidence, the "
+          f"annotator was already awake here")
+    print(f"  this stage only           {len(a['machine_only']):4}   either a real "
+          f"defect the annotation missed, or this check is too aggressive")
+    for label in a["machine_only"]:
+        print(f"      {label}")
+    print(f"  the annotation only       {len(a['annotation_only']):4}   this "
+          f"stage's coverage ends here")
+    for label in a["annotation_only"]:
+        print(f"      {label}")
+    print()
+
+    agree, disagree = getattr(run, "drawing_tally", (0, 0))
+    print(f"drawn structure against gold structure: {agree} agree, "
+          f"{disagree} disagree, over the names that appear in both")
     print()
 
     print(f"source coverage over {cov['total']} numbered lines:")
     print(f"  covered                  {cov['covered']:5}   at least one record "
           f"cites the line")
     print(f"  uncited, chemistry       {cov['uncited_with_chemistry']:5}   "
-          f"candidate misses, each one a claim in the queue")
+          f"candidate misses, each one a claim in tier 2")
     print(f"  uncited, plain           {cov['uncited_plain']:5}   nothing on the "
           f"line for a record to hold")
     if run.uncited_chemistry:
         print("  " + compact_lines(run.uncited_chemistry))
+    else:
+        print("  Tier 2 is a complete and EMPTY census: every line of this patent "
+              "carrying a\n  quantity, a temperature, a duration, a yield, a ratio "
+              "or a drawn structure is\n  cited by some record. That is a result, "
+              "not a check that did not run.")
     print()
 
     score = artifact["completeness"]["score"]
@@ -2529,18 +2770,19 @@ def report(run: Run, artifact: dict, out_path: Path, check_only: bool) -> int:
 
     print(f"\ngrounding gate: {len(failed)} claims are NOT on the lines their own "
           f"record cites. FAIL")
-    print("\n  Read these first. Each is either a number the annotation invented, "
+    print("\n  Read these first. Each is either a value the annotation invented, "
           "or a\n  citation pointing at the wrong line. Both are defects, and only "
           "a reader\n  of the patent can say which:\n")
     for c in failed[:40]:
         print(f"    {c['record_label_en']}")
-        print(f"      {c['field']} = {c['claimed_en']}")
+        print(f"      {c['field']} = {c['claimed_en'][:90]}")
         print(f"      {c['auto_reason_en']}")
     if len(failed) > 40:
         print(f"    ... and {len(failed) - 40} more, all in "
               f"{out_path.name} under claims[] with auto = not_found")
-    print(f"\n  The full queue, ordered by risk, is claims[] in "
-          f"{out_path.relative_to(HERE)}.")
+    print(f"\n  The full queue is claims[] in {out_path.relative_to(HERE)}, "
+          f"ordered by tier\n  then by risk. Work tier 1 first: it is a census and "
+          f"it is meant to be finished.")
     return 1
 
 
@@ -2555,6 +2797,7 @@ FAMILY_MEANING = {
     "grounding": "a number or a quote against the lines it cites",
     "reference": "a name pointing at a record that does not exist",
     "structure": "a SMILES or a formula that does not hold",
+    "drawing": "the page drawing against the gold's structure for one molecule",
     "quantity": "mass and moles against the molecular weight",
     "consistency": "the annotation against itself",
     "completeness": "a source line no record cites",

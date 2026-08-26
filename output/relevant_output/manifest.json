@@ -430,7 +430,7 @@
     {
       "stage": "publish-gold",
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -688,7 +688,7 @@
     {
       "stage": "structures",
       "title": "identifier -> drawable molecule over five tiers, plus the coverage gate",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_structures.py --patent-id CN104292137A"
       ],
@@ -851,7 +851,7 @@
     {
       "stage": "translations",
       "title": "Chinese string -> English for everything that can reach a screen, plus the coverage gate",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_translations.py CN104292137A"
       ],
@@ -914,7 +914,7 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN104292137A",
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN104292137A"
@@ -1073,7 +1073,7 @@
     {
       "stage": "rasterise",
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
-      "status": "current",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 svg2jpg.py --all"
       ],
@@ -1602,8 +1602,8 @@
       "inputs": [
         {
           "path": "verify.py",
-          "sha256": "2aa1608fd0a333677f951294ee2c33a5dd6e7bfd8d2855aa8ab67a0f9a7d6b5b",
-          "bytes": 105531
+          "sha256": "7dbf03466348aa15b0e7c8370817f45f82c90f52f7157216730dad3e0c7fc2f1",
+          "bytes": 135358
         },
         {
           "path": "output/translations.json",
@@ -1669,8 +1669,8 @@
       "outputs": [
         {
           "path": "output/relevant_output/verification/checks-CN104292137A.json",
-          "sha256": "8891237d7f252d49d2fde1972f002a31830b7e313214b5592973c7184b4600d0",
-          "bytes": 3723701
+          "sha256": "686db53454617bc7470b54e5bbed3646fddc96b67b687ab54d212a06a404455d",
+          "bytes": 3510011
         }
       ]
     }
@@ -4645,11 +4645,11 @@
     },
     {
       "path": "output/relevant_output/verification/checks-CN104292137A.json",
-      "sha256": "8891237d7f252d49d2fde1972f002a31830b7e313214b5592973c7184b4600d0",
-      "bytes": 3723701,
+      "sha256": "686db53454617bc7470b54e5bbed3646fddc96b67b687ab54d212a06a404455d",
+      "bytes": 3510011,
       "stage": "verify",
       "input_sha256": [
-        "2aa1608fd0a333677f951294ee2c33a5dd6e7bfd8d2855aa8ab67a0f9a7d6b5b",
+        "7dbf03466348aa15b0e7c8370817f45f82c90f52f7157216730dad3e0c7fc2f1",
         "40ba01d4ddf54cc647970608ce4e72a4ec79004a1c6875c6834526f8412b7363",
         "62d3025aba7234a3f1029634dd9064aee8e53b5944c7f8c2b4eb084188f519eb",
         "c6476c132823582c3e28f7d00ede1b74050bc79172dec9406ce6230ff50b705b",
@@ -4816,6 +4816,13 @@
       "path": "output/relevant_output/verification/verdicts-CN104292137A.jsonl",
       "sha256": "fe2203e8044af124c870498e47d08a7eedefcee1b5e449146348fbaa20ea8548",
       "bytes": 331,
+      "stage": null,
+      "note": "present in the deliverable, produced by no declared stage"
+    },
+    {
+      "path": "output/relevant_output/visual/quote-translations.json",
+      "sha256": "1229b1e831d64fd4f318c08d896eab6e09fddd84b76ba7e9dcbb2e62458e02a8",
+      "bytes": 11133,
       "stage": null,
       "note": "present in the deliverable, produced by no declared stage"
     },
@@ -5502,7 +5509,7 @@
   "totals": {
     "stages": 12,
     "artifacts_produced": 113,
-    "artifacts_unclaimed": 2,
-    "bytes_produced": 15485942
+    "artifacts_unclaimed": 3,
+    "bytes_produced": 15272252
   }
 }

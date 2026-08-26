@@ -59,6 +59,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -84,6 +85,7 @@ class Stage:
     gate: bool = False
     optional_tool: str = ""      # a script that may not exist yet
     always: bool = False         # runs every time; produces no tracked artifact
+    pin_source_date: bool = False
 
 
 def stages(pid: str) -> list[Stage]:
@@ -250,6 +252,12 @@ def stages(pid: str) -> list[Stage]:
             outputs=[f"{verif}/checks-{pid}.json"],
             optional_tool="verify.py",
             gate=True,
+            # verify.py stamps the checks file with the wall clock unless
+            # SOURCE_DATE_EPOCH says otherwise, which makes two runs of an
+            # unchanged pipeline differ by one line. The runner pins it to the
+            # newest input mtime: still an honest "as of", and stable while the
+            # gold is stable, so a diff between two runs is a real diff.
+            pin_source_date=True,
         ),
         Stage(
             name="manifest",
@@ -474,6 +482,10 @@ def write_manifest(pid: str, ctx: dict) -> int:
     all_stages = ctx["stages"]
     results = ctx["results"]
 
+    # The plan hashed these files BEFORE the stages rewrote them, so the cache is
+    # stale by definition here. Clearing it is what makes the manifest a record of
+    # what is on disk now rather than of what was there when the plan was printed.
+    _SHA.clear()
     hashes: dict[str, dict] = {}
 
     def entry(p: Path) -> dict:
@@ -550,13 +562,36 @@ def write_manifest(pid: str, ctx: dict) -> int:
 
 # ======================================================================= running
 
+# Files under input/ that no stage writes. Everything else in input/ is either a
+# pipeline output (the enriched markdown) or reference material.
+HUMAN_INPUTS = ["input/*-biblio.json", "input/*-curated.json", "input/vision/p*.json"]
+
+
+def source_date_epoch() -> int:
+    """A build timestamp that is a function of the inputs, not of the clock.
+
+    The newest mtime among the files a HUMAN owns. Deliberately not the newest
+    mtime among the stage's own inputs: those include files the pipeline
+    regenerates, so --force would move the timestamp on every run and two
+    identical rebuilds would differ by one line for no reason. This moves when
+    somebody changes an input, which is the only time it should.
+    """
+    return int(max((p.stat().st_mtime for p in expand(HUMAN_INPUTS)), default=0))
+
+
 def run_stage(st: Stage, pid: str, ctx: dict) -> int:
     if st.fn is not None:
         return st.fn(pid, ctx)
+    env = None
+    if st.pin_source_date:
+        epoch = source_date_epoch()
+        env = {**os.environ, "SOURCE_DATE_EPOCH": str(epoch)}
+        print(f"  SOURCE_DATE_EPOCH={epoch}  (newest hand-authored input, so two "
+              f"rebuilds diff to nothing)")
     code = 0
     for cmd in st.cmds:
         print(f"  $ {' '.join(cmd)}")
-        proc = subprocess.run(cmd, cwd=HERE)
+        proc = subprocess.run(cmd, cwd=HERE, env=env)
         code = proc.returncode
         if code != 0:
             return code
@@ -630,7 +665,7 @@ def main() -> int:
         selected = all_stages
 
     # ---- plan ----------------------------------------------------------------
-    prior = previous_status()
+    prior = previous_run()
     plan = []
     for st in all_stages:
         if st not in selected:
@@ -642,11 +677,7 @@ def main() -> int:
         if st.optional_tool and not (HERE / st.optional_tool).exists():
             plan.append((st, "absent", f"{st.optional_tool} does not exist yet"))
             continue
-        was = prior.get(st.name, "")
-        if was.startswith("failed") or was == "not reached":
-            plan.append((st, "run", f"last run: {was}"))
-            continue
-        current, why = is_current(st)
+        current, why = is_current(st, prior)
         plan.append((st, "skip" if current else "run", why))
 
     print(f"\npipeline: {pid}")
@@ -681,8 +712,15 @@ def main() -> int:
         return rc
 
     for st, action, _ in plan:
-        ctx["results"][st.name] = {"run": "ran", "skip": "current",
-                                   "absent": "absent", "not selected": "not selected"}[action]
+        label = {"run": "ran", "skip": "current",
+                 "absent": "absent", "not selected": "not selected"}[action]
+        # A failure is sticky until the stage actually runs and passes. Without
+        # this, one `--from` past a failed gate would erase the only record that
+        # it failed, and the next full run would call the stage current.
+        was = str(prior.get(st.name, {}).get("status", ""))
+        if action != "run" and (was.startswith("failed") or was == "not reached"):
+            label = was
+        ctx["results"][st.name] = label
         if action != "run" or st.name == "manifest":
             continue
         print(f"=== {st.name} " + "=" * max(0, 66 - len(st.name)))

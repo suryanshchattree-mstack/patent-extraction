@@ -44,9 +44,9 @@ CHEMISTRY ROLLUP (computed from the annotated artifacts):
    discloses. Describe the chemistry and the process. Do not say it is useful or
    novel; that is what `novelty_claims` is for. No yields, masses or temperatures.
 2. `novelty_claims` - 2 to 4 sentences on what the patent positions as new. Quote
-   claim phrasing where it helps. This patent's background states three specific
-   objections to the prior art; a faithful novelty statement addresses what the
-   invention offers against them. Null if the claims surface no novelty.
+   claim phrasing where it helps. Where the background states specific objections
+   to the prior art, a faithful novelty statement addresses what the invention
+   offers against them. Null if the claims surface no novelty.
 3. `key_examples` - ordered list of example labels the claims cite, sorted
    numerically. Empty array when the claims cite none. Note that citing zero
    examples is common and correct in CN process claims; do not manufacture one.
