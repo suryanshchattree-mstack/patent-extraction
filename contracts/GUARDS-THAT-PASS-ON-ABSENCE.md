@@ -208,3 +208,47 @@ The general shape, which is the same as everything above it in this document: **
 failure is always in what the check does with the case it did not anticipate.** Passing
 silently, failing totally, or checking nothing at all are three ways of not having
 thought about it.
+
+---
+
+## A fifth form: a currency check that does not know what it depends on
+
+The `assemble` stage COPIES `output/translations.json` into the deliverable, and did
+not DECLARE it as an input.
+
+So a fix landing at stage 9 changed a file the stage reads and does not know it reads.
+`is_current()` checked the inputs it had been told about, found nothing moved, called
+the stage current, and skipped it. **The runner reported the stage current while the
+screen showed the old English.** Six of the eleven copied files were undeclared.
+
+This is worse than "the copy had not run yet". The copy would never have run on a
+translation change, ever, and the manifest would have said `current` every time.
+
+It is the third time tonight the manifest asserted the one thing it exists to attest
+and was wrong:
+
+    the frozen plan       a stage judged current before its dependency was rebuilt
+    write_manifest()      a non-running stage's row rewritten from a tree it had
+                          just failed to update, laundering staleness into the record
+    undeclared inputs     a stage that reads a file it never declared
+
+All three make `current` mean nothing. **A manifest that cannot tell whether the assets
+are current for the gold is worse than no manifest**, because a reader who has no
+manifest goes and checks, and a reader who has a lying one does not.
+
+### The fix, which is the positive assertion again
+
+Declaring the missing inputs closes the instance. What closes the CLASS is the manifest
+verifying the outcome rather than the bookkeeping: it now hashes every copied pair and
+fails the run when any diverge, with the remedy printed.
+
+    FAIL  1 artifact(s) in the deliverable do not match their source in output/.
+      gold/translations.json does not match output/translations.json
+      Run: python3 run_pipeline.py --patent-id CN104292137A --from publish-gold
+
+Proved by planting the exact stale value that was found in the wild: exit 1, correct
+message, correct remedy, then exit 0 after restoring.
+
+**A dependency declaration is a promise a human makes and can forget. A hash comparison
+is a fact.** Where a check can compare the outcome instead of trusting the bookkeeping,
+it should.

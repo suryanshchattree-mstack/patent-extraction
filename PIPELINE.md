@@ -446,6 +446,39 @@ annotation stands behind.
 
 ---
 
+## The one thing to keep if everything else is rewritten
+
+Three separate defects were found in this pipeline in one night, and they were the
+same defect wearing different clothes:
+
+| where | the declared contract | what it actually did |
+|---|---|---|
+| `prompts` stage | inputs are the templates and the biblio | also reads `input/pages/` for `{PAGE_COUNT}` |
+| `assemble` stage | inputs are the four gold artifacts | also reads six more it copies |
+| `verify.py` `scrub()` | looks up whole strings | looked up CJK runs |
+
+**In all three the code was confident.** The runner said `current`. The substitution
+said resolved. The English guard said clean. None of them failed loudly, and a
+`{PAGE_COUNT}` of 9 handed to an agent looking at 10 pages, or a `current` stamped on
+a stage that had just shipped stale English to every screen, is worse than a crash.
+A crash is a message.
+
+The checks that caught all three had one thing in common: **each compared two
+independent accounts of the same fact.** Declared inputs against files actually
+read. The deliverable's copy against its source in `output/`. The gold's own English
+against the translation index. The English title against the Chinese one.
+
+None of them was caught by asking a single source whether it was happy. `is_current()`
+asking its own declaration, `scrub()` asking its own index, a JSON Schema asking
+whether a record is well formed: each of those is a component certifying itself, and
+each passed while the thing it was certifying was wrong.
+
+So: **when you add a check here, make it compare two things that were derived
+separately.** A check with only one source of truth cannot fail in the way that
+matters.
+
+(Found the hard way by pipeline-run-2 and translations-2, over about four hours.)
+
 ## This pack holds ONE patent at a time
 
 Say it plainly, because the runner reads as though it were multi-patent and it is

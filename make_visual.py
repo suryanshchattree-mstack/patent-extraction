@@ -240,7 +240,51 @@ class Page:
                 current = []
         if current:
             groups.append(current)
-        return groups
+        return [self._absorb_fragments(g) for g in groups]
+
+    def _absorb_fragments(self, group: list[tuple[int, int]]) -> list[tuple[int, int]]:
+        """Pull in the bits of the figure that sit in their own band.
+
+        An atom label printed clear of the skeleton - the `Cl` above the ring on p06 -
+        is separated from it by more white than the band segmenter tolerates and is far
+        too short to be a drawing in its own right, so it is dropped and the crop cuts
+        the chlorine off the molecule. That is the one failure mode that actively
+        misleads: the reviewer compares our chlorinated structure against a picture with
+        no chlorine in it and rejects a correct extraction.
+
+        A band joins the figure only if it is indented well clear of the left text
+        margin and sits horizontally inside the figure's own span. Body text on this
+        document always starts at the margin, so no line of type can be swallowed, and
+        the crop can only ever grow.
+        """
+        if not group:
+            return group
+        reach = round(self.height * 0.024)                  # about one line of type
+        indent = self.margin + max(3 * self.token_w, round(self.width * 0.08))
+        loose = [b for b in self._bands
+                 if b not in group and self._in_body(b) and not self._is_drawing(b)]
+        out = list(group)
+        changed = True
+        while changed:
+            changed = False
+            top, bottom = out[0][0], out[-1][1]
+            span = [self.x_extent(a, b) for a, b in out]
+            span = [s for s in span if s]
+            if not span:
+                break
+            x0 = min(s[0] for s in span) - reach
+            x1 = max(s[1] for s in span) + reach
+            for band in list(loose):
+                if not (top - reach <= band[1] and band[0] <= bottom + reach):
+                    continue
+                ext = self.x_extent(*band)
+                if not ext or ext[0] < indent or ext[0] < x0 or ext[1] > x1:
+                    continue
+                loose.remove(band)
+                out.append(band)
+                out.sort()
+                changed = True
+        return out
 
 
 # ================================================================ source mapping
@@ -709,6 +753,7 @@ def _page_items(patent_id, page: Page, vis: dict, marker_y: dict,
     groups = page.drawing_bands
     counts_agree = len(groups) == len(declared)
     pad = max(4, round(page.height * PAD_FRAC))
+    page_no = int(re.sub(r"\D", "", page.page_id) or 0)
     out = []
 
     for n, drawn in enumerate(declared, 1):
@@ -795,7 +840,7 @@ def _page_items(patent_id, page: Page, vis: dict, marker_y: dict,
             "crop_box": box,
             "crop_confidence": confidence,
             "crop_confidence_note_en": why,
-            "title_en": (f"Patent {patent_id}, page {page.page_number if False else page.page_id[1:]}"
+            "title_en": (f"Patent {patent_id}, page {page_no}"
                          f" - drawing {n} of {len(declared)}"),
             "question_en": ("Do these two pictures show the same molecule?" if one else
                             f"Do these two pictures show the same {len(structures)} "
