@@ -53,6 +53,7 @@ Exit codes
     2  a coverage gate stopped the run; a human owes the pipeline something
     3  the LLM annotation passes have not been run yet
     4  this pack holds a different patent's work
+    5  the bibliographic record is missing or malformed
 """
 
 from __future__ import annotations
@@ -67,7 +68,7 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from pipeline_context import ContextError, resolve_patent_id
+from pipeline_context import ContextError, resolve_patent_id, validate_biblio
 
 HERE = Path(__file__).resolve().parent
 PY = sys.executable or "python3"
@@ -804,7 +805,7 @@ def main() -> int:
         description="Run every deterministic stage of the manual annotation pipeline.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="Exit codes: 0 ok, 1 stage failed, 2 coverage gate, 3 LLM passes not "
-               "run, 4 this pack holds a different patent.")
+               "run, 4 this pack holds a different patent, 5 bad biblio.")
     ap.add_argument("--patent-id", help="patent to run; discovered from input/*-biblio.json if omitted")
     ap.add_argument("--from", dest="from_stage", metavar="STAGE", help="start here, run everything after")
     ap.add_argument("--only", metavar="STAGE", help="run exactly this stage")
@@ -875,6 +876,7 @@ def main() -> int:
 
     # ---- run -----------------------------------------------------------------
     ctx = {"stages": all_stages, "results": {}, "prior": prior}
+    deferred: list[tuple[str, int]] = []   # non-blocking gates that failed
 
     # ---- the prompts stage, then what a human owes ---------------------------
     #
@@ -892,6 +894,26 @@ def main() -> int:
             return 1
     ctx["results"]["prompts"] = {"run": "ran", "skip": "current", "absent": "absent",
                                  "not selected": "not selected"}[pact]
+
+    # A malformed biblio before either. Every id, every uuid and half the patent
+    # record are built from it, and it is the one hand-authored input that used to
+    # have no contract: thirteen fields read through bare b["key"], failing one at a
+    # time, several stages in.
+    biblio_problems = validate_biblio(pid)
+    if biblio_problems:
+        print(f"\nSTOP  input/{pid}-biblio.json does not satisfy "
+              f"schemas/biblio.schema.json.\n")
+        for x in biblio_problems[:15]:
+            print(f"  {x}")
+        if len(biblio_problems) > 15:
+            print(f"  ... and {len(biblio_problems) - 15} more")
+        print(f"\n  Every id and uuid in every artifact is built from this file, and "
+              f"the patent\n  record is half made of it. It is checked as a whole here "
+              f"rather than one\n  key at a time, several stages in.\n\n"
+              f"  The schema documents every field, which are optional, and why "
+              f"grant_date\n  is nullable: most published applications are never "
+              f"granted.")
+        return 5
 
     # Wrong patent BEFORE missing patent. A pack holding a complete annotation of a
     # different patent has no missing prerequisites at all, so the missing-file
@@ -936,6 +958,24 @@ def main() -> int:
         that the assets are not current for the gold. It records the failing
         stage's status, so nothing is being papered over.
         """
+        # Every exit path comes through here, so this is where a non-blocking gate
+        # failure gets reported. Printing it only on the happy path would mean a
+        # later stage crashing could hide the fact that a gate went red.
+        if deferred:
+            order = [s_.name for s_, _, _ in plan]
+            first = min(order.index(n) for n, _ in deferred)
+            ran_after = [n for n in order[first + 1:]
+                         if ctx["results"].get(n) == "ran" and n != "manifest"]
+            print("=" * 72)
+            for name, code in deferred:
+                print(f"GATE FAILED: {name} (exit {code}). THIS RUN IS NOT CLEAN.")
+            if ran_after:
+                print(f"Stages that ran anyway, because they consume nothing the "
+                      f"failed gate\nproduces:  {', '.join(ran_after)}")
+            print("Their output is current for this gold. The gold itself is what the "
+                  "gate is\nquestioning, so read the gate's message above before "
+                  "trusting any of it.")
+            rc = rc or 2
         if by_name["manifest"] in selected:
             print("=== manifest " + "=" * 60)
             write_manifest(pid, ctx)
@@ -995,6 +1035,19 @@ def main() -> int:
             _SHA.clear()
             continue
         ctx["results"][st.name] = f"failed ({code})"
+
+        # A non-blocking gate records the failure, sets the exit code, and lets the
+        # rest of the run finish. Only `verify` is one, and only because a grounding
+        # failure says the annotation is suspect, not that the page images are.
+        if st.gate and not st.blocking:
+            deferred.append((st.name, code))
+            print(f"\nGATE FAILED  {st.name} (exit {code}). The run CONTINUES: nothing "
+                  f"after this\n             stage consumes what it produces, and the "
+                  f"assets below are what a\n             human reaches for when "
+                  f"grounding is in doubt. The exit code\n             carries the "
+                  f"failure; see the summary at the end.")
+            continue
+
         for later in all_stages[all_stages.index(st) + 1:]:
             ctx["results"][later.name] = "not reached"
         print()
@@ -1010,17 +1063,16 @@ def main() -> int:
         print(f"STOP  stage {st.name!r} failed with exit {code}. Nothing after it ran.")
         return finish(1)
 
-    finish(0)
-
     print("=" * 72)
-    print(f"pipeline complete: {pid}")
+    print(f"pipeline complete: {pid}" if not deferred
+          else f"pipeline reached the end: {pid}  (A GATE FAILED, see below)")
     print(f"deliverable      : output/relevant_output/")
     print(f"manifest         : output/relevant_output/manifest.json")
     absent = [s.name for s, a, _ in plan if a == "absent"]
     if absent:
         print(f"stages absent    : {', '.join(absent)} "
               f"(the tool does not exist yet; nothing was skipped silently)")
-    return 0
+    return finish(0)
 
 
 if __name__ == "__main__":

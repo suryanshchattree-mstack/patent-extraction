@@ -61,6 +61,40 @@ This is the part that decides whether a comparison proves anything.
 - `name` (8 of 9): our structure was chosen by the compound name printed in the patent's TEXT near the drawing, and nothing about it came from the drawing. The two halves are independent and can genuinely disagree. This is the pairing that can catch a misread drawing.
 - `structure` (1 of 9): the patent's words near the drawing name no compound we hold, so our record was found by matching structures. The halves then agree by construction. Such a comparison shows only that we hold the molecule at all, and it is labelled WEAK on the image itself.
 
+## The mirror problem, and what was done about it
+
+RDKit picks its own rotation and reflection for a depiction, and for these
+molecules it picked the MIRROR IMAGE of the way the patent draws them. Same
+molecule, flipped picture. A chemist reads straight past that. The reader this
+asset is built for cannot: they are matching shapes, and the honest answer from
+someone matching shapes to a mirrored pair is "no, these are different". That
+would have turned the best asset in the pack into a generator of false defects
+against correct extractions.
+
+Our side is now laid out onto a template whose 2D coordinates reproduce the
+patent's own geometry, read off the drawings themselves: a hexagon with an apex
+top and bottom and vertical left and right edges, the acyl group at the
+upper-left vertex, the chlorine at the top, the C3 group at the upper-right and
+the sulfonyl at the lower-right. Two templates cover the document, one for the
+four-substituent benzoate series and one for the three-substituent toluene.
+
+17 of 18 panels are laid out the patent's way, and each panel records which template it used under
+`oriented_to_patent_layout`. The only one left is 2,6-dichlorotoluene, which
+carries too few substituents for either template to grip; it is near-symmetric
+and reads the same either way.
+
+Every comparison also carries a line ABOVE the question telling the reviewer to
+judge by which groups are attached to the ring rather than by where they sit on
+the page, and saying whether that particular picture was oriented or not. The
+orientation fix reduces the problem; the sentence is what makes the question
+answerable when it cannot be fixed.
+
+**Matching the patent's notation was tried and rejected.** RDKit's abbreviation
+set condenses the acetyl group to `Ac` and the carboxylic acid to `CO2H`, where
+the patent draws both out in full, and it does not touch `SO2CH3` at all, which
+was the group worth condensing. It would have added notation mismatches rather
+than removing them, so our side stays as drawn-out skeletal structures.
+
 ## What the machine already found
 
 Where the pairing is by name, the drawing's SMILES and the gold's SMILES are both reduced to one canonical form and compared. That check ran on 8 structures and found 0 disagreements. The denominator is the point: zero out of zero would mean the check never ran.

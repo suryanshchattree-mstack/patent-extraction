@@ -319,6 +319,34 @@ def rollup(mols, rxns, pws):
     }
 
 
+def inventors(b: dict) -> list[dict]:
+    """Inventor names and countries, from the biblio rather than from a constant.
+
+    This was `{"name": n, "country": "CN"}`, a literal, for every inventor of every
+    patent. It was right for the one patent in the pack and silently wrong for any
+    other: a US patent's inventors came out labelled Chinese, in the deliverable,
+    with no crash and nothing to notice.
+
+    Two shapes are accepted, so a biblio that knows can say so:
+
+        "inventors": ["A Person", "B Person"]                 country from the office
+        "inventors": [{"name": "A Person", "country": "DE"}]  stated outright
+
+    The bare-string form falls back to the issuing jurisdiction, which is a guess,
+    but a defensible one and the same guess for every patent rather than one
+    patent's answer applied to all of them. Where it matters, state it.
+    """
+    out = []
+    fallback = (b.get("jurisdiction") or "").upper() or None
+    for inv in b.get("inventors") or []:
+        if isinstance(inv, dict):
+            out.append({"name": inv.get("name"),
+                        "country": inv.get("country") or fallback})
+        else:
+            out.append({"name": inv, "country": fallback})
+    return out
+
+
 def finalise_patent(llm, mols, rxns, pws):
     b = json.loads(BIBLIO.read_text())
     tags = list(llm.get("tags") or [])
@@ -361,7 +389,7 @@ def finalise_patent(llm, mols, rxns, pws):
         },
         "parties": {"assignees": [{"name": a["name"], "country": a["country"],
                                    "type": a["type"]} for a in b["assignees"]],
-                    "inventors": [{"name": n, "country": "CN"} for n in b["inventors"]],
+                    "inventors": inventors(b),
                     "examiners": None},
         "patent_summary": llm.get("patent_summary"),
         "novelty_claims": llm.get("novelty_claims"),

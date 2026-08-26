@@ -6,7 +6,7 @@
     {
       "stage": "prompts",
       "title": "render the annotation prompts for THIS patent, for the agent to follow",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 render_prompts.py --patent-id CN104292137A"
       ],
@@ -383,7 +383,7 @@
     {
       "stage": "finalise",
       "title": "deterministic ids and uuids, rollup, bibliographic merge",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 finalise.py --patent-id CN104292137A"
       ],
@@ -391,8 +391,8 @@
       "inputs": [
         {
           "path": "finalise.py",
-          "sha256": "977b0b76d19fa28cb219dad888d8ef0f978463633fd9a96beaf875b1ef34d983",
-          "bytes": 19381
+          "sha256": "d33fc956f028fb67a1017f9ecdc4a9a203e7358f135a405e070aa5e45d76405c",
+          "bytes": 21967
         },
         {
           "path": "pipeline_context.py",
@@ -469,8 +469,8 @@
       "inputs": [
         {
           "path": "schemas/validate.py",
-          "sha256": "3ca58237a863f8b900540d277805f52b6271fd26d4fafc2ef6c6ac2c09349b2c",
-          "bytes": 1207
+          "sha256": "bbda2b8c75562df89c9b1cd898e295da5a0de4f1790b74cd2d8c7fc82846b7a5",
+          "bytes": 3727
         },
         {
           "path": "schemas/compounds.schema.json",
@@ -528,7 +528,7 @@
     {
       "stage": "publish-gold",
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -1012,7 +1012,7 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN104292137A",
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN104292137A"
@@ -1259,7 +1259,7 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -1690,92 +1690,9 @@
       ]
     },
     {
-      "stage": "verify",
-      "title": "the verification contract file the reviewer UI reads",
-      "status": "failed (1)",
-      "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 verify.py CN104292137A"
-      ],
-      "gate": true,
-      "inputs": [
-        {
-          "path": "verify.py",
-          "sha256": "ddad51350b6f6ae23cca831f5f762b56fd9752d157b7e057e1044687687bd151",
-          "bytes": 167809
-        },
-        {
-          "path": "output/translations.json",
-          "sha256": "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
-          "bytes": 237599
-        },
-        {
-          "path": "output/00-sections.json",
-          "sha256": "62d3025aba7234a3f1029634dd9064aee8e53b5944c7f8c2b4eb084188f519eb",
-          "bytes": 7901
-        },
-        {
-          "path": "input/CN104292137A-enriched-numbered.md",
-          "sha256": "c6476c132823582c3e28f7d00ede1b74050bc79172dec9406ce6230ff50b705b",
-          "bytes": 48681
-        },
-        {
-          "path": "output/relevant_output/gold/structures-resolved.json",
-          "sha256": "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
-          "bytes": 34939
-        },
-        {
-          "path": "output/relevant_output/gold/structures.json",
-          "sha256": "773aa26f8679c359da6be3de922e1ed353f7bb4d478c65d5901ac19e0eef7fad",
-          "bytes": 22996
-        },
-        {
-          "path": "output/relevant_output/provenance/compounds-equivalence.json",
-          "sha256": "faeeec600ec1a45acc70358af53e13525c0f6932a2a01c38ceab6dbcc80c0031",
-          "bytes": 1942
-        },
-        {
-          "path": "output/relevant_output/provenance/compounds-provenance.json",
-          "sha256": "d82de042296a6aaaff71abf52bb7210e9e624c1da10972182a800930f3b33c56",
-          "bytes": 30648
-        },
-        {
-          "path": "output/relevant_output/provenance/reactions-provenance.json",
-          "sha256": "c1dfcbf3317c03c1de4a2ca51d0c3319a8c63712502477463a3173671c2313cc",
-          "bytes": 48150
-        },
-        {
-          "path": "output/relevant_output/gold/compounds.json",
-          "sha256": "1e81d3f1fe0cce373c053da57bdf754b5f282d87a315a8c56deb7ad1bced194d",
-          "bytes": 115574
-        },
-        {
-          "path": "output/relevant_output/gold/reactions.json",
-          "sha256": "23f9f77efd3f1a069f3cd7656aaa50b868b46e765572a285f1249360e93790d7",
-          "bytes": 278093
-        },
-        {
-          "path": "output/relevant_output/gold/pathways.json",
-          "sha256": "c9c67647fc3f7d07b95c7d2f6cbc48c8a82a25c4b07f14e4476833234603441e",
-          "bytes": 463563
-        },
-        {
-          "path": "output/relevant_output/gold/patent.json",
-          "sha256": "240b1af08475c0a4634602ab95159f1343dc0289a14bfc96aa4e080fc78c969b",
-          "bytes": 9647
-        }
-      ],
-      "outputs": [
-        {
-          "path": "output/relevant_output/verification/checks-CN104292137A.json",
-          "sha256": "b197b9698aaa47ee420700bae29849acd48c8dcb273705d2024cf9fa16e1e47e",
-          "bytes": 3327798
-        }
-      ]
-    },
-    {
       "stage": "visual",
       "title": "the page index, the structure comparisons and the drawing claims the UI shows",
-      "status": "not reached",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_visual_evidence.py --patent-id CN104292137A"
       ],
@@ -1783,8 +1700,8 @@
       "inputs": [
         {
           "path": "make_visual_evidence.py",
-          "sha256": "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
-          "bytes": 66993
+          "sha256": "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
+          "bytes": 76283
         },
         {
           "path": "visual_text.py",
@@ -1915,18 +1832,18 @@
       "outputs": [
         {
           "path": "output/relevant_output/visual/page-index.json",
-          "sha256": "7f841665094b59010fa5578550e74824d27a7a6a13bbc56ce864fe2a1b905883",
-          "bytes": 50633
+          "sha256": "8e8f2cbfe1d48d2ee8564b61321f4017cd6cfaf854247abe63661ddb1d5fca6f",
+          "bytes": 50954
         },
         {
           "path": "output/relevant_output/visual/drawing-claims.json",
-          "sha256": "3df569ba6591c1fbaaf3a3d9c8e88e9adaef51a548b852b0157e766a1e749d90",
-          "bytes": 191783
+          "sha256": "4f51860e6073210cdf5ad7444570c14e95de28662a9fd728d466607fe7bbffd2",
+          "bytes": 192969
         },
         {
           "path": "output/relevant_output/visual/README.md",
-          "sha256": "34cfec34069b611e71f4f86b343b27b129af570057c36e64d3f87627822ea860",
-          "bytes": 6609
+          "sha256": "b6e392d0bea29c1ef76f99d7158e759c224381447495699a91fe26d1816ac9f1",
+          "bytes": 7544
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p06_d1-patent.png",
@@ -1935,8 +1852,8 @@
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p06_d1.png",
-          "sha256": "3d6c74175297e88d9fe130a9ce4f3140b08be0f6f8425c80914624ccfd2dfd06",
-          "bytes": 628499
+          "sha256": "014fadf19bbed8c1d977d784dd01c3df22356165eeb6f9508baaf18dacec7907",
+          "bytes": 627947
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p06_d2-patent.png",
@@ -1945,8 +1862,8 @@
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p06_d2.png",
-          "sha256": "04890e38023671cef71da16df7fa79a55589d6c558375a057e53d74cfc7f3e69",
-          "bytes": 203283
+          "sha256": "5db3e1bfad9e95612dfd5e4c8e02462275b2fa0cd1299ad01e903d4eb34bff3e",
+          "bytes": 209016
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p07_d1-patent.png",
@@ -1955,8 +1872,8 @@
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p07_d1.png",
-          "sha256": "8fc963c12d1b7a76a7696a95fd199a6fe6e678fdba5cb67b14d9ed5f353e3700",
-          "bytes": 171899
+          "sha256": "99b9ed4b12a698d3c3a7cd7ccc0c28daecf41df2d374c65aae5742b0cf5d8bbd",
+          "bytes": 187037
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p07_d2-patent.png",
@@ -1965,8 +1882,8 @@
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p07_d2.png",
-          "sha256": "e0fbf73f6f240eea76d8c818f4b18cd028d3dd5fc06d4a0908494375171acae3",
-          "bytes": 174738
+          "sha256": "eae99a651e8ad45cffb3a45322a95a89a35e0ca14ce69191e3c804c80c3cf4dd",
+          "bytes": 191196
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p07_d3-patent.png",
@@ -1975,8 +1892,8 @@
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p07_d3.png",
-          "sha256": "1e1941b823e4c753e3144cbfa6554099419740980b014e168158435563b73fa5",
-          "bytes": 167172
+          "sha256": "d279d6886e4a9b624ebef71144ee4515fb5561a9bff07893827bfa15dcc52906",
+          "bytes": 182862
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p08_d1-patent.png",
@@ -1985,8 +1902,8 @@
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p08_d1.png",
-          "sha256": "ae555add8e1ac23586d3f34ae93ab021c42f9bf57e8803ef089c5c37351e291c",
-          "bytes": 172992
+          "sha256": "1710cb86ce44d1cfb3358bc4d9d898efa40bb77be9c7defec149e2d46a6974f7",
+          "bytes": 186883
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p08_d2-patent.png",
@@ -1995,8 +1912,8 @@
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p08_d2.png",
-          "sha256": "96da7c4ca10bd01b592962dda28f008942148219218ced2e6e36af6a5935257c",
-          "bytes": 172994
+          "sha256": "4c58047bd3ae8f8d31a0e0d19d7c35e3f48d641382dfaa86886ba38996188359",
+          "bytes": 183199
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p08_d3-patent.png",
@@ -2005,8 +1922,8 @@
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p08_d3.png",
-          "sha256": "092911fd3814d8ef8be3bb2ab7caa96f9a6a8e9ca9fd2d7bf5ffb595459c4db6",
-          "bytes": 172054
+          "sha256": "b3aaf0cbff345683079357184d408fadc02c18a19e41412d474a1b97e4718dbf",
+          "bytes": 184421
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p09_d1-patent.png",
@@ -2015,15 +1932,98 @@
         },
         {
           "path": "output/relevant_output/visual/comparisons/CN104292137A_p09_d1.png",
-          "sha256": "d79341ac7e3fd80cf689522288880e2afd1bb2e5f0ff55ccaf9cd4491bd3435a",
-          "bytes": 165722
+          "sha256": "9d7b1d4741525c4a43659db543de47ec13f320f8a3451199116e584b8dc0d42f",
+          "bytes": 175044
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "title": "the verification contract file the reviewer UI reads",
+      "status": "failed (1)",
+      "commands": [
+        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 verify.py CN104292137A"
+      ],
+      "gate": true,
+      "inputs": [
+        {
+          "path": "verify.py",
+          "sha256": "ddad51350b6f6ae23cca831f5f762b56fd9752d157b7e057e1044687687bd151",
+          "bytes": 167809
+        },
+        {
+          "path": "output/translations.json",
+          "sha256": "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
+          "bytes": 237599
+        },
+        {
+          "path": "output/00-sections.json",
+          "sha256": "62d3025aba7234a3f1029634dd9064aee8e53b5944c7f8c2b4eb084188f519eb",
+          "bytes": 7901
+        },
+        {
+          "path": "input/CN104292137A-enriched-numbered.md",
+          "sha256": "c6476c132823582c3e28f7d00ede1b74050bc79172dec9406ce6230ff50b705b",
+          "bytes": 48681
+        },
+        {
+          "path": "output/relevant_output/gold/structures-resolved.json",
+          "sha256": "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
+          "bytes": 34939
+        },
+        {
+          "path": "output/relevant_output/gold/structures.json",
+          "sha256": "773aa26f8679c359da6be3de922e1ed353f7bb4d478c65d5901ac19e0eef7fad",
+          "bytes": 22996
+        },
+        {
+          "path": "output/relevant_output/provenance/compounds-equivalence.json",
+          "sha256": "faeeec600ec1a45acc70358af53e13525c0f6932a2a01c38ceab6dbcc80c0031",
+          "bytes": 1942
+        },
+        {
+          "path": "output/relevant_output/provenance/compounds-provenance.json",
+          "sha256": "d82de042296a6aaaff71abf52bb7210e9e624c1da10972182a800930f3b33c56",
+          "bytes": 30648
+        },
+        {
+          "path": "output/relevant_output/provenance/reactions-provenance.json",
+          "sha256": "c1dfcbf3317c03c1de4a2ca51d0c3319a8c63712502477463a3173671c2313cc",
+          "bytes": 48150
+        },
+        {
+          "path": "output/relevant_output/gold/compounds.json",
+          "sha256": "1e81d3f1fe0cce373c053da57bdf754b5f282d87a315a8c56deb7ad1bced194d",
+          "bytes": 115574
+        },
+        {
+          "path": "output/relevant_output/gold/reactions.json",
+          "sha256": "23f9f77efd3f1a069f3cd7656aaa50b868b46e765572a285f1249360e93790d7",
+          "bytes": 278093
+        },
+        {
+          "path": "output/relevant_output/gold/pathways.json",
+          "sha256": "c9c67647fc3f7d07b95c7d2f6cbc48c8a82a25c4b07f14e4476833234603441e",
+          "bytes": 463563
+        },
+        {
+          "path": "output/relevant_output/gold/patent.json",
+          "sha256": "240b1af08475c0a4634602ab95159f1343dc0289a14bfc96aa4e080fc78c969b",
+          "bytes": 9647
+        }
+      ],
+      "outputs": [
+        {
+          "path": "output/relevant_output/verification/checks-CN104292137A.json",
+          "sha256": "b197b9698aaa47ee420700bae29849acd48c8dcb273705d2024cf9fa16e1e47e",
+          "bytes": 3327798
         }
       ]
     },
     {
       "stage": "selfcheck",
       "title": "grade the verification engine's own output without trusting its exit code",
-      "status": "not reached",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 verify_selfcheck.py CN104292137A"
       ],
@@ -2031,8 +2031,8 @@
       "inputs": [
         {
           "path": "verify_selfcheck.py",
-          "sha256": "9b179ba391e8eceb03b67044e6feaf163702362aaed2a1c119cd15416165e5c9",
-          "bytes": 22174
+          "sha256": "1cf1832cf1558e4573e2f29f2126b433bd425a1d4a5a6b82d1c36d527b72954d",
+          "bytes": 23648
         },
         {
           "path": "verify.py",
@@ -2135,7 +2135,7 @@
       "bytes": 1942,
       "stage": "finalise",
       "input_sha256": [
-        "977b0b76d19fa28cb219dad888d8ef0f978463633fd9a96beaf875b1ef34d983",
+        "d33fc956f028fb67a1017f9ecdc4a9a203e7358f135a405e070aa5e45d76405c",
         "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
         "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e",
         "50ed6ab556fec7030bafde0db066d634bf9347d88584305002b00325a564448e",
@@ -2181,7 +2181,7 @@
       "bytes": 3629,
       "stage": "finalise",
       "input_sha256": [
-        "977b0b76d19fa28cb219dad888d8ef0f978463633fd9a96beaf875b1ef34d983",
+        "d33fc956f028fb67a1017f9ecdc4a9a203e7358f135a405e070aa5e45d76405c",
         "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
         "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e",
         "50ed6ab556fec7030bafde0db066d634bf9347d88584305002b00325a564448e",
@@ -2196,7 +2196,7 @@
       "bytes": 115574,
       "stage": "finalise",
       "input_sha256": [
-        "977b0b76d19fa28cb219dad888d8ef0f978463633fd9a96beaf875b1ef34d983",
+        "d33fc956f028fb67a1017f9ecdc4a9a203e7358f135a405e070aa5e45d76405c",
         "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
         "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e",
         "50ed6ab556fec7030bafde0db066d634bf9347d88584305002b00325a564448e",
@@ -2211,7 +2211,7 @@
       "bytes": 9647,
       "stage": "finalise",
       "input_sha256": [
-        "977b0b76d19fa28cb219dad888d8ef0f978463633fd9a96beaf875b1ef34d983",
+        "d33fc956f028fb67a1017f9ecdc4a9a203e7358f135a405e070aa5e45d76405c",
         "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
         "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e",
         "50ed6ab556fec7030bafde0db066d634bf9347d88584305002b00325a564448e",
@@ -2226,7 +2226,7 @@
       "bytes": 463563,
       "stage": "finalise",
       "input_sha256": [
-        "977b0b76d19fa28cb219dad888d8ef0f978463633fd9a96beaf875b1ef34d983",
+        "d33fc956f028fb67a1017f9ecdc4a9a203e7358f135a405e070aa5e45d76405c",
         "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
         "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e",
         "50ed6ab556fec7030bafde0db066d634bf9347d88584305002b00325a564448e",
@@ -2482,7 +2482,7 @@
       "bytes": 278093,
       "stage": "finalise",
       "input_sha256": [
-        "977b0b76d19fa28cb219dad888d8ef0f978463633fd9a96beaf875b1ef34d983",
+        "d33fc956f028fb67a1017f9ecdc4a9a203e7358f135a405e070aa5e45d76405c",
         "1ea9daee8f60de263a68a9c9f40ae7e9a78a57e1a0942c27df21c5ca5a622f6b",
         "04b8fb6c5987ec1480b8b89721ca011fccf0254598a66f21c46743778433d24e",
         "50ed6ab556fec7030bafde0db066d634bf9347d88584305002b00325a564448e",
@@ -5332,7 +5332,7 @@
       "bytes": 7544,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5358,8 +5358,7 @@
         "1e81d3f1fe0cce373c053da57bdf754b5f282d87a315a8c56deb7ad1bced194d",
         "62d3025aba7234a3f1029634dd9064aee8e53b5944c7f8c2b4eb084188f519eb",
         "a3f3588714c77355237e63a6594927f52ce47a7d5f6fcb7f217caabb2ea46021"
-      ],
-      "note": "on disk now, but the visual stage last ran producing sha256 34cfec34069b611e..."
+      ]
     },
     {
       "path": "output/relevant_output/visual/comparisons/CN104292137A_p06_d1-patent.png",
@@ -5367,7 +5366,7 @@
       "bytes": 231689,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5397,11 +5396,11 @@
     },
     {
       "path": "output/relevant_output/visual/comparisons/CN104292137A_p06_d1.png",
-      "sha256": "3d6c74175297e88d9fe130a9ce4f3140b08be0f6f8425c80914624ccfd2dfd06",
-      "bytes": 628499,
+      "sha256": "014fadf19bbed8c1d977d784dd01c3df22356165eeb6f9508baaf18dacec7907",
+      "bytes": 627947,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5435,7 +5434,7 @@
       "bytes": 25122,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5465,11 +5464,11 @@
     },
     {
       "path": "output/relevant_output/visual/comparisons/CN104292137A_p06_d2.png",
-      "sha256": "04890e38023671cef71da16df7fa79a55589d6c558375a057e53d74cfc7f3e69",
-      "bytes": 203283,
+      "sha256": "5db3e1bfad9e95612dfd5e4c8e02462275b2fa0cd1299ad01e903d4eb34bff3e",
+      "bytes": 209016,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5503,7 +5502,7 @@
       "bytes": 30703,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5533,11 +5532,11 @@
     },
     {
       "path": "output/relevant_output/visual/comparisons/CN104292137A_p07_d1.png",
-      "sha256": "8fc963c12d1b7a76a7696a95fd199a6fe6e678fdba5cb67b14d9ed5f353e3700",
-      "bytes": 171899,
+      "sha256": "99b9ed4b12a698d3c3a7cd7ccc0c28daecf41df2d374c65aae5742b0cf5d8bbd",
+      "bytes": 187037,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5571,7 +5570,7 @@
       "bytes": 31082,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5601,11 +5600,11 @@
     },
     {
       "path": "output/relevant_output/visual/comparisons/CN104292137A_p07_d2.png",
-      "sha256": "e0fbf73f6f240eea76d8c818f4b18cd028d3dd5fc06d4a0908494375171acae3",
-      "bytes": 174738,
+      "sha256": "eae99a651e8ad45cffb3a45322a95a89a35e0ca14ce69191e3c804c80c3cf4dd",
+      "bytes": 191196,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5639,7 +5638,7 @@
       "bytes": 30950,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5669,11 +5668,11 @@
     },
     {
       "path": "output/relevant_output/visual/comparisons/CN104292137A_p07_d3.png",
-      "sha256": "1e1941b823e4c753e3144cbfa6554099419740980b014e168158435563b73fa5",
-      "bytes": 167172,
+      "sha256": "d279d6886e4a9b624ebef71144ee4515fb5561a9bff07893827bfa15dcc52906",
+      "bytes": 182862,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5707,7 +5706,7 @@
       "bytes": 28261,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5737,11 +5736,11 @@
     },
     {
       "path": "output/relevant_output/visual/comparisons/CN104292137A_p08_d1.png",
-      "sha256": "ae555add8e1ac23586d3f34ae93ab021c42f9bf57e8803ef089c5c37351e291c",
-      "bytes": 172992,
+      "sha256": "1710cb86ce44d1cfb3358bc4d9d898efa40bb77be9c7defec149e2d46a6974f7",
+      "bytes": 186883,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5775,7 +5774,7 @@
       "bytes": 31550,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5805,11 +5804,11 @@
     },
     {
       "path": "output/relevant_output/visual/comparisons/CN104292137A_p08_d2.png",
-      "sha256": "96da7c4ca10bd01b592962dda28f008942148219218ced2e6e36af6a5935257c",
-      "bytes": 172994,
+      "sha256": "4c58047bd3ae8f8d31a0e0d19d7c35e3f48d641382dfaa86886ba38996188359",
+      "bytes": 183199,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5843,7 +5842,7 @@
       "bytes": 35080,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5873,11 +5872,11 @@
     },
     {
       "path": "output/relevant_output/visual/comparisons/CN104292137A_p08_d3.png",
-      "sha256": "092911fd3814d8ef8be3bb2ab7caa96f9a6a8e9ca9fd2d7bf5ffb595459c4db6",
-      "bytes": 172054,
+      "sha256": "b3aaf0cbff345683079357184d408fadc02c18a19e41412d474a1b97e4718dbf",
+      "bytes": 184421,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5911,7 +5910,7 @@
       "bytes": 37913,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5941,11 +5940,11 @@
     },
     {
       "path": "output/relevant_output/visual/comparisons/CN104292137A_p09_d1.png",
-      "sha256": "d79341ac7e3fd80cf689522288880e2afd1bb2e5f0ff55ccaf9cd4491bd3435a",
-      "bytes": 165722,
+      "sha256": "9d7b1d4741525c4a43659db543de47ec13f320f8a3451199116e584b8dc0d42f",
+      "bytes": 175044,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -5975,11 +5974,11 @@
     },
     {
       "path": "output/relevant_output/visual/drawing-claims.json",
-      "sha256": "3df569ba6591c1fbaaf3a3d9c8e88e9adaef51a548b852b0157e766a1e749d90",
-      "bytes": 191783,
+      "sha256": "4f51860e6073210cdf5ad7444570c14e95de28662a9fd728d466607fe7bbffd2",
+      "bytes": 192969,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -6013,7 +6012,7 @@
       "bytes": 50954,
       "stage": "visual",
       "input_sha256": [
-        "583d5d8a3a54971b90120ca7290128c026bbf751cc090a957d8f7d1254b81c66",
+        "953b172f974ed80669879454546aff7dfa06a36f3c65f0d6aa7926765b84f73d",
         "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
         "3fec73d9d6b8343fded2e07b1585c65b6f0bef24d669d51d33dc077cf34b6ca1",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
@@ -6039,8 +6038,7 @@
         "1e81d3f1fe0cce373c053da57bdf754b5f282d87a315a8c56deb7ad1bced194d",
         "62d3025aba7234a3f1029634dd9064aee8e53b5944c7f8c2b4eb084188f519eb",
         "a3f3588714c77355237e63a6594927f52ce47a7d5f6fcb7f217caabb2ea46021"
-      ],
-      "note": "on disk now, but the visual stage last ran producing sha256 7f841665094b5901..."
+      ]
     },
     {
       "path": "output/relevant_output/visual/quote-translations.json",
@@ -6734,6 +6732,6 @@
     "artifacts_produced": 141,
     "artifacts_unclaimed": 4,
     "artifacts_stray": 3,
-    "bytes_produced": 18197423
+    "bytes_produced": 18296861
   }
 }

@@ -269,3 +269,48 @@ PATENT_OFFICES = {"cn": "CNIPA", "us": "USPTO", "ep": "EPO", "jp": "JPO",
 
 def patent_office(jurisdiction: str | None) -> str:
     return PATENT_OFFICES.get((jurisdiction or "").lower(), "patent office")
+
+
+BIBLIO_SCHEMA = HERE / "schemas" / "biblio.schema.json"
+
+
+def validate_biblio(patent_id: str) -> list[str]:
+    """Check the biblio against its schema, as a whole, before anything runs.
+
+    finalise.py reads thirteen fields through bare `b["key"]` access. A biblio
+    missing one of them therefore failed at that key, one key at a time, after
+    merge and collect had already done their work, and told you about exactly one
+    problem per run. It was the only hand-authored input with no contract.
+
+    jsonschema is an optional dependency of this pack, so when it is absent this
+    falls back to the schema's own `required` list rather than skipping the check.
+    Same source of truth either way; the fallback just says less about types.
+    """
+    problems: list[str] = []
+    p = biblio_path(patent_id)
+    if not p.exists():
+        return [f"{p.relative_to(HERE)} does not exist"]
+    try:
+        b = json.loads(p.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        return [f"{p.name} is not valid JSON: {e}"]
+    if not BIBLIO_SCHEMA.exists():
+        return problems
+    schema = json.loads(BIBLIO_SCHEMA.read_text(encoding="utf-8"))
+
+    try:
+        from jsonschema import Draft202012Validator
+    except ImportError:
+        for key in schema.get("required", []):
+            if key not in b:
+                problems.append(f"{p.name} is missing required field {key!r}")
+        return problems
+
+    for e in sorted(Draft202012Validator(schema).iter_errors(b),
+                    key=lambda e: list(e.path)):
+        where = ".".join(str(x) for x in e.path) or "<root>"
+        problems.append(f"{p.name}  {where}: {e.message}")
+    if b.get("patent_id") != patent_id:
+        problems.append(f"{p.name}  patent_id is {b.get('patent_id')!r}, "
+                        f"this run is {patent_id!r}")
+    return problems

@@ -79,7 +79,13 @@ FONT_DIR = Path("/System/Library/Fonts/Supplemental")
 FONT_REGULAR = FONT_DIR / "Arial.ttf"
 FONT_BOLD = FONT_DIR / "Arial Bold.ttf"
 
-CJK = re.compile(r"[⺀-鿿　-〿＀-￯]")
+# Deliberately wider than the characters this patent actually uses, so that this
+# gate and the project's other English checks cannot disagree about what counts:
+# radicals, kana, bopomofo, compatibility ideographs and the fullwidth forms are
+# all in, not just the common ideograph block.
+CJK = re.compile(
+    r"[⺀-⻿⼀-⿟　-〿぀-ヿ㄀-ㄯ㄰-㆏ㆠ-ㆿ㇀-䶿"
+    r"一-鿿ꀀ-꓏豈-﫿︰-﹏＀-￯]")
 MARKER = re.compile(r"^\[\d{4}\]$")
 
 
@@ -660,7 +666,7 @@ def fit_box(img: Image.Image, width: int, height: int) -> Image.Image:
 
 
 def compose(patent_img, ours, header, left_caption, right_caption,
-            question, notes, side_by_side):
+            question, notes, side_by_side, orient_note):
     """One self-describing picture. Every claim it makes is written on it."""
     f_h = load_font(FONT_BOLD, 30)
     f_lbl = load_font(FONT_BOLD, 23)
@@ -709,7 +715,9 @@ def compose(patent_img, ours, header, left_caption, right_caption,
     cap_w = PANEL_W if side_by_side else body_w
     cap_h = (f_cap.size + 6) * max(len(wrap(pd, left_caption, f_cap, cap_w)),
                                    len(wrap(pd, right_caption, f_cap, cap_w))) + 14
-    q_h = (f_q.size + 8) * len(wrap(pd, question, f_q, body_w)) + 26
+    f_warn = load_font(FONT_BOLD, 20)
+    warn_h = (f_warn.size + 6) * len(wrap(pd, orient_note, f_warn, body_w)) + 18
+    q_h = (f_q.size + 8) * len(wrap(pd, question, f_q, body_w)) + 26 + warn_h
     note_h = sum((f_note.size + 6) * len(wrap(pd, n, f_note, body_w)) + 10 for n in notes)
 
     if side_by_side:
@@ -757,6 +765,7 @@ def compose(patent_img, ours, header, left_caption, right_caption,
 
     d.line([(pad, y), (width - pad, y)], fill="black", width=2)
     y += 16
+    y = text_block(d, (pad, y), orient_note, f_warn, body_w) + 14
     y = text_block(d, (pad, y), question, f_q, body_w, leading=8) + 12
     for n in notes:
         y = text_block(d, (pad, y), n, f_note, body_w) + 10
@@ -1069,7 +1078,8 @@ def build(root: Path, patent_id: str) -> int:
                      "the patent drew."]
 
             img = compose(patent_img, ours, header, left_caption, right_caption,
-                          question, notes, side_by_side=single)
+                          question, notes, side_by_side=single,
+                          orient_note=orient_note)
             comp_name = f"{rid}.png"
             img.save(out / "comparisons" / comp_name)
 
@@ -1504,6 +1514,42 @@ def write_readme(out: Path, page_index: dict, doc: dict, patent_id: str) -> None
         "name no compound we hold, so our record was found by matching structures. The "
         "halves then agree by construction. Such a comparison shows only that we hold "
         "the molecule at all, and it is labelled WEAK on the image itself.",
+        "",
+        "## The mirror problem, and what was done about it",
+        "",
+        "RDKit picks its own rotation and reflection for a depiction, and for these",
+        "molecules it picked the MIRROR IMAGE of the way the patent draws them. Same",
+        "molecule, flipped picture. A chemist reads straight past that. The reader this",
+        "asset is built for cannot: they are matching shapes, and the honest answer from",
+        "someone matching shapes to a mirrored pair is \"no, these are different\". That",
+        "would have turned the best asset in the pack into a generator of false defects",
+        "against correct extractions.",
+        "",
+        "Our side is now laid out onto a template whose 2D coordinates reproduce the",
+        "patent's own geometry, read off the drawings themselves: a hexagon with an apex",
+        "top and bottom and vertical left and right edges, the acyl group at the",
+        "upper-left vertex, the chlorine at the top, the C3 group at the upper-right and",
+        "the sulfonyl at the lower-right. Two templates cover the document, one for the",
+        "four-substituent benzoate series and one for the three-substituent toluene.",
+        "",
+        f"{sum(1 for c in doc['comparisons'] for p in c['panels'] if p['oriented_to_patent_layout'])} "
+        f"of {sum(len(c['panels']) for c in doc['comparisons'])} panels are laid out the "
+        "patent's way, and each panel records which template it used under",
+        "`oriented_to_patent_layout`. The only one left is 2,6-dichlorotoluene, which",
+        "carries too few substituents for either template to grip; it is near-symmetric",
+        "and reads the same either way.",
+        "",
+        "Every comparison also carries a line ABOVE the question telling the reviewer to",
+        "judge by which groups are attached to the ring rather than by where they sit on",
+        "the page, and saying whether that particular picture was oriented or not. The",
+        "orientation fix reduces the problem; the sentence is what makes the question",
+        "answerable when it cannot be fixed.",
+        "",
+        "**Matching the patent's notation was tried and rejected.** RDKit's abbreviation",
+        "set condenses the acetyl group to `Ac` and the carboxylic acid to `CO2H`, where",
+        "the patent draws both out in full, and it does not touch `SO2CH3` at all, which",
+        "was the group worth condensing. It would have added notation mismatches rather",
+        "than removing them, so our side stays as drawn-out skeletal structures.",
         "",
         "## What the machine already found",
         "",

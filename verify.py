@@ -160,6 +160,7 @@ from resolve_translations import (
     has_chinese,
     normalise,
     read_numbered,
+    sorted_keys,
 )
 
 RDLogger.DisableLog("rdApp.*")
@@ -414,6 +415,62 @@ def _collapse_gloss(s: str) -> str:
             return before
         return m.group(0)
     return GLOSS.sub(repl, s)
+
+
+# The translation index, longest key first, bucketed by first character. Built once
+# per index object and held against it so a recycled id cannot serve a stale bucket.
+_KEY_BUCKETS: dict[int, tuple] = {}
+
+
+def index_buckets(index: dict) -> dict:
+    entry = _KEY_BUCKETS.get(id(index))
+    if entry is None or entry[0] is not index:
+        buckets: dict[str, list[str]] = {}
+        for key in sorted_keys([k for k in index if k and has_chinese(k)]):
+            buckets.setdefault(key[0], []).append(key)
+        entry = (index, buckets)
+        _KEY_BUCKETS[id(index)] = entry
+    return entry[1]
+
+
+def substitute_longest(text: str, index: dict) -> str:
+    """Replace the LONGEST index key that fits at each position, not each run.
+
+    Looking up run by run is the obvious implementation and it is wrong, because a
+    chemical name is not one run. `2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯` is in the index
+    whole, with the English `methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate`,
+    but its ASCII locants split it into three runs, none of which is a key. Every
+    lookup misses and the reviewer is handed
+
+        2-[untranslated Chinese term]-3-[untranslated Chinese term]-4-[...]
+
+    which passes the no-Chinese gate by destroying the name. Measured over every
+    Chinese string that can reach here on this patent: 250 of 325 mangled, 1442
+    markers emitted, and 200 of the index's 274 keys unreachable by construction.
+
+    Nor is the fix to curate the fragments. They are sentence clauses - 加入 "add",
+    水洗 "wash with water" - and joining their English gives Chinese word order in
+    Latin script, with the "methyl" at the wrong end of the name.
+
+    `sorted_keys` is imported rather than reimplemented so this and
+    resolve_translations.substitute() can never disagree about which key wins, which
+    is the one thing that would make the artifact and the screen name different
+    molecules.
+    """
+    buckets = index_buckets(index)
+    out: list[str] = []
+    i, n = 0, len(text)
+    while i < n:
+        for key in buckets.get(text[i], ()):
+            if text.startswith(key, i):
+                en = (index.get(key) or {}).get("en")
+                out.append(en if en else key)
+                i += len(key)
+                break
+        else:
+            out.append(text[i])
+            i += 1
+    return "".join(out)
 
 
 def scrub(text: str, index: dict) -> str:
@@ -2017,6 +2074,7 @@ class Run(Engine):
         self.structure_checks()
         self.drawing_checks()
         self.consistency_checks()
+        self.yield_identity()
         self.build_coverage()
         # The quantity sweep reads every claim built above, so it runs last of the
         # builders and before anything that scores them.
@@ -2639,6 +2697,107 @@ class Run(Engine):
                     detail, needs_human=status == "fail",
                     about_fields=[f"compounds[{ascii_key(ident)}].quantity."]))
 
+    # ------------------------------------------------------------ yield identity
+
+    def yield_identity(self) -> None:
+        """limiting reactant mmol x yield x MW(product) = the product mass printed.
+
+        `mass_check` needs a mass AND a mole count on the SAME row, and every
+        example step in this patent writes its product as a mass with no mole count.
+        So the single most important arithmetic in the document is invisible to the
+        check built to find it. Example 1 Step 1 prints 28.6 g of a compound whose
+        weight is 204.68; 0.2 mol at 84% is 34.39 g. The annotation flagged that step
+        and this stage passed it, which is the one disagreement in the agreement
+        matrix and the reason this check exists.
+
+        The identity needs no mole count on the product row, only the charge, the
+        yield and a resolved structure, so it reaches the eight rows the other check
+        cannot. It is arithmetic on the PATENT's own three numbers, so a
+        disagreement is the document contradicting itself and never an extraction
+        error: `about` is `patent` and the question is worded to say so.
+
+        Three of the eight land within half a unit of the chlorine-for-hydrogen
+        shift, by a path completely independent of mass-over-moles, which is
+        corroboration of the des-chloro finding rather than the same measurement
+        twice. The rest cluster near -44.7 and are deliberately left unexplained:
+        naming a cause this stage cannot support would be the machine guessing in
+        front of a reviewer who cannot check it.
+        """
+        by_record = {r.record_id: r for r in self.records}
+        for r in self.data["reactions"]:
+            rec = by_record.get(r["id"])
+            if rec is None:
+                continue
+            product = mass = None
+            charges: list[float] = []
+            for c in (r.get("compounds") or []):
+                q = c.get("quantity") or {}
+                if c.get("role") == "product" and q.get("mass_g") is not None:
+                    product, mass = c.get("identifier"), float(q["mass_g"])
+                elif c.get("role") == "reactant" and q.get("mmol"):
+                    charges.append(float(q["mmol"]))
+            yield_pct = r.get("product_yield_pct")
+            mw = (self.structures.get(product) or {}).get("mw") if product else None
+
+            if not (product and mass and charges and yield_pct and mw):
+                rec.checks.append(check(
+                    "quantity.yield_identity", "quantity", "skip",
+                    "The product mass agrees with the charge and the yield",
+                    "This step does not print all four of a product mass, a "
+                    "reactant molar charge, a yield and a resolved product "
+                    "structure, so the identity cannot be applied to it.",
+                    about_fields=[]))
+                continue
+
+            limiting = min(charges)
+            scale = limiting / 1000.0 * (yield_pct / 100.0)
+            predicted, implied = mw * scale, mass / scale
+            delta = implied - mw
+            tol = max(ABS_TOL_FLOOR, REL_TOL * mw)
+            name_en = self.english_name(product)
+            arithmetic = (f"{fmt_value(limiting)} mmol charged at "
+                          f"{fmt_value(yield_pct)}% of {name_en}, molecular weight "
+                          f"{mw:.2f}, comes to {predicted:.2f} g")
+
+            if abs(delta) <= tol:
+                rec.checks.append(check(
+                    "quantity.yield_identity", "quantity", "pass",
+                    "The product mass agrees with the charge and the yield",
+                    f"{arithmetic}, and the patent prints {fmt_value(mass)} g. "
+                    f"Implied molecular weight {implied:.2f} against {mw:.2f}, "
+                    f"within tolerance {tol:.2f}.", about_fields=[]))
+                continue
+
+            cl_for_h = abs(delta + CL_FOR_H) < CL_WINDOW
+            tail = (f" The shortfall of {delta:+.2f} is within half a unit of the "
+                    f"{-CL_FOR_H:+.2f} that swapping one chlorine for one hydrogen "
+                    f"costs. That is a lead for the reviewer and not a diagnosis."
+                    if cl_for_h else
+                    f" The offset of {delta:+.2f} has no explanation this stage can "
+                    f"support, which is why it is being shown to a person.")
+            detail = (f"{arithmetic}, but the patent prints {fmt_value(mass)} g. "
+                      f"Implied molecular weight {implied:.2f} against {mw:.2f}, "
+                      f"outside the tolerance of {tol:.2f}.{tail}")
+            rec.checks.append(check(
+                "quantity.yield_identity", "quantity", "fail",
+                "The product mass agrees with the charge and the yield",
+                detail, needs_human=True, about_fields=["product_yield_pct"]))
+
+            self._claim(
+                rec, "yield_identity",
+                f"The patent's own numbers for this step do not agree with each "
+                f"other. Does the page really print {fmt_value(mass)} g of "
+                f"{name_en} from {fmt_value(limiting)} mmol at "
+                f"{fmt_value(yield_pct)}%?",
+                f"{fmt_value(mass)} g", mass, "g", rec.cited, [], "not_found",
+                detail,
+                ["The charge, the yield and the product mass printed for this step "
+                 "cannot all three be right.",
+                 "The numbers are the patent's own, so the annotation recording "
+                 "them is not the defect."],
+                "value", set(), about="patent", load_bearing=True,
+                extra={"basis": "derived"})
+
     # ------------------------------------------------------------ coverage
 
     # What makes an uncited line worth a reviewer's attention. Each signal is a fact
@@ -3079,6 +3238,38 @@ def assemble(run: Run) -> dict:
                   for v in SEVERITIES}
     families = {f: sum(1 for c in claims if claim_family(c) == f) for f in FAMILIES}
     tiers = {str(t): sum(1 for c in claims if c["tier"] == t) for t in TIERS}
+
+    # The same three numbers again, derived from WHERE THE WORK CAME FROM rather
+    # than by counting the queue. A denominator recovered from the list it is meant
+    # to measure cannot detect the one failure that matters: a claim that was never
+    # emitted at all. Tier 2 held fifteen claims while both of its old denominators
+    # read zero, and nothing in the file could say so. `agrees` is the assertion a
+    # consumer can check instead of trusting either number on its own.
+    cov_qty = run.quantity_tally
+    unconfirmed = sum(1 for c in claims
+                      if c["tier"] != 2 and (c["auto"] in ("not_found", "partial")
+                                             or c["load_bearing"]))
+    promoted = sum(1 for c in claims
+                   if c["tier"] == 1 and c["auto"] == "found")
+    feeders = {
+        "1": {"population": unconfirmed + promoted,
+              "from_en": f"{unconfirmed} claims the machine could not confirm plus "
+                         f"{promoted} it matched cleanly on a record whose own "
+                         f"checks failed"},
+        "2": {"population": len(run.uncited_chemistry)
+                            + sum(cov_qty.get(k, 0)
+                                  for k in ("gap", "schema_loss", "unmapped")),
+              "from_en": f"{len(run.uncited_chemistry)} source lines no record "
+                         f"cites plus "
+                         f"{sum(cov_qty.get(k, 0) for k in ('gap', 'schema_loss', 'unmapped'))}"
+                         f" quantities on cited lines no claim asserts"},
+        "3": {"population": len(claims) - tiers["1"] - tiers["2"],
+              "from_en": "every remaining claim, which is what the sampled bound "
+                         "is drawn from"},
+    }
+    tier_population = {t: {**feeders[t], "claims": tiers[t],
+                           "agrees": feeders[t]["population"] == tiers[t]}
+                       for t in tiers}
     # The denominators ui-report needs. A stratified sample cannot be drawn, and a
     # confidence bound cannot be computed, from a filtered list: both need the
     # population size of every stratum, including the ones that end up with no
@@ -3189,6 +3380,7 @@ def assemble(run: Run) -> dict:
                        **verdicts},
             "claims_by_family": families,
             "claims_by_tier": tiers,
+            "tier_population": tier_population,
             "claims_by_severity": severities,
             "tier3_population_by_stratum": dict(sorted(strata.items())),
             "claims_by_subject": about,
