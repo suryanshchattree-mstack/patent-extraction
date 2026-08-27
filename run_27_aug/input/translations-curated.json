@@ -1,0 +1,218 @@
+{
+  "_readme": [
+    "Hand-authored English for the Chinese strings of one patent that",
+    "resolve_translations.py cannot get any other way. One entry per exact Chinese",
+    "string, keyed by the string as the gold spells it, byte for byte.",
+    "",
+    "WHY THIS FILE EXISTS: the gold keeps the patent's Chinese, because the Chinese",
+    "is the authoritative text and at least one finding in FINDINGS.md was only",
+    "catchable by reading it. The consuming team cannot read Chinese. Almost all of",
+    "the gap closes from data already in the pipeline: the enriched source carries a",
+    "machine translation of nearly every line, and most Chinese aliases sit on a",
+    "record that already names the same molecule in English. What is left is the",
+    "handful of class terms and misprints that neither can reach.",
+    "",
+    "TRANSLATE THESE AS CHEMISTRY, NOT AS TEXT. Check every name against the",
+    "structure or against the context in the patent rather than word by word. There",
+    "is no OPSIN and no network here, so nothing verifies a hand-authored name",
+    "except a human doing it, and a wrong chemical translation reads exactly as",
+    "convincingly as a right one. A wrong translation is worse than an admitted gap:",
+    "the gap is visible in the report, the wrong name is not.",
+    "",
+    "PRESERVE THE PATENT'S ERRORS. Where the Chinese itself is wrong, translate the",
+    "error faithfully and explain it in 'note'. Silently correcting it would make the",
+    "gold agree with chemistry instead of agreeing with the document, which is the",
+    "one thing a reference annotation may never do.",
+    "",
+    "WHAT NOT TO PUT HERE: anything the pipeline already resolves. A quotation whose",
+    "source line carries a '> EN:' line resolves with origin 'source_mt'. A Chinese",
+    "alias of a compound the gold also names in English resolves with origin",
+    "'gold_alias'. Both are stronger provenance claims than 'curated', because both",
+    "are the document's or the annotation's own words rather than ours. An entry here",
+    "for one of those is harmless, and is reported as overridden, but it is work you",
+    "did not need to do.",
+    "",
+    "OVERRIDE, and when it is honest to use it. An entry may carry",
+    "'override': true, which makes it beat the source and the gold instead of",
+    "losing to them. That is normally exactly backwards, because both are",
+    "better provenance than we are. The one shape that earns it is a SHORT",
+    "PHRASE whose source-line answer is the translation of the WHOLE PARAGRAPH",
+    "it was quoted out of. A consumer substitutes the index into the",
+    "annotator's English commentary, and a 695-character paragraph spliced into",
+    "the middle of a sentence is not a translation of a 14-character phrase, it",
+    "is a different and much worse answer. 'override' requires both an 'en' and",
+    "a 'note', so the reasoning is attached to the decision in the artifact.",
+    "",
+    "FIELDS: 'en' is the English form and must contain no Chinese. 'note' is free",
+    "text and is appended to the entry's note whichever tier ends up supplying the",
+    "English, so it is the right place for anything a reader has to know about the",
+    "string. Set 'en' to null, with a note, to record a gap deliberately left open:",
+    "the coverage gate still reports it, and the reasoning travels with it instead",
+    "of being lost.",
+    "",
+    "NOT EVERY ENTRY IS A MOLECULE. [0002] ends with a list of the weeds the",
+    "target herbicide controls, and the source's machine translation keeps the",
+    "Chinese plant names beside their English glosses, so those runs reach a",
+    "screen too and are indexed here. They are translated as botany on the same",
+    "terms the compounds are translated as chemistry: against what the name",
+    "denotes, with the genus-versus-species distinction the Chinese makes",
+    "preserved rather than flattened.",
+    "",
+    "Each name below was worked out from the patent's own context, and the",
+    "confidence in each is stated in its note."
+  ],
+  "patent_id": "CN104292137A",
+  "entries": {
+    "硝环磺酮": {
+      "en": "xiaohuanhuangtong [herbicide name exactly as printed; not a standard common name, identity unresolved]",
+      "note": "A TRANSLITERATION AND AN ADMISSION, NOT AN IDENTIFICATION. [0002] names two comparator herbicides whose activity tembotrione exceeds: 硝环磺酮 and 甲基磺草酮. The second is a standard Chinese common name for mesotrione, CAS 104206-82-8, whose other standard name is 硝磺草酮. The first names nothing: it returns no compound in any Chinese agrochemical source, while the two real names it sits between run in opposite directions, 硝磺草酮 for mesotrione and 环磺酮 for tembotrione itself. The Chinese trade literature this paragraph paraphrases states the comparison as '环磺酮是由拜耳公司2007年研制的三酮类玉米田除草剂新品种，其活性高于硝磺草酮', naming mesotrione alone, so the likeliest reading is a garbled 硝磺草酮 that has picked up a 环 from the 环磺酮 around it. Likeliest is not settled. That reading has the sentence name mesotrione twice, and reading it as tembotrione has the patent compare its target with its target, and the document decides neither. Pass V verified the four characters individually at 6x and they are as printed, so this is not a transcription artifact; compounds.json records it resolved:false for the same reason and the enriched source leaves it untranslated too. The English above therefore transliterates the printed name in pinyin and says in English that it is unidentified. That puts the string on a screen in English, which the reading team requires, without naming a molecule the evidence does not support, and it substitutes into [0002] as a sentence that still reads correctly. Confidence in the pinyin: high. Confidence in any molecular identity: none is offered, and the gold's resolved:false stands untouched. Sources consulted 2026-08-27: zh.wikipedia.org/wiki/硝磺草酮 for the mesotrione synonymy; the 环磺酮 product reviews at jsppa.com.cn and enongzi.com for the comparator sentence, none of which contains the string 硝环磺酮."
+    },
+    "革除了硫醚的过氧化氢氧化步骤": {
+      "en": "has done away with the hydrogen-peroxide oxidation step of the thioether",
+      "override": true,
+      "note": "OVERRIDES THE SOURCE, and the reason is length rather than disagreement. This 14-character phrase is quoted twice: once as quote_zh on a provenance row, and once inside the annotator's English commentary on the drawn scheme, 'says the invention 革除了硫醚的过氧化氢氧化步骤, and the prose route contains no such step at all'. The phrase sits inside paragraph [0031] at line 176, and tier 1 answers a quotation by covering it with its source line's English, so without this entry the index returns the whole 695-character translation of [0031] and a consumer substituting it prints 'says the invention The beneficial effects of the present invention are: by improving the process, ...' where a clause belongs. Nothing about that is Chinese, so the English guard cannot see it; it is simply the wrong answer at ten times the length. The English above is the same clause the source's own translation of [0031] uses, 'doing away with the hydrogen-peroxide oxidation step of the thioether', put into the tense 革除了 marks, so this does not disagree with the source at all, it just answers the phrase as a phrase. 革除 is to abolish or do away with, 了 marks it completed, 硫醚 is the thioether, and 过氧化氢 is hydrogen peroxide. Confidence: high. See the notes on 革除了 and 硫醚 for the shorter forms of the same words, which this entry wins against on length, as it must."
+    },
+
+    "无水三氯化铝": {
+      "en": "anhydrous aluminium trichloride",
+      "override": true,
+      "note": "OVERRIDES gold_alias, which returns 'aluminium trichloride' and drops 无水, anhydrous. This is the step 1 and step 2 Friedel-Crafts catalyst and the qualifier is the whole point of it: aluminium trichloride hydrolyses on contact with water to the hydrate and hydrogen chloride, and the hydrate does not catalyse the reaction, so 'anhydrous' is a statement about whether the step works rather than a description of the reagent. The gold's own compound record already carries 'anhydrous aluminium trichloride' as its identifier, so the fact was never missing from the annotation, only from this index, where tier 2 picked the shorter alias. Confidence: high. 无水 is literally 'no water' and is the standard Chinese prefix for the anhydrous form."
+    },
+
+    "无水硫酸镁": {
+      "en": "anhydrous magnesium sulfate",
+      "override": true,
+      "note": "OVERRIDES gold_alias for the same reason as 无水三氯化铝. Used as the drying agent in the step 7 and step 8 workups, where anhydrous is the only form that dries anything: the heptahydrate is what it becomes after it has worked. The gold's record carries 'anhydrous magnesium sulfate' already. Note that the neighbouring alias 硫酸镁 without the prefix resolves to plain 'magnesium sulfate' and is correct as it stands, which is why this is fixed per alias and not per record. Confidence: high."
+    },
+
+    "饱和碳酸氢钠": {
+      "en": "saturated sodium bicarbonate",
+      "override": true,
+      "note": "OVERRIDES gold_alias, which returns 'sodium bicarbonate' and drops 饱和, saturated. Saturated sodium bicarbonate is an aqueous wash used to neutralise a reaction mixture; solid sodium bicarbonate is a different operation with a different result. The Chinese says which one, so the English should. The gold's record carries 'saturated sodium bicarbonate'. Confidence: high; 饱和 is the standard term for a saturated solution."
+    },
+
+    "稀盐酸": {
+      "en": "dilute hydrochloric acid",
+      "override": true,
+      "note": "OVERRIDES gold_alias, which returns 'hydrochloric acid' and drops 稀, dilute. The patent distinguishes three strengths of the same acid across the document, 稀盐酸 for the step 3 acidification and 36％的盐酸 for the step 6 workup, and collapsing them all to 'hydrochloric acid' loses a distinction the document is deliberately making. This entry does not put a number on it, because the Chinese does not: 稀 says dilute and says no more. Confidence: high. See 36％的盐酸, the same substance at a stated strength."
+    },
+
+    "36％的盐酸": {
+      "en": "36% hydrochloric acid",
+      "override": true,
+      "note": "OVERRIDES gold_alias, and the reason is a lost fact rather than a wrong name. This is an alias on the hydrochloric acid compound record, so tier 2 answers it with the record's own English identifier, 'hydrochloric acid'. That is the right substance and the wrong strength: the Chinese states 36％, the commercial concentrated grade, and the English drops it. A concentration is a fact about what was charged, and a translation that silently discards it has changed the charge. 盐酸 is hydrochloric acid and 36％的 is the attributive '36% '. The gold's compound record is not wrong to be named for the substance rather than the solution, which is why this is fixed here and not there. Confidence: high; the number is printed in the Chinese and the substance name is the gold's own. See also 15％的次氯酸钠溶液, the same defect on the same tier."
+    },
+
+    "15％的次氯酸钠溶液": {
+      "en": "15% sodium hypochlorite solution",
+      "override": true,
+      "note": "OVERRIDES gold_alias for the same reason as 36％的盐酸, and this one changes an arithmetic result rather than only a description. Line 206 charges 15％的次氯酸钠溶液500g in Example 1 step 3. Resolved as bare 'sodium hypochlorite' that reads as 500 g of oxidant; read correctly it is 500 g of a 15% solution, so about 75 g of sodium hypochlorite, a factor of nearly seven. The haloform oxidation in that step is one of the reactions whose mass balance the verification engine cannot close, so the strength is not decoration. 次氯酸钠 is sodium hypochlorite, 溶液 is solution, 15％的 is the attributive '15% '. Confidence: high. Rendered as 'solution' rather than 'aqueous solution' because the Chinese says 溶液 and does not say 水溶液; the neighbouring alias 次氯酸钠水溶液 does, and is a separate entry."
+    },
+
+    "硫醇": {
+      "en": "thiol (mercaptan)",
+      "note": "Class term, not a specific compound, and the gold records it resolved:false for that reason. [0003] names it as 废水中的硫醇, the thiol in the waste water that the prior-art route makes hard to treat, immediately after naming 甲硫醇钠 (sodium methanethiolate) as the reagent that produces the odour. The species meant is therefore the free thiol liberated from that reagent, but the Chinese states only the class, so the English states only the class. Confidence: high. 硫醇 is the standard Chinese term for thiols, and the enriched source renders the same phrase as 'the mercaptan in the waste water'; both English words are given because the patent literature uses them interchangeably."
+    },
+    "甲硫醚": {
+      "en": "methyl sulfide (methyl thioether)",
+      "note": "The literal reading, and deliberately as ambiguous in English as it is in Chinese. 甲 is methyl, 硫醚 is thioether or sulfide, so 甲硫醚 read on its own is dimethyl sulfide. But [0031] uses it for 甲硫醚的氯取代反应, the chlorine-substitution reaction the invention replaces with methanesulfonyl chloride, where the substrate is the aryl methyl thioether intermediate rather than dimethyl sulfide. The gold leaves the identity open for exactly that reason. English 'methyl sulfide' carries the same ambiguity as the Chinese, which is why it is used here rather than 'dimethyl sulfide', which would settle a question the patent does not settle. Confidence in the translation: high. Confidence in which molecule is meant: deliberately none, and the gold says so."
+    },
+    "硫醚": {
+      "en": "thioether (sulfide)",
+      "note": "The second of the two adjacent mentions in [0031] that the gold merged into one record, 硫醚的过氧化氢氧化步骤, the hydrogen-peroxide oxidation of the thioether that this process eliminates. Class term with no methyl prefix, so it is one step more general than 甲硫醚. Confidence: high; 硫醚 is the standard Chinese term for the thioether class."
+    },
+    "N-溴琥珀酸亚胺": {
+      "en": "N-bromosuccinimide",
+      "note": "NBS, the brominating agent [0003] names as prior art and calls expensive, and that [0031] claims the invention replaced with 溴素 (bromine, Br2). The printed Chinese deviates from the standard name: the patent writes 琥珀酸亚胺, succinic acid imide, where the standard Chinese common name is 琥珀酰亚胺, succinimide. The English is unaffected, because the compound is unambiguous from the role the text gives it, and the printed form is preserved as the identifier rather than corrected. Confidence: high. Resolved from the gold record's own English alias in the normal run, so this entry only carries the note."
+    },
+    "1,2-二氯甲烷": {
+      "en": "1,2-dichloromethane",
+      "note": "TRANSLATED LITERALLY, AND THE LITERAL READING IS CHEMICALLY IMPOSSIBLE. Methane has one carbon and cannot carry a 1,2 substitution pattern, so no compound answers to this name. The error is in the patent's own Chinese, not in the translation: [0035] prints 1,2-二氯甲烷 as the step 1 extraction solvent, where the same step's reaction solvent is printed 1,2-二氯乙烷 (1,2-dichloroethane) and later steps use 二氯甲烷 (dichloromethane). Either would be a plausible correction and the document does not say which, so neither is applied. Preserving the error is the whole point of a gold annotation: an extractor that silently emits dichloroethane here has to score as a miss, and it cannot if the reference has already been corrected. compounds.json records it resolved:false for the same reason. Confidence in the literal translation: high. Confidence in what was meant: none is offered."
+    },
+
+    "辣子草属": {
+      "en": "Galinsoga (gallant soldiers)",
+      "note": "BOTANY, NOT CHEMISTRY. The four entries below this line are weeds, not compounds. [0002] closes by listing the weeds tembotrione controls, and the source's own English keeps the Chinese name beside its gloss there, so the run reaches a screen and has to be indexed like any other. 辣子草 is the Chinese common name for Galinsoga parviflora, an annual Asteraceae weed of maize and vegetable ground, and the trailing 属 marks the genus rather than the species, so the English is the genus name and not a binomial. 'Gallant soldiers' is given as well because it is the name the weed goes by in English-language agronomy, where the Latin is rarely spoken. Confidence: high. Worth knowing: Chinese floras normally write this genus 牛膝菊属, and 辣子草属 is the vernacular form of the same genus rather than a different one."
+    },
+
+    "旋花属": {
+      "en": "Convolvulus (bindweed)",
+      "note": "Weed genus, not a compound; see the note on 辣子草属 for why these are indexed. 旋花属 is Convolvulus, the bindweeds of the Convolvulaceae. In a Chinese maize-field weed list the species actually meant is field bindweed, 田旋花, Convolvulus arvensis, but the patent writes the genus and so does this entry. Confidence: high. Do not read it as Calystegia (打碗花属), the other Chinese vine that English also calls bindweed; that is a different genus and the Chinese distinguishes them."
+    },
+
+    "婆婆纳属": {
+      "en": "Veronica (speedwell)",
+      "note": "Weed genus, not a compound; see the note on 辣子草属 for why these are indexed. 婆婆纳属 is Veronica, the speedwells, placed in the Plantaginaceae in current treatments and in the Scrophulariaceae in older Chinese ones. The bare name 婆婆纳 is Veronica polita, a common broadleaf weed of Chinese arable land, but the patent writes the genus and so does this entry. Confidence: high."
+    },
+
+    "猪殃殃": {
+      "en": "cleavers (Galium aparine)",
+      "note": "A weed common name, and DELIBERATELY NOT rendered as a genus: unlike the three names beside it in [0002] this one carries no 属, so it names the plant and not the genus Galium, which Chinese writes 拉拉藤属 or 猪殃殃属. Chinese agronomy uses 猪殃殃 for the cleavers or catchweed bedstraw of cereal and maize ground, and that is what the weed list means. Confidence in 'cleavers': high, and the enriched source glosses it the same way. Confidence in the binomial: lower, and stated as a caution rather than a fact. Chinese floras attach 猪殃殃 to more than one member of the complex, iPlant treats 拉拉藤 as Galium spurium and lists 猪殃殃 among the names of Galium aparine var. tenerum, and the agricultural literature uses Galium aparine loosely for all of them. The genus is not in doubt; the species is a question the patent never raises and this entry does not settle."
+    },
+
+    "甲酯": {
+      "en": "methyl ester",
+      "note": "A NAME FRAGMENT STANDING ALONE, and one of a group of entries that exist for the annotator's own commentary rather than for the patent. Those fields are written in English with the patent's Chinese quoted inside them, so a consumer substitutes the longest indexed name at each position and prints the result; what is left over after the whole compound names have been taken is these fragments, and each has to be readable on its own. 甲 is methyl and 酯 is ester, and the provenance quotes 甲酯 by itself where it contrasts the ester actually charged with the ethyl ester the patent names: 'the substrate charged is the 甲酯 (methyl ester)'. Confidence: high; the annotator's own gloss beside it says the same. Rendered as the class term and not as a specific molecule, exactly as the Chinese leaves it."
+    },
+
+    "乙酯": {
+      "en": "ethyl ester",
+      "note": "Name fragment standing alone; see the note on 甲酯. 乙 is ethyl, 酯 is ester. Quoted by itself in the provenance where the patent names an ETHYL ester for an intermediate that was made from a methyl ester with no ethyl source charged anywhere in the step, which is the naming defect the record is about. Confidence: high, and the annotator glosses it 'the ETHYL ester' in the same sentence."
+    },
+
+    "苯甲酸乙酯": {
+      "en": "ethyl benzoate",
+      "note": "Name fragment standing alone; see the note on 甲酯. Read as chemistry and not character by character: Chinese writes the acid first and the alkyl of the ester last, 苯甲酸 benzoic acid plus 乙酯 ethyl ester, where English puts the alkyl first, so the name is 'ethyl benzoate' and not 'benzoic acid ethyl ester'. This is the tail of the patent's full name for the mis-named intermediate, 2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸乙酯, whose head the index already carries; the annotator quotes only the tail. Confidence: high. It names no specific substituted compound on its own, which is correct, because on its own the Chinese does not either."
+    },
+
+    "苯甲酸": {
+      "en": "benzoic acid",
+      "note": "Name fragment standing alone; see the note on 甲酯. The one place it stands alone is claim 6 as quoted in the provenance, '苯甲酸 : 氯化亚砜 : 环己二酮 = 1:1-5:1-3', where the claim writes the substrate by its parent acid rather than by its full substituted name. Confidence in the translation: high. Note that the molecule the claim means is the substituted benzoic acid of step 7 and not benzoic acid itself; the abbreviation is the patent's and is preserved rather than expanded."
+    },
+
+    "氧代": {
+      "en": "oxo",
+      "note": "Locant prefix standing alone; see the note on 甲酯. 氧代 is the standard Chinese rendering of the oxo prefix, a doubly bonded ring oxygen, and it is quoted here out of the heading name 3-氧代-1-环己烯酯, which substitutes to '3-oxo-1-cyclohexenyl ester' and matches the enol ester the page draws. Confidence: high. Deliberately not 'keto': oxo is the nomenclature term and keto is the descriptive one, and this string is part of a name."
+    },
+
+    "环己烯酯": {
+      "en": "cyclohexenyl ester",
+      "note": "Name fragment standing alone; see the note on 甲酯. 环己烯 is cyclohexene and 酯 is ester, so the fragment names the ester OF the cyclohexenyl alcohol, which is what the drawn structure is: an O-acyl enol ester with the ester oxygen on the cyclohexenone ring. Quoted out of 3-氧代-1-环己烯酯. Confidence: high."
+    },
+
+    "无机碱或有机碱": {
+      "en": "an inorganic or organic base",
+      "note": "A class term, and deliberately as unspecific in English as the patent is in Chinese; see the note on 甲酯 for why these entries exist. The provenance quotes it to record that the base of step 7 is never identified, only constrained, with six named options spread across [0027] and [0028], so no stoichiometry can be attributed to it. Translating it as any one of those six would invent the identification the record exists to say is missing. Confidence: high."
+    },
+
+    "适量": {
+      "en": "an appropriate amount",
+      "note": "A charge quantity that is not a quantity, and the reason two arithmetic checks cannot close; see the note on 甲酯 for why these entries exist. 适量 is the standard Chinese pharmacopoeial and procedural phrase for an unstated, judged amount. The provenance quotes it for the peroxybenzoic acid initiator, which is charged this way and is therefore absent from the claim 4 molar ratio. Confidence: high, and the annotator glosses it the same way in place. 'An appropriate amount' is preferred to 'a suitable quantity' only because it is the phrasing the annotator already used, so the substituted text and the surrounding prose read as one voice."
+    },
+
+    "米黄色固体": {
+      "en": "beige solid",
+      "note": "A product appearance, the only qualitative datum step 8 gives; see the note on 甲酯 for why these entries exist. 米黄色 is literally rice-yellow and is the standard Chinese for beige or cream, and 固体 is solid. Confidence: high, and the annotator glosses it 'a beige solid' in place. Worth knowing for a reader chasing the arithmetic: this is the whole of what the patent states about the final product, with no mass, no yield and no melting point beside it."
+    },
+
+    "具体实施方式": {
+      "en": "Detailed Description of the Embodiments",
+      "note": "A patent section heading, not chemistry; see the note on 甲酯 for why these entries exist. 具体实施方式 is the standard heading of the worked-examples section of a Chinese patent specification and is rendered with the standard English equivalent used for the same section of a translated Chinese application. It matters here structurally rather than chemically: the provenance cites it to fix that the multi-arrow scheme at line 174 sits BEFORE this heading and therefore belongs to the preceding section rather than to Example 1, which is the whole basis for treating the drawn route as a separate telling. Confidence: high."
+    },
+
+    "革除了": {
+      "en": "has done away with",
+      "note": "Ordinary prose, quoted from the patent's own claims about its advantages; see the note on 甲酯 for why these entries exist. 革除 is to abolish or do away with and 了 marks it as completed, so the phrase is the patent asserting that a thing is gone from the route rather than merely reduced. The provenance quotes it twice, at [0004] for the reagent and at [0031] for the oxidation step, and both quotations are evidence in findings about the drawn scheme contradicting the text. Confidence: high. 'Has done away with' is used rather than 'has eliminated' because 革除 carries the sense of getting rid of something objectionable, which is the patent's point in both places."
+    },
+
+    "革除了气味大的": {
+      "en": "has done away with the strong-smelling",
+      "note": "The same verb as 革除了 with its adjective attached, left over as one run because the compound it modifies, 甲硫醇钠, is indexed separately and is taken first; see the note on 甲酯. 气味大的 is literally 'of large odour' and means strong-smelling or malodorous. Substituted, the sentence reads 'the invention has done away with the strong-smelling sodium methanethiolate', which is what [0004] at line 113 claims. Confidence: high."
+    },
+
+    "剧毒": {
+      "en": "highly toxic",
+      "note": "An adjective, left over as one run because the compound it modifies, 氰基丙酮, is indexed separately and is taken first; see the note on 甲酯. 剧毒 is the standard Chinese hazard word for acute, severe toxicity, and is the register used on Chinese hazard labelling rather than a casual intensifier. Substituted, the sentence reads that the invention 'has done away with...the highly toxic cyanoacetone', which is [0004] at line 113 contradicting itself, since cyanoacetone is what step 8 charges. Confidence: high."
+    }
+  }
+}

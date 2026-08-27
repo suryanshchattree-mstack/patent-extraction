@@ -1,0 +1,98 @@
+[
+  {
+    "section_index": 0,
+    "section_label": "Bibliographic Data",
+    "section_type": "bibliographic",
+    "start_line": 1,
+    "end_line": 36,
+    "heading_text_zh": null,
+    "heading_text_en": null,
+    "contains_procedure": false,
+    "estimated_steps": 0,
+    "notes": "Covers the markdown document title at line 1, the p01 front-page comment at line 4, and the full INID-coded front page block from (19) at line 6 through the (54) invention title at lines 34-36. The invention title is absorbed here rather than opened as its own section, since it is front-page data on this page."
+  },
+  {
+    "section_index": 1,
+    "section_label": "Abstract",
+    "section_type": "abstract",
+    "start_line": 37,
+    "end_line": 40,
+    "heading_text_zh": "(57) 摘要",
+    "heading_text_en": "(57) Abstract",
+    "contains_procedure": false,
+    "estimated_steps": 0,
+    "notes": "The abstract enumerates the eight synthesis steps by product name only (1)2-chloro-6-methanesulfonyltoluene ... 8)tembotrione) with no reagents, conditions, quantities or unit operations, so it holds no procedure for A2 to read and contains_procedure is false on that basis. Line 40 is the trailing blank; the p02 page comment at 41 opens the claims section."
+  },
+  {
+    "section_index": 2,
+    "section_label": "Claims",
+    "section_type": "claims",
+    "start_line": 41,
+    "end_line": 96,
+    "heading_text_zh": "权利要求书",
+    "heading_text_en": "Claims",
+    "contains_procedure": true,
+    "estimated_steps": 8,
+    "notes": "Claim 1 at lines 43-76 recites the full eight-step process with real unit operations (charge, dropwise addition, reflux, extraction, concentration) but no quantities; dependent claims 2-8 at lines 77-95 add molar ratios and solvent lists. The p03 page comment at line 80 falls inside claim 2, which is split across pages: line 77 ends mid-word at 二氯甲 and line 82 resumes with 烷, so the page boundary is demonstrably not a section boundary. estimated_steps = 8 follows the patent's own numbering. Caveat for A2 scoring: recited step 6) contains two transformations (trifluoroethoxide displacement, then NaOH hydrolysis of the ester) and step 7) contains two (SOCl2 acid chloride formation, then esterification with cyclohexanedione), so a transformation-level decomposition would give 10, not 8."
+  },
+  {
+    "section_index": 3,
+    "section_label": "Technical Field",
+    "section_type": "technical_field",
+    "start_line": 97,
+    "end_line": 104,
+    "heading_text_zh": "技术领域",
+    "heading_text_en": "Technical field",
+    "contains_procedure": false,
+    "estimated_steps": 0,
+    "notes": "Folds in the p04 page comment at 97 and the invention title repeated at the head of the description at lines 99-100. That repeated title is not strictly technical-field content, but it carries nothing for any downstream pass and 技术领域 follows immediately at line 101, so it is absorbed here rather than emitted as a two-line 'other' section. Body is the single paragraph [0001]."
+  },
+  {
+    "section_index": 4,
+    "section_label": "Background",
+    "section_type": "background",
+    "start_line": 105,
+    "end_line": 110,
+    "heading_text_zh": "背景技术",
+    "heading_text_en": "Background art",
+    "contains_procedure": false,
+    "estimated_steps": 0,
+    "notes": "[0002] describes tembotrione and its activity; [0003] lists three drawbacks of the prior art route (sodium methanethiolate odour and untreatable mercaptan waste water, high production cost, expensive NBS as brominating agent). It names prior-art reagents but describes no route and no procedure, so contains_procedure is false. Per rule 11 this stays background regardless of extractable chemistry."
+  },
+  {
+    "section_index": 5,
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "start_line": 111,
+    "end_line": 175,
+    "heading_text_zh": "发明内容",
+    "heading_text_en": "Summary of the invention",
+    "contains_procedure": true,
+    "estimated_steps": 8,
+    "notes": "Runs from the 发明内容 heading at 111 to the end of the [0030] drawing block at 175, crossing both the p05 boundary at 134 (paragraph [0013] is split across it, the continuation printed with no marker at line 136) and the p06 boundary at 172. Placement of the large multi-arrow scheme at line 174 is deliberate and text-anchored: [0029] at line 168 reads 本发明所涉及的反应方程式如下 ('the reaction equations involved in the present invention are as follows'), and [0030] at line 170 is the empty paragraph marker whose content is that drawing. The scheme is therefore the content of a summary-section paragraph. It is not part of Example 1, which does not begin until [0032] at line 180, and not part of beneficial effects, which is [0031] at line 176 and follows the drawing. Attribution of the drawn route is contested and is deliberately left unresolved here: the drawing's step 1 uses CH3SNa and its step 3 is a standalone thioether oxidation, both of which [0003] and [0031] state the invention eliminates, so the drawn nine-arrow route does not match the eight-step prose route of [0006]-[0021] and reads as the prior-art route. estimated_steps = 8 counts the prose route only, since the IMAGE_EXTRACT span is machine-read structure data rather than prose. If A2 also decomposes the drawing, expect up to 9 further records from line 174, of which roughly 5 duplicate prose steps 3-7. Prose steps 6) and 7) each contain two transformations, as in the claims, so a transformation-level count of the prose alone is 10."
+  },
+  {
+    "section_index": 6,
+    "section_label": "Beneficial Effects",
+    "section_type": "beneficial_effects",
+    "start_line": 176,
+    "end_line": 177,
+    "heading_text_zh": null,
+    "heading_text_en": null,
+    "contains_procedure": false,
+    "estimated_steps": 0,
+    "notes": "Paragraph [0031] with its EN line. No 有益效果 heading is printed in this document; the boundary is content-based, taken from 本发明的有益效果在于 at the start of line 176 and closed by the 具体实施方式 heading at line 178. Names the substitutions that give the advantage (methanesulfonyl chloride replacing the methyl sulfide route, bromine replacing NBS) but states no procedure."
+  },
+  {
+    "section_index": 7,
+    "section_label": "Example 1",
+    "section_type": "experimental_example",
+    "start_line": 178,
+    "end_line": 256,
+    "heading_text_zh": "具体实施方式；实施例1",
+    "heading_text_en": "Specific embodiments; Example 1",
+    "contains_procedure": true,
+    "estimated_steps": 8,
+    "notes": "One section per rule 6, spanning all eight inline numbered markers 1、through 8、at lines 182, 192, 201, 210, 219, 231, 238 and 245. Folds in the 具体实施方式 heading at 178-179 and the [0032] lead-in at 180-181, because the label 实施例1 is printed at the end of line 180 and cannot be separated from the lead-in sentence at line granularity; with only one example in the document, the 具体实施方式 region and Example 1 are coextensive. Crosses the p07, p08 and p09 page boundaries at 190, 223 and 248. Each step carries a single-molecule IMAGE_EXTRACT of its product between the step heading and the procedure paragraph; step 5's product drawing at line 225 and step 8's at line 251 are separated from their headings by a page break, so A2 must not treat those breaks as step boundaries. Melting points and NMR lines sit inside the procedures and do not make any part of this assay_data, per rule 10. estimated_steps = 8 by the numbered markers; at transformation granularity it is 10, because step 6 ([0054], line 236) runs trifluoroethoxide displacement and then NaOH hydrolysis in a single paragraph, and step 7 ([0057], line 243) runs SOCl2 acid chloride formation and then esterification with cyclohexanedione and triethylamine."
+  }
+]
