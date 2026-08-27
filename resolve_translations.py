@@ -524,7 +524,7 @@ def longest_span(text: str, start: int, line: str) -> int:
     return lo
 
 
-def cover(text: str, declared, source_norm: dict[int, str]):
+def cover(text: str, declared, source_norm: dict[int, str], tighter=None):
     """Explain `text` as an ordered run of spans, each lying on one source line.
 
     Greedy longest match, left to right, over the lines that HAVE an English
@@ -532,6 +532,13 @@ def cover(text: str, declared, source_norm: dict[int, str]):
     lines win ties so a quote is credited to the row's own citation wherever that
     citation is right; when it is not, the span is still found elsewhere in the
     document and the report says so rather than dropping the quote.
+
+    `tighter` is an optional line -> rank function consulted BEFORE the declared-line
+    preference, higher winning. It exists because two callers want different things
+    from a tie. verify.py is asking WHERE a quote sits and must credit the row's own
+    citation, so it passes nothing. source_translation is asking WHICH ENGLISH to
+    borrow, and there the declared line is not automatically the right answer: see
+    the note there for the eight-step heading that the Abstract also contains.
     """
     s = normalise(text)
     declared = set(declared)
@@ -544,9 +551,11 @@ def cover(text: str, declared, source_norm: dict[int, str]):
             length = longest_span(s, i, source_norm[n])
             if length < MIN_SPAN or not CJK.search(s[i:i + length]):
                 continue
-            # Longest wins; a declared line breaks a tie; lowest line number breaks
-            # the rest, so the cover is a function of the inputs and nothing else.
-            key = (length, 1 if n in declared else 0, -n)
+            # Longest wins; then `tighter` if the caller supplied one; then a declared
+            # line; then the lowest line number, so the cover is a function of the
+            # inputs and nothing else.
+            key = (length, tighter(n) if tighter else 0,
+                   1 if n in declared else 0, -n)
             if best is None or key > best[0]:
                 best = (key, n, length)
         if best is None:
@@ -564,8 +573,30 @@ def cover(text: str, declared, source_norm: dict[int, str]):
 
 
 def source_translation(text, declared, source_norm, english):
-    """Tier 1: the enriched source's own English for the lines this string sits on."""
-    spans, total, uncovered = cover(text, declared, source_norm)
+    """Tier 1: the enriched source's own English for the lines this string sits on.
+
+    THE TIGHTEST COVERING, NOT MERELY A COVERING. A string that occurs on several
+    source lines can be answered with any of their translations, and they are not
+    interchangeable: 2-氯-6-甲磺酰基甲苯的合成 is printed on line 38, which is the
+    Abstract and lists all eight steps, and again on lines 45, 117 and 182, which are
+    the step heading on its own. The Abstract's English runs 934 characters and the
+    heading's runs 58, and only one of the two is a translation of the heading. Taking
+    the first covering found took the Abstract for 28 entries, at ratios up to 54x.
+
+    So among the lines that supply the same span, the one whose English is SHORTEST
+    wins. A short string answered with a long paragraph is the paragraph's translation
+    and not the string's, and length is the signal that separates them. This is a rule
+    rather than a threshold, so it needs no tuning and cannot be half-applied.
+
+    It outranks the declared-line preference deliberately. The gold citing line 38 for
+    a heading is not wrong, the heading really is printed there; it is simply not the
+    line whose English answers the question. Attribution and translation are different
+    questions and this function is only asking the second one, which is why the
+    off-declared note below is computed against what the declared lines COULD have
+    covered rather than against what this cover chose.
+    """
+    spans, total, uncovered = cover(text, declared, source_norm,
+                                    tighter=lambda n: -len(english[n]))
     if not spans or uncovered == total:
         return None
 
@@ -584,7 +615,16 @@ def source_translation(text, declared, source_norm, english):
     where = ", ".join(str(n) for n in used)
     note = [f"Machine translation carried by the enriched source at line "
             f"{'s ' + where if len(used) > 1 else where}."]
-    off = [n for n in used if n not in set(declared)]
+    # Only spans no declared line could have supplied are a provenance defect. A span
+    # a declared line covers just as well was borrowed elsewhere for its tighter
+    # English, which says nothing about the gold's citation and must not be reported
+    # as if it did.
+    s = normalise(text)
+    stranded = {n for a, b, n in spans
+                if n not in set(declared)
+                and not any(longest_span(s, a, source_norm[m]) >= b - a
+                            for m in declared if m in source_norm)}
+    off = [n for n in used if n in stranded]
     if declared and off:
         # Worth saying out loud: the string was found, but not where the gold said
         # it was. That is a provenance defect this stage can see and must not hide.
