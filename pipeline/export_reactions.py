@@ -122,7 +122,7 @@ def main() -> int:
     # the JSON above is there for anything that needs the structure.
     csv_path = dest / f"reactions-with-smiles-{pid}.csv"
     with csv_path.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.writer(fh)
+        w = csv.writer(fh, lineterminator="\n")   # not RFC 4180 CRLF: git rewrites it anyway
         w.writerow(["reaction_id", "section", "step", "reaction_class", "named_reaction",
                     "reaction_smiles", "resolved/total",
                     "reactants", "reactant_smiles", "products", "product_smiles",
