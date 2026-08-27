@@ -19,10 +19,16 @@ import json, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from pipeline_context import ContextError, resolve_patent_id
+from pipeline_context import ContextError, OUTPUT, resolve_patent_id, shown
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE.parent / "output"
+# The run's output, NOT `HERE.parent / "output"`. Code moved under pipeline/ and
+# data under runs/<id>/, and the old expression kept resolving to a directory that
+# no longer exists. It did not error: every artifact read as "not produced yet",
+# the identity check ran over zero records and announced that all of them were
+# about the right patent, and the whole script exited 0. See MISSING below and
+# contracts/GUARDS-THAT-PASS-ON-ABSENCE.md form 11.
+OUT = OUTPUT
 PAIRS = [("00-sections.json", "sections.schema.json"),
          ("compounds.json", "compounds.schema.json"),
          ("reactions.json", "reactions.schema.json"),
@@ -40,10 +46,12 @@ except ContextError as e:
     sys.exit(f"FAIL  {e}")
 
 bad = 0
+missing: list[str] = []
 for art, sch in PAIRS:
     a = OUT / art
     if not a.exists():
-        print(f"  {art:22} not produced yet")
+        print(f"  {art:22} MISSING")
+        missing.append(art)
         continue
     v = Draft202012Validator(json.loads((HERE / sch).read_text()))
     errs = sorted(v.iter_errors(json.loads(a.read_text())), key=lambda e: list(e.path))
@@ -67,6 +75,7 @@ bad += len(biblio_problems)
 # Every record must be about the patent this run is about, and about the same
 # patent as every other record. No schema expresses this.
 scope = 0
+checked = 0
 patent = None
 if (OUT / "patent.json").exists():
     patent = json.loads((OUT / "patent.json").read_text())
@@ -80,6 +89,7 @@ for art in ("compounds.json", "reactions.json", "pathways.json"):
     if not a.exists():
         continue
     recs = json.loads(a.read_text())
+    checked += len(recs) if isinstance(recs, list) else 0
     ids = sorted({r.get("patent_id") for r in recs if isinstance(r, dict)} - {None})
     wrong = [i for i in ids if i != PATENT_ID]
     if wrong:
@@ -97,6 +107,20 @@ for art in ("compounds.json", "reactions.json", "pathways.json"):
             scope += 1
             break
 
-print(f"  {'patent identity':22} "
-      f"{'ok, every record is about ' + PATENT_ID if not scope else f'{scope} violations'}")
-sys.exit(1 if bad or scope else 0)
+if scope:
+    print(f"  {'patent identity':22} {scope} violations")
+else:
+    # "every record is about the right patent" over ZERO records is the sentence
+    # this check must never be allowed to print. Say the count, always, so that a
+    # green line cannot mean "there was nothing to look at".
+    print(f"  {'patent identity':22} ok, all {checked} record(s) are about {PATENT_ID}")
+
+if missing:
+    print(f"\nFAIL  {len(missing)} artifact(s) not present, so nothing validated them:")
+    for art in missing:
+        print(f"        {shown(OUT / art)}")
+    print("      An artifact that is absent has not passed. Run finalise first,\n"
+          "      or pass --allow-missing if you are deliberately validating a\n"
+          "      partial run.")
+
+sys.exit(1 if bad or scope or (missing and "--allow-missing" not in sys.argv) else 0)
