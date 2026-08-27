@@ -277,11 +277,37 @@ noise, and **it is still unexplained.** No single-atom or single-group substitut
 tested lands on 10.3. Recording it as a measured open question rather than reaching for a
 reading that fits three of the four.
 
-**The two arithmetics disagree about step 4.** Its own mass/mole pair implies 218 and puts
-it in the second band; mass against charge and yield implies 227.84 and puts it cleanly in
-the Cl-for-H group at -0.43. So the patent's step 4 is internally inconsistent in a third
-way, and the honest count of Cl-for-H cases is **three by one arithmetic and four by the
-other**, not a settled number.
+**The two arithmetics disagree about two compounds, and each fits exactly three.**
+
+CORRECTION, and the error is mine. An earlier version of this section said "three by one
+arithmetic and four by the other". That four was the UNION across both checks, not either
+check's own count, and lane-report caught it while building the report off this file rather
+than using a different number quietly. Recomputed:
+
+    compound                                   m/mol  resid   fit | m/c*y  resid   fit
+    2-chloro-6-(methylsulfonyl)toluene        170.00  -0.23   YES | 170.24  +0.01   YES
+    2-chloro-3-acetyl-6-(methylsulfonyl)tol   212.00  -0.27   YES | 212.21  -0.06   YES
+    2-chloro-3-methyl-4-(methylsulfonyl)acid  214.00  -0.24   YES |    -       -     -
+    methyl ..-3-methyl-4-..benzoate           218.00 -10.27    no | 227.84  -0.43   YES
+    methyl ..-3-(bromomethyl)-..benzoate      279.00 -28.17    no | 297.14 -10.02    no
+    2-chloro-3-[(trifluoroethoxy)methyl]acid  302.00 -10.26    no | 302.17 -10.09    no
+
+    fit by mass/mole             3
+    fit by mass/(charge x yield) 3
+    fit by BOTH                  2
+    fit by EITHER, the union     4
+
+So the honest sentence is: **each arithmetic fits three, they agree about two, and four
+distinct compounds fit somewhere.** Not "three and four".
+
+**Two compounds change group depending on which arithmetic weighs them**, not one:
+
+    methyl ..-3-methyl-4-..benzoate     open band  ->  Cl-for-H
+    methyl ..-3-(bromomethyl)-..        outlier    ->  open band
+
+The benzoic acid can only ever be classified by mass and moles, because step 3's product
+mass is impossible and no mass/charge/yield reading of it means anything. So the two checks
+see six compounds between them and both see only five.
 
 ## Step 3 is not an offset, it is impossible
 
@@ -304,7 +330,8 @@ above.
 
 ## Standing count
 
-    3 or 4 of 8   explained by Cl-for-H, depending on which arithmetic is used for step 4
+    3 by each     explained by Cl-for-H; the two checks agree about 2 and 4 compounds
+                  fit somewhere. Not "3 or 4" and never "4 by one check".
     4 of 8        a consistent residual near 10.3, confirmed twice, unexplained
     1             bromine, over rather than short, a separate case
     1             step 3, arithmetically impossible rather than merely offset
