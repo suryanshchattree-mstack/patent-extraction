@@ -3011,6 +3011,13 @@ class Run(Engine):
             readers.append(reader)
             for k, mentions in (doc.get("lines") or {}).items():
                 n = int(k)
+                # The KEY is what records "a reader looked at this line", and it has
+                # to appear even when the row is empty. Registering it only when a
+                # mention exists is the same absence bug the file itself had one
+                # commit ago: a line with nothing on it then reads as a line nobody
+                # read, and on a screen where green means "nothing unaccounted for"
+                # those must not colour the same.
+                readings.setdefault(n, [])
                 # The ENGLISH rendering, which is what was read and what a reviewer
                 # sees. source.lines[n] is the raw line and is Chinese on half the
                 # document, so checking spans against it would reject every English
@@ -3166,6 +3173,47 @@ class Run(Engine):
             self.record_substance_miss(n, block, mention)
         self.substance_tally["unaccounted"] = len(missed)
         self.emit_substance_tickets()
+        self.attach_substance_status(readings)
+
+    def attach_substance_status(self, readings: dict) -> None:
+        """Per line, what the substance sweep found, for the section screen.
+
+        Five states, and `unread` is the one worth having. A line nobody read and a
+        line read with nothing on it are the same absence in any file that records
+        only hits, and on a screen where green means "nothing here is unaccounted
+        for" they would both be green. One of them has been checked and one has not.
+
+            unaccounted   something printed here is in no record. THE FINDING.
+            named_only    only generic references: "the mixture", "an inorganic base"
+            accounted     substances printed here, all of them in some record
+            none          read, and no substance is named here
+            unread        no reader has looked at this line
+
+        Written onto source_coverage.lines, which the page already loads, rather
+        than into a second structure holding the same fact.
+        """
+        by_line: dict[int, list] = {}
+        for f in self.substance_findings:
+            for n in f.get("lines") or [f["line"]]:
+                by_line.setdefault(n, []).append(f["span"])
+
+        for row in self.coverage_lines:
+            n = row["n"]
+            mentions = readings.get(n)
+            missing = sorted(set(by_line.get(n, ())))
+            if missing:
+                status = "unaccounted"
+            elif mentions is None:
+                status = "unread"
+            elif not mentions:
+                status = "none"
+            elif any(m.get("kind") == "specific" for m in mentions):
+                status = "accounted"
+            else:
+                status = "named_only"
+            row["substance"] = status
+            if missing:
+                row["substance_unaccounted"] = missing
 
     def record_identifiers(self, rec) -> list[str]:
         """Every substance name a record's own FIELDS carry. Not its quotes."""
@@ -3206,6 +3254,10 @@ class Run(Engine):
         canonical = self.substance_canonical(mention["span"])
         finding = {
             "line": line,
+            # Every line printing this same fact, not just the one the sweep visited
+            # first. The screen colours lines, and a reader looking at L200 must not
+            # see green because the miss was recorded against L199.
+            "lines": list(block),
             "span": mention["span"],
             "reader": mention.get("reader"),
             "join": "structure" if canonical else "name",
@@ -4330,6 +4382,23 @@ def assemble(run: Run) -> dict:
             "uncited_chemistry_lines": sum(
                 1 for l in cov if l["section_en"] == label
                 and l["status"] == "uncited_with_chemistry"),
+            # THE RECALL HALF, PER SECTION. Rolled up from the per-line status the
+            # substance sweep wrote, not counted a second way: two derivations of one
+            # number is how this pack's report and engine ended up with two grounded
+            # denominators. A section is only clean when `unaccounted` is 0 AND
+            # `unread` is 0, and the two are published apart because "nothing is
+            # missing here" and "nobody has looked here" are different facts.
+            "lines_total": sum(1 for l in cov if l["section_en"] == label
+                               and l["kind"] != "blank"),
+            "substance_accounted": sum(1 for l in cov if l["section_en"] == label
+                                       and l.get("substance") == "accounted"),
+            "substance_unaccounted": sum(1 for l in cov if l["section_en"] == label
+                                         and l.get("substance") == "unaccounted"),
+            "substance_none": sum(1 for l in cov if l["section_en"] == label
+                                  and l.get("substance") == "none"),
+            "substance_unread": sum(1 for l in cov if l["section_en"] == label
+                                    and l.get("substance") == "unread"
+                                    and l["kind"] != "blank"),
         })
 
     grounding = [c for c in claims if claim_family(c) == "grounding"]
