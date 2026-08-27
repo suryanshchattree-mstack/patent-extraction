@@ -276,6 +276,19 @@ def stages(pid: str) -> list[Stage]:
             optional_tool="resolve_names.py",
         ),
         Stage(
+            name="mentions",
+            title="reading B: ChemDataExtractor over the same lines reading A read",
+            cmds=[[PY, "mentions.py", "--patent-id", pid]],
+            inputs=["mentions.py", "pipeline_context.py",
+                    "input/substances-observed.json"],
+            outputs=["input/substances-cde.json"],
+            # NOT a gate, and non-blocking. A second reader being unavailable is a
+            # fact about the machine, not a defect in this patent, and the sweep
+            # already publishes readers[] so nobody can mistake one reader for two.
+            optional_tool="mentions.py",
+            blocking=False,
+        ),
+        Stage(
             name="structures",
             title="identifier -> drawable molecule over six tiers, plus the coverage gate",
             cmds=[[PY, "resolve_structures.py", "--patent-id", pid]],
