@@ -379,6 +379,35 @@ record still carries its own failing check, so nothing is hidden; only the quest
 is asked once. `quantity_coverage.schema_loss` counts INSTANCES and the tier 2
 population counts TICKETS, which is why they differ.
 
+## The second reader - the only check here that is not this pack reading itself
+
+Every other check in this file compares the annotation against the patent, or the
+annotation against itself. Both are one reader. `structure.second_reader` compares
+the structure this pack assigned against what OPSIN makes of the compound's NAME:
+English chemical nomenclature parsed by grammar, with no sight of this patent and no
+failure mode shared with the vision pass that read the drawing.
+
+It fires on every compound record and it is worth reading when it PASSES. On
+CN104292137A it agrees with 36 of the 37 structures that had one to compare, which
+is the closest thing this pack has to corroboration of its own chemistry: two
+unrelated routes to the same molecule.
+
+Three outcomes reach a reviewer, and a claim carries `second_reader`:
+
+| outcome | claim | `auto` | what it means |
+|---|---|---|---|
+| `agree` | none | - | two readings, one molecule. The check row records it. |
+| `disagree` | yes | `not_reconciled` | two readings, two molecules. Both drawings are on the card and exactly one is what the patent used. |
+| `ambiguous` | yes | `not_checkable` | OPSIN parsed the name and warned it does not pin one molecule down. |
+| `is_the_source` | none | - | the structure IS the parse. Nothing independent has looked at it, and the check says so rather than counting itself as agreement. |
+| `no_parse` | none | - | a trade name, an abbreviation, a SMILES used as an identifier, or not English. Not a defect. |
+
+**`ambiguous` is the outcome nothing else here can produce.** `cyclohexanedione`
+names three molecules that share the formula C6H8O2 and the mass 112.13, so every
+formula check, every mass balance and the yield identity pass on all three. A name
+parser is the only reader in this pack that can tell them apart, which is why an
+OPSIN WARNING is recorded and is never promoted to a structure.
+
 ## The yield identity - the arithmetic `mass_check` structurally cannot see
 
 `quantity.mass_mmol` needs a mass AND a mole count on the SAME row. Every example

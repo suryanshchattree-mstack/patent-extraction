@@ -2262,6 +2262,7 @@ class Run(Engine):
         self.build_patent()
         self.referential_integrity()
         self.structure_checks()
+        self.second_reader_checks()
         self.drawing_checks()
         self.consistency_checks()
         self.naming_checks()
@@ -2278,6 +2279,33 @@ class Run(Engine):
         self.agreement_matrix()
         self.assign_tiers()
         self.assign_severity()
+        self.assert_claim_ids_unique()
+
+    def assert_claim_ids_unique(self) -> None:
+        """No two claims may share a claim_id. Nothing checked this until it broke.
+
+        A claim_id is (record_id, field), and the verdicts file is an append-only log
+        folded by claim_id, last write wins. Two claims sharing an id are therefore
+        one row on disk: answer either and both go quiet, including the one nobody
+        read. A new check family collided with the generic finding claim exactly this
+        way and every other assertion in the pack passed, because each of them counts
+        claims and both claims were there.
+        """
+        seen: dict[str, dict] = {}
+        clashes = []
+        for c in self.claims:
+            first = seen.get(c["claim_id"])
+            if first is None:
+                seen[c["claim_id"]] = c
+            else:
+                clashes.append((c["claim_id"], first["question_en"],
+                                c["question_en"]))
+        if clashes:
+            lines = [f"{len(clashes)} claim id(s) are used twice. A verdict on one "
+                     f"would silently answer the other:"]
+            for cid, a, b in clashes[:8]:
+                lines += [f"  {cid}", f"      {a[:90]}", f"      {b[:90]}"]
+            raise AssertionError("\n".join(lines))
 
     def section_en_of(self, label) -> str:
         return label or "Whole patent"
@@ -2894,7 +2922,13 @@ class Run(Engine):
 
     # Checks that already speak through a claim of their own, so the sweep below
     # must not raise a second one about the same thing.
-    SPOKEN_FOR = ("naming.qualifier",)
+    # Check ids whose failure already has a claim written for it by name. A check
+    # left off this tuple gets a SECOND, generic claim here - and because a claim_id
+    # is (record_id, field), that second claim carries the SAME id as the first. The
+    # verdicts file is folded by claim_id, so answering one silently answers both.
+    # `structure.second_reader` did exactly that for one run before the uniqueness
+    # assertion below caught it.
+    SPOKEN_FOR = ("naming.qualifier", "structure.second_reader")
 
     def claims_for_findings(self) -> None:
         """Every failing check a reviewer would otherwise never be shown.
@@ -2927,6 +2961,125 @@ class Run(Engine):
                     ["A check on this record failed and no other claim reports it."],
                     "name", set(), about="extraction", load_bearing=True,
                     extra={"_finding": True})
+
+    # ------------------------------------------------------------ second reader
+
+    def second_reader_checks(self) -> None:
+        """What an independent name parser thought of each structure we assigned.
+
+        `name_check` is written by resolve_structures.py from resolve_names.py's
+        output: OPSIN reading the compound's NAME by grammar, with no sight of this
+        patent and no shared failure mode with the vision pass that read the drawing.
+
+        THE POINT OF THIS FAMILY IS THE PASSES, NOT THE FAILURES. On this patent it
+        agrees with 36 of 37, and that number is the closest thing this pack has to
+        a corroboration of its own chemistry: two unrelated routes to the same
+        molecule. It is worth a check row on every record precisely so the reviewer
+        can see it held, instead of only meeting the parser when it complains.
+
+        Two outcomes become claims, and both are answerable by LOOKING:
+
+          disagree   two readings, two molecules, one of them wrong. The reviewer
+                     compares two drawings. No chemistry needed to see they differ,
+                     and the record says which reading came from where.
+          ambiguous  OPSIN parsed the name and warned it does not pin one molecule
+                     down. This is the class nothing else here can catch: the
+                     candidates share a formula and a mass, so every arithmetic
+                     check in this file passes on all of them.
+
+        `is_the_source` never counts as agreement. Where the parse IS the structure,
+        nothing independent has looked at it, and saying so is the whole reason the
+        parse is consulted last.
+        """
+        by_record = {r.record_id: r for r in self.records}
+        TITLE = ("Whether an independent reading of the NAME lands on the same "
+                 "molecule")
+
+        for c in self.data["compounds"]:
+            rec = by_record.get(safe_record_id(self.patent_id, c["id"],
+                                               c["identifier"]))
+            if rec is None:
+                continue
+            entry = self.structures.get(c["identifier"]) or {}
+            chk = entry.get("name_check") or {}
+            outcome = chk.get("outcome")
+            note = chk.get("note_en") or ""
+            parsed = chk.get("query")
+            here = entry.get("canonical")
+            theirs = chk.get("opsin_canonical")
+
+            if outcome == "agree":
+                rec.checks.append(check(
+                    "structure.second_reader", "structure", "pass", TITLE,
+                    f"OPSIN parsed {parsed!r} and reached {theirs}, the same "
+                    f"molecule this pack assigned. Two readings that share no "
+                    f"method agree.", about_fields=[]))
+                continue
+
+            if outcome == "disagree":
+                detail = (f"This pack assigns {here} to {c['identifier']!r}. OPSIN "
+                          f"parsed the name {parsed!r} and reached {theirs}. Those "
+                          f"are different molecules, so one of the two readings is "
+                          f"wrong. This pack's structure came from: "
+                          f"{entry.get('note') or entry.get('origin')}")
+                rec.checks.append(check(
+                    "structure.second_reader", "structure", "fail", TITLE, detail,
+                    needs_human=True, about_fields=[]))
+                self._claim(
+                    rec, "structure.second_reader",
+                    f"Two readings of {c['identifier']!r} give two different "
+                    f"molecules. Look at the two drawings: which one does the "
+                    f"patent mean?",
+                    f"here {here}, name parser {theirs}", None, None,
+                    rec.cited, [], "not_reconciled", detail,
+                    ["A structure and an independent parse of its own name "
+                     "disagree.",
+                     "Both drawings are on this card. They are not the same "
+                     "molecule, so exactly one of them is what the patent used."],
+                    "name", set(), about="extraction", load_bearing=True,
+                    extra={"_finding": True,
+                           "second_reader": {"here": here, "opsin": theirs,
+                                             "query": parsed,
+                                             "origin": entry.get("origin")}})
+                continue
+
+            if outcome == "ambiguous":
+                detail = (f"OPSIN parsed {parsed!r} and warned that the name does "
+                          f"not pin one molecule down; its best guess is {theirs}. "
+                          f"Nothing else in this file can catch this: the molecules "
+                          f"the name could mean share a formula and a molecular "
+                          f"weight, so every mass and formula check here passes on "
+                          f"all of them. {note}")
+                rec.checks.append(check(
+                    "structure.second_reader", "structure", "fail", TITLE, detail,
+                    needs_human=True, about_fields=[]))
+                self._claim(
+                    rec, "structure.second_reader",
+                    f"{c['identifier']!r} names more than one molecule. Does the "
+                    f"patent say which one?",
+                    f"ambiguous; OPSIN guesses {theirs}", None, None,
+                    rec.cited, [], "not_checkable", detail,
+                    ["The recorded name does not identify one molecule.",
+                     "The candidates share a formula and a mass, so no arithmetic "
+                     "check anywhere in this file can separate them."],
+                    "name", set(), about="extraction", load_bearing=True,
+                    extra={"_finding": True,
+                           "second_reader": {"here": here, "opsin": theirs,
+                                             "query": parsed, "ambiguous": True}})
+                continue
+
+            if outcome == "is_the_source":
+                rec.checks.append(check(
+                    "structure.second_reader", "structure", "skip", TITLE,
+                    "This structure IS the name parse, so nothing independent has "
+                    "checked it. Nothing drawn in the patent and nothing curated "
+                    "corroborates it.", about_fields=[]))
+                continue
+
+            rec.checks.append(check(
+                "structure.second_reader", "structure", "skip", TITLE,
+                note or "No second reading of this name is available.",
+                about_fields=[]))
 
     # ------------------------------------------------------------ naming
 
@@ -3625,6 +3778,12 @@ def assemble(run: Run) -> dict:
                     key=lambda c: (c["tier"], -c["risk"],
                                    min(c["cited_lines"]) if c["cited_lines"] else 10**6,
                                    c["record_id"], c["field"]))
+    # Read before the strip, because `_finding` is working state. See the tier-1 and
+    # tier-4 feeders below for what it is for.
+    findings_no_opinion = sum(1 for c in claims
+                              if c.get("_finding") and c["auto"] == "not_checkable")
+    finding_claims = sum(1 for c in claims if c.get("_finding"))
+
     for c in claims:
         for k in PRIVATE:
             c.pop(k, None)
@@ -3658,18 +3817,35 @@ def assemble(run: Run) -> dict:
     # claims came from, rather than off the queue they landed in.
     findings = sum(1 for r in records for c in r["checks"]
                    if c["status"] == "fail" and not c["about_fields"])
+    # Every finding is censused in tier 1, but they do not all arrive the same way.
+    # The GENERIC finding claim is always `not_checkable`, so tier 1 has to add it and
+    # tier 4 has to subtract it. A finding claim worded from its own check may be
+    # `not_reconciled` instead - the second reader's disagreements are, because the
+    # machine did form an opinion - and such a claim is ALREADY inside `unconfirmed`.
+    # Counting findings whole then adds it to tier 1 twice and subtracts it from
+    # tier 4 where it never was, which is exactly how both numbers went wrong the
+    # first time the second reader ran.
+    #
+    # The population still comes from the CHECKS, so a finding that produced no claim
+    # at all is still caught; only the split between the two buckets is read off the
+    # claims, and `findings_produced` asserts the two views agree.
     # Tier 2's two feeders, counted from the sweep rather than from the queue. The
     # schema losses are pooled into tickets by (limitation, field), so the ticket
     # count and not the instance count is what a reviewer will actually work.
     quantities = sum(cov_qty.get(k, 0) for k in ("gap", "unmapped"))
     tickets = len(run.schema_tickets)
     feeders = {
-        "1": {"population": unconfirmed + promoted + findings,
+        "1": {"population": unconfirmed + promoted + findings_no_opinion,
+              "findings_from_checks": findings,
+              "findings_produced": finding_claims,
               "from_en": f"{unconfirmed} claims the machine looked at and could "
                          f"not confirm, plus {promoted} it matched cleanly on a "
-                         f"record whose own checks failed, plus {findings} failing "
-                         f"checks that name no claim field and so speak for "
-                         f"themselves"},
+                         f"record whose own checks failed, plus "
+                         f"{findings_no_opinion} of {findings} failing checks that "
+                         f"name no claim field and about which the machine could "
+                         f"form no opinion; the other "
+                         f"{findings - findings_no_opinion} are already inside the "
+                         f"first number"},
         "2": {"population": len(run.uncited_chemistry) + quantities + tickets,
               "from_en": f"{len(run.uncited_chemistry)} source lines no record "
                          f"cites, plus {quantities} quantities on cited lines no "
@@ -3678,8 +3854,8 @@ def assemble(run: Run) -> dict:
         "3": {"population": len(claims) - tiers["1"] - tiers["2"] - tiers["4"],
               "from_en": "every claim the machine matched cleanly, which is the "
                          "only population the sampled bound may be drawn from"},
-        "4": {"population": no_opinion - findings,
-              "from_en": f"{no_opinion - findings} claims the machine had no "
+        "4": {"population": no_opinion - findings_no_opinion,
+              "from_en": f"{no_opinion - findings_no_opinion} claims the machine had no "
                          f"opinion about, "
                          f"demoted out of the census because they are a different "
                          f"population from claims it looked at and failed"},
