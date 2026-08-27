@@ -73,6 +73,34 @@ from pipeline_context import ContextError, RUN_ROOT, resolve_patent_id, validate
 HERE = Path(__file__).resolve().parent
 PY = sys.executable or "python3"
 
+# WHERE A DECLARED PATH RESOLVES.
+#
+# A stage declares two KINDS of path in one list and they no longer live in one
+# place. Data is per-run:
+#
+#     inputs=["finalise.py", "pipeline_context.py", "input/CN...-biblio.json", ...]
+#              \____________ code ____________/    \_________ data _________/
+#
+# Code inputs are declared on purpose, so that editing finalise.py re-runs finalise.
+# Before the runs were split both kinds sat under this directory and `HERE / pat`
+# was right by accident. Splitting them made the orchestrator and the stage scripts
+# disagree: the scripts read RUN_ROOT, this file still read HERE, and a fully
+# populated run_27_aug was reported as having no annotation passes at all.
+#
+# Then the obvious fix - resolve everything against the run - broke it the other
+# way: `expand(["build_enriched.py"])` looked for the script inside run_27_aug,
+# found nothing, and the bootstrap gate `all(expand([pat]) for pat in st.inputs)`
+# silently declined to run the stage. No error, no output, an empty run reported
+# complete. Both failures are the same failure: one name, two meanings.
+#
+# So the rule is explicit and the prefixes are the whole of it.
+RUN_RELATIVE = ("input/", "output/")
+
+
+def at(pat: str) -> Path:
+    """Resolve a declared path: data against the run, code against this directory."""
+    return (RUN_ROOT if pat.startswith(RUN_RELATIVE) else HERE) / pat
+
 
 # ================================================================== stage model
 
@@ -543,11 +571,12 @@ def expand(patterns: list[str]) -> list[Path]:
     seen: dict[Path, None] = {}
     for pat in patterns:
         if any(ch in pat for ch in "*?["):
-            for p in sorted(HERE.glob(pat)):
+            root = RUN_ROOT if pat.startswith(RUN_RELATIVE) else HERE
+            for p in sorted(root.glob(pat)):
                 if p.is_file():
                     seen[p] = None
         else:
-            p = HERE / pat
+            p = at(pat)
             if p.is_file():
                 seen[p] = None
     return list(seen)
@@ -577,7 +606,7 @@ def stale_copies() -> list[str]:
     """
     bad = []
     for src, dst in COPY_PAIRS:
-        a, b = HERE / src, HERE / dst
+        a, b = at(src), at(dst)
         if not a.exists():
             continue
         if not b.exists():
@@ -601,7 +630,11 @@ def sha256(path: Path) -> str:
 
 
 def rel(p: Path) -> str:
-    return str(p.relative_to(HERE))
+    """Declared-path form of an absolute path, whichever root it resolved against."""
+    for root in (RUN_ROOT, HERE):
+        if p.is_relative_to(root):
+            return str(p.relative_to(root))
+    return str(p)
 
 
 def previous_run() -> dict[str, dict]:
@@ -625,7 +658,7 @@ def previous_run() -> dict[str, dict]:
     Hashing the tree costs a fraction of a second and buys a skip decision that
     survives a `touch`, a copy, a checkout and a clock change.
     """
-    p = HERE / MANIFEST
+    p = at(MANIFEST)
     if not p.exists():
         return {}
     try:
@@ -670,7 +703,7 @@ def is_current(st: Stage, prior: dict[str, dict]) -> tuple[bool, str]:
     if status.startswith("failed") or status == "not reached":
         return False, f"last run: {status}"
     for pat in literal_outputs(st.outputs):
-        if not (HERE / pat).exists():
+        if not at(pat).exists():
             return False, f"missing output {pat}"
     for pat in glob_outputs(st.outputs):
         if not expand([pat]):
@@ -699,7 +732,7 @@ def collect(pid: str, ctx: dict) -> int:
              ("output/stages/A3-pathways/pathways.json", "output/raw-pathways.json"),
              ("output/stages/A4-patent/patent-llm.json", "output/raw-patent.json")]
     for src, dst in pairs:
-        s, d = HERE / src, HERE / dst
+        s, d = at(src), at(dst)
         if not s.exists():
             print(f"  FAIL  {src} not found", file=sys.stderr)
             return 1
