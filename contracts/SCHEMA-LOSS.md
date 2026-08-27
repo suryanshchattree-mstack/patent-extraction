@@ -184,3 +184,63 @@ Within the aromatics the offsets fall into three groups:
 The first group is demonstrated rather than suggested: subtract 34.445 from the true
 weight and round, and you get the patent's implied value exactly, three times running.
 The second and third are for a chemist. This document does not guess at them.
+
+---
+
+# Addendum, 2026-08-27: the Cl-for-H reading tested against a rival, and what it does not explain
+
+A second candidate arrived after the aromaticity note was written, so the conclusion had
+to be re-tested rather than assumed to still hold.
+
+## Where the rival came from
+
+The `Summary of the Invention Scheme` telling of the route puts SMILES strings in the
+`product_name` field for steps 1 and 2, and those SMILES are **methylthio**, not
+methylsulfonyl:
+
+    Scheme step 1   CSc1cccc(Cl)c1C          CS... = CH3-S-      thioether
+    Scheme step 2   CSc1ccc(C(C)=O)c(Cl)c1C
+
+The other three tellings say methyl**sulfonyl** at the same steps. Sulfone to thioether
+is a loss of two oxygens, 31.998, which is close enough to the observed 34.7 to be worth
+testing as an alternative to Cl minus H at 34.445.
+
+## The test
+
+Residual after subtracting each candidate from the true molecular weight. The patent
+prints integers, so anything within about 0.5 is a fit and anything beyond it is not.
+
+    compound                                       implied     true    Cl->H   SO2->S
+    2-chloro-6-(methylsulfonyl)toluene              170.00   204.68    -0.23    -2.68
+    2-chloro-3-acetyl-6-(methylsulfonyl)toluene     212.00   246.71    -0.27    -2.72
+    2-chloro-3-methyl-4-(methylsulfonyl)benzoic ac  214.00   248.69    -0.24    -2.69
+    methyl ...-3-methyl-4-(methylsulfonyl)benzoate  218.00   262.71   -10.27   -12.72
+    methyl ...-3-(bromomethyl)-...benzoate          279.00   341.61   -28.17   -30.61
+    2-chloro-3-[(trifluoroethoxy)methyl]-...acid    302.00   346.71   -10.26   -12.71
+
+**The rival is refuted.** Sulfone to thioether leaves 2.68 to 2.72 on the three compounds
+it would have to explain, which is five times the rounding budget. Cl minus H leaves 0.23
+to 0.27 on the same three, inside it. The original reading survives a real challenge.
+
+## What this addendum takes back
+
+The three-for-three claim is correct and stays, but it was doing more work in the earlier
+write-up than it should have. It covers the **first group only**.
+
+The second group does not fit Cl minus H either:
+
+    218, 302 and 396 leave a residual of -10.27, -10.26 and -10.38
+
+Three compounds agreeing to within 0.12 is a pattern, not noise, and nothing in this
+document explains it. No single-atom or single-group substitution I tested lands on
+10.3. The bromomethyl compound at -28.17 is a third case and also unexplained.
+
+So the honest state of the mass defect is:
+
+    3 compounds    explained    Cl-for-H, demonstrated to the rounding limit
+    3 compounds    unexplained  a consistent ~10.3 residual after Cl-for-H
+    1 compound     unexplained  the bromomethyl outlier
+
+Anyone reporting this must not round it up to "the mass defect is explained". Three of
+seven are. The other four are a named, measured, still-open question, and the consistency
+of the ~10.3 across three compounds is a lead rather than a conclusion.
