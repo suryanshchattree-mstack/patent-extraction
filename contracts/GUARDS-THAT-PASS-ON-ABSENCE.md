@@ -304,3 +304,69 @@ no reason trains the reader to ignore the manifest exactly as reliably as a `cur
 that lies. Removed rather than wired in: wiring the scrubber into a stage that already
 resolves its Chinese through the hand-authored `quote-translations.json` would be a
 second source of truth for the same screen text, which is a feature and not a repair.
+
+---
+
+# Form nine: the producer writes a field the consumer never declared
+
+Found twice in one morning, both times by walking a path rather than by any check.
+
+    the pipeline writes            the consumer's schema declares      result
+    pages[].image_path             pages[].src                         safeParse fails,
+                                                                       whole index empty
+    claim.related_records          nothing at all                      zod strips the key,
+                                                                       silently, no error
+
+**Both killed a feature outright and neither produced an error anywhere.**
+
+The first cost every claim its page: `loadVisual` caught the parse failure, fell back to
+`EMPTY_PAGE_INDEX`, and the screen printed a banner blaming the data. 0 of 387 claims could
+open a scan for the entire life of the feature. The banner was honest and pointed at the
+wrong thing.
+
+The second cost the reviewer the drawings on exactly the claims where a drawing is the only
+usable answer. `related_records` carries `structure_svg_path` and appeared 28 times in the
+artifact and 0 times on the served page.
+
+## Why nothing caught either
+
+    tsc                 passes. Neither side is wrong about its own types.
+    the unit suite       558 tests, all green. Nothing asserts producer and consumer
+                         agree about field NAMES.
+    the pipeline tests   pass. The pipeline writes what it means to write.
+    the consumer tests   pass. The consumer parses what it declares.
+
+Each half is correct in isolation. The defect lives in the gap, and the gap is not a file
+anyone owns. This is the same shape as the inverted schema labels, where `ReviewAnswers`
+and `coverage.ts` were each defensible alone and composed into an inversion.
+
+## What zod does here, and why it is the wrong default for this seam
+
+`z.object` strips unknown keys silently. That is the right default for untrusted input and
+the wrong one for reading a sibling process's artifact, where an unknown key means one of
+two things and both matter:
+
+    the producer added a field    -> we are discarding new information
+    the producer renamed a field  -> we are discarding existing information
+
+Silence is the one response that is wrong in both cases.
+
+## The guard
+
+Neither a stricter schema nor a looser one fixes this. Strict fails totally on the
+producer's next commit, which this project has already been bitten by twice. Loose keeps
+discarding silently.
+
+What works is a test that does not need to know what any field means:
+
+    read the artifact on disk
+    collect the top-level keys the producer actually writes
+    fail when one of them is absent from the consumer's schema
+
+with an explicit allowlist of keys we deliberately drop. Then dropping a field is a
+decision someone wrote down, rather than a default nobody chose.
+
+**The general form.** Every one of the eight forms above is a check that cannot see
+something. This one is different: it is two correct checks either side of a boundary that
+neither of them looks at. When you own both ends of a serialisation, test the seam, not the
+ends.
