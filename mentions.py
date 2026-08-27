@@ -98,7 +98,20 @@ def main() -> int:
               "a different\n      claim from 'ChemDataExtractor could not run'.\n\n"
               "      The sweep will publish readers: [\"llm\"] and every finding will "
               "say\n      'one reader only'.", file=sys.stderr)
-        return 3
+        # EXIT 0, DELIBERATELY, AND THIS IS THE ONE JUDGEMENT CALL IN THIS FILE.
+        #
+        # A second reader being unavailable is a fact about this machine, not a
+        # defect in this patent, and it will be true on every run here forever.
+        # Failing the pipeline on it would paint every run red, and a run that is
+        # always red stops being read - which would cost more than it buys.
+        #
+        # It is not swallowed. The message above is loud, the artifact publishes
+        # readers: ["llm"], every ticket carries "one reader only", and the
+        # selfcheck's section K fails outright if NO reader is recorded. The fact
+        # reaches a human by four routes that do not depend on this exit code.
+        #
+        # The input being missing IS a defect in the pack, and that still exits 1.
+        return 0
 
     print(f"entry point : {entry}")
     print(f"smoke test  : {got}")

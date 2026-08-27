@@ -2,6 +2,540 @@
   "claims": [
     {
       "about": "extraction",
+      "auto": "not_found",
+      "auto_reason_en": "The patent names 'water' on line 127, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "basis": null,
+      "cited_lines": [
+        127,
+        128
+      ],
+      "claim_id": "084e851b25cad1c1",
+      "claimed_en": "water",
+      "claimed_unit": null,
+      "claimed_value": null,
+      "evidence_class": "narrow",
+      "evidence_en": "Into a reaction vessel fitted with a stirrer are charged separately the 2-chloro-3-acetyl-6-methylsulfonyltoluene obtained in step 2) and aqueous sodium hypochlorite solution; the mixture is heated to react, acidified with dilute hydrochloric acid, filtered, washed with water and dried to give 2-chloro-3-methyl-4-methylsulfonylbenzoic acid; Into a reaction vessel fitted with a stirrer are charged separately the 2-chloro-3-acetyl-6-methylsulfonyltoluene obtained in step 2) and aqueous sodium hypochlorite solution; the mixture is heated to react, acidified with dilute hydrochloric acid, filtered, washed with water and dried to give 2-chloro-3-methyl-4-methylsulfonylbenzoic acid;",
+      "evidence_lines": [
+        {
+          "is_translation": true,
+          "kind": "prose",
+          "matched": true,
+          "n": 127,
+          "names_en": [
+            "2-chloro-3-methyl-4-methylsulfonylbenzoic acid",
+            "2-chloro-3-acetyl-6-methylsulfonyltoluene",
+            "sodium hypochlorite",
+            "hydrochloric acid",
+            "water"
+          ],
+          "pairing": "exact",
+          "text_en": "Into a reaction vessel fitted with a stirrer are charged separately the 2-chloro-3-acetyl-6-methylsulfonyltoluene obtained in step 2) and aqueous sodium hypochlorite solution; the mixture is heated to react, acidified with dilute hydrochloric acid, filtered, washed with water and dried to give 2-chloro-3-methyl-4-methylsulfonylbenzoic acid;"
+        },
+        {
+          "is_translation": true,
+          "kind": "translation",
+          "matched": false,
+          "n": 128,
+          "names_en": [
+            "2-chloro-3-methyl-4-methylsulfonylbenzoic acid",
+            "2-chloro-3-acetyl-6-methylsulfonyltoluene",
+            "sodium hypochlorite",
+            "hydrochloric acid",
+            "water"
+          ],
+          "pairing": "self",
+          "text_en": "Into a reaction vessel fitted with a stirrer are charged separately the 2-chloro-3-acetyl-6-methylsulfonyltoluene obtained in step 2) and aqueous sodium hypochlorite solution; the mixture is heated to react, acidified with dilute hydrochloric acid, filtered, washed with water and dried to give 2-chloro-3-methyl-4-methylsulfonylbenzoic acid;"
+        }
+      ],
+      "evidence_width": 2,
+      "family": "grounding",
+      "field": "__substance__",
+      "field_label_en": "__substance__",
+      "highlights": [],
+      "load_bearing": true,
+      "needs_human": true,
+      "question_en": "The patent names 'water' here. Should this record have recorded it?",
+      "rec": "rx:Summary of the Invention_Step 3",
+      "rec_field": "__substance__",
+      "record_id": "CN104292137A_Summary_of_the_Invention_Step_3",
+      "record_kind": "reaction",
+      "record_label_en": "Summary of the Invention Step 3: 2-chloro-3-methyl-4-methylsulfonylbenzoic acid",
+      "risk": 0.95,
+      "risk_reasons_en": [
+        "1 substance printed on a line this record cites, and not carried by any record.",
+        "One reader only. Nothing independent corroborates that these are substances at all."
+      ],
+      "section_en": "Summary of the Invention",
+      "severity": "critical",
+      "severity_action_en": "This value is on no line of the patent. Either it was invented or it came from somewhere nobody recorded. Read this one first.",
+      "stratum": "reaction:Summary of the Invention",
+      "structure_svg_path": "output/relevant_output/structures/2-chloro-3-methyl-4-methylsulfonylbenzoic-acid.svg",
+      "substance_instances": [
+        {
+          "canonical": "O",
+          "join": "structure",
+          "line": 127,
+          "lines": [
+            127,
+            128
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Summary_of_the_Invention_Step_3",
+          "record_label_en": "Summary of the Invention Step 3: 2-chloro-3-methyl-4-methylsulfonylbenzoic acid",
+          "span": "water",
+          "uncited_line": false
+        }
+      ],
+      "substance_readers": [
+        "llm"
+      ],
+      "tier": 1,
+      "work_kind": "comparison"
+    },
+    {
+      "about": "extraction",
+      "auto": "not_found",
+      "auto_reason_en": "The patent names 'CDCl3' on line 199, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "basis": null,
+      "cited_lines": [
+        199
+      ],
+      "claim_id": "d9dc75cf36c6e44d",
+      "claimed_en": "CDCl3",
+      "claimed_unit": null,
+      "claimed_value": null,
+      "evidence_class": "narrow",
+      "evidence_en": "NMR (CDCl3): δ (ppm) 2.64 (s, 3H, ), 2.88 (s, 3H, CH3), 3.14 (s, 3H), 7.40 (d, 1H), 8.10 (d, H).",
+      "evidence_lines": [
+        {
+          "is_translation": true,
+          "kind": "prose",
+          "matched": true,
+          "n": 199,
+          "names_en": [],
+          "pairing": "self",
+          "text_en": "NMR (CDCl3): δ (ppm) 2.64 (s, 3H, ), 2.88 (s, 3H, CH3), 3.14 (s, 3H), 7.40 (d, 1H), 8.10 (d, H)."
+        }
+      ],
+      "evidence_width": 1,
+      "family": "grounding",
+      "field": "__substance__",
+      "field_label_en": "__substance__",
+      "highlights": [],
+      "load_bearing": true,
+      "needs_human": true,
+      "question_en": "The patent names 'CDCl3' here. Should this record have recorded it?",
+      "rec": "rx:Example 1_Step 2",
+      "rec_field": "__substance__",
+      "record_id": "CN104292137A_Example_1_Step_2",
+      "record_kind": "reaction",
+      "record_label_en": "Example 1 Step 2: 2-chloro-3-acetyl-6-(methylsulfonyl)toluene",
+      "risk": 0.95,
+      "risk_reasons_en": [
+        "1 substance printed on a line this record cites, and not carried by any record.",
+        "One reader only. Nothing independent corroborates that these are substances at all."
+      ],
+      "section_en": "Example 1",
+      "severity": "critical",
+      "severity_action_en": "This value is on no line of the patent. Either it was invented or it came from somewhere nobody recorded. Read this one first.",
+      "stratum": "reaction:Example 1",
+      "structure_svg_path": "output/relevant_output/structures/2-chloro-3-acetyl-6-methylsulfonyltoluene.svg",
+      "substance_instances": [
+        {
+          "canonical": "[2H]C(Cl)(Cl)Cl",
+          "join": "structure",
+          "line": 199,
+          "lines": [
+            199,
+            200
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_2",
+          "record_label_en": "Example 1 Step 2: 2-chloro-3-acetyl-6-(methylsulfonyl)toluene",
+          "span": "CDCl3",
+          "uncited_line": false
+        }
+      ],
+      "substance_readers": [
+        "llm"
+      ],
+      "tier": 1,
+      "work_kind": "comparison"
+    },
+    {
+      "about": "extraction",
+      "auto": "not_found",
+      "auto_reason_en": "The patent names 'CDCl3' on line 208, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "basis": null,
+      "cited_lines": [
+        208
+      ],
+      "claim_id": "ba56d3ac6fb02981",
+      "claimed_en": "CDCl3",
+      "claimed_unit": null,
+      "claimed_value": null,
+      "evidence_class": "narrow",
+      "evidence_en": "NMR (CDCl3): δ (ppm) 2.80 (s, 3H), 3.35 (s, 3H), 7.80 (d, 1H), 8.01 (d, 1H).",
+      "evidence_lines": [
+        {
+          "is_translation": true,
+          "kind": "prose",
+          "matched": true,
+          "n": 208,
+          "names_en": [],
+          "pairing": "self",
+          "text_en": "NMR (CDCl3): δ (ppm) 2.80 (s, 3H), 3.35 (s, 3H), 7.80 (d, 1H), 8.01 (d, 1H)."
+        }
+      ],
+      "evidence_width": 1,
+      "family": "grounding",
+      "field": "__substance__",
+      "field_label_en": "__substance__",
+      "highlights": [],
+      "load_bearing": true,
+      "needs_human": true,
+      "question_en": "The patent names 'CDCl3' here. Should this record have recorded it?",
+      "rec": "rx:Example 1_Step 3",
+      "rec_field": "__substance__",
+      "record_id": "CN104292137A_Example_1_Step_3",
+      "record_kind": "reaction",
+      "record_label_en": "Example 1 Step 3: 2-chloro-3-methyl-4-(methylsulfonyl)benzoic acid",
+      "risk": 0.95,
+      "risk_reasons_en": [
+        "1 substance printed on a line this record cites, and not carried by any record.",
+        "One reader only. Nothing independent corroborates that these are substances at all."
+      ],
+      "section_en": "Example 1",
+      "severity": "critical",
+      "severity_action_en": "This value is on no line of the patent. Either it was invented or it came from somewhere nobody recorded. Read this one first.",
+      "stratum": "reaction:Example 1",
+      "structure_svg_path": "output/relevant_output/structures/2-chloro-3-methyl-4-methylsulfonylbenzoic-acid.svg",
+      "substance_instances": [
+        {
+          "canonical": "[2H]C(Cl)(Cl)Cl",
+          "join": "structure",
+          "line": 208,
+          "lines": [
+            208,
+            209
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_3",
+          "record_label_en": "Example 1 Step 3: 2-chloro-3-methyl-4-(methylsulfonyl)benzoic acid",
+          "span": "CDCl3",
+          "uncited_line": false
+        }
+      ],
+      "substance_readers": [
+        "llm"
+      ],
+      "tier": 1,
+      "work_kind": "comparison"
+    },
+    {
+      "about": "extraction",
+      "auto": "not_found",
+      "auto_reason_en": "The patent names 'DMSO' on line 217, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "basis": null,
+      "cited_lines": [
+        217
+      ],
+      "claim_id": "38a9f623203d608f",
+      "claimed_en": "DMSO",
+      "claimed_unit": null,
+      "claimed_value": null,
+      "evidence_class": "narrow",
+      "evidence_en": "NMR (DMSO): (ppm) 2.80 (s, 3H), 3.25 (s, 3H), 4.01 (s, 3H), 7.70 (d, 1H), 8.01 (d, 1H).",
+      "evidence_lines": [
+        {
+          "is_translation": true,
+          "kind": "prose",
+          "matched": true,
+          "n": 217,
+          "names_en": [],
+          "pairing": "self",
+          "text_en": "NMR (DMSO): (ppm) 2.80 (s, 3H), 3.25 (s, 3H), 4.01 (s, 3H), 7.70 (d, 1H), 8.01 (d, 1H)."
+        }
+      ],
+      "evidence_width": 1,
+      "family": "grounding",
+      "field": "__substance__",
+      "field_label_en": "__substance__",
+      "highlights": [],
+      "load_bearing": true,
+      "needs_human": true,
+      "question_en": "The patent names 'DMSO' here. Should this record have recorded it?",
+      "rec": "rx:Example 1_Step 4",
+      "rec_field": "__substance__",
+      "record_id": "CN104292137A_Example_1_Step_4",
+      "record_kind": "reaction",
+      "record_label_en": "Example 1 Step 4: methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate",
+      "risk": 0.95,
+      "risk_reasons_en": [
+        "1 substance printed on a line this record cites, and not carried by any record.",
+        "One reader only. Nothing independent corroborates that these are substances at all."
+      ],
+      "section_en": "Example 1",
+      "severity": "critical",
+      "severity_action_en": "This value is on no line of the patent. Either it was invented or it came from somewhere nobody recorded. Read this one first.",
+      "stratum": "reaction:Example 1",
+      "structure_svg_path": "output/relevant_output/structures/methyl-2-chloro-3-methyl-4-methylsulfonylbenzoate.svg",
+      "substance_instances": [
+        {
+          "canonical": "CS(C)=O",
+          "join": "structure",
+          "line": 217,
+          "lines": [
+            217,
+            218
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_4",
+          "record_label_en": "Example 1 Step 4: methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate",
+          "span": "DMSO",
+          "uncited_line": false
+        }
+      ],
+      "substance_readers": [
+        "llm"
+      ],
+      "tier": 1,
+      "work_kind": "comparison"
+    },
+    {
+      "about": "extraction",
+      "auto": "not_found",
+      "auto_reason_en": "The patent names 'DMSO' on line 229, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "basis": null,
+      "cited_lines": [
+        229
+      ],
+      "claim_id": "fb82cd303736620f",
+      "claimed_en": "DMSO",
+      "claimed_unit": null,
+      "claimed_value": null,
+      "evidence_class": "narrow",
+      "evidence_en": "NMR (DMSO): (ppm) 3.25 (s, 3H), 4.01 (s, 3H), 5.4 (s, 2H) 7.70 (d, 1H), 8.15 (d, 1H).",
+      "evidence_lines": [
+        {
+          "is_translation": true,
+          "kind": "prose",
+          "matched": true,
+          "n": 229,
+          "names_en": [],
+          "pairing": "self",
+          "text_en": "NMR (DMSO): (ppm) 3.25 (s, 3H), 4.01 (s, 3H), 5.4 (s, 2H) 7.70 (d, 1H), 8.15 (d, 1H)."
+        }
+      ],
+      "evidence_width": 1,
+      "family": "grounding",
+      "field": "__substance__",
+      "field_label_en": "__substance__",
+      "highlights": [],
+      "load_bearing": true,
+      "needs_human": true,
+      "question_en": "The patent names 'DMSO' here. Should this record have recorded it?",
+      "rec": "rx:Example 1_Step 5",
+      "rec_field": "__substance__",
+      "record_id": "CN104292137A_Example_1_Step_5",
+      "record_kind": "reaction",
+      "record_label_en": "Example 1 Step 5: methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+      "risk": 0.95,
+      "risk_reasons_en": [
+        "1 substance printed on a line this record cites, and not carried by any record.",
+        "One reader only. Nothing independent corroborates that these are substances at all."
+      ],
+      "section_en": "Example 1",
+      "severity": "critical",
+      "severity_action_en": "This value is on no line of the patent. Either it was invented or it came from somewhere nobody recorded. Read this one first.",
+      "stratum": "reaction:Example 1",
+      "structure_svg_path": "output/relevant_output/structures/methyl-2-chloro-3-bromomethyl-4-methylsulfonylbenzoate.svg",
+      "substance_instances": [
+        {
+          "canonical": "CS(C)=O",
+          "join": "structure",
+          "line": 229,
+          "lines": [
+            229,
+            230
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_5",
+          "record_label_en": "Example 1 Step 5: methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+          "span": "DMSO",
+          "uncited_line": false
+        }
+      ],
+      "substance_readers": [
+        "llm"
+      ],
+      "tier": 1,
+      "work_kind": "comparison"
+    },
+    {
+      "about": "extraction",
+      "auto": "not_found",
+      "auto_reason_en": "The patent names 'DMSO' on line 236, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "basis": null,
+      "cited_lines": [
+        236,
+        237
+      ],
+      "claim_id": "d6e56c6fd3bb35bd",
+      "claimed_en": "DMSO",
+      "claimed_unit": null,
+      "claimed_value": null,
+      "evidence_class": "narrow",
+      "evidence_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a condenser were charged methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate 55.8 g (0.2 mol), sodium trifluoroethoxide 28.1 g (0.23 mol) and 100 ml THF solvent; stirred at room temperature for 16 h, then washed with water and concentrated to give ethyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate; sodium hydroxide 9.2 g (0.23 mol) and water 10 ml were added and the mixture refluxed for 4 h. The solvent THF was distilled off, the mixture cooled, the residue acidified with 36％ HCl, then extracted with dichloromethane, washed with water, dried over magnesium sulfate and concentrated to give 55.6 g of a white solid, yield 92％, melting point 154-157℃. NMR (DMSO): (ppm) 3.35 (s, 3H), 4.25 (s, 3H), 5.25 (s, 2H) 7.90 (d, 1H), 8.05 (d, 1H). Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a condenser were charged methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate 55.8 g (0.2 mol), sodium trifluoroethoxide 28.1 g (0.23 mol) and 100 ml THF solvent; stirred at room temperature for 16 h, then washed with water and concentrated to give ethyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate; sodium hydroxide 9.2 g (0.23 mol) and water 10 ml were added and the mixture refluxed for 4 h. The solvent THF was distilled off, the mixture cooled, the residue acidified with 36％ HCl, then extracted with dichloromethane, washed with water, dried over magnesium sulfate and concentrated to give 55.6 g of a white solid, yield 92％, melting point 154-157℃. NMR (DMSO): (ppm) 3.35 (s, 3H), 4.25 (s, 3H), 5.25 (s, 2H) 7.90 (d, 1H), 8.05 (d, 1H).",
+      "evidence_lines": [
+        {
+          "is_translation": true,
+          "kind": "prose",
+          "matched": true,
+          "n": 236,
+          "names_en": [
+            "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+            "magnesium sulfate",
+            "sodium hydroxide",
+            "dichloromethane",
+            "water"
+          ],
+          "pairing": "exact",
+          "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a condenser were charged methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate 55.8 g (0.2 mol), sodium trifluoroethoxide 28.1 g (0.23 mol) and 100 ml THF solvent; stirred at room temperature for 16 h, then washed with water and concentrated to give ethyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate; sodium hydroxide 9.2 g (0.23 mol) and water 10 ml were added and the mixture refluxed for 4 h. The solvent THF was distilled off, the mixture cooled, the residue acidified with 36％ HCl, then extracted with dichloromethane, washed with water, dried over magnesium sulfate and concentrated to give 55.6 g of a white solid, yield 92％, melting point 154-157℃. NMR (DMSO): (ppm) 3.35 (s, 3H), 4.25 (s, 3H), 5.25 (s, 2H) 7.90 (d, 1H), 8.05 (d, 1H)."
+        },
+        {
+          "is_translation": true,
+          "kind": "translation",
+          "matched": false,
+          "n": 237,
+          "names_en": [
+            "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+            "magnesium sulfate",
+            "sodium hydroxide",
+            "dichloromethane",
+            "water"
+          ],
+          "pairing": "self",
+          "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a condenser were charged methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate 55.8 g (0.2 mol), sodium trifluoroethoxide 28.1 g (0.23 mol) and 100 ml THF solvent; stirred at room temperature for 16 h, then washed with water and concentrated to give ethyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate; sodium hydroxide 9.2 g (0.23 mol) and water 10 ml were added and the mixture refluxed for 4 h. The solvent THF was distilled off, the mixture cooled, the residue acidified with 36％ HCl, then extracted with dichloromethane, washed with water, dried over magnesium sulfate and concentrated to give 55.6 g of a white solid, yield 92％, melting point 154-157℃. NMR (DMSO): (ppm) 3.35 (s, 3H), 4.25 (s, 3H), 5.25 (s, 2H) 7.90 (d, 1H), 8.05 (d, 1H)."
+        }
+      ],
+      "evidence_width": 2,
+      "family": "grounding",
+      "field": "__substance__",
+      "field_label_en": "__substance__",
+      "highlights": [],
+      "load_bearing": true,
+      "needs_human": true,
+      "question_en": "The patent names 'DMSO' here. Should this record have recorded it?",
+      "rec": "rx:Example 1_Step 6",
+      "rec_field": "__substance__",
+      "record_id": "CN104292137A_Example_1_Step_6",
+      "record_kind": "reaction",
+      "record_label_en": "Example 1 Step 6: 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
+      "risk": 0.95,
+      "risk_reasons_en": [
+        "1 substance printed on a line this record cites, and not carried by any record.",
+        "One reader only. Nothing independent corroborates that these are substances at all."
+      ],
+      "section_en": "Example 1",
+      "severity": "critical",
+      "severity_action_en": "This value is on no line of the patent. Either it was invented or it came from somewhere nobody recorded. Read this one first.",
+      "stratum": "reaction:Example 1",
+      "structure_svg_path": "output/relevant_output/structures/2-chloro-3-trifluoroethoxymethyl-4-methylsulfonylbenzoic-acid.svg",
+      "substance_instances": [
+        {
+          "canonical": "CS(C)=O",
+          "join": "structure",
+          "line": 236,
+          "lines": [
+            236,
+            237
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_6",
+          "record_label_en": "Example 1 Step 6: 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
+          "span": "DMSO",
+          "uncited_line": false
+        }
+      ],
+      "substance_readers": [
+        "llm"
+      ],
+      "tier": 1,
+      "work_kind": "comparison"
+    },
+    {
+      "about": "extraction",
+      "auto": "not_found",
+      "auto_reason_en": "The patent names 'CDCl3' on line 255, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "basis": null,
+      "cited_lines": [
+        255
+      ],
+      "claim_id": "60c82b24b3afd131",
+      "claimed_en": "CDCl3",
+      "claimed_unit": null,
+      "claimed_value": null,
+      "evidence_class": "narrow",
+      "evidence_en": "NMR (CDCl3): (ppm) 2.05 (m, 2H), 2.45 (m, 2H), 2.8 (m, 2H), 3.25 (s, 3H), 4.05 (q, 2H), 5.35 (s, 2H), 7.35 (d, 1H), 8.15 (d, 1H).",
+      "evidence_lines": [
+        {
+          "is_translation": true,
+          "kind": "prose",
+          "matched": true,
+          "n": 255,
+          "names_en": [],
+          "pairing": "self",
+          "text_en": "NMR (CDCl3): (ppm) 2.05 (m, 2H), 2.45 (m, 2H), 2.8 (m, 2H), 3.25 (s, 3H), 4.05 (q, 2H), 5.35 (s, 2H), 7.35 (d, 1H), 8.15 (d, 1H)."
+        }
+      ],
+      "evidence_width": 1,
+      "family": "grounding",
+      "field": "__substance__",
+      "field_label_en": "__substance__",
+      "highlights": [],
+      "load_bearing": true,
+      "needs_human": true,
+      "question_en": "The patent names 'CDCl3' here. Should this record have recorded it?",
+      "rec": "rx:Example 1_Step 8",
+      "rec_field": "__substance__",
+      "record_id": "CN104292137A_Example_1_Step_8",
+      "record_kind": "reaction",
+      "record_label_en": "Example 1 Step 8: tembotrione",
+      "risk": 0.95,
+      "risk_reasons_en": [
+        "1 substance printed on a line this record cites, and not carried by any record.",
+        "One reader only. Nothing independent corroborates that these are substances at all."
+      ],
+      "section_en": "Example 1",
+      "severity": "critical",
+      "severity_action_en": "This value is on no line of the patent. Either it was invented or it came from somewhere nobody recorded. Read this one first.",
+      "stratum": "reaction:Example 1",
+      "structure_svg_path": "output/relevant_output/structures/tembotrione.svg",
+      "substance_instances": [
+        {
+          "canonical": "[2H]C(Cl)(Cl)Cl",
+          "join": "structure",
+          "line": 255,
+          "lines": [
+            255,
+            256
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_8",
+          "record_label_en": "Example 1 Step 8: tembotrione",
+          "span": "CDCl3",
+          "uncited_line": false
+        }
+      ],
+      "substance_readers": [
+        "llm"
+      ],
+      "tier": 1,
+      "work_kind": "comparison"
+    },
+    {
+      "about": "extraction",
       "auto": "not_reconciled",
       "auto_reason_en": "This pack assigns BrBr to 'bromine'. OPSIN parsed the name 'bromine' and reached [Br]. Those are different molecules, so one of the two readings is wrong. This pack's structure came from: Named in the patent but never drawn. Structure from input/structures-curated.json. Benzylic brominating agent, step 5, replacing the NBS of the prior art. Br2 = 159.81; the printed 39.6 g / 220 mmol implies 180.0, i.e. OVER by 20.2.",
       "basis": null,
@@ -53318,6 +53852,13 @@
   ],
   "completeness": {
     "blocking_en": [
+      "Summary of the Invention Step 3: 2-chloro-3-methyl-4-methylsulfonylbenzoic acid - __substance__: The patent names 'water' on line 127, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "Example 1 Step 2: 2-chloro-3-acetyl-6-(methylsulfonyl)toluene - __substance__: The patent names 'CDCl3' on line 199, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "Example 1 Step 3: 2-chloro-3-methyl-4-(methylsulfonyl)benzoic acid - __substance__: The patent names 'CDCl3' on line 208, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "Example 1 Step 4: methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate - __substance__: The patent names 'DMSO' on line 217, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "Example 1 Step 5: methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate - __substance__: The patent names 'DMSO' on line 229, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "Example 1 Step 6: 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid - __substance__: The patent names 'DMSO' on line 236, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
+      "Example 1 Step 8: tembotrione - __substance__: The patent names 'CDCl3' on line 255, which this record cites. None of them is an identifier on this record or on any other record citing those lines. Either the substance was not recorded, or it belongs on a record that does not cite the line.",
       "Summary of the Invention Step 1: 2-chloro-6-methylsulfonyltoluene - Molar ratio: The ratio 1:1-3:1-2 is in the patent, on lines 77, 78, 154, 155, but not on the lines this record cites (117-120).",
       "Summary of the Invention Step 2: 2-chloro-3-acetyl-6-methylsulfonyltoluene - Molar ratio: The ratio 1:1-5:1-2 is in the patent, on lines 84, 85, 156, 157, but not on the lines this record cites (121-124).",
       "Summary of the Invention Step 5: methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate - Molar ratio: The ratio 1:1-1.5 is in the patent, on lines 86, 87, 88, 89, 158, 159, 160, 161, but not on the lines this record cites (138-141).",
@@ -53348,98 +53889,138 @@
       {
         "claims": 0,
         "found": 0,
+        "lines_total": 33,
         "not_checkable": 0,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
         "records": 0,
         "section_en": "Bibliographic Data",
+        "substance_accounted": 3,
+        "substance_none": 30,
+        "substance_unaccounted": 0,
+        "substance_unread": 0,
         "uncited_chemistry_lines": 0
       },
       {
         "claims": 0,
         "found": 0,
+        "lines_total": 3,
         "not_checkable": 0,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
         "records": 0,
         "section_en": "Abstract",
+        "substance_accounted": 3,
+        "substance_none": 0,
+        "substance_unaccounted": 0,
+        "substance_unread": 0,
         "uncited_chemistry_lines": 0
       },
       {
         "claims": 35,
         "found": 32,
+        "lines_total": 52,
         "not_checkable": 3,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
         "records": 18,
         "section_en": "Claims",
+        "substance_accounted": 50,
+        "substance_none": 2,
+        "substance_unaccounted": 0,
+        "substance_unread": 0,
         "uncited_chemistry_lines": 0
       },
       {
         "claims": 9,
         "found": 9,
+        "lines_total": 7,
         "not_checkable": 0,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
         "records": 1,
         "section_en": "Technical Field",
+        "substance_accounted": 4,
+        "substance_none": 3,
+        "substance_unaccounted": 0,
+        "substance_unread": 0,
         "uncited_chemistry_lines": 0
       },
       {
         "claims": 6,
         "found": 4,
+        "lines_total": 6,
         "not_checkable": 2,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
         "records": 4,
         "section_en": "Background",
+        "substance_accounted": 4,
+        "substance_none": 2,
+        "substance_unaccounted": 0,
+        "substance_unread": 0,
         "uncited_chemistry_lines": 0
       },
       {
-        "claims": 173,
+        "claims": 174,
         "found": 130,
+        "lines_total": 60,
         "not_checkable": 27,
-        "not_found": 5,
+        "not_found": 6,
         "not_reconciled": 1,
         "partial": 10,
         "records": 62,
         "section_en": "Summary of the Invention",
+        "substance_accounted": 51,
+        "substance_none": 7,
+        "substance_unaccounted": 2,
+        "substance_unread": 0,
         "uncited_chemistry_lines": 0
       },
       {
         "claims": 4,
         "found": 3,
+        "lines_total": 2,
         "not_checkable": 1,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
         "records": 3,
         "section_en": "Beneficial Effects",
+        "substance_accounted": 2,
+        "substance_none": 0,
+        "substance_unaccounted": 0,
+        "substance_unread": 0,
         "uncited_chemistry_lines": 0
       },
       {
-        "claims": 159,
+        "claims": 165,
         "found": 138,
+        "lines_total": 65,
         "not_checkable": 11,
-        "not_found": 0,
+        "not_found": 6,
         "not_reconciled": 8,
         "partial": 2,
         "records": 24,
         "section_en": "Example 1",
+        "substance_accounted": 38,
+        "substance_none": 15,
+        "substance_unaccounted": 12,
+        "substance_unread": 0,
         "uncited_chemistry_lines": 0
       }
     ],
     "score": {
       "covered_pct": 91.2,
-      "grounded_pct": 94.6,
+      "grounded_pct": 92.7,
       "structure_pct": 92.0
     },
-    "verdict_en": "389 claims were put to the source. 316 were found on the lines the annotation itself cites, 12 were only partly found, 5 were NOT found and are the ones to read first, and 47 are judgements no string match can settle. Of the 334 grounding claims a machine can decide, 94.6% are grounded. 0 source lines carry chemistry that no record cites, and each has its own entry in the queue. 23 record checks fail and 57 warn. 69 of 75 compound identifiers resolve to a drawable structure. Nothing here is a verdict: every line is a prompt for a human to agree or overrule."
+    "verdict_en": "396 claims were put to the source. 316 were found on the lines the annotation itself cites, 12 were only partly found, 12 were NOT found and are the ones to read first, and 47 are judgements no string match can settle. Of the 341 grounding claims a machine can decide, 92.7% are grounded. 0 source lines carry chemistry that no record cites, and each has its own entry in the queue. 23 record checks fail and 57 warn. 69 of 75 compound identifiers resolve to a drawable structure. Nothing here is a verdict: every line is a prompt for a human to agree or overrule."
   },
   "engine_version": 1,
   "generated_at": "2026-08-27T05:18:33Z",
@@ -60821,13 +61402,14 @@
         "a2822e7d621aea4d",
         "1c60a46079511275",
         "544d302b50e9fefe",
-        "9609a3a6070085a5"
+        "9609a3a6070085a5",
+        "d9dc75cf36c6e44d"
       ],
       "label_en": "Example 1 Step 2: 2-chloro-3-acetyl-6-(methylsulfonyl)toluene",
       "rec": "rx:Example 1_Step 2",
       "record_id": "CN104292137A_Example_1_Step_2",
       "record_kind": "reaction",
-      "risk": 0.9,
+      "risk": 0.95,
       "risk_band": "high",
       "section_en": "Example 1",
       "stratum": "reaction:Example 1",
@@ -60941,13 +61523,14 @@
         "95c9bfcba6507c0e",
         "c3827fbbdb3dd69b",
         "0a6e053bc6024f8e",
-        "e43d756d347b3bb0"
+        "e43d756d347b3bb0",
+        "ba56d3ac6fb02981"
       ],
       "label_en": "Example 1 Step 3: 2-chloro-3-methyl-4-(methylsulfonyl)benzoic acid",
       "rec": "rx:Example 1_Step 3",
       "record_id": "CN104292137A_Example_1_Step_3",
       "record_kind": "reaction",
-      "risk": 0.9,
+      "risk": 0.95,
       "risk_band": "high",
       "section_en": "Example 1",
       "stratum": "reaction:Example 1",
@@ -61058,13 +61641,14 @@
         "58ad9c7013c81b88",
         "74e4fa5822170f88",
         "b1e9e1221761a055",
-        "e60e15404bba7177"
+        "e60e15404bba7177",
+        "38a9f623203d608f"
       ],
       "label_en": "Example 1 Step 4: methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate",
       "rec": "rx:Example 1_Step 4",
       "record_id": "CN104292137A_Example_1_Step_4",
       "record_kind": "reaction",
-      "risk": 0.9,
+      "risk": 0.95,
       "risk_band": "high",
       "section_en": "Example 1",
       "stratum": "reaction:Example 1",
@@ -61202,13 +61786,14 @@
         "d9e73cd3f7f01b0e",
         "028a57d7e4897719",
         "c439396e0ae47408",
-        "f1d2a8b0dba681f4"
+        "f1d2a8b0dba681f4",
+        "fb82cd303736620f"
       ],
       "label_en": "Example 1 Step 5: methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
       "rec": "rx:Example 1_Step 5",
       "record_id": "CN104292137A_Example_1_Step_5",
       "record_kind": "reaction",
-      "risk": 0.9,
+      "risk": 0.95,
       "risk_band": "high",
       "section_en": "Example 1",
       "stratum": "reaction:Example 1",
@@ -61367,13 +61952,14 @@
         "82f715f9bd2eb39d",
         "dcec7c1dda3d3a17",
         "62fe615f67f984ab",
-        "9c41e88eef5268d9"
+        "9c41e88eef5268d9",
+        "d6e56c6fd3bb35bd"
       ],
       "label_en": "Example 1 Step 6: 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
       "rec": "rx:Example 1_Step 6",
       "record_id": "CN104292137A_Example_1_Step_6",
       "record_kind": "reaction",
-      "risk": 0.9,
+      "risk": 0.95,
       "risk_band": "high",
       "section_en": "Example 1",
       "stratum": "reaction:Example 1",
@@ -61682,13 +62268,14 @@
         "393dbc562328656b",
         "80b514058bf593b9",
         "0d3f07e9e05aae4d",
-        "c81fb84758dd0822"
+        "c81fb84758dd0822",
+        "60c82b24b3afd131"
       ],
       "label_en": "Example 1 Step 8: tembotrione",
       "rec": "rx:Example 1_Step 8",
       "record_id": "CN104292137A_Example_1_Step_8",
       "record_kind": "reaction",
-      "risk": 0.9,
+      "risk": 0.95,
       "risk_band": "high",
       "section_en": "Example 1",
       "stratum": "reaction:Example 1",
@@ -61964,14 +62551,15 @@
         128
       ],
       "claim_ids": [
-        "d8d495ebcf4d1adb"
+        "d8d495ebcf4d1adb",
+        "084e851b25cad1c1"
       ],
       "label_en": "Summary of the Invention Step 3: 2-chloro-3-methyl-4-methylsulfonylbenzoic acid",
       "rec": "rx:Summary of the Invention_Step 3",
       "record_id": "CN104292137A_Summary_of_the_Invention_Step_3",
       "record_kind": "reaction",
-      "risk": 0.05,
-      "risk_band": "low",
+      "risk": 0.95,
+      "risk_band": "high",
       "section_en": "Summary of the Invention",
       "stratum": "reaction:Summary of the Invention",
       "uuid": "f116b6d4-1822-5db5-9978-78af2e33e586"
@@ -63791,6 +64379,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "# CN104292137A"
       },
       {
@@ -63801,6 +64390,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -63811,6 +64401,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -63821,6 +64412,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Page p01, section type front_page, transcription confidence high."
       },
       {
@@ -63831,6 +64423,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -63843,6 +64436,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "State Intellectual Property Office of the People's Republic of China"
       },
       {
@@ -63855,6 +64449,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "State Intellectual Property Office of the People's Republic of China"
       },
       {
@@ -63867,6 +64462,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Invention patent application (application for a patent for invention)"
       },
       {
@@ -63879,6 +64475,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Invention patent application (application for a patent for invention)"
       },
       {
@@ -63891,6 +64488,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Publication number: CN 104292137 A"
       },
       {
@@ -63903,6 +64501,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Publication number: CN 104292137 A"
       },
       {
@@ -63915,6 +64514,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Publication date: 2015.01.21 (21 January 2015)"
       },
       {
@@ -63927,6 +64527,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Publication date: 2015.01.21 (21 January 2015)"
       },
       {
@@ -63939,6 +64540,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Application number: 201410547223.X"
       },
       {
@@ -63951,6 +64553,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Application number: 201410547223.X"
       },
       {
@@ -63963,6 +64566,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Filing date: 2014.10.15 (15 October 2014)"
       },
       {
@@ -63975,6 +64579,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Filing date: 2014.10.15 (15 October 2014)"
       },
       {
@@ -63987,6 +64592,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Applicant: Wuhan Institute of Technology"
       },
       {
@@ -63999,6 +64605,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Applicant: Wuhan Institute of Technology"
       },
       {
@@ -64011,6 +64618,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Address: 430074, No. 693 Xiongchu Avenue, Hongshan District, Wuhan City, Hubei Province"
       },
       {
@@ -64023,6 +64631,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Address: 430074, No. 693 Xiongchu Avenue, Hongshan District, Wuhan City, Hubei Province"
       },
       {
@@ -64035,6 +64644,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Inventors: Liu Anchang, He Xiaolu, Feng Jiali"
       },
       {
@@ -64047,6 +64657,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Inventors: Liu Anchang, He Xiaolu, Feng Jiali"
       },
       {
@@ -64059,6 +64670,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Patent agency: Hubei Wuhan Yongjia Patent Agency Co., Ltd. - agency code 42102"
       },
       {
@@ -64071,6 +64683,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Patent agency: Hubei Wuhan Yongjia Patent Agency Co., Ltd. - agency code 42102"
       },
       {
@@ -64083,6 +64696,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Agent: Cui Youming"
       },
       {
@@ -64095,6 +64709,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Agent: Cui Youming"
       },
       {
@@ -64107,6 +64722,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Int. Cl.: C07C 317/24 (2006.01); C07C 315/04 (2006.01)"
       },
       {
@@ -64119,6 +64735,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Int. Cl.: C07C 317/24 (2006.01); C07C 315/04 (2006.01)"
       },
       {
@@ -64131,6 +64748,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Int. Cl.: C07C 317/24 (2006.01); C07C 315/04 (2006.01)"
       },
       {
@@ -64143,6 +64761,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Int. Cl.: C07C 317/24 (2006.01); C07C 315/04 (2006.01)"
       },
       {
@@ -64155,6 +64774,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Claims: 2 pages; Description: 6 pages"
       },
       {
@@ -64167,6 +64787,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Claims: 2 pages; Description: 6 pages"
       },
       {
@@ -64180,6 +64801,7 @@
         "section_en": "Bibliographic Data",
         "signals": [],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Title of invention: Synthesis process for the triketone-class herbicide tembotrione"
       },
       {
@@ -64195,6 +64817,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Title of invention: Synthesis process for the triketone-class herbicide tembotrione"
       },
       {
@@ -64210,6 +64833,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Title of invention: Synthesis process for the triketone-class herbicide tembotrione"
       },
       {
@@ -64222,6 +64846,7 @@
         "section_en": "Abstract",
         "signals": [],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Abstract. The present invention relates to a synthesis process for the triketone-class herbicide tembotrione, comprising the following steps: 1) synthesis of 2-chloro-6-(methanesulfonyl)toluene; 2) synthesis of 2-chloro-3-acetyl-6-(methanesulfonyl)toluene; 3) synthesis of 2-chloro-3-methyl-4-(methanesulfonyl)benzoic acid; 4) synthesis of methyl 2-chloro-3-methyl-4-(methanesulfonyl)benzoate; 5) synthesis of methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate; 6) synthesis of 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid; 7) synthesis of 3-oxo-1-cyclohexen-1-yl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoate; 8) synthesis of tembotrione. The beneficial effects of the present invention are that: the reaction steps and time are shortened, and the yield of the intermediates is raised; the reaction conditions are milder and safer; the cost is lowered."
       },
       {
@@ -64244,6 +64869,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Abstract. The present invention relates to a synthesis process for the triketone-class herbicide tembotrione, comprising the following steps: 1) synthesis of 2-chloro-6-(methanesulfonyl)toluene; 2) synthesis of 2-chloro-3-acetyl-6-(methanesulfonyl)toluene; 3) synthesis of 2-chloro-3-methyl-4-(methanesulfonyl)benzoic acid; 4) synthesis of methyl 2-chloro-3-methyl-4-(methanesulfonyl)benzoate; 5) synthesis of methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate; 6) synthesis of 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid; 7) synthesis of 3-oxo-1-cyclohexen-1-yl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoate; 8) synthesis of tembotrione. The beneficial effects of the present invention are that: the reaction steps and time are shortened, and the yield of the intermediates is raised; the reaction conditions are milder and safer; the cost is lowered."
       },
       {
@@ -64266,6 +64892,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Abstract. The present invention relates to a synthesis process for the triketone-class herbicide tembotrione, comprising the following steps: 1) synthesis of 2-chloro-6-(methanesulfonyl)toluene; 2) synthesis of 2-chloro-3-acetyl-6-(methanesulfonyl)toluene; 3) synthesis of 2-chloro-3-methyl-4-(methanesulfonyl)benzoic acid; 4) synthesis of methyl 2-chloro-3-methyl-4-(methanesulfonyl)benzoate; 5) synthesis of methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate; 6) synthesis of 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid; 7) synthesis of 3-oxo-1-cyclohexen-1-yl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoate; 8) synthesis of tembotrione. The beneficial effects of the present invention are that: the reaction steps and time are shortened, and the yield of the intermediates is raised; the reaction conditions are milder and safer; the cost is lowered."
       },
       {
@@ -64276,6 +64903,7 @@
         "section_en": "Abstract",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -64286,6 +64914,7 @@
         "section_en": "Claims",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Page p02, section type claims, transcription confidence high."
       },
       {
@@ -64296,6 +64925,7 @@
         "section_en": "Claims",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -64310,6 +64940,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "1. A process for the synthesis of the triketone herbicide tembotrione, comprising the following steps:"
       },
       {
@@ -64324,6 +64955,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "1. A process for the synthesis of the triketone herbicide tembotrione, comprising the following steps:"
       },
       {
@@ -64340,6 +64972,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "1) Synthesis of 2-chloro-6-methylsulfonyltoluene"
       },
       {
@@ -64361,6 +64994,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chlorotoluene, the catalyst anhydrous aluminium trichloride and solvent are added to a reaction flask; methanesulfonyl chloride is added dropwise at between 0℃ and -15℃ [printed as 0℃-15℃, see notes]; after the dropwise addition is complete the mixture is warmed to room temperature and the reaction continued; LC is used to follow the reaction to completion; the reaction mixture is poured into ice water, extracted with solvent and concentrated to give 2-chloro-6-methylsulfonyltoluene;"
       },
       {
@@ -64377,6 +65011,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "1) Synthesis of 2-chloro-6-methylsulfonyltoluene"
       },
       {
@@ -64398,6 +65033,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chlorotoluene, the catalyst anhydrous aluminium trichloride and solvent are added to a reaction flask; methanesulfonyl chloride is added dropwise at between 0℃ and -15℃ [printed as 0℃-15℃, see notes]; after the dropwise addition is complete the mixture is warmed to room temperature and the reaction continued; LC is used to follow the reaction to completion; the reaction mixture is poured into ice water, extracted with solvent and concentrated to give 2-chloro-6-methylsulfonyltoluene;"
       },
       {
@@ -64414,6 +65050,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2) Synthesis of 2-chloro-3-acetyl-6-methylsulfonyltoluene"
       },
       {
@@ -64437,6 +65074,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chloro-6-methylsulfonyltoluene, anhydrous aluminium trichloride and solvent are added to a reaction vessel; at a temperature of 15-20℃ acetyl chloride is added dropwise; after the dropwise addition is complete the reaction is continued at room temperature for 1-5h; when the reaction is complete the reaction mixture is poured into a mixture of ice water and hydrochloric acid; the organic layer is separated, the aqueous layer is extracted with solvent, the organic layers are combined, washed with water and concentrated to give 2-chloro-3-acetyl-6-methylsulfonyltoluene;"
       },
       {
@@ -64453,6 +65091,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2) Synthesis of 2-chloro-3-acetyl-6-methylsulfonyltoluene"
       },
       {
@@ -64476,6 +65115,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chloro-6-methylsulfonyltoluene, anhydrous aluminium trichloride and solvent are added to a reaction vessel; at a temperature of 15-20℃ acetyl chloride is added dropwise; after the dropwise addition is complete the reaction is continued at room temperature for 1-5h; when the reaction is complete the reaction mixture is poured into a mixture of ice water and hydrochloric acid; the organic layer is separated, the aqueous layer is extracted with solvent, the organic layers are combined, washed with water and concentrated to give 2-chloro-3-acetyl-6-methylsulfonyltoluene;"
       },
       {
@@ -64492,6 +65132,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "3) Synthesis of 2-chloro-3-methyl-4-methylsulfonylbenzoic acid"
       },
       {
@@ -64512,6 +65153,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The 2-chloro-3-acetyl-6-methylsulfonyltoluene obtained in step 2) and aqueous sodium hypochlorite solution are added separately to a reaction vessel fitted with a stirrer; the mixture is heated to react, acidified with dilute hydrochloric acid, filtered, washed with water and dried to give 2-chloro-3-methyl-4-methylsulfonylbenzoic acid;"
       },
       {
@@ -64528,6 +65170,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "3) Synthesis of 2-chloro-3-methyl-4-methylsulfonylbenzoic acid"
       },
       {
@@ -64548,6 +65191,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The 2-chloro-3-acetyl-6-methylsulfonyltoluene obtained in step 2) and aqueous sodium hypochlorite solution are added separately to a reaction vessel fitted with a stirrer; the mixture is heated to react, acidified with dilute hydrochloric acid, filtered, washed with water and dried to give 2-chloro-3-methyl-4-methylsulfonylbenzoic acid;"
       },
       {
@@ -64565,6 +65209,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "4) Synthesis of methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate"
       },
       {
@@ -64586,6 +65231,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The 2-chloro-3-methyl-4-methylsulfonylbenzoic acid obtained in step 3) and methanol are added to a reaction flask fitted with a reflux condenser; the catalyst concentrated sulfuric acid or p-toluenesulfonic acid is added; the mixture is refluxed for 1-10h; excess methanol is distilled off to give methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -64603,6 +65249,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "4) Synthesis of methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate"
       },
       {
@@ -64624,6 +65271,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The 2-chloro-3-methyl-4-methylsulfonylbenzoic acid obtained in step 3) and methanol are added to a reaction flask fitted with a reflux condenser; the catalyst concentrated sulfuric acid or p-toluenesulfonic acid is added; the mixture is refluxed for 1-10h; excess methanol is distilled off to give methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -64641,6 +65289,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "5) Synthesis of methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate"
       },
       {
@@ -64662,6 +65311,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate is dissolved in solvent; an appropriate amount of peroxybenzoic acid is added; under reflux conditions bromine is added dropwise; after the addition is finished the reaction is continued for 1-10h; the mixture is cooled, washed with water and concentrated to give methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -64679,6 +65329,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "5) Synthesis of methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate"
       },
       {
@@ -64700,6 +65351,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate is dissolved in solvent; an appropriate amount of peroxybenzoic acid is added; under reflux conditions bromine is added dropwise; after the addition is finished the reaction is continued for 1-10h; the mixture is cooled, washed with water and concentrated to give methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -64717,6 +65369,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "6) Synthesis of 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid"
       },
       {
@@ -64740,6 +65393,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate is dissolved in solvent; sodium 2,2,2-trifluoroethoxide is added; the mixture is stirred at room temperature, then washed with water and concentrated to give ethyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate; the residue is dissolved in solvent, aqueous sodium hydroxide solution is added, the mixture is refluxed for 1-4h, cooled, acidified by adding dilute hydrochloric acid, extracted with solvent, washed with water, dried and concentrated to give 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid;"
       },
       {
@@ -64757,6 +65411,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "6) Synthesis of 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid"
       },
       {
@@ -64780,6 +65435,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate is dissolved in solvent; sodium 2,2,2-trifluoroethoxide is added; the mixture is stirred at room temperature, then washed with water and concentrated to give ethyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate; the residue is dissolved in solvent, aqueous sodium hydroxide solution is added, the mixture is refluxed for 1-4h, cooled, acidified by adding dilute hydrochloric acid, extracted with solvent, washed with water, dried and concentrated to give 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid;"
       },
       {
@@ -64797,6 +65453,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "7) Synthesis of 3-oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate"
       },
       {
@@ -64819,6 +65476,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid, N,N-dimethylformamide and solvent are added to a reaction flask; at room temperature thionyl chloride is added dropwise; the temperature is raised and the mixture is stirred at reflux; the solvent is distilled off; dichloromethane is added to the residue; after cooling, a mixture of cyclohexanedione and base is added; the mixture is stirred at room temperature; the reaction mixture is washed with water, dried and concentrated to give the oil 3-oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -64834,6 +65492,7 @@
         "section_en": "Claims",
         "signals": [],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "7) Synthesis of 3-oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate"
       },
       {
@@ -64856,6 +65515,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid, N,N-dimethylformamide and solvent are added to a reaction flask; at room temperature thionyl chloride is added dropwise; the temperature is raised and the mixture is stirred at reflux; the solvent is distilled off; dichloromethane is added to the residue; after cooling, a mixture of cyclohexanedione and base is added; the mixture is stirred at room temperature; the reaction mixture is washed with water, dried and concentrated to give the oil 3-oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -64873,6 +65533,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "8) Synthesis of tembotrione"
       },
       {
@@ -64892,6 +65553,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "3-Oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate, cyanoacetone and triethylamine are added to a reaction flask fitted with a drying tube, dissolved in solvent and stirred continuously at room temperature; the solvent is distilled off, and the mixture is extracted, washed with water, dried and concentrated to give tembotrione as a beige solid."
       },
       {
@@ -64909,6 +65571,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "8) Synthesis of tembotrione"
       },
       {
@@ -64928,6 +65591,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "3-Oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate, cyanoacetone and triethylamine are added to a reaction flask fitted with a drying tube, dissolved in solvent and stirred continuously at room temperature; the solvent is distilled off, and the mixture is extracted, washed with water, dried and concentrated to give tembotrione as a beige solid."
       },
       {
@@ -64949,6 +65613,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2. The process for synthesizing the triketone herbicide tembotrione according to claim 1, characterized in that in step 1) the molar ratio of 2-chlorotoluene, the catalyst anhydrous aluminium trichloride and methanesulfonyl chloride is 1:1-3:1-2, and the said solvent is dichlorometh-"
       },
       {
@@ -64970,6 +65635,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2. The process for synthesizing the triketone herbicide tembotrione according to claim 1, characterized in that in step 1) the molar ratio of 2-chlorotoluene, the catalyst anhydrous aluminium trichloride and methanesulfonyl chloride is 1:1-3:1-2, and the said solvent is dichlorometh-"
       },
       {
@@ -64980,6 +65646,7 @@
         "section_en": "Claims",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -64990,6 +65657,7 @@
         "section_en": "Claims",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Page p03, section type claims, transcription confidence high."
       },
       {
@@ -65000,6 +65668,7 @@
         "section_en": "Claims",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -65018,6 +65687,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "...ane, chloroform or 1,2-dichloroethane."
       },
       {
@@ -65036,6 +65706,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "...ane, chloroform or 1,2-dichloroethane."
       },
       {
@@ -65059,6 +65730,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "3. The synthesis process for the triketone herbicide tembotrione according to claim 1, characterised in that, in step 2) the molar ratio of 2-chloro-6-methylsulfonyltoluene, anhydrous aluminium trichloride and acetyl chloride is 1:1-5:1-2, and said solvent is dichloromethane, chloroform or 1,2-dichloroethane."
       },
       {
@@ -65082,6 +65754,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "3. The synthesis process for the triketone herbicide tembotrione according to claim 1, characterised in that, in step 2) the molar ratio of 2-chloro-6-methylsulfonyltoluene, anhydrous aluminium trichloride and acetyl chloride is 1:1-5:1-2, and said solvent is dichloromethane, chloroform or 1,2-dichloroethane."
       },
       {
@@ -65105,6 +65778,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "4. The synthesis process for the triketone herbicide tembotrione according to claim 1, characterised in that, in step 5) the molar ratio for the reaction of methyl 2-chloro-4-methylsulfonyl-3-methylbenzoate with bromine is 1:1-1.5, and said solvent is carbon tetrachloride, chloroform, dichloromethane or 1,2-dichloroethane."
       },
       {
@@ -65128,6 +65802,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "4. The synthesis process for the triketone herbicide tembotrione according to claim 1, characterised in that, in step 5) the molar ratio for the reaction of methyl 2-chloro-4-methylsulfonyl-3-methylbenzoate with bromine is 1:1-1.5, and said solvent is carbon tetrachloride, chloroform, dichloromethane or 1,2-dichloroethane."
       },
       {
@@ -65151,6 +65826,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "5. The synthesis process for the triketone herbicide tembotrione according to claim 1, characterised in that, in step 6) the molar ratio of methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate to sodium trifluoroethoxide is 1:1-1.5, and said solvent is tetrahydrofuran, acetonitrile, dichloromethane or toluene."
       },
       {
@@ -65174,6 +65850,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "5. The synthesis process for the triketone herbicide tembotrione according to claim 1, characterised in that, in step 6) the molar ratio of methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate to sodium trifluoroethoxide is 1:1-1.5, and said solvent is tetrahydrofuran, acetonitrile, dichloromethane or toluene."
       },
       {
@@ -65198,6 +65875,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "6. The synthesis process for the triketone herbicide tembotrione according to claim 1, characterised in that, in step 7) the molar ratio of 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid, thionyl chloride and cyclohexanedione is 1:1-5:1-3, and said base is an inorganic base or an organic base."
       },
       {
@@ -65222,6 +65900,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "6. The synthesis process for the triketone herbicide tembotrione according to claim 1, characterised in that, in step 7) the molar ratio of 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid, thionyl chloride and cyclohexanedione is 1:1-5:1-3, and said base is an inorganic base or an organic base."
       },
       {
@@ -65242,6 +65921,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "7. The synthesis process for the triketone herbicide tembotrione according to claim 6, characterised in that said inorganic base is sodium carbonate, potassium carbonate, sodium hydroxide or potassium hydroxide."
       },
       {
@@ -65262,6 +65942,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "7. The synthesis process for the triketone herbicide tembotrione according to claim 6, characterised in that said inorganic base is sodium carbonate, potassium carbonate, sodium hydroxide or potassium hydroxide."
       },
       {
@@ -65280,6 +65961,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "8. The synthesis process for the triketone herbicide tembotrione according to claim 6, characterised in that said organic base is pyridine or triethylamine."
       },
       {
@@ -65298,6 +65980,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "8. The synthesis process for the triketone herbicide tembotrione according to claim 6, characterised in that said organic base is pyridine or triethylamine."
       },
       {
@@ -65308,6 +65991,7 @@
         "section_en": "Claims",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -65318,6 +66002,7 @@
         "section_en": "Technical Field",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Page p04, section type description, transcription confidence high."
       },
       {
@@ -65328,6 +66013,7 @@
         "section_en": "Technical Field",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -65342,6 +66028,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Synthesis process for the triketone herbicide tembotrione"
       },
       {
@@ -65356,6 +66043,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Synthesis process for the triketone herbicide tembotrione"
       },
       {
@@ -65366,6 +66054,7 @@
         "section_en": "Technical Field",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Technical field"
       },
       {
@@ -65376,6 +66065,7 @@
         "section_en": "Technical Field",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Technical field"
       },
       {
@@ -65390,6 +66080,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The present invention belongs to the field of the preparation of pesticide technical materials (active ingredients), and specifically relates to a synthesis process for the triketone herbicide tembotrione."
       },
       {
@@ -65404,6 +66095,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The present invention belongs to the field of the preparation of pesticide technical materials (active ingredients), and specifically relates to a synthesis process for the triketone herbicide tembotrione."
       },
       {
@@ -65414,6 +66106,7 @@
         "section_en": "Background",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Background art"
       },
       {
@@ -65424,6 +66117,7 @@
         "section_en": "Background",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Background art"
       },
       {
@@ -65440,6 +66134,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The herbicide tembotrione, chemical name: 2-(2-chloro 4-methylsulfonyl-3-[(2,2,2-trifluoroethoxy)methyl]benzoyl)cyclohexane-1,3-dione. A triketone maize-field herbicide developed by Bayer in 2007; its activity is higher than that of xiaohuanhuangtong [herbicide name exactly as printed; not a standard common name, identity unresolved] and mesotrione currently on the market, and it is safe to the crop. It has a very strong killing action on many kinds of weeds, has no residual activity, has fairly strong resistance to being washed off by rain, and has a broad weed-control spectrum, being able to effectively control weeds such as Galinsoga (Galinsoga (gallant soldiers)), Convolvulus (Convolvulus (bindweed)), Veronica (Veronica (speedwell)) and cleavers (cleavers (Galium aparine))."
       },
       {
@@ -65456,6 +66151,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The herbicide tembotrione, chemical name: 2-(2-chloro 4-methylsulfonyl-3-[(2,2,2-trifluoroethoxy)methyl]benzoyl)cyclohexane-1,3-dione. A triketone maize-field herbicide developed by Bayer in 2007; its activity is higher than that of xiaohuanhuangtong [herbicide name exactly as printed; not a standard common name, identity unresolved] and mesotrione currently on the market, and it is safe to the crop. It has a very strong killing action on many kinds of weeds, has no residual activity, has fairly strong resistance to being washed off by rain, and has a broad weed-control spectrum, being able to effectively control weeds such as Galinsoga (Galinsoga (gallant soldiers)), Convolvulus (Convolvulus (bindweed)), Veronica (Veronica (speedwell)) and cleavers (cleavers (Galium aparine))."
       },
       {
@@ -65472,6 +66168,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The synthesis routes used in the prior art have the following drawbacks: (1) the use of sodium methanethiolate gives off a comparatively strong odour, and the mercaptan in the waste water is hard to treat, causing environmental pollution; (2) the production cost is too high; (3) N-bromosuccinimide is used as the brominating agent, and this brominating agent is expensive."
       },
       {
@@ -65488,6 +66185,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The synthesis routes used in the prior art have the following drawbacks: (1) the use of sodium methanethiolate gives off a comparatively strong odour, and the mercaptan in the waste water is hard to treat, causing environmental pollution; (2) the production cost is too high; (3) N-bromosuccinimide is used as the brominating agent, and this brominating agent is expensive."
       },
       {
@@ -65498,6 +66196,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Summary of the invention"
       },
       {
@@ -65508,6 +66207,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Summary of the invention"
       },
       {
@@ -65524,6 +66224,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The technical problem to be solved by the present invention is to propose, in view of the above prior art, a synthesis process for the triketone herbicide tembotrione which, by improving its process route, shortens the process reaction time, does away with the strongly-smelling sodium methanethiolate and the highly toxic cyanoacetone, raises the yield, produces less \"three wastes\", and achieves clean and environmentally friendly production."
       },
       {
@@ -65540,6 +66241,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The technical problem to be solved by the present invention is to propose, in view of the above prior art, a synthesis process for the triketone herbicide tembotrione which, by improving its process route, shortens the process reaction time, does away with the strongly-smelling sodium methanethiolate and the highly toxic cyanoacetone, raises the yield, produces less \"three wastes\", and achieves clean and environmentally friendly production."
       },
       {
@@ -65554,6 +66256,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The technical solution adopted by the present invention to solve the above technical problem is: a synthesis process for the triketone herbicide tembotrione, comprising the following steps:"
       },
       {
@@ -65568,6 +66271,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The technical solution adopted by the present invention to solve the above technical problem is: a synthesis process for the triketone herbicide tembotrione, comprising the following steps:"
       },
       {
@@ -65584,6 +66288,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "1) Synthesis of 2-chloro-6-methylsulfonyltoluene"
       },
       {
@@ -65600,6 +66305,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "1) Synthesis of 2-chloro-6-methylsulfonyltoluene"
       },
       {
@@ -65621,6 +66327,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chlorotoluene, the catalyst anhydrous aluminium trichloride and solvent are charged into a reaction flask; methanesulfonyl chloride is added dropwise at 0℃-15℃ (see notes on the sign); when the dropwise addition is complete the temperature is raised to room temperature and the reaction is continued; the reaction is followed by LC until it is complete; the reaction mixture is poured into ice water, extracted with solvent and concentrated to give 2-chloro-6-methylsulfonyltoluene;"
       },
       {
@@ -65642,6 +66349,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chlorotoluene, the catalyst anhydrous aluminium trichloride and solvent are charged into a reaction flask; methanesulfonyl chloride is added dropwise at 0℃-15℃ (see notes on the sign); when the dropwise addition is complete the temperature is raised to room temperature and the reaction is continued; the reaction is followed by LC until it is complete; the reaction mixture is poured into ice water, extracted with solvent and concentrated to give 2-chloro-6-methylsulfonyltoluene;"
       },
       {
@@ -65659,6 +66367,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2) Synthesis of 2-chloro-3-acetyl-6-methylsulfonyltoluene"
       },
       {
@@ -65676,6 +66385,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2) Synthesis of 2-chloro-3-acetyl-6-methylsulfonyltoluene"
       },
       {
@@ -65699,6 +66409,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chloro-6-methylsulfonyltoluene, anhydrous aluminium trichloride and solvent are charged into a reaction vessel; acetyl chloride is added dropwise at a temperature of 15-20℃; after the dropwise addition is complete the reaction is continued at room temperature for 1-5 h; when the reaction is complete the reaction mixture is poured into a mixture of ice water and hydrochloric acid; the organic layer is separated off, the aqueous layer is extracted with solvent, the organic layers are combined, washed with water and concentrated to give 2-chloro-3-acetyl-6-methylsulfonyltoluene;"
       },
       {
@@ -65722,6 +66433,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chloro-6-methylsulfonyltoluene, anhydrous aluminium trichloride and solvent are charged into a reaction vessel; acetyl chloride is added dropwise at a temperature of 15-20℃; after the dropwise addition is complete the reaction is continued at room temperature for 1-5 h; when the reaction is complete the reaction mixture is poured into a mixture of ice water and hydrochloric acid; the organic layer is separated off, the aqueous layer is extracted with solvent, the organic layers are combined, washed with water and concentrated to give 2-chloro-3-acetyl-6-methylsulfonyltoluene;"
       },
       {
@@ -65738,6 +66450,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "3) Synthesis of 2-chloro-3-methyl-4-methylsulfonylbenzoic acid"
       },
       {
@@ -65754,6 +66467,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "3) Synthesis of 2-chloro-3-methyl-4-methylsulfonylbenzoic acid"
       },
       {
@@ -65773,6 +66487,10 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "water"
+        ],
         "text_en": "Into a reaction vessel fitted with a stirrer are charged separately the 2-chloro-3-acetyl-6-methylsulfonyltoluene obtained in step 2) and aqueous sodium hypochlorite solution; the mixture is heated to react, acidified with dilute hydrochloric acid, filtered, washed with water and dried to give 2-chloro-3-methyl-4-methylsulfonylbenzoic acid;"
       },
       {
@@ -65792,6 +66510,10 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "water"
+        ],
         "text_en": "Into a reaction vessel fitted with a stirrer are charged separately the 2-chloro-3-acetyl-6-methylsulfonyltoluene obtained in step 2) and aqueous sodium hypochlorite solution; the mixture is heated to react, acidified with dilute hydrochloric acid, filtered, washed with water and dried to give 2-chloro-3-methyl-4-methylsulfonylbenzoic acid;"
       },
       {
@@ -65808,6 +66530,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "4) Synthesis of methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate"
       },
       {
@@ -65824,6 +66547,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "4) Synthesis of methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate"
       },
       {
@@ -65844,6 +66568,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The 2-chloro-3-methyl-4-methylsulfonylbenzoic acid obtained in step 3) and methanol are charged into a reaction flask fitted with a reflux condenser; the catalyst, concentrated sulfuric acid or p-toluenesulfonic acid, is added; the mixture is refluxed for 1-10 h; the excess methanol is distilled off to give"
       },
       {
@@ -65864,6 +66589,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The 2-chloro-3-methyl-4-methylsulfonylbenzoic acid obtained in step 3) and methanol are charged into a reaction flask fitted with a reflux condenser; the catalyst, concentrated sulfuric acid or p-toluenesulfonic acid, is added; the mixture is refluxed for 1-10 h; the excess methanol is distilled off to give"
       },
       {
@@ -65877,6 +66603,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -65890,6 +66617,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Page p05, section type description, transcription confidence high."
       },
       {
@@ -65903,6 +66631,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -65919,6 +66648,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -65935,6 +66665,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -65951,6 +66682,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "5) Synthesis of methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate"
       },
       {
@@ -65967,6 +66699,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "5) Synthesis of methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate"
       },
       {
@@ -65988,6 +66721,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate is dissolved in a solvent, an appropriate amount of peroxybenzoic acid is added, bromine is added dropwise under reflux conditions, and after the addition is complete the reaction is continued for 1-10 h, cooled, washed with water and concentrated to give methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -66009,6 +66743,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate is dissolved in a solvent, an appropriate amount of peroxybenzoic acid is added, bromine is added dropwise under reflux conditions, and after the addition is complete the reaction is continued for 1-10 h, cooled, washed with water and concentrated to give methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -66025,6 +66760,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "6) Synthesis of 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid"
       },
       {
@@ -66041,6 +66777,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "6) Synthesis of 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid"
       },
       {
@@ -66064,6 +66801,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate is dissolved in a solvent, sodium 2,2,2-trifluoroethoxide is added, the mixture is stirred at room temperature, then washed with water and concentrated to give ETHYL 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate; the residue is dissolved in a solvent, aqueous sodium hydroxide solution is added, the mixture is refluxed for 1-4 h, cooled, acidified by addition of dilute hydrochloric acid, extracted with solvent, washed with water, dried and concentrated to give 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid;"
       },
       {
@@ -66087,6 +66825,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate is dissolved in a solvent, sodium 2,2,2-trifluoroethoxide is added, the mixture is stirred at room temperature, then washed with water and concentrated to give ETHYL 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate; the residue is dissolved in a solvent, aqueous sodium hydroxide solution is added, the mixture is refluxed for 1-4 h, cooled, acidified by addition of dilute hydrochloric acid, extracted with solvent, washed with water, dried and concentrated to give 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid;"
       },
       {
@@ -66103,6 +66842,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "7) Synthesis of 3-oxo-1-cyclohexen-1-yl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate"
       },
       {
@@ -66119,6 +66859,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "7) Synthesis of 3-oxo-1-cyclohexen-1-yl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate"
       },
       {
@@ -66141,6 +66882,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid, N,N-dimethylformamide and a solvent are charged into a reaction flask; at room temperature thionyl chloride is added dropwise, the temperature is raised and the mixture is stirred at reflux, the solvent is distilled off, dichloromethane is added to the residue, and after cooling a mixture of cyclohexanedione and a base is added and stirred at room temperature; the reaction mixture is washed with water, dried and concentrated to give, as an oil, 3-oxo-1-cyclohexen-1-yl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -66163,6 +66905,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2-Chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid, N,N-dimethylformamide and a solvent are charged into a reaction flask; at room temperature thionyl chloride is added dropwise, the temperature is raised and the mixture is stirred at reflux, the solvent is distilled off, dichloromethane is added to the residue, and after cooling a mixture of cyclohexanedione and a base is added and stirred at room temperature; the reaction mixture is washed with water, dried and concentrated to give, as an oil, 3-oxo-1-cyclohexen-1-yl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate;"
       },
       {
@@ -66179,6 +66922,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "8) Synthesis of tembotrione"
       },
       {
@@ -66195,6 +66939,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "8) Synthesis of tembotrione"
       },
       {
@@ -66215,6 +66960,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a reaction flask fitted with a drying tube are charged 3-oxo-1-cyclohexen-1-yl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate, cyanoacetone and triethylamine, dissolved in a solvent and stirred continuously at room temperature; the solvent is distilled off, the mixture is extracted, washed with water, dried and concentrated to give tembotrione as a rice-yellow (beige) solid."
       },
       {
@@ -66235,6 +66981,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a reaction flask fitted with a drying tube are charged 3-oxo-1-cyclohexen-1-yl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate, cyanoacetone and triethylamine, dissolved in a solvent and stirred continuously at room temperature; the solvent is distilled off, the mixture is extracted, washed with water, dried and concentrated to give tembotrione as a rice-yellow (beige) solid."
       },
       {
@@ -66255,6 +67002,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, in step 1) the molar ratio of 2-chlorotoluene, the catalyst anhydrous aluminium trichloride, and methanesulfonyl chloride is 1:1-3:1-2, and said solvent is dichloromethane, chloroform or 1,2-dichloroethane."
       },
       {
@@ -66275,6 +67023,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, in step 1) the molar ratio of 2-chlorotoluene, the catalyst anhydrous aluminium trichloride, and methanesulfonyl chloride is 1:1-3:1-2, and said solvent is dichloromethane, chloroform or 1,2-dichloroethane."
       },
       {
@@ -66296,6 +67045,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, in step 2) the molar ratio of 2-chloro-6-methylsulfonyltoluene, anhydrous aluminium trichloride and acetyl chloride is 1:1-5:1-2, and said solvent is dichloromethane, chloroform or 1,2-dichloroethane."
       },
       {
@@ -66317,6 +67067,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, in step 2) the molar ratio of 2-chloro-6-methylsulfonyltoluene, anhydrous aluminium trichloride and acetyl chloride is 1:1-5:1-2, and said solvent is dichloromethane, chloroform or 1,2-dichloroethane."
       },
       {
@@ -66337,6 +67088,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, in step 5) the molar ratio for the reaction of methyl 2-chloro-4-methylsulfonyl-3-methylbenzoate with bromine is 1:1-1.5, and said solvent is carbon tetrachloride, chloroform, dichloromethane or 1,2-dichloroethane."
       },
       {
@@ -66357,6 +67109,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, in step 5) the molar ratio for the reaction of methyl 2-chloro-4-methylsulfonyl-3-methylbenzoate with bromine is 1:1-1.5, and said solvent is carbon tetrachloride, chloroform, dichloromethane or 1,2-dichloroethane."
       },
       {
@@ -66377,6 +67130,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, in step 6) the molar ratio of methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate to sodium trifluoroethoxide is 1:1-1.5, and said solvent is tetrahydrofuran, acetonitrile, dichloromethane or toluene."
       },
       {
@@ -66397,6 +67151,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, in step 6) the molar ratio of methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate to sodium trifluoroethoxide is 1:1-1.5, and said solvent is tetrahydrofuran, acetonitrile, dichloromethane or toluene."
       },
       {
@@ -66414,6 +67169,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, in step 7) the molar ratio of 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid, thionyl chloride and cyclohexanedione is 1:1-5:1-3, and said base is an inorganic base or an organic base."
       },
       {
@@ -66431,6 +67187,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, in step 7) the molar ratio of 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid, thionyl chloride and cyclohexanedione is 1:1-5:1-3, and said base is an inorganic base or an organic base."
       },
       {
@@ -66448,6 +67205,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, said inorganic base is sodium carbonate, potassium carbonate, sodium hydroxide or potassium hydroxide."
       },
       {
@@ -66465,6 +67223,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, said inorganic base is sodium carbonate, potassium carbonate, sodium hydroxide or potassium hydroxide."
       },
       {
@@ -66480,6 +67239,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, said organic base is pyridine or triethylamine."
       },
       {
@@ -66495,6 +67255,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "According to the above scheme, said organic base is pyridine or triethylamine."
       },
       {
@@ -66505,6 +67266,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "The reaction equations involved in the present invention are as follows:"
       },
       {
@@ -66515,6 +67277,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "The reaction equations involved in the present invention are as follows:"
       },
       {
@@ -66525,6 +67288,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "[0030]"
       },
       {
@@ -66535,6 +67299,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -66545,6 +67310,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Page p06, section type description, transcription confidence medium."
       },
       {
@@ -66555,6 +67321,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -66598,6 +67365,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Drawn on the page: 10 structures. C7H6Cl2 (Cc1c(Cl)cccc1Cl); C8H9ClS (CSc1cccc(Cl)c1C); C10H11ClOS (CSc1ccc(C(C)=O)c(Cl)c1C); C10H11ClO3S (CC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl); C9H9ClO4S (Cc1c(S(C)(=O)=O)ccc(C(=O)O)c1Cl); C10H11ClO4S (COC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl); C10H10BrClO4S (COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl); C11H10ClF3O5S (CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F); C17H16ClF3O6S (CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F); C17H16ClF3O6S (CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F)."
       },
       {
@@ -66608,6 +67376,7 @@
         "section_en": "Summary of the Invention",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -66627,6 +67396,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The beneficial effects of the present invention are: by improving the process, the reaction steps and time are shortened, and the yield of the intermediate methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate is raised; this process uses methanesulfonyl chloride in place of the chloro-substitution reaction of the methyl sulfide, doing away with the hydrogen-peroxide oxidation step of the thioether, which makes the reaction conditions milder and the production process safer; in the preparation of the methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate intermediate, bromine is used in place of expensive NBS to brominate the side-chain methyl group, which lowers the production cost."
       },
       {
@@ -66646,6 +67416,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "The beneficial effects of the present invention are: by improving the process, the reaction steps and time are shortened, and the yield of the intermediate methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate is raised; this process uses methanesulfonyl chloride in place of the chloro-substitution reaction of the methyl sulfide, doing away with the hydrogen-peroxide oxidation step of the thioether, which makes the reaction conditions milder and the production process safer; in the preparation of the methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate intermediate, bromine is used in place of expensive NBS to brominate the side-chain methyl group, which lowers the production cost."
       },
       {
@@ -66656,6 +67427,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Specific embodiments"
       },
       {
@@ -66666,6 +67438,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Specific embodiments"
       },
       {
@@ -66676,6 +67449,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "The present invention is further described in detail below in conjunction with the examples, but this description shall not constitute a limitation of the present invention. Example 1"
       },
       {
@@ -66686,6 +67460,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "The present invention is further described in detail below in conjunction with the examples, but this description shall not constitute a limitation of the present invention. Example 1"
       },
       {
@@ -66703,6 +67478,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "1. Synthesis of 2-chloro-6-methanesulfonyltoluene"
       },
       {
@@ -66720,6 +67496,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "1. Synthesis of 2-chloro-6-methanesulfonyltoluene"
       },
       {
@@ -66734,6 +67511,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "[0034]"
       },
       {
@@ -66751,6 +67529,7 @@
           "structure"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Drawn on the page: 1 structure. C8H9ClO2S (Cc1c(Cl)cccc1S(C)(=O)=O)."
       },
       {
@@ -66765,6 +67544,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -66792,6 +67572,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a reflux condenser were charged 2-chlorotoluene 25.3 g (0.2 mol), anhydrous aluminium trichloride 40.5 g (0.3 mol) and 1,2-dichloroethane 150 ml; cooled to 5 degrees C, then methanesulfonyl chloride 25.25 g (0.22 mol) was added dropwise, the addition temperature not exceeding 10 degrees C; after the addition was complete the mixture was warmed to room temperature and the reaction continued for 10 h, followed by LC (liquid chromatography) until the reaction was complete; the reaction mixture was poured into ice water, the organic layer was separated, the aqueous layer was extracted with 1,2-dichloromethane, the organic phases were combined and concentrated to give a pale yellow solid 28.6 g, yield 84%."
       },
       {
@@ -66819,6 +67600,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a reflux condenser were charged 2-chlorotoluene 25.3 g (0.2 mol), anhydrous aluminium trichloride 40.5 g (0.3 mol) and 1,2-dichloroethane 150 ml; cooled to 5 degrees C, then methanesulfonyl chloride 25.25 g (0.22 mol) was added dropwise, the addition temperature not exceeding 10 degrees C; after the addition was complete the mixture was warmed to room temperature and the reaction continued for 10 h, followed by LC (liquid chromatography) until the reaction was complete; the reaction mixture was poured into ice water, the organic layer was separated, the aqueous layer was extracted with 1,2-dichloromethane, the organic phases were combined and concentrated to give a pale yellow solid 28.6 g, yield 84%."
       },
       {
@@ -66829,6 +67611,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -66839,6 +67622,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "none",
         "text_en": "Page p07, section type description, transcription confidence high."
       },
       {
@@ -66849,6 +67633,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "uncited_plain",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -66866,6 +67651,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2. 2-Chloro-3-acetyl-6-(methylsulfonyl)toluene"
       },
       {
@@ -66883,6 +67669,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "2. 2-Chloro-3-acetyl-6-(methylsulfonyl)toluene"
       },
       {
@@ -66897,6 +67684,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "[0037]"
       },
       {
@@ -66914,6 +67702,7 @@
           "structure"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Drawn on the page: 1 structure. C10H11ClO3S (CC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl)."
       },
       {
@@ -66928,6 +67717,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -66956,6 +67746,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a reflux condenser were charged 2-chloro-6-(methylsulfonyl)toluene 34.0 g (0.2 mol), anhydrous aluminium trichloride 40.5 g (0.3 mol) and dichloromethane; at a temperature of 15-20°C, acetyl chloride 23.5 g (0.3 mol) was added dropwise; after the addition was complete, the reaction was continued at room temperature for 5 h; when the reaction was complete, the reaction mixture was poured into a mixture of ice water and hydrochloric acid, the organic layer was separated, the aqueous layer was extracted with dichloromethane, the organic layers were combined, washed with water and concentrated to give 36.5 g of 2-chloro-3-acetyl-6-(methylsulfonyl)toluene as a white solid, yield 86％, melting point 110-112°C."
       },
       {
@@ -66984,6 +67775,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a reflux condenser were charged 2-chloro-6-(methylsulfonyl)toluene 34.0 g (0.2 mol), anhydrous aluminium trichloride 40.5 g (0.3 mol) and dichloromethane; at a temperature of 15-20°C, acetyl chloride 23.5 g (0.3 mol) was added dropwise; after the addition was complete, the reaction was continued at room temperature for 5 h; when the reaction was complete, the reaction mixture was poured into a mixture of ice water and hydrochloric acid, the organic layer was separated, the aqueous layer was extracted with dichloromethane, the organic layers were combined, washed with water and concentrated to give 36.5 g of 2-chloro-3-acetyl-6-(methylsulfonyl)toluene as a white solid, yield 86％, melting point 110-112°C."
       },
       {
@@ -66999,6 +67791,10 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "CDCl3"
+        ],
         "text_en": "NMR (CDCl3): δ (ppm) 2.64 (s, 3H, ), 2.88 (s, 3H, CH3), 3.14 (s, 3H), 7.40 (d, 1H), 8.10 (d, H)."
       },
       {
@@ -67013,6 +67809,10 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "CDCl3"
+        ],
         "text_en": "NMR (CDCl3): δ (ppm) 2.64 (s, 3H, ), 2.88 (s, 3H, CH3), 3.14 (s, 3H), 7.40 (d, 1H), 8.10 (d, H)."
       },
       {
@@ -67030,6 +67830,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "3. Synthesis of 2-chloro-3-methyl-4-(methylsulfonyl)benzoic acid"
       },
       {
@@ -67047,6 +67848,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "3. Synthesis of 2-chloro-3-methyl-4-(methylsulfonyl)benzoic acid"
       },
       {
@@ -67061,6 +67863,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "[0041]"
       },
       {
@@ -67078,6 +67881,7 @@
           "structure"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Drawn on the page: 1 structure. C9H9ClO4S (Cc1c(S(C)(=O)=O)ccc(C(=O)O)c1Cl)."
       },
       {
@@ -67092,6 +67896,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -67119,6 +67924,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer and a reflux condenser were charged 2-chloro-3-acetyl-6-(methylsulfonyl)toluene 50.88 g (0.24 mol) and 200 ml of tetrahydrofuran solution; at room temperature 500 g of 15％ sodium hypochlorite solution was added dropwise; after the addition was complete the mixture was heated to reflux for 5 h; after the reaction was over 100 ml of water was added, the solvent was distilled off, the mixture was cooled, hydrochloric acid was added to acidify and precipitate a solid, which was filtered, recrystallised from ethanol, washed with water and dried to give 82 g of a white solid, yield 72％, melting point 230-233°C."
       },
       {
@@ -67146,6 +67952,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer and a reflux condenser were charged 2-chloro-3-acetyl-6-(methylsulfonyl)toluene 50.88 g (0.24 mol) and 200 ml of tetrahydrofuran solution; at room temperature 500 g of 15％ sodium hypochlorite solution was added dropwise; after the addition was complete the mixture was heated to reflux for 5 h; after the reaction was over 100 ml of water was added, the solvent was distilled off, the mixture was cooled, hydrochloric acid was added to acidify and precipitate a solid, which was filtered, recrystallised from ethanol, washed with water and dried to give 82 g of a white solid, yield 72％, melting point 230-233°C."
       },
       {
@@ -67161,6 +67968,10 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "CDCl3"
+        ],
         "text_en": "NMR (CDCl3): δ (ppm) 2.80 (s, 3H), 3.35 (s, 3H), 7.80 (d, 1H), 8.01 (d, 1H)."
       },
       {
@@ -67175,6 +67986,10 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "CDCl3"
+        ],
         "text_en": "NMR (CDCl3): δ (ppm) 2.80 (s, 3H), 3.35 (s, 3H), 7.80 (d, 1H), 8.01 (d, 1H)."
       },
       {
@@ -67192,6 +68007,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "4. Synthesis of methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate"
       },
       {
@@ -67209,6 +68025,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "4. Synthesis of methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate"
       },
       {
@@ -67223,6 +68040,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "[0045]"
       },
       {
@@ -67240,6 +68058,7 @@
           "structure"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Drawn on the page: 1 structure. C10H11ClO4S (COC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl)."
       },
       {
@@ -67254,6 +68073,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -67279,6 +68099,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 250 ml four-necked reaction flask were charged 2-chloro-3-methyl-4-(methylsulfonyl)benzoic acid 42.8 g (0.2 mol), p-toluenesulfonic acid 0.5 g and 200 ml of methanol; the mixture was heated at reflux with stirring for 10 h; when the reaction was complete it was cooled, the methanol was distilled off under reduced pressure, a solid separated on cooling, which was recrystallised from ethanol to give 44.2 g of a white solid, yield 97％, melting point 105-107°C."
       },
       {
@@ -67304,6 +68125,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 250 ml four-necked reaction flask were charged 2-chloro-3-methyl-4-(methylsulfonyl)benzoic acid 42.8 g (0.2 mol), p-toluenesulfonic acid 0.5 g and 200 ml of methanol; the mixture was heated at reflux with stirring for 10 h; when the reaction was complete it was cooled, the methanol was distilled off under reduced pressure, a solid separated on cooling, which was recrystallised from ethanol to give 44.2 g of a white solid, yield 97％, melting point 105-107°C."
       },
       {
@@ -67319,6 +68141,10 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "DMSO"
+        ],
         "text_en": "NMR (DMSO): (ppm) 2.80 (s, 3H), 3.25 (s, 3H), 4.01 (s, 3H), 7.70 (d, 1H), 8.01 (d, 1H)."
       },
       {
@@ -67333,6 +68159,10 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "DMSO"
+        ],
         "text_en": "NMR (DMSO): (ppm) 2.80 (s, 3H), 3.25 (s, 3H), 4.01 (s, 3H), 7.70 (d, 1H), 8.01 (d, 1H)."
       },
       {
@@ -67350,6 +68180,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "5. Methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate"
       },
       {
@@ -67367,6 +68198,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "5. Methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate"
       },
       {
@@ -67381,6 +68213,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "[0049]"
       },
       {
@@ -67395,6 +68228,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -67409,6 +68243,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Page p08, section type description, transcription confidence high."
       },
       {
@@ -67423,6 +68258,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -67440,6 +68276,7 @@
           "structure"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Drawn on the page: 1 structure. C10H10BrClO4S (COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl)."
       },
       {
@@ -67454,6 +68291,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -67482,6 +68320,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a condenser were charged methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate 43.6 g (0.2 mol) and 500 ml carbon tetrachloride; then 0.5 g of peroxybenzoic acid was added, and at room temperature 39.6 g (0.22 mol) of bromine was added dropwise over about 50 min. After the addition was complete, the temperature was raised and the mixture refluxed for 6 h. It was cooled, neutralised with saturated sodium bicarbonate, the aqueous layer was separated, the organic layer was washed with water and concentrated to give the crude product; the crude product was washed with ethyl acetate and dried to give 41.6 g of solid, yield 70％, melting point 75-78℃."
       },
       {
@@ -67510,6 +68349,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a condenser were charged methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate 43.6 g (0.2 mol) and 500 ml carbon tetrachloride; then 0.5 g of peroxybenzoic acid was added, and at room temperature 39.6 g (0.22 mol) of bromine was added dropwise over about 50 min. After the addition was complete, the temperature was raised and the mixture refluxed for 6 h. It was cooled, neutralised with saturated sodium bicarbonate, the aqueous layer was separated, the organic layer was washed with water and concentrated to give the crude product; the crude product was washed with ethyl acetate and dried to give 41.6 g of solid, yield 70％, melting point 75-78℃."
       },
       {
@@ -67525,6 +68365,10 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "DMSO"
+        ],
         "text_en": "NMR (DMSO): (ppm) 3.25 (s, 3H), 4.01 (s, 3H), 5.4 (s, 2H) 7.70 (d, 1H), 8.15 (d, 1H)."
       },
       {
@@ -67539,6 +68383,10 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "DMSO"
+        ],
         "text_en": "NMR (DMSO): (ppm) 3.25 (s, 3H), 4.01 (s, 3H), 5.4 (s, 2H) 7.70 (d, 1H), 8.15 (d, 1H)."
       },
       {
@@ -67556,6 +68404,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "6. Synthesis of 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoic acid"
       },
       {
@@ -67571,6 +68420,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "6. Synthesis of 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoic acid"
       },
       {
@@ -67585,6 +68435,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "[0053]"
       },
       {
@@ -67602,6 +68453,7 @@
           "structure"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Drawn on the page: 1 structure. C11H10ClF3O5S (CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F)."
       },
       {
@@ -67616,6 +68468,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -67646,6 +68499,10 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "DMSO"
+        ],
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a condenser were charged methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate 55.8 g (0.2 mol), sodium trifluoroethoxide 28.1 g (0.23 mol) and 100 ml THF solvent; stirred at room temperature for 16 h, then washed with water and concentrated to give ethyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate; sodium hydroxide 9.2 g (0.23 mol) and water 10 ml were added and the mixture refluxed for 4 h. The solvent THF was distilled off, the mixture cooled, the residue acidified with 36％ HCl, then extracted with dichloromethane, washed with water, dried over magnesium sulfate and concentrated to give 55.6 g of a white solid, yield 92％, melting point 154-157℃. NMR (DMSO): (ppm) 3.35 (s, 3H), 4.25 (s, 3H), 5.25 (s, 2H) 7.90 (d, 1H), 8.05 (d, 1H)."
       },
       {
@@ -67676,6 +68533,10 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "DMSO"
+        ],
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a condenser were charged methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate 55.8 g (0.2 mol), sodium trifluoroethoxide 28.1 g (0.23 mol) and 100 ml THF solvent; stirred at room temperature for 16 h, then washed with water and concentrated to give ethyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate; sodium hydroxide 9.2 g (0.23 mol) and water 10 ml were added and the mixture refluxed for 4 h. The solvent THF was distilled off, the mixture cooled, the residue acidified with 36％ HCl, then extracted with dichloromethane, washed with water, dried over magnesium sulfate and concentrated to give 55.6 g of a white solid, yield 92％, melting point 154-157℃. NMR (DMSO): (ppm) 3.35 (s, 3H), 4.25 (s, 3H), 5.25 (s, 2H) 7.90 (d, 1H), 8.05 (d, 1H)."
       },
       {
@@ -67693,6 +68554,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "7. Preparation of 3-oxo-1-cyclohexenyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate"
       },
       {
@@ -67708,6 +68570,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "7. Preparation of 3-oxo-1-cyclohexenyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate"
       },
       {
@@ -67722,6 +68585,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "[0056]"
       },
       {
@@ -67739,6 +68603,7 @@
           "structure"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Drawn on the page: 1 structure. C17H16ClF3O6S (CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F)."
       },
       {
@@ -67753,6 +68618,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -67781,6 +68647,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a condenser were charged 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoic acid 60.4 g (0.2 mol), N,N-dimethylformamide (0.05 g) and 100 ml dichloromethane; at room temperature, thionyl chloride 71.4 (0.6 mol) was added dropwise, then the temperature was raised and the mixture stirred at reflux for 6 h. The solvent was distilled off, the residue was taken up in 100 ml dichloromethane, cooled to 5℃, and a mixture of cyclohexanedione 24.5 g (0.22 mol) and triethylamine 22.2 g (0.22 mol) was added dropwise. After the addition was complete, the mixture was warmed to room temperature and stirred for 8 h. The reaction mixture was washed with water, dried over magnesium sulfate and concentrated to give 72.8 g of an oil, yield 92％."
       },
       {
@@ -67809,6 +68676,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a 500 ml four-necked reaction flask fitted with a stirrer, a thermometer and a condenser were charged 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoic acid 60.4 g (0.2 mol), N,N-dimethylformamide (0.05 g) and 100 ml dichloromethane; at room temperature, thionyl chloride 71.4 (0.6 mol) was added dropwise, then the temperature was raised and the mixture stirred at reflux for 6 h. The solvent was distilled off, the residue was taken up in 100 ml dichloromethane, cooled to 5℃, and a mixture of cyclohexanedione 24.5 g (0.22 mol) and triethylamine 22.2 g (0.22 mol) was added dropwise. After the addition was complete, the mixture was warmed to room temperature and stirred for 8 h. The reaction mixture was washed with water, dried over magnesium sulfate and concentrated to give 72.8 g of an oil, yield 92％."
       },
       {
@@ -67826,6 +68694,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "8. Synthesis of tembotrione"
       },
       {
@@ -67843,6 +68712,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "8. Synthesis of tembotrione"
       },
       {
@@ -67857,6 +68727,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -67871,6 +68742,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "Page p09, section type description, transcription confidence high."
       },
       {
@@ -67885,6 +68757,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -67899,6 +68772,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "none",
         "text_en": "[0059]"
       },
       {
@@ -67916,6 +68790,7 @@
           "structure"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Drawn on the page: 1 structure. C17H16ClF3O6S (CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F)."
       },
       {
@@ -67930,6 +68805,7 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unread",
         "text_en": ""
       },
       {
@@ -67959,6 +68835,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a reaction flask fitted with a drying tube were charged 198 g (0.5 mol) of 3-oxo-1-cyclohexen-1-yl 2-chloro-3-((2,2,2-trifluoroethoxy)methyl)-4-methanesulfonylbenzoate, 0.2 g of cyanoacetone and 60.6 (0.6 mol) of triethylamine, dissolved in 500 ml of acetonitrile solvent; the reaction mixture was stirred continuously at room temperature for 24 h. The solvent was distilled off, and 200 ml of water and 50 ml of 36% hydrochloric acid were added. Extraction with ethyl acetate, washing with water, drying over anhydrous magnesium sulfate and concentration gave 188 g of a beige (rice-yellow) solid, yield 95%, melting point 120-123 degrees C."
       },
       {
@@ -67988,6 +68865,7 @@
           "reagent"
         ],
         "status": "covered",
+        "substance": "accounted",
         "text_en": "Into a reaction flask fitted with a drying tube were charged 198 g (0.5 mol) of 3-oxo-1-cyclohexen-1-yl 2-chloro-3-((2,2,2-trifluoroethoxy)methyl)-4-methanesulfonylbenzoate, 0.2 g of cyanoacetone and 60.6 (0.6 mol) of triethylamine, dissolved in 500 ml of acetonitrile solvent; the reaction mixture was stirred continuously at room temperature for 24 h. The solvent was distilled off, and 200 ml of water and 50 ml of 36% hydrochloric acid were added. Extraction with ethyl acetate, washing with water, drying over anhydrous magnesium sulfate and concentration gave 188 g of a beige (rice-yellow) solid, yield 95%, melting point 120-123 degrees C."
       },
       {
@@ -68003,6 +68881,10 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "CDCl3"
+        ],
         "text_en": "NMR (CDCl3): (ppm) 2.05 (m, 2H), 2.45 (m, 2H), 2.8 (m, 2H), 3.25 (s, 3H), 4.05 (q, 2H), 5.35 (s, 2H), 7.35 (d, 1H), 8.15 (d, 1H)."
       },
       {
@@ -68017,6 +68899,10 @@
         "section_en": "Example 1",
         "signals": [],
         "status": "covered",
+        "substance": "unaccounted",
+        "substance_unaccounted": [
+          "CDCl3"
+        ],
         "text_en": "NMR (CDCl3): (ppm) 2.05 (m, 2H), 2.45 (m, 2H), 2.8 (m, 2H), 3.25 (s, 3H), 4.05 (q, 2H), 5.35 (s, 2H), 7.35 (d, 1H), 8.15 (d, 1H)."
       }
     ],
@@ -68053,18 +68939,18 @@
     },
     "claims": {
       "found": 316,
-      "needs_human": 112,
+      "needs_human": 119,
       "not_checkable": 47,
-      "not_found": 5,
+      "not_found": 12,
       "not_reconciled": 9,
       "partial": 12,
-      "total": 389
+      "total": 396
     },
     "claims_by_family": {
       "completeness": 3,
       "consistency": 29,
       "drawing": 0,
-      "grounding": 349,
+      "grounding": 356,
       "naming": 0,
       "quantity": 8,
       "reference": 0,
@@ -68072,25 +68958,25 @@
       "structure": 0
     },
     "claims_by_severity": {
-      "critical": 0,
+      "critical": 7,
       "high": 33,
       "low": 17,
       "medium": 53,
       "none": 286
     },
     "claims_by_subject": {
-      "extraction": 330,
+      "extraction": 337,
       "patent": 56,
       "schema": 3
     },
     "claims_by_tier": {
-      "1": 68,
+      "1": 75,
       "2": 6,
       "3": 277,
       "4": 38
     },
     "claims_by_work_kind": {
-      "comparison": 342,
+      "comparison": 349,
       "judgement": 47
     },
     "field_basis": {
@@ -68300,6 +69186,115 @@
       "uncited_plain": 34,
       "uncited_with_chemistry": 0
     },
+    "substance_coverage": {
+      "accounted": 277,
+      "findings": [
+        {
+          "canonical": "O",
+          "join": "structure",
+          "line": 127,
+          "lines": [
+            127,
+            128
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Summary_of_the_Invention_Step_3",
+          "record_label_en": "Summary of the Invention Step 3: 2-chloro-3-methyl-4-methylsulfonylbenzoic acid",
+          "span": "water",
+          "uncited_line": false
+        },
+        {
+          "canonical": "[2H]C(Cl)(Cl)Cl",
+          "join": "structure",
+          "line": 199,
+          "lines": [
+            199,
+            200
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_2",
+          "record_label_en": "Example 1 Step 2: 2-chloro-3-acetyl-6-(methylsulfonyl)toluene",
+          "span": "CDCl3",
+          "uncited_line": false
+        },
+        {
+          "canonical": "[2H]C(Cl)(Cl)Cl",
+          "join": "structure",
+          "line": 208,
+          "lines": [
+            208,
+            209
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_3",
+          "record_label_en": "Example 1 Step 3: 2-chloro-3-methyl-4-(methylsulfonyl)benzoic acid",
+          "span": "CDCl3",
+          "uncited_line": false
+        },
+        {
+          "canonical": "CS(C)=O",
+          "join": "structure",
+          "line": 217,
+          "lines": [
+            217,
+            218
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_4",
+          "record_label_en": "Example 1 Step 4: methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate",
+          "span": "DMSO",
+          "uncited_line": false
+        },
+        {
+          "canonical": "CS(C)=O",
+          "join": "structure",
+          "line": 229,
+          "lines": [
+            229,
+            230
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_5",
+          "record_label_en": "Example 1 Step 5: methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+          "span": "DMSO",
+          "uncited_line": false
+        },
+        {
+          "canonical": "CS(C)=O",
+          "join": "structure",
+          "line": 236,
+          "lines": [
+            236,
+            237
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_6",
+          "record_label_en": "Example 1 Step 6: 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
+          "span": "DMSO",
+          "uncited_line": false
+        },
+        {
+          "canonical": "[2H]C(Cl)(Cl)Cl",
+          "join": "structure",
+          "line": 255,
+          "lines": [
+            255,
+            256
+          ],
+          "reader": "llm",
+          "record_id": "CN104292137A_Example_1_Step_8",
+          "record_label_en": "Example 1 Step 8: tembotrione",
+          "span": "CDCl3",
+          "uncited_line": false
+        }
+      ],
+      "named_not_identifiable": 92,
+      "readers": [
+        "llm"
+      ],
+      "tokens": 376,
+      "unaccounted": 7
+    },
     "tier3_population_by_stratum": {
       "compound:Background": 4,
       "compound:Beneficial Effects": 3,
@@ -68318,11 +69313,11 @@
     "tier_population": {
       "1": {
         "agrees": true,
-        "claims": 68,
+        "claims": 75,
         "findings_from_checks": 4,
-        "findings_produced": 4,
-        "from_en": "26 claims the machine looked at and could not confirm, plus 39 it matched cleanly on a record whose own checks failed, plus 3 of 4 failing checks that name no claim field and about which the machine could form no opinion; the other 1 are already inside the first number",
-        "population": 68
+        "findings_produced": 11,
+        "from_en": "33 claims the machine looked at and could not confirm, plus 39 it matched cleanly on a record whose own checks failed, plus 3 of 4 failing checks that name no claim field and about which the machine could form no opinion; the other 1 are already inside the first number",
+        "population": 75
       },
       "2": {
         "agrees": true,

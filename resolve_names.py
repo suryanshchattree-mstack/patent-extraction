@@ -86,6 +86,14 @@ QUALIFIERS = ("anhydrous", "concentrated", "aqueous", "saturated", "dry",
               "glacial", "fuming", "dilute", "ice", "cold", "hot", "fresh",
               "solid", "liquid", "gaseous", "crude", "pure")
 
+# The patent's prose, not the chemistry. "the methyl sulfide" is methyl sulfide.
+ARTICLES = {"the", "a", "an", "said", "this", "that"}
+
+# Trailing nouns that describe the bottle rather than the molecule. "aqueous sodium
+# hydroxide solution" is sodium hydroxide, in water, and OPSIN parses neither the
+# whole phrase nor "sodium hydroxide solution".
+TRAILING = {"solution", "solutions", "solvent", "reagent", "salt"}
+
 
 # ---------------------------------------------------------------- the English form
 
@@ -198,10 +206,25 @@ def candidates(identifier: str, aliases: list[str],
         if name and not is_english(name) and name in english:
             for form in english_forms(english[name]):
                 out.append((form, f"the pipeline's English for {name}"))
+    # Applied REPEATEDLY and from both ends, because they compose: "aqueous sodium
+    # hydroxide solution" needs the leading qualifier and the trailing noun gone
+    # before OPSIN sees a name it recognises, and one pass from the front leaves
+    # "sodium hydroxide solution", which it does not.
     for name, _ in list(out):
-        words = name.split()
-        if len(words) > 1 and words[0].lower().strip(",") in QUALIFIERS:
-            out.append((" ".join(words[1:]), f"qualifier '{words[0]}' removed"))
+        cur, dropped = name, []
+        for _ in range(4):
+            words = cur.split()
+            if len(words) > 1 and words[0].lower().strip(",") in ARTICLES | set(QUALIFIERS):
+                dropped.append(words[0])
+                cur = " ".join(words[1:])
+                continue
+            if len(words) > 1 and words[-1].lower().strip(",.") in TRAILING:
+                dropped.append(words[-1])
+                cur = " ".join(words[:-1])
+                continue
+            break
+        if dropped and cur != name:
+            out.append((cur, f"dropped {', '.join(repr(d) for d in dropped)}"))
     seen, uniq = set(), []
     for s, how in out:
         if s not in seen:
@@ -279,6 +302,29 @@ def read_name(identifier: str, aliases: list[str], cache: dict,
 
 # ---------------------------------------------------------------- the universe
 
+def observed_spans() -> list[str]:
+    """Every substance NAME the second reading saw printed on a line.
+
+    The recall sweep asks whether each of these is in some record. It cannot ask
+    that of a name it has no structure for, and a name-to-structure answer is
+    exactly what this stage produces, so the spans join the same universe and get
+    the same cache rather than a second resolver appearing somewhere downstream.
+
+    Only `specific` spans. A generic reference - "the mixture", "an inorganic base"
+    - names no molecule by construction and asking a grammar about it would fill the
+    cache with 26 guaranteed failures and teach a reader nothing.
+    """
+    f = INPUT / "substances-observed.json"
+    if not f.exists():
+        return []
+    try:
+        doc = json.loads(f.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return []
+    return sorted({m["span"] for row in (doc.get("lines") or {}).values()
+                   for m in row if m.get("kind") == "specific"})
+
+
 def universe(patent_id: str) -> list[tuple[str, list[str]]]:
     """Every identifier the structures stage will be asked about, with its aliases.
 
@@ -287,10 +333,14 @@ def universe(patent_id: str) -> list[tuple[str, list[str]]]:
     Falling back to gold/compounds.json keeps this stage runnable on a fresh pack
     where structures has never run.
     """
+    extra = observed_spans()
+
     prior = OUTPUT / "structures-resolved.json"
     if prior.exists():
         rows = json.loads(prior.read_text(encoding="utf-8"))
-        return [(r["identifier"], list(r.get("aliases") or [])) for r in rows]
+        out = [(r["identifier"], list(r.get("aliases") or [])) for r in rows]
+        known = {i for i, _ in out}
+        return out + [(s, []) for s in extra if s not in known]
 
     for cand in (OUTPUT / "relevant_output" / "gold" / "compounds.json",
                  OUTPUT / "compounds.json"):
@@ -303,7 +353,7 @@ def universe(patent_id: str) -> list[tuple[str, list[str]]]:
                 if ident and ident not in seen:
                     seen.add(ident)
                     out.append((ident, [a for a in (r.get("aliases") or []) if a]))
-            return out
+            return out + [(s, []) for s in extra if s not in seen]
     sys.exit("no structures-resolved.json and no compounds.json to take identifiers from")
 
 

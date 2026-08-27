@@ -3,9 +3,9 @@
  "engine": "OPSIN via https://opsin.ch.cam.ac.uk/opsin/",
  "what_this_is_en": "Every compound identifier in the gold, read a second time by a name parser that knows nothing about this patent. A parse is used as a structure only where nothing better exists, and is compared against every structure the pipeline already had.",
  "summary": {
-  "ambiguous": 1,
-  "parsed": 65,
-  "unparseable": 9
+  "ambiguous": 2,
+  "parsed": 91,
+  "unparseable": 22
  },
  "names": [
   {
@@ -413,7 +413,7 @@
    "identifier": "concentrated sulfuric acid",
    "outcome": "parsed",
    "query": "sulfuric acid",
-   "via": "qualifier 'concentrated' removed",
+   "via": "dropped 'concentrated'",
    "smiles": "S(O)(O)(=O)=O",
    "canonical": "O=S(=O)(O)O",
    "attempts": [
@@ -425,7 +425,7 @@
     },
     {
      "query": "sulfuric acid",
-     "via": "qualifier 'concentrated' removed",
+     "via": "dropped 'concentrated'",
      "status": "SUCCESS"
     }
    ]
@@ -1146,6 +1146,562 @@
     {
      "query": "acetone cyanohydrin",
      "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "1,2-dichloromethane",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried '1,2-dichloromethane'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "1,2-dichloromethane",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "2-(2-chloro 4-methylsulfonyl-3-[(2,2,2-trifluoroethoxy)methyl]benzoyl)cyclohexane-1,3-dione",
+   "outcome": "parsed",
+   "query": "2-(2-chloro 4-methylsulfonyl-3-[(2,2,2-trifluoroethoxy)methyl]benzoyl)cyclohexane-1,3-dione",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)C2C(CCCC2=O)=O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2-(2-chloro 4-methylsulfonyl-3-[(2,2,2-trifluoroethoxy)methyl]benzoyl)cyclohexane-1,3-dione",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-Chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+   "outcome": "parsed",
+   "query": "2-Chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2-Chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-Chloro-3-acetyl-6-(methylsulfonyl)toluene",
+   "outcome": "parsed",
+   "query": "2-Chloro-3-acetyl-6-(methylsulfonyl)toluene",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C)C(=CC=C1C(C)=O)S(=O)(=O)C",
+   "canonical": "CC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+   "attempts": [
+    {
+     "query": "2-Chloro-3-acetyl-6-(methylsulfonyl)toluene",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-Chloro-6-methylsulfonyltoluene",
+   "outcome": "parsed",
+   "query": "2-Chloro-6-methylsulfonyltoluene",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C)C(=CC=C1)S(=O)(=O)C",
+   "canonical": "Cc1c(Cl)cccc1S(C)(=O)=O",
+   "attempts": [
+    {
+     "query": "2-Chloro-6-methylsulfonyltoluene",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-Chlorotoluene",
+   "outcome": "parsed",
+   "query": "2-Chlorotoluene",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C)C=CC=C1",
+   "canonical": "Cc1ccccc1Cl",
+   "attempts": [
+    {
+     "query": "2-Chlorotoluene",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoic acid",
+   "outcome": "parsed",
+   "query": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-6-methanesulfonyltoluene",
+   "outcome": "parsed",
+   "query": "2-chloro-6-methanesulfonyltoluene",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C)C(=CC=C1)S(=O)(=O)C",
+   "canonical": "Cc1c(Cl)cccc1S(C)(=O)=O",
+   "attempts": [
+    {
+     "query": "2-chloro-6-methanesulfonyltoluene",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "3-Oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "3-Oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC2=CC(CCC2)=O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "3-Oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "3-oxo-1-cyclohexen-1-yl 2-chloro-3-((2,2,2-trifluoroethoxy)methyl)-4-methanesulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "3-oxo-1-cyclohexen-1-yl 2-chloro-3-((2,2,2-trifluoroethoxy)methyl)-4-methanesulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC2=CC(CCC2)=O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "3-oxo-1-cyclohexen-1-yl 2-chloro-3-((2,2,2-trifluoroethoxy)methyl)-4-methanesulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "3-oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "3-oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC2=CC(CCC2)=O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "3-oxo-1-cyclohexenyl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "3-oxo-1-cyclohexenyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "3-oxo-1-cyclohexenyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC2=CC(CCC2)=O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "3-oxo-1-cyclohexenyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "CC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+   "outcome": "unparseable",
+   "reason": "the identifier is itself a SMILES string, so there is no name to parse; the structure is already explicit",
+   "attempts": []
+  },
+  {
+   "identifier": "CDCl3",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'CDCl3'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "CDCl3",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "COC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+   "outcome": "unparseable",
+   "reason": "the identifier is itself a SMILES string, so there is no name to parse; the structure is already explicit",
+   "attempts": []
+  },
+  {
+   "identifier": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+   "outcome": "unparseable",
+   "reason": "the identifier is itself a SMILES string, so there is no name to parse; the structure is already explicit",
+   "attempts": []
+  },
+  {
+   "identifier": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+   "outcome": "unparseable",
+   "reason": "the identifier is itself a SMILES string, so there is no name to parse; the structure is already explicit",
+   "attempts": []
+  },
+  {
+   "identifier": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+   "outcome": "unparseable",
+   "reason": "the identifier is itself a SMILES string, so there is no name to parse; the structure is already explicit",
+   "attempts": []
+  },
+  {
+   "identifier": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+   "outcome": "unparseable",
+   "reason": "the identifier is itself a SMILES string, so there is no name to parse; the structure is already explicit",
+   "attempts": []
+  },
+  {
+   "identifier": "Cc1c(Cl)cccc1S(C)(=O)=O",
+   "outcome": "unparseable",
+   "reason": "the identifier is itself a SMILES string, so there is no name to parse; the structure is already explicit",
+   "attempts": []
+  },
+  {
+   "identifier": "Cc1c(S(C)(=O)=O)ccc(C(=O)O)c1Cl",
+   "outcome": "unparseable",
+   "reason": "the identifier is itself a SMILES string, so there is no name to parse; the structure is already explicit",
+   "attempts": []
+  },
+  {
+   "identifier": "DMSO",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'DMSO'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "DMSO",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "ETHYL 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "ETHYL 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OCC)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CCOC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+   "attempts": [
+    {
+     "query": "ETHYL 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "HCl",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'HCl'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "HCl",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+   "outcome": "parsed",
+   "query": "Methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC)C=CC(=C1CBr)S(=O)(=O)C",
+   "canonical": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+   "attempts": [
+    {
+     "query": "Methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "Methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "Methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC)C=CC(=C1CBr)S(=O)(=O)C",
+   "canonical": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+   "attempts": [
+    {
+     "query": "Methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "Methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "Methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC)C=CC(=C1C)S(=O)(=O)C",
+   "canonical": "COC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+   "attempts": [
+    {
+     "query": "Methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "N-bromosuccinimide",
+   "outcome": "parsed",
+   "query": "N-bromosuccinimide",
+   "via": "verbatim",
+   "smiles": "BrN1C(CCC1=O)=O",
+   "canonical": "O=C1CCC(=O)N1Br",
+   "attempts": [
+    {
+     "query": "N-bromosuccinimide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "THF",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'THF'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "THF",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "anhydrous magnesium sulfate",
+   "outcome": "parsed",
+   "query": "magnesium sulfate",
+   "via": "dropped 'anhydrous'",
+   "smiles": "S(=O)(=O)([O-])[O-].[Mg+2]",
+   "canonical": "O=S(=O)([O-])[O-].[Mg+2]",
+   "attempts": [
+    {
+     "query": "anhydrous magnesium sulfate",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "magnesium sulfate",
+     "via": "dropped 'anhydrous'",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "aqueous sodium hydroxide solution",
+   "outcome": "parsed",
+   "query": "sodium hydroxide",
+   "via": "dropped 'aqueous', 'solution'",
+   "smiles": "[OH-].[Na+]",
+   "canonical": "[Na+].[OH-]",
+   "attempts": [
+    {
+     "query": "aqueous sodium hydroxide solution",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "sodium hydroxide",
+     "via": "dropped 'aqueous', 'solution'",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "aqueous sodium hypochlorite solution",
+   "outcome": "parsed",
+   "query": "sodium hypochlorite",
+   "via": "dropped 'aqueous', 'solution'",
+   "smiles": "Cl[O-].[Na+]",
+   "canonical": "[Na+].[O-]Cl",
+   "attempts": [
+    {
+     "query": "aqueous sodium hypochlorite solution",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "sodium hypochlorite",
+     "via": "dropped 'aqueous', 'solution'",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "dilute hydrochloric acid",
+   "outcome": "parsed",
+   "query": "hydrochloric acid",
+   "via": "dropped 'dilute'",
+   "smiles": "Cl",
+   "canonical": "Cl",
+   "attempts": [
+    {
+     "query": "dilute hydrochloric acid",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "hydrochloric acid",
+     "via": "dropped 'dilute'",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "ethyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "ethyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OCC)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CCOC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+   "attempts": [
+    {
+     "query": "ethyl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-methylsulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "hydrogen-peroxide",
+   "outcome": "parsed",
+   "query": "hydrogen-peroxide",
+   "via": "verbatim",
+   "smiles": "OO",
+   "canonical": "OO",
+   "attempts": [
+    {
+     "query": "hydrogen-peroxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC)C=CC(=C1CBr)S(=O)(=O)C",
+   "canonical": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+   "attempts": [
+    {
+     "query": "methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "methyl 2-chloro-4-methylsulfonyl-3-methylbenzoate",
+   "outcome": "parsed",
+   "query": "methyl 2-chloro-4-methylsulfonyl-3-methylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC)C=CC(=C1C)S(=O)(=O)C",
+   "canonical": "COC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+   "attempts": [
+    {
+     "query": "methyl 2-chloro-4-methylsulfonyl-3-methylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "saturated sodium bicarbonate",
+   "outcome": "parsed",
+   "query": "sodium bicarbonate",
+   "via": "dropped 'saturated'",
+   "smiles": "C([O-])(O)=O.[Na+]",
+   "canonical": "O=C([O-])O.[Na+]",
+   "attempts": [
+    {
+     "query": "saturated sodium bicarbonate",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "sodium bicarbonate",
+     "via": "dropped 'saturated'",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium trifluoroethoxide",
+   "outcome": "ambiguous",
+   "query": "sodium trifluoroethoxide",
+   "via": "verbatim",
+   "guess_smiles": "FC(C[O-])(F)F.[Na+]",
+   "guess_canonical": "[Na+].[O-]CC(F)(F)F",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "attempts": [
+    {
+     "query": "sodium trifluoroethoxide",
+     "via": "verbatim",
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: Connection of fluoro to ethoxide"
+    }
+   ]
+  },
+  {
+   "identifier": "the methyl sulfide",
+   "outcome": "parsed",
+   "query": "methyl sulfide",
+   "via": "dropped 'the'",
+   "smiles": "CSC",
+   "canonical": "CSC",
+   "attempts": [
+    {
+     "query": "the methyl sulfide",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "methyl sulfide",
+     "via": "dropped 'the'",
      "status": "SUCCESS"
     }
    ]
