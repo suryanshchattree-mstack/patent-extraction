@@ -284,13 +284,24 @@ arithmetic and four by the other". That four was the UNION across both checks, n
 check's own count, and lane-report caught it while building the report off this file rather
 than using a different number quietly. Recomputed:
 
-    compound                                   m/mol  resid   fit | m/c*y  resid   fit
-    2-chloro-6-(methylsulfonyl)toluene        170.00  -0.23   YES | 170.24  +0.01   YES
-    2-chloro-3-acetyl-6-(methylsulfonyl)tol   212.00  -0.27   YES | 212.21  -0.06   YES
-    2-chloro-3-methyl-4-(methylsulfonyl)acid  214.00  -0.24   YES |    -       -     -
-    methyl ..-3-methyl-4-..benzoate           218.00 -10.27    no | 227.84  -0.43   YES
-    methyl ..-3-(bromomethyl)-..benzoate      279.00 -28.17    no | 297.14 -10.02    no
-    2-chloro-3-[(trifluoroethoxy)methyl]acid  302.00 -10.26    no | 302.17 -10.09    no
+    compound                                   true  m/mol resid  m/c*y resid  seen by
+    2-chloro-6-(methylsulfonyl)toluene       204.68       -0.23        +0.01  both
+    2-chloro-3-acetyl-6-(methylsulfonyl)tol  246.71       -0.27        -0.06  both
+    2-chloro-3-methyl-4-(msulfonyl)benzoic   248.69       -0.24            -  m/mol only
+    methyl ..-3-methyl-4-..benzoate          262.71      -10.27        -0.43  both
+    methyl ..-3-(bromomethyl)-..benzoate     341.61      -28.17       -10.02  both
+    2-chloro-3-[(trifluoroethoxy)m]benzoic   346.71      -10.26       -10.09  both
+    3-oxo-1-cyclohexenyl ..benzoate          440.82      -10.38       -10.73  both
+    tembotrione                              440.82           -        -10.59  m/c*y only
+
+An earlier version of this table showed only the first six rows, which understated the
+picture: the two checks see **eight** compounds between them, six of which both can read.
+Caught by lane-report while building the report off this file. Fit means within 0.5 of
+Cl-for-H, so the fits are rows 1, 2 and 3 on mass/mole and rows 1, 2 and 4 on the second.
+
+The last two rows carry the same molecular weight because they are isomers: the Fries
+rearrangement converts the enol ester to the C-acylated dione without changing the
+formula. That is chemistry, not a duplicated row.
 
     fit by mass/mole             3
     fit by mass/(charge x yield) 3
@@ -306,8 +317,17 @@ distinct compounds fit somewhere.** Not "three and four".
     methyl ..-3-(bromomethyl)-..        outlier    ->  open band
 
 The benzoic acid can only ever be classified by mass and moles, because step 3's product
-mass is impossible and no mass/charge/yield reading of it means anything. So the two checks
-see six compounds between them and both see only five.
+mass is impossible and no mass/charge/yield reading of it means anything.
+
+**That is an ABSENCE, not a conflict, and the difference matters.** Two compounds genuinely
+conflict: both checks return a number and the numbers land in different groups. The benzoic
+acid is a third case where one check simply cannot speak. Reading it as a disagreement
+would invent a conflict where there is nothing to disagree with. Tembotrione is the mirror,
+readable only by the second check.
+
+    8 compounds across both checks, 6 readable by both
+    2 real conflicts   the methyl ester and the bromomethyl ester
+    2 absences         the benzoic acid (m/mol only), tembotrione (m/c*y only)
 
 ## Step 3 is not an offset, it is impossible
 
