@@ -123,7 +123,34 @@ things the pipeline had already caught and surfaced correctly. The detection lay
 consistently stronger than a reviewer sampling it by hand would guess. The weaknesses are
 all in delivery.
 
-## Open
+## Confirmed independently, by planting a defect rather than reading the route
+
+Everything above was found by reading what the patent says four times. The delivery re-test
+arrived at the same conclusion from the opposite direction, without looking for it.
+
+A mass was altered on the compound record for 2-chlorotoluene, 25.3 g to 40.5 g. The
+reaction record for the same substance in the same step was left alone and still said
+25.3 g. Then:
+
+    quantity.mass_mmol[2-chlorotoluene] on the REACTION      PASSED
+    the compound record                                      not checked at all
+    the two records disagreeing                              noticed by nothing
+
+The check passed because the copy it read was still correct. **Two records of the same
+substance in the same step held different numbers and nothing in the system compared
+them.** See `DELIVERY-TEST.md`, "D2. Not drawn, not worse, and NOT irreducible".
+
+That is this document's thesis reproduced by a method that shares none of its assumptions.
+Reading the route found redundancy and asked what disagreement would mean; planting a
+defect found a disagreement and asked why nothing saw it. Same gap.
+
+It also sharpens the claim. The route-level version needs someone to notice that four
+tellings exist. This version needs nothing: **the same substance, in the same step, twice,
+with two numbers that must match.** No chemistry, no route understanding, no alignment
+across sections. That is a cheaper check than the one this document proposed, it covers a
+case the mass arithmetic cannot - a wrong value that happens to be internally consistent -
+and nobody owns it yet.
+
 
 Nothing to fix in the extraction. The one reviewer-facing question is whether the queue
 should present the four tellings of a step together, since a reviewer checking step 3
