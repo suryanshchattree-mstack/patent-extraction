@@ -505,3 +505,65 @@ the substance at the centre of two of these four defects it reaches the empty on
    would be a guard that passes on absence the moment the gold moves. The 12 are recorded
    here as a baseline to reason from, not as an allowlist to paste in.
 5. Measured on the pristine tree at `9a75904` and on the lab with D1 to D4 planted.
+
+---
+
+# Addendum 3. Are the eight derived mass-balance claims reachable in fifteen minutes?
+
+**Yes, comfortably, and by a wider margin than a flat rate suggests.** They sit at tier 1
+positions 13, 18, 23, 28, 29, 36, 41 and 47, and positions 1 to 47 are the cheap half of
+the census.
+
+    composition, 132-claim tier 1 census   machine-finding 57, quantity 34, quote 20,
+                                           yield_identity 8, derived 8, pointer 5
+    composition, positions 1 to 47         quantity 23, derived 8, yield_identity 7,
+                                           pointer 5, quote 4, machine-finding ZERO
+
+Priced per kind from PACE-MEASUREMENT.md's own per-claim table rather than one median:
+
+    reach the first derived claim, position 13     1.1 min
+    reach the last derived claim,  position 47     3.3 min
+    finish the tier 1 census,      position 132   17.7 min
+
+At a flat median the last one lands at 4.2 min and at a flat p90 at 6.8 min. Every rate
+measured reaches all eight. **Nothing needs to change for them.**
+
+## What the same measurement says about everything behind them
+
+The expensive claims are not spread evenly. `machine-finding` claims, the `not_checkable`
+kind and the most expensive measured at roughly 12.9 s net, are 0 of the first 47, 20 of
+the next 43, and 37 of the last 42. Fifteen minutes of net reading runs out at position
+**117 of 132**.
+
+That re-prices two figures given in addendum 1, which used a flat p90 and were therefore
+conservative rather than wrong:
+
+    D3 drawing.smiles at position 57     8.3 min flat p90   ->   4.5 min per kind
+    D4 naming.qualifier at position 67   9.7 min flat p90   ->   5.6 min per kind
+    p06_d2 picture card at position 125 18.1 min flat p90   ->  16.2 min per kind
+
+Both conclusions stand. D3 and D4 are reached on every rate. The picture comparison at 125
+is not reached on either.
+
+## The finding worth acting on: the question arrives before its evidence
+
+The queue is grouped by record. Inside the Example 1 Step 2 group the order is:
+
+    13  derived  "this record failed a check that nothing else asks about" (mass vs moles)
+    14  yield_identity
+    15  compounds[2-chloro-6-(methylsulfonyl)toluene].quantity.mass_g   auto found
+    16  compounds[2-chloro-6-(methylsulfonyl)toluene].quantity.mmol     auto found
+
+The derived claim's own reason text tells the reviewer that "the machine matched all
+claims on the fields this check names, so answering those confirms the values are printed
+where the record says". **Those claims are at 15 and 16.** The reviewer is asked whether
+the mass and the moles agree with each other two positions before being shown either
+number. The same shape repeats at 18, 23, 28, 29, 36, 41 and 47.
+
+This is not a reachability problem and it costs no extra claims to fix: showing the two
+facts first and the question about their relationship second is a reordering inside one
+record group. It is also the cheaper order, because the two `found` claims are the
+cheapest kind measured and they set up the one that is not.
+
+Measured on the tree with D1 to D4 planted; the ordering and the composition are
+properties of the queue and not of the defects.
