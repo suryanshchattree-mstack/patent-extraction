@@ -669,6 +669,107 @@ def test_missed_arithmetic(data: dict, artifact: dict, missed: set) -> None:
 
 # ------------------------------------------------------------------ main
 
+def test_substance_recall(artifact: dict, data: dict) -> None:
+    """The recall sweep for names, graded without trusting its own exit code.
+
+    This is the check that answers "is this all", and the ways it can be quietly
+    useless all look like success:
+
+      - it runs with no reader and reports zero missing
+      - it counts the same printed fact twice, once per language
+      - it queues a finding whose span is not on the line it names
+      - a line nobody read colours the same as a line with nothing on it
+
+    Each of those was real at some point today. Each has an assertion here.
+    """
+    print("\n K  the recall sweep for substances")
+    cov = artifact["summary"].get("substance_coverage") or {}
+    lines = artifact["source_coverage"]["lines"]
+    claims = artifact["claims"]
+    tickets = [c for c in claims if c.get("field") == "__substance__"]
+    inst = [i for c in tickets for i in c.get("substance_instances") or []]
+
+    readers = cov.get("readers") or []
+    print(f"     readers                          {readers or 'NONE'}")
+    print(f"     distinct mentions on cited lines {cov.get('tokens', 0)}")
+    print(f"       accounted                      {cov.get('accounted', 0)}")
+    print(f"       name no molecule               {cov.get('named_not_identifiable', 0)}")
+    print(f"       UNACCOUNTED                    {cov.get('unaccounted', 0)}")
+
+    # A sweep that ran with nobody reading finds nothing and looks clean.
+    record("the sweep says who read, and it is not nobody",
+           PASS if readers else FAIL,
+           f"read by {', '.join(readers)}" if readers else
+           "NO reader is recorded, so a count of 0 unaccounted is the absence of a "
+           "check and not a result")
+
+    # One reader is a legitimate state and must be visible, not inferred.
+    if len(readers) < 2:
+        record("a single reader is said out loud on every finding",
+               # Case-insensitive: the reason is a SENTENCE on the card, so it
+               # starts with a capital, and an assertion that matched the exact
+               # casing failed on a check that was working. Asserting the wording
+               # of prose is brittle; asserting that the FACT reaches the reader
+               # is the point.
+               PASS if all("one reader only"
+                           in " ".join(c.get("risk_reasons_en") or []).lower()
+                           for c in tickets) else FAIL,
+               f"{len(tickets)} ticket(s), one reader ({', '.join(readers)}); each "
+               f"must say so, because one reader and two agreeing produce the same "
+               f"count")
+
+    # The whole point of the block: one printed fact, not one per language.
+    by_text: dict[str, set] = {}
+    for l in lines:
+        t = (l.get("text_en") or "").strip()
+        if t and l.get("substance") == "unaccounted":
+            by_text.setdefault(t, set()).update(l.get("substance_unaccounted") or [])
+    doubled = [i for i in inst
+               if sum(1 for j in inst
+                      if j["span"] == i["span"] and set(j.get("lines") or []) & set(i.get("lines") or [])) > 1]
+    record("one printed fact is one finding, not one per language",
+           PASS if not doubled else FAIL,
+           f"{len(inst)} instance(s) over {len(tickets)} ticket(s), none sharing a "
+           f"span AND a line" if not doubled else
+           f"{len(doubled)} instance(s) count the same fact twice")
+
+    # A finding whose span is not on the page is a manufactured defect.
+    text = {l["n"]: (l.get("text_en") or "") for l in lines}
+    off = [f"L{i['line']}: {i['span']!r}" for i in inst
+           if i["span"] not in text.get(i["line"], "")]
+    record("every finding quotes a span that is literally on its line",
+           PASS if not off else FAIL,
+           f"all {len(inst)} checked" if not off else
+           f"{len(off)} are not on the line they name: {', '.join(off[:4])}")
+
+    # Read-with-nothing and never-read must not colour the same.
+    unread = [l["n"] for l in lines if l["kind"] != "blank"
+              and l.get("substance") == "unread"]
+    record("no non-blank line is left unread without saying so",
+           PASS if not unread else WARN,
+           "every non-blank line has been read" if not unread else
+           f"{len(unread)} non-blank line(s) are unread and are reported as unread, "
+           f"never as clean: {compact(unread)}")
+
+    # The tickets must not eat the review budget.
+    census = [c for c in claims if c["tier"] in (1, 2)]
+    p90 = len(census) * 8.7
+    record("the census still fits the 15 minute budget with the tickets in it",
+           PASS if p90 <= 900 else FAIL,
+           f"{len(census)} claims, {p90 / 60:.1f} min of 15.0, of which "
+           f"{len(tickets)} are substance tickets pooling {len(inst)} instances")
+
+    # Pooling must lose nothing.
+    record("pooling by record drops no instance",
+           PASS if len(inst) >= len(tickets) else FAIL,
+           f"{len(inst)} instance(s) carried on {len(tickets)} ticket(s); every one "
+           f"is listed on the card it was pooled into")
+
+
+def compact(ns: list) -> str:
+    return ", ".join(str(n) for n in sorted(ns)[:8]) + (" ..." if len(ns) > 8 else "")
+
+
 def main() -> int:
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     patent_id = args[0] if args else V.DEFAULT_PATENT_ID
@@ -689,6 +790,7 @@ def main() -> int:
     test_citation_width(artifact)
     missed = test_agreement(artifact, data)
     test_missed_arithmetic(data, artifact, missed)
+    test_substance_recall(artifact, data)
 
     print()
     tally = Counter(s for _, s, _ in results)

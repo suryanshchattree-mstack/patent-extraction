@@ -379,6 +379,90 @@ record still carries its own failing check, so nothing is hidden; only the quest
 is asked once. `quantity_coverage.schema_loss` counts INSTANCES and the tier 2
 population counts TICKETS, which is why they differ.
 
+## The recall sweep for substances - "is this all", for names
+
+`uncited_with_chemistry` reported **0** for as long as it existed, and that was never
+evidence that nothing was missed. Coverage is decided per LINE and a line counts as
+covered the moment any record cites it: 222 of 256 lines are covered, and a
+730-character line carrying eight facts reads exactly as covered when three were
+captured.
+
+One sub-line sweep existed and it covered numbers only. Of the seven signal kinds the
+engine tags on a line, five had a sweep behind them and the two largest did not:
+
+    signal        lines   swept before?
+    reagent         146   NO      <- the most common thing in the document
+    duration         32   yes  __quantity__
+    temperature      24   yes
+    ratio            20   yes
+    quantity         16   yes
+    yield            16   yes
+    structure         9   NO
+
+So the pack could say *every number the patent prints is in a record or reported as a
+gap* and could say nothing whatever about the substances it names.
+
+`substance_coverage` is the same sweep with a different tokeniser and a different key.
+Both run through `line_sweep`, which owns the walk, the ZH/EN block dedup, the
+accounted/excused/missed taxonomy and the pooling into tickets.
+
+**`asserted` is built from what a record IS, never from what it QUOTES.** This is the
+same trap the quantity sweep documents and it is worse here: a procedure quotes the
+name of every substance it uses whether or not any field holds it, so matching on
+quoted prose reports a clean zero that means nothing. The index is built from each
+record's own `identifier` and `aliases` fields.
+
+**The join is on canonical SMILES first, on the normalised name only when no structure
+can be had, and which one fired is on the finding.** `gold/structures.json` holds 18
+SMILES for 11 molecules because the drawn scheme is read more than once and the reads
+name things differently, and 12 of the 16 drawn names match no record name. A name
+join alone would report molecules the patent DRAWS as missing.
+
+Three outcomes:
+
+| outcome | claim | what it means |
+|---|---|---|
+| `accounted` | none | some record citing this line names this molecule |
+| `unaccounted` | yes, `not_found` | nothing does. Pooled by record into one ticket carrying every instance. |
+| `named_not_identifiable` | none | the span refers to a substance without naming one |
+
+**The third bucket is not a stoplist and that distinction matters.** 92 mentions on
+this patent name no molecule: "the mixture", "the organic layer", "an inorganic base".
+Queued they would be 92 rows a reviewer learns to skip, which is worse than no sweep.
+Deleted by a stoplist they would take `the catalyst` with them, which appears twelve
+times and is sometimes an anaphor pointing two lines up and sometimes the finding -
+the patent says "a catalytic amount of aluminium trichloride" and no record kind has a
+catalyst slot. So they are counted, shown on the section screen, and never queued.
+
+**Tickets are pooled by record**, exactly as schema losses are. Four substances missing
+from one record is one question about one record with four things listed on it. The
+census has limited headroom before it stops fitting a fifteen-minute budget, and a
+queue nobody finishes is indistinguishable on every screen from a clean one.
+
+**`readers` is published beside the tally.** One reader and two readers agreeing
+produce the same finding count and mean completely different things, so every ticket
+carries the set of readers that saw it and says "one reader only" when there was one.
+A reader that cannot run writes nothing rather than an empty file: an empty
+`substances-cde.json` reads on every screen as "ChemDataExtractor found nothing wrong".
+
+**Per line, five states**, written onto `source_coverage.lines`, and `unread` is the
+one worth having. A line nobody read and a line read with nothing on it are the same
+absence in any file that records only hits, and on a screen where green means "nothing
+here is unaccounted for" they would both be green.
+
+    unaccounted  something printed here is in no record. THE FINDING.
+    accounted    substances printed here, all of them in some record
+    none         a reader looked and no substance is named here
+    named_only   only generic references
+    unread       NO reader has looked at this line
+
+On CN104292137A: **376 distinct mentions on cited lines, 277 accounted, 92 naming no
+molecule, 7 unaccounted**, pooled into 7 tickets, all joined on structure. Six are
+`CDCl3` and `DMSO` - every Example step reports an NMR and names the solvent it was run
+in, and no record holds it. The seventh is `water` on line 127, where six records cite
+the line and none is a water record, while the Claims and Example tellings of the SAME
+step both record it.
+
 ## The second reader - the only check here that is not this pack reading itself
 
 Every other check in this file compares the annotation against the patent, or the

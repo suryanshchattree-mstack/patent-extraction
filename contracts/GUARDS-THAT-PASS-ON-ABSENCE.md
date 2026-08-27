@@ -424,3 +424,33 @@ whether to ship.
 the pack and fingerprints every verdict log it finds, so the run somebody adds next
 month is protected the day it appears rather than the day somebody remembers this file.
 Naming a thing is a promise to update the name.
+
+
+## The tenth form again, same week: a hand-written list of what to check
+
+Three Playwright guards drive the same dev server. One of them walks `app/` and
+discovers its routes. Two carried an array:
+
+    const ROUTES = [`/${P}`, `/${P}/review`, `/${P}/coverage`, `/${P}/report`];
+
+A new page went in at `/[patentId]/sections`. check-english found it that same run and
+reported 142 KB scanned. check-layout and check-overflow reported PASS across five
+viewport widths without ever loading it.
+
+Nothing was broken. That is the point: the guards were green, the page was unchecked,
+and no output anywhere said the second thing. A guard whose subject list is typed by
+hand covers whatever the codebase looked like when somebody last remembered to update
+it, and the gap is invisible precisely because the guard passes.
+
+**The fix is not always "discover it".** Route discovery moved into
+`scripts/lib/routes.mjs` and check-overflow now takes its list from there. check-layout
+could not: it has two lists, and which one a page belongs in is a judgement nothing can
+derive, the difference between "this must never scroll at all" and "this is a document
+and may scroll down but never sideways". So the lists stay hand-written and the
+COMPLETENESS of them is asserted instead:
+
+    a page route in neither FIXED nor DOCUMENTS fails the guard
+
+Where the content of a list is a judgement, assert that the list is exhaustive rather
+than trying to generate it. Mutation tested by removing the new route: the guard goes
+red and names it.
