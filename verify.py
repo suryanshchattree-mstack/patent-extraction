@@ -3334,6 +3334,81 @@ class Run(Engine):
             "number matters it has nowhere to go."),
     }
 
+    def source_blocks(self) -> dict[int, tuple]:
+        """Line number -> every line carrying the SAME printed text.
+
+        A Chinese line and the English it was translated into are one fact printed
+        once, not two facts. Any sweep that walks lines and asks "did we record
+        this" must dedup across the pair or it reports every bilingual fact twice
+        and its miss count is roughly doubled for no reason.
+        """
+        return {n: tuple(sorted({n, *self.source.en_for.get(n, ()),
+                                 *self.source.zh_for.get(n, ())}))
+                for n in self.source.numbers}
+
+    def line_sweep(self, *, tokens, key, asserted, tally, excuse=None) -> list:
+        """Walk every cited line, and of each thing printed on it ask: did we record it?
+
+        THIS IS THE RECALL HALF, AND IT IS NOT SPECIFIC TO QUANTITIES. Line coverage
+        cannot see any of it: a line can be cited by one record while carrying three
+        facts with two of them dropped, and `uncited_with_chemistry` still reads zero.
+
+            for each cited line n:
+                block = {n} + the lines n was translated from or into
+                for each TOKEN printed on n:
+                    k = key(token)
+                    |
+                    +-- k is None            -> not this sweep's business, skip
+                    +-- k already seen in    -> skip; one printed fact, not two
+                    |   this block
+                    +-- k in what any record -> accounted
+                    |   citing the block
+                    |   structurally asserts
+                    +-- excuse(token) says   -> excused, counted under its own name
+                    |   so
+                    +-- otherwise            -> missed, returned to the caller
+
+        `asserted` MUST be built from what a record STRUCTURALLY says, never from the
+        prose of a quote. That is the trap this whole sweep turns on: a "16" occurring
+        anywhere inside any quotation would otherwise count as coverage of a
+        sixteen-hour reaction, and the sweep reports a clean zero that means nothing.
+        The same applies to a substance name against a record's quoted text.
+
+        Extracted from quantity_coverage so a second sweep plugs a tokeniser and a key
+        into it rather than copying the loop. The copy is the failure worth designing
+        against: two walks that are meant to agree will drift, and this project has a
+        live example of exactly that in the grounded denominator the report and the
+        engine each computed their own way until they disagreed by one row.
+        """
+        blocks = self.source_blocks()
+        seen: dict[tuple, set] = {}
+        missed: list[tuple] = []
+
+        for n in sorted(self.cited_lines):
+            block = blocks[n]
+            folded = fold(self.source.lines[n])
+            for tok in tokens(n):
+                k = key(tok)
+                if k is None:
+                    continue
+                if k in seen.setdefault(block, set()):
+                    continue
+                seen[block].add(k)
+                tally["tokens"] += 1
+
+                held = set()
+                for m in block:
+                    held |= asserted.get(m, set())
+                if k in held:
+                    tally["accounted"] += 1
+                    continue
+                why = excuse(tok, folded) if excuse is not None else None
+                if why is not None:
+                    tally[why] += 1
+                    continue
+                missed.append((n, block, tok, folded))
+        return missed
+
     def quantity_coverage(self) -> None:
         """Every quantity printed on a cited line, against every quantity claimed.
 
@@ -3369,10 +3444,6 @@ class Run(Engine):
                 asserted.setdefault(n, set()).add(key)
 
         by_record = {r.record_id: r for r in self.records}
-        blocks: dict[int, tuple] = {}
-        for n in self.source.numbers:
-            blocks[n] = tuple(sorted({n, *self.source.en_for.get(n, ()),
-                                      *self.source.zh_for.get(n, ())}))
 
         self.quantity_tally = {"tokens": 0, "accounted": 0, "vessel": 0,
                                "schema_loss": 0, "gap": 0, "unmapped": 0}
@@ -3384,31 +3455,22 @@ class Run(Engine):
         # queue, and collapsing it at render time would be the UI guessing which
         # rows are the same question. Grouped here, where the answer is known.
         self.schema_tickets: dict[tuple, list] = {}
-        seen: dict[tuple, set] = {}
-        missed: list[tuple] = []
 
-        for n in sorted(self.cited_lines):
-            block = blocks[n]
-            folded = fold(self.source.lines[n])
-            for tok in tokenise(self.source.lines[n]):
-                if tok.unit not in QUANTITY_UNITS:
-                    continue
-                key = (tok.unit, round(tok.canonical(), 6))
-                if key in seen.setdefault(block, set()):
-                    continue
-                seen[block].add(key)
-                self.quantity_tally["tokens"] += 1
+        # A unit this sweep does not weigh returns no key, which is how line_sweep
+        # is told to walk past it without counting it or deduping on it.
+        def quantity_key(tok):
+            if tok.unit not in QUANTITY_UNITS:
+                return None
+            return (tok.unit, round(tok.canonical(), 6))
 
-                held = set()
-                for m in block:
-                    held |= asserted.get(m, set())
-                if key in held:
-                    self.quantity_tally["accounted"] += 1
-                    continue
-                if tok.unit == "ml" and is_vessel(folded, tok.end):
-                    self.quantity_tally["vessel"] += 1
-                    continue
-                missed.append((n, block, tok, folded))
+        missed = self.line_sweep(
+            tokens=lambda n: tokenise(self.source.lines[n]),
+            key=quantity_key,
+            asserted=asserted,
+            tally=self.quantity_tally,
+            excuse=lambda tok, folded: (
+                "vessel" if tok.unit == "ml" and is_vessel(folded, tok.end) else None),
+        )
 
         for line, block, group in merge_ranges(missed):
             self.record_quantity_miss(line, block, group, by_record)
