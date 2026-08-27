@@ -1,0 +1,117 @@
+name: validate and deploy
+
+# Data pushes are the trigger. A teammate finishing a patent pushes runs/**, this
+# validates every run in the repo, and only then asks the verifier repo to rebuild
+# the review site. A run that fails validation does not reach anybody's screen.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'runs/**'
+      - 'pipeline/schemas/**'
+      - '.github/workflows/validate-and-deploy.yml'
+  pull_request:
+    paths:
+      - 'runs/**'
+  workflow_dispatch:
+
+concurrency:
+  # A second push while the first is deploying should win, not queue behind it.
+  # cancel-in-progress is safe here because validation is pure and the deploy is
+  # idempotent: whatever is on main at the end is what ships.
+  group: validate-and-deploy
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    outputs:
+      runs: ${{ steps.discover.outputs.runs }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Only what validation needs. rdkit and pymupdf are for producing artifacts,
+      # which CI never does, so installing them here would cost two minutes a push
+      # to import nothing.
+      - run: python3 -m pip install --quiet 'jsonschema>=4.21'
+
+      - id: discover
+        name: Which patents does this repo hold
+        run: |
+          set -euo pipefail
+          runs=$(find runs -mindepth 1 -maxdepth 1 -type d -exec test -d '{}/input' \; -print \
+                 | sed 's|^runs/||' | sort)
+          if [ -z "$runs" ]; then
+            echo "::error::no run directories under runs/. Nothing to validate."
+            exit 1
+          fi
+          echo "found:"; echo "$runs" | sed 's/^/  /'
+          echo "runs<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$runs" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Validate every run
+        run: |
+          set -uo pipefail
+          fail=0
+          while read -r id; do
+            [ -z "$id" ] && continue
+            echo "::group::$id"
+            # --allow-missing on purpose: a run mid-annotation has not produced
+            # its artifacts yet and that is not a failure, it is Tuesday. What we
+            # refuse is an artifact that EXISTS and is wrong. A run claiming to be
+            # done is caught by the completeness check below instead.
+            if ! python3 pipeline/schemas/validate.py --patent-id "$id" --allow-missing; then
+              echo "::error title=$id::schema or identity validation failed"
+              fail=1
+            fi
+            echo "::endgroup::"
+          done <<< "${{ steps.discover.outputs.runs }}"
+          exit $fail
+
+      - name: A run marked done in TARGETS.md must actually be complete
+        run: |
+          set -uo pipefail
+          fail=0
+          while read -r id; do
+            [ -z "$id" ] && continue
+            # Only rows this workflow can check: `done` is a claim about the run,
+            # and a claim nobody checks is how a half-finished patent reaches the
+            # review site looking finished.
+            if grep -qE "\`$id\`.*\| *done" TARGETS.md 2>/dev/null; then
+              if ! python3 pipeline/schemas/validate.py --patent-id "$id"; then
+                echo "::error title=$id::TARGETS.md says done, but artifacts are missing or invalid"
+                fail=1
+              fi
+            fi
+          done <<< "${{ steps.discover.outputs.runs }}"
+          exit $fail
+
+  deploy:
+    needs: validate
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask the verifier repo to rebuild with this data
+        env:
+          TOKEN: ${{ secrets.VERIFIER_DISPATCH_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${TOKEN:-}" ]; then
+            echo "::error::VERIFIER_DISPATCH_TOKEN is not set. The data validated but"
+            echo "::error::the review site was not rebuilt, so it is now stale."
+            exit 1
+          fi
+          code=$(curl -sS -o /tmp/resp -w '%{http_code}' -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $TOKEN" \
+            https://api.github.com/repos/yashmstack/patent-verifier/dispatches \
+            -d "{\"event_type\":\"data-updated\",\"client_payload\":{\"sha\":\"${{ github.sha }}\"}}")
+          if [ "$code" != "204" ]; then
+            echo "::error::dispatch returned $code"; cat /tmp/resp; exit 1
+          fi
+          echo "verifier rebuild requested for ${{ github.sha }}"
