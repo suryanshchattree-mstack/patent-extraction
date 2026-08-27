@@ -3648,9 +3648,35 @@ class Run(Engine):
         this" must dedup across the pair or it reports every bilingual fact twice
         and its miss count is roughly doubled for no reason.
         """
-        return {n: tuple(sorted({n, *self.source.en_for.get(n, ()),
-                                 *self.source.zh_for.get(n, ())}))
-                for n in self.source.numbers}
+        # Two sources of pairing, because one of them has a blind spot.
+        #
+        # en_for/zh_for pair a Chinese line with its translation, and the heuristic
+        # that finds them keys on the line LOOKING Chinese. An NMR line does not:
+        #
+        #   L199  prose        NMR (CDCl3): d (ppm) 2.64 (s, 3H, ), 2.88 (s, 3H, ...
+        #   L200  translation  NMR (CDCl3): d (ppm) 2.64 (s, 3H, ), 2.88 (s, 3H, ...
+        #
+        # Byte-identical, one printed fact, and blocks (199,) and (200,) - so the
+        # solvent named there was counted twice. Five NMR lines on this patent, so
+        # eleven substance findings were really six.
+        #
+        # Identical English is therefore a second, independent reason to group. It
+        # can only ever MERGE blocks, so it can only ever reduce double counting.
+        groups: dict[int, set] = {n: {n, *self.source.en_for.get(n, ()),
+                                      *self.source.zh_for.get(n, ())}
+                                  for n in self.source.numbers}
+        by_text: dict[str, list[int]] = {}
+        for n in self.source.numbers:
+            text = (self.source.text_en.get(n) or "").strip()
+            if text:
+                by_text.setdefault(text, []).append(n)
+        for same in by_text.values():
+            if len(same) < 2:
+                continue
+            merged = set().union(*(groups[n] for n in same))
+            for n in merged:
+                groups.setdefault(n, set()).update(merged)
+        return {n: tuple(sorted(g)) for n, g in groups.items()}
 
     def line_sweep(self, *, tokens, key, asserted, tally, excuse=None) -> list:
         """Walk every cited line, and of each thing printed on it ask: did we record it?
