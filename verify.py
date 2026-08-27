@@ -148,7 +148,7 @@ from rdkit import Chem, RDLogger
 from rdkit.Chem import Descriptors, rdMolDescriptors
 
 # The pipeline's one definition of "this string is a structure, not a name".
-from resolve_structures import looks_like_smiles
+from resolve_structures import looks_like_smiles, normalise_name
 # The quote matcher, imported rather than rewritten. See the module docstring: a
 # containment test fails on all four shapes the quotes actually take.
 from resolve_translations import (
@@ -170,6 +170,7 @@ RDLogger.DisableLog("rdApp.*")
 from pipeline_context import RUN_ROOT
 HERE = Path(__file__).resolve().parent
 OUT = RUN_ROOT / "output"
+INPUT = RUN_ROOT / "input"
 REL = OUT / "relevant_output"
 STAGES = OUT / "stages"
 
@@ -385,6 +386,10 @@ def load_inputs(patent_id: str) -> dict:
         "pathways": load("pathways.json", gold, OUT),
         "patent": load("patent.json", gold, OUT),
         "structures": load("structures-resolved.json", gold, OUT),
+        # The name parser's answer, for the substance sweep's join. Optional: a pack
+        # that never reached the network resolves fewer spans and says so, rather
+        # than reporting every unresolved span as a miss.
+        "names_opsin": load("names-opsin.json", gold, OUT) or {},
         "drawings": load("structures.json", gold, OUT),
         "equivalence": load("compounds-equivalence.json", prov, OUT),
         "compound_prov": load("compounds-provenance.json", prov, OUT),
@@ -2271,6 +2276,10 @@ class Run(Engine):
         # The quantity sweep reads every claim built above, so it runs last of the
         # builders and before anything that scores them.
         self.quantity_coverage()
+        # The same sweep, for names. Runs after the quantity one because both read
+        # every claim built above, and before claims_for_findings so its own tickets
+        # are already in the queue when that runs.
+        self.substance_coverage()
         # Runs after every check family, so nothing that failed is left unspoken.
         self.claims_for_findings()
         # Order matters from here. Bases rewrite verdicts, the agreement matrix
@@ -2961,6 +2970,303 @@ class Run(Engine):
                     ["A check on this record failed and no other claim reports it."],
                     "name", set(), about="extraction", load_bearing=True,
                     extra={"_finding": True})
+
+    # ------------------------------------------------------------ substance recall
+
+    def load_substance_readings(self) -> tuple[dict, list[str]]:
+        """Every substance every reader saw printed, per line, plus who read.
+
+        Two files, both optional, both INPUTS:
+
+            input/substances-observed.json   reading A, an LLM pass asked only
+                                             "which substances are named here"
+            input/substances-cde.json        reading B, ChemDataExtractor
+
+        WHO READ IS RECORDED, ALWAYS. If reading B is absent the answer is
+        `["llm"]` and every finding says so, because a silently-single reader looks
+        exactly like two readers agreeing. That is the failure this pack keeps
+        finding in its own guards and it is not going to be introduced here.
+
+        EVERY SPAN IS CHECKED AGAINST THE LINE IT CLAIMS. A reader that invents a
+        substance is the one way this sweep can manufacture a defect out of nothing,
+        and a span that is not literally on its line stops the run. The check is here
+        rather than in whatever produced the file, because a check that lives with
+        the producer only ever grades the producer that was there when it was
+        written.
+        """
+        readings: dict[int, list] = {}
+        readers: list[str] = []
+        bad: list[str] = []
+
+        for name, reader in (("substances-observed.json", "llm"),
+                             ("substances-cde.json", "cde")):
+            f = INPUT / name
+            if not f.exists():
+                continue
+            try:
+                doc = json.loads(f.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as e:
+                bad.append(f"{name}: not JSON ({e})")
+                continue
+            readers.append(reader)
+            for k, mentions in (doc.get("lines") or {}).items():
+                n = int(k)
+                # The ENGLISH rendering, which is what was read and what a reviewer
+                # sees. source.lines[n] is the raw line and is Chinese on half the
+                # document, so checking spans against it would reject every English
+                # reading of a Chinese line. The block dedup below still collapses
+                # the Chinese line and its translation into one fact.
+                text = self.source.text_en.get(n, "") or self.source.lines.get(n, "")
+                for m in mentions:
+                    span = m.get("span") or ""
+                    if span not in text:
+                        bad.append(f"{name} line {n}: {span!r} is not on that line")
+                        continue
+                    readings.setdefault(n, []).append({**m, "reader": reader,
+                                                       "line": n})
+        if bad:
+            raise AssertionError(
+                "a substance reading claims spans that are not on the lines they "
+                "name, so it is describing a document this is not:\n  "
+                + "\n  ".join(bad[:10]))
+        return readings, readers
+
+    def substance_key(self, mention: dict):
+        """What two mentions have to share to be the same substance.
+
+        THE STRUCTURE FIRST, THE STRING ONLY WHEN THERE IS NO STRUCTURE. gold's own
+        structures.json holds 18 SMILES for 11 molecules because the drawn scheme is
+        read more than once and the reads name things differently, and 12 of the 16
+        drawn names match no record name. A string join would report molecules the
+        patent DRAWS as missing. Where a canonical SMILES can be had on both sides,
+        that is the key; where it cannot, the normalised name is, and the finding
+        says which join was used so a reviewer can weigh it.
+        """
+        if mention.get("kind") != "specific":
+            return ("generic", normalise_name(mention["span"]))
+        canonical = self.substance_canonical(mention["span"])
+        if canonical is not None:
+            return ("mol", canonical)
+        return ("name", normalise_name(mention["span"]))
+
+    def substance_canonical(self, span: str):
+        """A span -> canonical SMILES, by the cheapest route that can answer.
+
+        Four routes, in order, and the order is the point: what the READER knows
+        beats what a grammar can parse, and both beat nothing.
+
+            1. the reading carried it     abbreviations: CDCl3, DMSO, THF, HCl, NBS
+            2. the span IS a SMILES       the drawn-structure lines
+            3. it is a known identifier   or an alias of one, from structures-resolved
+            4. OPSIN parsed it            from names-opsin.json, already cached
+        """
+        if span in self._substance_canon:
+            return self._substance_canon[span]
+        out = None
+        reader_smiles = self._reader_smiles.get(span)
+        if reader_smiles:
+            out = reader_smiles
+        elif looks_like_smiles(span):
+            mol = Chem.MolFromSmiles(span)
+            out = Chem.MolToSmiles(mol) if mol is not None else None
+        if out is None:
+            out = self._canon_by_name.get(normalise_name(span))
+        self._substance_canon[span] = out
+        return out
+
+    def substance_coverage(self) -> None:
+        """Every substance printed on a cited line, against every substance recorded.
+
+        The recall half for names, and the exact shape the quantity sweep already has
+        for numbers. Line coverage cannot see any of it: 222 of 256 lines are covered
+        and `uncited_with_chemistry` reads 0, while a 730-character line carrying
+        eight facts reads as covered when three were captured.
+
+        Before this existed the pack could say "every NUMBER the patent prints is in
+        a record or reported as a gap" - 126 tokens, 96 accounted, 3 gaps, 12 schema
+        losses - and could say nothing whatever about the SUBSTANCES it names, which
+        are the most common thing in the document by a factor of four.
+
+        `asserted` is built from what a record IS, never from what it quotes: the
+        identifiers and aliases its own fields carry. Matching against quoted prose is
+        the trap the quantity sweep documents, and it is worse here, because a
+        procedure quotes the name of every substance it uses whether or not the record
+        has a field holding it.
+
+        THREE OUTCOMES, KEPT APART:
+
+            accounted             some record citing this line names this molecule
+            unaccounted           nothing does. Pooled by record into one ticket.
+            named_not_identifiable  the span refers to a substance without naming one:
+                                  "the mixture", "an inorganic base". 98 of these are
+                                  printed on this patent's lines. Counted and shown,
+                                  never queued: a reviewer sent at 98 rows that name
+                                  no molecule stops reading the queue, and deleting
+                                  them with a stoplist would delete "the catalyst",
+                                  which is twelve times a real thing nobody recorded.
+        """
+        readings, readers = self.load_substance_readings()
+        self.substance_readers = readers
+        self.substance_tally = {"tokens": 0, "accounted": 0,
+                                "named_not_identifiable": 0, "unaccounted": 0}
+        self.substance_findings: list[dict] = []
+        self.substance_tickets: dict[str, list] = {}
+        if not readings:
+            # Said out loud. "No reader ran" and "the readers found nothing wrong"
+            # are different facts and only one of them is about this patent.
+            self.substance_tally["skipped_en"] = (
+                "No substance reading is present, so nothing was swept for names. "
+                "This is not a clean result: it is the absence of a check.")
+            return
+
+        # What the reader knows a span denotes, and what the pack knows a name is.
+        self._reader_smiles = {}
+        for mentions in readings.values():
+            for m in mentions:
+                if m.get("canonical"):
+                    self._reader_smiles[m["span"]] = m["canonical"]
+        self._canon_by_name = {}
+        for entry in self.data["structures"]:
+            if not entry.get("canonical"):
+                continue
+            for name in [entry["identifier"], *(entry.get("aliases") or [])]:
+                self._canon_by_name[normalise_name(name)] = entry["canonical"]
+        opsin = (self.data.get("names_opsin") or {})
+        for row in (opsin.get("names") if isinstance(opsin, dict) else None) or []:
+            if row.get("outcome") == "parsed" and row.get("canonical"):
+                self._canon_by_name.setdefault(normalise_name(row["identifier"]),
+                                               row["canonical"])
+        self._substance_canon: dict[str, str | None] = {}
+
+        # Both keys for every identifier a record carries, so a span that resolves
+        # matches on the molecule and a span that does not can still match on the
+        # name. Which one fired is recorded on the finding.
+        asserted: dict[int, set] = {}
+        for rec in self.records:
+            keys = set()
+            for name in self.record_identifiers(rec):
+                keys.add(("name", normalise_name(name)))
+                canonical = self.substance_canonical(name)
+                if canonical is not None:
+                    keys.add(("mol", canonical))
+            if not keys:
+                continue
+            for n in rec.cited:
+                asserted.setdefault(n, set()).update(keys)
+
+        missed = self.line_sweep(
+            tokens=lambda n: readings.get(n, []),
+            key=self.substance_key,
+            asserted=asserted,
+            tally=self.substance_tally,
+            excuse=lambda m, folded: (
+                "named_not_identifiable" if m.get("kind") != "specific" else None),
+        )
+        for n, block, mention, _folded in missed:
+            self.record_substance_miss(n, block, mention)
+        self.substance_tally["unaccounted"] = len(missed)
+        self.emit_substance_tickets()
+
+    def record_identifiers(self, rec) -> list[str]:
+        """Every substance name a record's own FIELDS carry. Not its quotes."""
+        raw = self.raw_of.get(rec.record_id) or {}
+        out: list[str] = []
+        if rec.kind == "compound":
+            out += [raw.get("identifier") or "", *(raw.get("aliases") or [])]
+        elif rec.kind == "reaction":
+            out.append(raw.get("product_name") or "")
+            for c in raw.get("compounds") or []:
+                out += [c.get("identifier") or "", *(c.get("aliases") or [])]
+        elif rec.kind == "pathway":
+            for st in raw.get("steps") or []:
+                out.append(st.get("product_name") or "")
+                for c in st.get("compounds") or []:
+                    out.append(c.get("identifier") or "")
+        return [x for x in out if x]
+
+    def record_substance_miss(self, line: int, block: tuple, mention: dict) -> None:
+        """Attach one unaccounted substance to the record that should have held it."""
+        citers = sorted({r for m in block for r in self.cited_lines.get(m, ())})
+        by_record = {r.record_id: r for r in self.records}
+        best = None
+        for rid in citers:
+            rec = by_record.get(rid)
+            if rec is None or rec.kind == "patent":
+                continue
+            # A reaction owns what was charged into its own step; a compound record
+            # citing the same line owns only its own row. Same rank rule the quantity
+            # sweep uses, so the claim lands where a fix can be made and the choice is
+            # a function of the inputs and nothing else.
+            rank = (0 if rec.kind == "reaction" else 1, rid)
+            if best is None or rank < best[0]:
+                best = (rank, rec)
+        if best is None:
+            best = (None, next(r for r in self.records if r.kind == "patent"))
+        rec = best[1]
+        canonical = self.substance_canonical(mention["span"])
+        finding = {
+            "line": line,
+            "span": mention["span"],
+            "reader": mention.get("reader"),
+            "join": "structure" if canonical else "name",
+            "canonical": canonical,
+            "record_id": rec.record_id,
+            "record_label_en": rec.label_en,
+            "uncited_line": not self.cited_lines.get(line),
+        }
+        self.substance_findings.append(finding)
+        self.substance_tickets.setdefault(rec.record_id, []).append(finding)
+
+    def emit_substance_tickets(self) -> None:
+        """One claim per record, carrying every substance that record does not hold.
+
+        Pooled for the reason schema losses are pooled: four substances missing from
+        one record is one question about one record with four things listed on it,
+        not four questions. The census has 29 claims of headroom before it stops
+        fitting a fifteen-minute budget, and a queue nobody finishes is
+        indistinguishable on every screen from a clean one.
+
+        Nothing is dropped. Every instance is on the card, with its line, its span,
+        which reader saw it and which join was tried.
+        """
+        by_record = {r.record_id: r for r in self.records}
+        for rid, hits in sorted(self.substance_tickets.items()):
+            rec = by_record.get(rid)
+            if rec is None:
+                continue
+            spans = sorted({h["span"] for h in hits})
+            lines = sorted({h["line"] for h in hits})
+            weak = [h for h in hits if h["join"] == "name"]
+            one_reader = len(set(self.substance_readers)) < 2
+            reason = (
+                f"The patent names " + english_list([repr(s) for s in spans])
+                + f" on line{'s' if len(lines) > 1 else ''} " + compact_lines(lines)
+                + f", which this record cites. None of them is an identifier on this "
+                f"record or on any other record citing those lines. Either the "
+                f"substance was not recorded, or it belongs on a record that does not "
+                f"cite the line.")
+            risk = [f"{len(spans)} substance{'s' if len(spans) > 1 else ''} printed "
+                    f"on a line this record cites, and not carried by any record."]
+            if weak:
+                risk.append(
+                    f"{len(weak)} of them could not be resolved to a structure, so "
+                    f"the comparison was made on the NAME. Two spellings of one "
+                    f"molecule would read as a miss here.")
+            if one_reader:
+                risk.append(
+                    "One reader only. Nothing independent corroborates that these "
+                    "are substances at all.")
+            self._claim(
+                rec, "__substance__",
+                f"The patent names " + english_list([repr(s) for s in spans])
+                + " here. Should this record have recorded "
+                + ("them" if len(spans) > 1 else "it") + "?",
+                english_list(spans), None, None,
+                self.source.with_partners(lines), [], "not_found", reason, risk,
+                "name", set(lines), about="extraction", load_bearing=True,
+                rec_field="__substance__",
+                extra={"_finding": True, "substance_instances": hits,
+                       "substance_readers": sorted(set(self.substance_readers))})
 
     # ------------------------------------------------------------ second reader
 
@@ -4083,6 +4389,12 @@ def assemble(run: Run) -> dict:
             "source_coverage": cov_summary,
             "quantity_coverage": {**run.quantity_tally,
                                   "findings": run.quantity_findings},
+            # The same tally for names. `readers` is published beside it because
+            # "two readers agreed" and "one reader ran" produce the same finding
+            # count and mean completely different things.
+            "substance_coverage": {**run.substance_tally,
+                                   "readers": sorted(set(run.substance_readers)),
+                                   "findings": run.substance_findings},
             "grounding_failed": bool(not_found),
         },
         "claims": claims,

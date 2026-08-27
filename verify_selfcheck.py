@@ -392,7 +392,8 @@ CONTRACT_CLAIM_KEYS = {
 }
 
 # Documented, but only on the claims it applies to, so not required of all of them.
-OPTIONAL_CLAIM_KEYS = {"quantity_verdict", "schema_instances", "second_reader"}
+OPTIONAL_CLAIM_KEYS = {"quantity_verdict", "schema_instances", "second_reader",
+                       "substance_instances", "substance_readers"}
 
 # `schema` is the third subject: the annotation read the page correctly and the
 # field it had to put the answer in could not hold it. Nobody is wrong and
