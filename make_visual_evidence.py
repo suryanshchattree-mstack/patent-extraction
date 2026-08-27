@@ -1997,10 +1997,17 @@ def write_readme(out: Path, page_index: dict, doc: dict, patent_id: str) -> None
 
 
 def main() -> int:
+    from pipeline_context import RUN_ROOT
+
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--patent-id", required=True)
-    ap.add_argument("--root", default=str(Path(__file__).resolve().parent),
-                    help="the manual_annotations directory")
+    # THE RUN, NOT THE CODE. This defaulted to the script's own directory, which was
+    # right while input/ and output/ sat beside the script and silently wrong the
+    # moment the runs were split: the stage exited "no vision pass found" against a
+    # run holding all nine page reads, and the gate reported a failure whose message
+    # named a directory nobody had asked it to look in.
+    ap.add_argument("--root", default=str(RUN_ROOT),
+                    help="the run directory holding input/ and output/")
     a = ap.parse_args()
     return build(Path(a.root).resolve(), a.patent_id)
 
