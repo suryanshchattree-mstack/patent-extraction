@@ -31,7 +31,7 @@ than silent.
 | 6 | [`WO2000021924A1`](https://patents.google.com/patent/WO2000021924A1/en) |  |  | 7884081 | WO | Exact Molecule | Benzoylcyclohexandiones, method for the production and use there |
 | 7 | [`WO2024109718A1`](https://patents.google.com/patent/WO2024109718A1/en) |  |  | 91195273 | WO | Exact Molecule | Method for preparing cyclosulfonone, and intermediates |
 | 8 | [`CN106008290A`](https://patents.google.com/patent/CN106008290A/en) |  |  | 57098239 | CN | Intermediate Molecule | Method for preparing tembotrions |
-| 9 | [`CN112645853A`](https://patents.google.com/patent/CN112645853A/en) |  |  | 75343429 | CN | Intermediate Molecule | Preparation method of 2-chloro-3-alkoxymethyl-4-methylsulfonylbe |
+| 9 | [`CN112645853A`](https://patents.google.com/patent/CN112645853A/en) | **Suryansh** | claimed | 75343429 | CN | Intermediate Molecule | Preparation method of 2-chloro-3-alkoxymethyl-4-methylsulfonylbe |
 | 10 | [`US20040236146A1`](https://patents.google.com/patent/US20040236146A1/en) |  |  | 7698422 | US | Intermediate Molecule | Method for producing 3-bromomethylbenzoic acids <br>*same family, do not also annotate:* WO2003022800A1 |
 | 11 | [`CN102627591B`](https://patents.google.com/patent/CN102627591B/en) |  |  | 46586017 | CN | Molecule Class | Preparation method of 2-chloro-4-methylsulfonylbenzoic acid |
 | 12 | [`DE10113137A1`](https://patents.google.com/patent/DE10113137A1/en) |  |  | 7677998 | DE | Molecule Class | Preparation of herbicidal substituted 2-benzoyl-1,3-cyclohexaned <br>*same family, do not also annotate:* DE10113137C2 <br>**German. See the caveat below before starting this one.** |
