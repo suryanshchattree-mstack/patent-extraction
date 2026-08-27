@@ -82,6 +82,47 @@ Two cautions before anyone builds on this:
   wrong. Here it resolved to a real patent defect, but an off-by-one in step numbering
   would have produced the identical count.
 
+## The same check fires a second time, on a different field
+
+The four tellings also disagree about the **reagent** in the final step:
+
+    Claims step 8      cyanoacetone
+    Summary step 8     cyanoacetone
+    Example 1 step 8   cyanoacetone, catalytic (0.2 g against 198 g of substrate)
+    Scheme step 9      acetone cyanohydrin
+
+Cyanoacetone and acetone cyanohydrin are different compounds. The scheme record notes "a
+cyanohydrin drawn above the arrow", so the vision pass read a structure, and the three
+written tellings read a name. Either the drawing and the text disagree, or one of the two
+readings is wrong. Both are worth a human.
+
+This is the second independent defect found by the same check, on a different field, in
+the same document. One hit could be luck. Two, on unrelated fields, is the check earning
+its place.
+
+The reviewer does see this one. `CN104292137A_p02_x3` and `CN104292137A_p05_x3` both
+state it, and `p05_x3` is explicit that it is text-versus-text. But `p02_x3` is one of the
+fifteen claims carrying no evidence at all, so the reviewer is told the patent
+contradicts itself about a cyanide-adjacent reagent and given no line to look at. See
+`EVIDENCE-INVERTS-WITH-NEED.md`.
+
+## A related contradiction the pipeline caught and I did not
+
+[0004] says the invention 革除了 (abolishes) 气味大的甲硫醇钠和剧毒氰基丙酮, the
+malodorous sodium methanethiolate and the highly toxic cyanoacetone. Every written
+telling of step 8 then uses cyanoacetone.
+
+I found this by hand and assumed it was a gap. It is not. `CN104292137A_p04_x2` already
+carries it, with cited line 109 and populated evidence lines, and states the mechanism
+more precisely than I had: the prior-art reagent list is split across [0003] and [0004],
+so reading either paragraph alone gives an incomplete picture of what the invention
+claims to eliminate.
+
+Worth recording that three separate spot-checks of mine this session turned out to be
+things the pipeline had already caught and surfaced correctly. The detection layer is
+consistently stronger than a reviewer sampling it by hand would guess. The weaknesses are
+all in delivery.
+
 ## Open
 
 Nothing to fix in the extraction. The one reviewer-facing question is whether the queue
