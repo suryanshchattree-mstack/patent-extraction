@@ -349,6 +349,19 @@ def stages(pid: str) -> list[Stage]:
                      "output/relevant_output/svg/*.jpg"],
         ),
         Stage(
+            name="export",
+            title="every reaction joined to the structures of its participants",
+            cmds=[[PY, "export_reactions.py", "--patent-id", pid]],
+            # After assemble, because it reads the PUBLISHED gold rather than
+            # output/, so on a re-run it joins against this run's structures and
+            # not the previous run's.
+            inputs=["export_reactions.py", "pipeline_context.py",
+                    f"{gold}/reactions.json", f"{gold}/structures-resolved.json"],
+            outputs=[f"output/relevant_output/export/reactions-with-smiles-{pid}.json",
+                     f"output/relevant_output/export/reactions-with-smiles-{pid}.csv"],
+            optional_tool="export_reactions.py",
+        ),
+        Stage(
             name="visual",
             title="the page index, the structure comparisons and the drawing claims the UI shows",
             cmds=[[PY, "make_visual_evidence.py", "--patent-id", pid]],

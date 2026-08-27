@@ -6,7 +6,7 @@
     {
       "stage": "prompts",
       "title": "render the annotation prompts for THIS patent, for the agent to follow",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 render_prompts.py --patent-id CN104292137A"
       ],
@@ -149,7 +149,7 @@
     {
       "stage": "enrich",
       "title": "vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 build_enriched.py --patent-id CN104292137A"
       ],
@@ -428,7 +428,7 @@
     {
       "stage": "finalise",
       "title": "deterministic ids and uuids, rollup, bibliographic merge",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 finalise.py --patent-id CN104292137A"
       ],
@@ -514,8 +514,8 @@
       "inputs": [
         {
           "path": "schemas/validate.py",
-          "sha256": "169d8045131cbac2e9a758c10aa72a296e97dd5636217248cb4790fa8b22f235",
-          "bytes": 4318
+          "sha256": "c976d1a8df1ac89146d2c80554f4e47681655cc4b60ded07ddd2332d155cb246",
+          "bytes": 5563
         },
         {
           "path": "schemas/biblio.schema.json",
@@ -578,7 +578,7 @@
     {
       "stage": "publish-gold",
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -856,7 +856,7 @@
     {
       "stage": "names",
       "title": "read every compound name a second time, with a parser instead of a model",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_names.py --patent-id CN104292137A"
       ],
@@ -921,7 +921,7 @@
     {
       "stage": "structures",
       "title": "identifier -> drawable molecule over six tiers, plus the coverage gate",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_structures.py --patent-id CN104292137A"
       ],
@@ -1239,7 +1239,7 @@
     {
       "stage": "translations",
       "title": "Chinese string -> English for everything that can reach a screen, plus the coverage gate",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_translations.py CN104292137A"
       ],
@@ -1302,7 +1302,7 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN104292137A",
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN104292137A"
@@ -1569,7 +1569,7 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN104292137A"
       ],
@@ -2446,6 +2446,49 @@
           "path": "output/relevant_output/svg/p1-pipeline-stages.jpg",
           "sha256": "0756d9270d875b3ea9ee35a47b91626afcb6ad0d67199611272a5fcf0064cd55",
           "bytes": 1130193
+        }
+      ]
+    },
+    {
+      "stage": "export",
+      "title": "every reaction joined to the structures of its participants",
+      "status": "ran",
+      "commands": [
+        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 export_reactions.py --patent-id CN104292137A"
+      ],
+      "gate": false,
+      "inputs": [
+        {
+          "path": "export_reactions.py",
+          "sha256": "cc221f05ef2ee13aa6b9acdb621ef35c36f3dda195d4e2e28a892eedd5da3c0c",
+          "bytes": 6877
+        },
+        {
+          "path": "pipeline_context.py",
+          "sha256": "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
+          "bytes": 15905
+        },
+        {
+          "path": "output/relevant_output/gold/reactions.json",
+          "sha256": "23f9f77efd3f1a069f3cd7656aaa50b868b46e765572a285f1249360e93790d7",
+          "bytes": 278093
+        },
+        {
+          "path": "output/relevant_output/gold/structures-resolved.json",
+          "sha256": "535976326f78abb3c3ad1c8c52e3a3f18b0e3d28fc70b4240729bfe6a0c01a77",
+          "bytes": 61088
+        }
+      ],
+      "outputs": [
+        {
+          "path": "output/relevant_output/export/reactions-with-smiles-CN104292137A.json",
+          "sha256": "a3dafd4afb18193a3fc43165b8e6a127ce37a252a42e113f20c8180ce803787a",
+          "bytes": 131496
+        },
+        {
+          "path": "output/relevant_output/export/reactions-with-smiles-CN104292137A.csv",
+          "sha256": "8ab0f2086fbb7c3a030af0f3d49e12c07ebb09fadda68d6ac64ff932dd88642b",
+          "bytes": 16787
         }
       ]
     },
@@ -3428,6 +3471,30 @@
         "c1dfcbf3317c03c1de4a2ca51d0c3319a8c63712502477463a3173671c2313cc",
         "77635540eab4bf2dfe7077977ef24c829258a8bdd1b7d4bdc7e32dd4be6e7e8b",
         "faeeec600ec1a45acc70358af53e13525c0f6932a2a01c38ceab6dbcc80c0031"
+      ]
+    },
+    {
+      "path": "output/relevant_output/export/reactions-with-smiles-CN104292137A.csv",
+      "sha256": "8ab0f2086fbb7c3a030af0f3d49e12c07ebb09fadda68d6ac64ff932dd88642b",
+      "bytes": 16787,
+      "stage": "export",
+      "input_sha256": [
+        "cc221f05ef2ee13aa6b9acdb621ef35c36f3dda195d4e2e28a892eedd5da3c0c",
+        "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
+        "23f9f77efd3f1a069f3cd7656aaa50b868b46e765572a285f1249360e93790d7",
+        "535976326f78abb3c3ad1c8c52e3a3f18b0e3d28fc70b4240729bfe6a0c01a77"
+      ]
+    },
+    {
+      "path": "output/relevant_output/export/reactions-with-smiles-CN104292137A.json",
+      "sha256": "a3dafd4afb18193a3fc43165b8e6a127ce37a252a42e113f20c8180ce803787a",
+      "bytes": 131496,
+      "stage": "export",
+      "input_sha256": [
+        "cc221f05ef2ee13aa6b9acdb621ef35c36f3dda195d4e2e28a892eedd5da3c0c",
+        "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
+        "23f9f77efd3f1a069f3cd7656aaa50b868b46e765572a285f1249360e93790d7",
+        "535976326f78abb3c3ad1c8c52e3a3f18b0e3d28fc70b4240729bfe6a0c01a77"
       ]
     },
     {
@@ -12129,8 +12196,8 @@
     },
     {
       "path": "output/relevant_output/verification/verdicts-CN104292137A.jsonl",
-      "sha256": "74dcd3f1ac97da7ffd7c4323b3cd4dad826181be22be1775084be39b37fb0058",
-      "bytes": 338,
+      "sha256": "93417c466f901efb4fc107f22db736d0b0170ec157ef728925ae549be820b044",
+      "bytes": 1393,
       "stage": null,
       "note": "present in the deliverable, produced by no declared stage and read by none"
     },
@@ -14365,11 +14432,11 @@
     }
   ],
   "totals": {
-    "stages": 17,
-    "artifacts_produced": 219,
+    "stages": 18,
+    "artifacts_produced": 221,
     "artifacts_unclaimed": 2,
     "artifacts_stray": 1,
-    "bytes_produced": 21277982
+    "bytes_produced": 21426265
   },
   "deliverable_matches_output": true,
   "stale_copies": []
