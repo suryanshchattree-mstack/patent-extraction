@@ -244,3 +244,69 @@ So the honest state of the mass defect is:
 Anyone reporting this must not round it up to "the mass defect is explained". Three of
 seven are. The other four are a named, measured, still-open question, and the consistency
 of the ~10.3 across three compounds is a lead rather than a conclusion.
+
+---
+
+# Addendum 2, 2026-08-27: a second arithmetic, and what it settles
+
+The engine runs a second mass check that I had not used: product mass against the charge
+and the stated yield, rather than a compound's own mass/mole pair. It takes the yield
+figure as a new input, so it is partly independent of the first. Running it over Example 1:
+
+    st  product                                mass_g  chg_mmol  yld%  implied     true   offset   after Cl-for-H
+     1  2-chloro-6-(methylsulfonyl)toluene       28.6       200    84   170.24   204.68   -34.44     +0.01
+     2  2-chloro-3-acetyl-6-(methylsulfonyl)..   36.5       200    86   212.21   246.71   -34.51     -0.06
+     3  2-chloro-3-methyl-4-(methylsulfonyl)..   82.0       240    72   474.54   248.69  +225.85   see below
+     4  methyl ..-3-methyl-4-(methylsulfonyl)..  44.2       200    97   227.84   262.71   -34.88     -0.43
+     5  methyl ..-3-(bromomethyl)-..             41.6       200    70   297.14   341.61   -44.47    -10.02
+     6  2-chloro-3-[(trifluoroethoxy)methyl]..   55.6       200    92   302.17   346.71   -44.54    -10.09
+     7  3-oxo-1-cyclohexen-1-yl ..               72.8       200    92   395.65   440.82   -45.17    -10.73
+     8  tembotrione                             188.0       500    95   395.79   440.82   -45.03    -10.59
+
+## What it settles
+
+**Cl-for-H is corroborated, tightly.** Steps 1 and 2 come back at +0.01 and -0.06 after
+subtracting 34.445. A second calculation over partly different inputs landing within
+0.06 of the first is much harder to explain as an artefact of how one formula was written
+than three clean hits from a single calculation were.
+
+**The second band is real.** Steps 5, 6, 7 and 8 give -10.02, -10.09, -10.73 and -10.59.
+Four values inside 0.71 of each other, from an independent arithmetic, on the same steps
+where the first calculation found a consistent residual near 10.3. It is a pattern, not
+noise, and **it is still unexplained.** No single-atom or single-group substitution I have
+tested lands on 10.3. Recording it as a measured open question rather than reaching for a
+reading that fits three of the four.
+
+**The two arithmetics disagree about step 4.** Its own mass/mole pair implies 218 and puts
+it in the second band; mass against charge and yield implies 227.84 and puts it cleanly in
+the Cl-for-H group at -0.43. So the patent's step 4 is internally inconsistent in a third
+way, and the honest count of Cl-for-H cases is **three by one arithmetic and four by the
+other**, not a settled number.
+
+## Step 3 is not an offset, it is impossible
+
+Line 206 charges 50.88 g (0.24 mol) of the acetyl compound and reports 82 g of the acid at
+72% yield.
+
+The charge is consistent with everything else here: 50.88 / 0.24 = 212.0, which is the
+Cl-for-H implied weight for that compound, 246.71 - 34.445 = 212.27.
+
+The product is not consistent with anything. The acid's true weight is 248.69 and its
+des-chloro reading is 214.2. **0.24 mol at 100% yield is at most 59.7 g of the true
+compound or 51.4 g of the des-chloro one.** The patent claims 82 g at 72%. That is not a
+molecular weight discrepancy, it is more product than the charge can supply, and no reading
+of the molecular weight rescues it.
+
+This is already caught. `CN104292137A_Example_1_Step_3`, field `yield_identity`, asks a
+reviewer directly: "Does the page really print 82 g of 2-chloro-3-methyl-4-(methylsulfonyl)
+benzoic acid from 240 mmol at 72%?" The check found it without needing any of the analysis
+above.
+
+## Standing count
+
+    3 or 4 of 8   explained by Cl-for-H, depending on which arithmetic is used for step 4
+    4 of 8        a consistent residual near 10.3, confirmed twice, unexplained
+    1             bromine, over rather than short, a separate case
+    1             step 3, arithmetically impossible rather than merely offset
+
+Nobody should report this as "the mass defect is explained".
