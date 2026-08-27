@@ -411,3 +411,97 @@ Measured against: `verifier` at `67de7b4` with `lib/claims.ts` at
    `cannot_compute` honesty the coverage layer already applies.
 5. **D4 works.** Leave it alone.
 6. **D1 works, for now.** It is one draw of the same check that produces D2.
+
+---
+
+# Addendum 2. The same-substance-same-step agreement check, measured before it is built
+
+Ranked item 1 above proposed two independent things for D2 and treated them as one. They
+are not one, and only the first survives contact with the gold.
+
+**The mass-versus-moles check on compound records stands unchanged.** It needs no join at
+all. It reads one record, divides its own mass by its own molar amount, and compares
+against a molecular weight the pipeline already resolved. Ten of the 75 compound records
+qualify. D2 is a 60% miss. Nothing below affects it.
+
+**The agreement check is the second idea, and it is harder than it looks.** What follows
+is measured rather than reasoned, so that whoever builds it starts from the real numbers.
+
+## The join is complete, and it does not go where you want
+
+All 190 reaction-compound rows resolve to a compound record by identifier or alias. Zero
+misses. Of those rows, 61 pairs carry a value on both sides and are therefore comparable.
+
+    naive, same name, any section            61 comparable, 49 agree, 12 DISAGREE
+    plus same section_label                  25 comparable, 18 agree,  7 DISAGREE
+    plus neither side flagged a product      11 comparable,  4 agree,  7 DISAGREE
+
+Run against the tree with D1 to D4 planted, the naive rule finds 14 rather than 12, and
+the two extra are exactly D1 and D2. **Both scoped rules find 7, identical on the clean
+tree and the defected one. Every scoping rule that reduces the false positives also drops
+the defect.**
+
+## Why scoping by section fails
+
+The record for `methanesulfonyl chloride` carries `section_label: "Summary of the
+Invention"` and a mass of 25.25 g. The record for `2-chlorotoluene` carries the same
+section label and 25.3 g. Both numbers are printed in Example 1, on line 187. The third
+substance charged in that same sentence, aluminium trichloride, carries
+`section_label: "Example 1"`.
+
+**Three substances from one sentence, split across two section labels.** This is the
+single-valued-field defect `fb176a3` documents, showing up as a blocker for a different
+check. `section_label` is not a usable scope until a record can name more than one section.
+
+`is_section_product` is `False` on 74 of the 75 records, so it carries no signal, which is
+why the third rule above is identical to the second.
+
+## The 12 clean-tree disagreements are enumerable, and both groups are benign
+
+Seven are produced against charged on the intermediates. The record holds what the previous
+step made and the row holds what this step charged, and both numbers are correct:
+
+    2-chloro-6-(methylsulfonyl)toluene              record 28.6   row 34.0
+    2-chloro-3-acetyl-6-(methylsulfonyl)toluene     record 36.5   row 50.88
+    2-chloro-3-methyl-4-(methylsulfonyl)benzoic acid record 82.0  row 42.8
+    methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate record 44.2 row 43.6
+    methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate record 41.6 row 55.8
+    2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid record 55.6 row 60.4
+    3-oxo-1-cyclohexen-1-yl ...benzoate             record 72.8   row 198.0
+
+Five are solvent and reagent records whose quantity comes from a different section: water
+twice, tetrahydrofuran, and triethylamine twice.
+
+Eleven substances are compared against more than one step, which is the root of the first
+group: a compound record holds one quantity and the substance is charged or made in
+several places.
+
+## The sting: the row and the quantity are on different records
+
+The reaction rows name the Friedel-Crafts catalyst `anhydrous aluminium trichloride`. Two
+compound records answer to that name:
+
+    8137a645   identifier "anhydrous aluminium trichloride"   mass_g = None
+    7c0492d8   identifier "aluminium trichloride"             mass_g = 40.5
+
+The reaction row matches `8137a645` exactly by identifier, and that record carries no
+quantity, so there is nothing to compare. The record that holds the 40.5 g is the other
+one, and it is reachable from the reaction side only through an alias. **It is also the
+record D4 attacks.** Twenty-two of the 176 names are claimed by more than one compound
+record, covering 8 of the 190 rows.
+
+So a same-name join silently compares against whichever duplicate it reaches first, and for
+the substance at the centre of two of these four defects it reaches the empty one.
+
+## What this means for whoever builds it
+
+1. The check is worth building and it does catch D1 and D2, but only in its naive form,
+   and the naive form ships 12 known disagreements on a clean gold.
+2. Do not scope it on `section_label`. Fix `section_label` first, or scope some other way.
+3. Do not resolve the join by identifier-first. Resolve to the record that carries a
+   quantity, and raise the duplicate as its own finding when two records answer to one name
+   and only one of them holds numbers.
+4. A hard-coded list of the 12 known-benign pairs would make the check green today and
+   would be a guard that passes on absence the moment the gold moves. The 12 are recorded
+   here as a baseline to reason from, not as an allowlist to paste in.
+5. Measured on the pristine tree at `9a75904` and on the lab with D1 to D4 planted.
