@@ -150,19 +150,46 @@ title. `raw-compounds.json` had it true in five sections and the merge kept one.
 
 8 of 8 Example 1 records still carry computed MWs and formulae in `notes`. See A1.
 
-### B8. Bromine mass and moles disagree, and nothing computes it (12)
+### B8. Bromine mass and moles disagree - the check EXISTS and fires, but reaches nobody (12)
 
-`mass_g 39.6`, `mmol 220.0`. 39.6 g of Br2 at MW 159.81 is **247.8 mmol**, not 220.
-No note flags it.
+`mass_g 39.6`, `mmol 220.0`. 39.6 g of Br2 at MW 159.81 is 247.8 mmol, not 220. No
+note flags it.
 
-I checked whether the verification engine catches it independently, the way it catches
-the product-yield mismatches. It does not: `39.6` appears in the checks file, but
-`0.248`, `247.8` and `248 mmol` do not. **The arithmetic check covers product yield
-identity and not reagent mass/mole consistency.**
+**I first reported that the engine has no reagent mass/mole check at all. That was
+wrong**, and the true version is more useful. The check exists, runs, and fails:
 
-**Gate?** Yes, and this is the highest-value gate on the list, because it is the same
-check the engine already performs on products, applied to a field it currently skips.
-One rule, and every reagent in every future patent gets it.
+    records[87].checks[7]   Example 1 Step 5   status: fail
+    "The implied mass is OVER by 20.19: implied 180.000 against 159.810."
+
+39.6 / 0.220 = **180.000** g/mol against bromine's 159.81. Same arithmetic as
+"247.8 mmol", taken on the other side of the division - which is exactly why a string
+probe for `247.8` and `248 mmol` found nothing and I inferred an absence that was not
+there. It also sits on the *reaction* record, so a search keyed on the bromine
+*compound* record finds nothing either. Two independent reasons for a false negative
+in the same probe.
+
+**The real defect is one layer up, and it is general.** Measured across the artifact:
+
+| | |
+|---|---:|
+| failing checks | **21** |
+| whose detail is carried by a claim on the same record | **17** |
+| **carried by no claim at all** | **4** |
+
+The four orphans:
+
+    Example 1 Step 5   the bromine mass/mole failure
+    Claims Step 1      a temperature-completeness failure on line 46
+    Example 1 Step 6   a quantity-completeness failure on line 236
+    Example 1 Step 8   a quantity-completeness failure on line 253
+
+**A failing check that no claim carries is a detection that cannot be delivered.** The
+reviewer meets the record's other claims, answers them, and never learns the
+arithmetic failed. The detection is not missing; the delivery is.
+
+**Gate?** Yes, but not the one I first proposed. Not "add the reagent check" - it is
+already there. **Make every failing check become a claim.** That closes all four at
+once and every future family, instead of one arithmetic rule at a time.
 
 ### B9. `scale_discontinuity` not raised on Example 1 Step 4 (23)
 
@@ -273,9 +300,12 @@ non-merge, since merging would silently repair the document.
 
 ## What I would gate, in order of value
 
-1. **Reagent mass/mole consistency** (B8). The engine already does this for products.
-   Extending it to reagents is one rule and it would have caught bromine without a
-   human. Highest value because it generalises to every future patent.
+1. **Make every failing check become a claim** (B8). **4 of 21 failing checks are
+   carried by no claim**, so they fire correctly and reach nobody. This is a delivery
+   gate, not a detection one, and it closes the bromine case plus three others plus
+   every future family in a single rule. It is also the same failure a delivery test
+   found independently in the drawing family, which makes it general rather than a
+   one-off.
 2. **Role agreement between `compounds.json` and `reactions.json`** (B1). Cheap,
    mechanical, and it currently lets two gold artifacts contradict each other.
 3. **`steps[].compounds[].role` against the existing enum** (B4). `normalise_role`
@@ -297,3 +327,12 @@ against the export fetched from the running server at
 `/CN104292137A/report/export` (251 KB). Nothing was fixed. Two audit counts were
 found wrong - finding 2 overstates by 7 records, finding 21 understates by 8
 projections - and one entry, finding 20, is fully fixed and still listed.
+
+**One correction to this document, recorded rather than overwritten.** B8 first said
+the engine has no reagent mass/mole check. It has one, it fires on bromine, and it
+expresses the failure as an implied molecular weight rather than an implied
+millimole count. My probe searched for the millimole form and concluded from its
+absence that the check was absent. That is arguing from a string miss to a missing
+feature, and it is the same mistake in kind as a guard that reads a proxy instead of
+the thing it means to test. The corrected version is in B8 and it points at a larger
+defect than the one I originally reported.

@@ -143,3 +143,44 @@ An explanation the team already had did not reach the deliverable.
 thirty seconds each is four minutes of a fifteen-minute budget spent rediscovering one
 pattern. Two grouped questions is under a minute, and the second one is the only one
 that actually needs a human.
+
+
+---
+
+# The offset is confined to the aromatics, and that localises it
+
+Measured over every Example 1 compound carrying both a mass and a mole count, with the
+molecular weight computed from the resolved structure.
+
+    compound                                       aromatic   implied     true     diff
+    aluminium trichloride                                no    135.00   133.34    +1.66
+    bromine                                              no    180.00   159.81   +20.19
+    2-chloro-6-(methylsulfonyl)toluene                  YES    170.00   204.68   -34.68
+    2-chloro-3-acetyl-6-(methylsulfonyl)toluene         YES    212.00   246.71   -34.71
+    2-chloro-3-methyl-4-(methylsulfonyl)benzoic acid    YES    214.00   248.69   -34.69
+    methyl ...-3-methyl-4-(methylsulfonyl)benzoate      YES    218.00   262.71   -44.71
+    methyl ...-3-(bromomethyl)-...-benzoate             YES    279.00   341.61   -62.61
+    2-chloro-3-[(trifluoroethoxy)methyl]-...-acid       YES    302.00   346.71   -44.71
+    3-oxo-1-cyclohexen-1-yl ...-benzoate                YES    396.00   440.82   -44.82
+
+**Every aromatic intermediate is short. Both non-aromatic reagents are not.**
+
+Aluminium trichloride at +1.66 is rounding: the patent computed with 135 where the true
+weight is 133.34. Bromine at +20.19 is the separate, already-known defect - 39.6 g
+recorded as 220 mmol when 39.6 g of Br2 is 247.8 mmol.
+
+So the patent's arithmetic is not uniformly wrong. **It is wrong precisely on the
+chlorinated aromatic intermediates it makes, and right on the reagents it buys.** That
+is a much more specific claim than "the mass balances do not close", and it is what
+makes the des-chloro reading credible rather than merely arithmetically available: a
+transcription error would not sort itself by aromaticity.
+
+Within the aromatics the offsets fall into three groups:
+
+    -34.68, -34.71, -34.69    exactly Cl minus H at 34.445, plus integer rounding
+    -44.71, -44.71, -44.82    a consistent residual near 44.5, unexplained
+    -62.61                    one outlier, the bromomethyl compound
+
+The first group is demonstrated rather than suggested: subtract 34.445 from the true
+weight and round, and you get the patent's implied value exactly, three times running.
+The second and third are for a chemist. This document does not guess at them.
