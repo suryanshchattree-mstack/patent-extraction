@@ -296,7 +296,21 @@ def stages(pid: str) -> list[Stage]:
             name="visual",
             title="the page index, the structure comparisons and the drawing claims the UI shows",
             cmds=[[PY, "make_visual_evidence.py", "--patent-id", pid]],
-            inputs=["make_visual_evidence.py", "visual_text.py",
+            # visual_text.py and glossary.json are NOT here, and were until this
+            # commit. They belonged to make_visual.py, which imported the scrubber
+            # and emitted the glossary, and which was deleted in 10fd893 when
+            # make_visual_evidence.py took the stage over. make_visual_evidence.py
+            # has never imported visual_text in any commit and has never written a
+            # glossary; it resolves its Chinese through the hand-authored
+            # quote-translations.json below instead.
+            #
+            # This is the mirror of the undeclared input in
+            # contracts/GUARDS-THAT-PASS-ON-ABSENCE.md. That one made a stage report
+            # `current` forever; this one makes it report STALE on any edit to a
+            # module it does not read, which rebuilds the most expensive stage in the
+            # pipeline for nothing and teaches the reader that `stale` means nothing
+            # either. Both directions end with a manifest nobody believes.
+            inputs=["make_visual_evidence.py",
                     "output/translations.json", "output/structures-resolved.json",
                     "input/vision/p*.json", "input/pages/*.png",
                     f"{gold}/structures.json", f"{gold}/compounds.json",
@@ -306,13 +320,12 @@ def stages(pid: str) -> list[Stage]:
                     # this stage, not an output of it.
                     "output/relevant_output/visual/quote-translations.json"],
             # Declared by kind rather than by name, because make_visual_evidence.py
-            # is still growing asset types (crops/ and glossary.json landed while
-            # this ran). Anything it adds outside these globs shows up in the
-            # manifest as a stray, which is the system telling me to declare it
-            # rather than the system quietly losing track of it.
+            # is still growing asset types (crops/ landed while this ran). Anything
+            # it adds outside these globs shows up in the manifest as a stray, which
+            # is the system telling me to declare it rather than the system quietly
+            # losing track of it.
             outputs=["output/relevant_output/visual/page-index.json",
                      "output/relevant_output/visual/drawing-claims.json",
-                     "output/relevant_output/visual/glossary.json",
                      "output/relevant_output/visual/README.md",
                      "output/relevant_output/visual/comparisons/*.png",
                      "output/relevant_output/visual/crops/*.png"],
