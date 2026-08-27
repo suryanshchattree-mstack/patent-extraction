@@ -156,6 +156,16 @@
       "smiles": "CSc1ccc(C(C)=O)c(Cl)c1C",
       "slug": "2-chloro-3-acetyl-6-methylsulfanyltoluene",
       "note": "Product of drawn scheme step 2. Oxidised to the sulfone at scheme step 3, which is where the drawn route rejoins the prose route."
+    },
+    "cyanoacetone": {
+      "smiles": "CC(=O)CC#N",
+      "slug": "cyanoacetone",
+      "note": "3-oxobutanenitrile. Named as the step 8 additive by all three written tellings of the route, and the compound [0004] says the invention eliminated, calling it highly toxic. Curated because the patent never draws it. IT IS ONE HALF OF THE PAIR A REVIEWER IS ASKED TO TELL APART: claims CN104292137A_p02_x3 and CN104292137A_p05_x3 ask whether step 8 means this or acetone cyanohydrin, which the drawn scheme shows instead. The two are distinguishable by name only to a chemist, and trivially by eye once both are drawn: this one is a straight three-carbon chain carrying a ketone, the other is branched at a quaternary carbon carrying an OH. The entry exists so the reviewer can settle the question by looking rather than by trusting a name."
+    },
+    "acetone cyanohydrin": {
+      "smiles": "CC(C)(O)C#N",
+      "slug": "acetone-cyanohydrin",
+      "note": "2-hydroxy-2-methylpropanenitrile. What the drawn scheme shows above the step 8 arrow, drawn as a structure rather than written: a quaternary carbon bearing CN, OH and two methyls. Curated because it is drawn but never named in the text, so gold/structures.json does not carry it under this identifier. THE OTHER HALF OF THE PAIR: see the note on cyanoacetone. Drawing both is the whole point, because the comparison is the evidence and neither drawing settles the question on its own."
     }
   }
 }

@@ -412,14 +412,14 @@
   },
   {
     "identifier": "cyanoacetone",
-    "smiles": null,
-    "canonical": null,
-    "formula": null,
-    "mw": null,
-    "origin": "none",
-    "svg": null,
+    "smiles": "CC(=O)CC#N",
+    "canonical": "CC(=O)CC#N",
+    "formula": "C4H5NO",
+    "mw": 83.09,
+    "origin": "curated",
+    "svg": "structures/cyanoacetone.svg",
     "aliases": [],
-    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym."
+    "note": "Named in the patent but never drawn. Structure from input/structures-curated.json. 3-oxobutanenitrile. Named as the step 8 additive by all three written tellings of the route, and the compound [0004] says the invention eliminated, calling it highly toxic. Curated because the patent never draws it. IT IS ONE HALF OF THE PAIR A REVIEWER IS ASKED TO TELL APART: claims CN104292137A_p02_x3 and CN104292137A_p05_x3 ask whether step 8 means this or acetone cyanohydrin, which the drawn scheme shows instead. The two are distinguishable by name only to a chemist, and trivially by eye once both are drawn: this one is a straight three-carbon chain carrying a ketone, the other is branched at a quaternary carbon carrying an OH. The entry exists so the reviewer can settle the question by looking rather than by trusting a name."
   },
   {
     "identifier": "triethylamine",
@@ -891,13 +891,13 @@
   },
   {
     "identifier": "acetone cyanohydrin",
-    "smiles": null,
-    "canonical": null,
-    "formula": null,
-    "mw": null,
-    "origin": "none",
-    "svg": null,
+    "smiles": "CC(C)(O)C#N",
+    "canonical": "CC(C)(O)C#N",
+    "formula": "C4H7NO",
+    "mw": 85.11,
+    "origin": "curated",
+    "svg": "structures/acetone-cyanohydrin.svg",
     "aliases": [],
-    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym."
+    "note": "Named in the patent but never drawn. Structure from input/structures-curated.json. 2-hydroxy-2-methylpropanenitrile. What the drawn scheme shows above the step 8 arrow, drawn as a structure rather than written: a quaternary carbon bearing CN, OH and two methyls. Curated because it is drawn but never named in the text, so gold/structures.json does not carry it under this identifier. THE OTHER HALF OF THE PAIR: see the note on cyanoacetone. Drawing both is the whole point, because the comparison is the evidence and neither drawing settles the question on its own."
   }
 ]
