@@ -1872,7 +1872,7 @@
     {
       "stage": "visual",
       "title": "the page index, the structure comparisons and the drawing claims the UI shows",
-      "status": "not selected",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_visual_evidence.py --patent-id CN104292137A"
       ],
@@ -1880,13 +1880,8 @@
       "inputs": [
         {
           "path": "make_visual_evidence.py",
-          "sha256": "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-          "bytes": 97808
-        },
-        {
-          "path": "visual_text.py",
-          "sha256": "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
-          "bytes": 13058
+          "sha256": "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
+          "bytes": 99699
         },
         {
           "path": "output/translations.json",
@@ -2017,8 +2012,8 @@
         },
         {
           "path": "output/relevant_output/visual/drawing-claims.json",
-          "sha256": "520db1e377b2d2b14934807d68883a446ae1e0e561f53922dea02830c7bfdcbb",
-          "bytes": 317831
+          "sha256": "e881f6793b306806deabe7216c5ccf78a563239b0a9b572e683f2e64bb827763",
+          "bytes": 318201
         },
         {
           "path": "output/relevant_output/visual/README.md",
@@ -2248,7 +2243,7 @@
     {
       "stage": "selfcheck",
       "title": "grade the verification engine's own output without trusting its exit code",
-      "status": "not selected",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 verify_selfcheck.py CN104292137A"
       ],
@@ -6862,8 +6857,7 @@
       "bytes": 10330,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -6896,8 +6890,7 @@
       "bytes": 231689,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -6930,8 +6923,7 @@
       "bytes": 627947,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -6964,8 +6956,7 @@
       "bytes": 25122,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -6998,8 +6989,7 @@
       "bytes": 209016,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7032,8 +7022,7 @@
       "bytes": 30703,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7066,8 +7055,7 @@
       "bytes": 187037,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7100,8 +7088,7 @@
       "bytes": 31082,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7134,8 +7121,7 @@
       "bytes": 191196,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7168,8 +7154,7 @@
       "bytes": 30950,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7202,8 +7187,7 @@
       "bytes": 182862,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7236,8 +7220,7 @@
       "bytes": 28261,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7270,8 +7253,7 @@
       "bytes": 186883,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7304,8 +7286,7 @@
       "bytes": 31550,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7338,8 +7319,7 @@
       "bytes": 183199,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7372,8 +7352,7 @@
       "bytes": 35080,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7406,8 +7385,7 @@
       "bytes": 184421,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7440,8 +7418,7 @@
       "bytes": 37913,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7474,8 +7451,7 @@
       "bytes": 175044,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7508,8 +7484,7 @@
       "bytes": 228464,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7542,8 +7517,7 @@
       "bytes": 18268,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7576,8 +7550,7 @@
       "bytes": 24044,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7610,8 +7583,7 @@
       "bytes": 24420,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7644,8 +7616,7 @@
       "bytes": 24125,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7678,8 +7649,7 @@
       "bytes": 23392,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7712,8 +7682,7 @@
       "bytes": 25060,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7746,8 +7715,7 @@
       "bytes": 26265,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7780,8 +7748,7 @@
       "bytes": 30678,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7814,8 +7781,7 @@
       "bytes": 318201,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
@@ -7840,8 +7806,7 @@
         "1e81d3f1fe0cce373c053da57bdf754b5f282d87a315a8c56deb7ad1bced194d",
         "62d3025aba7234a3f1029634dd9064aee8e53b5944c7f8c2b4eb084188f519eb",
         "a3f3588714c77355237e63a6594927f52ce47a7d5f6fcb7f217caabb2ea46021"
-      ],
-      "note": "on disk now, but the visual stage last ran producing sha256 520db1e377b2d2b1..."
+      ]
     },
     {
       "path": "output/relevant_output/visual/page-index.json",
@@ -7849,8 +7814,7 @@
       "bytes": 81978,
       "stage": "visual",
       "input_sha256": [
-        "afafb3978f8ba8179bc3fb02a0d039f016f34a5e7e85f7280542c9c8ca733d37",
-        "9c926429f90fb2e1c2652b9b890201f73c30bbbe49bf69cf7de7a724bbd40ad1",
+        "df4524c5432952dbc860618778f0be6d85771cc2f363fc0afa71c10f9d17719a",
         "18fa2521dd2b50a99205a2702c4f536f4df503697da510da8270a0966e8e194a",
         "d9ff75828fc5d5c3574634396912cca8e505b65afed24cbd0d46d49157a93ac7",
         "f73b94981395c8c7ec45c4159bed7febee327b239e381b93456edc904c1d90c2",
