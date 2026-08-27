@@ -50,6 +50,14 @@ that is the problem this repo exists to fix.
 
 ## Before you touch anything
 
+```bash
+python3 pipeline/doctor.py
+```
+
+It reports every problem at once rather than one per run. If it is not clean,
+stop: everything below assumes it is, and a missing RDKit does not announce
+itself until the structures gate, which is after all 27 agent invocations.
+
 Claim your patent in `TARGETS.md`: put your name in `owner`, set `status` to
 `claimed`, commit and push **that change alone**. Two people annotating the same
 patent is the one waste this costs real money to undo.

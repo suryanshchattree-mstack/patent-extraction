@@ -15,8 +15,14 @@ reference.
 git clone https://github.com/yashmstack/patent-extraction
 cd patent-extraction
 python3 -m pip install -r requirements.txt
+python3 pipeline/doctor.py
 claude
 ```
+
+`doctor.py` checks this machine can actually run the pipeline: the Python
+version, that every dependency imports, that the reference run validates here.
+Every failure it reports is one you would otherwise hit several hours in, after
+the 27 agent invocations that produce a patent's annotation.
 
 Then, in Claude Code:
 
