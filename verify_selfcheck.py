@@ -388,7 +388,7 @@ CONTRACT_CLAIM_KEYS = {
     "cited_lines", "evidence_en", "evidence_lines", "highlights", "auto",
     "auto_reason_en", "needs_human", "load_bearing", "risk", "risk_reasons_en",
     "structure_svg_path", "work_kind", "evidence_width", "evidence_class",
-    "tier", "stratum", "severity", "severity_action_en",
+    "tier", "stratum", "severity", "severity_action_en", "family",
 }
 
 # Documented, but only on the claims it applies to, so not required of all of them.

@@ -3784,6 +3784,21 @@ def assemble(run: Run) -> dict:
                               if c.get("_finding") and c["auto"] == "not_checkable")
     finding_claims = sum(1 for c in claims if c.get("_finding"))
 
+    # THE FAMILY, WRITTEN DOWN RATHER THAN LEFT TO BE REDERIVED.
+    #
+    # `claim_family` needs `field`, `about` and `basis`, all of which are on the
+    # claim, so every consumer CAN work it out. The report did, in TypeScript, as an
+    # enumeration of auto statuses that happened to give the same denominator as
+    # this engine's grounded percentage - until one `not_reconciled` grounding claim
+    # existed, at which point the report printed "the engine says 94.6% and this
+    # report counts 94.9%" about a difference that was purely definitional.
+    #
+    # Two implementations of one rule will drift; this one had, silently, and its
+    # only symptom was an integrity light that would now be red forever. The rule
+    # lives here and the answer travels with the claim.
+    for c in claims:
+        c["family"] = claim_family(c)
+
     for c in claims:
         for k in PRIVATE:
             c.pop(k, None)
