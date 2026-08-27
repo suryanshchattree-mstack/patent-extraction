@@ -62,6 +62,7 @@ Usage:  python3 resolve_names.py                  # discovers the patent id
 from __future__ import annotations
 
 import json
+import re
 import sys
 import time
 import urllib.error
@@ -84,6 +85,56 @@ OUT = OUTPUT / "names-opsin.json"
 QUALIFIERS = ("anhydrous", "concentrated", "aqueous", "saturated", "dry",
               "glacial", "fuming", "dilute", "ice", "cold", "hot", "fresh",
               "solid", "liquid", "gaseous", "crude", "pure")
+
+
+# ---------------------------------------------------------------- the English form
+
+def load_translations() -> dict[str, str]:
+    """Chinese string -> the English this pipeline already carries for it.
+
+    Five identifiers on this patent are Chinese, and a grammar for English chemical
+    nomenclature has nothing to say about any of them. Reporting five `unparseable`
+    would be true and useless: the pack HAS an English form for all five, sitting in
+    input/translations-curated.json, and simply never offered it to the parser.
+
+    Taking the curated file rather than output/translations.json on purpose. The
+    curated file is an INPUT, so this stage can run before the translations stage;
+    reaching for that stage's output would make two stages depend on each other's
+    order for no gain.
+    """
+    out: dict[str, str] = {}
+    f = INPUT / "translations-curated.json"
+    if not f.exists():
+        return out
+    try:
+        doc = json.loads(f.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return out
+    for zh, entry in (doc.get("entries") or {}).items():
+        en = entry.get("en") if isinstance(entry, dict) else entry
+        if isinstance(en, str) and en.strip():
+            out[zh] = en.strip()
+    return out
+
+
+def english_forms(en: str) -> list[str]:
+    """The names inside a translation, most literal first.
+
+    A translation is written for a reader, not a parser: 'methyl sulfide (methyl
+    thioether)' offers two names and 'xiaohuanhuangtong [herbicide name exactly as
+    printed; ...]' offers one name and a note about it. Square brackets are the
+    translator talking and are dropped; round brackets are a second name for the same
+    thing and are tried.
+    """
+    en = re.sub(r"\[[^\]]*\]", " ", en)
+    inner = re.findall(r"\(([^)]*)\)", en)
+    head = re.sub(r"\([^)]*\)", " ", en)
+    out = []
+    for cand in [head, *inner]:
+        cand = " ".join(cand.split()).strip(" ,;:")
+        if cand and cand not in out:
+            out.append(cand)
+    return out
 
 
 # ---------------------------------------------------------------- the service
@@ -129,12 +180,24 @@ def ask(query: str, cache: dict, offline: bool) -> dict:
 
 # ---------------------------------------------------------------- the attempts
 
-def candidates(identifier: str, aliases: list[str]) -> list[tuple[str, str]]:
+def is_english(s: str) -> bool:
+    return not any(ord(ch) > 0x2E7F for ch in s)
+
+
+def candidates(identifier: str, aliases: list[str],
+               english: dict[str, str]) -> list[tuple[str, str]]:
     """(string to try, how we got it), in the order they should be tried."""
     out: list[tuple[str, str]] = [(identifier, "verbatim")]
     for a in aliases:
         if a and a != identifier:
             out.append((a, "alias"))
+    # The pipeline's own English for anything not in English, including aliases: a
+    # record can carry a Chinese synonym of an English identifier and that synonym is
+    # a second chance at the same molecule.
+    for name in [identifier, *aliases]:
+        if name and not is_english(name) and name in english:
+            for form in english_forms(english[name]):
+                out.append((form, f"the pipeline's English for {name}"))
     for name, _ in list(out):
         words = name.split()
         if len(words) > 1 and words[0].lower().strip(",") in QUALIFIERS:
@@ -162,7 +225,7 @@ def canonical(smiles: str | None) -> str | None:
 
 
 def read_name(identifier: str, aliases: list[str], cache: dict,
-              offline: bool) -> dict:
+              offline: bool, english: dict[str, str]) -> dict:
     """One identifier, read by OPSIN. See the module docstring for the outcomes."""
     if looks_like_smiles(identifier):
         return {"identifier": identifier, "outcome": "unparseable",
@@ -171,8 +234,8 @@ def read_name(identifier: str, aliases: list[str], cache: dict,
                 "attempts": []}
 
     attempts, warning = [], None
-    for query, how in candidates(identifier, aliases):
-        if any(ord(ch) > 0x2E7F for ch in query):
+    for query, how in candidates(identifier, aliases, english):
+        if not is_english(query):
             attempts.append({"query": query, "via": how, "status": "NOT_ASKED",
                              "note": "not English; OPSIN parses English chemical "
                                      "nomenclature only"})
@@ -200,9 +263,17 @@ def read_name(identifier: str, aliases: list[str], cache: dict,
                           "molecule down. Its guess is recorded and is deliberately "
                           "NOT used as a structure.",
                 "attempts": attempts}
+    tried = [a["query"] for a in attempts if a["status"] != "NOT_ASKED"]
+    # Naming what was tried, because "unparseable" alone is unactionable and the list
+    # is often the finding. 1,2-dichloromethane is refused because dichloromethane has
+    # one carbon and therefore no 1,2 positions; a reader who cannot see that the
+    # parser was given that exact string cannot see that either.
     return {"identifier": identifier, "outcome": "unparseable",
-            "reason": "no spelling of this name was accepted; usually a trade name, "
-                      "an abbreviation, or not English",
+            "reason": ("no spelling of this name was accepted"
+                       + (f"; tried {', '.join(repr(t) for t in tried)}" if tried
+                          else " and no English spelling was available to try")
+                       + ". Usually a trade name, an abbreviation, a compound class "
+                         "rather than a compound, or a name that cannot be built."),
             "attempts": attempts}
 
 
@@ -244,13 +315,14 @@ def main() -> int:
     patent_id = resolve_patent_id([a for a in argv if a != "--offline"])
 
     cache = load_cache()
+    english = load_translations()
     cached_before = len(cache)
     ids = universe(patent_id)
 
     rows, unreachable = [], []
     for ident, aliases in ids:
         try:
-            rows.append(read_name(ident, aliases, cache, offline))
+            rows.append(read_name(ident, aliases, cache, offline, english))
         except Unreachable as e:
             unreachable.append(str(e))
 
