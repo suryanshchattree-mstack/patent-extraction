@@ -92,6 +92,29 @@ MARKER = re.compile(r"^\[\d{4}\]$")
 
 # ================================================================== utilities
 
+def english_values(node, where: str):
+    """Every string VALUE in a curated document, with a path to report it by.
+
+    Keys are exempt and values are not, which is the whole shape of
+    quote-translations.json: the key is the raw Chinese label the lookup is done
+    by and the value is the English that replaces it on the screen.
+
+    Recursive, and deliberately not `isinstance(val, str)` at one fixed depth. A
+    per-shape test skips every other shape SILENTLY, so a value written as
+    {"en": ..., "note": ...} - the form the rest of this pipeline uses - passes a
+    gate that never opened it. That gate cannot tell a translated entry from one
+    it did not inspect, and both read as clean.
+    """
+    if isinstance(node, str):
+        yield where, node
+    elif isinstance(node, dict):
+        for k, v in node.items():
+            yield from english_values(v, f"{where}[{k}]")
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            yield from english_values(v, f"{where}[{i}]")
+
+
 def sha16(*parts: str) -> str:
     """Claim ids must survive a re-run unchanged, so they hash content only."""
     h = hashlib.sha256("\x1f".join(parts).encode("utf-8")).hexdigest()
@@ -1566,7 +1589,8 @@ def build(root: Path, patent_id: str) -> int:
     # quote-translations.json is an INPUT to this stage, not an output, and its
     # keys are the raw Chinese labels they stand in for - that is what makes the
     # lookup work. Its values still have to be English, so it is gated on values
-    # only while everything this stage generates is gated whole.
+    # only while everything this stage generates is gated whole. Every value, at
+    # every depth: see english_values for why the shape must not decide.
     bad = []
     curated = out / "quote-translations.json"
     for path in sorted(out.rglob("*")):
@@ -1575,18 +1599,30 @@ def build(root: Path, patent_id: str) -> int:
         for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             if CJK.search(line):
                 bad.append(f"{path.relative_to(out)}:{n}")
+    inspected = 0
     if curated.exists():
         doc_c = json.loads(curated.read_text(encoding="utf-8"))
-        for section in ("entries", "marker_labels_en"):
-            for k, val in doc_c.get(section, {}).items():
-                if isinstance(val, str) and CJK.search(val):
-                    bad.append(f"quote-translations.json:{section}[{k}] value")
+        for where, val in english_values(doc_c, "quote-translations.json"):
+            inspected += 1
+            if CJK.search(val):
+                bad.append(f"{where} value")
+        # Assert the positive. Inspecting nothing and finding nothing read exactly
+        # alike from the outside, and the previous version of this gate walked only
+        # `entries` and `marker_labels_en` and only their `str` values, so a value of
+        # any other shape - the {"en": ..., "note": ...} form the rest of the pipeline
+        # uses - was skipped in silence and reported as clean. A count that must be
+        # non-zero is the part of the check that cannot be satisfied by an empty set.
+        if not inspected:
+            bad.append("quote-translations.json: exists but no string value was "
+                       "inspected, so this gate proves nothing")
     if bad:
         print("FAIL: Chinese characters reached the output:", file=sys.stderr)
         for b in bad[:40]:
             print("   ", b, file=sys.stderr)
         return 1
 
+    print(f"english gate         {inspected} string values inspected in "
+          f"quote-translations.json, at every depth; no Chinese in any of them")
     print(f"page-index.json      {len(page_index['markers'])} markers, "
           f"{len(page_index['pages'])} pages")
     print(f"comparisons          {len(comparisons)} written, "
