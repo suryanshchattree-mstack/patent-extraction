@@ -261,11 +261,26 @@ def stages(pid: str) -> list[Stage]:
                        "output/relevant_output/AUDIT.md"],
         ),
         Stage(
+            name="names",
+            title="read every compound name a second time, with a parser instead of a model",
+            # Before structures, because structures consumes its answer both as a
+            # last-resort tier and as the cross-check on every other tier.
+            #
+            # Not a gate. A name a grammar cannot parse is a fact about English
+            # nomenclature, not a defect in this patent, and failing the run over
+            # `tembotrione` would be failing it for having a trade name.
+            cmds=[[PY, "resolve_names.py", "--patent-id", pid]],
+            inputs=["resolve_names.py", "pipeline_context.py",
+                    f"{gold}/compounds.json"],
+            outputs=["output/names-opsin.json", "input/opsin-cache.json"],
+            optional_tool="resolve_names.py",
+        ),
+        Stage(
             name="structures",
-            title="identifier -> drawable molecule over five tiers, plus the coverage gate",
+            title="identifier -> drawable molecule over six tiers, plus the coverage gate",
             cmds=[[PY, "resolve_structures.py", "--patent-id", pid]],
             inputs=["resolve_structures.py", "pipeline_context.py",
-                    "input/structures-curated.json",
+                    "input/structures-curated.json", "output/names-opsin.json",
                     f"{gold}/compounds.json", f"{gold}/reactions.json",
                     f"{gold}/structures.json", f"{prov}/compounds-equivalence.json"],
             outputs=["output/structures-resolved.json", "output/structures/*.svg"],

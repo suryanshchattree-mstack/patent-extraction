@@ -26,7 +26,20 @@ Resolution tiers, in order. The first one that fires wins.
        |
        +-- 4. input/structures-curated.json has an entry ...... curated
        |
-       +-- 5. nothing ........................................ none
+       +-- 5. OPSIN parsed the NAME into a molecule ........... name_parsed
+       |
+       +-- 6. nothing ........................................ none
+
+OPSIN IS LAST AS A PROVIDER AND INDEPENDENT AS A CHECK, and the two facts are one
+decision. A parse is the weakest evidence here about what THIS patent means: the
+drawing is what the patent shows, the curated table is a human reading it, and a
+grammar knows only English nomenclature. But a grammar shares no failure mode with a
+vision pass, which makes it the one reader in this pack that can disagree usefully.
+
+If it both supplied a structure and checked it, the check would read its own output
+and pass on everything. So it fires last, and `name_check` on every entry records
+what it thought of a structure it did not provide - including `is_the_source` on the
+entries it did, said out loud rather than counted as agreement.
 
 THE TIER-2 JOIN IS ON RDKIT CANONICAL SMILES, NEVER ON NAMES. gold/structures.json
 holds 18 SMILES entries for only 11 unique molecules, because the drawn scheme is
@@ -407,10 +420,73 @@ def index_curated(curated, universe: list[str]):
     return by_identifier, claimed
 
 
+# ---------------------------------------------------------------- the name reader
+
+def load_names() -> dict[str, dict]:
+    """resolve_names.py's answer per identifier, or {} when that stage has not run.
+
+    Optional on purpose. A pack that has never reached the network still resolves
+    exactly as it did before, with every name_check reading `not_run`. Silently
+    behaving as though OPSIN had agreed would be the worse failure: it would report
+    a corroboration that never happened.
+    """
+    f = OUT / "names-opsin.json"
+    if not f.exists():
+        return {}
+    try:
+        doc = json.loads(f.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    return {r["identifier"]: r for r in doc.get("names") or []}
+
+
+def name_check(ident: str, entry_canonical: str | None, origin: str,
+               names: dict[str, dict]) -> dict:
+    """What the name parser thought of the structure this pipeline assigned."""
+    if not names:
+        return {"outcome": "not_run",
+                "note_en": "The name-parsing stage has not run for this pack, so no "
+                           "second reader has seen this identifier."}
+    r = names.get(ident)
+    if r is None:
+        return {"outcome": "not_run",
+                "note_en": "This identifier was not in the name-parsing stage's input."}
+
+    common = {k: r[k] for k in ("query", "via") if k in r}
+    if origin == "name_parsed":
+        return {**common, "outcome": "is_the_source",
+                "opsin_canonical": r.get("canonical"),
+                "note_en": "This structure IS the parse, so there is nothing "
+                           "independent to compare it against. Nothing drawn in the "
+                           "patent and nothing curated corroborates it."}
+    if r["outcome"] == "ambiguous":
+        return {**common, "outcome": "ambiguous",
+                "opsin_canonical": r.get("guess_canonical"),
+                "note_en": "OPSIN will not pin this name down to one molecule. "
+                           + r.get("reason", "")}
+    if r["outcome"] == "unparseable":
+        return {"outcome": "no_parse", "note_en": r.get("reason", "")}
+    if entry_canonical is None:
+        return {**common, "outcome": "no_structure_to_check",
+                "opsin_canonical": r.get("canonical"),
+                "note_en": "OPSIN read this name, but the parse was not used, so "
+                           "there is no assigned structure to compare it with."}
+
+    agrees = r.get("canonical") == entry_canonical
+    return {**common,
+            "outcome": "agree" if agrees else "disagree",
+            "opsin_canonical": r.get("canonical"),
+            "note_en": ("An independent parse of the name lands on the same molecule."
+                        if agrees else
+                        "An independent parse of the name lands on a DIFFERENT "
+                        "molecule. One of the two readings is wrong.")}
+
+
 # ---------------------------------------------------------------- resolution
 
-def resolve(universe, compounds, curated_index, equivalence, drawn_pages):
-    """Run the five tiers over every identifier. Returns identifier -> record."""
+def resolve(universe, compounds, curated_index, equivalence, drawn_pages,
+            names=None):
+    """Run the six tiers over every identifier. Returns identifier -> record."""
     types = {c["identifier"]: c.get("identifier_type") for c in compounds}
 
     # A record's aliases[] is where a structure read off the drawing arrives, which
@@ -519,11 +595,38 @@ def resolve(universe, compounds, curated_index, equivalence, drawn_pages):
         record(ident, src["smiles"], src["mol"], "derived", donor,
                [f"Same molecule as {donor!r}, via provenance/compounds-equivalence.json.{drawn}"])
 
+    # --- tier 5: the name, parsed ------------------------------------------------
+    #
+    # Last, so that nothing the patent actually shows is ever pre-empted by a
+    # grammar. What reaches here is what the patent names and never draws, which on
+    # this pack is almost entirely solvents and workup reagents. They gate nothing,
+    # and they are still worth resolving: a row with a drawing is a row a reader can
+    # check by looking, and a row with a formula is a row the mass balance can weigh.
+    #
+    # `ambiguous` is deliberately NOT taken. OPSIN warning that a name could mean
+    # several molecules is the single most useful thing it says on this patent, and
+    # filing its guess as a structure would erase it.
+    for ident in universe:
+        if ident in resolved:
+            continue
+        r = (names or {}).get(ident)
+        if not r or r.get("outcome") != "parsed":
+            continue
+        mol = Chem.MolFromSmiles(r["smiles"])
+        if mol is None:
+            continue
+        how = "" if r.get("via") == "verbatim" else f" (parsed as {r['query']!r})"
+        record(ident, r["smiles"], mol, "name_parsed", "OPSIN",
+               [f"Not drawn in the patent and not curated. The NAME was parsed into "
+                f"this molecule by OPSIN{how}, independently of any reading of this "
+                f"document."])
+
     return resolved
 
 
-def assemble(universe, resolved, curated_index, no_structure_needed):
+def assemble(universe, resolved, curated_index, no_structure_needed, names=None):
     """Turn the resolution into the artifact: one entry per distinct identifier."""
+    names = names or {}
     by_canonical: dict[str, list[str]] = {}
     for ident in universe:
         r = resolved.get(ident)
@@ -553,7 +656,8 @@ def assemble(universe, resolved, curated_index, no_structure_needed):
                     "molecules: " + " vs ".join(r["conflict"]))
             out.append({"identifier": ident, "smiles": None, "canonical": None,
                         "formula": None, "mw": None, "origin": "none", "svg": None,
-                        "aliases": [], "note": note})
+                        "aliases": [], "note": note,
+                        "name_check": name_check(ident, None, "none", names)})
             continue
         if not r:
             if is_trivial(ident, no_structure_needed):
@@ -561,9 +665,16 @@ def assemble(universe, resolved, curated_index, no_structure_needed):
             else:
                 note = ("No structure. Not drawn in the patent, no entry in "
                         "input/structures-curated.json, and no resolved synonym.")
+            chk = name_check(ident, None, "none", names)
+            # An ambiguous name is a better answer than "no structure", and it is a
+            # different KIND of answer: somebody named this too loosely to draw.
+            if chk["outcome"] == "ambiguous":
+                note = ("No structure, because the NAME does not pin one molecule "
+                        "down. " + chk["note_en"])
             out.append({"identifier": ident, "smiles": None, "canonical": None,
                         "formula": None, "mw": None, "origin": "none", "svg": None,
-                        "aliases": [], "note": " ".join(x for x in (note, curated_note) if x)})
+                        "aliases": [], "note": " ".join(x for x in (note, curated_note) if x),
+                        "name_check": chk})
             continue
 
         canonical = r["canonical"]
@@ -578,6 +689,7 @@ def assemble(universe, resolved, curated_index, no_structure_needed):
             "svg": f"{SVG_SUBDIR}/{slugs[canonical]}.svg",
             "aliases": aliases,
             "note": " ".join(x for x in r["note_bits"] + [curated_note] if x),
+            "name_check": name_check(ident, canonical, r["origin"], names),
         })
     return out, by_canonical, slugs
 
@@ -658,13 +770,15 @@ def stub(missing) -> str:
 
 # ---------------------------------------------------------------- report
 
-ORIGINS = ["patent_scheme", "patent_drawing", "derived", "curated", "none"]
+ORIGINS = ["patent_scheme", "patent_drawing", "derived", "curated",
+           "name_parsed", "none"]
 
 ORIGIN_MEANING = {
     "patent_scheme": "the identifier string is itself a SMILES",
     "patent_drawing": "the molecule is drawn in the patent",
     "derived": "same molecule as a synonym, via the equivalence index",
     "curated": "named but never drawn, from input/structures-curated.json",
+    "name_parsed": "nothing drawn or curated; OPSIN parsed the name",
     "none": "no structure",
 }
 
@@ -686,9 +800,11 @@ def main() -> int:
     curated_index, claimed = index_curated(curated, universe)
     products, weighed = chemistry_carriers(reactions)
 
-    resolved = resolve(universe, compounds, curated_index, equivalence, drawn_pages)
+    names = load_names()
+    resolved = resolve(universe, compounds, curated_index, equivalence, drawn_pages,
+                       names)
     entries, by_canonical, slugs = assemble(universe, resolved, curated_index,
-                                            no_structure_needed)
+                                            no_structure_needed, names)
 
     svg_dir = OUT / SVG_SUBDIR
     if check:
@@ -711,6 +827,29 @@ def main() -> int:
     print(f"curated   : {len(curated.get('entries') or {})} entries covering "
           f"{len(claimed)} identifiers")
     print()
+
+    # ---- the second reader --------------------------------------------------
+    if names:
+        chk = {}
+        for e in entries:
+            chk.setdefault(e["name_check"]["outcome"], []).append(e)
+        agree, dis = len(chk.get("agree", [])), len(chk.get("disagree", []))
+        both = agree + dis
+        print("second reader (OPSIN, parsing the name with no sight of this patent)")
+        if both:
+            print(f"  {both} identifier(s) have a structure this pipeline assigned AND "
+                  f"a parse to\n  compare it with. {agree} agree, {dis} disagree.")
+        for e in chk.get("disagree", []):
+            print(f"    DISAGREE  {e['identifier']}\n"
+                  f"              here   {e['canonical']}   (origin {e['origin']})\n"
+                  f"              OPSIN  {e['name_check']['opsin_canonical']}   "
+                  f"(from {e['name_check'].get('query')!r})")
+        for label, key in (("ambiguous name", "ambiguous"),
+                           ("supplied by the parse alone", "is_the_source")):
+            n = len(chk.get(key, []))
+            if n:
+                print(f"  {n:3} {label}")
+        print()
 
     counts = {o: sum(1 for e in entries if e["origin"] == o) for o in ORIGINS}
     print(f"{len(entries)} distinct compound identifiers resolved:")
