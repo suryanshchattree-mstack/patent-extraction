@@ -1,0 +1,22 @@
+[
+  {
+    "reaction_id": "Example 16_Step 1",
+    "source_lines": [
+      537,
+      537
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "arithmetic_check": "No mass, no mole figure and no yield are printed for this step, so there is nothing to check. The only number is the 98.2 percent content of the sodium salt obtained. The 0.1 mol figure that appears later belongs to the charge into step (2). Nothing fails and nothing could be verified; no arithmetic flag is raised and none is cleared.",
+    "drawing_evidence": "None. The single IMAGE_EXTRACT span in this section, on line 541, sits under the step (2) heading on line 539 and draws the step (2) etherification, not this step. No scheme is drawn for step (1) in Examples 13 to 20, so there is no drawing to agree or disagree with the prose here."
+  },
+  {
+    "reaction_id": "Example 16_Step 2",
+    "source_lines": [
+      539,
+      543
+    ],
+    "quote_zh": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为2h，加毕保温反应4h",
+    "arithmetic_check": "Stated input to this step: 0.1 mol of the sodium benzoate salt at 98.2 percent content, no mass printed. Stated product: 32.6 g at 94.8 percent by high performance liquid chromatography, so 30.90 g of the acid; at a molecular weight of 348.8 for C14H17ClO6S that is 0.0886 mol, which is 88.6 percent of the 0.1 mol charged, against the printed 88.8 percent. The gap is 0.2 percentage points. Rounding of the printed mass and content reaches 88.8 percent only at the extreme of the interval, 32.65 g at 94.85 percent giving 88.8 percent, so the printed figure closes only at the edge of rounding and not in the middle of it. The text also words that figure as a two-step yield calculated on methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate, whose charge is printed nowhere in this section, so the stated basis cannot be verified and is only consistent with the arithmetic if step (1) is quantitative. The mass is below the 34.9 g theoretical from 0.1 mol, so the product mass does not exceed what the input moles could give and mass_balance_implausible is not raised; the shortfall against the printed yield is recorded here and in notes rather than flagged, because it is inside the rounding interval of the printed figures. Reagent checks close: 26.1 g of 30 percent potassium hydroxide solution is 7.83 g of potassium hydroxide, 0.1395 mol at 56.11, against the printed 0.14 mol; 12.9 g of tetrahydrofurfuryl alcohol at 99 percent is 12.77 g, 0.1250 mol at 102.13, against the printed 0.125 mol, so here the printed mole figure is taken on the 99 percent content. No molar_mass_inconsistent. Step (1) prints no output quantity, so scale_discontinuity could not be checked.",
+    "drawing_evidence": "The IMAGE_EXTRACT reaction scheme on line 541, one arrow, step_id 1. Its drawn reactant is the sodium benzoate salt and its drawn product is the free ether acid, matching the prose of this step, and its arrow conditions read THFA, KOH and HCl. Prose and drawing agree on both alkali metals, sodium on the substrate and potassium in the base, so the sodium versus potassium conflict seen elsewhere in this patent does not arise here and no drawing_text_conflict is raised. Two differences of completeness only: the reaction solvent named in the prose does not appear on the arrow, which is why reagent_written_not_drawn is raised, and the hydrochloric acid drawn on the arrow is a workup acidification in the prose rather than a reagent of the substitution, so it is recorded in workup and noted rather than promoted to an arrow reagent. The drawn structures carry no stereo bond while the prose prints (RS), and no stereochemistry is added from the drawing."
+  }
+]

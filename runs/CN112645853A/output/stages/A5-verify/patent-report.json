@@ -1,0 +1,161 @@
+{
+  "artifact": "patent",
+  "records_audited": 1,
+  "findings": [
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "CN112645853A",
+      "field": "novelty_claims",
+      "problem": "The clause 'no methanol is present when the benzylic bromide is displaced' is an added mechanistic assertion; the document says only that the methoxy group is removed from the molecule before etherification, and never states that the etherification medium is methanol free.",
+      "source_line": 181,
+      "quote": "This method removes the methoxy group before etherification, effectively avoiding the formation of the impurity 2-chloro-3-methoxymethyl-4-methylsulfonylbenzoic acid in the subsequent etherification reaction, and the yield and quality of the target compound are greatly improved.",
+      "artifact_says": "cleaving the ester before etherification so that, as [0023] puts it, the method \"removes the methoxy group before etherification\" and no methanol is present when the benzylic bromide is displaced",
+      "should_be": "Delete the clause 'and no methanol is present when the benzylic bromide is displaced', or replace it with the document's own claim, that the methoxy group is no longer in the molecule when the etherification is run. Note that methanol is in fact liberated in step (1) and removed with the solvent, which the patent does not discuss, so the assertion is not merely unsourced but arguably wrong.",
+      "confidence": "medium"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "CN112645853A",
+      "field": "patent_summary",
+      "problem": "The base list generalises the two named tert-butoxides to 'a sodium or potassium tert-alkoxide', which is a broader class than the claim recites.",
+      "source_line": 55,
+      "quote": "优选地，步骤(1)中所述碱性物质为氢氧化钠、氢氧化钾、叔丁醇钠、叔丁醇钾、氢化钠、氢化钾、金属钠或金属钾中的任意一种，优选为氢氧化钠；",
+      "artifact_says": "a basic substance (sodium or potassium hydroxide, a sodium or potassium tert-alkoxide, an alkali metal hydride, or the alkali metal itself)",
+      "should_be": "'sodium or potassium tert-butoxide'. The Chinese 叔丁醇钠 and 叔丁醇钾 are sodium tert-butoxide and potassium tert-butoxide specifically; no other tertiary alkoxide is named anywhere in the claims or the description.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "CN112645853A",
+      "field": "patent_summary",
+      "problem": "Claim 2 permits a combination of at least two of the three tertiary alcohols and the summary lists them as alternatives only, dropping scope that the patent actually exercises.",
+      "source_line": 49,
+      "quote": "步骤(1)中所述三级醇为叔丁醇、叔戊醇或2-甲基-2-戊醇中的任意一种或至少两种的组合，优选为叔丁醇",
+      "artifact_says": "in a tertiary alcohol solvent, tert-butanol, tert-amyl alcohol or 2-methyl-2-pentanol",
+      "should_be": "Add 'or a mixture of them'. Line 451 shows the mixture is not hypothetical: Example 10 charges 50 mL of tert-amyl alcohol and 150 mL of tert-butanol together.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "CN112645853A",
+      "field": "patent_summary",
+      "problem": "Claim 8 permits a combination of at least two of the four step (2) solvents and the summary lists them as alternatives only.",
+      "source_line": 92,
+      "quote": "the solvent used in step (2) is any one of acetonitrile, DMF, DMSO or THF, or a combination of at least two of them",
+      "artifact_says": "in acetonitrile, DMF, DMSO or THF",
+      "should_be": "Add 'or a mixture of them'.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "CN112645853A",
+      "field": "patent_summary",
+      "problem": "Hydrochloric acid is stated flatly as the acidifying agent, where the claim gives it only as a preference.",
+      "source_line": 98,
+      "quote": "优选地，所述酸化使用的酸为盐酸；",
+      "artifact_says": "the free acid is recovered by solvent removal, dilution with water, acidification with hydrochloric acid, filtration and drying",
+      "should_be": "'acidification, hydrochloric acid preferred'. Claim 10 (line 112) requires only 酸化, acidification; the identity of the acid is a preferred feature of claim 8, and every worked example happens to use concentrated hydrochloric acid.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "CN112645853A",
+      "field": "patent_summary",
+      "problem": "patent_summary renders 甲磺酰基 as 'methanesulfonyl' while the biblio title_en that finalise.py merges into the same record renders it 'methylsulfonyl', so one finished record will carry two spellings of the same substituent.",
+      "source_line": 35,
+      "quote": "一种2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸的制备方法",
+      "artifact_says": "2-chloro-3-alkoxymethyl-4-methanesulfonylbenzoic acid (patent_summary) against Preparation method for 2-chloro-3-alkoxymethyl-4-methylsulfonylbenzoic acid (biblio title_en)",
+      "should_be": "Pick one rendering for the whole record. Neither is a mistranslation of 甲磺酰基, and methanesulfonyl is the better name, so the minimal fix is a line in title_en_note recording that patent_summary uses methanesulfonyl for the same group rather than changing either string.",
+      "confidence": "medium"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": null,
+      "field": "input/CN112645853A-enriched-numbered.md line 135",
+      "problem": "Page p04 draws the key intermediate at [0006], a benzoic acid with Cl at 2, CH2-O-R at 3 and SO2CH3 at 4, but the vision read for that paragraph is an empty molecule list with no note that a variable R made it unencodable, so absence of a structure is indistinguishable from absence of a drawing.",
+      "source_line": 135,
+      "quote": "[IMAGE_EXTRACT: {\"molecules\": []}]",
+      "artifact_says": "empty molecules array",
+      "should_be": "Carry a text note in the span, as the same vision pass does at lines 551, 569 and 599 for reagents drawn rather than named, for example 'general formula of the target acid, drawn with a variable OR group, so no SMILES'. Same pattern occurs at lines 143, 164 and 176, where drawn Markush reactants and products are also recorded as empty. This does not touch any field of the patent record, which carries no structures.",
+      "confidence": "medium"
+    },
+    {
+      "check": "translation",
+      "severity": "minor",
+      "record": "CN112645853A",
+      "field": "input/CN112645853A-biblio.json title_en_note",
+      "problem": "The note's morpheme gloss labels 烷 as 'alkyl', which is the gloss of 烷基; 烷 on its own is 'alkane', and the composite that carries the meaning is 烷氧基, alkoxy, which the note gets right two sentences later.",
+      "source_line": 35,
+      "quote": "一种2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸的制备方法",
+      "artifact_says": "3-烷氧基甲基 = 3-alkoxymethyl (烷 alkyl, 氧基 -oxy, 甲基 methyl)",
+      "should_be": "Gloss it as 烷氧基 alkoxy plus 甲基 methyl, or write 烷 alkane. The conclusion the note draws is correct and the title itself checks out against line 35; only the morpheme label is loose, which matters because the note is what a reviewer trusts in place of redoing the check.",
+      "confidence": "high"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "precision, banned content",
+      "what_was_verified": "Neither patent_summary nor novelty_claims carries a yield, a mass, a temperature, a SMILES, a formula or a molecular weight. The figures the document would most easily have leaked, 98.3 percent at line 263, 93.8 and 98.7 percent at line 265, the 3 to 5 and 8 to 12 percent impurity levels at line 147, the 25 to 40 C and -5 to 15 C windows at lines 61 and 102, and every 34.8 g charge, are all absent. patent_summary is 2 sentences and novelty_claims is 4, both inside their limits."
+    },
+    {
+      "check": "target_class",
+      "what_was_verified": "intermediate is right and herbicide would be wrong. Line 121 places the invention in 精细化工中间体合成领域, the field of fine chemical intermediate synthesis, and line 132 states 化合物2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸是此系列化合物的关键中间体, that the compound made here is the key intermediate of the series. The herbicides tembotrione and tefuryltrione appear at lines 125 to 131 only as the downstream actives whose technical material quality this intermediate protects, and the product of this process has no herbicidal activity of its own. domain:agrochemical carries that context, which is the correct division of labour between the two tags."
+    },
+    {
+      "check": "key_examples",
+      "what_was_verified": "Genuinely true here. Claims 1 to 10 occupy lines 43 to 113 and contain no occurrence of 实施例 or of any example label; every dependent claim refers back only to claim numbers. The empty array with key_examples_not_referenced is correct and no example was manufactured."
+    },
+    {
+      "check": "vocabulary",
+      "what_was_verified": "All 7 tags are category:value with lowercase snake_case ASCII values. domain:agrochemical, target_class:intermediate, claim_type:process, novelty:new_process, novelty:improved_purity, novelty:improved_yield and process_focus:batch are each in the A4 closed list. Exactly the five permitted categories are used, no metadata category leaked in, and the single-value rule holds for domain and target_class. claim_type:process alone is right: all ten claims are 制备方法 process claims and nothing is claimed as a composition or a compound per se. improved_purity and improved_yield are both earned at line 263. process_focus:batch is anchored to line 104, where the salt is 分批加入, charged in portions over a stated total feed time, followed by a held reaction time, with no continuous language anywhere in the document."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "Exactly the five permitted keys are present, and no id, uuid, vector, enrichment, bibliographic, assignee_type or extraction_rollup field appears. honest_uncertainty_flags carries one code that is in the A4 list. patent_summary_truncated_input was correctly not raised: the claims text is broken across the p02 to p03 and p06 to p07 page boundaries at lines 85, 90 and 207, and the artifact reconstructed claim 7 and the step (2) alcohol ratio correctly across both breaks."
+    },
+    {
+      "check": "novelty anchoring",
+      "what_was_verified": "Every factual assertion in novelty_claims except the one reported above lands on a line. The five prior documents are named exactly as at line 137; the ester first, saponify after order and its methanol route to the methoxymethyl impurity are at lines 137 and 147; 'not easily removed' and the technical material sentence are at line 148; 'removes the methoxy group before etherification' is at line 181; 'the main impurity present in the prior art' with the quality and yield claim is at line 263; the benzyl alcohol and dibenzyl ether objection is at line 183; 'can very well reduce the reactivity of the benzyl bromide' is at line 188; the immovable charging order and the double attachment impurity are at lines 83 and 232. The novelty statement also matches what the document itself elects as new in its own beneficial effects section at lines 261 to 265."
+    },
+    {
+      "check": "drawings, background scheme not annotated as the invention",
+      "what_was_verified": "The scheme at [0008], line 143 and page p05, is the prior art route and the artifact attributes it to the five cited documents, not to the invention. The invention's own scheme at [0021], line 176 and page p06, keeps the above arrow reagents ROH、碱 and the below arrow alternative 或ROM as two separate condition entries rather than merging them, which is what the page shows."
+    },
+    {
+      "check": "drawings, structures against the pages",
+      "what_was_verified": "Checked p04 and p06 directly. At [0003] on p04 both triketones are drawn with the benzoyl at 1, Cl at 2, CH2OR at 3 and SO2CH3 at 4, which is what the two encoded SMILES say, and C17H16ClF3O6S and C20H23ClO7S both count out correctly from those SMILES. At [0025] on p06 only one structure is drawn, the symmetric bis benzyl ether, so the single molecule in the span at line 185 is not a case of dropping the benzyl alcohol that the text also names; its substituent pattern, COOH at 1, Cl at 2, CH2O at 3 and SO2CH3 at 4 on both rings, matches the encoded SMILES ring by ring, and C18H16Cl2O9S2 counts out."
+    },
+    {
+      "check": "translation, Chinese against English",
+      "what_was_verified": "Compared the Chinese and the EN line for every compound, reagent and solvent the artifact names. No case where the two name different things and the artifact followed the English. Two places where the patent's own Chinese is defective were checked for leakage: lines 199 and 218 both say 所述氢氧化钾使用时先制成氢氧化钠水溶液, that the potassium hydroxide is first made up as a sodium hydroxide solution, and the EN lines carry that error faithfully. The artifact omits the base concentrations entirely, so nothing propagated. Line 207 also carries a doubled 与与 that the EN line reproduces as 'to to', again untouched by the artifact."
+    },
+    {
+      "check": "biblio title_en against line 35",
+      "what_was_verified": "title_zh is byte identical to line 35. Re-derived the mapping independently: 一种 a kind of, 2-氯 2-chloro, 3-烷氧基甲基 3-alkoxymethyl, 4-甲磺酰基 4-methylsulfonyl or methanesulfonyl, 苯甲酸 benzoic acid, 的制备方法 preparation method. title_en drops only 一种 and turns 'of' into 'for', exactly as the note claims, and no substituent, locant or parent is altered. The note's further points also hold: 烷氧基 is the generic alkoxy rather than a specific alkyl, and the two instantiations at lines 121 and 606 are the 2,2,2-trifluoroethoxy and the tetrahydrofuran-2-ylmethoxy cases, matching the two actives named in the abstract. Only the 烷 gloss is loose, reported above."
+    },
+    {
+      "check": "arithmetic and linkage, not applicable",
+      "what_was_verified": "Confirmed by inspection that this artifact has no numeric field, no mole, mass or yield value, no precursor_step, no linkage_confirmed and no validation_flag, so there is nothing to close arithmetically and no link to substantiate. Recorded as not applicable rather than as a pass, since a pass on absence would be no evidence at all. The document's own two step yields at lines 294 to 605 were left to the reaction level artifacts, which is where they belong."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 22,
+    "present_in_artifact": 15,
+    "missing": [
+      "Mass concentration 30 to 96 percent for the sodium hydroxide and the potassium hydroxide, claim 3 paras 3 and 4 at lines 57 and 59 and claim 6 at lines 71 and 73. Not a mass or a temperature, so not excluded by the no numbers rule.",
+      "The step (2) base list at line 69 is narrower than the step (1) list at line 55: sodium and potassium metal are permitted for the ester cleavage but not for the etherification. The summary presents one undifferentiated notion of 'the bases'.",
+      "The salt to alkali metal alkoxide molar ratio 1:(1.2 to 1.5), claim 7 para 1 at line 77. The summary names the substrate to base and salt to alcohol ratios but not this third one.",
+      "The second charging order in claim 7 para 5 at lines 85 and 90, alkali metal alkoxide into the solvent before the salt. Only the base plus alcohol order is carried, in both patent_summary and novelty_claims.",
+      "Portionwise charging of the salt with a total addition time of 1 to 3 h, claim 9 at line 104, which the description at line 240 repeats and every example follows in eight portions.",
+      "pH 2 to 3 after acidification, claim 8 at line 100. The summary carries the acidification step but not its endpoint.",
+      "The preferences the claims single out, 优选为叔丁醇 tert-butanol at line 49 and 优选为氢氧化钠 sodium hydroxide at line 55. Both alternatives are listed flat, so the hierarchy the claims draw is lost."
+    ]
+  }
+}
