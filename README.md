@@ -51,6 +51,7 @@ runs/CN104292137A/
       provenance/             which lines each record came from
       verification/           the file the review UI renders
       structures/             one SVG per molecule
+      export/                 every reaction joined to its participants' SMILES
       svg/                    the route and method diagrams
       manifest.json           sha256 of every artifact and every input
     stages/                   per-pass output, unmerged, for checking one pass
