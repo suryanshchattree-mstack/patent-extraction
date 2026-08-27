@@ -1,0 +1,21 @@
+# Everything the deterministic stages need. Verified against the actual imports
+# in pipeline/, not guessed.
+pymupdf>=1.24        # render_pages.py, svg2jpg.py: PDF -> PNG, SVG -> JPG
+rdkit>=2024.3        # canonical SMILES, molecular formula, structure drawing
+jsonschema>=4.21     # schemas/validate.py, and the biblio contract
+numpy>=1.26          # make_visual_evidence.py: page crops and image comparison
+
+# Optional. resolve_names.py reads every compound name a second time with a
+# grammar-based parser, as an independent check on the model that read it first.
+# It calls the public OPSIN service over HTTPS rather than the jar, because there
+# is no Java runtime here, and caches every answer in the run's
+# input/opsin-cache.json. With the cache warm the stage needs no network; the
+# first run on a new patent does.
+
+# Optional and currently NOT WORKING. mentions.py is reading B, a second
+# independent extraction of substance mentions. ChemDataExtractor 2.4.0 installs
+# on Python 3.12 but its named-entity extraction is broken there: it returns an
+# empty tag list silently rather than raising, which is worse than failing. 2.1.2
+# will not build. The stage exists, detects this, and reports that it cannot run
+# rather than reporting nothing found.
+# chemdataextractor2==2.1.2
