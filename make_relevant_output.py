@@ -19,10 +19,10 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from pipeline_context import ContextError, resolve_patent_id
+from pipeline_context import ContextError, RUN_ROOT, resolve_patent_id
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE / "output"
+OUT = RUN_ROOT / "output"
 REL = OUT / "relevant_output"
 
 try:
@@ -73,7 +73,7 @@ rx = json.loads((OUT / "reactions.json").read_text())
 mols = json.loads((OUT / "compounds.json").read_text())
 pws = json.loads((OUT / "pathways.json").read_text())
 prov = {p.get("reaction_id"): p for p in json.loads((OUT / "reactions-provenance.json").read_text())}
-vision = [json.loads(p.read_text()) for p in sorted((HERE / "input" / "vision").glob("*.json"))]
+vision = [json.loads(p.read_text()) for p in sorted((RUN_ROOT / "input" / "vision").glob("*.json"))]
 
 flags = Counter(f for r in rx for f in (r.get("validation_flags") or []))
 disc = [(v["page"], d) for v in vision for d in (v.get("discrepancies") or [])]

@@ -23,7 +23,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from pipeline_context import ContextError, resolve_patent_id, strip_patent_args
+from pipeline_context import ContextError, RUN_ROOT, resolve_patent_id, strip_patent_args
 
 HERE = Path(__file__).resolve().parent
 
@@ -48,14 +48,14 @@ def main() -> int:
               file=sys.stderr)
         return 2
 
-    pdf = HERE / "input" / "pdf" / f"{pid}.pdf"
+    pdf = RUN_ROOT / "input" / "pdf" / f"{pid}.pdf"
     if not pdf.exists():
         print(f"FAIL  {pdf.relative_to(HERE)} not found.\n"
               f"      Download it from Google Patents or the issuing office; no login\n"
               f"      and no paid source is needed.", file=sys.stderr)
         return 2
 
-    out = HERE / "input" / "pages"
+    out = RUN_ROOT / "input" / "pages"
     out.mkdir(parents=True, exist_ok=True)
     doc = pymupdf.open(pdf)
     chars = 0

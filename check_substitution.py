@@ -45,8 +45,9 @@ import re
 import sys
 from pathlib import Path
 
+from pipeline_context import RUN_ROOT
 HERE = Path(__file__).resolve().parent
-OUT = HERE / "output"
+OUT = RUN_ROOT / "output"
 REL = OUT / "relevant_output"
 
 DEFAULT_PATENT_ID = "CN104292137A"

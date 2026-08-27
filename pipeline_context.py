@@ -32,8 +32,21 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-INPUT = HERE / "input"
-OUTPUT = HERE / "output"
+
+# WHICH RUN THIS PROCESS READS AND WRITES.
+#
+# The pipeline code, the prompts and the findings in contracts/ are shared by
+# every run. The DATA is not: input/ and output/ belong to one run, and a second
+# run must not be able to overwrite the first by forgetting a flag.
+#
+# So the run is a directory and ANNOTATION_RUN_ROOT selects it, exactly as
+# ANNOTATIONS_ROOT selects it for the verifier. One name on each side, and the
+# default is the run that already exists rather than a fresh empty one, because
+# silently writing an empty run over a good one is the failure worth designing
+# against.
+RUN_ROOT = Path(os.environ.get("ANNOTATION_RUN_ROOT") or (HERE / "run_26_aug")).resolve()
+INPUT = RUN_ROOT / "input"
+OUTPUT = RUN_ROOT / "output"
 
 
 class ContextError(RuntimeError):

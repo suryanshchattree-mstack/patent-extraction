@@ -167,8 +167,9 @@ from resolve_translations import (
 
 RDLogger.DisableLog("rdApp.*")
 
+from pipeline_context import RUN_ROOT
 HERE = Path(__file__).resolve().parent
-OUT = HERE / "output"
+OUT = RUN_ROOT / "output"
 REL = OUT / "relevant_output"
 STAGES = OUT / "stages"
 
@@ -557,7 +558,7 @@ class Source:
     """The numbered source, with an English rendering and a kind for every line."""
 
     def __init__(self, patent_id: str, index: dict):
-        self.path = HERE / "input" / f"{patent_id}-enriched-numbered.md"
+        self.path = RUN_ROOT / "input" / f"{patent_id}-enriched-numbered.md"
         self.lines = read_numbered(patent_id)
         # resolve_translations.py owns the paragraph walk and is still being
         # worked on; it has already grown a third return value once. Unpacked by

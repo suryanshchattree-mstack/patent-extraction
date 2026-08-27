@@ -73,7 +73,7 @@ import re
 import sys
 from pathlib import Path
 
-from pipeline_context import ContextError, resolve_patent_id
+from pipeline_context import ContextError, RUN_ROOT, resolve_patent_id
 from rdkit import Chem, RDLogger
 from rdkit.Chem import Descriptors, rdMolDescriptors
 from rdkit.Chem.Draw import rdMolDraw2D
@@ -81,9 +81,9 @@ from rdkit.Chem.Draw import rdMolDraw2D
 RDLogger.DisableLog("rdApp.*")  # parse failures are reported here, with context
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE / "output"
+OUT = RUN_ROOT / "output"
 REL = OUT / "relevant_output"
-CURATED = HERE / "input" / "structures-curated.json"
+CURATED = RUN_ROOT / "input" / "structures-curated.json"
 
 
 # Rendered at the size the artifacts are read at, monochrome. See render().

@@ -33,10 +33,10 @@ import sys
 import uuid
 from pathlib import Path
 
-from pipeline_context import ContextError, biblio_path, resolve_patent_id
+from pipeline_context import ContextError, RUN_ROOT, biblio_path, resolve_patent_id
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE / "output"
+OUT = RUN_ROOT / "output"
 
 # Set by main() before any id is built. Kept as module state rather than threaded
 # through twenty call sites, because every builder below is a pure function of it.

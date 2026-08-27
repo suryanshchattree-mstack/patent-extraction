@@ -29,11 +29,11 @@ import json
 import sys
 from pathlib import Path
 
-from pipeline_context import ContextError, resolve_patent_id
+from pipeline_context import ContextError, RUN_ROOT, resolve_patent_id
 
 HERE = Path(__file__).resolve().parent
-VIS = HERE / "input" / "vision"
-OUT = HERE / "input"
+VIS = RUN_ROOT / "input" / "vision"
+OUT = RUN_ROOT / "input"
 
 try:
     from rdkit import Chem, RDLogger
@@ -205,7 +205,7 @@ def main() -> int:
 
     (OUT / f"{patent_id}-enriched.md").write_text(text)
     (OUT / f"{patent_id}-enriched-numbered.md").write_text(numbered)
-    (HERE / "output" / "structures.json").write_text(
+    (RUN_ROOT / "output" / "structures.json").write_text(
         json.dumps(structures, indent=2, ensure_ascii=False))
 
     disc = [(stem, d) for stem, p in pages for d in (p.get("discrepancies") or [])]

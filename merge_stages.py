@@ -9,9 +9,10 @@ import json, sys
 from collections import Counter
 from pathlib import Path
 
+from pipeline_context import RUN_ROOT
 HERE = Path(__file__).resolve().parent
-ST = HERE / "output" / "stages"
-OUT = HERE / "output"
+ST = RUN_ROOT / "output" / "stages"
+OUT = RUN_ROOT / "output"
 
 
 def gather(folder, key):

@@ -45,9 +45,10 @@ from pathlib import Path
 
 import pipeline_context as ctx
 
+from pipeline_context import RUN_ROOT
 HERE = Path(__file__).resolve().parent
 TEMPLATES = HERE / "prompts"
-RENDERED = HERE / "output" / "prompts"
+RENDERED = RUN_ROOT / "output" / "prompts"
 
 
 def text_layer(patent_id: str) -> str | None:
@@ -64,8 +65,8 @@ def text_layer(patent_id: str) -> str | None:
     So it is counted rather than asserted. Absent a PDF this returns None and the
     placeholder stays visible, which is the honest answer before the PDF arrives.
     """
-    pdfs = sorted((HERE / "input" / "pdf").glob(f"{patent_id}.pdf")) \
-        or sorted((HERE / "input" / "pdf").glob("*.pdf"))
+    pdfs = sorted((RUN_ROOT / "input" / "pdf").glob(f"{patent_id}.pdf")) \
+        or sorted((RUN_ROOT / "input" / "pdf").glob("*.pdf"))
     if not pdfs:
         return None
     try:
@@ -94,7 +95,7 @@ def fields(patent_id: str) -> dict[str, str | None]:
         b = ctx.load_biblio(patent_id)
     except ctx.ContextError:
         b = {}
-    pages = sorted((HERE / "input" / "pages").glob("*.png"))
+    pages = sorted((RUN_ROOT / "input" / "pages").glob("*.png"))
     return {
         "PATENT_ID": patent_id,
         "TITLE_ZH": b.get("title_zh"),

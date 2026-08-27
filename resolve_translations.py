@@ -96,12 +96,13 @@ from pathlib import Path
 # so the two stages cannot drift apart about what counts as a name.
 from resolve_structures import looks_like_smiles
 
+from pipeline_context import RUN_ROOT
 HERE = Path(__file__).resolve().parent
-OUT = HERE / "output"
+OUT = RUN_ROOT / "output"
 REL = OUT / "relevant_output"
-VISION = HERE / "input" / "vision"
-CURATED = HERE / "input" / "translations-curated.json"
-BIBLIO = lambda pid: HERE / "input" / f"{pid}-biblio.json"
+VISION = RUN_ROOT / "input" / "vision"
+CURATED = RUN_ROOT / "input" / "translations-curated.json"
+BIBLIO = lambda pid: RUN_ROOT / "input" / f"{pid}-biblio.json"
 
 DEFAULT_PATENT_ID = "CN104292137A"
 
@@ -228,7 +229,7 @@ def read_numbered(patent_id: str) -> dict[int, str]:
     The numbered file is what every `source_line` and `source_lines` in the gold
     counts against, so it is the only correct place to look a line number up.
     """
-    path = HERE / "input" / f"{patent_id}-enriched-numbered.md"
+    path = RUN_ROOT / "input" / f"{patent_id}-enriched-numbered.md"
     if not path.exists():
         die(f"{path} not found")
     lines = {}

@@ -68,7 +68,7 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from pipeline_context import ContextError, resolve_patent_id, validate_biblio
+from pipeline_context import ContextError, RUN_ROOT, resolve_patent_id, validate_biblio
 
 HERE = Path(__file__).resolve().parent
 PY = sys.executable or "python3"
@@ -804,7 +804,7 @@ def write_manifest(pid: str, ctx: dict) -> int:
     # nothing writes is a stray, and a stray is the exact failure this pipeline
     # exists to fix. On a healthy run the strays are the hand-written README and
     # the reviewer's own verdict log, and nothing else.
-    rel_root = HERE / "output" / "relevant_output"
+    rel_root = RUN_ROOT / "output" / "relevant_output"
     unclaimed, strays = [], []
     for p in sorted(rel_root.rglob("*")):
         if not p.is_file() or p.name in (".DS_Store", "manifest.json"):
@@ -1094,7 +1094,7 @@ def main() -> int:
         tail = ("\nEach pass writes into output/stages/<pass>/, one folder per pass, "
                 "and nothing\nlater rewrites it, so each stage stays the record of "
                 "what that pass returned.")
-        if (HERE / "output" / "stages" / "README.md").exists():
+        if (RUN_ROOT / "output" / "stages" / "README.md").exists():
             tail += "\nSee output/stages/README.md for the layout."
         print(f"{tail}\nThen: python3 run_pipeline.py --patent-id {pid}")
         return 3
