@@ -370,3 +370,57 @@ decision someone wrote down, rather than a default nobody chose.
 something. This one is different: it is two correct checks either side of a boundary that
 neither of them looks at. When you own both ends of a serialisation, test the seam, not the
 ends.
+
+## A tenth form, twice in one afternoon: the guard's SUBJECT went away
+
+Both of these are mine, both were introduced by a change made to strengthen something
+else, and both left a guard printing PASS about a thing it was no longer looking at.
+
+**One: the watched file stopped existing.** `check-writes.mjs` proves it never writes
+to the real deliverable by fingerprinting the real verdict log before and after:
+
+    const realLog = verdictsIn(REAL_ROOT);
+    const fingerprint = () => { try { ... } catch { return "absent"; } };
+
+Splitting the runs meant `REAL_ROOT` had to widen from `manual_annotations/run_26_aug`
+to `manual_annotations`, so that no run could be mistaken for a sandbox. That widening
+was correct and it moved `realLog` to a path that does not exist and never will:
+
+    manual_annotations/output/relevant_output/verification/verdicts-CN104292137A.jsonl
+                       \___ no run directory, so nothing is ever written here ___/
+
+`fingerprint()` answered `"absent"` before and `"absent"` after. The comparison held.
+The closing line reported a file nobody could have touched as untouched, and the
+guard would have gone on saying so for as long as the pack existed.
+
+**Two: the selector had never heard of the new case.** The same script asserts that
+every structure question shows two pictures rather than two SMILES strings, and it
+picks the claims to check by field name:
+
+    const STRUCTURE_FIELDS = new Set(["drawing.same_molecule", "drawing.smiles"]);
+
+A new check family, `structure.second_reader`, produced exactly the kind of claim this
+guard exists for, and the set had never heard of it. PASS, on nothing. Adding the field
+turned the guard red immediately, on a real defect I had shipped an hour earlier: the
+bromine card showed one drawing and the string `[Br]`, which is unanswerable by the
+reader the card is written for. The guard found that; reading the code did not.
+
+**What separates this form from the nine above.** Those are checks that could not see
+something from the day they were written. This one is a check that COULD see it, and
+then something moved. The nine are design faults. This one is drift, and drift is worse
+because the guard has a track record of passing correctly, which is exactly what makes
+its later PASS believable.
+
+**The fix, both times, is the same shape and it is the positive assertion again:**
+
+    if (realLogs.length === 0) refuse to run
+    if (wanted.length === 0)   say SKIP, out loud, not PASS
+
+A guard whose subject is empty must say so. `PASS` and `there was nothing to check`
+have to be different words on the screen, because the reader of that screen is deciding
+whether to ship.
+
+**And the enumeration, rather than the name.** `realLog` named one run. It now walks
+the pack and fingerprints every verdict log it finds, so the run somebody adds next
+month is protected the day it appears rather than the day somebody remembers this file.
+Naming a thing is a promise to update the name.
