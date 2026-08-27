@@ -49,6 +49,29 @@ def esc(s):
     return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
 
 
+def wrap_lines(s, width_chars):
+    """The lines Canvas.wrap would draw for `s`, without drawing them.
+
+    Shared with Canvas.wrap rather than duplicated, because a caller that needs to
+    SIZE a box around wrapped text has to agree with the code that lays the text
+    out, and two copies of a line-breaking rule drift. Splits on whitespace only, so
+    a single token longer than width_chars stays whole and simply runs wide: an IUPAC
+    name has no spaces to break at, and hyphenating one at an arbitrary character
+    would invent a locant break that reads as part of the name.
+    """
+    words, line, out = s.split(), "", []
+    for w in words:
+        t = (line + " " + w).strip()
+        if len(t) > width_chars and line:
+            out.append(line)
+            line = w
+        else:
+            line = t
+    if line:
+        out.append(line)
+    return out
+
+
 class Canvas:
     def __init__(self, w, h, ns, title, desc):
         self.w, self.h, self.ns = w, h, ns
@@ -98,16 +121,7 @@ class Canvas:
     # ---- helpers ----------------------------------------------------
     def wrap(self, x, y, s, width_chars, size=12, fill=INK, anchor="middle", lh=15,
              weight="normal", mono=False):
-        words, line, lines = s.split(), "", []
-        for w in words:
-            t = (line + " " + w).strip()
-            if len(t) > width_chars and line:
-                lines.append(line)
-                line = w
-            else:
-                line = t
-        if line:
-            lines.append(line)
+        lines = wrap_lines(s, width_chars)
         for i, ln in enumerate(lines):
             self.text(x, y + i * lh, ln, size=size, fill=fill, anchor=anchor,
                       weight=weight, mono=mono)
@@ -384,12 +398,25 @@ def m2():
                f"L {xb + bw / 2} {ya + bh + 28} L {xb + bw / 2} {yb - 6}", sw=1.8)
 
     xE, yE = positions[-1]
-    c.rect(xE - 6, yE + bh + 26, bw + 12, 46, fill="#efe6f1", stroke=PURPLE, sw=2)
-    c.wrap(xE + bw / 2, yE + bh + 48, product, 26, size=14, weight="700", lh=15)
-    c.text(xE + bw / 2, yE + bh + 64, "the target", size=10.5, fill=MUTE)
+    # THE TARGET BOX IS SIZED FROM THE NAME, NOT FIXED AT ONE LINE.
+    #
+    # It used to be a 46px box with the name wrapped at lh=15 and the caption pinned
+    # 16px under the name's first line. That fits exactly one line, which is what the
+    # reference patent needs because its target is called tembotrione. Every other
+    # patent on the list names its target as an IUPAC string of 57 characters or more,
+    # and two things then went wrong at once: the caption sat under the second line,
+    # and the second line sat on the first, because Canvas.text reserves size*1.08 of
+    # height (15.12px at size 14) while lh was 15. Any two-line name collided with
+    # itself by 0.12px. Both are now functions of the line count.
+    pl = wrap_lines(product, 26)
+    plh = 17                      # must exceed size*1.08, or adjacent lines overlap
+    box_h = 30 + len(pl) * plh
+    c.rect(xE - 6, yE + bh + 26, bw + 12, box_h, fill="#efe6f1", stroke=PURPLE, sw=2)
+    c.wrap(xE + bw / 2, yE + bh + 44, product, 26, size=14, weight="700", lh=plh)
+    c.text(xE + bw / 2, yE + bh + 44 + len(pl) * plh + 2, "the target", size=10.5, fill=MUTE)
     c.line(xE + bw / 2, yE + bh + 4, xE + bw / 2, yE + bh + 22, sw=1.8)
 
-    ytext = yE + bh + 26 + 46 + 12
+    ytext = yE + bh + 26 + box_h + 12
     known = [st[4] for st in steps if st[4].endswith("%")]
     c.text(60, ytext, f"cumulative yield across all {word(n)} steps, as printed:",
            size=12, anchor="start", fill=MUTE)
