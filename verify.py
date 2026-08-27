@@ -3040,7 +3040,14 @@ class Run(Engine):
                     extra={"_finding": True,
                            "second_reader": {"here": here, "opsin": theirs,
                                              "query": parsed,
-                                             "origin": entry.get("origin")}})
+                                             "origin": entry.get("origin"),
+                                             # Both readings drawn. The card asks
+                                             # which molecule the patent means,
+                                             # and BrBr against [Br] cannot be
+                                             # answered as text by anybody who is
+                                             # not already a chemist.
+                                             "here_svg": entry.get("svg"),
+                                             "opsin_svg": chk.get("opsin_svg")}})
                 continue
 
             if outcome == "ambiguous":

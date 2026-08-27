@@ -473,13 +473,23 @@ def name_check(ident: str, entry_canonical: str | None, origin: str,
                            "there is no assigned structure to compare it with."}
 
     agrees = r.get("canonical") == entry_canonical
-    return {**common,
-            "outcome": "agree" if agrees else "disagree",
-            "opsin_canonical": r.get("canonical"),
-            "note_en": ("An independent parse of the name lands on the same molecule."
-                        if agrees else
-                        "An independent parse of the name lands on a DIFFERENT "
-                        "molecule. One of the two readings is wrong.")}
+    out = {**common,
+           "outcome": "agree" if agrees else "disagree",
+           "opsin_canonical": r.get("canonical"),
+           "note_en": ("An independent parse of the name lands on the same molecule."
+                       if agrees else
+                       "An independent parse of the name lands on a DIFFERENT "
+                       "molecule. One of the two readings is wrong.")}
+    if not agrees:
+        # THE OTHER READING NEEDS A PICTURE TOO, and this is where it gets one.
+        #
+        # The claim this produces asks a reviewer which of two molecules the
+        # patent means. Shipped with only the pipeline's drawing it showed one
+        # picture and one SMILES string, which is precisely the failure the
+        # whole card exists to avoid: BrBr against [Br] is unreadable as text
+        # and obvious as a drawing. The write-path guard caught it.
+        out["opsin_svg"] = f"{SVG_SUBDIR}/{slugify(ident)}-as-named.svg"
+    return out
 
 
 # ---------------------------------------------------------------- resolution
@@ -716,12 +726,25 @@ def render(mol: Chem.Mol, path: Path) -> None:
     path.write_text(drawer.GetDrawingText(), encoding="utf-8")
 
 
-def write_svgs(resolved, by_canonical, slugs, svg_dir: Path):
+def write_svgs(resolved, by_canonical, slugs, svg_dir: Path, entries=None):
     svg_dir.mkdir(parents=True, exist_ok=True)
     written = []
     for canonical, idents in by_canonical.items():
         slug = slugs[canonical]
         render(resolved[idents[0]]["mol"], svg_dir / f"{slug}.svg")
+        written.append(slug)
+    # The disagreeing reading, drawn under its own name so the two sit side by
+    # side. Not in by_canonical, because it is nothing this pipeline assigned to
+    # any identifier: it is the OTHER answer, and the point is to see both.
+    for e in entries or []:
+        path = (e.get("name_check") or {}).get("opsin_svg")
+        if not path:
+            continue
+        mol = Chem.MolFromSmiles(e["name_check"]["opsin_canonical"] or "")
+        if mol is None:
+            continue
+        slug = Path(path).stem
+        render(mol, svg_dir / f"{slug}.svg")
         written.append(slug)
     # Re-running after an identifier is renamed or dropped must converge, so a
     # drawing no molecule claims any more is removed rather than left to rot.
@@ -812,7 +835,7 @@ def main() -> int:
     else:
         (OUT / "structures-resolved.json").write_text(
             json.dumps(entries, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        written, stale = write_svgs(resolved, by_canonical, slugs, svg_dir)
+        written, stale = write_svgs(resolved, by_canonical, slugs, svg_dir, entries)
 
     carriers, missing, exempt = gate(entries, products, weighed, no_structure_needed)
 
