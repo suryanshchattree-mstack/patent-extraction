@@ -252,3 +252,55 @@ message, correct remedy, then exit 0 after restoring.
 **A dependency declaration is a promise a human makes and can forget. A hash comparison
 is a fact.** Where a check can compare the outcome instead of trusting the bookkeeping,
 it should.
+
+---
+
+## A sixth form: a check scoped by SHAPE rather than by content
+
+The English gate on `quote-translations.json` walked two named sections and tested
+`isinstance(val, str)`. Every value of any other shape was skipped, in silence, and
+the gate reported clean.
+
+    values inspected   41 of 43     the two top-level _about_en / _origin_en strings
+                                    sat outside both named sections
+    shapes inspected   str only     a value written {"en": ..., "note": ...}, which is
+                                    the form the rest of this pipeline uses, was never
+                                    opened
+
+Nothing in the file is dict-shaped today, so the gate was green and had been green
+since it was written. It could not tell "these values are English" from "I did not
+look at these values", and the first entry written in the pipeline's own house style
+would have carried Chinese to the screen through a passing gate.
+
+Fixed by walking every value at every depth, keys exempt because the keys are the raw
+Chinese the lookup is done by, and by printing the count so a pass that inspected
+nothing fails instead. Proved in both directions rather than by the absence of a
+finding: Chinese planted in a dict-shaped `en` field, old gate passes and new gate
+fails naming `entries[p03#4.what][en]`; an empty document, old gate passes and new
+gate fails; the shipping file, both pass.
+
+**A gate scoped to a shape is a gate scoped to today's data.** The population it does
+not cover is invisible from its own output, which is what makes this the same defect
+as the prose-ratio gate scoped to the 37 prose entries: both were right about what
+they looked at and silent about what they did not.
+
+## The mirror of the fifth form: a declaration nothing reads
+
+The fifth form above was a stage that READS a file it never declared, so `is_current()`
+called it current forever. The visual stage had the inverse: `visual_text.py` declared
+as an input and imported by nothing, and `glossary.json` declared as an output and
+written by nothing.
+
+Both belonged to `make_visual.py`, which imported the scrubber and emitted the
+glossary and was deleted in 10fd893 when `make_visual_evidence.py` took the stage
+over. `make_visual_evidence.py` has never imported `visual_text` in any commit.
+
+    undeclared input      stage reports `current` when it is stale
+    declared non-input    stage reports `stale` when it is current
+
+The second is not the harmless direction. It rebuilt the most expensive stage in the
+pipeline on any edit to a module the stage does not read, and a `stale` that fires for
+no reason trains the reader to ignore the manifest exactly as reliably as a `current`
+that lies. Removed rather than wired in: wiring the scrubber into a stage that already
+resolves its Chinese through the hand-authored `quote-translations.json` would be a
+second source of truth for the same screen text, which is a feature and not a repair.
