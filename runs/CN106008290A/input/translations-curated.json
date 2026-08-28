@@ -62,5 +62,35 @@
     "confidence in each is stated in its note."
   ],
   "patent_id": "CN106008290A",
-  "entries": {}
+  "entries": {
+    "甲、醇": {
+      "en": "methanol (printed with an enumeration comma set inside the name)",
+      "note": "The identifier of a gold compound record. As printed on line 159 the string names no compound: an enumeration comma sits inside the two characters of the word for methanol, giving 甲、醇. Read as methanol, on the evidence that the parallel step in examples 1, 2, 4 and 5 all print 加甲醇打浆 in the same slot. The English keeps the artefact visible in words rather than silently repairing it, because the compound record deliberately carries the identifier unresolved."
+    },
+    "加甲醇打浆": {
+      "en": "methanol is added and the mixture is slurried",
+      "note": "quote_zh on a provenance row. 打浆 here is trituration of the solid product in methanol, not beating or pulping."
+    },
+    "收率较低": {
+      "en": "the yield is relatively low",
+      "note": "A qualitative statement in the background about the prior-art route. No number is printed with it."
+    },
+    "收率低": {
+      "en": "the yield is low",
+      "note": "A qualitative statement about the prior-art route. No number is printed with it, and it is a different wording from 收率较低 in the same passage, so the two are kept apart."
+    },
+    "步骤": {
+      "en": "step",
+      "note": "The document's own word for a numbered stage of the procedure, as in 步骤a and 步骤b."
+    },
+    "上述反应所得的": {
+      "en": "obtained from the above reaction",
+      "note": "The back-reference each example's step b uses to charge the material step a isolated. It is what makes the within-section precursor linkage explicit rather than inferred from name similarity."
+    },
+    "35％的盐酸": {
+      "en": "35% hydrochloric acid",
+      "override": true,
+      "note": "Preferred over the gold_alias tier, which answers the wrong question here. The alias data resolves this string to 'hydrochloric acid', which is the right substance and the wrong strength, and the strength is a fact about what was charged: every example acidifies with the 35 percent acid, not with acid of unstated concentration. The reactions artifact already carries 35 as conditions.concentration on each step a, so the fact was never missing from the annotation, only from this index."
+    }
+  }
 }

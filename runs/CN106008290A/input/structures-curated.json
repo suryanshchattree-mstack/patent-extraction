@@ -43,5 +43,16 @@
   ],
   "patent_id": "CN106008290A",
   "no_structure_needed": [],
-  "entries": {}
+  "entries": {
+    "化合物II": {
+      "smiles": "OC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+      "slug": "compound-ii-benzoic-acid",
+      "note": "Reaction product. 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid. The five example sections use the bare local label and never define it; the definition is at line 95 of the summary, 2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸, the free acid. Checked atom by atom against that name: ring C1 carboxyl, C2 chloro, C3 (2,2,2-trifluoroethoxy)methyl, C4 methylsulfonyl. Formula from the SMILES is C11H10ClF3O5S at 346.71, and the formula the name implies is the same. Corroborated by the patent's own arithmetic rather than by the name alone: step a prints 314.8 g at 91 percent, 321.7 at 93, 311.4 at 90, 321.7 at 93 and 318.3 at 92 on a 1.0 mol charge, which imply 346 g/mol in all five examples. The methyl ester would be 360.73 and does not fit any of them. Both A5 audits reached the free acid independently."
+    },
+    "HBTU": {
+      "smiles": "CN(C)C(=[N+](C)C)On1nnc2ccccc21.F[P-](F)(F)(F)(F)F",
+      "slug": "hbtu",
+      "note": "Carries a mass and a mole count. O-(benzotriazol-1-yl)-N,N,N',N'-tetramethyluronium hexafluorophosphate, the condensing agent of example 2. Checked atom by atom: tetramethyluronium cation O-linked at benzotriazole N1, hexafluorophosphate counter-ion. Formula from the SMILES is C11H16F6N5OP at 379.24, and the formula the name implies is the same. The full salt rather than the bare cation, because example 2 prints 758 g for 2 mol at line 151, which is 379.0 g/mol; the cation alone would be 234.28. The patent's printed Chinese name is incomplete against the standard one, omitting the benzotriazol-1-yl attachment locant and the N,N,N',N' locants and reading 六氟磷酸酯 as an ester where this is a salt; A1 recorded that and it is not corrected here."
+    }
+  }
 }
