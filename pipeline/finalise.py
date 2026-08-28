@@ -332,14 +332,30 @@ NOT_THIS_PATENTS_CHEMISTRY = {"background"}
 #
 # The biblio keeps its own words, since that is the file a person fills in, and
 # the mapping happens here where the record is built.
+#
+# WIDENED for US20040236146A1. biblio.schema.json's enum was moved to production's
+# six words when CN112645853A was annotated, so the biblio now speaks the record's
+# vocabulary directly. This map still held only the OLD biblio words, so three of
+# the six legal values - multinational_corp, sme, consortium - had no key, and the
+# lookup's default sent them to "sme". A biblio that correctly said
+# multinational_corp shipped its assignee as a small enterprise, and the tag
+# assignee_type:sme with it.
+#
+# It held for two runs by coincidence: the reference's assignee is a university, a
+# word both vocabularies share, and CN112645853A's is an sme, which the default
+# happened to be. The first multinational to arrive was the first to be wrong.
 ASSIGNEE_TYPE = {
+    # Production's own six, identity, so a value the biblio states survives to the
+    # record instead of being reinterpreted on the way.
+    "multinational_corp": "multinational_corp",
+    "sme": "sme",
     "university": "university",
-    "individual": "individual",
     "government": "government",
-    # A judgement the biblio does not record. It captures no company size, and the
-    # record's vocabulary forces one, so this maps to the smaller claim: sme
-    # asserts less than multinational_corp does. Where an assignee really is a
-    # multinational, say so in the biblio and this map is the place to widen.
+    "individual": "individual",
+    "consortium": "consortium",
+    # The old biblio words, kept so a hand-authored file written before the schema
+    # moved still maps rather than silently defaulting. "company" records no size
+    # and the record's vocabulary forces one, so it takes the smaller claim.
     "company": "sme",
     # An institute is academic in the way a university is, and neither hospital nor
     # foundation has a counterpart in the record's six. They go to the nearest
