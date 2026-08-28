@@ -1,0 +1,32 @@
+[
+  {
+    "reaction_id": "Example 18_Step 1",
+    "source_lines": [
+      564,
+      564
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "arithmetic_check": "Nothing to check. The sentence prints one number, the stated content of the sodium benzoate salt, and no mass, no volume, no mole figure and no yield, so there is no mass and mole pair and no yield to close. The content is a content, not a yield. The 0.1 mol figure that appears later in the section belongs to the charge into step (2). No arithmetic flag is raised, and the absence of a flag here means the absence of printed numbers, not a check that passed.",
+    "drawing_evidence": "None. The single IMAGE_EXTRACT span in this section, on line 569, sits under the step (2) heading on line 566 and draws the step (2) etherification, not this step. No scheme is drawn for step (1) in Examples 13 to 20, which is why those sections carry one drawing where Examples 1 to 12 carry two. The scheme's drawn reactant, CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, is this step's product, so it corroborates the product identity and its sodium counter ion but says nothing about how the step was run."
+  },
+  {
+    "reaction_id": "Example 18_Step 2a",
+    "source_lines": [
+      571,
+      571
+    ],
+    "quote_zh": "向反应釜中加入150mL  2-四氢呋喃甲醇，开动搅拌，室温下投入20g氢化钾(30％，0.15mol)，搅拌至溶解完全，经高真空油泵负压脱溶后得到2-四氢呋喃甲醇醇钾固体，密封备用。",
+    "arithmetic_check": "Potassium hydride: 20 g printed at 30 percent strength with 0.15 mol. 20 x 0.30 = 6.0 g of potassium hydride; at molecular weight 40.11 that is 0.1496 mol, which rounds to the printed 0.15 mol, so the pair closes on the stated strength. Taken gross, 20 / 40.11 = 0.499 mol, which is not the printed figure, so the printed mole figure is the contained hydride and the implied molecular weight is consistent with potassium hydride. No molar_mass_inconsistent. Tetrahydrofurfuryl alcohol: 150 mL printed, with no mass and no mole figure, so there is no pair to check; at the usual density it is roughly 1.5 mol of alcohol against 0.15 mol of hydride, which is the large excess the procedure implies by stripping the excess off afterwards. No mass, content or yield is printed for the isolated alkoxide, so there is no product closure to test, and mass_balance_implausible could not be evaluated on this step rather than having been evaluated and passed. No arithmetic flag is raised. Separately from the arithmetic, which closes, the paragraph says the hydride dissolved completely, which a solid hydride does not do; that is recorded in notes and is not an arithmetic failure.",
+    "drawing_evidence": "No arrow is drawn for this transformation. In the step (2) scheme on line 569 the alkoxide appears only as a condition on the arrow, described there as drawn as a structure rather than written as a name or formula, with only the letters OK lettered in. That agrees with the prose, which makes the potassium alkoxide of tetrahydrofurfuryl alcohol, so the counter ion in the drawing and the counter ion in the prose match. The scheme gives no charge, no temperature and no time for this preparation, which is why the record is built from the prose alone."
+  },
+  {
+    "reaction_id": "Example 18_Step 2",
+    "source_lines": [
+      566,
+      573
+    ],
+    "quote_zh": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应3h",
+    "arithmetic_check": "Stated input: sodium benzoate salt, 0.1 mol at 98.2 percent content, so 0.0982 mol of contained salt; no mass is printed for it, so there is no mass and mole pair to test and molar_mass_inconsistent cannot arise for the charge. No amount at all is printed for the potassium alkoxide, so no equivalents check is possible on the nucleophile. Stated output: 33.1 g of product at 97.0 percent by quantitative liquid chromatography, which is 32.11 g of 2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid, C14H17ClO6S, molecular weight 348.80, hence 0.0920 mol. Theoretical maximum is 34.88 g of the pure acid from the nominal 0.1 mol, or 34.25 g from the content corrected 0.0982 mol, and the 32.11 g of contained product is below both, so the mass does not exceed what the input moles could give and mass_balance_implausible does not apply. Closure against the stated yield: 0.0920 / 0.1000 = 92.0 percent against the printed 92.2 percent, a gap of about 0.15 percentage point, which the rounding of the printed 33.1 g alone covers, half a gram in the last place being worth 0.14 percentage point. THE ARITHMETIC CLOSES within the rounding of the printed figures. Two observations, recorded and not flagged: the printed yield closes against the nominal 0.1 mol and not against the content corrected 0.0982 mol, which would give 93.7 percent, so the patent's own yield does not carry the 98.2 percent content into its basis; and the basis it names is the methyl ester, whose charge is never printed in this section, so the two-step wording can only be tested by assuming the step (1) ester cleavage was quantitative on a 0.1 mol basis. Step (1) prints no output quantity, so scale_discontinuity could not be checked in either direction.",
+    "drawing_evidence": "The IMAGE_EXTRACT reaction scheme on line 569, one arrow, step_id 1, is this step. Its drawn reactant is CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, the sodium salt, matching the prose, which also says sodium; its arrow conditions are the potassium alkoxide, drawn as a structure with only the letters OK lettered in, and HCl, both of which the prose also has and with the same potassium counter ion on the alkoxide; its drawn product is CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1, C14H17ClO6S, which is the free acid the prose names as the target compound. Drawing and prose therefore agree on both counter ions and on the acidification, so no drawing_text_conflict is raised and this example is not one of those where the patent's schemes and prose disagree about the alkali metal. The scheme draws no solvent, no charge, no temperature and no time, and the omission of the solvent is how this patent's schemes are drawn throughout, so it is recorded here rather than flagged as reagent_written_not_drawn. It also draws the acidification on the same arrow as the substitution, whereas the prose separates them by a solvent strip, which is why the record keeps the acid in the workup and is_one_pot is false. No stereo bond is drawn on the product, although the prose prints the RS descriptor."
+  }
+]

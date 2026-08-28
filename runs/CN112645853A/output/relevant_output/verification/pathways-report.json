@@ -1,0 +1,259 @@
+{
+  "artifact": "pathways",
+  "records_audited": 32,
+  "findings": [
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "section:Example 1 (2-step pathway, terminal step Example 1_Step 2b)",
+      "field": "overall_yield_pct",
+      "problem": "The 93.8 percent is printed as a TWO-STEP yield calculated on the methyl ester, that is a whole-chain quantity, but it is carried only as the terminal step's yield while the pathway's own overall_yield_pct is null; the same misplacement recurs identically in all 24 two-step example pathways, and the patent's only stated overall yields are therefore all attached to single steps.",
+      "source_line": 294,
+      "quote": "之后经过滤、水淋洗、烘干得到产物32.9g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为98.7％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率93.8％。",
+      "artifact_says": "steps[1].yield_pct = 93.8, steps[1].product_yield_pct = 93.8, overall_yield_pct = null",
+      "should_be": "Set overall_yield_pct = 93.8 on this pathway, and the corresponding printed two-step yield on each of the other 23 example pathways, since the patent states the number for the chain and not for the last step. If the construction rule forces overall_yield_pct to null whenever a step yield is missing, the record must carry a flag saying the terminal step's yield is in fact the chain yield.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "patent (scope=patent, section_label=null)",
+      "field": "overall_yield_pct / overall_purity_pct",
+      "problem": "The patent-scope pathway leaves both overall fields null although the description states, for the method as a whole, a maximum two-step yield of 93.8 percent and a maximum HPLC content of 98.7 percent.",
+      "source_line": 265,
+      "quote": "此方法的两步反应最高收率可达93.8％，HPLC检测含量最高达98.7％",
+      "artifact_says": "overall_yield_pct = null, overall_purity_pct = null",
+      "should_be": "Populate the patent-scope pathway with overall_yield_pct = 93.8 and overall_purity_pct = 98.7 from paragraph [0061], or record in a flag why a patent-level number printed in the description is not carried at patent scope.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "patent (scope=patent, section_label=null)",
+      "field": "product.identifier / steps",
+      "problem": "The single patent-scope pathway is a byte copy of the Claims section pathway: identical steps Claims_Step 1 and Claims_Step 2, identical ksm, intermediates, product, tags and flags, with only scope and section_label differing. The patent's route is therefore anchored to the Markush generic acid and no patent-scope record reaches either of the two concrete target compounds the patent says it prepares.",
+      "source_line": 121,
+      "quote": "具体涉及2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸和2-氯-3-[(RS)-四氢呋喃-2-基甲氧基甲基]-4-甲磺酰基苯甲酸的制备方法。",
+      "artifact_says": "product.identifier = 2-chloro-3-(alkoxymethyl)-4-(methanesulfonyl)benzoic acid; steps = [Claims_Step 1, Claims_Step 2]",
+      "should_be": "Anchor the patent-scope pathway to a concrete terminal compound: one patent-scope pathway per named target, the trifluoroethoxy acid and the tetrahydrofurfuryloxy acid, built from the worked-example chain that reaches it. Failing that, state the rule that makes a duplicate of the Claims pathway the patent-scope record.",
+      "confidence": "medium"
+    },
+    {
+      "check": "linkage",
+      "severity": "major",
+      "record": "section:Example 1 (2-step pathway, terminal step Example 1_Step 2b)",
+      "field": "steps / intermediates / tags",
+      "problem": "The terminal step consumes sodium 2,2,2-trifluoroethoxide, which is verbatim the product of Example 1_Step 2a in the same section, yet that step is excluded from the chain, so a genuine precursor link exists nowhere in the pathway graph and the route is reported as 2-step and linear. The same omission recurs in Examples 2, 5, 8, 17, 18, 19 and 20.",
+      "source_line": 292,
+      "quote": "向反应釜中加入50mL三氟乙醇，开动搅拌，室温下投入5.2g氢化钠(60％，0.13mol)，搅拌至溶解完全，经脱溶后得到三氟乙醇醇钠固体，密封备用。",
+      "artifact_says": "steps = [Example 1_Step 1, Example 1_Step 2b]; intermediates = [sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate]; tags chain_length:2 and convergence:linear; flag reagent_preparation_step_not_in_chain",
+      "should_be": "Include Example 1_Step 2a in the chain as a second branch feeding the terminal step, giving chain_length:3 and convergence:convergent with sodium 2,2,2-trifluoroethoxide among the intermediates. If reagent preparations are excluded by rule, the link must still be recorded on the terminal step rather than left to a free-text flag.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "section:Example 1 (1-step pathway, step Example 1_Step 2a)",
+      "field": "product.identifier",
+      "problem": "This pathway is seeded on a step whose product is consumed by another step of the same section, so it asserts a route whose terminal compound is not a route target, and the record itself says so through reagent_preparation_not_route_to_target. Eight such records exist (Examples 1, 2, 5, 8, 17, 18, 19, 20), each a fragment of the main chain of its own section.",
+      "source_line": 292,
+      "quote": "经脱溶后得到三氟乙醇醇钠固体，密封备用。",
+      "artifact_says": "product.identifier = sodium 2,2,2-trifluoroethoxide; scope = section; flag reagent_preparation_not_route_to_target",
+      "should_be": "Do not emit a pathway whose terminal product is consumed by another step of the same section; fold the step into that section's chain. If the pass rule genuinely emits reagent preparations as pathways, the record needs a machine-visible field saying it is not a route, because a flag string is invisible to a consumer filtering on scope.",
+      "confidence": "medium"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "section:Example 3 (2-step pathway, terminal step Example 3_Step 2)",
+      "field": "honest_uncertainty_flags",
+      "problem": "The printed mass, assay and yield do not reconcile: 30.7 g at 95.8 percent is 29.41 g of the acid, which against 346.70 g/mol for C11H10ClF3O5S on the printed 0.1 mol of methyl ester is 84.8 percent, not the printed 84.4 percent, a gap of +0.4 points. Example 2 (+0.5) and Example 6 (+0.4) carry inconsistent_step_arithmetic for the same size of gap, and this pathway carries no arithmetic flag at all.",
+      "source_line": 331,
+      "quote": "之后经过滤、水淋洗、烘干得到产物30.7g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为95.8％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率84.4％。",
+      "artifact_says": "honest_uncertainty_flags carries no arithmetic flag (yield_missing_step, truncated_chain and drawing or cross-reference flags only)",
+      "should_be": "Either raise inconsistent_step_arithmetic on this pathway as well, or drop it from Examples 2 and 6 and record the systematic bias once at artifact level. The flag must not fire on two of the six examples that fail by the same margin.",
+      "confidence": "high"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "section:Example 4 (2-step pathway, terminal step Example 4_Step 2)",
+      "field": "honest_uncertainty_flags",
+      "problem": "The printed mass, assay and yield do not reconcile: 32.5 g at 98.0 percent is 31.85 g of the acid, which against 346.70 g/mol for C11H10ClF3O5S on the printed 0.1 mol of methyl ester is 91.9 percent, not the printed 91.4 percent, a gap of +0.5 points. Example 2 (+0.5) and Example 6 (+0.4) carry inconsistent_step_arithmetic for the same size of gap, and this pathway carries no arithmetic flag at all.",
+      "source_line": 349,
+      "quote": "之后经过滤、水淋洗、烘干得到产物32.5g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为98.0％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率91.4％。",
+      "artifact_says": "honest_uncertainty_flags carries no arithmetic flag (yield_missing_step, truncated_chain and drawing or cross-reference flags only)",
+      "should_be": "Either raise inconsistent_step_arithmetic on this pathway as well, or drop it from Examples 2 and 6 and record the systematic bias once at artifact level. The flag must not fire on two of the six examples that fail by the same margin.",
+      "confidence": "high"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "section:Example 8 (2-step pathway, terminal step Example 8_Step 2)",
+      "field": "honest_uncertainty_flags",
+      "problem": "The printed mass, assay and yield do not reconcile: 32.6 g at 98.2 percent is 32.01 g of the acid, which against 346.70 g/mol for C11H10ClF3O5S on the printed 0.1 mol of methyl ester is 92.3 percent, not the printed 91.9 percent, a gap of +0.4 points. Example 2 (+0.5) and Example 6 (+0.4) carry inconsistent_step_arithmetic for the same size of gap, and this pathway carries no arithmetic flag at all.",
+      "source_line": 425,
+      "quote": "之后经过滤、水淋洗、烘干得到产物32.6g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为98.2％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率91.9％。",
+      "artifact_says": "honest_uncertainty_flags carries no arithmetic flag (yield_missing_step, truncated_chain and drawing or cross-reference flags only)",
+      "should_be": "Either raise inconsistent_step_arithmetic on this pathway as well, or drop it from Examples 2 and 6 and record the systematic bias once at artifact level. The flag must not fire on two of the six examples that fail by the same margin.",
+      "confidence": "high"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "section:Example 9 (2-step pathway, terminal step Example 9_Step 2)",
+      "field": "honest_uncertainty_flags",
+      "problem": "The printed mass, assay and yield do not reconcile: 32.4 g at 96.5 percent is 31.27 g of the acid, which against 346.70 g/mol for C11H10ClF3O5S on the printed 0.1 mol of methyl ester is 90.2 percent, not the printed 89.7 percent, a gap of +0.5 points. Example 2 (+0.5) and Example 6 (+0.4) carry inconsistent_step_arithmetic for the same size of gap, and this pathway carries no arithmetic flag at all.",
+      "source_line": 439,
+      "quote": "之后经过滤、水淋洗、烘干得到产物32.4g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为96.5％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率89.7％。",
+      "artifact_says": "honest_uncertainty_flags carries no arithmetic flag (yield_missing_step, truncated_chain and drawing or cross-reference flags only)",
+      "should_be": "Either raise inconsistent_step_arithmetic on this pathway as well, or drop it from Examples 2 and 6 and record the systematic bias once at artifact level. The flag must not fire on two of the six examples that fail by the same margin.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "section:Summary of the Invention (terminal step Summary of the Invention_Step 2)",
+      "field": "steps[1].compounds",
+      "problem": "The section states the second variant of step (2), reaction of the salt with an alkali metal alkoxide obtained from the alcohol and sodium or potassium metal, but the step's compound list carries only the alcohol plus base variant. The parallel Claims_Step 2 record does carry sodium metal and potassium metal as alkoxide_precursor, so two records of the same disclosure disagree.",
+      "source_line": 226,
+      "quote": "优选地，所述碱金属为金属钠或金属钾。",
+      "artifact_says": "steps[1].compounds lists the two alcohols, six bases and four solvents, with no alkali metal and no alkoxide",
+      "should_be": "Add sodium metal and potassium metal (role alkoxide_precursor, as in Claims_Step 2) to the Summary terminal step, so the alkoxide branch of the invention's step (2) is present at both scopes.",
+      "confidence": "medium"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": "section:Background (steps Background_Step 1 and Background_Step 2)",
+      "field": null,
+      "problem": "The vision read of the prior-art scheme records products as empty for both arrows, although page p05 draws all three structures: the bromomethyl methyl ester, the ether methyl ester with CH2-O-R at position 3, and the free acid with CO2H at position 1. No pathway value is wrong, because paragraph [0007] states the same connectivity in prose, but the prior-art chain rests on the prose alone and the drawing corroborates nothing.",
+      "source_line": 143,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl\", \"molecular_formula\": \"C10H10BrClO4S\", \"inchi_key\": \"YQYVOGFWLVVXMM-UHFFFAOYSA-N\"}], \"conditions\": [{\"text\": \"ROH\"}, {\"text\": \"碱 (base)\"}], \"products\": []}, {\"step_id\": 2, \"reactants\": [], \"conditions\": [{\"text\": \"1) 碱 (1) base)\"}, {\"text\": \"2) 酸 (2) acid)\"}], \"products\": []}]}]",
+      "artifact_says": "Background_Step 1 product and Background_Step 2 reactant and product are taken from prose only",
+      "should_be": "Re-read the [0008] scheme so the drawn intermediate and drawn product are captured, then confirm that the chain's identifiers match the drawing as well as the prose.",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": "section:Summary of the Invention, section:Claims and patent (terminal step Summary of the Invention_Step 2 / Claims_Step 2)",
+      "field": null,
+      "problem": "The vision read of the invention's step (2) scheme records both reactants and products as empty, although page p06 draws the MO2C bromomethyl salt on the left and the HO2C ether acid on the right. The terminal step of the Summary, Claims and patent pathways therefore rests on prose with no corroboration from the scheme it is said to follow; the [0017] scheme at line 164 has the same empty-product read while p05 draws the MO2C salt.",
+      "source_line": 176,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [], \"conditions\": [{\"text\": \"ROH、碱\"}, {\"text\": \"或ROM\"}], \"products\": []}]}]",
+      "artifact_says": "reactants [] and products [] for the [0021] scheme",
+      "should_be": "Re-read the [0021] and [0017] schemes so the drawn salt and drawn acid are captured, then check the chain against them.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "section:Claims, section:Summary of the Invention and patent (terminal step Claims_Step 2 / Summary of the Invention_Step 2)",
+      "field": "steps[1].components",
+      "problem": "The text gives two mutually exclusive variants, the salt with an alcohol in the presence of a base or the salt with an alkali metal alkoxide, and two mutually exclusive alcohols leading to two different target acids, but the record merges them into one step whose components list nine co-reactants that never coexist, which is why the product can only be a generic identifier.",
+      "source_line": 168,
+      "quote": "(2)2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐在碱性物质存在下与醇反应或者将2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐反应，得到所述2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸。",
+      "artifact_says": "components = [salt, 2,2,2-trifluoroethanol, tetrahydrofurfuryl alcohol, sodium hydroxide, potassium hydroxide, sodium tert-butoxide, potassium tert-butoxide, sodium hydride, potassium hydride]",
+      "should_be": "Mark the alternatives as alternatives, either by splitting the generic step into the two disclosed variants or by a field saying the reactant list is a disjunction. generic_compound_identifiers_in_chain records the consequence but not the fact that the list is exclusive.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "section:Example 3 (step Example 3_Step 1)",
+      "field": "steps[0].components",
+      "problem": "The base charged in the ester-cleavage step is absent from components for Examples 3, 5, 9 and 10 but present for Examples 1, 2, 4, 6, 7 and 8, although the transformation is the same and the base sits in the compounds array with the same role in both groups, so chemically identical steps project differently into the pathway.",
+      "source_line": 325,
+      "quote": "室温下将14g氢氧化钠(30％，0.105mol)滴入其中，待氢氧化钠分散均匀后，控制釜温在30℃，将34.8g  2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应，反应过程微微放热，控制釜温为30℃，反应12h。反应结束，液相色谱中控2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐归一含量为92.5％，负压脱尽溶剂直接用于后续醚化反应。",
+      "artifact_says": "components = [methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate, sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate]",
+      "should_be": "Apply one rule for whether a base belongs in reactant_names, and therefore in components, and apply it to all twenty Step 1 records.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "section:Claims, section:Summary of the Invention and patent (all four generic steps)",
+      "field": "steps[*].conditions.time_h",
+      "problem": "The reaction times stated as ranges for both steps of the claimed and summarised process are carried nowhere: conditions.time_h is null and the conditions block has no min or max for time, so 5 to 12 h for step (1) and 3 to 6 h for step (2) are lost, while the temperature ranges of the same steps are preserved as min_c and max_c.",
+      "source_line": 112,
+      "quote": "反应时间3～6h，反应温度为-5～15℃，经脱溶、水稀释、酸化、过滤和烘干后得到所述2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸。",
+      "artifact_says": "conditions.time_h = null and time_h = null for Claims_Step 1, Claims_Step 2, Summary of the Invention_Step 1 and Summary of the Invention_Step 2",
+      "should_be": "Do not flatten the range to a point. Add min and max for time as the temperature block has, or raise a flag on these steps saying a stated range of time could not be represented; silence is indistinguishable from the patent not stating a time.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "section:Background (steps Background_Step 1 and Background_Step 2)",
+      "field": "scope / tags",
+      "problem": "Nothing outside honest_uncertainty_flags marks this pathway as prior art: scope is section exactly as for the invention's own routes, no tag category carries the provenance, and the product identifier is byte-identical to the product of the Claims, Summary and patent pathways, so a consumer joining pathways on product identity will merge the cited prior-art route with the invention's route.",
+      "source_line": 137,
+      "quote": "CN105601548A、CN104292137A、US6376429、CN1364160A和CN1323292A等均公开了以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯为原料，在碱作用下与相应的醇或直接与相应的醇钠反应制备得到目标物甲酯，在进一步皂化制备得到2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸的方法，反应式如下：",
+      "artifact_says": "scope = section, section_label = Background, flag prior_art_route_not_the_invention, product.identifier identical to the invention pathways",
+      "should_be": "Carry the provenance in a machine-visible field, for example a tag such as provenance:prior_art alongside the existing flag, so that filtering does not require reading the flag list. The attribution itself is correct and is the thing this record gets right.",
+      "confidence": "medium"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "construction: terminal step, ksm, product, intermediates",
+      "what_was_verified": "For all 32 records the ksm is the first entry of the first step's reactant_names, the product is the last step's product_name, and intermediates are exactly the products of all but the last step. In all 24 two-step records the step 1 product string appears verbatim among the terminal step's reactant_names, so chain order is correct and no chain is reversed."
+    },
+    {
+      "check": "construction: overall_yield_pct null rule",
+      "what_was_verified": "Every one of the 32 pathways has at least one step whose yield is null, and overall_yield_pct is null in all 32, so the stated mechanical rule is obeyed exactly. The defect reported separately is that the rule discards the patent's own two-step yield, not that the rule was broken."
+    },
+    {
+      "check": "overall_purity_pct",
+      "what_was_verified": "overall_purity_pct equals the terminal step's product_purity_pct in all 32 records, and each of the 20 example values was compared with the printed HPLC content on its own line: 98.7, 96.7, 95.8, 98.0, 98.2, 96.0, 97.8, 98.2, 96.5, 97.1, 96.6, 96.8, 95.3, 95.9, 94.6, 94.8, 97.5, 97.0, 95.5, 97.0. All 20 match."
+    },
+    {
+      "check": "derived tags and tag hygiene",
+      "what_was_verified": "chain_length:N equals the step count in all 32 records (24 twos, 8 ones). The four derived tags are the last four in every record, in the fixed order chain_length, branching, convergence, lcl. No record contains a duplicate tag, every step tag is present, the step tags form a first-seen-order prefix of the tag list, and every tag in the artifact matches category:value with a lowercase snake_case ASCII value."
+    },
+    {
+      "check": "step projection fidelity against reactions.json",
+      "what_was_verified": "All 54 reaction records are used, none dropped and none invented. Claims_Step 1 and Claims_Step 2 appear twice, in the Claims and the patent pathway; every other reaction appears once. For all 56 step slots the shared fields (reaction_class, reaction_class_confidence, named_reaction, mechanism_type, scale, is_one_pot, one_pot_steps, conditions, conditions_inherited, workup, purification, selectivity, process_control, compounds, molar_ratio_text, safety_notes, reactant_names, product_name, product_yield_pct, product_purity_pct, procedure_text) are byte-identical to the reaction record, and components equals reactant_names plus product_name in every case."
+    },
+    {
+      "check": "salt intermediate counterion identity",
+      "what_was_verified": "For all 20 examples the alkali metal of the Step 1 salt intermediate matches the base actually charged in the prose: sodium for Examples 1, 2, 3 and 4 (NaOH), 7 (sodium tert-butoxide), 9 (NaH), 11 (sodium metal) and 13 to 20 (cross-reference to Example 1); potassium for Examples 5 and 6 (KOH), 8 (potassium tert-butoxide), 10 (KH) and 12 (potassium metal). No pathway inherited a counterion from a drawing that contradicts the prose."
+    },
+    {
+      "check": "drawing versus text conflicts recorded, not resolved",
+      "what_was_verified": "Pages p10 and p11 were opened. The drawn reactant of the Example 3 step 2 scheme [0085] is the potassium salt, of Example 4 step 2 [0092] the potassium salt and of Example 5 step 2 [0099] the sodium salt, each contradicting its own prose. In each case the vision read of the drawing is correct, the pathway followed the Chinese prose, and the pathway carries drawing_text_conflict_in_chain. The disagreement is recorded rather than averaged away."
+    },
+    {
+      "check": "reagents above versus below the arrow",
+      "what_was_verified": "In the example schemes the acid written below the arrow (HCl) is recorded as a workup acidification, with role acid and a ph_target in the workup block, and is never merged into the above-arrow reagent set. Checked on p10 and p11 against the Example 3, 4 and 5 step 2 schemes and their records."
+    },
+    {
+      "check": "temperature and time range handling",
+      "what_was_verified": "No range was flattened to a point. The flat temperature_c is null exactly where conditions.temperature.type is range (the Claims and Summary steps, 25 to 40 C and -5 to 15 C), exact values appear only where the prose gives a single kettle temperature, room_temperature is true only on the alkoxide preparations that say room temperature, and no step records reflux as a temperature."
+    },
+    {
+      "check": "flag propagation from step validation_flags",
+      "what_was_verified": "For all 32 pathways honest_uncertainty_flags covers the union of the constituent steps' validation_flags under a consistent mapping: no_conditions to no_conditions_for_any_step, cross_reference_unresolved to cross_reference_unresolved_in_chain, conditions_unresolved to conditions_unresolved_in_chain, drawing_text_conflict to drawing_text_conflict_in_chain, mass_balance_implausible to inconsistent_step_arithmetic, and the two reagent-drawing flags. No step flag is silently dropped; the defect reported is that mass_balance_implausible was never raised on four of the reactions."
+    },
+    {
+      "check": "mass balance recomputation, all 20 examples",
+      "what_was_verified": "Printed mass times HPLC content, divided by the product molecular weight (346.70 for C11H10ClF3O5S, 348.80 for C14H17ClO6S) and by the printed 0.1 mol charge, was compared with the printed yield for every example. All 20 close to within 0.5 points, with a systematic positive bias: +0.48 Example 2, +0.48 Example 9, +0.47 Example 4, +0.44 Example 8, +0.43 Example 3, +0.41 Example 6, and within 0.25 for the remaining fourteen. Step-to-step continuity cannot be checked because no example prints an output mass for step 1; the 0.0998 mol the ester charge actually contains against the nominal 0.1 mol of salt carried into step 2 is a rounding-level gap."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "No id and no pathway_uuid on any record; smiles, compound_uuid and reaction_uuid are null throughout as designed; every score, literature count, atom map, template and enrichment field is null; patent_id is CN112645853A on all 32; scope takes only the values section and patent; 24 distinct section labels appear, so every section that produced reactions produced at least one pathway."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 24,
+    "present_in_artifact": 32,
+    "missing": [
+      "A patent-scope route to either named concrete target: the only scope=patent record is a copy of the Claims pathway and ends at the generic acid.",
+      "The alkoxide preparation branch inside the chains of Examples 1, 2, 5, 8, 17, 18, 19 and 20: eight real precursor links appear only as eight separate one-step records.",
+      "The patent-level two-step yield of 93.8 percent and content of 98.7 percent stated for the method as a whole in [0061] at line 265.",
+      "The claimed and summarised reaction times, 5 to 12 h for step (1) and 3 to 6 h for step (2), which the scalar time field cannot hold.",
+      "The impurity-forming side route of [0010] at line 147, where methanol from ester cleavage or transesterification reacts with the benzyl bromide to give 2-chloro-3-methoxymethyl-4-methanesulfonylbenzoic acid, and the benzyl alcohol and dibenzyl ether side route of [0024] and [0025] at lines 182 to 185. No reaction record exists for either, so no pathway could be built; noted as a gap upstream of this artifact rather than as a pathways defect."
+    ]
+  }
+}

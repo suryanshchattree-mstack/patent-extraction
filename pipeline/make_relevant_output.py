@@ -164,7 +164,23 @@ reports = {p.stem: json.loads(p.read_text())
 # What a previous iteration of THIS patent's run acted on, recorded by hand. Also
 # used to suppress those findings from the outstanding list below. Keyed by patent
 # because a second patent's audit has its own history and inherits none of this.
-FIXED_BY_PATENT = {"CN104292137A": {
+FIXED_BY_PATENT = {"WO2000021924A1": {
+    "The summary puts Y and Z in the 3-position side chain":
+        "FIXED. A4 rewrote patent_summary. Y and Z are ring members of the "
+        "cyclohexanedione ring and the 3-position substituent is only -L-R1. The "
+        "replacement takes the genus definition from claim 1 at lines 933 to 936 "
+        "rather than from line 334, which is claim 7 narrowing Y and Z to CHR7 or "
+        "C(R7)2 and is not the genus.",
+    "R7 is swept into the R2 to R5 definition":
+        "FIXED in the same rewrite. The summary no longer attributes the R2 to R5 "
+        "list to R6 or R7; both are described as drawn from their own lists.",
+    "The summary says R6 additionally covers OR12":
+        "FIXED in the same rewrite, for the same reason.",
+    "The abstract is not verbatim":
+        "FIXED at the input, not the artifact. The umlauts were folded to ASCII when "
+        "the biblio was hand-authored; abstract_zh is now the (57) Zusammenfassung "
+        "copied verbatim from line 36, umlauts and eszett intact.",
+}, "CN104292137A": {
     "Three of the five pathways carry the identical pathway_uuid":
         "FIXED. finalise.py now seeds pathway_uuid the way PathwaysBuilder actually "
         "does, folding in the ordered step signature. The PathwayRecord javadoc we "

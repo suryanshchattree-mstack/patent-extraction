@@ -1,0 +1,424 @@
+{
+  "artifact": "compounds",
+  "records_audited": 280,
+  "findings": [
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "Example 3 / sodium hydroxide",
+      "field": "purity_pct",
+      "problem": "purity_pct is null, so mass_g 14.0 and mmol 105.0 contradict each other by a factor of 3.3 within the same record.",
+      "source_line": 325,
+      "quote": "室温下将14g氢氧化钠(30％，0.105mol)滴入其中",
+      "artifact_says": "mass_g=14.0, mmol=105.0, purity_pct=null",
+      "should_be": "purity_pct=30.0, matching the convention used for the 48 percent charge in Example 1 and the 96 percent charge in Example 4",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "Example 6 / potassium hydroxide",
+      "field": "purity_pct",
+      "problem": "purity_pct is null, so mass_g 6.6 implies 117.6 mmol of potassium hydroxide against the recorded 100.0 mmol.",
+      "source_line": 379,
+      "quote": "室温下将6.6g氢氧化钾(85％，0.1mol)滴入其中",
+      "artifact_says": "mass_g=6.6, mmol=100.0, purity_pct=null",
+      "should_be": "purity_pct=85.0, as recorded for the identical 85 percent grade in Example 5 and Example 10",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "Example 15 / sodium hydroxide",
+      "field": "purity_pct",
+      "problem": "purity_pct is null, so mass_g 17.3 implies 432.5 mmol against the recorded 130.0 mmol.",
+      "source_line": 533,
+      "quote": "17.3g氢氧化钠溶液(30％，0.13mol)",
+      "artifact_says": "mass_g=17.3, mmol=130.0, purity_pct=null",
+      "should_be": "purity_pct=30.0; the record note explains the omission but no structured field then carries the concentration that reconciles mass_g with mmol",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "Example 16 / potassium hydroxide",
+      "field": "purity_pct",
+      "problem": "purity_pct is null, so mass_g 26.1 implies 465.2 mmol against the recorded 140.0 mmol.",
+      "source_line": 543,
+      "quote": "26.1g氢氧化钾溶液(30％，0.14mol)",
+      "artifact_says": "mass_g=26.1, mmol=140.0, purity_pct=null",
+      "should_be": "purity_pct=30.0",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "Example 3 / sodium hydroxide",
+      "field": "quantity",
+      "problem": "Example 3 charges sodium hydroxide twice and the artifact carries only the step (1) charge; the step (2) charge of 17.3 g and 0.13 mol survives only in the free-text notes and in no structured field.",
+      "source_line": 331,
+      "quote": "向反应釜中加入160mLDMF、11.6g三氟乙醇(99％，0.115mol)和17.3g氢氧化钠溶液(30％，0.13mol)",
+      "artifact_says": "one sodium hydroxide record with mass_g=14.0, mmol=105.0",
+      "should_be": "a second sodium hydroxide record for the step (2) charge, mass_g=17.3, mmol=130.0, purity_pct=30.0",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "Example 6 / potassium hydroxide",
+      "field": "quantity",
+      "problem": "Example 6 charges potassium hydroxide in both steps and the artifact carries only the step (1) charge; the step (2) charge of 26.1 g and 0.14 mol appears only in the notes.",
+      "source_line": 386,
+      "quote": "向反应釜中加入70mLDMF、12.6g三氟乙醇(99％，0.125mol)和26.1g氢氧化钾溶液(30％，0.14mol)",
+      "artifact_says": "one potassium hydroxide record with mass_g=6.6, mmol=100.0",
+      "should_be": "a second potassium hydroxide record for the step (2) charge, mass_g=26.1, mmol=140.0, purity_pct=30.0",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "Example 7 / sodium tert-butoxide",
+      "field": "quantity",
+      "problem": "Example 7 charges sodium tert-butoxide in both steps and the artifact carries only the step (1) charge; the step (2) charge of 11.8 g and 0.12 mol appears only in the notes.",
+      "source_line": 405,
+      "quote": "向反应釜中加入130mL THF、10.6g三氟乙醇(99％，0.105mol)和11.8g叔丁醇钠(98％，0.12mol)",
+      "artifact_says": "one sodium tert-butoxide record with mass_g=10.3, mmol=105.0",
+      "should_be": "a second sodium tert-butoxide record for the step (2) charge, mass_g=11.8, mmol=120.0, purity_pct=98.0",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": "identifier",
+      "problem": "The alkali metal alkoxide named as a reagent throughout the claims and the summary has no record in any section, although the parallel generic reagents basic substance and tertiary alcohol were both recorded.",
+      "source_line": 47,
+      "quote": "或者将2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐反应",
+      "artifact_says": "no record whose identifier contains alkoxide outside the specific named alkoxides",
+      "should_be": "one record per section that names it (Claims and Summary of the Invention) with identifier alkali metal alkoxide, identifier_type other, resolved false, role base or reactant",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": "identifier",
+      "problem": "The generic basic substance is recorded in Beneficial Effects but omitted from Claims and Summary of the Invention, where it is named in almost every paragraph.",
+      "source_line": 45,
+      "quote": "原料2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯在碱性物质存在下于三级醇溶剂中发生酯解反应",
+      "artifact_says": "one basic substance record, in Beneficial Effects only",
+      "should_be": "a basic substance record in the Claims and Summary of the Invention sections as well, on the same convention",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "Example 2, Example 6, Example 10 / 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt",
+      "field": "identifier",
+      "problem": "Three examples fold the generic step (1) heading name into the specific alkali salt record as an alias, while nine other examples emit it as a separate unresolved record and their notes state that collapsing it would be wrong; the two conventions cannot both be right.",
+      "source_line": 298,
+      "quote": "(1)2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐的制备，主要反应过程可以以如下反应方程式表示：",
+      "artifact_says": "generic salt record present in Examples 1, 3, 4, 5, 7, 8, 9, 11, 12 and absent from Examples 2, 6, 10",
+      "should_be": "one convention applied to all twelve examples that print the heading; add the missing generic records to Examples 2, 6 and 10",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "Example 8 / methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+      "field": "commercially_available",
+      "problem": "The starting ester is marked commercially available in Example 8 alone; the other 24 records for the same identifier say false, and the preamble states the material is prepared by a cited literature route.",
+      "source_line": 271,
+      "quote": "2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的制备可参考CN105601548、CN104292137、US6376429、CN1146548或CN1323292所述的方法",
+      "artifact_says": "commercially_available=true",
+      "should_be": "commercially_available=false, matching the other 24 records",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "Summary of the Invention / benzyl alcohol",
+      "field": "resolved",
+      "problem": "resolved is true for the printed name 苄醇, which will resolve downstream to phenylmethanol, but in context 苄 denotes the benzylic position of the substrate and the compound meant is the 3-(hydroxymethyl) analogue of the substrate, as the accompanying dibenzyl ether structure at [0025] confirms.",
+      "source_line": 182,
+      "quote": "苄溴基团会参与反应生成大量的苄醇以及二苄醚类化合物",
+      "artifact_says": "identifier benzyl alcohol, resolved=true",
+      "should_be": "resolved=false, since the printed name does not identify one specific compound in this context; the record note already concedes the section does not state that it carries the rest of the aromatic ring",
+      "confidence": "medium"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": null,
+      "field": null,
+      "problem": "The IMAGE_EXTRACT span for [0006] is an empty molecule list, but page p04 draws the key intermediate in full: benzoic acid with Cl at 2, CH2-O-R at 3 and methanesulfonyl at 4.",
+      "source_line": 135,
+      "quote": "[IMAGE_EXTRACT: {\"molecules\": []}]",
+      "artifact_says": "nothing; the Background records take the compound from the prose instead",
+      "should_be": "the drawn generic structure recorded in the extract span so the drawing is not silently discarded; no compound record is lost, so this is a defect of the vision read rather than of recall",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": null,
+      "field": null,
+      "problem": "The prior-art scheme extract at [0008] has an empty product list for step 1 and empty reactant and product lists for step 2, but page p05 draws the methyl 3-(alkoxymethyl) ester intermediate and the free acid.",
+      "source_line": 143,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl\"",
+      "artifact_says": "Background carries the methyl ester of the target compound as a functional_ref from the prose only",
+      "should_be": "the two drawn structures captured in the extract span; the reagents above and below each arrow were correctly kept separate",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": null,
+      "field": null,
+      "problem": "The step (1) scheme extract at [0017] has an empty product list, but page p05 draws the product as the MO2C benzoate salt bearing CH2Br.",
+      "source_line": 164,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl\"",
+      "artifact_says": "Summary of the Invention carries the salt from the prose",
+      "should_be": "the drawn salt captured in the extract span",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": null,
+      "field": null,
+      "problem": "The step (2) scheme extract at [0021] has empty reactant and product lists, but page p06 draws the MO2C salt on the left and the free acid bearing CH2-O-R on the right.",
+      "source_line": 176,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [], \"conditions\": [{\"text\": \"ROH、碱\"}, {\"text\": \"或ROM\"}], \"products\": []}]}]",
+      "artifact_says": "Summary of the Invention carries both compounds from the prose",
+      "should_be": "the two drawn structures captured in the extract span; ROH plus base above the arrow and 或ROM below it were correctly kept separate",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Example 6, 8, 10, 18, 19, 20 products and salts",
+      "field": "analytics",
+      "problem": "Nine analytics entries carry value null and unit null although raw_text holds the figure and purity_pct is populated from it, so the structured analytic is unusable in those records while identical records in other sections populate it.",
+      "source_line": 386,
+      "quote": "HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为96.0％",
+      "artifact_says": "analytics[0].value=null, analytics[0].unit=null, purity_pct=96.0",
+      "should_be": "value and unit populated from the same raw_text, as in the twenty-one sibling records that do so",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Example 1 and Example 2 (5 records)",
+      "field": "quantity",
+      "problem": "quantity is null rather than an object of null fields in five records, so a consumer indexing quantity.mass_g fails on those five and succeeds on the other 275.",
+      "source_line": 280,
+      "quote": "之后经过滤、水淋洗、烘干得到产物32.9g",
+      "artifact_says": "quantity=null for the Example 1 generic salt, sodium trifluoroethoxide and hydrochloric acid, and the Example 2 trifluoroethoxide and hydrochloric acid",
+      "should_be": "quantity as an object with null members, uniform with the other 275 records",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Applicant Declaration, Example 3, Example 7 (20 records)",
+      "field": "analytics",
+      "problem": "analytics is an empty list in twenty records and null in the other 260 where no analytic is reported, so absence is encoded two ways.",
+      "source_line": 325,
+      "quote": "向反应瓶中加入叔丁醇70mL，开动搅拌",
+      "artifact_says": "analytics=[] in three sections, analytics=null elsewhere",
+      "should_be": "one encoding of absence across all sections",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt",
+      "field": "identifier_type",
+      "problem": "The same generic salt identifier is typed iupac in eight sections and other in five, so the same string carries contradictory type values.",
+      "source_line": 47,
+      "quote": "2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐",
+      "artifact_says": "identifier_type=iupac in Abstract, Beneficial Effects, Claims, Examples 1, 4, 9 and others; identifier_type=other in Examples 3, 5, 8, 11, 12",
+      "should_be": "one value for all thirteen records; other is the better fit for a name that names no counter-ion",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt",
+      "field": "unresolved_reference",
+      "problem": "unresolved_reference is true for the generic salt only in Examples 3 and 7 and false in the other eleven records of the same identifier, although resolved is false in all thirteen.",
+      "source_line": 321,
+      "quote": "(1)2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐的制备，主要反应过程可以以如下反应方程式表示：",
+      "artifact_says": "unresolved_reference=true in Examples 3 and 7, false in eleven other sections",
+      "should_be": "one value across all thirteen records",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "hydrochloric acid",
+      "field": "identifier_type",
+      "problem": "hydrochloric acid is typed iupac in seven records and trivial_name in fifteen, for the identical identifier string and the identical Chinese alias.",
+      "source_line": 294,
+      "quote": "搅拌溶解后滴加浓盐酸将体系pH值酸化至2",
+      "artifact_says": "identifier_type=iupac in Claims and Examples 1, 2, 4, 7, 17, 19; trivial_name in the other fifteen",
+      "should_be": "one value across all twenty-two records",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "water",
+      "field": "identifier_type",
+      "problem": "water is typed iupac in six records and trivial_name in sixteen.",
+      "source_line": 294,
+      "quote": "釜残加水120mL",
+      "artifact_says": "identifier_type=iupac in Examples 1, 2, 3, 7, 9, 17; trivial_name in the other sixteen",
+      "should_be": "one value across all twenty-two records; trivial_name, since the IUPAC name is oxidane",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "sodium metal, potassium metal",
+      "field": "role",
+      "problem": "The alkali metals are role base in Claims and Summary but role reagent in every example, including Examples 11 and 12 where the metal is the basic substance of the step (1) ester cleavage itself and nothing else acts as base.",
+      "source_line": 467,
+      "quote": "室温下将2.4g金属钠(99％，0.105mol)加入其中，待金属钠溶解完全后",
+      "artifact_says": "role=reagent in Examples 2, 8, 11, 12, 19, 20; role=base in Claims and Summary of the Invention",
+      "should_be": "role=base at least in Examples 11 and 12, where the metal fills the basic substance slot of claim 3",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "sodium 2,2,2-trifluoroethoxide, potassium 2,2,2-trifluoroethoxide, sodium (tetrahydrofuran-2-yl)methoxide, potassium (tetrahydrofuran-2-yl)methoxide",
+      "field": "role",
+      "problem": "The isolated alkoxides occupy the same position in every example that prepares one, yet carry three different roles: reactant in Examples 1 and 17, product in Examples 2, 8, 18, 19, 20, and reagent in Example 5.",
+      "source_line": 292,
+      "quote": "经脱溶后得到三氟乙醇醇钠固体，密封备用",
+      "artifact_says": "role=reactant, product and reagent for the same functional entity in different sections",
+      "should_be": "one role convention for all eight alkoxide records",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "tembotrione",
+      "field": "commercially_available",
+      "problem": "tembotrione is commercially available true in Background and false in Abstract, Beneficial Effects and Summary of the Invention, with no section-specific reason for the difference.",
+      "source_line": 130,
+      "quote": "环磺酮由拜耳公司于2007年独立开发，环磺酮其活性高于硝磺草酮",
+      "artifact_says": "commercially_available=true in Background, false in three other sections",
+      "should_be": "one value across the four records; true is the defensible one given [0004]",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "tefuryltrione",
+      "field": "commercially_available",
+      "problem": "tefuryltrione is commercially available true in Background and false in Abstract, Beneficial Effects and Summary of the Invention.",
+      "source_line": 130,
+      "quote": "呋喃磺草酮由拜耳、HOKKO(日本北兴)和Zen-Noh(日本农协经营的国际贸易公司)联合开发，于2008年在日本上市",
+      "artifact_says": "commercially_available=true in Background, false in three other sections",
+      "should_be": "one value across the four records",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "tert-butanol, N,N-dimethylformamide, dimethyl sulfoxide, potassium tert-butoxide and 13 others",
+      "field": "tags",
+      "problem": "Tag sets drift between sections for the same identifier: tert-butanol gains chemical_family:alcohol and functional_group:alcohol in Examples 1, 3, 7 and the Summary but not in the Claims or Examples 4, 10, 11, 12; DMF gains chemical_family:amide in six examples and not in five others; hazard:corrosive is on sodium hydroxide in the examples but not in the Claims.",
+      "source_line": 279,
+      "quote": "向反应瓶中加入叔丁醇200mL，开动搅拌",
+      "artifact_says": "sixteen identifiers carry two to five different tag sets across their sections",
+      "should_be": "one tag set per identifier except where a section genuinely licenses an extra tag, and the licensing rule stated in the notes",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": null,
+      "field": "identifier",
+      "problem": "The generic tertiary alcohol is recorded in Beneficial Effects only, although it is named in claim 1, claim 2, claim 10 and paragraphs [0015], [0026], [0027], [0028] and [0056]; the generic alcohol of step (2) and the generic alkali metal of [0018] and [0043] are recorded nowhere.",
+      "source_line": 49,
+      "quote": "步骤(1)中所述三级醇为叔丁醇、叔戊醇或2-甲基-2-戊醇中的任意一种或至少两种的组合，优选为叔丁醇",
+      "artifact_says": "one tertiary alcohol record, in Beneficial Effects; no alcohol or alkali metal generic record",
+      "should_be": "generic records in Claims and Summary of the Invention on the same convention used for basic substance and tertiary alcohol in Beneficial Effects",
+      "confidence": "medium"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "drawings",
+      "what_was_verified": "Reopened p04 and confirmed the [0003] tembotrione and tefuryltrione SMILES atom by atom against the drawings: benzoyl cyclohexane-1,3-dione, Cl at 2, CH2-O-CH2CF3 or CH2-O-CH2-(tetrahydrofuran-2-yl) at 3, methanesulfonyl at 4, and no stereo bond on the drawn tetrahydrofuran ring. Both molecular formulae match. Substituent positions were read off the page, not inferred."
+    },
+    {
+      "check": "drawings",
+      "what_was_verified": "Reopened p06 and confirmed the [0025] structure is a single symmetrical ether of two 2-chloro-4-(methanesulfonyl)benzoic acid units joined through their 3-methylene groups, matching the aliased SMILES ring system and all four substituent positions on each ring. No second structure is drawn there, so the vision read's single-molecule list is correct and the benzyl alcohol named in the same sentence genuinely has no drawn structure."
+    },
+    {
+      "check": "drawings",
+      "what_was_verified": "Reopened p11 and p13 for the two drawing-only base records. p11 [0092] really letters CF3CH2OH and C4H9ONa above the arrow and HCl below it, and really draws the reactant as the potassium salt, against prose that says potassium tert-butoxide and sodium salt. p13 [0111] really letters NaOH above the arrow, against prose that says sodium tert-butoxide. Both vision reads are correct and both records carry notes recording the conflict rather than resolving it, so neither is a fabrication."
+    },
+    {
+      "check": "drawings",
+      "what_was_verified": "Reopened p10, p19 and p20 for the counter-ion conflicts. p10 [0085] draws the potassium salt where the prose says sodium; p19 [0181] draws the sodium salt with a tetrahydrofuran-2-yl-CH2-OK reagent; p19 [0187] draws the sodium salt with the ONa reagent; p20 [0193] draws the sodium salt with the OK reagent. Every one matches its IMAGE_EXTRACT, including which letters are inked in. In all twenty-two schemes checked, reagents above the arrow were kept separate from those below it, and the prior-art scheme at [0008] is annotated under Background, not as the invention's route."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "Recomputed mass times purity divided by molecular weight against the recorded mmol for all 53 records that carry both mass_g and mmol. Forty-nine agree within 5 percent. The only four that do not are the four purity_pct nulls reported above, so no other unit or scale error is present. Volume charges were checked separately: all 61 volume_ml values match the printed millilitres, with no mL to L confusion."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "Closed the yield for all twenty examples. Product mass times HPLC content divided by 346.70 for the trifluoroethoxy acid or 348.79 for the tetrahydrofurfuryloxy acid reproduces the printed two-step yield on 0.1 mol of the methyl ester to within 0.5 percentage points in every example, the largest gaps being Example 2 (92.85 computed against 92.4 printed) and Example 8 (92.34 against 91.9). These are the patent's own rounding, not artifact errors, and the recorded yield_pct matches the printed figure in all twenty cases. Step to step continuity holds: every example charges 0.1 mol of the step (1) salt into step (2), which is what step (1) produces from 0.1 mol of ester."
+    },
+    {
+      "check": "precision",
+      "what_was_verified": "Every one of the 280 provenance entries was checked mechanically: the identifier aligns 1:1 with the record at the same index, quote_zh appears verbatim in the cited source line after whitespace and full-width punctuation normalisation for all 280, no entry has an empty source_lines, and no entry cites a line outside its own section for any of the twenty example sections. Nothing in the artifact is unanchored, and no invented condition, molecular weight, formula or InChI key appears in any record."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "Compared every Chinese alias against its English identifier for all 280 records. All follow the Chinese, including the ones where a wrong reading was available: 硝磺草酮 to mesotrione, 环磺酮 to tembotrione and not fenquinotrione, 呋喃磺草酮 to tefuryltrione, 叔戊醇 to tert-amyl alcohol and not tert-pentanol confusion, 2-甲基-2-戊醇 to 2-methyl-2-pentanol, 2-四氢呋喃甲醇 to tetrahydrofurfuryl alcohol, 双接杂质 to double-attachment impurity, 二苄醚类化合物 to a class name kept unresolved. The patent's own typo at [0032] and [0039], where the Chinese says potassium hydroxide is made up as an aqueous sodium hydroxide solution, is reproduced faithfully by the EN lines and touches no record."
+    },
+    {
+      "check": "vocabulary",
+      "what_was_verified": "All 963 tags across the 280 records are of the form category:value with a lowercase snake_case ASCII value and no stray characters; the four categories used are functional_group, compound_class, chemical_family and hazard. No record has a null or empty tag list. identifier_type takes only iupac, trivial_name, other and functional_ref; role takes only product, solvent, reactant, base, acid, other, by_product and reagent; section_type takes only the nine expected section kinds."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "No record carries id, compound_uuid, any other *_uuid, an embedding or any other enrichment or vector field. The smiles key is present on 89 records and null on every one of them, and structures read off the drawings are carried in aliases as the brief requires. Every record has patent_id, identifier, identifier_type, aliases, section_label, section_type, role, tags and notes populated."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "The compounds artifact defines no precursor_step or linkage_confirmed field, so there is no linkage claim to substantiate or to leave null. Step to step continuity was instead checked through the arithmetic above."
+    },
+    {
+      "check": "recall",
+      "what_was_verified": "Walked all twenty-nine sections against the source. Solvents, washes and drying steps were checked explicitly rather than skimmed: every tertiary alcohol charge, every step (2) solvent (acetonitrile, DMF, DMSO, THF), the 120 mL water dilution and the concentrated hydrochloric acid acidification are present in all twenty examples, and Example 10's two-solvent step (1) charge is recorded as separate 50 mL and 150 mL records. Nothing was dried over a drying agent and no wash solvent other than water is printed, so there is no missing wash or drying agent. Beyond the omissions reported above, the only entities in the text with no record are HPPD, the triketone, pyrazolone and isoxazolone class names, the benzyl bromide functional group and the cited patent numbers, none of which is a compound."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 291,
+    "present_in_artifact": 280,
+    "missing": [
+      "alkali metal alkoxide (碱金属醇盐), Claims section",
+      "alkali metal alkoxide (碱金属醇盐), Summary of the Invention section",
+      "basic substance (碱性物质), Claims section",
+      "basic substance (碱性物质), Summary of the Invention section",
+      "tertiary alcohol (三级醇), Claims section",
+      "tertiary alcohol (三级醇), Summary of the Invention section",
+      "generic alcohol (醇) of step (2), Claims and Summary of the Invention sections",
+      "generic alkali metal (碱金属) of [0018] and [0043], Summary of the Invention section",
+      "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt (generic step (1) heading name), Example 2",
+      "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt (generic step (1) heading name), Example 6",
+      "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt (generic step (1) heading name), Example 10",
+      "second sodium hydroxide charge of Example 3, 17.3 g and 0.13 mol (quantity present only in a note)",
+      "second potassium hydroxide charge of Example 6, 26.1 g and 0.14 mol (quantity present only in a note)",
+      "second sodium tert-butoxide charge of Example 7, 11.8 g and 0.12 mol (quantity present only in a note)"
+    ]
+  }
+}

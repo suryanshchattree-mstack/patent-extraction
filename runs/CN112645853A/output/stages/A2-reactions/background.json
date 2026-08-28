@@ -1,0 +1,346 @@
+[
+  {
+    "patent_id": "CN112645853A",
+    "reaction_id": "Background_Step 1",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "high",
+    "named_reaction": "Williamson ether synthesis",
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "the methyl ester of the target compound",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "methanol",
+        "role": "by_product",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "the methyl ester of the target compound",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯为原料，在碱作用下与相应的醇或直接与相应的醇钠反应制备得到目标物甲酯",
+    "procedure_summary": "The bromomethyl benzoate ester is reacted with the corresponding alcohol under a base, or directly with the corresponding sodium alkoxide, to displace the benzylic bromide and give the methyl ester of the target compound. The record comes from an overview scheme of the cited prior art, so no charge, condition or yield is stated.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:etherification",
+      "mechanism:ionic",
+      "named_rxn:williamson_ether_synthesis",
+      "scale:not_specified",
+      "catalyst_class:base",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART, not the route of the invention. The scheme is introduced by [0007] at line 137, which attributes the route to CN105601548A, CN104292137A, US6376429, CN1364160A and CN1323292A and then says the reaction scheme follows (反应式如下), and it stands under the section heading for background art (背景技术). [0010] at line 147 then criticises the purity that this method gives, which settles the attribution from the page itself, so route_attribution_unclear is NOT raised: no drawing in this patent was marked unclear by the vision pass, and this one is classified prior art. OVERVIEW SCHEME, NOT A PROCEDURE. Rule 5d governs this record. The scheme at line 143 sits between the markers [0008] and [0009], outside every experimental section, and carries connectivity and reagents but no charge, no temperature, no time, no solvent and no yield, so every field of the conditions block is null, no_conditions is raised and scale is not_specified. Its step numbering is independent of the numbering of the experimental sections and of the two steps of the invention recited in Summary of the Invention and in the claims; nothing here is merged with or renumbered against those. STEP COUNT AND THE PROSE VERSUS SCHEME SPLIT. Two records, which matches A0's estimate of two steps. The prose of [0007] and the drawing at line 143 are the SAME route, not two: the sentence recites the route and ends by saying the reaction scheme follows (反应式如下), and the drawing has one arrow per recited transformation. So the Scheme Step N split of rule 5f is deliberately not used here and no separate scheme records are emitted, because emitting both sets would count each prior art transformation twice. step_label is the plain Step N and the record carries the prose and the arrow together. CLASS. The benzylic bromide of the starting material is displaced by an alkoxide, so reaction_class is nucleophilic_substitution with the ether formed under a base, which is the Williamson ether synthesis, and mechanism_type is ionic. This is the same transformation the invention performs in its step (2), but on the methyl ester rather than on the benzoate salt, which is the difference the patent is built on. GENERIC REAGENTS. The base written in the prose and drawn on the arrow (碱), the corresponding alcohol, drawn as the placeholder ROH, and the corresponding sodium alkoxide (醇钠) are written as classes and as a placeholder, not as compounds. Per the shared conventions for this patent A1 deliberately emits no compound record for such classes, so none is created here and a1_missing_compound is NOT raised for them; that is also why reactant_names carries only the one named starting material. DRAWING AGAINST TEXT. Arrow step_id 1 of the span at line 143 draws the reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl, formula C10H10BrClO4S, which is the compound [0007] names, and carries ROH and the base as its conditions, both of which the prose also states. The prose additionally offers reaction directly with the corresponding sodium alkoxide, and that alternative appears on no arrow, which is the reagent_written_not_drawn flag. The arrow's product list came back empty because the drawn product carries a generic R and so can have no SMILES; that is a limit of the read and not a disagreement, so drawing_text_conflict is NOT raised and the product identity is taken from the prose. Neither single structure span of this section is a transformation: line 128 draws tembotrione and tefuryltrione, and the span at line 135, which should carry the generic key intermediate of [0005], returned an empty molecule list. THE SIDE REACTION OF [0010] IS NOT A THIRD STEP. [0010] at line 147 states that in the basic medium the ester of the starting material undergoes base cleavage or transesterification and gives methanol, and that the methanol then reacts with the benzyl bromide group of the starting material to give 2-chloro-3-(methoxymethyl)-4-(methanesulfonyl)benzoic acid, whose normalised proportion is about 3 to 5 percent where R is trifluoroethyl and up to 8 to 12 percent where R is 2-tetrahydrofurylmethyl. That is a mechanism of impurity formation with no charge of its own, no conditions of its own and no workup of its own, so under rule 1 it opens no new step and no third record is emitted. Its two materials are instead carried as by_product compounds: the methanol on Step 1, the step whose basic medium releases it, and the methoxymethyl benzoic acid on Step 2, because as named it is an acid and so accompanies the acid Step 2 gives. TAG CATEGORIES SKIPPED. No workup_type and no purification tag: an overview scheme states no isolation at all, so a value of none would assert an absence the page does not support, and rule 26 says skip a category rather than guess. No solvent_class tag either, because this section names no solvent. catalyst_class:base is emitted because a base is both drawn on the arrow and written in the prose. LINKAGE. precursor_step is null: the starting material is where this prior art route begins and no earlier step in the document makes it. The route of the invention consumes the same starting material but is a different route, so no cross section linkage is claimed and linkage_confirmed stays false. ARITHMETIC. Nothing to close on this record. The section prints no mass, no volume, no mole count, no equivalents and no yield for either arrow, so no mass balance, no molar mass and no yield check is possible, and mass_balance_implausible, molar_mass_inconsistent and scale_discontinuity are not raisable and are not raised. That is a measured absence of numbers and not a check that passed."
+  },
+  {
+    "patent_id": "CN112645853A",
+    "reaction_id": "Background_Step 2",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "hydrolysis",
+    "reaction_class_confidence": "high",
+    "named_reaction": "saponification",
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "acidified with an acid the prose does not name, drawn as the second of the arrow's two numbered stages"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "the methyl ester of the target compound",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-(alkoxymethyl)-4-(methanesulfonyl)benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-(methoxymethyl)-4-(methanesulfonyl)benzoic acid",
+        "role": "by_product",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "the methyl ester of the target compound"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-(alkoxymethyl)-4-(methanesulfonyl)benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "在进一步皂化制备得到2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸",
+    "procedure_summary": "The methyl ester from the preceding step is saponified, and the drawing adds an acid stage after the base, to give the alkoxymethyl methanesulfonylbenzoic acid that the section calls the key intermediate. The record comes from an overview scheme of the cited prior art, so no charge, condition or yield is stated.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_drawn_not_written"
+    ],
+    "tags": [
+      "transformation:hydrolysis",
+      "mechanism:ionic",
+      "named_rxn:saponification",
+      "scale:not_specified",
+      "catalyst_class:base",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART, not the route of the invention. Second and last arrow. The scheme is introduced by [0007] at line 137, which attributes the route to CN105601548A, CN104292137A, US6376429, CN1364160A and CN1323292A and then says the reaction scheme follows (反应式如下), and it stands under the section heading for background art (背景技术). [0010] at line 147 then criticises the purity that this method gives, which settles the attribution from the page itself, so route_attribution_unclear is NOT raised: no drawing in this patent was marked unclear by the vision pass, and this one is classified prior art. OVERVIEW SCHEME, NOT A PROCEDURE. Rule 5d governs this record. The scheme at line 143 sits between the markers [0008] and [0009], outside every experimental section, and carries connectivity and reagents but no charge, no temperature, no time, no solvent and no yield, so every field of the conditions block is null, no_conditions is raised and scale is not_specified. Its step numbering is independent of the numbering of the experimental sections and of the two steps of the invention recited in Summary of the Invention and in the claims; nothing here is merged with or renumbered against those. CLASS. The prose names the operation saponification (皂化), which is base hydrolysis of a methyl ester, so reaction_class is hydrolysis with mechanism_type ionic, and named_reaction is saponification, the same name Example 1 and Example 3 of this run give the ester cleavage step. The product is the acid [0005] at line 132 calls the key intermediate of this series of compounds. THE ACID STAGE. Arrow step_id 2 carries two numbered conditions, the base as stage one and an acid as stage two, so the two labels encode order rather than the usual above and below distinction. The prose names no acid at all, which is the reagent_drawn_not_written flag, and the acidification is recorded in workup rather than as a reagent, following the shared convention for this patent that acidification to the free acid is a workup operation and not a reagent of the transformation. It could instead be read as a second transformation, carboxylate salt and then free acid, which would make this arrow a one pot pair; is_one_pot is left false and that alternative reading is recorded here rather than resolved. DRAWING AGAINST TEXT. The span gives this arrow empty reactant and product lists, because both drawn structures carry a generic R and so can have no SMILES. Connectivity therefore comes from the arrow's position after arrow one plus the prose, which saponifies the methyl ester of arrow one to the acid. Absence of drawn structures is not a contradiction, so drawing_text_conflict is NOT raised. R is not fixed anywhere in this section: [0009] at line 145 states that R as trifluoroethyl gives the tembotrione intermediate and R as 2-tetrahydrofurylmethyl the tefuryltrione intermediate, so the product keeps the generic alkoxymethyl name A1 recorded and neither specific acid is claimed here. THE SIDE REACTION OF [0010] IS NOT A THIRD STEP. [0010] at line 147 states that in the basic medium the ester of the starting material undergoes base cleavage or transesterification and gives methanol, and that the methanol then reacts with the benzyl bromide group of the starting material to give 2-chloro-3-(methoxymethyl)-4-(methanesulfonyl)benzoic acid, whose normalised proportion is about 3 to 5 percent where R is trifluoroethyl and up to 8 to 12 percent where R is 2-tetrahydrofurylmethyl. That is a mechanism of impurity formation with no charge of its own, no conditions of its own and no workup of its own, so under rule 1 it opens no new step and no third record is emitted. Its two materials are instead carried as by_product compounds: the methanol on Step 1, the step whose basic medium releases it, and the methoxymethyl benzoic acid on Step 2, because as named it is an acid and so accompanies the acid Step 2 gives. TAG CATEGORIES SKIPPED. No workup_type and no purification tag: an overview scheme states no isolation at all, so a value of none would assert an absence the page does not support, and rule 26 says skip a category rather than guess. No solvent_class tag either, because this section names no solvent. catalyst_class:base is emitted because a base is both drawn on the arrow and written in the prose. LINKAGE. precursor_step is Step 1 and linkage_confirmed is true under rule 24, on two independent grounds: the reactant identifier here is the identical A1 record that is Step 1's product, and the prose says in words that that methyl ester is further saponified. Not name similarity. AS PRINTED. The clause is transcribed exactly as the page prints it, including the character for at where the character for again would be expected before the words for further saponified, and [0010] at line 147 likewise prints an extra character in the phrase comparing the impurity with the target compound. Both are printing oddities in the source and neither changes a compound, a quantity or a transformation, so neither is flagged and nothing is corrected. PURITY. The impurity proportions [0010] prints, about 3 to 5 percent and up to 8 to 12 percent, are normalised proportions of the impurity inside the product of this route and not a purity measured on the product by a named method, so product_purity_pct and product_purity_method are left null. ARITHMETIC. Nothing to close on this record. The section prints no mass, no volume, no mole count, no equivalents and no yield for either arrow, so no mass balance, no molar mass and no yield check is possible, and mass_balance_implausible, molar_mass_inconsistent and scale_discontinuity are not raisable and are not raised. That is a measured absence of numbers and not a check that passed. The impurity proportions are the only percentages in the section that concern this route at all, and they are shares of a mixture rather than a charge, a yield or a purity, so nothing about them can close or fail to close."
+  }
+]

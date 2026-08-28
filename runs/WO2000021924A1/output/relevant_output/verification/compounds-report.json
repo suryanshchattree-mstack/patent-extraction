@@ -1,0 +1,488 @@
+{
+  "artifact": "compounds",
+  "records_audited": 520,
+  "findings": [
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Table 2 enumerates 360 fully specified compounds Nr. 30 to Nr. 389 (caption on line 675 fixes R2, R3, R4, R5, R6, Y, Z, v, w; each row gives R7a, R7b, R12, L and R1) and the artifact carries not one of them, only a single generic header record for the whole table.",
+      "source_line": 677,
+      "quote": "30 | H | H | Bz | CH2 | O-c-Hexyl",
+      "artifact_says": "one record, identifier 'compounds according to the invention of the general formula (I)', section_label 'Table 2'",
+      "should_be": "add 360 records for Nr. 30 to Nr. 389 in the same local_label form used for Tabelle 1, Nr. 3 to Nr. 15",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Table 1 rows Nr. 16 to Nr. 29 are absent from the artifact although rows Nr. 3 to Nr. 15 of the same table were extracted; the only difference is that rows 16 to 29 print no Physikalische Daten.",
+      "source_line": 642,
+      "quote": "16 | OCH2CF2CF3 | H | 17 | OCH2CF2CF3 | Me |",
+      "artifact_says": "Table 1 records stop at 'Tabelle 1, Nr. 15'",
+      "should_be": "add records 'Tabelle 1, Nr. 16' through 'Tabelle 1, Nr. 29'",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Table 3 rows Nr. 394 to Nr. 400 are absent although rows Nr. 390 to Nr. 393 of the same table were extracted; the difference is only the empty Physikalische Daten cell.",
+      "source_line": 753,
+      "quote": "394 | CH2 | OCH2CH2Br | 395 | CH2 | OCH2CH2F |",
+      "artifact_says": "Table 3 carries four numbered records, Nr. 390 to Nr. 393",
+      "should_be": "add records for Nr. 394 to Nr. 400",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Table 4 rows Nr. 436 to Nr. 451 are absent; the artifact's only Table 4 record is the generic formula (I) header.",
+      "source_line": 786,
+      "quote": "436 | OCH2CF3 | Me | SO2Me 437 | OCH2CF3 | Me | SO2Et",
+      "artifact_says": "one record, identifier 'compounds according to the invention of the general formula (I)'",
+      "should_be": "add 16 records for Nr. 436 to Nr. 451",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Table 5 rows Nr. 518 to Nr. 530 are absent although Nr. 517 of the same table was extracted.",
+      "source_line": 830,
+      "quote": "518 | OCH2CF3 | Me, Me | 519 | OCH2CF2H | Me, Me |",
+      "artifact_says": "Table 5 carries one numbered record, 'Tabelle 5, Nr. 517'",
+      "should_be": "add records for Nr. 518 to Nr. 530",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "1,2-dichloroethane",
+      "field": "quantity.volume_ml",
+      "problem": "The Schritt 2 solvent volumes are printed three times (200 ml, 200 ml and 400 ml) and the record carries no volume at all.",
+      "source_line": 556,
+      "quote": "200 ml 1,2-Dichlorethan",
+      "artifact_says": "quantity all null",
+      "should_be": "set volume_ml to the largest printed charge, 400.0, and note the three separate portions",
+      "confidence": "medium"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "hydrogen peroxide",
+      "field": "quantity.mass_g",
+      "problem": "The oxidant charge of Example 1 Schritt 3 is printed as 203.83 g and the merged record carries no quantity; the record's own notes still refer to 'The 203.83 g', a number that now appears in no field.",
+      "source_line": 563,
+      "quote": "203.83 g einer 30 %igen Wasserstoffperoxidlösung",
+      "artifact_says": "quantity.mass_g is null; section_label 'Preparation Schemes 1 to 4'",
+      "should_be": "set mass_g to 203.83",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "oxalyl chloride",
+      "field": "quantity.mass_g",
+      "problem": "Oxalyl chloride is charged with mass and mmol twice in the experimental part and the merged record carries no quantity, because the quantity-free mention in Schema 4 overwrote it.",
+      "source_line": 578,
+      "quote": "0.59 g (4.58 mmol) Oxalylchlorid",
+      "artifact_says": "quantity all null; section_label 'Preparation Schemes 1 to 4'",
+      "should_be": "set mass_g 0.59 and mmol 4.58 (Example 1) and note the second charge of 0.76 g / 5.9 mmol on line 606",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "methyl 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoate",
+      "field": "quantity.yield_pct",
+      "problem": "This compound is the isolated product of Example 1 Schritt 6 with a stated 67 % of theory and the record carries no yield.",
+      "source_line": 574,
+      "quote": "Ausbeute: 38.82 g (67 % der Theorie), farblose Kristalle, Fp.: 74-75 °C",
+      "artifact_says": "quantity.yield_pct is null",
+      "should_be": "set yield_pct to 67.0",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "methyl 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoate",
+      "field": "quantity.mass_g",
+      "problem": "mass_g holds 1.0, the amount charged into Example 2 Schritt 1, while the record's melting point, NMR and appearance all come from the Example 1 Schritt 6 isolation of 38.82 g; the isolated mass is lost and the record mixes two steps' numbers.",
+      "source_line": 574,
+      "quote": "Ausbeute: 38.82 g (67 % der Theorie), farblose Kristalle, Fp.: 74-75 °C",
+      "artifact_says": "quantity.mass_g 1.0, role 'reactant'",
+      "should_be": "set mass_g to 38.82 with role 'product' and record the 1.0 g / 2.93 mmol charge separately",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "hydrochloric acid",
+      "field": "quantity.volume_ml",
+      "problem": "The concentrated hydrochloric acid charge of Example 1 Schritt 2 is printed as 300 ml and the merged record carries no volume.",
+      "source_line": 556,
+      "quote": "300 ml konz. Salzsäure",
+      "artifact_says": "quantity all null",
+      "should_be": "set volume_ml to 300.0",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "N,N-dimethylformamide",
+      "field": "quantity.volume_ml",
+      "problem": "The Example 2 Schritt 1 solvent volume is printed as 20 ml and the merged record carries no volume.",
+      "source_line": 595,
+      "quote": "20 ml Dimethylformamid",
+      "artifact_says": "quantity all null; section_label 'Formulations'",
+      "should_be": "set volume_ml to 20.0",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "water",
+      "field": "quantity.volume_ml",
+      "problem": "Water is charged as 8 ml in Example 2 Schritt 1 and as 3.5 l in Example 1 Schritt 1, and the merged record carries no volume.",
+      "source_line": 595,
+      "quote": "16 ml Tetrahydrofuran und 8 ml Wasser",
+      "artifact_says": "quantity all null",
+      "should_be": "populate volume_ml from the largest printed charge and note the others",
+      "confidence": "medium"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "acetonitrile",
+      "field": "quantity.volume_ml",
+      "problem": "Acetonitrile is charged as 5 ml in Example 1 Schritt 9 and as 20 ml in Example 2 Schritt 3; only the 20 ml survives and the 5 ml charge is recorded nowhere.",
+      "source_line": 585,
+      "quote": "5 ml Acetonitril",
+      "artifact_says": "quantity.volume_ml 20.0",
+      "should_be": "keep 20.0 and note the separate 5 ml charge of Example 1 Schritt 9",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "sodium hydroxide",
+      "field": "quantity.mass_g",
+      "problem": "NaOH is charged as 0.55 g (13.74 mmol) in Example 1 Schritt 7 and as 0.23 g (5.85 mmol) in Example 2 Schritt 1; only the smaller charge survives.",
+      "source_line": 576,
+      "quote": "0.55 g NaOH (13.74 mmol)",
+      "artifact_says": "quantity.mass_g 0.23, mmol 5.85",
+      "should_be": "keep the most complete charge and note the second one in notes",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "cyclohexane-1,3-dione",
+      "field": "quantity.mass_g",
+      "problem": "Cyclohexanedione is charged as 0.19 g (1.68 mmol) in Example 1 Schritt 8 and as 0.24 g (2.16 mmol) in Example 2 Schritt 2; the Example 1 charge is recorded nowhere.",
+      "source_line": 578,
+      "quote": "0.19 g (1.68 mmol) Cyclohexandion",
+      "artifact_says": "quantity.mass_g 0.24, mmol 2.16",
+      "should_be": "note the 0.19 g / 1.68 mmol charge of Example 1 Schritt 8",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "triethylamine",
+      "field": "quantity.mass_g",
+      "problem": "Triethylamine is charged three times (0.46 g / 4.58 mmol, 0.04 g / 0.39 mmol, 0.60 g / 5.9 mmol) and only the last survives in the merged record.",
+      "source_line": 578,
+      "quote": "0.46 g (4.58 mmol) Triethylamin",
+      "artifact_says": "quantity.mass_g 0.6, mmol 5.9",
+      "should_be": "note the two discarded charges",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "2-chloro-3-methyl-4-methylthio-acetophenone",
+      "field": "melting_point",
+      "problem": "The melting point fields are filled from an 'Fp.' value while the patent's own abbreviation table defines Fp. as Festpunkt (solidification point), and the artifact records no note of that conflict; the same applies to the four other Fp. records.",
+      "source_line": 627,
+      "quote": "Fp. = Festpunkt",
+      "artifact_says": "melting_point.min_c 45.5, max_c 46.0, no note of the abbreviation gloss",
+      "should_be": "keep the values and add a note that the patent glosses Fp. as Festpunkt, not Schmelzpunkt",
+      "confidence": "medium"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "2-chloro-3-methyl-4-methylthio-acetophenone",
+      "field": "quantity.mass_g",
+      "problem": "Step to step continuity breaks: Schritt 2 isolates 111.24 g of this compound and Schritt 3 charges 223.48 g (1.04 mol) of it, twice what the preceding step produced; the artifact carries only the 111.24 g, has no field in which the 223.48 g can appear, and the CompoundRecord schema has no validation_flag, so the break is invisible to every structured consumer.",
+      "source_line": 563,
+      "quote": "223.48 g (1.04 mol) 2-Chlor-3-methyl-4-methylthio-acetophenon",
+      "artifact_says": "quantity.mass_g 111.24, yield_pct 87.0, and a prose note",
+      "should_be": "carry the 223.48 g / 1.04 mol charge in a structured field and flag the mass balance break rather than leaving it in notes only",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "2-[2-chloro-3-(2,2-difluoroethoxymethyl)-4-ethylsulfonyl-benzoyl]-cyclohexane-1,3-dione",
+      "field": "identifier",
+      "problem": "The identifier is a full IUPAC name that appears nowhere in the patent; it was assembled from the Tabelle 3 caption plus the row substituents, and it is carried with identifier_type 'iupac' and resolved true, while the equivalent rows of Tables 1, 1a, 1b and 5 are carried as local_label with resolved false. Only the notes disclose the construction, so a scored extractor is measured against an invented string for these four records and against a label for the other twenty two.",
+      "source_line": 753,
+      "quote": "390 | CH2 | OCH2CHF2 |",
+      "artifact_says": "identifier '2-[2-chloro-3-(2,2-difluoroethoxymethyl)-4-ethylsulfonyl-benzoyl]-cyclohexane-1,3-dione', identifier_type 'iupac', resolved true",
+      "should_be": "use the local_label form 'Tabelle 3, Nr. 390' with resolved false and keep the constructed name in aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "2-[2-chloro-4-ethylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]-cyclohexane-1,3-dione",
+      "field": "identifier",
+      "problem": "The identifier is a full IUPAC name that appears nowhere in the patent; it was assembled from the Tabelle 3 caption plus the row substituents, and it is carried with identifier_type 'iupac' and resolved true, while the equivalent rows of Tables 1, 1a, 1b and 5 are carried as local_label with resolved false. Only the notes disclose the construction, so a scored extractor is measured against an invented string for these four records and against a label for the other twenty two.",
+      "source_line": 753,
+      "quote": "390 | CH2 | OCH2CHF2 |",
+      "artifact_says": "identifier '2-[2-chloro-4-ethylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]-cyclohexane-1,3-dione', identifier_type 'iupac', resolved true",
+      "should_be": "use the local_label form 'Tabelle 3, Nr. 391' with resolved false and keep the constructed name in aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "2-[2-chloro-3-(2-chloroethoxymethyl)-4-ethylsulfonyl-benzoyl]-cyclohexane-1,3-dione",
+      "field": "identifier",
+      "problem": "The identifier is a full IUPAC name that appears nowhere in the patent; it was assembled from the Tabelle 3 caption plus the row substituents, and it is carried with identifier_type 'iupac' and resolved true, while the equivalent rows of Tables 1, 1a, 1b and 5 are carried as local_label with resolved false. Only the notes disclose the construction, so a scored extractor is measured against an invented string for these four records and against a label for the other twenty two.",
+      "source_line": 753,
+      "quote": "390 | CH2 | OCH2CHF2 |",
+      "artifact_says": "identifier '2-[2-chloro-3-(2-chloroethoxymethyl)-4-ethylsulfonyl-benzoyl]-cyclohexane-1,3-dione', identifier_type 'iupac', resolved true",
+      "should_be": "use the local_label form 'Tabelle 3, Nr. 392' with resolved false and keep the constructed name in aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "2-[2-chloro-4-ethylsulfonyl-3-(2,2,2-trifluoroethylthiomethyl)-benzoyl]-cyclohexane-1,3-dione",
+      "field": "identifier",
+      "problem": "The identifier is a full IUPAC name that appears nowhere in the patent; it was assembled from the Tabelle 3 caption plus the row substituents, and it is carried with identifier_type 'iupac' and resolved true, while the equivalent rows of Tables 1, 1a, 1b and 5 are carried as local_label with resolved false. Only the notes disclose the construction, so a scored extractor is measured against an invented string for these four records and against a label for the other twenty two.",
+      "source_line": 753,
+      "quote": "390 | CH2 | OCH2CHF2 |",
+      "artifact_says": "identifier '2-[2-chloro-4-ethylsulfonyl-3-(2,2,2-trifluoroethylthiomethyl)-benzoyl]-cyclohexane-1,3-dione', identifier_type 'iupac', resolved true",
+      "should_be": "use the local_label form 'Tabelle 3, Nr. 393' with resolved false and keep the constructed name in aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "drawings",
+      "severity": "major",
+      "record": "Tabelle 1, Nr. 5",
+      "field": "aliases",
+      "problem": "The IMAGE_EXTRACT span that machine reads this row's drawn R1 cell carries the SMILES *OCC1CCCCO1, and page image p050 confirms the drawing is O-CH2 bonded to the 2-position of an oxane ring, but the SMILES is in no record's aliases; A1 rule 4b requires it there. No SMILES from any of the six populated spans in this document reaches any record.",
+      "source_line": 635,
+      "quote": "[IMAGE_EXTRACT: {\"molecules\": [{\"smiles\": \"*OCC1CCCCO1\", \"molecular_formula\": \"C6H11*O2\", \"inchi_key\": \"\"}]}]",
+      "artifact_says": "aliases are ['Table 1, No. 5', 'R1 = [drawn structure, see drawings: O-CH2-(oxan-2-yl)]', 'R7 = H']",
+      "should_be": "add '*OCC1CCCCO1' to aliases",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "major",
+      "record": "Tabelle 1, Nr. 13",
+      "field": "aliases",
+      "problem": "The row's alias points at 'drawings[0]', but the only IMAGE_EXTRACT span on that page returns an empty molecules array, so no structure was read. Page image p051 shows the cell drawn as O-CH2 bonded to the 2-position of a tetrahydrofuran ring, and the record carries that structure in no field. This is a guard passing on absence: an empty molecules array was accepted as if the page held no drawing.",
+      "source_line": 640,
+      "quote": "[IMAGE_EXTRACT: {\"molecules\": []}]",
+      "artifact_says": "aliases are ['Table 1, No. 13', 'R1 = [drawn structure in this cell, no text; see drawings[0]]', 'R7 = H']",
+      "should_be": "record R1 as (tetrahydrofuran-2-yl)methoxy, read off page image p051, and note that the vision pass returned nothing for it",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Page image p069 (printed page 67) is a full Table 3 page carrying rows Nr. 401 to Nr. 422, four of which (412, 413, 421, 422) have drawn R1 cells. The enriched markdown for that page holds four IMAGE_EXTRACT spans with empty molecules arrays and no row text at all, so 22 compounds and their four drawn substituents are absent from the source text and therefore from the artifact.",
+      "source_line": 758,
+      "quote": "[IMAGE_EXTRACT: {\"molecules\": []}]",
+      "artifact_says": "no record for any of Nr. 401 to Nr. 422",
+      "should_be": "re-read page p069 so the row text and the four drawn R1 groups enter the source, then extract the 22 compounds",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Page image p072 (printed page 70) is a full Table 4 page carrying rows Nr. 452 to Nr. 475, four of which have drawn R1 cells. The markdown for that page holds only the four structure spans and no row text, so 24 compounds are absent from the source and from the artifact. The four SMILES that were read, *OCC1CCCO1, match the drawing as (tetrahydrofuran-2-yl)methoxy.",
+      "source_line": 793,
+      "quote": "[IMAGE_EXTRACT: {\"molecules\": [{\"smiles\": \"*OCC1CCCO1\", \"molecular_formula\": \"C5H9*O2\", \"inchi_key\": \"\"}]}]",
+      "artifact_says": "no record for any of Nr. 452 to Nr. 475",
+      "should_be": "re-read page p072 so the row text enters the source, then extract the 24 compounds",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Page image p076 (printed page 74) is a Table 5 page carrying rows Nr. 531 to Nr. 544, one of which (538) has a drawn R1 cell. The markdown for that page holds only the one structure span and no row text, so 14 compounds are absent from the source and from the artifact.",
+      "source_line": 837,
+      "quote": "[IMAGE_EXTRACT: {\"molecules\": [{\"smiles\": \"OCC1CCOC1\", \"molecular_formula\": \"C5H10O2\", \"inchi_key\": \"PCPUMGYALMOCHF-UHFFFAOYSA-N\"}]}]",
+      "artifact_says": "no record for any of Nr. 531 to Nr. 544",
+      "should_be": "re-read page p076 so the row text enters the source, then extract the 14 compounds",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": null,
+      "field": null,
+      "problem": "This span reads the drawn substituent as the free alcohol OCC1CCOC1 with an InChIKey, dropping the attachment point that the other four populated spans express as a leading asterisk. Page image p076 shows an R-group cell, O-CH2 bonded to the 3-position of a tetrahydrofuran ring, not a hydroxymethyl compound. The ring position is read correctly; only the attachment is wrong.",
+      "source_line": 837,
+      "quote": "[IMAGE_EXTRACT: {\"molecules\": [{\"smiles\": \"OCC1CCOC1\", \"molecular_formula\": \"C5H10O2\", \"inchi_key\": \"PCPUMGYALMOCHF-UHFFFAOYSA-N\"}]}]",
+      "artifact_says": "no record carries this structure at all",
+      "should_be": "read the fragment as *OCC1CCOC1 with no InChIKey, matching the treatment of the four *OCC1CCCO1 spans",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "water",
+      "field": "tags",
+      "problem": "The record carries more than one compound_class tag; A1 rule 18 says compound_class is exactly one of its closed list. The extra values arrived when per-section records were merged and their tag lists unioned.",
+      "source_line": 548,
+      "quote": "auf 3.5 l Wasser gegeben",
+      "artifact_says": "['compound_class:solvent', 'compound_class:other', 'compound_class:workup_agent']",
+      "should_be": "keep a single compound_class tag and record the second role in notes",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "hydrochloric acid",
+      "field": "tags",
+      "problem": "The record carries more than one compound_class tag; A1 rule 18 says compound_class is exactly one of its closed list. The extra values arrived when per-section records were merged and their tag lists unioned.",
+      "source_line": 556,
+      "quote": "300 ml konz. Salzsäure",
+      "artifact_says": "['compound_class:reagent', 'compound_class:acid']",
+      "should_be": "keep a single compound_class tag and record the second role in notes",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "methyl 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoate",
+      "field": "tags",
+      "problem": "The record carries more than one compound_class tag; A1 rule 18 says compound_class is exactly one of its closed list. The extra values arrived when per-section records were merged and their tag lists unioned.",
+      "source_line": 574,
+      "quote": "Ausbeute: 38.82 g (67 % der Theorie), farblose Kristalle, Fp.: 74-75 °C",
+      "artifact_says": "['compound_class:intermediate', 'compound_class:starting_material']",
+      "should_be": "keep a single compound_class tag and record the second role in notes",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "N,N-dimethylformamide",
+      "field": "tags",
+      "problem": "The record carries more than one compound_class tag; A1 rule 18 says compound_class is exactly one of its closed list. The extra values arrived when per-section records were merged and their tag lists unioned.",
+      "source_line": 595,
+      "quote": "20 ml Dimethylformamid",
+      "artifact_says": "['compound_class:catalyst', 'compound_class:solvent']",
+      "should_be": "keep a single compound_class tag and record the second role in notes",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "cyclohexane-1,3-dione",
+      "field": "tags",
+      "problem": "The record carries more than one compound_class tag; A1 rule 18 says compound_class is exactly one of its closed list. The extra values arrived when per-section records were merged and their tag lists unioned.",
+      "source_line": 578,
+      "quote": "0.19 g (1.68 mmol) Cyclohexandion",
+      "artifact_says": "['compound_class:reagent', 'compound_class:starting_material']",
+      "should_be": "keep a single compound_class tag and record the second role in notes",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "silica gel",
+      "field": "tags",
+      "problem": "The record carries more than one compound_class tag; A1 rule 18 says compound_class is exactly one of its closed list. The extra values arrived when per-section records were merged and their tag lists unioned.",
+      "source_line": 578,
+      "quote": "chromatographisch gereinigt (Kieselgel, Essigester:Hexan = 1:1)",
+      "artifact_says": "['compound_class:workup_agent', 'compound_class:other']",
+      "should_be": "keep a single compound_class tag and record the second role in notes",
+      "confidence": "high"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "precision - provenance anchoring",
+      "what_was_verified": "All 583 entries in compounds-provenance.json carry at least one source_line, and every quote_zh string was tested as a literal substring of one of its own cited lines in the numbered markdown. All 583 matched. No compound record is unanchored, and no fabricated compound was found."
+    },
+    {
+      "check": "precision - forbidden structure fields",
+      "what_was_verified": "No record in compounds.json contains a smiles, molecular_formula, molecular_weight, inchi or inchi_key key, and no alias is a bare SMILES string. The annotation carries none of the structural fields it is not permitted to contain."
+    },
+    {
+      "check": "precision - default conditions",
+      "what_was_verified": "CompoundRecord has no atmosphere, temperature or pressure field, so the default-condition failure mode does not apply here. Spot checks of role and commercially_available against the text found no value asserted where the text is silent: every commercially_available true is a bulk reagent or solvent no step of this patent prepares, and methyl 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoate, prepared in Example 1 Schritt 6, is correctly false."
+    },
+    {
+      "check": "arithmetic - within-step mass, mole and yield closure",
+      "what_was_verified": "Every step of Example 1 (lines 548 to 589) and Example 2 (lines 595 to 618) was recomputed from the printed masses, stated moles and product molecular weights. All nine Example 1 steps and all three Example 2 steps close to within rounding: 223.48/214.7 = 1.04 mol, 123.35/246.7 = 0.500 mol giving 48 %, 53.02/248.7 = 0.213 mol giving 88 %, 54.93/262.7 giving 98 %, 38.82/341.6 giving 67 %, 0.53/346.8 giving 52 %, 0.10/440.9 giving 15 %, 0.67/340.8 = 1.97 mmol giving 67 %, 0.51/434.9 = 1.17 mmol giving 60 %, 0.5/434.9 giving 98 %. The stated mmol values for potassium tert-butoxide, NaOH, N-bromosuccinimide, oxalyl chloride, cyclohexanedione and triethylamine all reproduce from their printed masses. The one genuine break, Schritt 2 to Schritt 3, is reported as a finding."
+    },
+    {
+      "check": "recall - Example 1 and Example 2 reagents, solvents, washes and drying agents",
+      "what_was_verified": "Each of the twelve procedures was read line by line and every named substance was looked for in the artifact. All are present as records: 2,6-dichlorotoluene, hexamethylphosphoric triamide, sodium thiomethoxide, iodomethane, water, ethyl acetate, magnesium sulfate, acetyl chloride, 1,2-dichloroethane, aluminium chloride, hydrochloric acid, dichloromethane, acetic acid, sodium tungstate, hydrogen peroxide, 1,4-dioxane, sodium hypochlorite, methanol, carbon tetrachloride, N-bromosuccinimide, dibenzoyl peroxide, diethyl ether, n-heptane, cyclohexanol, potassium tert-butoxide, tetrahydrofuran, sodium hydroxide, N,N-dimethylformamide, oxalyl chloride, cyclohexanedione, triethylamine, silica gel, hexane, acetone cyanohydrin, acetonitrile, phenol and sodium hydride. Nothing named in either worked example is missing as a record; the defects found there are in the quantity fields, not in coverage."
+    },
+    {
+      "check": "recall - herbicide combination partner list",
+      "what_was_verified": "The list on lines 521, 526 and 531 was tokenised and every common name, chemical name given after 'd.h.' and bare code number was searched for in the 336 records of that section and, where the merge moved it, across the whole artifact. Every one is present. glufosinate and glyphosate are absent from that section's records but exist as records anchored to line 526 in the provenance, merged into the transgenic-crops mentions on line 431. Ester derivatives named only descriptively (Butylester, Pentylester, Methylester, Propargylester) are correctly not emitted as separate compounds, while the code numbers that name them (DEH-112, S-23031, NC-319, HN-252, DPX-66037) are. dimethazone and clomazon on line 526 are correctly merged into clomazone as aliases with the duplication noted."
+    },
+    {
+      "check": "recall - formulation and biological example sections",
+      "what_was_verified": "Lines 482 to 504 and 844 to 894 were read against the artifact. All formulation auxiliaries are present, including talc, kaolin, kaolin-containing quartz, potassium ligninsulfonate, calcium lignosulfonate, sodium oleoylmethyltaurate, sodium 2,2'-dinaphthylmethane-6,6'-disulfonate, sodium dibutylnaphthalenesulfonate, sodium ligninsulfonate, sodium lauryl sulfate, polyvinyl alcohol, sodium polyacrylate, calcium carbonate, bentonite, pyrophyllite, diatomaceous earth, butanol, cyclohexanone, xylene, calcium dodecylbenzenesulfonate, paraffinic mineral oil, alkylphenol polyglycol ether, isotridecanol polyglycol ether (8 EO) and oxyethylated nonylphenol. All nine example numbers cited in the biological examples (2, 5, 8, 18, 19, 20, 32, 33, 34) are carried as unresolved local labels. The parts by weight in the formulation examples are correctly not written into mass_g."
+    },
+    {
+      "check": "vocabulary - closed lists",
+      "what_was_verified": "Every role, identifier_type, physical_form, purity_method and analytics[].method value in all 520 records was checked against the closed lists in A1 rules 9, 5, 16 and 16. No value falls outside its list and there is no case mismatch. Every tag is of the form category:value with a lowercase snake_case ASCII value, no duplicates within a record, and every compound_class and hazard value is inside its closed list. The only vocabulary defect is the count of compound_class tags on six merged records, reported above."
+    },
+    {
+      "check": "schema - id and compound_uuid",
+      "what_was_verified": "All 520 records carry id and compound_uuid. This is not a defect: raw-compounds.json, the direct A1 output, carries neither, and the A1 prompt states that the two are computed deterministically downstream by finalise.py from (patent_id, identifier) so the gold set's join keys match production. Their presence in the finalised artifact is expected. No enrichment or vector field is present, and all twenty five schema fields are present on every record with no required field missing."
+    },
+    {
+      "check": "translation - German against the EN rendering",
+      "what_was_verified": "The German and its EN line were compared through the description, the worked examples and the table captions. The one real divergence is the printed English abstract on lines 34 and 35, which reads 'benzocyclohexandiones' where the German on line 36 reads 'Benzoylcyclohexandione'; the artifact follows the German and records the conflict in the notes of the benzoylcyclohexanedione record. The patent's own internal error at line 601, where the Schritt 2 heading names a benzoesäure for what the procedure beneath makes as the enol ester, is left standing with resolved false and the conflict recorded, which is the correct handling. No case was found where the artifact followed the English against the German."
+    },
+    {
+      "check": "drawings - structures that were read",
+      "what_was_verified": "All six IMAGE_EXTRACT spans carrying a molecule were checked against the page images. Line 635 *OCC1CCCCO1 matches the six-membered oxan-2-yl drawn in the Nr. 5 cell of page p050. Lines 793, 795, 797 and 799 *OCC1CCCO1 match the five-membered tetrahydrofuran-2-yl drawn in rows 472 to 475 of page p072, attachment at the carbon adjacent to the ring oxygen. Line 837 OCC1CCOC1 has the ring position right, attachment at the 3-position of tetrahydrofuran as drawn in row 538 of page p076, and only its attachment point is wrong, reported above. No case was found of a substituent position that is chemically sensible but not what the page shows."
+    },
+    {
+      "check": "drawings - scheme reagents above and below the arrow",
+      "what_was_verified": "All reaction-type IMAGE_EXTRACT spans in this document (lines 105, 351, 361, 366 and 388) return empty reactants, conditions and products lists, apart from a single conditions text 'R1-Z2' on line 366, so there is nothing merged across an arrow and nothing to mis-assign. The background schemes are the invention's own Schemata 1 to 4 on lines 344 to 394, and the artifact records their compounds under section_label 'Preparation Schemes 1 to 4' with section_type 'summary_of_invention', not as an experimental route."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 930,
+    "present_in_artifact": 520,
+    "missing": [
+      "Table 1, Nr. 16 to Nr. 29 (14 compounds, line 642 and line 649)",
+      "Table 2, Nr. 30 to Nr. 389 (360 compounds, lines 677 to 743)",
+      "Table 3, Nr. 394 to Nr. 400 (7 compounds, line 753)",
+      "Table 4, Nr. 436 to Nr. 451 (16 compounds, line 786)",
+      "Table 5, Nr. 518 to Nr. 530 (13 compounds, line 830)",
+      "Table 3, Nr. 401 to Nr. 435 and Table 4, Nr. 452 to Nr. 516 and Table 5, Nr. 531 to Nr. 544: rows visible on page images p069 to p076 that the vision pass never wrote into the source text, so they are countable only from the images and are excluded from found_in_text"
+    ]
+  }
+}

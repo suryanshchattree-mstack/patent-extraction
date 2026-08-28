@@ -1,0 +1,210 @@
+[
+  {
+    "reaction_id": "Example 1_Step 1",
+    "source_lines": [
+      546,
+      553
+    ],
+    "quote_zh": "200 g (1.24 mol) 2,6-Dichlortoluol wurden in 600 ml Hexamethylphosphorsäuretriamid gelöst und mit  130.41 g (1,86 mol) Natriumthiomethylat versetzt. Anschließend wurde für 3 h auf 100 °C erhitzt. Man ließ abkühlen, fügte 88.2 g (0.5 mol) Jodmethan hinzu und ließ 0,5 h bei Raumtemperatur nachrühren.",
+    "arithmetic_check": "Charges: 2,6-Dichlortoluol 200 g / 1.24 mol implies MW 161.29 against C7H6Cl2 = 161.03, correct. Natriumthiomethylat 130.41 g / 1.86 mol implies 70.11 against CH3SNa = 70.09, correct. Jodmethan 88.2 g / 0.5 mol implies 176.40 against CH3I = 141.94, high by 24.3 %. DOES NOT CLOSE: 88.2 g of CH3I is 0.62 mol, and 0.5 mol of CH3I is 71.0 g. Flag raised: molar_mass_inconsistent, which is rule 27's check for a mass/mole pair that implies the wrong molecular weight. Both printed figures are recorded unchanged. Product closure: limiting input 1.24 mol; product 2-chloro-6-(methylthio)toluene C8H9ClS, MW 172.67; theoretical 1.24 x 172.67 = 214.11 g; printed 208.85 g is 97.54 % of it against the stated 97 %. CLOSES. mass_balance_implausible is therefore NOT raised on this step: the printed product mass neither exceeds what the input moles allow nor disagrees with the stated yield. The only failure here is on the reagent charge.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590, so this section provides no machine-readable structure or scheme for any step. The record rests on the prose alone. No drawing flag (drawing_text_conflict, reagent_drawn_not_written, reagent_written_not_drawn) is raised, because raising one would assert that a comparison against a drawing was possible when none was."
+  },
+  {
+    "reaction_id": "Example 1_Step 2",
+    "source_lines": [
+      554,
+      562
+    ],
+    "quote_zh": "47.36 g (0.60 mol) Acetylchlorid in 200 ml 1,2-Dichlorethan wurden bei 15-20 °C zu einer Suspension von 90.79 g (0.68 Mol) Aluminiumchlorid in 200 ml 1,2-Dichlorethan getropft. Anschließend wurde eine Lösung von 103.14 g (0.60 mol) 2-Chlor-6-methylthiotoluol in 400 ml 1,2-Dichlorethan zugetropft.",
+    "arithmetic_check": "Charges: Acetylchlorid 47.36 g / 0.60 mol implies 78.93 against C2H3ClO = 78.50, high by 0.55 %, rounding. Aluminiumchlorid 90.79 g / 0.68 mol implies 133.51 against AlCl3 = 133.34, correct. 2-Chlor-6-methylthiotoluol 103.14 g / 0.60 mol implies 171.90 against C8H9ClS = 172.67, low by 0.45 %, rounding. No molar_mass_inconsistent. Product closure: limiting input 0.60 mol; product C10H11ClOS, MW 214.71; theoretical 128.83 g; printed 111.24 g is 86.35 % of it against the stated 87 %. CLOSES within the rounding of the printed figures. Continuity: Schritt 1 isolated 208.85 g and this step charges 103.14 g, roughly half of it, so no scale_discontinuity.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590. No drawn structure corroborates the regiochemistry of the acylation, so the position of the acetyl group rests entirely on the product name in the Schritt 2 heading. No drawing flag is raised, because no comparison was possible."
+  },
+  {
+    "reaction_id": "Example 1_Step 3",
+    "source_lines": [
+      563,
+      564
+    ],
+    "quote_zh": "223.48 g (1.04 mol) 2-Chlor-3-methyl-4-methylthio-acetophenon wurden in 1.8 l Eisessig gelöst und mit 27.47 g (0.08 mol) Natriumwolframat versetzt. Anschließend ließ man unter Kühlung 203.83 g einer 30 %igen Wasserstoffperoxidlösung zutropfen und 1.5 d bei Raumtemperatur nachrühren.",
+    "arithmetic_check": "Charges: substrate 223.48 g / 1.04 mol implies 214.88 against C10H11ClOS = 214.71, correct. Natriumwolframat 27.47 g / 0.08 mol implies 343.38. Anhydrous Na2WO4 = 293.82, which would make the charge 0.0935 mol and round to 0.09, not the printed 0.08; the dihydrate Na2WO4.2H2O = 329.85 makes it 0.0833 mol, which rounds to the printed 0.08. The German prints only Natriumwolframat with no hydrate state. The pair is therefore self-consistent for the ordinary commercial dihydrate and inconsistent by 16.9 % for the anhydrous salt, and both readings are recorded in notes. molar_mass_inconsistent is NOT raised, because the printed pair does close under the reading the bare name ordinarily carries. THIS IS A JUDGEMENT CALL AND A5 SHOULD RE-EXAMINE IT. Wasserstoffperoxid is given as 203.83 g of a 30 % solution with no mole figure, so no pair to check. Product closure: limiting input 1.04 mol; product C10H11ClO3S, MW 246.71; theoretical 256.58 g; printed 123.35 g is 48.08 % of it against the stated 48 %. CLOSES. Continuity: Schritt 2 isolated 111.24 g of this substrate but this step charges 223.48 g, twice what the preceding step produced. DOES NOT CLOSE. Flag raised: scale_discontinuity. Numbers recorded as printed.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590. Nothing drawn confirms that the oxidation stops at the sulfone rather than the sulfoxide; that rests on the product name in the Schritt 3 heading and on the 3.12 ppm methyl singlet reported in the prose. No drawing flag is raised."
+  },
+  {
+    "reaction_id": "Example 1_Step 4",
+    "source_lines": [
+      565,
+      566
+    ],
+    "quote_zh": "60 g (0,24 mol) 2-Chlor-3-methyl-4-methylsulfonyl-acetophenon wurden in 510 ml Dioxan gelöst und mit 870 g 13 %ige Natriumhypochloritlösung versetzt. Anschließend wurde noch 1 h auf 80 °C erwärmt.",
+    "arithmetic_check": "Charges: substrate 60 g / 0.24 mol implies 250.00 against C10H11ClO3S = 246.71, high by 1.33 %, inside the rounding two significant figures on the mole figure allow (60 / 246.71 = 0.2432, which rounds to 0.24). No molar_mass_inconsistent. Natriumhypochlorit is given as 870 g of a 13 % solution with no mole figure. Product closure: limiting input 0.24 mol; product C9H9ClO4S, MW 248.68; theoretical 59.68 g; printed 53.02 g is 88.84 % of it against the stated 88 %. CLOSES. Continuity: Schritt 3 isolated 123.35 g and this step charges 60 g, a portion of it, so no scale_discontinuity.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590. The haloform assignment rests on the prose alone: the substrate is named as an acetophenone and the product as a benzoic acid, one carbon shorter. No drawing flag is raised."
+  },
+  {
+    "reaction_id": "Example 1_Step 5",
+    "source_lines": [
+      567,
+      568
+    ],
+    "quote_zh": "53.02 g (0.21 mol) 2-Chlor-3-methyl-4-methylsulfonyl-benzoesäure wurden in 400 ml Methanol gelöst und bei Rückflußtemperatur 3 h mit HCl begast.",
+    "arithmetic_check": "Charges: substrate 53.02 g / 0.21 mol implies 252.48 against C9H9ClO4S = 248.68, high by 1.53 %, inside the rounding two significant figures allow (53.02 / 248.68 = 0.2132, which rounds to 0.21). No molar_mass_inconsistent. HCl is bubbled in with no quantity of any kind, so no pair to check. Product closure: limiting input 0.21 mol; product C10H11ClO4S, MW 262.71; theoretical 55.17 g; printed 54.93 g is 99.57 % of it against the stated 98 %. Taking the substrate charge at its true molarity (0.2132 mol) gives 56.02 g of theory and 98.05 %. CLOSES on either reading. Continuity: Schritt 4 isolated exactly 53.02 g and this step charges exactly 53.02 g. Exact, no scale_discontinuity.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590. That the methanol becomes the ester methyl group is read from the product name in the heading and from the 3.98 ppm singlet in the prose, not from any structure. No drawing flag is raised."
+  },
+  {
+    "reaction_id": "Example 1_Step 6",
+    "source_lines": [
+      569,
+      575
+    ],
+    "quote_zh": "44.14 g (0.17 mol) Methyl 2-Chlor-3-methyl-4-methylsulfonyl-benzoat wurden in 600 ml Tetrachlorkohlenstoff gelöst mit 29.91 g (0.17 mol) N-Bromsuccinimid und mit 0.41 g Dibenzoylperoxid versetzt. Anschließend ließ man unter Rückfluß kochen und mit einer 300 W Lampe belichten.",
+    "arithmetic_check": "Charges: substrate 44.14 g / 0.17 mol implies 259.65 against C10H11ClO4S = 262.71, low by 1.16 %, inside the rounding two significant figures allow. N-Bromsuccinimid 29.91 g / 0.17 mol implies 175.94 against C4H4BrNO2 = 177.99, low by 1.15 %, likewise. Dibenzoylperoxid 0.41 g with no mole figure. No molar_mass_inconsistent. Product closure: limiting input 0.17 mol (the substrate and the NBS are charged at the same molarity); product C10H10BrClO4S, MW 341.60; theoretical 58.07 g; printed 38.82 g is 66.85 % of it against the stated 67 %. CLOSES. Continuity: Schritt 5 isolated 54.93 g and this step charges 44.14 g, a portion of it, so no scale_discontinuity. Note separately that no reaction time is printed for this step at all, so time_h is null rather than inferred.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590. That the bromination is benzylic and not on the ring rests on the product name in the heading and on the 5.3 ppm broad two-proton singlet reported in the prose. No drawing flag is raised. The procedure itself is split across a page break at lines 571 to 573; procedure_text joins the line 569 and line 574 fragments verbatim and in order."
+  },
+  {
+    "reaction_id": "Example 1_Step 7",
+    "source_lines": [
+      576,
+      577
+    ],
+    "quote_zh": "1.0 g (2.93 mmol) Methyl 3-brommethyl-2-chlor-4-methylsulfonyl-benzoat wurde in 10 ml Cyclohexanol gelöst und mit 0.33 g (2.93 mmol) Kalium-tert-butylat versetzt. Man ließ über Nacht bei Raumtemperatur rühren und engte anschließend am Rotationsverdampfer ein. Der Rückstand wurde in 16 ml Tetrahydrofuran und 8 ml Wasser gelöst und zusammen mit 0.55 g NaOH (13.74 mmol) 4 h unter Rückfluß gekocht.",
+    "arithmetic_check": "Charges: substrate 1.0 g / 2.93 mmol implies 341.30 against C10H10BrClO4S = 341.60, correct. Kalium-tert-butylat 0.33 g / 2.93 mmol implies 112.63 against C4H9KO = 112.21, correct. NaOH 0.55 g / 13.74 mmol implies 40.03 against 40.00, correct. Cyclohexanol is charged by volume only. No molar_mass_inconsistent. Product closure: limiting input 2.93 mmol (the bromide; the cyclohexanol is the bulk medium and is in large excess); product C15H19ClO5S, MW 346.83; theoretical 1.0162 g; printed 0.53 g is 52.16 % of it against the stated 52 %. CLOSES. Continuity: Schritt 6 isolated 38.82 g and this step charges 1.0 g. The charge is a small portion of the preceding output, not more than it, so no scale_discontinuity; the deliberate drop from a 40 g scale to a 1 g scale between Schritt 6 and Schritt 7 is noted rather than flagged.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590. Nothing drawn confirms that the cyclohexanol goes on at the benzylic position rather than displacing elsewhere, nor that the methyl ester is the group hydrolysed; both rest on the product name in the heading. No drawing flag is raised."
+  },
+  {
+    "reaction_id": "Example 1_Step 8",
+    "source_lines": [
+      578,
+      579
+    ],
+    "quote_zh": "0.53 g (1.53 mmol) 2-Chlor-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoesäure wurden in 23 ml Methylenchlorid mit 2 Tropfen N,N-Dimethylformamid und 0.59 g (4.58 mmol) Oxalylchlorid versetzt und 2.5 h unter Rückfluß gekocht. Anschließend wurde am Rotationsverdampfer abgezogen, der Rückstand in 23 ml Methylenchlorid aufgenommen und bei 0 °C mit 0.19 g (1.68 mmol) Cyclohexandion und 0.46 g (4.58 mmol) Triethylamin versetzt. Man ließ 4 h bei Raumtemperatur nachrühren.",
+    "arithmetic_check": "Charges: substrate 0.53 g / 1.53 mmol implies 346.41 against C15H19ClO5S = 346.83, correct. Oxalylchlorid 0.59 g / 4.58 mmol implies 128.82 against C2Cl2O2 = 126.93, high by 1.49 %, rounding. Cyclohexandion 0.19 g / 1.68 mmol implies 113.10 against C6H8O2 = 112.13, correct. Triethylamin 0.46 g / 4.58 mmol implies 100.44 against C6H15N = 101.19, correct. N,N-Dimethylformamid is charged as 2 drops. No molar_mass_inconsistent. Product closure: limiting input 1.53 mmol of the acid (the dione at 1.68 mmol is in slight excess); product C21H25ClO6S, MW 440.94; theoretical 0.6746 g; printed 0.1 g is 14.82 % of it against the stated 15 %. CLOSES. Continuity: Schritt 7 isolated exactly 0.53 g and this step charges exactly 0.53 g. Exact.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590. That the product is the O-acylated enol ester and not the C-acylated dione rests entirely on the Schritt 8 heading name and on the fact that Schritt 9 then converts it into the C-acyl isomer; no structure is drawn for either. No drawing flag is raised."
+  },
+  {
+    "reaction_id": "Example 1_Step 9",
+    "source_lines": [
+      583,
+      590
+    ],
+    "quote_zh": "0.10 g (0.23 mmol) 3-Oxo-1-cyclohexenyl 2-chlor-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoat, 1 Tropfen Acetoncyanhydrin und 0.04 g (0.39 mMol) Triethylamin wurden in 5 ml Acetonitril gelöst und über Nacht bei Raumtemperatur gerührt.",
+    "arithmetic_check": "Charges: substrate 0.10 g / 0.23 mmol implies 434.78 against C21H25ClO6S = 440.94, low by 1.40 %, inside the rounding two significant figures allow (0.10 / 440.94 = 0.2268 mmol, which rounds to 0.23). Triethylamin 0.04 g / 0.39 mmol implies 102.56 against C6H15N = 101.19, high by 1.35 %, rounding. Acetoncyanhydrin is charged as 1 drop. No molar_mass_inconsistent. Product closure: the transformation is an O-to-C acyl migration, so product and substrate are isomers of the same formula C21H25ClO6S, MW 440.94; theoretical from 0.23 mmol is 0.1014 g; printed 0.1 g is 98.6 % of it against the stated 100 %. The printed mass does not exceed theory and it does not disagree with the stated yield at the one significant figure both are printed to, so mass_balance_implausible is NOT raised. Recorded for A5 nonetheless: a stated 100 % of theory surviving a concentration, an aqueous acidification with 5 M HCl, an extraction and a water wash is a strong claim, and it is only the single significant figure on both the 0.10 g input and the 0.1 g output that lets the ratio round to 100 %. Continuity: Schritt 8 isolated 0.1 g and this step charges 0.10 g. Exact.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590. The rearrangement is inferred from the two heading names alone, the Schritt 8 enol ester and the Schritt 9 benzoyl dione, together with the 4.55 ppm one-proton singlet reported in the prose; no structure is drawn for either isomer, so nothing independent confirms that the migration occurred. No drawing flag is raised."
+  },
+  {
+    "reaction_id": "Example 2_Step 1",
+    "source_lines": [
+      593,
+      600
+    ],
+    "quote_zh": "1.0 g (2.93 mmol) Methyl 3-brommethyl-2-chlor-4-methylsulfonyl-benzoat und 0.28 g (2.93 mmol) Phenol wurden in 20 ml Dimethylformamid gelöst und mit 0.14 g (3.51 mmol) 60 %iges Natriumhydrid versetzt. Man ließ über Nacht bei Raumtemperatur rühren und engte anschließend im Hochvakuum am Rotationsverdampfer ein. Der Rückstand wurde in 16 ml Tetrahydrofuran und 8 ml Wasser gelöst und zusammen mit 0.23 g NaOH (5.85 mmol) 4 h unter Rückfluß gekocht. Anschließend ließ man abkühlen, engte am Rotationsverdampfer weitgehend ein und versetzte anschließend den wässrigen Rückstand mit 2 M HCl. Anschließend wurde mit Methylenchlorid extrahiert, die vereinigte organische Phase über MgSO4 getrocknet und am Rotationsverdampfer vollständig eingeengt.",
+    "arithmetic_check": "Charges: Methyl 3-brommethyl-2-chlor-4-methylsulfonyl-benzoat 1.0 g / 2.93 mmol implies MW 341.30 against C10H10BrClO4S = 341.60, correct. Phenol 0.28 g / 2.93 mmol implies 95.56 against C6H6O = 94.11, high by 1.54 %, rounding. Natriumhydrid printed as 0.14 g of the 60 % dispersion / 3.51 mmol: 0.14 x 0.60 = 0.084 g of NaH, and 0.084 / 24.00 = 3.50 mmol, correct, so the 60 % has been taken into account by the patentee. NaOH 0.23 g / 5.85 mmol implies 39.32 against NaOH = 40.00, low by 1.70 %, rounding, since 5.85 mmol is 0.234 g. No molar_mass_inconsistent. Product closure: limiting input 2.93 mmol, the bromide and the phenol being equimolar; product 2-chloro-4-methylsulfonyl-3-phenoxymethyl-benzoic acid C15H13ClO5S, MW 340.78; theoretical 2.93 x 340.78 = 0.9985 g; printed 0.67 g is 67.10 % of it against the stated 67 %. CLOSES. Continuity across sections: Example 1 Schritt 6 isolated 38.82 g of the same bromide and this step charges 1.0 g of it, a portion, so no scale_discontinuity is raised.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 591 to 619, so this section provides no machine-readable structure or scheme for any step. The record rests on the prose alone. No drawing flag (drawing_text_conflict, reagent_drawn_not_written, reagent_written_not_drawn) is raised, because raising one would assert that a comparison against a drawing was possible when none was."
+  },
+  {
+    "reaction_id": "Example 2_Step 2",
+    "source_lines": [
+      601,
+      611
+    ],
+    "quote_zh": "0.67 g (1.97 mmol) 2-Chlor-4-methylsulfonyl-3-phenoxymethyl-benzoesäure wurden in 30 ml Methylenchlorid mit 2 Tropfen N,N-Dimethylformamid und 0.76 g (5.9 mmol) Oxalylchlorid versetzt und 2.5 h unter Rückfluß gekocht. Anschließend wurde am Rotationsverdampfer abgezogen, der Rückstand in 30 ml Methylenchlorid aufgenommen und bei 0 °C mit 0.24 g (2.16 mmol) Cyclohexandion und 0.60 g (5.9 mmol) Triethylamin versetzt. Man ließ 4 h bei Raumtemperatur nachrühren. Anschließend wurde am Rotationsverdampfer eingeengt und chromatographisch gereinigt (Kieselgel, Essigester:Hexan = 1:1).",
+    "arithmetic_check": "Charges: substrate 0.67 g / 1.97 mmol implies MW 340.10 against C15H13ClO5S = 340.78, correct, and it matches the 0.67 g Schritt 1 isolated. Oxalylchlorid 0.76 g / 5.9 mmol implies 128.81 against C2Cl2O2 = 126.93, high by 1.48 %, rounding. Cyclohexandion 0.24 g / 2.16 mmol implies 111.11 against C6H8O2 = 112.13, low by 0.91 %, rounding. Triethylamin 0.60 g / 5.9 mmol implies 101.69 against C6H15N = 101.19, correct. N,N-Dimethylformamid is charged as 2 drops. PRODUCT IDENTITY, WHICH IS THE FAILURE ON THIS STEP: the heading names the product a benzoesaeure, C15H13ClO5S, MW 340.78. Against that name the numbers do not close: theoretical from 1.97 mmol would be 0.6713 g and the printed 0.51 g would be 75.97 %, not the stated 60 %; and Schritt 3 charges the same material as 0.51 g / 1.17 mmol, implying MW 435.90, high by 27.9 % against 340.78. Against the enol ester the procedure actually makes, 3-oxo-1-cyclohexenyl ester C21H19ClO6S, MW 434.89, everything closes: theoretical 1.97 x 434.89 = 0.8567 g, printed 0.51 g is 59.53 % against the stated 60 %, and 435.90 from the Schritt 3 charge is 0.23 % off 434.89. Flag raised: molar_mass_inconsistent, rule 27's check for a stated mass and mole pair implying a molecular weight that does not match the compound named. mass_balance_implausible is deliberately NOT raised in addition: the arithmetic closes on the compound made, so the single fault is the printed name, and the printed name is left exactly as it stands.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 591 to 619. That the product is the O-acylated enol ester and not the benzoic acid the heading names rests on the prose of the step itself, on the mass and mole pair Schritt 3 prints for the same material, and on Schritt 3 then converting it into the C-acyl isomer; no structure is drawn for any of it. No drawing flag is raised."
+  },
+  {
+    "reaction_id": "Example 2_Step 3",
+    "source_lines": [
+      612,
+      619
+    ],
+    "quote_zh": "0.51 g (1.17 mmol) 3-Oxo-1-cyclohexenyl 2-chlor-4-methylsulfonyl-3-phenoxymethyl-benzoesäure, 1 Tropfen Acetoncyanhydrin und 0.21 g (2.04 mMol) Triethylamin wurden in 20 ml Acetonitril gelöst und über Nacht bei Raumtemperatur gerührt. Anschließend wurde am Rotationsverdampfer eingeengt, mit 5 ml Wasser versetzt und mit 5 M HCl sauer gestellt. Es wurde mit Essigester extrahiert, mit Wasser gewaschen, über MgSO4 getrocknet und am Rotationsverdampfer vollständig eingeengt. Es wurde mit Essigester extrahiert, mit Wasser gewaschen, über MgSO4 getrocknet und am Rotationsverdampfer vollständig eingeengt.",
+    "arithmetic_check": "Charges: substrate 0.51 g / 1.17 mmol implies MW 435.90. Against C21H19ClO6S = 434.89, the enol ester the Schritt 2 procedure makes, that is correct to 0.23 %; against C15H13ClO5S = 340.78, the benzoesaeure the Schritt 2 heading names, it is high by 27.9 %. Flag raised on this record: molar_mass_inconsistent, for the charged material's printed name. Triethylamin 0.21 g / 2.04 mmol implies 102.94 against C6H15N = 101.19, high by 1.73 %, rounding. Acetoncyanhydrin is charged as 1 drop. Product closure: the transformation is an O-to-C acyl migration, so the product 2-(2-chloro-4-methylsulfonyl-3-phenoxymethyl-benzoyl)-cyclohexane-1,3-dione is an isomer of the substrate, also C21H19ClO6S, MW 434.89; theoretical from 1.17 mmol is 0.5088 g; printed 0.5 g is 98.27 % of it against the stated 98 %. CLOSES, and the near-quantitative yield is itself consistent with a rearrangement rather than a coupling. Continuity: Schritt 2 isolated exactly 0.51 g and this step charges exactly 0.51 g. Exact.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 591 to 619. That this step is a rearrangement of the Schritt 2 product rather than a fresh acylation rests on the prose and on the substrate and product being isomers; no structure is drawn for either. No drawing flag is raised."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 1",
+    "source_lines": [
+      344,
+      351
+    ],
+    "quote_zh": "Durch die  in Schema 1 angegebene Umsetzung einer Verbindung der Formel (II) mit einer Verbindung der Formel (III)",
+    "arithmetic_check": "Nothing to close. Line 344 states no mass, volume, mole, equivalent, yield or molar ratio, and no number of any kind appears in the paragraph other than the literature reference numbers EP-A 0 369 803 and EP-B 0 283 261. No mass balance, molar mass or yield check is possible on this record. Note for A5: the whole of this section is numberless, so the arithmetic in this patent can only be tested in Example 1 and Example 2.",
+    "drawing_evidence": "None usable. The Schema 1 span on line 351 is [IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [], \"conditions\": [], \"products\": []}]}], that is, one arrow with no reactants, no conditions and no products. Nothing was read off the drawing, so the drawing neither agrees nor disagrees with the prose and no comparison was attempted."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 2",
+    "source_lines": [
+      355
+    ],
+    "quote_zh": "Verbindungen oben genannter Formel (III) können gemäß bekannten Methoden aus Verbindungen der Formel (III), in der R für Hydroxy oder Alkoxy steht, hergestellt werden.",
+    "arithmetic_check": "Nothing to close. Line 355 contains no number at all, not even a literature reference. No mass balance, molar mass or yield check is possible.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT] span and no scheme caption is attached to line 355, so there is no drawing evidence for this step in either direction."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 3",
+    "source_lines": [
+      357,
+      361,
+      366
+    ],
+    "quote_zh": "Verbindungen der Formel (III), in der R1 für Alkoxy steht, können beispielsweise gemäß Schema 2 aus Verbindungen der Formel (IV), in der Hal für Halogen steht, hergestellt werden.",
+    "arithmetic_check": "Nothing to close. Line 357 states no mass, mole, equivalent or yield. The only numerals in the sentence are the formula labels (III), (IV) and the scheme number Schema 2. No mass balance, molar mass or yield check is possible.",
+    "drawing_evidence": "None usable. The Schema 2 span on line 361 is one arrow with empty reactants, conditions and products. The further span on line 366, on the following page, carries exactly one arrow reagent text, R1-Z2, and empty reactants and products; that reagent is the one the prose on line 372 gives for Schema 3, so which scheme the line 366 span belongs to cannot be determined from this input. Neither span supports or contradicts the prose of line 357."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 4",
+    "source_lines": [
+      368
+    ],
+    "quote_zh": "Vebindungen der Formel (III) sind erhältlich durch basenkatalysierte Umsetzung mit Verbindungen R1-H, wie Alkohole, Thioalkohole, Amide, Amine, Heteroaromaten, Heterocyclen.",
+    "arithmetic_check": "Nothing to close. The only numbers on line 368 are the volume, page and year figures of the four literature citations. No mass, mole, equivalent or yield is stated, so no mass balance, molar mass or yield check is possible.",
+    "drawing_evidence": "None. Paragraph 2.1 carries no [IMAGE_EXTRACT] span. The Schema 2 span on line 361 that it sits under is one arrow with empty reactants, conditions and products, and the span on line 366 carries only the reagent text R1-Z2, which belongs to the Schema 3 prose on line 372 and not to R1-H. Nothing in either span supports or contradicts this record."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 5",
+    "source_lines": [
+      370
+    ],
+    "quote_zh": "Vebindungen der Formel (III) sind ebenfalls erhältlich durch Umsetzung mit lithiumorganischen Verbindungen der Formel R1-Li.",
+    "arithmetic_check": "Nothing to close. The only numbers on line 370 are the volume, page and year figures of the two literature citations. No mass, mole, equivalent or yield is stated.",
+    "drawing_evidence": "None. Paragraph 2.2 carries no [IMAGE_EXTRACT] span and the Schema 2 span it sits under is empty of reactants, conditions and products."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 6",
+    "source_lines": [
+      372,
+      374
+    ],
+    "quote_zh": "Verbindungen der Formel (III) sind auch gemäß Schema 3 erhältlich durch basenkatalysierte Umsetzung einer  Verbindung der Formel (V), in der Z1 für OH, SH, NH-Alkyl, NH-Aryl oder NH-Heteroaryl steht, mit kommerziell erhältlichen oder gemäß bekannten Methoden herstellbaren Verbindungen der Formel R1-Z2, in der Z2 für eine Abgangsgruppe steht, wie Halogen, Phenoxy und Alkylsulfonyl.",
+    "arithmetic_check": "Nothing to close. The only numbers on line 372 are the page and year figures of the two literature citations. No mass, mole, equivalent or yield is stated.",
+    "drawing_evidence": "None. The Schema 3 caption on line 374 is followed by no [IMAGE_EXTRACT] span whatsoever, so no part of the Schema 3 drawing is present in this input. The span on line 366, two pages earlier and under the Schema 2 caption, does carry the reagent text R1-Z2 that this paragraph names, which is the only reason to suspect it may in fact be the Schema 3 drawing; that cannot be settled from this input and it is recorded, not resolved."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 7",
+    "source_lines": [
+      376,
+      388
+    ],
+    "quote_zh": "Die  in Schema 4 angegebene Umsetzung einer Verbindung der Formel (Ia) mit einem Halogenierungsreagenz, wie Oxalylchlorid oder Oxalylbromid, führt zu erfindungsgemäßen Verbindungen der Formel (Ib)",
+    "arithmetic_check": "Nothing to close. Line 376 contains no number except the scheme number Schema 4 and the formula labels (Ia) and (Ib). No mass, mole, equivalent or yield is stated.",
+    "drawing_evidence": "None usable. The Schema 4 span on line 388 lists two reactions, step_id 1 and step_id 2, each with empty reactants, conditions and products. Nothing chemical was read off the drawing, so it neither supports nor contradicts this record. The bare labels Ia, Ib and Ic on lines 390, 392 and 394 are the drawing's compound captions surviving as text; they confirm that three structures are drawn but carry no structure and no connectivity."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 8",
+    "source_lines": [
+      376,
+      381,
+      388
+    ],
+    "quote_zh": "die durch Reaktion, gegebenenfalls unter Basenkatalyse, mit Nukleophilen, wie Alkalimetallcyaniden, / Alkalimetallcyanaten, Alkalimetallthiocyanaten,  Alkylthioalkoholen und Thiophenolen zu weiteren erfindungsgemäßen Verbindungen der Formel (Ic), in der R6 für Alkylthio, Halogenalkylthio, Alkenylthio, Halogenalkenylthio, Alkinylthio, Halogenalkinylthio, Cyano, Cyanato, Thiocyanato oder OR12 steht, umgesetzt werden können.",
+    "arithmetic_check": "Nothing to close. The sentence carries no mass, mole, equivalent or yield. Its only numbers are the substituent index in OR12, the R6 label and the citation figures Synthesis 12, 1287 (1992).",
+    "drawing_evidence": "None usable. The Schema 4 span on line 388 has two reactions with empty reactants, conditions and products, so nothing chemical was read off the drawing and no comparison was possible."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 9",
+    "source_lines": [
+      381
+    ],
+    "quote_zh": "Durch Reaktion mit einem Oxidationsreagenz, wie Peroxyessigsäure, Wasserstoffperoxid, m-Chlorperoxybenzoesäure und Kaliumperoxymonosulfat, werden erfindungsgemäße Verbindungen der Formel (Ic) erhalten, in der R6 für Alkylsulfinyl, Halogenalkylsulfinyl, Alkenylsulfinyl, Halogenalkenylsulfinyl, Alkinylsulfinyl, Halogenalkinylsulfinyl, Alkylsulfonyl, Halogenalkylsulfonyl, Alkenylsulfonyl, Halogenalkenylsulfonyl, Alkinylsulfonyl oder Halogenalkinylsulfonyl steht.",
+    "arithmetic_check": "Nothing to close. The sentence carries no mass, mole, equivalent or yield. Its only numbers are the R6 label and the citation figures J. Org. Chem. 53, 532 (1988) and Tetrahedron Lett. 21, 1287 (1981).",
+    "drawing_evidence": "None usable. The Schema 4 span on line 388 has two reactions with empty reactants, conditions and products. No structure, no reagent and no arrow label was read, so there is no drawn evidence for or against this transformation."
+  }
+]
