@@ -1,0 +1,422 @@
+{
+  "artifact": "reactions.json",
+  "records_audited": 36,
+  "findings": [
+    {
+      "check": "fidelity",
+      "severity": "critical",
+      "record": "Example 1_Step 1",
+      "field": "conditions.temperature",
+      "problem": "The only numeric temperature the step prints, 75 to 80 C, is dropped from the structured temperature block, which is left type not_specified with all three bounds null, although the identical 在X～Y℃滴加 construction is read into conditions.temperature on all ten other records in the artifact that carry one.",
+      "source_line": 181,
+      "quote": "加入500ml反应瓶中，在75～80℃滴加20.6g双氧水(30％、0.182mol)",
+      "artifact_says": "conditions.temperature = {\"type\":\"not_specified\",\"value_c\":null,\"min_c\":null,\"max_c\":null}; the range appears only in the hydrogen peroxide addition_profile, and notes argue that a 滴加 range is an addition temperature and not a reaction temperature",
+      "should_be": "set {\"type\":\"range\",\"min_c\":75.0,\"max_c\":80.0} as Example 2_Step 1 (45-50), Example 3_Step 1 (50-55) and Example 4_Step 1 (60-65) all do from the same construction, or else strip the range from those three; one rule must govern all four. Claims_Step 1 notes state the rule the other records follow: \"a dropwise addition temperature is held in conditions.temperature and repeated in the reagent's addition_profile\".",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "critical",
+      "record": "Example 1_Step 3",
+      "field": "conditions.temperature",
+      "problem": "The only numeric temperature the step prints, 25 to 30 C for the triethylamine addition, is dropped from the structured temperature block, although Example 2_Step 3 (20-25), Example 3_Step 3 (0-5) and Example 4_Step 3 (5-10) all populate it from the identical construction in the identical position of the identical procedure.",
+      "source_line": 200,
+      "quote": "100ml二氯乙烷加入反应瓶，在25～30℃滴加18.5g三乙胺(99％、0.18mol)",
+      "artifact_says": "conditions.temperature = {\"type\":\"not_specified\",...}; the 25 to 30 C appears only in the triethylamine addition_profile and in one_pot_steps[1]",
+      "should_be": "set {\"type\":\"range\",\"min_c\":25.0,\"max_c\":30.0}, matching the three sibling Step 3 records.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "major",
+      "record": "Example 4_Step 1",
+      "field": "named_reaction",
+      "problem": "This step is given the name Wohl-Ziegler bromination while Examples 1, 2 and 3 Step 1, Claims_Step 1, Summary_Step 1 and Comparative Example_Step 1 all set named_reaction null, each with an explicit note that Wohl-Ziegler names the N-bromo-reagent bromination and that this hydrobromic acid plus hydrogen peroxide system is not one; Example 4 runs exactly the same HBr/H2O2/AIBN chemistry as Examples 1 and 2.",
+      "source_line": 272,
+      "quote": "1.66g偶氮二异丁腈(99％、0.01mol)，33.75g氢溴酸(48％、0.2mol)加入500ml反应瓶中，在60～65℃滴加22.7g双氧水(30％、0.2mol)",
+      "artifact_says": "Example 4_Step 1 named_reaction = \"Wohl-Ziegler bromination\" with tag named_rxn:wohl_ziegler_bromination; Example 1_Step 1 notes: \"named_reaction is left null deliberately: Wohl-Ziegler names a bromination by an N-bromo reagent such as N-bromosuccinimide, and no N-bromo reagent is charged here\"",
+      "should_be": "set named_reaction null on Example 4_Step 1 and drop the named_rxn tag, matching the other five records and the reasoning they state. The Background records that do use the name (Steps 1 and 2) are the NBS brominations, where it is correct.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "major",
+      "record": "Claims_Step 3",
+      "field": "reaction_class",
+      "problem": "The identical final transformation is classified 'other' here but 'acylation' in Summary_Step 3, all four Example Step 3 records, Comparative Example_Step 3 and Scheme Step 4, and the notes on both sides give the SAME reason for the opposite answer, so the gold set carries two contradictory labels for one reaction.",
+      "source_line": 59,
+      "quote": "将1,3-环己二酮、溶剂加入反应瓶，在30℃以下滴加三乙胺，LC跟踪至反应完全；反应完全后，加入丙酮氰醇",
+      "artifact_says": "Claims_Step 3 reaction_class 'other', notes: \"The reaction_class enum has no rearrangement member, so reaction_class is other at medium confidence\"; Example 3_Step 3 notes: \"the closed class list has no rearrangement value, so acylation is recorded at MEDIUM confidence\"",
+      "should_be": "pick one value for this transformation and use it in all eight records. The six-to-one weight of the rest of the artifact favours 'acylation' with transformation:rearrangement carried in tags, which is what Claims_Step 3 already tags.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "major",
+      "record": "Summary of the Invention_Step 2",
+      "field": "named_reaction",
+      "problem": "named_reaction is null here but 'Williamson ether synthesis' in Claims_Step 2 and in all four Example Step 2 records, for the same two-transformation step classed as hydrolysis; the stated reason, that naming the other transformation on a record classed as the hydrolysis would misread the field, applies identically to the five records that do it.",
+      "source_line": 123,
+      "quote": "[0016] 将2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯、碱1、催化剂、溶剂、2,2,2-三氟乙醇加入反应瓶，在80℃以下进行反应",
+      "artifact_says": "Summary_Step 2 named_reaction null, notes: \"The first transformation is a Williamson ether synthesis and that is recorded on Scheme Step 2 ... putting a name for the other transformation on it would misread the field\"; Claims_Step 2 named_reaction 'Williamson ether synthesis', notes: \"named_reaction records the Williamson ether synthesis of the first\"",
+      "should_be": "one value across the six records, with one line of reasoning; the named_rxn tag must follow it.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "Example 3_Step 2",
+      "field": "conditions.temperature",
+      "problem": "This record takes its structured temperature from the FIRST transformation (0 to 5 C, the etherification) while Examples 1, 2 and 4 Step 2 take it from the FINAL transformation (70 to 75 C, the alkaline hydrolysis) and state that convention explicitly, so the same field means a different stage in one of four sibling records.",
+      "source_line": 249,
+      "quote": "加入500ml反应瓶中，在0～5℃进行反应，LC跟踪至反应完全 ... 200ml水，在70～75℃进行碱解",
+      "artifact_says": "Example 3_Step 2 temperature {\"type\":\"range\",\"min_c\":0.0,\"max_c\":5.0}, notes: \"The 0 to 5 C is recorded because it is the temperature attached to the main charge sentence\"; Example 4_Step 2 notes: \"CONDITIONS follow the final transformation, so the structured temperature is the 70 to 75 C band of the alkaline hydrolysis\"",
+      "should_be": "apply one rule to all four Step 2 records. The stated reason for Example 3's choice, that the range sits on the main charge sentence, is equally true of Example 1's 75-80 C and Example 4's 20-25 C, both of which were passed over.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "Example 1_Step 2",
+      "field": "one_pot_steps",
+      "problem": "The acidification is counted as a third one-pot transformation here, giving three entries, while Claims_Step 2, Summary_Step 2, Comparative Example_Step 2 and Examples 2, 3 and 4 Step 2 all carry two and each states in terms that the acidification is an isolation operation and NOT a third transformation.",
+      "source_line": 188,
+      "quote": "在70～75℃进行碱解，LC跟踪至反应完全，反应完全后滴加盐酸酸化，过滤，洗涤，烘干",
+      "artifact_says": "Example 1_Step 2 one_pot_steps[2] = \"acidification of the hydrolysate with hydrochloric acid, added dropwise, to liberate the free benzoic acid\"; Example 2_Step 2 notes: \"THE ACIDIFICATION IS NOT COUNTED AS A THIRD TRANSFORMATION\"",
+      "should_be": "drop the third entry from Example 1_Step 2 and keep the acidification in workup and ph_target_stage, as the other six records do; a consumer counting transformations gets 3 from Example 1 and 2 from Examples 2, 3 and 4 for identical text.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "Summary of the Invention_Step 1",
+      "field": "compounds",
+      "problem": "The two permitted catalysts and the seven permitted solvents named at lines 131 and 133, inside this record's own section, are carried by no compound entry, although Claims_Step 1 records all nine from claims 3 and 4, which are word-for-word the same recitation, and this record did take the 45-80 C range from line 131.",
+      "source_line": 133,
+      "quote": "[0021] 进一步的，步骤1)中，所述反应溶剂为二氯甲烷、1 ,2-二氯乙烷或氯仿；所述结晶溶剂为甲醇、乙醇、异丙醇或正丁醇。",
+      "artifact_says": "compounds = [the methyl ester, 溶剂, 催化剂, hydrobromic acid, hydrogen peroxide, the bromide]; notes: \"The enumerated members are separate A1 records; the placeholders are what this step charges, so the placeholders are what is recorded\"",
+      "should_be": "add azobisisobutyronitrile, m-chloroperoxybenzoic acid, dichloromethane, 1,2-dichloroethane, chloroform, methanol, ethanol, isopropanol and n-butanol alongside the placeholders, as Claims_Step 1 does, or drop them from Claims_Step 1. One convention must govern both recitations, otherwise the gold set scores identical extractor behaviour as correct in one section and wrong in the other.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "Summary of the Invention_Step 2",
+      "field": "compounds",
+      "problem": "The ten species enumerated at lines 137 and 142, inside this record's own section, are carried by no compound entry, although Claims_Step 2 records all ten from claims 6 and 7, which recite the same thing.",
+      "source_line": 137,
+      "quote": "[0023] 进一步的，步骤2)中，所述碱1为碳酸钾；所述催化剂为三乙烯二胺或2-甲基三乙烯二胺；所述碱2为氢氧化钠、氢氧化钾或氢氧化锂。",
+      "artifact_says": "compounds carry only the placeholders 碱1, 催化剂, 溶剂, 碱2 with no named member of any list",
+      "should_be": "add potassium carbonate, triethylenediamine, 2-methyltriethylenediamine, sodium hydroxide, potassium hydroxide, lithium hydroxide, acetonitrile, N,N-dimethylformamide, acetone and tetrahydrofuran, matching Claims_Step 2.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "Summary of the Invention_Step 3",
+      "field": "compounds",
+      "problem": "The catalyst identified as DMF and the four crystallisation solvents named at line 148, inside this record's own section, are carried by no compound entry, although Claims_Step 3 records all five from claim 10.",
+      "source_line": 148,
+      "quote": "[0027] 进一步的，步骤3)中，催化剂为DMF；结晶溶剂为甲醇、乙醇、异丙醇或正丁醇。",
+      "artifact_says": "compounds = [the benzoic acid, 催化剂, thionyl chloride, 溶剂, 1,3-cyclohexanedione, triethylamine, acetone cyanohydrin, tembotrione]; no N,N-dimethylformamide and no crystallisation solvent",
+      "should_be": "add N,N-dimethylformamide, methanol, ethanol, isopropanol and n-butanol, matching Claims_Step 3. Note the record's own reagent_written_not_drawn flag rests on [0027] identifying the catalyst as DMF, so the paragraph was read but its compounds were not emitted.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "Summary of the Invention_Step 1 and Summary of the Invention_Step 3",
+      "field": "compounds",
+      "problem": "Wash water is excluded from compounds[] on these two records although the same sentences in Claims_Step 1 and Claims_Step 3 put water in compounds[] with role solvent; the same species, from the same wording, is present in one section's records and absent from the other's. Reported as one finding because it is one convention decision, not two independent omissions.",
+      "source_line": 127,
+      "quote": "反应完全后加入水进行水洗，分层，油层脱尽溶剂，加溶剂进行重结晶，过滤，烘干得米黄色固体环磺酮。",
+      "artifact_says": "Summary_Step 1 and Summary_Step 3 carry no water compound; Claims_Step 1 and Claims_Step 3 both carry water with role solvent; Summary_Step 2 carries water but with role reactant",
+      "should_be": "adopt one rule for whether workup water appears in compounds[] and apply it to both prose recitations of the route.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "All 13 Example and Comparative Example records and the 5 Scheme records",
+      "field": "notes",
+      "problem": "The notes carry 218 numeric values that appear nowhere in the patent: molecular weights (262.71, 341.60, 346.70, 440.82, 112.18, 164.21, 118.97, 100.04, 73.09, 85.11), derived mole figures (0.15165, 0.08694, 0.008825, 0.01995), derived theoretical masses and percentages (51.92, 30.13, 34.67, 88.98, 89.2, 17.9, 10.3) and, on the five Scheme records, page pixel coordinates (526-766, 792-1067, 1088-1373, 1389-1712, 1739-2040). A2 rule 32 says notes must introduce no number absent from the text, and the A2 output section says arithmetic_check \"is written to output/reactions-provenance.json ... It never enters reactions.json\". The same derivations already exist in full in the provenance sidecar.",
+      "source_line": 181,
+      "quote": "在75～80℃滴加20.6g双氧水(30％、0.182mol)，滴加完毕后继续反应",
+      "artifact_says": "Example 1_Step 1 notes: \"40 g at 99.6％ is 39.84 g, which over C10H11ClO4S at 262.71 is 0.1517 mol against the printed 0.152 ... 0.152 mol at the drawn product's 341.60 gives 51.92 g theoretical, and the printed 46.67 g at 99.0％ purity is 46.20 g, which is 88.98％ of theory\"",
+      "should_be": "reduce the notes to the qualitative statement plus the printed numbers and leave the derivation in reactions-provenance.json arithmetic_check, where it already sits verbatim; validation_flags already carry the machine-readable signal. The pixel coordinates on the Scheme records are vision-pass artefacts and belong in drawing_evidence, not in notes.",
+      "confidence": "high"
+    },
+    {
+      "check": "linkage",
+      "severity": "major",
+      "record": "All sections",
+      "field": "compounds[].identifier",
+      "problem": "Each of the three principal intermediates carries two or three different identifiers, split cleanly along section lines, so no cross-section join on identifier is possible: the bromide is 'methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate' in Claims and Summary, '...(methylsulfonyl)...' in the Examples and the Comparative Example, and 'methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate' in the Background; the benzoic acid splits the same three ways; the starting ester splits two ways.",
+      "source_line": 49,
+      "quote": "[claim 1] step 1) title 1)2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的合成",
+      "artifact_says": "three identifier strings for one substance across 20 records: 6 Claims/Summary records, 10 Example/Comparative records and 4 Background records",
+      "should_be": "originates in A1 (compounds.json holds the variants as separate records) and A2 rule 7 forces an exact match, so reactions.json should follow whichever single identifier A1 settles on. Reported here because the split is carried in this artifact and breaks its joins: the claimed route and the worked route share no compound identifier at all.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "major",
+      "record": "Background_Step 5",
+      "field": "validation_flags",
+      "problem": "missing_reactant is raised on a record that does have a compound with role 'reactant', so the flag contradicts its own definition in A2 rule 27 and is_complete is false on a record whose flag set should be one shorter.",
+      "source_line": 100,
+      "quote": "中间态2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸-3-氧代-1-环己烯酯单独分离处理，导致工艺繁琐，收率偏低，只有69％",
+      "artifact_says": "validation_flags = ['missing_reactant','no_conditions']; compounds = [cyanoacetone (reagent), 3-oxo-1-cyclohexen-1-yl ... benzoate (reactant), tembotrione (product)]",
+      "should_be": "drop 'missing_reactant'. The other six Background records that carry it (Steps 1, 2, 3, 7, 8, 10) genuinely have no compound with role reactant and are correct. If the intent was that the record's reactant_names is empty, that is a different condition and the flag list has no value for it.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "The abstract recites the whole three-step route with its reagents, its addition order and its workup, in the same quantity-free form as claim 1, yet no record is emitted for it, while claim 1 yields three records.",
+      "source_line": 40,
+      "quote": "1)先加入2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯、溶剂、催化剂、氢溴酸，然后滴加双氧水，反应后水洗、浓缩、重结晶，得到溴代物2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯",
+      "artifact_says": "no record with section_label 'Abstract'; A0 set contains_procedure false with the note \"it states no charge, no temperature and no yield and is therefore not a procedure\"",
+      "should_be": "emit three Abstract records, or say in the Claims records why a quantity-free recitation is a procedure in the claims and not in the abstract. The stated reason does not separate them: claim 1 also states no charge and no yield. Originates in A0's section map, not in A2's reading of its own section, and I flag it as a recall gap of the finished artifact rather than as an A2 error. What would settle it: the A0 rule for contains_procedure applied consistently to both recitations.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Paragraphs [0031] to [0033] each name a transformation of the invention's own route with the reagent used, in exactly the 在制备X的时候 construction from which the ten Background records were emitted, yet no record is emitted for any of them.",
+      "source_line": 160,
+      "quote": "[0031] 1.在制备2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的时候，以价格便宜的氢溴酸为溴化剂，降低了安全风险，提高了收率，降低了生产成本。",
+      "artifact_says": "no record with section_label 'Beneficial Effects'; Background_Step 1 was emitted from the structurally identical [0005] \"在制备2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的时候，以NBS为溴化剂\"; Background_Step 1 notes state the emission rule as \"one per transformation the text itself names with a 制备X的时候 or 合成X的时候 clause\"",
+      "should_be": "either emit three Beneficial Effects records or state why the same clause form is a transformation in 背景技术 and not in 有益效果. Originates in A0's contains_procedure decision for that section. What would settle it: applying the emission rule the Background records declare to every section that uses the clause.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 3_Step 1",
+      "field": "compounds[].role",
+      "problem": "Hydrobromic acid is role 'reagent' here and in Claims_Step 1, Summary_Step 1 and Scheme Step 1, but role 'reactant' in Examples 1, 2 and 4 Step 1, which run the identical chemistry; A1 registers it as reagent, so three of the four experimental records depart from A1 and the fourth does not.",
+      "source_line": 239,
+      "quote": "0.174g间氯过氧苯甲酸(99％、0.001mol)，16.88g氢溴酸(48％、0.1mol)加入500ml反应瓶中",
+      "artifact_says": "Example 3_Step 1 hydrobromic acid role 'reagent'; Example 1_Step 1, Example 2_Step 1 and Example 4_Step 1 role 'reactant'; compounds.json role 'reagent'",
+      "should_be": "one role per compound per step type across the four examples. Hydrogen peroxide is 'oxidant' in all four, so the split is specific to the bromine source.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Claims_Step 3",
+      "field": "notes",
+      "problem": "The notes state that A1 assigns acetone cyanohydrin the role catalyst; A1's record gives role 'reagent', and Summary_Step 3's notes say so correctly, so two records give opposing accounts of the same upstream fact and assign opposite roles to the same compound in the same step 3.",
+      "source_line": 73,
+      "quote": "[claim 8] ...1,3-环己二酮、三乙胺、丙酮氰醇的摩尔比为1:0.01～0.1:1～2:1～2:2～3:0.01～0.1。",
+      "artifact_says": "Claims_Step 3 notes: \"ACETONE CYANOHYDRIN IS A CATALYST HERE, NOT A REAGENT ... A1 assigns it the role catalyst\", role 'catalyst'; Summary_Step 3 notes: \"A1 records its role as reagent because the section never calls it 催化剂, and that role is kept here\", role 'reagent'. compounds.json: identifier 'acetone cyanohydrin', role 'reagent'.",
+      "should_be": "correct the statement about A1 in Claims_Step 3's notes and settle on one role for the eight records that charge it. The chemical argument for catalyst (a 0.01 to 0.1 loading) is sound; the disagreement is about a checkable upstream fact, not about chemistry.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Summary of the Invention_Step 2",
+      "field": "compounds[].role",
+      "problem": "Water is role 'reactant' here, on the ground that it is the medium of the 碱解, but the four Example Step 2 records charge 200 ml of water for that same 碱解 and record it as role 'solvent', as do all sixteen other records that carry water.",
+      "source_line": 123,
+      "quote": "往剩余物里加碱2、水，在80℃以下进行碱解",
+      "artifact_says": "Summary_Step 2 water role 'reactant'; Example 1_Step 2, Example 2_Step 2, Example 3_Step 2 and Example 4_Step 2 water role 'solvent' with volume_ml 200.0",
+      "should_be": "one role for water in the alkaline hydrolysis across the five recitations of step 2.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 3_Step 3, Claims_Step 1, Summary of the Invention_Step 3",
+      "field": "compounds[].identifier",
+      "problem": "Three further compounds carry two identifiers each from identical Chinese: 'DMF' in Example 3_Step 3 against 'N,N-dimethylformamide' in the other seven records that charge it, where all four examples print the same DMF; '3-chloroperoxybenzoic acid' in Claims_Step 1 against 'm-chloroperoxybenzoic acid' in Example 3_Step 1, both from 间氯过氧苯甲酸; and '1,3-cyclohexanedione' in Summary_Step 3 and Scheme Step 4 against 'cyclohexane-1,3-dione' in the six other records, all from 1,3-环己二酮.",
+      "source_line": 256,
+      "quote": "0.074g  DMF(99％、0.001mol)，12g氯化亚砜(99％、0.1mol)",
+      "artifact_says": "identifier 'DMF' on Example 3_Step 3 only; 'N,N-dimethylformamide' on Claims_Step 2, Claims_Step 3, Comparative Example_Step 2, Example 1_Step 3, Example 2_Step 2, Example 2_Step 3, Example 4_Step 2, Example 4_Step 3",
+      "should_be": "one identifier per substance. Originates in A1 as with the intermediates, but it is carried here and it fragments the joins. The 'dichloroethane' versus '1,2-dichloroethane' pair is NOT part of this finding: the Chinese genuinely distinguishes 二氯乙烷 in the examples from 1 ,2-二氯乙烷 in [0021], and the artifact follows it correctly.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Summary of the Invention_Scheme Step 2, Scheme Step 3, Scheme Step 4, Scheme Step 5",
+      "field": "product_name, reactant_names",
+      "problem": "product_name and reactant_names carry raw SMILES strings for the two drawing-only species, so SMILES enters this artifact through the name fields although rule 8 excludes it from the SMILES fields on the ground that it belongs on A1's aliases[].",
+      "source_line": 152,
+      "quote": "\"products\": [{\"smiles\": \"COC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl\", \"molecular_formula\": \"C12H12ClF3O5S\"",
+      "artifact_says": "Scheme Step 2 product_name = \"COC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl\"; Scheme Step 5 product_name = \"CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F\"",
+      "should_be": "keep the identifier as the A1 key, which rule 7 forces, but put a name in product_name. Unlike the reference case, this document names neither species anywhere in its prose and the vision read supplies no name, so no name can be lifted from the page; what would settle it is whether A1 registered a name alias for either. If it did not, the current value is the least bad option and the finding is a schema gap rather than an extraction error.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "Comparative Example_Step 3",
+      "field": "conditions.time_h",
+      "problem": "The 5 h reflux of the first transformation appears in no structured field and, unlike the temperatures, is not carried in one_pot_steps either; time_h holds only the 16 h of the final transformation, so a structured consumer loses a stated reaction time that the patent prints.",
+      "source_line": 312,
+      "quote": "滴加60g(0.5mol)的氯化亚砜，回流反应5h，然后整出溶剂和过量的氯化亚砜",
+      "artifact_says": "conditions.time_h = 16.0; one_pot_steps[0] = \"conversion of the benzoic acid to its acid chloride with thionyl chloride in dichloromethane at reflux\", with no time; the 5 h is in notes only",
+      "should_be": "no field holds a second stage's time, so record it in the corresponding one_pot_steps entry as the temperatures are, rather than only in free text.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "Comparative Example_Step 2",
+      "field": "compounds[].quantity.volume_ml",
+      "problem": "Sodium hydroxide carries volume_ml 40.0, but 40 mL is the volume of the 10 percent solution, not of the solute; a consumer reading the numeric field alone takes 40 mL as an amount of sodium hydroxide.",
+      "source_line": 305,
+      "quote": "冷却后加入100mL乙醇，滴加10％NaOH溶液40mL，滴毕后回流1h",
+      "artifact_says": "sodium hydroxide quantity.volume_ml = 40.0, role 'base', with conditions.concentration {value 10.0, unit '%', reagent 'sodium hydroxide', text '10% sodium hydroxide solution, 40 mL'}",
+      "should_be": "no schema change is possible, since no field holds a solution volume, so this is acceptable only because the concentration block disambiguates it. Flag it as a known trap so a benchmark does not score a solute amount against it. The same reading applies, correctly handled, to the 48 percent hydrobromic acid and 30 percent hydrogen peroxide charges throughout the examples, where purity_pct carries the solution strength.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 1_Step 3",
+      "field": "reaction_class_confidence",
+      "problem": "Confidence is 'high' here but 'medium' on Examples 2, 3 and 4 Step 3 for the same transformation reached by the same reasoning, that the class list has no rearrangement value and acylation is used in its place.",
+      "source_line": 200,
+      "quote": "反应完全后，加入1g丙酮氰醇(95％、0.011mol)，LC跟踪至反应完全",
+      "artifact_says": "Example 1_Step 3 reaction_class 'acylation', confidence 'high'; Example 2_Step 3, Example 3_Step 3, Example 4_Step 3 'acylation', confidence 'medium'; Summary_Step 3 'acylation', confidence 'high'; Claims_Step 3 'other', confidence 'medium'",
+      "should_be": "one confidence for one classification decision across the sibling records.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 1_Step 1, Example 3_Step 1, Example 4_Step 1, Example 1_Step 3, Example 3_Step 3, Example 4_Step 3",
+      "field": "tags",
+      "problem": "Sibling records describing word-for-word identical workups carry different workup_type tag sets: all four Example Step 1 records perform 分层, 水洗, 浓缩, 重结晶, 过滤, 烘干, but only Example 2_Step 1 tags workup_type:crystallisation and only Examples 2 and 3 tag workup_type:filtration; the same split appears across the four Step 3 records. Example 1_Step 1 alone tags solvent_class:aqueous, and Example 4_Step 3 alone tags transformation:esterification.",
+      "source_line": 211,
+      "quote": "反应完全后分层，有机层水洗、浓缩，乙醇进行重结晶、过滤、烘干得46g白色粉末",
+      "artifact_says": "Example 2_Step 1 tags include workup_type:aqueous_extraction, workup_type:crystallisation, workup_type:filtration; Example 1_Step 1 and Example 4_Step 1 carry only workup_type:aqueous_extraction",
+      "should_be": "derive the workup_type set mechanically from workup.steps so identical workups produce identical tag sets; the purification tag is already consistent across all four.",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": "Summary of the Invention_Scheme Step 4, Summary of the Invention_Scheme Step 5",
+      "field": "notes",
+      "problem": "The notes on both records state that the vision pass 'recorded the inversion as a discrepancy' but no validation flag is carried for it anywhere, so the single most misleading feature of the drawing, that arrow 4 consumes what arrow 5 makes and is printed above it, is machine-invisible; the flag list has no value for a drawn-order inversion, which is itself worth saying.",
+      "source_line": 152,
+      "quote": "{\"step_id\": 4, \"reactants\": [{\"smiles\": \"O=C1CCCC(=O)C1\" ... {\"step_id\": 5, \"reactants\": [{\"smiles\": \"CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F\"",
+      "artifact_says": "Scheme Step 4 precursor_step 'Scheme Step 5' and Scheme Step 5 precursor_step 'Scheme Step 3', which is the correct chemical order; validation_flags on both are ['no_conditions'] and (Step 5) ['reagent_written_not_drawn']",
+      "should_be": "no correction to the structured fields, which are right. Say in notes that no flag exists for the inversion so the linkage fields are the only machine-readable record of it, rather than describing it as recorded by the vision pass. Verified independently: I opened p05.png, cropped rows 4 and 5, and the acylation is printed above the thionyl chloride step that supplies its acid chloride.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Summary of the Invention_Scheme Step 1 through Scheme Step 5",
+      "field": "provenance.quote_zh",
+      "problem": "The provenance sidecar's quote_zh on the five Scheme records is not a verbatim Chinese fragment but a Chinese sentence followed by English commentary, so the field cannot be used to anchor the record to the source the way the other 31 records' quotes can.",
+      "source_line": 150,
+      "quote": "[0028] 本发明所涉及的反应方程式如下：",
+      "artifact_says": "quote_zh = \"[0028] 本发明所涉及的反应方程式如下： (line 150). The arrow carries no label at all, above or below ...\"",
+      "should_be": "keep quote_zh to the Chinese and move the commentary into drawing_evidence, which already exists for exactly this. The three Comparative Example records and the three Summary prose records also join multiple source lines with ' ... ' or ' / ' separators; that is harmless, the English commentary is not.",
+      "confidence": "high"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "arithmetic - every charge, every yield, every example, independently recomputed",
+      "what_was_verified": "I recomputed all 62 printed mass/purity/mole triples and all 13 product closures from the printed text with a calculator, using standard atomic weights and without reference to the annotation. Molecular weights used: methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate C10H11ClO4S 262.70; the bromomethyl ester C10H10BrClO4S 341.60; the trifluoroethoxymethyl benzoic acid C11H10ClF3O5S 346.70; tembotrione C17H16ClF3O6S 440.81; HBr 80.91; H2O2 34.01; AIBN C8H12N4 164.21; m-CPBA C7H5ClO3 172.56; K2CO3 138.20; triethylenediamine C6H12N2 112.18; 2,2,2-trifluoroethanol C2H3F3O 100.04; NaOH 40.00; DMF 73.09; SOCl2 118.96; cyclohexane-1,3-dione C6H8O2 112.13; Et3N 101.19; acetone cyanohydrin C4H7NO 85.11; Br2 159.81; NaOMe 54.02. EXACTLY THREE PAIRS FAIL, and the artifact flags all three and only three. (1) Example 2_Step 2 triethylenediamine 1 g at 99 percent is 0.008825 mol against a printed 0.008 mol, implied MW 123.75 against 112.18, high by 10.3 percent: flagged molar_mass_inconsistent. (2) Example 3_Step 2 triethylenediamine 0.226 g at 99 percent is 0.001995 mol against a printed 0.001 mol, implied MW 223.74, a clean factor of 1.99: flagged. (3) Example 4_Step 2 carries two, triethylenediamine 2.26 g at 99 percent giving 0.019945 mol against 0.01 mol (implied MW 223.74, again 2x) and 2,2,2-trifluoroethanol 1.13 g at 99 percent giving 0.011183 mol against a printed 0.2 mol (implied MW 5.59, short by a factor of 17.9): flagged molar_mass_inconsistent and mass_balance_implausible. I opened p10.png and cropped [0076] at 2.8x to confirm both figures are printed on the page and are not a text-layer error. EVERY OTHER PAIR CLOSES to better than 1.6 percent and carries no flag, correctly."
+    },
+    {
+      "check": "arithmetic - the thirteen product closures",
+      "what_was_verified": "All thirteen close on the purity-corrected basis the patent itself uses, to within 0.4 of a percentage point, and none carries mass_balance_implausible except Example 4_Step 2, where the flag rests on the trifluoroethanol mass rather than on the product. Computed against limiting input: Ex1 S1 89.19 vs 89 printed; Ex1 S2 91.29 vs 91.3; Ex1 S3 86.01 vs 86; Ex2 S1 88.53 vs 88.5; Ex2 S2 89.58 vs 89.6; Ex2 S3 84.09 vs 84.1; Ex3 S1 89.60 vs 90; Ex3 S2 90.46 vs 90.5; Ex3 S3 85.01 vs 85; Ex4 S1 88.41 vs 88.7; Ex4 S2 89.33 vs 89.3; Ex4 S3 85.36 vs 85.4; Comparative S1 88.06 vs 88; Comparative S3 79.56 vs 80. On the gross uncorrected mass every one reads 0.2 to 1.7 points higher, which confirms the annotation's reading that this patent computes yield on assayed content. Comparative Example_Step 2 gives a yield and no product mass, so no closure is possible; the record declines to raise the flag and states why, and I agree: raising it would invent a defect."
+    },
+    {
+      "check": "arithmetic - step-to-step continuity, all five sections",
+      "what_was_verified": "Recomputed every handover independently. Example 1 (46.67 g out, 30 g in; 27.6 g out, 27.4 g in) and Example 2 (46 g out, 35 g in; 31.82 g out, 30 g in) are subsets at both boundaries and carry no scale_discontinuity, correctly. Example 3 (31.33 g out, 34.5 g in; 31.58 g out, 34.75 g in) and Example 4 (30.66 g out, 34.2 g in; 31.1 g out, 34.72 g in) over-draw at both boundaries and all four records carry the flag, correctly. The Comparative Example over-draws by a factor of about 2.7 on a molar basis (step 1 gives 0.0439 mol, step 2's own 83.2 percent takes it to 0.0365 mol, step 3 charges 0.0998 mol) and Comparative Example_Step 3 carries the flag. Comparative Example_Step 2 does not carry it and I examined that decision specifically rather than assuming: the step's substrate charge is absent entirely, so the flag's own definition (this step's input charge against the previous step's output) cannot be evaluated, and the provenance says so explicitly and defers the flag to step 3 where a charge is printed. That reasoning holds and I raise nothing."
+    },
+    {
+      "check": "arithmetic - the small-number charges that look wrong but are not",
+      "what_was_verified": "Checked the sub-gram and low-precision charges separately, because they are where a false flag would hide. Acetone cyanohydrin 1 g at 95 percent implies 86.36 against 85.11 (1.5 percent, from a printed 0.011 mol at three decimals); DMF 0.3 g at 99 percent implies 74.25 against 73.09 (1.6 percent, from 0.004 mol at three decimals); AIBN 0.5 g and 1 g both imply 165.00 against 164.21 (0.5 percent); Et3N 18.5 g implies 101.75 against 101.19 (0.6 percent, from a printed 0.18 mol at two decimals); SOCl2 60 g / 0.5 mol implies 120.0 against 118.96 (0.9 percent). All are rounding of a coarse printed mole figure, none is flagged, and none should be. The triethylenediamine failures are not of this kind: cyclohexane-1,3-dione at MW 112.13, within 0.05 of triethylenediamine's, closes to 0.1 percent in the same sections."
+    },
+    {
+      "check": "drawings - the p05 five-arrow scheme, arrow by arrow and substituent by substituent",
+      "what_was_verified": "I opened input/pages/p05.png and cropped and enlarged rows 2, 4 and 5 to 2.5x. Every substituent position in the IMAGE_EXTRACT at line 152 is what is drawn, read vertex by vertex, not inferred. Row 1: methyl ester at C1, Cl at C2, CH3 at C3, SO2CH3 at C4, giving CH2Br at C3. Row 2: same ring with CH2OCH2CF3 at C3. Row 3: HO2C at C1, Cl at C2, CH2OCH2CF3 at C3, SO2CH3 at C4. Row 4: cyclohexane-1,3-dione acylated at the ring carbon between the two ketones, with ClOC at C1 on the aryl partner. Row 5: the free acid to the acid chloride. All five match their SMILES exactly. No structure appears to have been reconstructed from chemical expectation."
+    },
+    {
+      "check": "drawings - reagents above versus below the arrow, and on the arrow versus on the baseline",
+      "what_was_verified": "Checked on the page image at 2.5x. Nothing is written below any of the five arrows, so no above/below merge is possible. The finer distinction the annotation draws is correct on every arrow: arrow 1 carries only 'cat' on the arrow with HBr and H2O2 on the baseline after bold plus signs; arrow 2 is entirely bare with HOCH2CF3 and 碱 on the baseline; arrow 3 carries 碱/酸 on the arrow and nothing else; arrow 4 carries 三乙胺/丙酮氰醇 on the arrow with the dione and the acid chloride on the baseline; arrow 5 is bare with 氯化亚砜 on the baseline. The 碱/酸 label of arrow 3 is correctly split into two separate compound entries rather than kept as one string."
+    },
+    {
+      "check": "drawings - the base the machine-readable span dropped",
+      "what_was_verified": "CONFIRMED independently, and the artifact is right where the enriched markdown is wrong. The IMAGE_EXTRACT span at line 152 lists step_id 2's reactants as only the bromide and the trifluoroethanol, with conditions empty. My crop of row 2 shows a third co-reactant on the baseline, the single character 碱, joined by a bold plus. Scheme Step 2 carries it as a compound with role base. A downstream pass reading only the span would lose it. This is a defect of the vision read, not of reactions.json, and the annotation records it as such in its own notes rather than silently repairing it."
+    },
+    {
+      "check": "drawings - the fifteen single-structure spans",
+      "what_was_verified": "I opened p06, p07, p09, p10 and p11 and read every drawn structure against its span. All fifteen encode one of exactly three compounds and every one matches the heading above it and the SMILES beside it: the bromomethyl ester at [0039], [0050], [0061], [0072] and [0082]; the trifluoroethoxymethyl benzoic acid at [0042], [0053], [0064], [0075] and [0085]; tembotrione at [0045], [0056], [0067], [0078] and [0088]. In every case Cl sits at C2, the C3 substituent is the one the heading names, and SO2CH3 sits at C4. The final structure is drawn as the C-acylated dione and not as the O-acyl enol ester in all five of its occurrences, which is the evidence the Step 3 records use to place the rearrangement last."
+    },
+    {
+      "check": "drawings - route attribution",
+      "what_was_verified": "Verified independently on the page. The scheme sits inside 发明内容 on p05, is introduced by [0028] 本发明所涉及的反应方程式如下 at line 150, and every one of its five arrows reproduces a transformation the prose of [0013] to [0018] sets out as the invention's own. Nothing on p05 is presented as prior art. The annotation resolves the attribution to the invention's route and declines route_attribution_unclear; that is the right call under rule 5e, which reserves the flag for a scheme the document leaves open, and this document leaves nothing open. Equally, the ten Background records are all attributed to prior art and none of them is annotated as the invention's route, which is the error rule 5e calls the most damaging available."
+    },
+    {
+      "check": "recall - Example 1 through Example 4 and the Comparative Example, walked step by step",
+      "what_was_verified": "Walked all fifteen experimental steps against the artifact and checked every printed number into a structured field. Present and correct throughout: every mass, every printed mole (converted to mmol without error in all 62 cases), every purity percentage, every solvent volume (200 ml, 100 ml, 180 mL, 120 mL, 150 ml, 40 mL), the flask volumes in notes per rule 9, the LC monitoring in process_control on every step that states it, the recrystallisation solvent on every step that states one, the two-solvent charges of Example 2_Step 3 and Example 4_Step 3 (二氯乙烷 then 二氯甲烷) kept as separate compounds, the double dichloroethane charge of Example 1_Step 3 and Example 3_Step 3 held as one compound with the second charge in addition_profile, the pH 2 and 2 mol/L acid of the Comparative Example, its 4 h and 16 h times, and the unquantified reagents of Comparative Example_Step 2 left with null quantities rather than guessed. The only printed values that reach no structured field are the two temperature ranges reported as findings above and the 5 h reflux of Comparative Example_Step 3."
+    },
+    {
+      "check": "recall - the Background section's step count",
+      "what_was_verified": "Counted the transformations in [0005] to [0009] independently before looking at the record count: CN1323292A one, CN105601548A one, CN104292137A three (the bromination at 70 percent, the trifluoroethoxide etherification, the tembotrione step at 69 percent), CN106008290A two, the 农药 article three. Total ten, which is what the artifact emits, against A0's estimate of five. The disagreement with A0 is explained in the notes as rule 4 requires, and it is the right way round: one record per cited document could not have held three product names and two yields from [0007] alone."
+    },
+    {
+      "check": "precision - no invented conditions",
+      "what_was_verified": "atmosphere is null on all 36 records, and 'nitrogen' appears nowhere; the document names no atmosphere and no drying tube. pressure.type is 'not_specified' on all 36, correctly, since 浓缩 and 脱尽溶剂 are printed without 减压 anywhere in this patent and are routed to workup.concentration_method. stirring.type is null on all 36; the only stirring the document states is 室温搅拌 in the Comparative Example, which names no method. light_source is empty throughout, cooling_method is populated only on Comparative Example_Step 2 where 冷却至15℃ is printed, ph_value only on Comparative Example_Step 3 where PH＝2 is printed, selectivity and byproduct_recovery are empty everywhere, and conditions_inherited is false on all 36. 回流 is recorded as heating_method and never as a temperature, on all nine records that carry it. No condition reads like a default."
+    },
+    {
+      "check": "precision - procedure_text verbatim, including the two page-spanning steps",
+      "what_was_verified": "Checked mechanically. All 31 prose records' procedure_text is a whitespace-normalised exact substring of the source Chinese, and none contains an [IMAGE_EXTRACT: ...] span. The two exceptions are the two steps split by a page break, Example 1_Step 2 (lines 188 and 193) and Example 4_Step 1 (lines 267 and 272); I reconstructed both by joining the two halves and stripping the paragraph marker and the editorial continuation comment, and both matched the record character for character, 280 and 216 characters respectively. The five Scheme records carry an empty procedure_text, which is right because no procedure accompanies the drawing."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "reactant_smiles, smiles_source, product_smiles, product_smiles_source and canonical_rxn are null on all 36 records. No enrichment or vector field is present on any record. All 36 records carry an identical key set. id and reaction_uuid are present but are computed by finalise.py from (patent_id, reaction_id), which the A2 prompt delegates downstream, so they are not schema defects. is_complete equals (validation_flags == []) on every one of the 36. Every record has a compound with is_product true. The provenance sidecar has exactly 36 entries with no missing and no extra reaction_id."
+    },
+    {
+      "check": "vocabulary - closed lists",
+      "what_was_verified": "Every reaction_class, reaction_class_confidence, mechanism_type, scale, temperature.type, pressure.type and stirring.type value is inside its closed list. All six distinct validation_flag values used (missing_reactant, no_conditions, scale_discontinuity, molar_mass_inconsistent, mass_balance_implausible, reagent_written_not_drawn) are in the A2 rule 27 list. Every tag is category:value with a lowercase snake_case ASCII value, all 14 categories used are among the 16 legal ones, every value in the eight closed categories is in its list, and no record has a duplicate tag. procedure_summary is non-empty on all 36; the four that contain digits contain them only inside compound names (2,2,2-trifluoroethanol, 1,3-cyclohexanedione), and no quantity appears in any summary."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "Checked all 36 precursor_step values programmatically against the named record's product identifiers. All 21 records with linkage_confirmed true are substantiated by an exact identifier match, including the two that cross the drawn order of the scheme (Scheme Step 4 to Scheme Step 5, and Scheme Step 5 to Scheme Step 3). The nine records with a null precursor are the first step of each of the eight routes plus Background_Step 6, whose cited document's paragraph names no upstream transformation. The five Background records that do carry a precursor correctly set linkage_confirmed false, because the background text never names the substrate of any step, so no identifier match exists to confirm."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "Compared the Chinese against the EN gloss on every line that names a compound or a reagent. They name the same thing everywhere and no translation_conflict is warranted anywhere, correctly. The two traps in this document are both handled: 丙酮氰醇 (acetone cyanohydrin), the invention's reagent, is kept distinct from 氰基丙酮 (cyanoacetone), the reagent the background criticises in CN104292137A at line 100, and the artifact records cyanoacetone on Background_Step 5 and acetone cyanohydrin on the eight invention records; and 甲醇钠 (sodium methoxide) in the Comparative Example is kept distinct from 三氟乙醇钠 (sodium trifluoroethoxide) in the background. The printed misspellings HCL for HCl (line 305) and 整出 for 蒸出 (line 312) appear identically in the Chinese and the EN gloss, so they are misprints in the source and not translation conflicts, and both are kept verbatim."
+    },
+    {
+      "check": "fidelity - ranges not flattened, reflux not recorded as a number",
+      "what_was_verified": "Every temperature the artifact does record is recorded as printed. All twelve numeric ranges that reach conditions.temperature are type 'range' with both bounds, none flattened to a point: 45-80 and 0-30 from the claims and the summary, 45-50, 50-55, 60-65, 70-75 (three times), 0-5 (twice), 20-25 and 5-10 from the examples. The single exact value, 15 C from 冷却至15℃, is type 'exact'. 室温搅拌16h gives type 'room_temperature' with value_c null on Comparative Example_Step 3. 回流 is never given a number. mol is converted to mmol correctly on all 62 charges and ml is never confused with l."
+    },
+    {
+      "check": "fidelity - the solution-strength percentages",
+      "what_was_verified": "The 48 percent on hydrobromic acid and the 30 percent on hydrogen peroxide are aqueous solution strengths printed in the same parenthesis the patent uses for assay. The artifact records them in purity_pct, which is what the printed form supports, and my arithmetic confirms the reading independently: 46 g at 48 percent gives 0.2729 mol of HBr against a printed 0.273, and 20.6 g at 30 percent gives 0.1817 mol of H2O2 against a printed 0.182. Both close only on the solution reading, so the field is not a mislabelling."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 42,
+    "present_in_artifact": 36,
+    "missing": [
+      "Abstract (lines 39-41): the three-step route recited in compressed form, with reagents, addition order and workup, yields no record at all (3 transformations)",
+      "Beneficial Effects [0031] to [0033] (lines 160-165): three 在制备X的时候 clauses naming a transformation and its reagent, in the same form the ten Background records were emitted from, yield no record (3 transformations)",
+      "Summary of the Invention_Step 1 (line 131, 133): azobisisobutyronitrile, m-chloroperoxybenzoic acid, dichloromethane, 1,2-dichloroethane, chloroform, methanol, ethanol, isopropanol, n-butanol; and the wash water of line 119",
+      "Summary of the Invention_Step 2 (lines 137, 142): potassium carbonate, triethylenediamine, 2-methyltriethylenediamine, sodium hydroxide, potassium hydroxide, lithium hydroxide, acetonitrile, N,N-dimethylformamide, acetone, tetrahydrofuran",
+      "Summary of the Invention_Step 3 (line 148): N,N-dimethylformamide, methanol, ethanol, isopropanol, n-butanol; and the wash water of line 127",
+      "Example 1_Step 1 (line 181): the 75 to 80 C range reaches no structured field",
+      "Example 1_Step 3 (line 200): the 25 to 30 C range reaches no structured field",
+      "Comparative Example_Step 3 (line 312): the 5 h reflux of the first transformation reaches no structured field and is not in one_pot_steps"
+    ]
+  }
+}

@@ -1142,7 +1142,11 @@ def build(root: Path, patent_id: str) -> int:
                 ours.append((im, f"{si + 1}. {label}" if not single else label))
                 panels.append({
                     "position_en": st.get("position_in_drawing"),
-                    "drawn_name_en": st.get("name"),
+                    # Translated for the same reason as identifier_en below: the
+                    # vision pass names a drawn structure however the page names
+                    # it, and on this patent that includes a parenthesised Chinese
+                    # common name beside the English one.
+                    "drawn_name_en": inp.translate(st.get("name") or "") or None,
                     "drawn_smiles": st.get("smiles"),
                     "drawn_canonical": drawn_canon,
                     "gold_identifier": gold["identifier"] if gold else None,
@@ -1765,7 +1769,12 @@ def related_records(inp: Inputs, disc: dict, fields: dict) -> list[dict]:
             seen.add(g["identifier"])
             hits.append(g)
     return [{
-        "identifier_en": g["identifier"],
+        # TRANSLATED, because the field says _en and the gold's identifier is
+        # whatever the section that first named the molecule wrote. A1 runs per
+        # section and the abstract named water as the Chinese 水 while every other
+        # section wrote "water", so the merged record carries the Chinese one and
+        # this field shipped it to the screen under a name promising English.
+        "identifier_en": inp.translate(g["identifier"]),
         "what_we_recorded_smiles": g.get("smiles"),
         "we_hold_a_structure": bool(g.get("smiles")),
         "formula": g.get("formula"),

@@ -24,7 +24,7 @@ than silent.
 | # | patent | owner | status | family | jur | relevance | title |
 |--:|---|---|---|---|---|---|---|
 | 1 | [`CN104292137A`](https://patents.google.com/patent/CN104292137A/en) | **Yash** | done, reference run | 52312131 | CN | Exact Molecule | Process for synthesizing triketone herbicide cyclic sulcotrione |
-| 2 | [`CN109678767A`](https://patents.google.com/patent/CN109678767A/en) |  |  | 66190615 | CN | Exact Molecule | A kind of synthesis technology of herbicide tembotrions |
+| 2 | [`CN109678767A`](https://patents.google.com/patent/CN109678767A/en) | **Yash** | done | 66190615 | CN | Exact Molecule | A kind of synthesis technology of herbicide tembotrions |
 | 3 | [`CN111440099B`](https://patents.google.com/patent/CN111440099B/en) |  |  | 71652835 | CN | Exact Molecule | Purification method of tembotrione product |
 | 4 | [`EP2045236A1`](https://patents.google.com/patent/EP2045236A1/en) |  |  | 38984191 | EP | Exact Molecule | Thermodynamically stable crystal modification of 2-({2-chloro-4- <br>*same family, do not also annotate:* US8722582B2, WO2009027004A1 |
 | 5 | [`US20100041557A1`](https://patents.google.com/patent/US20100041557A1/en) |  |  | 39415042 | US | Exact Molecule | Crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifl <br>*same family, do not also annotate:* US8309769B2 |

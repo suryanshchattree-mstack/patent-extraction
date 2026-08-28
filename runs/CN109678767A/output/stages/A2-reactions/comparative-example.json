@@ -1,0 +1,443 @@
+[
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Comparative Example_Step 1",
+    "section_label": "Comparative Example",
+    "section_type": "comparative_example",
+    "step_index": 1,
+    "step_label": "Step 1",
+
+    "reaction_class": "halogenation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "radical",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+
+    "conditions": {
+      "temperature": {"type": "not_specified", "value_c": null, "min_c": null, "max_c": null},
+      "pressure": {"type": "not_specified", "value_kpa": null, "qualitative_text": null},
+      "atmosphere": null,
+      "time_h": 4.0,
+      "reactor_type": "four-necked flask",
+      "concentration": {"value": null, "unit": null, "reagent": null, "text": null},
+      "heating_method": "reflux",
+      "cooling_method": null,
+      "light_source": {"type": null, "color": null, "wavelength_nm": null, "power_w": null},
+      "stirring": {"type": null, "rpm": null},
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+
+    "workup": {
+      "steps": ["reaction stopped", "cooled", "filtered", "filtrate concentrated"],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "filtered after cooling; the product is taken from the filtrate, so the filter cake is discarded material and the text never says what it is",
+      "concentration_method": "concentration",
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {"method": null, "target_compound": null, "threshold_pct": null, "criterion": null},
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {"regio": null, "stereo": {"type": null, "value_pct": null}, "chemo": null},
+
+    "compounds": [
+      {
+        "identifier": "methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {"mass_g": 13.1, "volume_ml": null, "mmol": 50.0, "equivalents": null, "yield_pct": null},
+        "addition_profile": "weighed out (称取) into the 500 mL four-necked flask at the start, before the solvent",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "carbon tetrachloride",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": 180.0, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "charged after the substrate, then the mixture was heated to reflux",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "bromine",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {"mass_g": 8.8, "volume_ml": null, "mmol": 55.0, "equivalents": null, "yield_pct": null},
+        "addition_profile": "added dropwise (滴加) once the mixture was at reflux; no addition time is stated",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+        "role": "product",
+        "is_product": true,
+        "quantity": {"mass_g": 15.0, "volume_ml": null, "mmol": null, "equivalents": null, "yield_pct": 88.0},
+        "addition_profile": null,
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      }
+    ],
+    "reactant_names": ["methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate", "bromine"],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 88.0,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+
+    "procedure_text": "称取13.1g(0.05mol)2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯于500mL四口烧瓶中，加入180mL四氯化碳，升温回流，滴加8.8g(0.055mol)溴素，保温反应4h，停止反应，冷却、过滤，滤液浓缩得淡黄色固体15g，收率88％。",
+    "procedure_summary": "The methylsulfonyl benzoate ester is brominated at its benzylic methyl group with bromine in carbon tetrachloride at reflux, the bromine being added dropwise and the mixture then held at temperature. Cooling, filtration and concentration of the filtrate give the benzylic bromide as a pale yellow solid.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "transformation:bromination",
+      "mechanism:radical",
+      "scale:lab",
+      "solvent_class:halogenated",
+      "catalyst_class:none",
+      "workup_type:filtration",
+      "purification:none",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "Chinese heading 1、2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的合成. Section heading 对比实施例, the patent's own comparative example; A0 estimated three steps and the section yields three, so there is no step-count disagreement to explain. Reactor is a 500 mL four-necked flask (500mL四口烧瓶); the text fits it with no stirrer, no thermometer and no condenser and names no stirring, so the stirring object is left null. Temperature: 升温回流 is heating to reflux, which is a heating method and not a number, so heating_method is reflux and temperature stays not_specified; 保温反应4h is the reaction time and gives time_h. The prose never names its product: the identification comes from the step heading and from the structure drawn at line 296 (SMILES COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl, C10H10BrClO4S), which carries the bromomethyl group at the position the heading names, so drawing and heading agree and no drawing_text_conflict is raised. That span is a single structure and not a reaction scheme, so neither reagent_drawn_not_written nor reagent_written_not_drawn can arise here. mechanism_type radical rests on the regiochemistry of the drawn product, a benzylic bromide rather than a ring bromide; no peroxide, no initiator and no light source is named anywhere in the step, and named_reaction is left null because Wohl-Ziegler names the N-bromosuccinimide reaction and this step uses elemental bromine. Quantities are printed as mass and moles only, in the form 13.1g(0.05mol), with no purity for any charge and none for the product, so purity_pct is null throughout this section. The 88% is a mass yield on the crude concentrated filtrate: no melting point, no NMR, no MS and no chromatographic purity is reported for the solid, and the section names no in-process monitoring for any step. The printed mass, mole and yield figures for this step close against the compound as drawn; the arithmetic is in the provenance sidecar."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Comparative Example_Step 2",
+    "section_label": "Comparative Example",
+    "section_type": "comparative_example",
+    "step_index": 2,
+    "step_label": "Step 2",
+
+    "reaction_class": "hydrolysis",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": true,
+    "one_pot_steps": [
+      "etherification of the benzylic bromide with the sodium 2,2,2-trifluoroethoxide generated in situ from sodium methoxide and trifluoroethanol in DMF, at room temperature overnight",
+      "saponification of the methyl ester of that ether intermediate with aqueous sodium hydroxide in ethanol at reflux, the intermediate never being isolated between the two"
+    ],
+
+    "conditions": {
+      "temperature": {"type": "exact", "value_c": 15.0, "min_c": null, "max_c": null},
+      "pressure": {"type": "not_specified", "value_kpa": null, "qualitative_text": null},
+      "atmosphere": null,
+      "time_h": 1.0,
+      "reactor_type": "four-necked flask",
+      "concentration": {"value": 10.0, "unit": "%", "reagent": "sodium hydroxide", "text": "10% sodium hydroxide solution, 40 mL"},
+      "heating_method": "reflux during the sodium hydroxide hydrolysis leg",
+      "cooling_method": "cooled to 15 degrees C before the trifluoroethanol was added dropwise, and cooled again after the DMF was distilled off",
+      "light_source": {"type": null, "color": null, "wavelength_nm": null, "power_w": null},
+      "stirring": {"type": null, "rpm": null},
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+
+    "workup": {
+      "steps": ["ethanol distilled off", "acidified with hydrochloric acid", "yellow solid precipitated"],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": "distillation of the ethanol",
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {"method": null, "target_compound": null, "threshold_pct": null, "criterion": null},
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {"regio": null, "stereo": {"type": null, "value_pct": null}, "chemo": null},
+
+    "compounds": [
+      {
+        "identifier": "sodium methoxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {"mass_g": 5.4, "volume_ml": null, "mmol": 100.0, "equivalents": null, "yield_pct": null},
+        "addition_profile": "weighed into the DMF and that solution charged to the four-necked flask at the start",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "N,N-dimethylformamide",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": 120.0, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "the sodium methoxide was weighed into it before charging; printed 120mLDMF with no space, and distilled off after the etherification without isolating anything",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "2,2,2-trifluoroethanol",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": null, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "added dropwise (滴加) to the cooled sodium methoxide solution; no mass, no volume and no mole count is given for it anywhere in the step",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": null, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "added once the trifluoroethanol addition was complete; charged by name only, with no mass and no mole count",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "ethanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": 100.0, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "charged after the DMF was distilled off and the residue cooled, as the solvent for the hydrolysis, and itself distilled off afterwards",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "sodium hydroxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": 40.0, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "added dropwise as 40 mL of a 10% aqueous solution, after which the mixture was refluxed; the volume recorded is the volume of the solution, and no mass or mole count of sodium hydroxide is given",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": null, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "used after the ethanol was distilled off to bring the mixture to acidity; printed as HCL, with no concentration and no volume",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {"mass_g": null, "volume_ml": null, "mmol": null, "equivalents": null, "yield_pct": 83.2},
+        "addition_profile": null,
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      }
+    ],
+    "reactant_names": ["methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate", "2,2,2-trifluoroethanol"],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 83.2,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+
+    "procedure_text": "将5.4g(0.1mol)甲醇钠称于120mLDMF中，加入四口烧瓶中，冷却至15℃，滴加三氟乙醇，滴毕后，加入2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯，室温下反应过夜，蒸出DMF，冷却后加入100mL乙醇，滴加10％NaOH溶液40mL，滴毕后回流1h，反应完毕，蒸出乙醇，用HCL调至酸性，黄色固体析出，收率为83.2％。",
+    "procedure_summary": "Sodium methoxide in dimethylformamide is cooled and treated dropwise with trifluoroethanol, and the benzylic bromide from the preceding step is then added and left to react at room temperature overnight. Without isolating the ether, the solvent is exchanged for ethanol, aqueous sodium hydroxide is added dropwise and the mixture refluxed to saponify the ester, and acidification after the ethanol is distilled off precipitates the benzoic acid as a yellow solid.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "transformation:etherification",
+      "transformation:hydrolysis",
+      "mechanism:ionic",
+      "scale:lab",
+      "solvent_class:aprotic_polar",
+      "solvent_class:protic",
+      "catalyst_class:base",
+      "workup_type:precipitation",
+      "purification:none",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:true"
+    ],
+    "notes": "Chinese heading 2、2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸的合成. THIS STEP IS THE LEAST COMPLETE IN THE SECTION AND ITS GAPS ARE RECORDED RATHER THAN FILLED. It states a yield of 83.2% but gives no product mass, never names its product in the prose, and gives no charge at all for two of its inputs: the trifluoroethanol is added dropwise with no mass, volume or mole count, and the benzylic bromide is charged by name only. No mass balance is therefore possible for this step. The two limbs of the mass_balance_implausible check both need a stated product mass, so neither can be evaluated and the flag is not raised: raising it would be inventing a defect of a kind the document does not show. The gap is recorded here and the arithmetic that can be done is in the provenance sidecar. is_one_pot is true: the etherification and the ester hydrolysis are two transformations in one numbered step, and between them the text distils off the DMF and charges ethanol, which is a solvent exchange in the same vessel with no isolation, no wash, no filtration and no weighing of the ether intermediate. one_pot_steps lists them in document order and reaction_class is taken from the final transformation, the saponification. named_reaction is left null: the first leg is a Williamson ether synthesis and the second a saponification, and no single accepted name covers the combined step. Temperature: three readings are printed and one field holds them, so the numeric 冷却至15℃ is recorded as exact per the mapping rule, the subsequent 室温下反应过夜 and the 回流1h are recorded as room-temperature and reflux narrative, and time_h carries only the 1 h of the hydrolysis leg because 过夜 (overnight) fixes no number. The total step time is therefore not recoverable from the text. Reactor is a four-necked flask with no volume stated for this step. scale is set to lab from the stated reagent and solvent charges, not from the limiting reagent, whose charge is absent; the step's only mole count, 0.1 mol of sodium methoxide, is twice the 0.05 mol scale of step 1. The acidification is to 调至酸性, acidity, with no pH number and no acid concentration, so ph_value and workup.ph_target are null. AS PRINTED: the acid is written HCL with a capital L, a misprint for HCl, kept verbatim and not corrected; the EN convenience line carries the same HCL, so the Chinese and the English do not name different compounds and translation_conflict is not raised. The text says a yellow solid precipitated and then stops: no filtration, no drying and no weighing of that solid is described, which is why workup.filtration is null. The structure drawn at line 303 (SMILES CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F, C11H10ClF3O5S) is a single structure and matches the heading name, so drawing and heading agree and no drawing_text_conflict is raised. No purity, no melting point, no NMR and no in-process monitoring is reported."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Comparative Example_Step 3",
+    "section_label": "Comparative Example",
+    "section_type": "comparative_example",
+    "step_index": 3,
+    "step_label": "Step 3",
+
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": true,
+    "one_pot_steps": [
+      "conversion of the benzoic acid to its acid chloride with thionyl chloride in dichloromethane at reflux",
+      "acylation of cyclohexane-1,3-dione by that acid chloride in acetonitrile at room temperature, with acetone cyanohydrin present, to give the aroyl dione"
+    ],
+
+    "conditions": {
+      "temperature": {"type": "room_temperature", "value_c": null, "min_c": null, "max_c": null},
+      "pressure": {"type": "not_specified", "value_kpa": null, "qualitative_text": null},
+      "atmosphere": null,
+      "time_h": 16.0,
+      "reactor_type": null,
+      "concentration": {"value": 2.0, "unit": "mol/L", "reagent": "hydrochloric acid", "text": "2 mol/L hydrochloric acid, used in the workup to adjust to pH 2"},
+      "heating_method": "reflux during the thionyl chloride leg",
+      "cooling_method": null,
+      "light_source": {"type": null, "color": null, "wavelength_nm": null, "power_w": null},
+      "stirring": {"type": null, "rpm": null},
+      "ph_value": 2.0,
+      "ph_target_stage": "workup, after the concentrated filtrate was diluted with water"
+    },
+    "conditions_inherited": false,
+
+    "workup": {
+      "steps": ["filtered", "filtrate concentrated", "water added to the concentrate", "adjusted to pH 2 with 2 mol/L hydrochloric acid", "solid filtered", "solid dried"],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "filtered twice: once before the concentration, where the text does not say what is removed, and once after the acidification to collect the product",
+      "concentration_method": "concentration of the filtrate",
+      "ph_target": 2.0
+    },
+    "purification": null,
+    "process_control": {"method": null, "target_compound": null, "threshold_pct": null, "criterion": null},
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {"regio": null, "stereo": {"type": null, "value_pct": null}, "chemo": null},
+
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {"mass_g": 34.6, "volume_ml": null, "mmol": 100.0, "equivalents": null, "yield_pct": null},
+        "addition_profile": "dissolved in the dichloromethane at the start of the step",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "dichloromethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": 200.0, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "the acid was dissolved in it, printed 溶于200ml中二氯甲烷 with the locative 中 between the volume and the solvent name; distilled off with the excess thionyl chloride before the acetonitrile was charged",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "thionyl chloride",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {"mass_g": 60.0, "volume_ml": null, "mmol": 500.0, "equivalents": null, "yield_pct": null},
+        "addition_profile": "added dropwise (滴加) and the mixture then refluxed for 5 h; the excess was distilled off with the solvent",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "acetonitrile",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": 150.0, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "charged to dissolve the residual liquid (残液) once the dichloromethane and the excess thionyl chloride were off",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "cyclohexane-1,3-dione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {"mass_g": 13.44, "volume_ml": null, "mmol": 120.0, "equivalents": null, "yield_pct": null},
+        "addition_profile": "added to the acetonitrile solution of the acid chloride together with the acetone cyanohydrin",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "acetone cyanohydrin",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": null, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "dosed as 4滴, four drops, which converts to no mass, no volume and no mole count, so every quantity field is left null",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": 150.0, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "added to the concentrated filtrate before the acidification",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {"mass_g": null, "volume_ml": null, "mmol": null, "equivalents": null, "yield_pct": null},
+        "addition_profile": "2 mol/L, added to the diluted concentrate to adjust to pH 2; a concentration with no volume, so every quantity field is null",
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {"mass_g": 35.0, "volume_ml": null, "mmol": null, "equivalents": null, "yield_pct": 80.0},
+        "addition_profile": null,
+        "ms_mz": null, "ms_type": null, "purity_pct": null, "purity_method": null
+      }
+    ],
+    "reactant_names": ["2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid", "thionyl chloride", "cyclohexane-1,3-dione"],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 80.0,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+
+    "procedure_text": "将34.6g(0.1mol)2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸溶于200ml中二氯甲烷，滴加60g(0.5mol)的氯化亚砜，回流反应5h，然后整出溶剂和过量的氯化亚砜，残液加入150ml乙腈溶解，然后加入13.44g(0.12mol)1,3-环己二酮和4滴丙酮氰醇。室温搅拌16h。过滤，滤液浓缩，加入150ml水，用2mol/L盐酸调至PH＝2后，过滤、干燥，得黄色固体35g。收率为80％。",
+    "procedure_summary": "The benzoic acid from the preceding step is dissolved in dichloromethane and converted to its acid chloride with thionyl chloride at reflux, after which the solvent and the excess reagent are distilled off. The residue is taken up in acetonitrile and treated with cyclohexanedione and drops of acetone cyanohydrin at room temperature, and the filtrate is concentrated, diluted with water and acidified to precipitate the aroyl dione, which is filtered and dried as a yellow solid.",
+    "precursor_step": "Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": ["scale_discontinuity"],
+    "tags": [
+      "transformation:acylation",
+      "mechanism:ionic",
+      "scale:lab",
+      "solvent_class:halogenated",
+      "solvent_class:aprotic_polar",
+      "workup_type:filtration",
+      "purification:none",
+      "safety:cyanide_handling",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:true"
+    ],
+    "notes": "Chinese heading 3、环磺酮的合成. scale_discontinuity: this step charges 34.6 g / 0.1 mol of the step 2 product, but step 1 isolated 15 g of the bromide, which is 0.0439 mol at the drawn formula C10H10BrClO4S, and step 2's own stated 83.2% takes that to at most 0.0365 mol, about 12.7 g, of the acid. The step therefore charges roughly 2.7 times what the section's own preceding steps could have produced, and the molar scale doubles from 0.05 mol at step 1 to 0.1 mol here with no explanation. The numbers are recorded exactly as printed and nothing is inferred from any other section. Everything else in this step closes: the three mass/mole pairs are consistent with the compounds named, and the printed 35 g against a printed 80% closes against tembotrione as drawn, so neither molar_mass_inconsistent nor mass_balance_implausible is raised; the arithmetic is in the provenance sidecar. is_one_pot is true, but this is the borderline case of the section and the reason is recorded rather than smoothed over: the acid chloride is never isolated, never washed and never weighed, yet between the two transformations the text does more than swap solvent, since 整出溶剂和过量的氯化亚砜 removes the excess thionyl chloride as well, and only then is the 残液 dissolved in fresh acetonitrile. Judged by the test of whether the intermediate is isolated, that is one pot; judged by whether a reagent-removal operation intervenes, it is the weakest one-pot claim in the section. reaction_class is taken from the final transformation, the acylation of the dione, which the structure drawn at line 310 supports directly (SMILES CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F, C17H16ClF3O6S, the 2-aroylcyclohexane-1,3-dione), and that drawing matches the heading 环磺酮, so no drawing_text_conflict is raised. named_reaction is null: no widely accepted name covers this acylation. The acetone cyanohydrin is recorded as a catalyst following the A1 role, but the text states no function for it and gives it no quantity; catalyst_class is skipped in the tags because no value in that closed list fits a cyanohydrin. No base and no acid scavenger is charged in this step. Unlike the other two steps this one prints real reaction times, 回流反应5h and 室温搅拌16h; time_h carries the 16 h of the final transformation and the 5 h of the acid chloride leg is recorded here, since one field cannot hold both. 室温搅拌 states that the mixture is stirred without saying how, so the stirring type is left null. No reaction vessel is named for this step at all. AS PRINTED and not corrected: 整出溶剂 where 蒸出 (distilled off) is meant; 溶于200ml中二氯甲烷 with the locative 中 sitting between the volume and the solvent name; and PH＝2 with an uppercase PH and a full-width equals sign. In none of these does the Chinese name a different compound from the EN convenience line, so translation_conflict is not raised for any of them. The pH is the only pH number in the section and gives both conditions.ph_value and workup.ph_target. No purity, no melting point, no NMR and no in-process monitoring is reported for the product."
+  }
+]

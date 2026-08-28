@@ -1,0 +1,272 @@
+{
+  "artifact": "pathways.json",
+  "records_audited": 14,
+  "provenance_source_used": "runs/CN109678767A/output/reactions-provenance.json. pathways.json has no provenance sidecar of its own, and every pathway step is a projection of a reaction, so the reaction sidecar is what anchors the step-level claims here. It gave source_lines for all 36 reactions and its Background line spans (96-97, 98-99, 100-101, 102-103, 107-108) are what let me confirm the five Background chains are cut one per cited prior-art document.",
+  "findings": [
+    {
+      "check": "precision",
+      "severity": "critical",
+      "record": "scope=section / Background, 77ebc24a-6046-5af2-bf1f-ae79e5b3cd55 (Background_Step 1)",
+      "field": "ksm.identifier",
+      "problem": "The KSM of this chain is NBS, which rule 3 names as exactly the thing a KSM is not: the brominating reagent that decorates the substrate, while the text names the route's starting material two clauses earlier.",
+      "source_line": 96,
+      "quote": "拜耳公司的专利号CN1323292A报道了以2,6-二氯甲苯为起始原料合成环磺酮的工艺，在制备2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的时候，以NBS为溴化剂",
+      "artifact_says": "ksm = {\"identifier\": \"NBS\", \"smiles\": null, \"compound_uuid\": \"4a5d5189-83a3-5ca3-8254-c1832b81b754\"}; the pathway's own step carries validation_flags ['missing_reactant'], so the chain has no reactant-role compound at all and the reagent was taken by default",
+      "should_be": "ksm.identifier = '2,6-dichlorotoluene', the compound the sentence calls 起始原料 (starting material). That record already exists in compounds.json with tags ['compound_class:starting_material'], so no new compound is needed. Setting it null would also be defensible; leaving the brominating agent there is not.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "critical",
+      "record": "scope=section / Background, b97dc161-e773-5a6e-b7bd-6f7e7024b903 (Background_Step 2)",
+      "field": "ksm.identifier",
+      "problem": "Same defect on the Heilongjiang University route: the KSM is the brominating reagent NBS, not the aniline the sentence names as the starting material.",
+      "source_line": 98,
+      "quote": "黑龙江大学的专利号CN105601548A报道了以3-氯-2-甲基苯胺为起始原料合成环磺酮的工艺在制备2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的时候，也是以昂贵NBS为溴化剂",
+      "artifact_says": "ksm = 'NBS'",
+      "should_be": "ksm.identifier = '3-chloro-2-methylaniline', which is already in compounds.json tagged compound_class:starting_material.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "critical",
+      "record": "scope=section / Background, 8b8007ba-ee51-5b01-ba9c-4835da7a3da2 (Background_Step 3 to 5)",
+      "field": "ksm.identifier",
+      "problem": "The KSM of the three-step CN104292137A chain is elemental bromine, the brominating agent, while the same sentence names 2-chlorotoluene as the route's starting material.",
+      "source_line": 100,
+      "quote": "武汉工程大学的专利号CN104292137A报道了以2-氯甲苯为起始原料合成环磺酮的工艺，在制备2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的时候，以危险性较大的溴素为溴化剂，收率偏低，只有70％",
+      "artifact_says": "ksm = 'bromine'; the chain runs bromine -> methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate -> the trifluoroethoxy acid -> tembotrione",
+      "should_be": "ksm.identifier = '2-chlorotoluene', already present in compounds.json tagged compound_class:starting_material. Bromine contributes one bromine atom and no part of the carbon skeleton that survives to tembotrione.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "critical",
+      "record": "scope=section / Background, 817d72e8-87a8-55e6-810f-735bfb649df5 (Background_Step 8 to 10)",
+      "field": "ksm.identifier",
+      "problem": "The KSM of the 《农药》 chain is elemental bromine, the brominating agent, and here the text names no starting material at all, so the field was filled from the only compound the step recorded.",
+      "source_line": 107,
+      "quote": "《农药》第56卷第5期报道了玉米田除草剂环磺酮的合成工艺，在合成2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的时候，以危险性较大的溴素为溴化剂",
+      "artifact_says": "ksm = 'bromine'; step Background_Step 8 carries validation_flags ['missing_reactant']",
+      "should_be": "ksm.identifier = null, or the aryl substrate 'methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate' that the bromination must consume. Unlike lines 96, 98 and 100 this paragraph names no 起始原料, so there is nothing in the text to promote; the honest answer is null with truncated_chain, which the record already carries.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "critical",
+      "record": "scope=section / Background, 8d20cf23-4de3-552a-9d60-36928229f246 (Background_Step 6 to 7)",
+      "field": "ksm.identifier",
+      "problem": "The KSM of the CN106008290A chain is sodium 2,2,2-trifluoroethoxide, an etherification reagent that contributes only the OCH2CF3 side chain, not the benzoyl backbone that survives into tembotrione.",
+      "source_line": 102,
+      "quote": "安徽久易农业股份有限公司的专利号CN106008290A报道了环磺酮的合成工艺，在制备2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸的时候，所用2,2,2-三氟乙醇钠目前无法大规模生产，买不到原料",
+      "artifact_says": "ksm = 'sodium 2,2,2-trifluoroethoxide', which reactions.json does record with role 'reactant' (unlike the four cases above, where the KSM is a role 'reagent' compound)",
+      "should_be": "ksm.identifier = null, or the bromo ester substrate. Rule 3 resolves ties by carbon skeleton, not by role label: the ring you can still see in tembotrione comes from the benzoate, so the alkoxide is the decorating reagent. This paragraph names no starting material either, so null with truncated_chain is the honest value.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "major",
+      "record": "31 of the 39 step projections, across 12 of the 14 pathways",
+      "field": "steps[].components",
+      "problem": "Rule 12 defines components as 'the identifiers of that step's reactants plus its product', but components carries reagents, oxidants and bases as well, and the surplus does not follow any single rule.",
+      "source_line": 188,
+      "quote": "将30g  2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(99.0％、0.0869mol)，18g碳酸钾(99％、0.1289mol)，0.9g三乙烯二胺(99％、0.0079mol)，200ml四氢呋喃，10.5g  2,2,2-三氟乙醇(99％、0.1039mol)加入500ml反应瓶中",
+      "artifact_says": "Example 1_Step 2 components = [bromo ester, '2,2,2-trifluoroethanol', 'sodium hydroxide', acid] where the rule gives [bromo ester, '2,2,2-trifluoroethanol', acid]; Example 1_Step 3 adds 'thionyl chloride' (role reagent); Claims_Step 1 adds 'hydrobromic acid' and 'hydrogen peroxide'; Claims_Step 2 adds '碱1' and '碱2'; Summary of the Invention_Step 3 adds 'thionyl chloride' and 'acetone cyanohydrin'; Scheme Step 3 adds '碱' and '酸'. Recomputed mechanically, 31 of 39 projections deviate.",
+      "should_be": "Apply rule 12 mechanically: [c.identifier for c in compounds if c.role == 'reactant'] + [c.identifier for c in compounds if c.is_product]. If the widened definition is intended, state it once and apply it uniformly, because the present field cannot be reproduced from the reaction record by any single rule.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "major",
+      "record": "scope=section / Background, 8b8007ba-ee51-5b01-ba9c-4835da7a3da2, step Background_Step 5",
+      "field": "steps[].components",
+      "problem": "This step's components lists only the reagent and the product; the compound that actually carries the carbon skeleton into tembotrione has fallen out of the field entirely.",
+      "source_line": 100,
+      "quote": "而且中间态2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸-3-氧代-1-环己烯酯单独分离处理，导致工艺繁琐，收率偏低，只有69％",
+      "artifact_says": "components = ['cyanoacetone', 'tembotrione']; the enol ester '3-oxo-1-cyclohexen-1-yl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate' is absent",
+      "should_be": "components = ['3-oxo-1-cyclohexen-1-yl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate', 'tembotrione']. The compound is present in this step's compounds[] but with role 'intermediate' rather than 'reactant', so the rule-12 filter skipped it; fixing the role fixes this too.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "major",
+      "record": "Background_Step 5 (in 8b8007ba), Claims_Step 1 and Claims_Step 3 (in 1fef6ab6)",
+      "field": "steps[].compounds[].role",
+      "problem": "Rule 11 requires compounds to be copied verbatim from the reaction record, but three step projections carry role values that reactions.json does not hold and that finalise.py itself declares outside the valid set.",
+      "source_line": 0,
+      "quote": "N/A. pipeline/finalise.py line 105 VALID_ROLES = {product, reactant, reagent, solvent, catalyst, ligand, base, acid, oxidant, reductant, by_product, additive, drying_agent, other}; normalise_role at line 112 is called from finalise_reactions (line 240) but never from finalise_pathways (lines 251 to 293).",
+      "artifact_says": "pathways.json Background_Step 5: the enol ester has role 'intermediate' where reactions.json has 'reactant'. Claims_Step 1 and Claims_Step 3: water has role 'wash' where reactions.json has 'solvent'. A field-by-field diff of all 47 rule-11 fields over all 39 projections finds no other divergence.",
+      "should_be": "Call normalise_role over steps[].compounds in finalise_pathways so the projections match reactions.json: 'intermediate' -> 'reactant', 'wash' -> 'solvent'.",
+      "confidence": "high"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "scope=section / Background, 77ebc24a-6046-5af2-bf1f-ae79e5b3cd55 and b97dc161-e773-5a6e-b7bd-6f7e7024b903",
+      "field": "overall_yield_pct",
+      "problem": "Two single-step prior-art fragments carry a route-level overall_yield_pct, and the higher of them is then read downstream as this patent's best route yield, ahead of the invention's own 69.88 percent.",
+      "source_line": 98,
+      "quote": "也是以昂贵NBS为溴化剂，会有大量固废产生，且收率偏低，只有75.2％",
+      "artifact_says": "overall_yield_pct = 67.0 and 75.2 on two one-step Background chains whose product is the bromo ester, not tembotrione. patent.json extraction_rollup then holds best_overall_yield_pct 75.2 and best_overall_yield_pathway_uuid b97dc161-e773-5a6e-b7bd-6f7e7024b903, which is the Heilongjiang prior-art step the patent criticises as 收率偏低.",
+      "should_be": "The pathway values are correct under rule 9 and should not be changed. The minimal correction is in finalise.py rollup (line 303): restrict the best-yield search to chains whose product is the patent's target, or exclude section_type background. The pathways already carry truncated_chain, so the information the rollup needs is present and simply unused.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "228ae154 (Comparative Example), 3f019f3d (Example 1), a36d3735 (Example 2), 7d6857d7 (Example 3), 73cb4b9a (Example 4), 481032f2 and 234c14bb (Summary of the Invention), a0f0bd17 (patent)",
+      "field": "tags",
+      "problem": "Rule 14 requires the product compound's tags to be unioned in, but 'chemical_family:triketone' from the tembotrione record is missing from eight of the eleven pathways whose product is tembotrione.",
+      "source_line": 90,
+      "quote": "除草剂环磺酮(Tembotrione)，化学名称：2-{2-氯-4-甲磺酰基-3-[(2,2,2-三氟乙氧基)甲基]苯甲酰基}环己烷-1,3-二酮，是由拜耳公司2007年研制的三酮类玉米田除草剂",
+      "artifact_says": "compounds.json tembotrione tags = ['compound_class:active_ingredient', 'chemical_family:triketone', 'functional_group:sulfone', 'functional_group:ketone', 'functional_group:ether', 'functional_group:trifluoromethyl', 'functional_group:halide_chloro', 'chemical_family:cyclohexanedione']; the tag is present on 8b8007ba, 8d20cf23, 817d72e8 and 1fef6ab6 only",
+      "should_be": "Add 'chemical_family:triketone' to the eight listed pathways.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "8b8007ba, 8d20cf23 and 817d72e8 (the three Background chains ending in tembotrione)",
+      "field": "tags",
+      "problem": "The same rule 14 union drops 'chemical_family:cyclohexanedione', the last tag on the tembotrione compound record, from the three Background chains.",
+      "source_line": 0,
+      "quote": "N/A. Recomputed union of step tags plus ksm, intermediate and product compound tags gives 34, 27 and 33 tags; the artifact holds 33, 26 and 32.",
+      "artifact_says": "the three Background pathways to tembotrione carry every other tembotrione tag but not chemical_family:cyclohexanedione",
+      "should_be": "Add 'chemical_family:cyclohexanedione' to those three pathways.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "scope=section / Claims, 1fef6ab6-4421-5ad0-964f-4c800473d99d",
+      "field": "tags",
+      "problem": "The rule 14 union is missing 'chemical_family:benzoate_ester', which both the KSM and the first intermediate of this very chain carry.",
+      "source_line": 0,
+      "quote": "N/A. compounds.json 'methyl 2-chloro-3-methyl-4-(methanesulfonyl)benzoate' and 'methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate' both carry chemical_family:benzoate_ester.",
+      "artifact_says": "43 tags, no chemical_family:benzoate_ester",
+      "should_be": "Add 'chemical_family:benzoate_ester'.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "481032f2 and 234c14bb (both scope=section / Summary of the Invention)",
+      "field": "tags",
+      "problem": "The rule 14 union is missing 'chemical_family:benzyl_halide', carried by the bromo ester that is intermediates[0] of both Summary chains.",
+      "source_line": 0,
+      "quote": "N/A. compounds.json 'methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate' tags end ['functional_group:halide_bromo', 'chemical_family:benzyl_halide'].",
+      "artifact_says": "39 and 38 tags; the sibling Claims pathway does carry chemical_family:benzyl_halide, so the omission is not systematic",
+      "should_be": "Add 'chemical_family:benzyl_halide' to both Summary pathways.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "1fef6ab6, 228ae154, 3f019f3d, a36d3735, 7d6857d7, 73cb4b9a, 481032f2, 234c14bb, a0f0bd17",
+      "field": "tags",
+      "problem": "Rule 14 says 'Preserve first-seen order'; nine pathways diverge from the first-seen union order, always inside the block contributed by a compound record.",
+      "source_line": 0,
+      "quote": "N/A. Recomputed first-seen union for the Claims pathway gives functional_group:sulfone at index 26; the artifact has chemical_family:benzoic_acid there. For Example 1 the divergence is at index 41, where the artifact has chemical_family:cyclohexanedione and the union has functional_group:ketone.",
+      "artifact_says": "the tag sets match once the missing tags above are added; only the ordering differs",
+      "should_be": "Reorder to first-seen union order. Cosmetic unless a benchmark compares tag arrays positionally.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": null,
+      "field": "scope / section_label",
+      "problem": "The Abstract recites the complete three-step route to tembotrione and produces no pathway record, so a reader diffing sections against pathways sees the Abstract as route-free.",
+      "source_line": 40,
+      "quote": "本发明公开一种除草剂环磺酮的合成工艺，包括：1)先加入2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯、溶剂、催化剂、氢溴酸，然后滴加双氧水，反应后水洗、浓缩、重结晶，得到溴代物2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯；2)将溴代物、碱1、催化剂、溶剂、2,2,2-三氟乙醇进行反应",
+      "artifact_says": "00-sections.json holds an abstract section at lines 39 to 43; reactions.json holds no record with section_type 'abstract', so rule 7 finds no terminal step there and emits nothing",
+      "should_be": "No change to pathways.json. Rule 7 can only build from reactions.json, so if this is a miss it is A2's, and it is arguably not a miss at all: the Abstract is a verbatim restatement of the Claims and the Summary, both of which already have chains. Flagged so the absence is recorded as checked rather than overlooked.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "scope=section / Summary of the Invention, 234c14bb-acfe-5b81-bfb6-06ba7c34233a",
+      "field": "intermediates[1].identifier, intermediates[3].identifier",
+      "problem": "Two intermediates of the drawn-scheme chain are named by bare SMILES strings rather than by a chemical name.",
+      "source_line": 152,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 2, \"reactants\": [{\"smiles\": \"COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl\"...",
+      "artifact_says": "intermediates = ['methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate', 'COC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl', '2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid', 'CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F']",
+      "should_be": "Acceptable, not a defect. The prose never names the methyl ether ester or the acid chloride, both exist only on the p05 drawing, and both have compound records in compounds.json under those SMILES. Both CompoundRefs resolve to a compound_uuid. Recommend surfacing the compound record's alias in the reference rather than changing the identifier.",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": "scope=section / Summary of the Invention, 234c14bb, step Summary of the Invention_Scheme Step 2",
+      "field": null,
+      "problem": "The vision read of the p05 scheme omits the 碱 that the page draws as a co-reactant on the second arrow, and records that arrow's conditions as an empty list.",
+      "source_line": 152,
+      "quote": "[IMAGE_EXTRACT: ... {\"step_id\": 2, \"reactants\": [{\"smiles\": \"COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl\", ...}, {\"smiles\": \"OCC(F)(F)F\", ...}], \"conditions\": [], \"products\": [...]}",
+      "artifact_says": "I opened p01 to p11. On p05 the second scheme line reads bromo ester + HOCH2CF3 + 碱 -> ether ester, with 碱 written on the reactant side before the arrow. The IMAGE_EXTRACT span carries only the two structures and no 碱.",
+      "should_be": "No change to pathways.json: A2 recovered 碱 independently, and this step projection carries it in compounds[] and in components. Reported because check 9 asks for the vision read to be verified, and this is the one place on p05 where it drops something the page draws. Everything else on p05 checks out.",
+      "confidence": "high"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "arithmetic - rule 9, all 14 overall_yield_pct recomputed independently",
+      "what_was_verified": "Every one of the 14 was recomputed from its own step yields in exact decimal arithmetic and every one matches. Background 77ebc24a [67.0] -> 67.0; Background b97dc161 [75.2] -> 75.2; Background 8b8007ba [70.0, null, 69.0] -> null; Background 8d20cf23 [null, null] -> null; Background 817d72e8 [null, null, null] -> null; Claims 1fef6ab6 [null, null, null] -> null; Comparative Example 228ae154 [88.0, 83.2, 80.0] -> 58.57 (0.88*0.832*0.80 = 0.585728); Example 1 3f019f3d [89.0, 91.3, 86.0] -> 69.88 (0.89*0.913*0.86 = 0.6988102); Example 2 a36d3735 [88.5, 89.6, 84.1] -> 66.69 (0.885*0.896*0.841 = 0.666876...); Example 3 7d6857d7 [90.0, 90.5, 85.0] -> 69.23 (0.90*0.905*0.85 = 0.692325); Example 4 73cb4b9a [88.7, 89.3, 85.4] -> 67.64 (0.887*0.893*0.854 = 0.676445...); Summary prose 481032f2 [null x3] -> null; Summary scheme 234c14bb [null x5] -> null; patent a0f0bd17 [89.0, 91.3, 86.0] -> 69.88. No step yield was substituted, assumed 100 percent or averaged, and every chain with a null step yield carries null and the yield_missing_step flag. The step yields themselves were checked back to the source: 89 / 91.3 / 86 at lines 181, 193 and 200; 88.5 / 89.6 / 84.1 at lines 211, 221 and 228; 90 / 90.5 / 85 at lines 239, 249 and 256; 88.7 / 89.3 / 85.4 at lines 272, 279 and 286; 88 / 83.2 / 80 at lines 298, 305 and 312; 67 at line 96, 75.2 at line 98, 70 and 69 at line 100."
+    },
+    {
+      "check": "arithmetic - check 4, step closure and step-to-step continuity",
+      "what_was_verified": "Each example step was closed independently using the printed assay percentage, which is what the patent's own mole figures are based on. Every stated yield closes: Example 1 step 1, 46.67 g at 99.0 percent from 0.152 mol gives 88.98 against a stated 89.0; step 2, 27.6 g at 99.7 percent from 0.0869 mol gives 91.33 against 91.3; step 3, 30.3 g at 98.6 percent from 0.0788 mol gives 86.01 against 86.0. Across all fourteen numbered example steps the largest deviation is the Comparative Example final step at 0.60 points, and eleven of fourteen are inside 0.15 points. MWs used: C10H11ClO4S 262.71, C10H10BrClO4S 341.60, C11H10ClF3O5S 346.70, C17H16ClF3O6S 440.82. Step-to-step continuity: Example 1 (46.67 g out, 30 g in; 27.6 g out, 27.4 g in) and Example 2 (46.0 out, 35 in; 31.82 out, 30 in) both cover, and neither pathway carries a scale flag. Example 3 (31.33 out, 34.5 in; 31.58 out, 34.75 in), Example 4 (30.66 out, 34.2 in; 31.1 out, 34.72 in) and the Comparative Example (0.05 mol at step 1, 0.1 mol at step 3) do not cover, and all three pathways carry scale_discontinuity_in_chain. The flags are earned and none is missing."
+    },
+    {
+      "check": "arithmetic - rule 16, the molar_mass_inconsistent inheritance is earned",
+      "what_was_verified": "I traced each molar_mass_inconsistent flag to the charge that earns it rather than accepting it. Every case is the triethylenediamine catalyst, MW 112.17: Example 2 step 2, 1 g at 99 percent called 0.008 mol, implied MW 123.75, 10.3 percent high; Example 3 step 2, 0.226 g at 99 percent called 0.001 mol, implied 223.74, 99.5 percent high; Example 4 step 2, 2.26 g at 99 percent called 0.01 mol, implied 223.74, 99.5 percent high. Example 1 step 2 charges 0.9 g at 99 percent as 0.0079 mol, implied 112.78, 0.55 percent, which closes, and Example 1 correctly carries no such flag. Example 4 step 2 additionally prints 1.13 g of 2,2,2-trifluoroethanol at 99 percent as 0.2 mol, an implied MW of 5.59 against 100.04, which is what earns mass_balance_implausible on that step and inconsistent_step_arithmetic on the Example 4 pathway. So honest_uncertainty_flags = [] on the Example 1 and patent-scope pathways is not an omission; those two chains genuinely close on every charge."
+    },
+    {
+      "check": "recall - rules 1, 2, 7 and 8, chain construction",
+      "what_was_verified": "All 36 reaction records appear in exactly one section chain each (10 Background + 3 Claims + 3 Comparative + 12 across Examples 1 to 4 + 3 Summary prose + 5 Summary scheme = 36, zero unused), plus the 3 Example 1 steps a second time in the patent-scope duplicate, giving 39 step projections. Recomputing terminal steps as 'not named as any other step's precursor_step' gives exactly thirteen: Background steps 1, 2, 5, 7 and 10, Claims_Step 3, Comparative Example_Step 3, Example 1 to 4 Step 3, Summary of the Invention_Step 3 and Summary of the Invention_Scheme Step 4. Thirteen section chains plus the rule 8 patent duplicate is 14 records, which is what the artifact holds. The five Background chains match the source paragraphing exactly, one chain per cited prior-art document: lines 96 to 97, 98 to 99, 100 to 101, 102 to 103 and 107 to 108, which the provenance sidecar confirms. Every steps[] array is ordered earliest first with the terminal step last, including the drawn-scheme chain, whose order is Scheme Step 1, 2, 3, 5, 4 because Scheme Step 4 declares Scheme Step 5 as its precursor: the acid chloride is made before it is condensed, and the numeric step_index order would have been wrong."
+    },
+    {
+      "check": "linkage - check 6, precursor_step and linkage_confirmed",
+      "what_was_verified": "For all 39 projections I resolved each precursor_step within its section and tested whether that step's product_name actually appears among this step's reactant-role identifiers. Every one of the 20 steps carrying linkage_confirmed: true passes. Five links fail the test, all in the Background section (Background steps 4, 5, 7, 9 and 10), and all five already carry linkage_confirmed: false, which is exactly what A2 rule 24 requires, since those prior-art paragraphs name only the reagent that changed and never restate the substrate. There is no unsubstantiated linkage_confirmed: true anywhere, and no genuine link left null: every precursor also happens to be the immediately preceding step in its chain, so no chain skips or reorders a link."
+    },
+    {
+      "check": "fidelity - rule 11, verbatim projection",
+      "what_was_verified": "All 47 fields named in rule 11 were compared field by field, by exact value equality, across all 39 step projections against reactions.json. The only divergence anywhere is compounds[].role in three projections, reported above. reaction_class, named_reaction, mechanism_type, scale, validation_flags, tags, procedure_text, procedure_summary, notes, workup, purification, process_control, molar_ratio_text, step_index, step_label, section_label, section_type, is_one_pot, conditions_inherited, non_synthetic, cross_reference_unresolved and is_complete are byte-identical throughout; nothing was re-derived, re-worded or re-classified in transit. The seven flat fields that rule 11 says are computed from the conditions object were recomputed from conditions on all 39: temperature_c = conditions.temperature.value_c, room_temperature = (conditions.temperature.type == 'room_temperature'), pressure = conditions.pressure.value_kpa, concentration = conditions.concentration.text, plus time_h, atmosphere and reactor_type. All 39 agree, including the many range temperatures (75 to 80 C at line 181, 45 to 50 C at line 211, 0 to 5 C at line 249) which correctly leave temperature_c null rather than flattening the range to a point, and the reflux steps, which carry heating_method reflux inside conditions and no temperature."
+    },
+    {
+      "check": "schema - rules 4, 5, 6 and 13",
+      "what_was_verified": "Rule 4: intermediates[] is exactly the product_name of every step except the last, in order, on all 14 records, checked programmatically with zero deviations. Rule 5: product.identifier is exactly the terminal step's product_name on all 14. Rule 6: every one of the 42 CompoundRef objects has exactly the keys identifier, smiles and compound_uuid; smiles is null on all 42 and compound_uuid is populated on all 42, so every ksm, intermediate and product resolves to a compounds.json record. Rule 13: all 11 pathway-level aggregates are present and null on all 14 records, and all 23 step-level enrichment fields (the six scores plus confidence_score, the three literature counts, atom_mapped_rxn, atom_map_confident, template_r0/r1/r2 and their three hashes, canonical_rxn, reactant_smiles, smiles_source, product_smiles, product_smiles_source) are present and null on all 39 projections. Zero non-null. No molecular weight, no molecular formula and no InChI key appears anywhere in the file, and no id or *_uuid field is present beyond the patent_id, pathway_uuid and reaction_uuid that finalise.py is supposed to fill. All 14 pathway_uuids are distinct."
+    },
+    {
+      "check": "vocabulary - rules 7, 8 and 14, enums and derived tags",
+      "what_was_verified": "Every enum-valued field on every projection is inside its A2 closed list: reaction_class over {acylation, halogenation, hydrolysis, nucleophilic_substitution, other}, mechanism_type over {ionic, not_determinable, radical}, scale over {lab, not_specified}, reaction_class_confidence over {high, medium, low}, section_type over {background, claims, comparative_example, experimental_example, summary_of_invention}. Zero values outside a list and zero case mismatches. Every tag on every pathway and every step matches ^[a-z0-9_]+:[a-z0-9_]+$, so there is no non-snake_case, non-ASCII or bare tag. All four rule 14 derived categories are correct on all 14 records: chain_length:1, 1, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 5, 3 against actual step counts of the same; lcl:short on the thirteen chains of three steps or fewer and lcl:medium on the five-step drawn-scheme chain, correct under the 1-3 / 4-7 / 8-or-more rule; branching:linear correct, since every step has at most one precursor and is the precursor of at most one step in every chain; convergence:linear correct, since no step consumes the products of two different earlier steps. In the drawn-scheme chain, 1,3-cyclohexanedione enters Scheme Step 4 as a purchased reagent and not as an earlier step's product, so that node is not convergent. Scope is right too: exactly one record has scope patent with section_label null, and the thirteen scope section records each carry a section_label that matches the section_label on all of their own steps."
+    },
+    {
+      "check": "fidelity - rule 10, overall_purity_pct",
+      "what_was_verified": "On all 14 records overall_purity_pct equals the terminal step's purity_pct exactly. The four that are populated trace to the source: 98.6 at line 200 (Example 1 and the patent-scope duplicate), 98.1 at line 228 (Example 2), 98.7 at line 256 (Example 3), 98.7 at line 286 (Example 4). The Comparative Example prints 淡黄色固体15g and 黄色固体35g with no purity assay, and its chain is correctly null. The Background, Claims and both Summary chains print no purity anywhere and are null. No intermediate purity (99.0 at line 181, 99.7 at line 188, 99.8 at line 211 and the rest) was promoted to the pathway level, and no melting point or assay percentage was mistaken for a purity."
+    },
+    {
+      "check": "linkage - rules 15 and 16, honest flags and inheritance",
+      "what_was_verified": "Every step-level validation_flag is represented at pathway level. The five Background chains carry truncated_chain, missing_reactant_in_chain and no_conditions_for_any_step, and the step data supports each: no_conditions appears on 1, 1, 3, 2 and 3 of 1, 1, 3, 2 and 3 steps respectively, so 'for_any_step' is literally true in every case, and missing_reactant appears on at least one step of each. yield_missing_step is on exactly the six chains whose overall_yield_pct is null. scale_discontinuity_in_chain is on exactly the three chains with a scale_discontinuity step. molar_mass_inconsistent_in_chain is on exactly the three chains with such a step. inconsistent_step_arithmetic is on Example 4 alone, which is the only chain holding a mass_balance_implausible step, matching the rule 15 mapping. reagent_written_not_drawn_in_chain is on both Summary chains. is_complete is true on exactly those 12 of 39 projections whose validation_flags array is empty, with no exceptions, so no projection claims completeness over a flagged record. No pathway is presented clean while assembled from flagged steps, and no chain uses unresolved_precursor, which is correct because no precursor_step is unresolvable."
+    },
+    {
+      "check": "translation - the two cyanide reagents were not conflated",
+      "what_was_verified": "This patent uses 丙酮氰醇 (acetone cyanohydrin) throughout its own route and cites 氰基丙酮 (cyanoacetone) only when criticising CN104292137A at line 100 ('使用氰基丙酮价格过于昂贵'). The two names differ by transposition in Chinese and are easy to merge. The artifact keeps them apart correctly: 'cyanoacetone' appears in exactly one place, Background_Step 5 inside the CN104292137A chain, and 'acetone cyanohydrin' appears in the Claims, Comparative, Example 1 to 4, Summary prose, Summary scheme and patent chains, matching 丙酮氰醇 at lines 59, 127, 200, 228, 256, 286 and 312. Likewise 甲醇钠 (sodium methoxide, lines 107 and 305) and 2,2,2-三氟乙醇钠 (sodium trifluoroethoxide, lines 100 and 102) are kept distinct, and 环磺酮 is rendered tembotrione throughout, never mesotrione, though line 91's EN gloss invites that error by writing 'nitrosulfone/mesotrione' for 硝磺酮."
+    },
+    {
+      "check": "drawings - the p05 scheme, read off the page",
+      "what_was_verified": "I opened p01 to p11 and read the multi-arrow scheme on p05 against the IMAGE_EXTRACT at line 152, substituent by substituent. Arrow 1: the drawn substrate is a benzene ring bearing H3CO-C(=O) at C1, Cl at C2, CH3 at C3 and SO2CH3 at C4, which is what COC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl encodes on the ring walk C1(CO2Me), C6(Cl), C5(CH3), C4(SO2Me); HBr and H2O2 are drawn on the reactant side and 'cat' above the arrow, and the extract has them as two reactants plus one condition. Arrow 2: CH2Br becomes CH2OCH2CF3 at C3, positions unchanged. Arrow 3: the C1 ester becomes HO-C(=O) under 碱/酸, the only substituent changed. Arrow 5: that acid becomes Cl-C(=O) with 氯化亚砜 drawn on the reactant side. Arrow 4: cyclohexane-1,3-dione plus the acid chloride under 三乙胺/丙酮氰醇 gives the 2-acyl-1,3-dione. Every substituent position on every drawn structure matches the extract; none was inferred. Nothing is written below any arrow anywhere on p05, so there is no above-arrow and below-arrow merge to make. I also checked the single-molecule drawings on p06 at [0039] and [0042] against the extracts at lines 178 and 185 and they match, including the CH2OCH2CF3 at C3 rather than C5."
+    },
+    {
+      "check": "drawings - the background schemes were not annotated as the invention's route",
+      "what_was_verified": "p03 carries the entire background section as unbroken prose with no drawings at all, so the five prior-art routes at [0005] to [0009] have no scheme to be misattributed, and the provenance sidecar records the same. The one drawn scheme in the document sits at line 152 under [0028] 本发明所涉及的反应方程式如下, which is the invention's own equations, and the artifact assigns it section_label 'Summary of the Invention'. It is chemically consistent with the invention rather than with any prior art: its arrow 1 uses HBr and H2O2, the hydrobromic-acid bromination the beneficial-effects section at line 160 claims as the improvement, not the NBS of line 96 or the 溴素 of line 100, and its arrow 4 uses 丙酮氰醇, not the 氰基丙酮 of line 100. The five Background prior-art routes were emitted as five separate Background-scope chains and were not folded into the invention's route. No route_attribution_unclear flag is needed here and none is present."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 15,
+    "present_in_artifact": 14,
+    "missing": [
+      "scope=section / Abstract: lines 39 to 43 restate the full three-step route to tembotrione and yield no pathway, because reactions.json holds no abstract-section record for rule 7 to find a terminal step in. Reported as an observation rather than a pathways defect, since the same route is already carried by the Claims and Summary chains."
+    ]
+  }
+}

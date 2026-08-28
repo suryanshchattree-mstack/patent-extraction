@@ -207,6 +207,21 @@ def stages(pid: str) -> list[Stage]:
         Stage(
             name="collect",
             title="publish the A0, A3 and A4 stage files under the names finalise.py reads",
+            # BOOTSTRAP, with merge and finalise, and for the same reason enrich is.
+            #
+            # A5 audits the FINALISED artifacts: the reference run's compounds report
+            # audits 75 records, which is the count after finalise.py dedupes, not the
+            # 234 raw ones. But the prerequisite check demands all seven passes before
+            # any non-bootstrap stage runs, and A5 is one of the seven. So on patent
+            # two: A0 to A4 are done, the runner says A5 is missing and stops, and A5
+            # cannot be run because the artifact it audits has not been built.
+            #
+            # Same deadlock as enrich, one layer later, and invisible on a pack that
+            # already holds a finished patent because output/compounds.json is left
+            # over from last time. These three build only from files that already
+            # exist, so bootstrapping them is safe: each still waits on its own
+            # declared inputs, and each is a pure function of them.
+            bootstrap=True,
             fn=collect,
             inputs=["output/stages/A0-sections/00-sections.json",
                     "output/stages/A3-pathways/pathways.json",
@@ -217,6 +232,7 @@ def stages(pid: str) -> list[Stage]:
         Stage(
             name="merge",
             title="concatenate the per-section A1 and A2 stage files into the raw arrays",
+            bootstrap=True,          # see collect
             cmds=[[PY, "merge_stages.py"]],
             inputs=["merge_stages.py", "output/stages/A1-compounds/*.json",
                     "output/stages/A2-reactions/*.json"],
@@ -227,6 +243,7 @@ def stages(pid: str) -> list[Stage]:
         Stage(
             name="finalise",
             title="deterministic ids and uuids, rollup, bibliographic merge",
+            bootstrap=True,          # see collect
             cmds=[[PY, "finalise.py", "--patent-id", pid]],
             inputs=["finalise.py", "pipeline_context.py", f"input/{pid}-biblio.json",
                     "output/raw-compounds.json", "output/raw-reactions.json",
@@ -972,10 +989,23 @@ def source_date_epoch() -> int:
 def run_stage(st: Stage, pid: str, ctx: dict) -> int:
     if st.fn is not None:
         return st.fn(pid, ctx)
-    env = None
+
+    # EVERY subprocess is told which patent, whether or not its command line says so.
+    #
+    # Three stages are invoked with no id: merge_stages.py, schemas/validate.py and
+    # svg2jpg.py --all. That was fine while runs/ held exactly one directory, because
+    # discover_patent_id() found it. The moment a second patent exists - which is the
+    # entire point of this pack - those three exit 2 with "no patent id given", and
+    # the pipeline stops in the middle having built half the artifacts.
+    #
+    # Passing --patent-id in each of their cmds would work too, and would have to be
+    # remembered by whoever adds the fourth. The env var is the documented resolution
+    # tier below the flag, so setting it here covers every stage script that exists
+    # and every one that does not yet.
+    env = {**os.environ, "ANNOTATION_PATENT_ID": pid}
     if st.pin_source_date:
         epoch = source_date_epoch()
-        env = {**os.environ, "SOURCE_DATE_EPOCH": str(epoch)}
+        env["SOURCE_DATE_EPOCH"] = str(epoch)
         print(f"  SOURCE_DATE_EPOCH={epoch}  (newest hand-authored input, so two "
               f"rebuilds diff to nothing)")
     code = 0
@@ -1155,11 +1185,16 @@ def main() -> int:
 
     missing = check_prereqs(pid)
     if missing:
-        ran_first = [n for n in ("prompts", "enrich")
-                     if ctx["results"].get(n) == "ran"]
+        # Named rather than counted, because the point of the sentence is to tell
+        # somebody what they can now do. Listing the stages generically kept it
+        # true as stages were added, and said nothing useful.
         wrote = {"prompts": "the rendered prompts",
-                 "enrich": f"input/{pid}-enriched-numbered.md, which pass A0 reads"}
-        did = " and ".join(wrote[n] for n in ran_first) or "nothing"
+                 "enrich": f"input/{pid}-enriched-numbered.md, which pass A0 reads",
+                 "merge": "the raw compound and reaction arrays",
+                 "collect": "the A0, A3 and A4 outputs under the names finalise reads",
+                 "finalise": "the four artifacts, which pass A5 audits"}
+        ran_first = [n for n in wrote if ctx["results"].get(n) == "ran"]
+        did = ", ".join(wrote[n] for n in ran_first) or "nothing"
         print("\nThe LLM annotation passes are not run by this script - they need an "
               "agent holding\nthe prompt and, for V and A5, the rendered page images. "
               f"This run cannot start until\nthe following exist. So far it has "

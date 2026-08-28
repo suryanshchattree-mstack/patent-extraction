@@ -1,0 +1,1737 @@
+[
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Summary of the Invention_Step 1",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "halogenation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "radical",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": 45.0,
+        "max_c": 80.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": "reaction flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "layers separated",
+        "organic layer washed with water",
+        "concentrated",
+        "solvent added and the material recrystallised",
+        "filtered"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": [
+        "water"
+      ],
+      "drying_agent": null,
+      "filtration": "filtered to collect the recrystallised solid",
+      "concentration_method": "concentration, method not stated",
+      "ph_target": null
+    },
+    "purification": "recrystallised from an added solvent; [0021] gives the crystallisation solvent as 甲醇, 乙醇, 异丙醇 or 正丁醇",
+    "process_control": {
+      "method": "hplc",
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": "complete conversion"
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": "[0019] 优选的，步骤1)中，2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯、催化剂、氢溴酸、双氧水的摩尔比为1:0.01～0.1:1～2:1～2。",
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "methyl 2-chloro-3-methyl-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start, together with the solvent, the catalyst and the hydrobromic acid",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "溶剂",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start; the same placeholder is charged again after concentration as the recrystallisation solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "催化剂",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrobromic acid",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrogen peroxide",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise (滴加) at 在80℃以下; [0020] gives the dropwise addition temperature as 45～80℃",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "methyl 2-chloro-3-methyl-4-(methanesulfonyl)benzoate",
+      "hydrobromic acid",
+      "hydrogen peroxide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "将2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯、溶剂、催化剂、氢溴酸加入反应瓶，在80℃以下滴加双氧水，滴加完毕后继续反应，LC跟踪至反应完全，反应完全后分层，有机层水洗，浓缩，加溶剂进行重结晶，过滤得2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯；",
+    "procedure_summary": "The methyl benzoate, a solvent, a catalyst and hydrobromic acid are charged into a reaction flask and hydrogen peroxide is added dropwise below the stated ceiling temperature, the reaction being continued after the addition and followed by LC to completion. The layers are then separated, the organic layer is washed with water and concentrated, solvent is added for recrystallisation, and filtration gives the benzylic bromide.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "transformation:bromination",
+      "mechanism:radical",
+      "analytics:hplc",
+      "scale:not_specified",
+      "solvent_class:halogenated",
+      "workup_type:aqueous_extraction",
+      "purification:recrystallisation",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "PROSE step. Heading [0013] line 117: 1)2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的合成, i.e. the step is named for its product. Benzylic bromination of the 3-methyl group by hydrobromic acid and hydrogen peroxide, the peroxide serving to oxidise the bromide to the brominating species. TEMPERATURE: the section states a temperature only for the dropwise addition of the peroxide. [0014] says 在80℃以下滴加双氧水 (below 80℃) and [0020] narrows it to 双氧水的滴加温度为45～80℃, so the range 45～80℃ is carried in conditions.temperature as the only numeric temperature the step has, and the dropwise character is carried on the peroxide's addition_profile. No temperature at all is given for the 滴加完毕后继续反应 hold and none has been inferred. No time is given for any part of the step. MECHANISM: read as radical because the bromination is benzylic rather than on the ring, and because [0020] offers 偶氮二异丁腈 (AIBN), a radical initiator, as one of the two permitted catalysts. The other permitted catalyst, 间氯过氧苯甲酸, is a peroxyacid and would act as the oxidant rather than as an initiator; the section does not say which is used, and that is recorded here rather than resolved. catalyst_class is skipped because the tag vocabulary has no value for a radical initiator or a peroxyacid. CATALYST AND SOLVENT: charged only as the placeholders 催化剂 and 溶剂. [0020] permits 偶氮二异丁腈 or 间氯过氧苯甲酸 and [0021] permits 二氯甲烷, 1 ,2-二氯乙烷 or 氯仿 as reaction solvent, all halogenated, and 甲醇, 乙醇, 异丙醇 or 正丁醇 as crystallisation solvent. The enumerated members are separate A1 records; the placeholders are what this step charges, so the placeholders are what is recorded. NO NAMED REACTION: this is not a Wohl-Ziegler bromination, which uses NBS; the reagent pair here is 氢溴酸 and 双氧水, so named_reaction is left null rather than stretched. CONCENTRATION: the text says only 浓缩, with no 减压, so pressure stays not_specified and the concentration method is recorded as unstated. DRAWING AGREES: Scheme Step 1 (arrow 1 of the scheme at line 152) draws the same ester with HBr and H2O2 as co-reactants and the label cat on the arrow, giving the same benzylic bromide. Substrate, both co-reactants, the catalyst placeholder and the product all match, so no conflict is raised. The only prose input the arrow does not carry is the generic 溶剂, and a scheme that omits a solvent is not a reagent discrepancy, so reagent_written_not_drawn is not raised here. ARITHMETIC: the section gives no mass, no volume, no mole and no yield anywhere, only the ratio ranges of [0019], so there is nothing to close and no mass-balance or molar-mass flag is available."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Summary of the Invention_Step 2",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "hydrolysis",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": true,
+    "one_pot_steps": [
+      "etherification of the benzylic bromide with 2,2,2-trifluoroethanol using base 1 and a catalyst in a solvent, at 在80℃以下",
+      "alkaline hydrolysis (碱解) of the methyl ester with base 2 and water, at 在80℃以下, run on the residue without isolating the ether ester"
+    ],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": 0.0,
+        "max_c": 80.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": "reaction flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "filtered after the etherification",
+        "organic layer washed with water",
+        "concentrated",
+        "hydrochloric acid added dropwise to acidify after the alkaline hydrolysis",
+        "filtered",
+        "washed",
+        "dried"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": [
+        "water, on the organic layer after the etherification"
+      ],
+      "drying_agent": null,
+      "filtration": "filtered twice: once after the etherification, and again to collect the solid thrown down on acidification",
+      "concentration_method": "concentration, method not stated",
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": "hplc",
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": "complete conversion"
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": "[0022] 优选的，步骤2)中，2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯、碱1、催化剂、2,2,2-三氟乙醇、碱2的摩尔比为1:1～2:0.01～0.1:1～2:1～2。",
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "碱1",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "催化剂",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "溶剂",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2,2,2-trifluoroethanol",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "碱2",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the residue (往剩余物里加碱2、水) after the etherification had been filtered, washed and concentrated",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the residue together with base 2 as the medium for the alkaline hydrolysis",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise (滴加盐酸酸化) once the alkaline hydrolysis was complete by LC",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+      "2,2,2-trifluoroethanol",
+      "water"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "将2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯、碱1、催化剂、溶剂、2,2,2-三氟乙醇加入反应瓶，在80℃以下进行反应，LC跟踪至反应完全，反应完毕后过滤，有机层水洗，浓缩；往剩余物里加碱2、水，在80℃以下进行碱解，LC跟踪至反应完全，反应完全后滴加盐酸酸化，过滤，洗涤，烘干得2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸；",
+    "procedure_summary": "The benzylic bromide, a first base, a catalyst, a solvent and 2,2,2-trifluoroethanol are charged into a reaction flask and reacted below the stated ceiling temperature until LC shows complete conversion, then filtered, washed with water and concentrated. A second base and water are added to the residue and the ester is hydrolysed under alkali below the same ceiling, and after LC shows completion hydrochloric acid is added dropwise to acidify; filtration, washing and drying give the benzoic acid.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:etherification",
+      "transformation:hydrolysis",
+      "mechanism:ionic",
+      "analytics:hplc",
+      "scale:not_specified",
+      "solvent_class:aprotic_polar",
+      "catalyst_class:base",
+      "workup_type:aqueous_extraction",
+      "purification:none",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:true"
+    ],
+    "notes": "PROSE step. Heading [0015] line 121: 2)2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸的合成. ONE-POT, with the qualification stated here in full. The step runs two transformations, a Williamson-type etherification of the benzylic bromide with 2,2,2-三氟乙醇 and then an alkaline hydrolysis of the methyl ester, and it isolates nothing between them: the ether ester is never named and the material is carried forward only as 剩余物 (the residue). It is not a clean one-pot, however, because 反应完毕后过滤，有机层水洗，浓缩 sits between the two transformations, which is a genuine workup and not merely a solvent exchange. is_one_pot is set true on the ground that no intermediate is isolated or named, and the intervening filtration, water wash and concentration are recorded verbatim in workup.steps so that a reader can take the other view. reaction_class is taken from the final transformation, the alkaline hydrolysis, per the one-pot rule. ACIDIFICATION IS RECORDED AS WORKUP, NOT AS A THIRD TRANSFORMATION: 滴加盐酸酸化 is followed immediately by 过滤，洗涤，烘干, so it is the isolation of the free acid from its salt rather than a step of the synthesis, and it therefore appears in workup rather than in one_pot_steps. No pH number is given anywhere, so ph_value, ph_target_stage and workup.ph_target are all left null. TEMPERATURE: [0016] states 在80℃以下 separately for the etherification and for the 碱解, and [0024] gives 反应温度为0～80℃ for step 2) without saying which of the two stages it governs. The range 0～80℃ is carried in conditions.temperature and both statements are recorded here. No time is given for either stage. PLACEHOLDERS: the step charges 碱1, 催化剂 and 溶剂 as generic labels. [0023] states 所述碱1为碳酸钾, gives the catalyst as 三乙烯二胺 or 2-甲基三乙烯二胺, and permits 氢氧化钠, 氢氧化钾 or 氢氧化锂 for 碱2; [0024] permits 乙腈, DMF, 丙酮 or 四氢呋喃 as solvent, all aprotic polar. Each enumerated member is its own A1 record; what this step charges is the placeholder, so the placeholder is what is recorded. catalyst_class:base is tagged because both permitted catalysts are tertiary amines and 碱1 is a carbonate. WATER: recorded as a reactant rather than as a wash, because [0016] charges it to the residue together with 碱2 as the medium of the 碱解; the earlier 有机层水洗 use of water is carried in workup.washes. NAMED REACTION: null. The first transformation is a Williamson ether synthesis and that is recorded on Scheme Step 2, whose class is the etherification; this record is classed as the hydrolysis, so putting a name for the other transformation on it would misread the field. FLAG reagent_written_not_drawn: the step charges a 催化剂, identified by [0023] as 三乙烯二胺 or 2-甲基三乙烯二胺, and arrow 2 of the scheme at line 152 is completely bare, carrying no label above or below it. The catalyst of this step is therefore on no arrow anywhere in the drawing. The generic 溶剂 is likewise undrawn but is not counted, on the same policy applied throughout this section. DRAWING OTHERWISE AGREES: the drawing splits this step across arrows 2 and 3, drawing the ether ester that the prose never names, and arrow 3 carries the label 碱/酸, which matches the prose pairing of 碱2 with the subsequent 盐酸 acidification. That is a granularity difference, not a disagreement about chemistry, so no drawing_text_conflict is raised. ARITHMETIC: no mass, volume, mole or yield anywhere, only the ratio ranges of [0022], so nothing can be checked and no arithmetic flag is available."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Summary of the Invention_Step 3",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 3,
+    "step_label": "Step 3",
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": true,
+    "one_pot_steps": [
+      "formation of the acid chloride from 2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸 with 氯化亚砜 and a catalyst in a solvent, heated at reflux, the solvent then being stripped off completely",
+      "O-acylation of 1,3-环己二酮 by that acid chloride, with 三乙胺 added dropwise at 在30℃以下, giving the enol ester",
+      "addition of 丙酮氰醇, which converts the enol ester to 2-aroyl-1,3-cyclohexanedione, the target 环磺酮"
+    ],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": 0.0,
+        "max_c": 30.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": "reaction flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": "reflux",
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "water added and the mixture washed with water",
+        "layers separated",
+        "solvent stripped completely from the oil layer",
+        "solvent added and the material recrystallised",
+        "filtered",
+        "dried"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": [
+        "water"
+      ],
+      "drying_agent": null,
+      "filtration": "filtered to collect the recrystallised solid",
+      "concentration_method": "complete removal of the solvent (脱尽溶剂) from the oil layer",
+      "ph_target": null
+    },
+    "purification": "recrystallised from an added solvent; [0027] gives the crystallisation solvent as 甲醇, 乙醇, 异丙醇 or 正丁醇",
+    "process_control": {
+      "method": "hplc",
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": "complete conversion"
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": "[0025] 优选的，步骤3)中，2-氯-3-(2 ,2 ,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸、催化剂、氯化亚砜、1,3-环己二酮、三乙胺、丙酮氰醇的摩尔比为1:0.01～0.1:1～2:1～2:2～3:0.01～0.1。",
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start, with the catalyst, the thionyl chloride and the solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "催化剂",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start; [0027] identifies it as DMF",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "thionyl chloride",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start, then the mixture is heated to reflux",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "溶剂",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged with the acid for the acid chloride stage and stripped off completely; charged again with the 1,3-cyclohexanedione, and charged a third time after workup as the recrystallisation solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "1,3-cyclohexanedione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged with solvent into the reaction flask after the acid chloride solvent had been stripped off",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "triethylamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise (滴加) at 在30℃以下; [0026] gives the dropwise addition temperature as 0～30℃",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "acetone cyanohydrin",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added once the triethylamine stage was complete by LC",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+      "thionyl chloride",
+      "1,3-cyclohexanedione",
+      "acetone cyanohydrin"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "将2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸、催化剂、氯化亚砜、溶剂加入反应瓶，升温回流反应，反应完毕后脱尽溶剂；将1,3-环己二酮、溶剂加入反应瓶，在30℃以下滴加三乙胺，LC跟踪至反应完全；反应完全后，加入丙酮氰醇，LC跟踪至反应完全，反应完全后加入水进行水洗，分层，油层脱尽溶剂，加溶剂进行重结晶，过滤，烘干得米黄色固体环磺酮。",
+    "procedure_summary": "The benzoic acid, a catalyst, thionyl chloride and a solvent are charged into a reaction flask and reacted at reflux, after which the solvent is stripped off completely. 1,3-Cyclohexanedione and solvent are then charged, triethylamine is added dropwise below the stated ceiling temperature and the reaction is followed by LC to completion; acetone cyanohydrin is then added and the reaction again followed by LC to completion. Water is added for a water wash, the layers are separated, the oil layer is stripped of solvent, and recrystallisation, filtration and drying give tembotrione as a beige solid.",
+    "precursor_step": "Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:acylation",
+      "mechanism:ionic",
+      "analytics:hplc",
+      "scale:not_specified",
+      "workup_type:aqueous_extraction",
+      "purification:recrystallisation",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:true"
+    ],
+    "notes": "PROSE step. Heading [0017] line 125: 3)环磺酮的合成. ONE-POT across three transformations with nothing isolated between them: the acid chloride is made and the solvent stripped (脱尽溶剂) but the acid chloride is never named as a compound and never worked up, the 1,3-环己二酮 and fresh solvent are charged into 反应瓶 on top of that residue, and the enol ester formed on adding 三乙胺 is likewise never named and never isolated before 丙酮氰醇 is added to it. reaction_class is taken from the final transformation, the conversion of the enol ester to the 2-aroyl-1,3-cyclohexanedione, which is an acylation of carbon. The acid chloride and the enol ester get no compound records here because the prose names neither; the acid chloride does appear as a drawn structure and is recorded on Scheme Step 4 and Scheme Step 5 under the SMILES identifier A1 gave it. NAMED REACTION: null. The 丙酮氰醇 stage is a cyanide-promoted migration of the acyl group from oxygen to carbon, often called a Fries-type rearrangement, but the classical Fries rearrangement is an aromatic ester reaction promoted by a Lewis acid and applying that name here would be a stretch, so it is left null and described instead. MECHANISM: ionic. 丙酮氰醇 is charged at 0.01～0.1 relative to the acid per [0025], so it is plainly sub-stoichiometric and acts as a cyanide source rather than as a stoichiometric reagent, but A1 records its role as reagent because the section never calls it 催化剂, and that role is kept here. catalyst_class is skipped: the tag vocabulary has no value for the 催化剂 of this step, which [0027] identifies as DMF acting as a nucleophilic catalyst in the acid chloride formation, and none for a cyanohydrin cyanide source. TEMPERATURE: the step has two different thermal regimes and the conditions block holds one. 升温回流反应 is recorded as heating_method reflux with temperature left unset by it, because 回流 is a heating method and not a temperature. The only numeric temperature the step states is the 三乙胺 dropwise addition, 在30℃以下 in [0018] and 0～30℃ in [0026], and that range is what conditions.temperature carries; the dropwise character is on the triethylamine's addition_profile. No temperature is given for the 丙酮氰醇 stage and none has been inferred. No time is given for any of the three transformations. SOLVENT: charged three times as the placeholder 溶剂, and the reaction solvent of step 3) is enumerated nowhere in this section, so solvent_class is skipped rather than guessed; only the crystallisation solvent is enumerated, at [0027]. CONCENTRATION: 脱尽溶剂 twice, with no 减压 anywhere, so pressure stays not_specified. FLAG reagent_written_not_drawn: the step charges a 催化剂 which [0027] identifies as DMF, and DMF appears at no position on the drawn scheme; arrow 5, which is where the acid chloride is formed and where that catalyst belongs, is completely bare. The generic 溶剂 is also undrawn but is not counted, on the policy applied throughout this section. DRAWING OTHERWISE AGREES, AND SPLITS THE STEP: the drawing renders this one numbered step as two arrows, arrow 5 for the acid chloride formation and arrow 4 for the acylation of the dione, and it prints arrow 4 above arrow 5, so the drawn order is the reverse of the chemical order. That is a granularity difference plus a layout inversion, not a disagreement about chemistry, so no drawing_text_conflict is raised; see Scheme Step 4 and Scheme Step 5. Arrow 4's label 三乙胺/丙酮氰醇 and arrow 5's co-reactant 氯化亚砜 both match this prose exactly, as does the 1,3 substitution of the drawn dione. SAFETY: safety_notes is empty because this section states no hazard about any reagent. 丙酮氰醇 is a cyanide source and the safety tag vocabulary has a cyanide_handling value, but the tag is skipped and no hazard is asserted, because the assessment belongs to A5 and the text supports none. ARITHMETIC: no mass, volume, mole or yield anywhere, only the six-component ratio ranges of [0025], so nothing can be checked and no arithmetic flag is available. The isolated solid is described only as 米黄色固体 with no purity and no analytics beyond the two LC checks."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Summary of the Invention_Scheme Step 1",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 1,
+    "step_label": "Scheme Step 1",
+    "reaction_class": "halogenation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "radical",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "methyl 2-chloro-3-methyl-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrobromic acid",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrogen peroxide",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "催化剂",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "methyl 2-chloro-3-methyl-4-(methanesulfonyl)benzoate",
+      "hydrobromic acid",
+      "hydrogen peroxide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "",
+    "procedure_summary": "Drawn arrow: the methyl benzoate, hydrogen bromide and hydrogen peroxide give the benzylic bromide over a catalyst written on the arrow only as cat. No procedure accompanies the drawing.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:bromination",
+      "mechanism:radical",
+      "scale:not_specified",
+      "workup_type:none",
+      "purification:none",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "SCHEME record, not a procedure. It is one arrow of the five-arrow overview scheme drawn as a single graphic at line 152, under 发明内容 and introduced by [0028]. An overview scheme carries connectivity and reagents but no charges, no conditions and no yields, so every condition field is null, no_conditions is raised for that reason and not because a number was overlooked, and scale is not_specified. Its numbering is independent of the prose numbering of steps 1) to 3). First arrow, reaction row 1 at page y 526-766. The substrate is drawn left of the arrow with HBr and H2O2 written on the baseline after bold plus signs as co-reactants, not as arrow labels, and the only thing written on the arrow itself is cat. The IMAGE_EXTRACT span records the bromide co-reactant as the SMILES Br, which is anhydrous hydrogen bromide, while the prose of [0014] charges 氢溴酸, the aqueous acid; A1 recorded that difference and kept the drawn form as an alias, and the A1 identifier hydrobromic acid is used here so the two artifacts join. The arrow label cat is recorded as the 催化剂 placeholder, which is the identifier A1 gave it with cat as an alias. MECHANISM: read as radical on the same ground as prose Step 1, that the bromination is benzylic and not on the ring; the drawing itself names no initiator. AGREES WITH THE PROSE: substrate, both co-reactants, the catalyst placeholder and the product all match prose Step 1, so nothing is flagged beyond the absence of conditions. The generic 溶剂 of the prose is on no arrow, but a scheme that omits a solvent is not a reagent discrepancy and reagent_written_not_drawn is not raised for it here or anywhere in this section. ROUTE ATTRIBUTION, RESOLVED AND RECORDED: this scheme is the invention's own route, not prior art. The evidence is on the page and is not ambiguous. The drawing sits inside 发明内容 (Summary of the Invention); the sentence that introduces it, [0028] at line 150, reads 本发明所涉及的反应方程式如下 (the reaction equations involved in the present invention are as follows); the vision pass for p05 recorded presented_as invention_route and noted that nothing on that page is presented as prior art; and every arrow reproduces a transformation the prose of [0013] to [0027] sets out as the invention's own. Rule 5e reserves route_attribution_unclear for a scheme the document leaves open, and this document leaves nothing open here, so the flag is not raised."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Summary of the Invention_Scheme Step 2",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 2,
+    "step_label": "Scheme Step 2",
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "high",
+    "named_reaction": "Williamson ether synthesis",
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2,2,2-trifluoroethanol",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "碱",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "COC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+      "2,2,2-trifluoroethanol",
+      "碱"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "COC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "",
+    "procedure_summary": "Drawn arrow: 2,2,2-trifluoroethanol and a base displace the benzylic bromide to give the trifluoroethyl ether, the methyl ester being carried through unchanged. No procedure accompanies the drawing.",
+    "precursor_step": "Scheme Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:etherification",
+      "mechanism:ionic",
+      "named_rxn:williamson_ether_synthesis",
+      "scale:not_specified",
+      "workup_type:none",
+      "purification:none",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "SCHEME record, not a procedure. It is one arrow of the five-arrow overview scheme drawn as a single graphic at line 152, under 发明内容 and introduced by [0028]. An overview scheme carries connectivity and reagents but no charges, no conditions and no yields, so every condition field is null, no_conditions is raised for that reason and not because a number was overlooked, and scale is not_specified. Its numbering is independent of the prose numbering of steps 1) to 3). Second arrow, reaction row 2 at page y 792-1067. The arrow itself is completely bare, carrying no label above or below it. PRODUCT IS DRAWING-ONLY: the trifluoroethyl ether of the methyl ester is drawn here but is named nowhere in the prose, which runs the etherification and the hydrolysis as one step and calls the intervening material only 剩余物; A1 therefore recorded it under the SMILES that was read, and that SMILES is used verbatim as the identifier here. A LOSS BETWEEN THE VISION READ AND THE MACHINE-READABLE SPAN, recorded rather than repaired: the drawing shows a third co-reactant on the baseline of this row, the single character 碱 (base) with no structure beside it, and the p05 vision pass recorded it as the 7th structure of the drawing with smiles null. The IMAGE_EXTRACT span at line 152 carries no entry for it at all, listing only the bromide and the trifluoroethanol as reactants of its step 2. The base is real and is drawn on the page; a downstream pass reading only the span would never see it. It is recorded here under the identifier 碱, which is the identifier A1 created. A1 scoped its 碱 record to the 碱/酸 label of the third arrow and does not mention this row-2 co-reactant, so the identifier is being carried onto a second drawn occurrence that A1 did not describe; a1_missing_compound is not raised, because the compound itself is present in A1 and a reviewer sent to look for a missing compound would find it. AGREES WITH THE PROSE: the transformation, both co-reactants and the presence of a base all match the first half of prose Step 2, and the base drawn here corresponds to that step's 碱1, which [0023] identifies as 碳酸钾. The drawn label carries no number, so it is recorded as written and not merged onto 碱1. FLAG reagent_written_not_drawn: prose Step 2 charges a 催化剂, which [0023] gives as 三乙烯二胺 or 2-甲基三乙烯二胺, and this bare arrow carries no catalyst; that catalyst appears nowhere on the drawing. ROUTE ATTRIBUTION, RESOLVED AND RECORDED: this scheme is the invention's own route, not prior art. The evidence is on the page and is not ambiguous. The drawing sits inside 发明内容 (Summary of the Invention); the sentence that introduces it, [0028] at line 150, reads 本发明所涉及的反应方程式如下 (the reaction equations involved in the present invention are as follows); the vision pass for p05 recorded presented_as invention_route and noted that nothing on that page is presented as prior art; and every arrow reproduces a transformation the prose of [0013] to [0027] sets out as the invention's own. Rule 5e reserves route_attribution_unclear for a scheme the document leaves open, and this document leaves nothing open here, so the flag is not raised."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Summary of the Invention_Scheme Step 3",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 3,
+    "step_label": "Scheme Step 3",
+    "reaction_class": "hydrolysis",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "COC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "碱",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "酸",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "COC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+      "碱",
+      "酸"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "",
+    "procedure_summary": "Drawn arrow: base and then acid convert the methyl ester to the free benzoic acid, the trifluoroethoxymethyl side chain being carried through unchanged. No procedure accompanies the drawing.",
+    "precursor_step": "Scheme Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:hydrolysis",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "catalyst_class:base",
+      "workup_type:none",
+      "purification:none",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "SCHEME record, not a procedure. It is one arrow of the five-arrow overview scheme drawn as a single graphic at line 152, under 发明内容 and introduced by [0028]. An overview scheme carries connectivity and reagents but no charges, no conditions and no yields, so every condition field is null, no_conditions is raised for that reason and not because a number was overlooked, and scale is not_specified. Its numbering is independent of the prose numbering of steps 1) to 3). Third arrow, reaction row 3 at page y 1088-1373, the only arrow of the five whose label is a pair of reagents rather than a single one: 碱/酸 is written above it and nothing below. The two halves of that label are recorded as the separate generic identifiers 碱 and 酸 that A1 created for exactly this arrow, and neither is resolved onto a named base or acid, because the drawing names none. The substrate is the drawing-only ether ester, carried under the SMILES identifier A1 gave it. AGREES WITH THE PROSE: the transformation is the second half of prose Step 2, whose 碱解 uses 碱2, which [0023] gives as 氢氧化钠, 氢氧化钾 or 氢氧化锂, followed by 滴加盐酸酸化 with 盐酸; base then acid, in that order, is exactly what the label says. No drawing_text_conflict. The prose also charges water as the hydrolysis medium and the arrow does not show it, but water as a medium is not a reagent discrepancy and is not flagged. GRANULARITY, not a conflict: the drawing gives this transformation its own arrow while the prose folds it into step 2) along with the etherification, so the drawing has four transformations where the prose has two by this point. named_reaction is left null: base hydrolysis of a simple aryl methyl ester has no name that plainly applies, and saponification properly describes the hydrolysis of fats, so it is not stretched onto this. ROUTE ATTRIBUTION, RESOLVED AND RECORDED: this scheme is the invention's own route, not prior art. The evidence is on the page and is not ambiguous. The drawing sits inside 发明内容 (Summary of the Invention); the sentence that introduces it, [0028] at line 150, reads 本发明所涉及的反应方程式如下 (the reaction equations involved in the present invention are as follows); the vision pass for p05 recorded presented_as invention_route and noted that nothing on that page is presented as prior art; and every arrow reproduces a transformation the prose of [0013] to [0027] sets out as the invention's own. Rule 5e reserves route_attribution_unclear for a scheme the document leaves open, and this document leaves nothing open here, so the flag is not raised."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Summary of the Invention_Scheme Step 4",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 4,
+    "step_label": "Scheme Step 4",
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "1,3-cyclohexanedione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "triethylamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "acetone cyanohydrin",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "1,3-cyclohexanedione",
+      "CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F",
+      "acetone cyanohydrin"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "",
+    "procedure_summary": "Drawn arrow: 1,3-cyclohexanedione and the benzoyl chloride give the 2-aroyl-1,3-cyclohexanedione, tembotrione, with triethylamine and acetone cyanohydrin written over the arrow. No procedure accompanies the drawing.",
+    "precursor_step": "Scheme Step 5",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:acylation",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "workup_type:none",
+      "purification:none",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "SCHEME record, not a procedure. It is one arrow of the five-arrow overview scheme drawn as a single graphic at line 152, under 发明内容 and introduced by [0028]. An overview scheme carries connectivity and reagents but no charges, no conditions and no yields, so every condition field is null, no_conditions is raised for that reason and not because a number was overlooked, and scale is not_specified. Its numbering is independent of the prose numbering of steps 1) to 3). Fourth arrow, reaction row 4 at page y 1389-1712. The dione and the benzoyl chloride are joined by a bold plus on the baseline and the arrow carries 三乙胺/丙酮氰醇 above it and nothing below. This arrow delivers the target 环磺酮, so step_role is final_step even though one more arrow is printed below it. DRAWING ORDER IS NOT REACTION ORDER. The scheme is numbered here in drawing order as the rule requires, top to bottom down the page, but arrow 4 consumes the acid chloride that arrow 5 produces, and arrow 4 is printed above arrow 5. Anyone reading the scheme straight down the page gets the route wrong at that point. The vision pass measured the two rows at page y 1389-1712 and y 1739-2040 respectively and recorded the inversion as a discrepancy; the page gives no explanation for it and none has been assumed. The prose of [0018] and the component order of [0025] both put the acid chloride formation first, which is the chemical order. precursor_step is therefore Scheme Step 5 and not Scheme Step 3: the identifier of this record's acid chloride reactant is the identifier of Scheme Step 5's product, which is what confirms the linkage. The acid chloride exists in this section only as a drawn structure, so it is carried under the SMILES identifier A1 gave it. GRANULARITY, not a conflict: the prose treats the whole of this chemistry as its single numbered step 3), with one combined six-component molar ratio at [0025], while the drawing splits it into two arrows. A pass that counts transformations gets three from the prose and five from the drawing. Neither representation is wrong and rule 5c is explicit that a flag on a scheme that matches its prose is a false finding, so drawing_text_conflict is not raised. AGREES WITH THE PROSE ON CHEMISTRY: prose Step 3 charges 1,3-环己二酮, adds 三乙胺 dropwise and then 丙酮氰醇, and isolates 环磺酮; the arrow names both of those reagents and draws the same dione with the same 1,3 substitution and the same product. Only the generic 溶剂 of the prose is undrawn, which is not counted. VISION CONFIDENCE: the p05 pass set this one arrow to medium confidence and logged the label as partly illegible, the character 氰 in 丙酮氰醇 being over-inked to the point that its inner component cannot be separated at any threshold, though its 气 radical is unmistakable. The reading is recorded as the vision pass recorded it and is corroborated independently by [0025], which names 丙酮氰醇. ROUTE ATTRIBUTION, RESOLVED AND RECORDED: this scheme is the invention's own route, not prior art. The evidence is on the page and is not ambiguous. The drawing sits inside 发明内容 (Summary of the Invention); the sentence that introduces it, [0028] at line 150, reads 本发明所涉及的反应方程式如下 (the reaction equations involved in the present invention are as follows); the vision pass for p05 recorded presented_as invention_route and noted that nothing on that page is presented as prior art; and every arrow reproduces a transformation the prose of [0013] to [0027] sets out as the invention's own. Rule 5e reserves route_attribution_unclear for a scheme the document leaves open, and this document leaves nothing open here, so the flag is not raised."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Summary of the Invention_Scheme Step 5",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 5,
+    "step_label": "Scheme Step 5",
+    "reaction_class": "halogenation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "thionyl chloride",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+      "thionyl chloride"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "",
+    "procedure_summary": "Drawn arrow: thionyl chloride converts the benzoic acid to the benzoyl chloride. No procedure accompanies the drawing and the arrow itself is bare.",
+    "precursor_step": "Scheme Step 3",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:chlorination",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "workup_type:none",
+      "purification:none",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "SCHEME record, not a procedure. It is one arrow of the five-arrow overview scheme drawn as a single graphic at line 152, under 发明内容 and introduced by [0028]. An overview scheme carries connectivity and reagents but no charges, no conditions and no yields, so every condition field is null, no_conditions is raised for that reason and not because a number was overlooked, and scale is not_specified. Its numbering is independent of the prose numbering of steps 1) to 3). Fifth and last arrow, reaction row 5 at page y 1739-2040, printed at the foot of the graphic. 氯化亚砜 is written on the baseline after a bold plus as a co-reactant, not on the arrow; the arrow itself is entirely bare. DRAWING ORDER IS NOT REACTION ORDER. The scheme is numbered here in drawing order as the rule requires, top to bottom down the page, but arrow 4 consumes the acid chloride that arrow 5 produces, and arrow 4 is printed above arrow 5. Anyone reading the scheme straight down the page gets the route wrong at that point. The vision pass measured the two rows at page y 1389-1712 and y 1739-2040 respectively and recorded the inversion as a discrepancy; the page gives no explanation for it and none has been assumed. The prose of [0018] and the component order of [0025] both put the acid chloride formation first, which is the chemical order. This arrow makes what arrow 4 consumes, so in reaction order it belongs before arrow 4, and precursor_step is Scheme Step 3, whose product is this record's benzoic acid. The product exists in this section only as a drawn structure and is carried under the SMILES identifier A1 gave it. CLASSIFICATION AT MEDIUM CONFIDENCE: the transformation is the conversion of a carboxylic acid to its acid chloride. The reaction_class vocabulary has no term for acid chloride formation; halogenation is chosen because a chlorine is introduced, and nucleophilic_substitution could be argued with equal force, so the confidence is set to medium and the choice is stated here rather than left implicit. GRANULARITY, not a conflict: the prose treats the whole of this chemistry as its single numbered step 3), with one combined six-component molar ratio at [0025], while the drawing splits it into two arrows. A pass that counts transformations gets three from the prose and five from the drawing. Neither representation is wrong and rule 5c is explicit that a flag on a scheme that matches its prose is a false finding, so drawing_text_conflict is not raised. FLAG reagent_written_not_drawn: prose Step 3 charges a 催化剂 for exactly this transformation and [0027] identifies it as DMF, yet DMF appears at no position anywhere on the scheme and this arrow, where it belongs, carries nothing at all. The p05 vision pass recorded the same finding independently. The generic 溶剂 is likewise undrawn but is not counted, on the policy applied throughout this section. AGREES WITH THE PROSE OTHERWISE: substrate, reagent and product all match the first transformation of prose Step 3. ROUTE ATTRIBUTION, RESOLVED AND RECORDED: this scheme is the invention's own route, not prior art. The evidence is on the page and is not ambiguous. The drawing sits inside 发明内容 (Summary of the Invention); the sentence that introduces it, [0028] at line 150, reads 本发明所涉及的反应方程式如下 (the reaction equations involved in the present invention are as follows); the vision pass for p05 recorded presented_as invention_route and noted that nothing on that page is presented as prior art; and every arrow reproduces a transformation the prose of [0013] to [0027] sets out as the invention's own. Rule 5e reserves route_attribution_unclear for a scheme the document leaves open, and this document leaves nothing open here, so the flag is not raised."
+  }
+]

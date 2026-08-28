@@ -294,13 +294,113 @@ def finalise_pathways(pws, mols, rxns):
     return pws
 
 
+def pathway_section_type(p: dict) -> str:
+    """Which kind of section a pathway came from.
+
+    The pathway record carries only `section_label`; the type it needs is on its
+    steps, which are projections of reactions and do carry `section_type`.
+    """
+    for s in p.get("steps") or []:
+        t = s.get("section_type")
+        if t:
+            return t
+    return ""
+
+
+# Sections that describe somebody ELSE'S chemistry. A route recited in the
+# background is prior art by definition, and A0's own rule says so.
+#
+# A comparative example is deliberately NOT here. That is the applicant's own
+# experiment, run at the conditions they are arguing against and reported as their
+# own data, so it belongs to this patent in a way a cited competitor's route does
+# not.
+NOT_THIS_PATENTS_CHEMISTRY = {"background"}
+
+
+# The biblio schema and the PatentRecord schema define DIFFERENT vocabularies for
+# the same field, and only university, individual and government are in both:
+#
+#   biblio  : company university individual institute government hospital foundation
+#   record  : multinational_corp sme university government individual consortium
+#
+# So a company-owned patent could not validate on both sides at once. The stub
+# new_run.py ships pre-fills "company", which the record rejects; the obvious
+# manual fix, "sme", is what the biblio rejects. Neither is wrong: they are two
+# vocabularies and nothing was translating between them. The reference run's
+# assignee is a university, a word both schemas happen to share, which is the only
+# reason this held for one patent.
+#
+# The biblio keeps its own words, since that is the file a person fills in, and
+# the mapping happens here where the record is built.
+ASSIGNEE_TYPE = {
+    "university": "university",
+    "individual": "individual",
+    "government": "government",
+    # A judgement the biblio does not record. It captures no company size, and the
+    # record's vocabulary forces one, so this maps to the smaller claim: sme
+    # asserts less than multinational_corp does. Where an assignee really is a
+    # multinational, say so in the biblio and this map is the place to widen.
+    "company": "sme",
+    # An institute is academic in the way a university is, and neither hospital nor
+    # foundation has a counterpart in the record's six. They go to the nearest
+    # honest neighbour rather than being dropped, because assignee_type absent and
+    # assignee_type approximate are different claims.
+    "institute": "university",
+    "hospital": "university",
+    "foundation": "consortium",
+}
+
+
+def assignee_type(kind: str) -> str:
+    """A biblio assignee type in the PatentRecord's vocabulary."""
+    return ASSIGNEE_TYPE.get((kind or "").strip().lower(), "sme")
+
+
+def tag_slug(name: str) -> str:
+    """An assignee name as a tag value the schema will accept.
+
+    The pattern is `^[a-z_]+:[a-z0-9_/.+-]+$`, so a comma is not allowed. This was
+    `name.lower().replace(" ", "_")`, which is enough for "Wuhan Institute of
+    Technology" and not for "Zhejiang Zhongshan Chemical Industry Group Co., Ltd.":
+    the commas and the full stops survived and the record failed validation on the
+    second patent this pack ever saw.
+
+    Everything outside the allowed set becomes an underscore, runs collapse, and
+    the ends are trimmed, so the tag stays readable rather than escaped.
+    """
+    import re
+    slug = re.sub(r"[^a-z0-9]+", "_", (name or "").lower()).strip("_")
+    return slug or "unknown"
+
+
 def rollup(mols, rxns, pws):
-    """PatentRecord.ExtractionRollup, computed not asked for."""
+    """PatentRecord.ExtractionRollup, computed not asked for.
+
+    THE "BEST" AND "KEY" FIELDS ARE ABOUT THIS PATENT, SO PRIOR ART IS EXCLUDED.
+    Both used to be computed over everything annotated. On a patent whose
+    background recites competitors' routes, that made `best_overall_yield_pct`
+    report 75.2 for CN109678767A: the yield of the Heilongjiang University NBS
+    route, which the background quotes only in order to criticise it, against the
+    invention's own best of 69.88. `key_starting_materials` likewise listed three
+    feedstocks belonging to routes this patent argues against.
+
+    It was invisible on the reference run for one reason: its A0 marked the
+    background as carrying no procedures, so it produced no background pathways
+    and no background starting materials, and the max happened to be right. The
+    counts are 0 and 0 there, so this exclusion cannot change it.
+
+    A wrong number here is the worst kind available: `best_overall_yield_pct` is
+    exactly the field that gets read out of the artifact and put on a slide, and
+    a competitor's yield reported as this patent's is not a defect anyone would
+    catch downstream.
+    """
     from collections import Counter
     sec = Counter(r.get("section_type") or "unknown" for r in rxns)
     scale = Counter(r.get("scale") or "not_specified" for r in rxns)
     cls = Counter(r.get("reaction_class") or "other" for r in rxns)
-    best = max((p for p in pws if p.get("overall_yield_pct") is not None),
+    ours = [p for p in pws
+            if pathway_section_type(p) not in NOT_THIS_PATENTS_CHEMISTRY]
+    best = max((p for p in ours if p.get("overall_yield_pct") is not None),
                key=lambda p: p["overall_yield_pct"], default=None)
     ref = lambda c: {"identifier": c["identifier"], "smiles": c.get("smiles"),
                      "compound_uuid": c["compound_uuid"]}
@@ -310,8 +410,10 @@ def rollup(mols, rxns, pws):
         "pathway_count": len(pws),
         "section_summary": dict(sec),
         "target_compounds": [ref(m) for m in mols if m.get("is_section_product")],
-        "key_starting_materials": [ref(m) for m in mols
-                                   if "compound_class:starting_material" in (m.get("tags") or [])],
+        "key_starting_materials": [
+            ref(m) for m in mols
+            if "compound_class:starting_material" in (m.get("tags") or [])
+            and (m.get("section_type") or "") not in NOT_THIS_PATENTS_CHEMISTRY],
         "chemistry_focus": [k for k, _ in cls.most_common(5)],
         "best_overall_yield_pct": best["overall_yield_pct"] if best else None,
         "best_overall_yield_pathway_uuid": best["pathway_uuid"] if best else None,
@@ -355,8 +457,8 @@ def finalise_patent(llm, mols, rxns, pws):
              f"patent_family:{b['family_id']}",
              f"time_period:{b['publication_date'][:4]}"]
     for a in b.get("assignees") or []:
-        tags += [f"assignee:{a['name'].lower().replace(' ', '_')}",
-                 f"assignee_type:{a['type']}"]
+        tags += [f"assignee:{tag_slug(a['name'])}",
+                 f"assignee_type:{assignee_type(a.get('type'))}"]
     # full inheritance: union every reaction / compound / pathway tag
     for coll in (mols, rxns, pws):
         for rec in coll:
@@ -388,7 +490,8 @@ def finalise_patent(llm, mols, rxns, pws):
             "cpc_codes": None,
         },
         "parties": {"assignees": [{"name": a["name"], "country": a["country"],
-                                   "type": a["type"]} for a in b["assignees"]],
+                                   "type": assignee_type(a["type"])}
+                                  for a in b["assignees"]],
                     "inventors": inventors(b),
                     "examiners": None},
         "patent_summary": llm.get("patent_summary"),

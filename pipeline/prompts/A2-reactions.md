@@ -62,8 +62,9 @@ cross-section linkage):
    sequential transformations with no workup between them, keep it as ONE record,
    set `is_one_pot: true`, and list the transformations in document order in
    `one_pot_steps`. Assign `reaction_class` from the FINAL transformation.
-   This document contains at least two such steps; find them rather than assuming
-   the count.
+   Find these by reading for the absence of a workup between transformations. Do
+   not assume a count: a route that isolates every intermediate has none, and a
+   route whose selling point is that it does not isolate them has several.
 
 ### Reading the drawings
 5a. `[IMAGE_EXTRACT: {"reactions":[{step_id, reactants[], conditions[], products[]}]}]`
@@ -77,12 +78,14 @@ cross-section linkage):
     one usually precedes each experimental step and depicts that step's product.
     Treat it as evidence for `product_name`, and cross-check it against the name the
     text gives.
-5c. **The scheme and the prose can disagree, and here they do.** When a reagent
-    appears in one and not the other, or a drawn structure contradicts a written
-    name, keep what the **prose of that step** says in the structured fields, and
-    raise `drawing_text_conflict` in `validation_flags` with both readings in
-    `notes`. Never silently merge them, and never let the drawing overwrite a
-    stated procedure.
+5c. **The scheme and the prose can disagree.** Check whether they do here before
+    assuming either way. When a reagent appears in one and not the other, or a drawn
+    structure contradicts a written name, keep what the **prose of that step** says
+    in the structured fields, and raise `drawing_text_conflict` in
+    `validation_flags` with both readings in `notes`. Never silently merge them, and
+    never let the drawing overwrite a stated procedure. Where they agree, say so in
+    `notes` and raise nothing: a flag on a scheme that matches its prose is a false
+    finding, and a reviewer sent to look at one stops trusting the next.
 5d. **A scheme outside an experimental section is an overview, not a procedure.**
     It carries connectivity and reagents but no charges, no conditions and no
     yields. Annotate its arrows as reactions - production's passes run over every
@@ -104,18 +107,17 @@ cross-section linkage):
       has, that is a finding, not a gap for you to close.** Do not pick a side.
       Write both readings into `notes`, raise `route_attribution_unclear` in
       `validation_flags` on every record from that scheme, and move on.
-    The scheme in this document is exactly that case. Its first arrow uses a reagent
-    the text says the invention replaced, it contains a step the text says the
-    invention eliminated, and it also uses a reagent the text claims as the
-    invention's improvement. It is internally inconsistent with the prose around it.
-    Record the inconsistency. Mislabelling prior art as the invention's route, or
-    quietly deciding which it "must" be, is the most damaging single error available
-    in this document.
-5f. **A section may contain both prose steps and an overview scheme.** In this
-    document `Summary of the Invention` does: it recites the route in words across
-    its numbered paragraphs, and it ends with a drawn multi-arrow scheme. Do not
-    assume they are the same route and do not collapse them into one set of records.
-    The vision pass found that they disagree on at least two steps.
+    The reference run met exactly that case: its scheme used a reagent the text said
+    the invention replaced, contained a step the text said the invention eliminated,
+    and also used a reagent the text claimed as the invention's improvement, so it
+    was internally inconsistent with the prose around it. That is a description of
+    that patent, not of yours. Decide from your own document and record what you
+    find, either way. Mislabelling prior art as the invention's route, or quietly
+    deciding which it "must" be, is the most damaging single error available here.
+5f. **A section may contain both prose steps and an overview scheme.** A
+    `Summary of the Invention` commonly does: it recites the route in words across
+    its numbered paragraphs and then draws it. Do not assume they are the same route
+    and do not collapse them into one set of records, even where they look identical.
     Emit **both**, kept apart by `step_label`:
     - prose steps get `step_label: "Step N"` and `reaction_id
       "<section_label>_Step N"`
@@ -123,14 +125,14 @@ cross-section linkage):
       "<section_label>_Scheme Step N"`, numbered in drawing order
     Then, for every scheme record whose transformation has a prose counterpart that
     contradicts it, raise `drawing_text_conflict` and name the counterpart in
-    `notes`. The step counts need not match; here the prose gives eight steps and
-    the scheme draws nine transformations, and that difference is itself a finding.
+    `notes`. The step counts need not match, and where they do not that difference
+    is itself a finding: say in `notes` which transformation the prose has and the
+    drawing lacks, or the reverse.
 5g. Where a drawn arrow has **no reagent at all**, or a chemical change occurs
     between two drawn structures with **no arrow between them**, that is still a
     transformation and still gets a record. Set `reaction_class` from the structural
     change, leave the reagent fields null, and raise `no_conditions`. Silently
-    skipping an unlabelled arrow is a recall miss, and this scheme contains more
-    than one.
+    skipping an unlabelled arrow is a recall miss.
 5h. `procedure_text` must have every `[IMAGE_EXTRACT: ...]` span **stripped out**.
     Production does this at persistence time via `ProcedureTextSanitizer`, and
     leaving the spans in would make every `procedure_text` diff against production.
@@ -169,6 +171,21 @@ cross-section linkage):
      `回流` / "reflux" is NOT a temperature - it is a heating method. Put
      `heating_method: "reflux"` and leave temperature `not_specified` unless a
      number is given.
+
+     **An addition temperature is still the step's temperature when it is the only
+     one printed.** `在75～80℃滴加双氧水` gives
+     `{"type":"range","min_c":75.0,"max_c":80.0}` AND the phrase in that reagent's
+     `addition_profile`. The two are not alternatives. Recording it only in
+     `addition_profile` leaves `not_specified` on a step whose temperature the
+     patent states, and where four worked examples repeat one procedure it makes
+     them incomparable: three carry a range and the fourth reads as though the
+     temperature were never given.
+
+     **A one-pot step takes its temperature from the FINAL transformation**, the
+     same one rule 5 takes `reaction_class` from, and names the others in `notes`.
+     A step that etherifies at 0 to 5 C and then hydrolyses at 70 to 75 C records
+     70 to 75. Choosing per step is how two examples of one procedure end up
+     disagreeing about which number describes them.
    - `time_h` in hours. `10h` -> 10.0. `50min` -> 0.83 only when the 50 min is the
      reaction time; a dropwise addition time belongs in that compound's
      `addition_profile`, not in `time_h`.
@@ -286,10 +303,12 @@ cross-section linkage):
     - `a1_missing_compound` - rule 7
     - `mass_balance_implausible` - the stated product mass exceeds what the stated
       input moles could give, or the stated mass and the stated yield disagree.
-      Check this on every step. In this document the printed mass/mole pairs
-      repeatedly imply a molecular weight lower than the compound actually named,
-      and one step reports a mass that cannot be reconciled with its own stated
-      yield. Raise the flag, record the numbers as printed, and change nothing.
+      Check this on every step, and check it by arithmetic rather than by
+      expectation. Where it closes, raise nothing. Where it does not, raise the flag,
+      record the numbers as printed, and change nothing. In the reference run the
+      printed mass/mole pairs repeatedly implied a molecular weight lower than the
+      compound named; that is a fact about that patent and tells you nothing about
+      whether yours closes.
     - `scale_discontinuity` - this step's input charge does not match the previous
       step's output
     - `translation_conflict` - Chinese and English name different compounds
@@ -304,8 +323,9 @@ cross-section linkage):
 29. **Do not repair the patent.** Where the numbers are internally inconsistent,
     record them exactly as printed and raise the flag. The value of this gold set
     depends on it being a faithful record of the document, not a corrected one.
-    At least three steps in this document have arithmetic that does not close - find
-    them rather than assuming which.
+    Equally, do not invent a defect. Check every step's arithmetic and report what
+    you find. A patent whose numbers all close is a real outcome, not a sign you
+    looked badly.
 
 ### Text fields
 30. `procedure_text` - the procedure verbatim from the Chinese, unabridged, with

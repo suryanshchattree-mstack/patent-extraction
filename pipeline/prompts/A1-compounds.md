@@ -163,20 +163,31 @@ SECTION TEXT (line-numbered enriched markdown - Chinese is authoritative, `EN:` 
 19. Do NOT emit tags for `physical_form`, `color`, `role_seen` or `commercial` -
     those are rule-derived downstream and emitting them here creates false diffs.
 
-### Translation hazards - specific to this document
-20. The `EN:` line is machine translation and it garbles chemistry in this patent.
-    Where Chinese and English disagree, follow the Chinese and record the
-    discrepancy in `notes`. Known cases you will meet:
-    - `1,2-二氯乙烷` is 1,2-dichloroethane, the step 1 reaction solvent. A few lines
-      later the **Chinese itself** prints the step 1 extraction solvent as
-      `1,2-二氯甲烷`, which is not a valid compound name. This is an error in the
-      patent, not in the translation, so it is not a translation hazard at all:
-      leave it unresolved, keep it verbatim, and note it. Do not silently read it
-      as either dichloromethane or 1,2-dichloroethane.
-    - `二氯甲烷` is dichloromethane (DCM).
-    - `环己二酮` here means cyclohexane-1,3-dione, confirmed by the stated
-      24.5 g / 0.22 mol (MW ~111).
-    - `氰基丙酮` translates as "cyanoacetone".
+### Translation hazards
+20. The `EN:` line is machine translation and it garbles chemistry. Where Chinese and
+    English disagree, follow the Chinese and record the discrepancy in `notes`.
+
+    The cases below were found in the reference run, the one worked example this
+    repo ships. They are a checklist of the KINDS of hazard to look for in YOUR section. **None of them is
+    an assertion about the patent you are reading.** Check each against your own
+    text and use it only where your own text supports it. In particular, never carry
+    a quantity from this list into your output: a number that is not in your section
+    is not evidence, whatever it confirmed somewhere else.
+    - A solvent name that differs from a valid one by a single character. The
+      reference run prints `1,2-二氯乙烷` (1,2-dichloroethane) in one step and
+      `1,2-二氯甲烷` a few lines later, which names no compound that can exist. That
+      was an error in the patent, not in the translation: it was left unresolved,
+      kept verbatim, and noted. Do the same with any such string, and do not silently
+      read it as whichever neighbour looks likeliest.
+    - An ambiguous ring locant. `环己二酮` alone does not say which dione. Resolve it
+      only from evidence in your own section, such as a stated mass and mole pair
+      that fixes the molecular weight, or a locant the text prints itself
+      (`1,3-环己二酮` is unambiguous and needs no inference). Otherwise leave it
+      unresolved.
+    - A name whose literal reading and whose intended compound differ.
+      `氰基丙酮` reads as cyanoacetone and `丙酮氰醇` as acetone cyanohydrin; they are
+      different compounds and the two strings differ by transposition. Translate what
+      is printed.
 21. Never silently correct the source. Emit what the Chinese says and put the
     conflict in `notes`. A gold set that quietly fixes the patent cannot be used to
     measure an extractor that does not.

@@ -1,0 +1,893 @@
+[
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Example 4_Step 1",
+    "section_label": "Example 4",
+    "section_type": "experimental_example",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "halogenation",
+    "reaction_class_confidence": "high",
+    "named_reaction": "Wohl-Ziegler bromination",
+    "mechanism_type": "radical",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": 60.0,
+        "max_c": 65.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": "reaction flask",
+      "concentration": {
+        "value": 48.0,
+        "unit": "%",
+        "reagent": "hydrobromic acid",
+        "text": "48％ hydrobromic acid"
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "layers separated once the reaction was complete",
+        "organic layer washed with water",
+        "organic layer concentrated",
+        "recrystallised from ethanol",
+        "filtered",
+        "dried"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": [
+        "water"
+      ],
+      "drying_agent": null,
+      "filtration": "filtered after the recrystallisation from ethanol",
+      "concentration_method": "concentration",
+      "ph_target": null
+    },
+    "purification": "recrystallised from ethanol",
+    "process_control": {
+      "method": "hplc",
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": "complete conversion"
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 26.43,
+          "volume_ml": null,
+          "mmol": 100.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start with the solvent, the initiator and the hydrobromic acid",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.7,
+        "purity_method": null
+      },
+      {
+        "identifier": "chloroform",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 200.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start as the reaction solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "azobisisobutyronitrile",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 1.66,
+          "volume_ml": null,
+          "mmol": 10.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start as the radical initiator",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrobromic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 33.75,
+          "volume_ml": null,
+          "mmol": 200.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start as the aqueous acid",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 48.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrogen peroxide",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 22.7,
+          "volume_ml": null,
+          "mmol": 200.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise at 60 to 65 C, the reaction being continued after the addition was complete",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 30.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "used to wash the organic layer at workup; no amount stated for this use",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ethanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "used to recrystallise the crude product; no amount stated",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": 30.66,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 88.7
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 98.8,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "methyl 2-chloro-3-methyl-4-(methylsulfonyl)benzoate",
+      "hydrobromic acid",
+      "hydrogen peroxide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 88.7,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 98.8,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "将26.43g  2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯(99.7％、0.1mol)，200ml氯仿，1.66g偶氮二异丁腈(99％、0.01mol)，33.75g氢溴酸(48％、0.2mol)加入500ml反应瓶中，在60～65℃滴加22.7g双氧水(30％、0.2mol)，滴加完毕后继续反应，LC跟踪至反应完全，反应完全后分层，有机层水洗、浓缩，乙醇进行重结晶、过滤、烘干得30.66g白色粉末，纯度98.8％，收率88.7％。",
+    "procedure_summary": "The methylsulfonyl benzoate ester is brominated on its ring methyl group in chloroform, with hydrobromic acid as the bromine source and an azonitrile radical initiator, hydrogen peroxide being added dropwise as the oxidant while the temperature is held in the stated band. Liquid chromatography follows the reaction to completion, after which the layers are separated, the organic layer is washed with water and concentrated, and the product is recrystallised from ethanol, filtered and dried to a white powder.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "transformation:bromination",
+      "mechanism:radical",
+      "named_rxn:wohl_ziegler_bromination",
+      "analytics:hplc",
+      "scale:lab",
+      "solvent_class:halogenated",
+      "catalyst_class:none",
+      "workup_type:aqueous_extraction",
+      "purification:recrystallisation",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "Chinese heading 1、2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的合成 (synthesis of methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate). PAGE BREAK: paragraph [0073] is printed across a page boundary. The charge list breaks off mid-sentence at the foot of one page and the remainder of the same paragraph continues on the next with the paragraph marker reprinted and no new content marker, so the reagents after the solvent and the whole of the procedure sit on the second page. Both fragments are joined verbatim in procedure_text and the intervening page comment is not part of the procedure; stopping at the page break would have lost the initiator, the bromine source, the oxidant, the temperature, the process control, the workup and the product. SOLVENT: the step runs in 氯仿 (chloroform), which is the only appearance of that solvent in this section. REACTOR: 500ml反应瓶, a 500 ml reaction flask. The text names no stirrer, no thermometer and no condenser anywhere in this example, so stirring is left null throughout rather than assumed. TEMPERATURE CONVENTION used throughout this section: the structured field carries the numeric temperature the step actually states, and any further stage is written out here. Here the only temperature stated is the 60 to 65 C band at which the hydrogen peroxide is added dropwise, so that band is what the structured field carries and the dropwise detail is repeated on that compound's addition_profile. The text then says only that the reaction is continued after the addition, restating neither a temperature nor a hold time, so time_h is null. 回流 does not appear in this step and no heating method is named. CONCENTRATION FIELD: the 48％ printed against the hydrobromic acid is a solution strength and not a solid assay, and the arithmetic proves this rather than assuming it, because the printed mole count closes only when the percentage is applied as strength. It is therefore recorded in conditions.concentration. The 30％ printed against the hydrogen peroxide is the same kind of figure, but the single concentration object cannot hold two reagents, so it is carried on that compound's purity_pct exactly as printed. Note that the patent prints solution strengths and solid assays in the identical bracketed slot. ARITHMETIC: every printed pair in this step closes once the printed percentage is applied. The substrate at 99.7％ implies 263.5 against 262.71 for C10H11ClO4S; the initiator at 99％ implies 164.3 against 164.21; the hydrobromic acid at 48％ implies 81.0 against 80.91; the hydrogen peroxide at 30％ implies 34.05 against 34.01. Product closure also holds: the charge is 0.1 mol, the product C10H10BrClO4S has a molecular weight of 341.60 so theory is 34.16 g, and the printed mass corrected by the printed purity is 88.7％ of that, which is the printed yield to within 0.02 of a percentage point. So the yields in this section are computed on purity-corrected mass. NO FLAGS ARE RAISED ON THIS STEP. That is a result, not an omission: the step was checked pair by pair and it closes. DRAWING: the single-structure span before the step, SMILES COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl, formula C10H10BrClO4S, InChIKey YQYVOGFWLVVXMM-UHFFFAOYSA-N, depicts the product named in the heading. Drawing and prose agree, so nothing is raised. NAMED REACTION CAVEAT: recorded as Wohl-Ziegler bromination because this is a radical benzylic bromination of exactly that type, but a strict reading of the name requires N-bromosuccinimide, and this step instead generates the brominating species in situ from hydrobromic acid and hydrogen peroxide with an azonitrile initiator. A0 estimated three steps and three numbered markers are present, so there is no step-count disagreement. The section nevertheless contains more chemical transformations than numbered steps, because steps 2 and 3 are each one-pot."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Example 4_Step 2",
+    "section_label": "Example 4",
+    "section_type": "experimental_example",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "hydrolysis",
+    "reaction_class_confidence": "high",
+    "named_reaction": "Williamson ether synthesis",
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": true,
+    "one_pot_steps": [
+      "etherification of the benzylic bromide with 2,2,2-trifluoroethanol over potassium carbonate with a triethylenediamine catalyst in N,N-dimethylformamide at 20 to 25 C, giving the trifluoroethyl ether of the methyl ester, which is never named or isolated",
+      "alkaline hydrolysis of that methyl ester with sodium hydroxide and water at 70 to 75 C to give the benzoic acid"
+    ],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": 70.0,
+        "max_c": 75.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": "reaction flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": "acidification of the hydrolysis mixture with hydrochloric acid added dropwise, before filtration of the product"
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "mixture filtered once the etherification was complete, dropping out the inorganic salts",
+        "filtrate concentrated",
+        "sodium hydroxide and water charged onto the residue for the alkaline hydrolysis, the ester intermediate never being isolated",
+        "hydrochloric acid added dropwise to acidify once the hydrolysis was complete",
+        "filtered",
+        "washed, washing medium not stated",
+        "dried"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "filtered once to remove the inorganic salts after the etherification, and again to collect the acidified product",
+      "concentration_method": "concentration of the filtrate",
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": "hplc",
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": "complete conversion"
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 34.2,
+          "volume_ml": null,
+          "mmol": 100.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start with the base, the catalyst, the solvent and the trifluoroethanol",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.8,
+        "purity_method": null
+      },
+      {
+        "identifier": "potassium carbonate",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 27.88,
+          "volume_ml": null,
+          "mmol": 200.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "triethylenediamine",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 2.26,
+          "volume_ml": null,
+          "mmol": 10.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start as the catalyst for the etherification",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "N,N-dimethylformamide",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 200.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start as the etherification solvent; printed only as the abbreviation DMF",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2,2,2-trifluoroethanol",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 1.13,
+          "volume_ml": null,
+          "mmol": 200.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start, printed as 1.13g2,2,2-三氟乙醇(99％、0.2mol) with no space between the mass and the name; both figures are recorded exactly as printed and neither is corrected",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium hydroxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 8.1,
+          "volume_ml": null,
+          "mmol": 200.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged onto the concentrated residue with water for the alkaline hydrolysis",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 200.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged onto the concentrated residue with the sodium hydroxide as the hydrolysis medium",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise to acidify the hydrolysis mixture; no amount and no strength stated",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": 31.1,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 89.3
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.5,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+      "2,2,2-trifluoroethanol",
+      "sodium hydroxide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 89.3,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 99.5,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "将34.2g  2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(99.8％、0.1mol)，27.88g碳酸钾(99％、0.2mol)，2.26g三乙烯二胺(99％、0.01mol)，200ml  DMF，1.13g2,2,2-三氟乙醇(99％、0.2mol)加入500ml反应瓶中，在20～25℃进行反应，LC跟踪至反应完全，反应完毕后过滤，滤液浓缩。往剩余物里8.1g氢氧化钠(99％、0.2mol)，200ml水，在70～75℃进行碱解，LC跟踪至反应完全，反应完全后滴加盐酸酸化，过滤，洗涤，烘干得31.1g白色粉末，纯度99.5％，收率89.3％。",
+    "procedure_summary": "The benzylic bromide is etherified with trifluoroethanol in dimethylformamide over potassium carbonate with a bicyclic diamine catalyst, liquid chromatography following the reaction to completion. The salts are filtered off and the filtrate concentrated, and the residue is then hydrolysed with sodium hydroxide and water without the ester intermediate being isolated. The mixture is acidified dropwise with hydrochloric acid and the benzoic acid is filtered off, washed and dried to a white powder.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "molar_mass_inconsistent",
+      "mass_balance_implausible",
+      "scale_discontinuity"
+    ],
+    "tags": [
+      "transformation:etherification",
+      "transformation:hydrolysis",
+      "mechanism:ionic",
+      "named_rxn:williamson_ether_synthesis",
+      "analytics:hplc",
+      "scale:lab",
+      "solvent_class:aprotic_polar",
+      "solvent_class:aqueous",
+      "catalyst_class:base",
+      "workup_type:filtration",
+      "workup_type:precipitation",
+      "purification:none",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:true"
+    ],
+    "notes": "Chinese heading 2、2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸的合成 (synthesis of 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid). ONE POT, TWO TRANSFORMATIONS. One numbered step describes the etherification of the benzylic bromide with trifluoroethanol over potassium carbonate with a triethylenediamine catalyst in dimethylformamide at 20 to 25 C, and then the 碱解 of the resulting ester with sodium hydroxide and water at 70 to 75 C. Between them the mixture is only filtered to drop out the inorganic salts and the filtrate concentrated, and the base and water are then charged onto that residue. The ester intermediate is never named, never isolated, never purified and never assigned an amount, so this is one record. reaction_class follows the FINAL transformation and is therefore hydrolysis; named_reaction records Williamson ether synthesis, which names the first transformation, because the saponification carries no canonical name. ACIDIFICATION: the 滴加盐酸酸化 that follows the hydrolysis converts the sodium carboxylate to the free acid and drops it out of solution. It is recorded as workup and as ph_target_stage rather than as a third entry in one_pot_steps, on the same convention that treats the isolation of a carboxylic acid as isolation; a reader who counted it as a transformation would read three rather than two, and that reading is recorded here so the choice is visible. CONDITIONS follow the final transformation, so the structured temperature is the 70 to 75 C band of the alkaline hydrolysis; the 20 to 25 C band of the etherification is stated here and in one_pot_steps rather than in the structured field. No hold time is given for either stage, so time_h is null. Reactor is a 500 ml reaction flask; no stirrer is named. Process control is stated at both stages, each as LC跟踪至反应完全. THIS STEP CARRIES THE TWO DEFECTIVE MASS AND MOLE PAIRS OF THE SECTION, AND NEITHER IS REPAIRED. First, 1.13g2,2,2-三氟乙醇(99％、0.2mol), printed with no space between the mass and the name. 2,2,2-Trifluoroethanol is C2H3F3O with a molecular weight of 100.04, so the printed 1.13 g at 99％ is 0.0112 mol and not 0.2 mol; the printed pair implies a molecular weight of 5.65, and the mass that would carry 0.2 mol is 20.21 g, so the printed mass is short by a factor of about 17.9. Second, 2.26g三乙烯二胺(99％、0.01mol). Triethylenediamine is C6H12N2 with a molecular weight of 112.18, so the printed 2.26 g at 99％ is 0.01995 mol, almost exactly twice the printed 0.01 mol; the printed pair implies 226.0 against 112.18. OBSERVATION, recorded as an observation and not acted on: the mass that would make the printed triethylenediamine mole count correct is 1.13 g, which is exactly the mass printed against the trifluoroethanol, and the mass actually printed against the triethylenediamine is twice that. Both figures are emitted exactly as printed and no plausible mass is substituted for either. molar_mass_inconsistent is raised for those two pairs. Every other pair in the step closes: the bromide at 99.8％ implies 341.3 against 341.60, the potassium carbonate at 99％ implies 138.0 against 138.20, the sodium hydroxide at 99％ implies 40.09 against 40.00. mass_balance_implausible is raised, and the reading it rests on is stated here so it can be checked. Against the printed MOLE counts the step closes: the bromide is limiting at 0.1 mol, the product C11H10ClF3O5S has a molecular weight of 346.70 so theory is 34.67 g, and the printed mass corrected by the printed purity is 89.2％ of that against a printed yield of 89.3％. Against the printed MASSES it cannot close: the printed 1.13 g of trifluoroethanol at 99％ can supply at most 0.0112 mol of the ether, which is 3.88 g of product, and 31.1 g is printed. The two printed quantities for the same reagent therefore give opposite answers to the same question, which is the defect itself and is why the flag is raised rather than the arithmetic being reconciled. scale_discontinuity is raised because step 1 isolated 30.66 g of this bromide and this step charges 34.2 g of it, that is more material than the preceding step produced. The section restarts each step at a clean 0.1 mol regardless of the mass carried forward. WASHING: 洗涤 names no washing medium, so washes is left null and the operation is recorded in workup.steps. DRAWING: the single-structure span before the step, SMILES CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F, formula C11H10ClF3O5S, InChIKey YGMJOCQCLVNPOD-UHFFFAOYSA-N, is drawn as the free carboxylic ACID, which matches the heading and independently corroborates the one-pot reading, since the ester formed in the first transformation must be hydrolysed for the drawn structure to be the step's product. Drawing and prose agree, so nothing is raised on the drawing."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Example 4_Step 3",
+    "section_label": "Example 4",
+    "section_type": "experimental_example",
+    "step_index": 3,
+    "step_label": "Step 3",
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": true,
+    "one_pot_steps": [
+      "conversion of the benzoic acid to its acid chloride with thionyl chloride and catalytic N,N-dimethylformamide in dichloroethane at reflux, the solvent then being stripped off completely",
+      "acylation of cyclohexane-1,3-dione in dichloromethane with triethylamine added dropwise at 5 to 10 C, giving the enol ester, which is never named or isolated",
+      "rearrangement of that enol ester to the C-acylated cyclohexane-1,3-dione on addition of catalytic acetone cyanohydrin"
+    ],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": 5.0,
+        "max_c": 10.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": "reaction flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": "reflux",
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "solvent stripped off completely once the acid chloride formation was complete, before the dione and dichloromethane were charged",
+        "water added and the mixture washed with water once the rearrangement was complete",
+        "layers separated",
+        "oil layer stripped of solvent completely",
+        "recrystallised from ethanol",
+        "filtered",
+        "dried"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": [
+        "water"
+      ],
+      "drying_agent": null,
+      "filtration": "filtered after the recrystallisation from ethanol",
+      "concentration_method": "solvent stripped off completely",
+      "ph_target": null
+    },
+    "purification": "recrystallised from ethanol",
+    "process_control": {
+      "method": "hplc",
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": "complete conversion"
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 34.72,
+          "volume_ml": null,
+          "mmol": 100.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction flask at the start with the catalyst, the thionyl chloride and the dichloroethane",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.8,
+        "purity_method": null
+      },
+      {
+        "identifier": "N,N-dimethylformamide",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 0.74,
+          "volume_ml": null,
+          "mmol": 10.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start as the catalyst for the acid chloride formation; printed only as the abbreviation DMF",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "thionyl chloride",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 24.0,
+          "volume_ml": null,
+          "mmol": 200.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloroethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 100.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start as the acid chloride solvent, then stripped off completely before the next charge",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyclohexane-1,3-dione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 22.6,
+          "volume_ml": null,
+          "mmol": 200.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged with the dichloromethane after the first solvent had been stripped off",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloromethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 100.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged with the cyclohexane-1,3-dione as the acylation solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "triethylamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 30.6,
+          "volume_ml": null,
+          "mmol": 300.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise at 5 to 10 C",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "acetone cyanohydrin",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 0.89,
+          "volume_ml": null,
+          "mmol": 10.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added once the acylation was complete, to promote the rearrangement",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 95.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added at workup for the water wash; no amount stated",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ethanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to recrystallise the product; no amount stated",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": 38.1,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 85.4
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 98.7,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
+      "thionyl chloride",
+      "cyclohexane-1,3-dione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 85.4,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 98.7,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "将34.72g  2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸(99.8％、0.1mol)，0.74g  DMF(99％、0.01mol)，24g氯化亚砜(99％、0.2mol)，100ml二氯乙烷加入250ml反应瓶中，升温回流反应，反应完毕后脱尽溶剂。将22.6g  1,3-环己二酮(99％、0.2mol)、100ml二氯甲烷加入反应瓶，在5～10℃滴加30.6g三乙胺(99％、0.3mol)，LC跟踪至反应完全。反应完全后，加入0.89g丙酮氰醇(95％、0.01mol)，LC跟踪至反应完全，反应完全后加入水进行水洗，分层，油层脱尽溶剂，加乙醇进行重结晶，过滤，烘干得38.1g米黄色结晶粉末，纯度98.7％，收率85.4％。",
+    "procedure_summary": "The benzoic acid is converted to its acid chloride with thionyl chloride and catalytic dimethylformamide in dichloroethane at reflux, and the solvent is then stripped off completely. Cyclohexanedione and dichloromethane are charged and triethylamine is added dropwise under cooling to acylate, and once liquid chromatography shows complete conversion a catalytic amount of acetone cyanohydrin is added, which rearranges the enol ester to the C-acylated dione. The mixture is washed with water, the layers separated, the oil layer stripped of solvent, and the product recrystallised from ethanol, filtered and dried to a beige crystalline powder.",
+    "precursor_step": "Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "scale_discontinuity"
+    ],
+    "tags": [
+      "transformation:chlorination",
+      "transformation:esterification",
+      "transformation:rearrangement",
+      "transformation:acylation",
+      "mechanism:ionic",
+      "analytics:hplc",
+      "scale:lab",
+      "solvent_class:halogenated",
+      "catalyst_class:base",
+      "workup_type:aqueous_extraction",
+      "purification:recrystallisation",
+      "safety:cyanide_handling",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:true"
+    ],
+    "notes": "Chinese heading 3、环磺酮的合成 (synthesis of tembotrione), the final step of the section. ONE POT, THREE TRANSFORMATIONS. One numbered step describes the conversion of the benzoic acid to its acid chloride with thionyl chloride and catalytic dimethylformamide in dichloroethane at reflux; then, after the solvent has been stripped off completely and cyclohexane-1,3-dione and dichloromethane have been charged, the acylation driven by triethylamine added dropwise at 5 to 10 C; then, once liquid chromatography shows that acylation complete, the addition of catalytic acetone cyanohydrin and the rearrangement to the C-acylated dione. There is no aqueous workup and no isolation anywhere between the three, only a solvent strip and a re-charge, and neither the acid chloride nor the enol ester is ever named or assigned an amount, so this is one record. reaction_class follows the FINAL transformation. That transformation is an acyl migration from oxygen to carbon, and the closed class list has no rearrangement value, so it is recorded as acylation with medium confidence and the rearrangement character is carried in tags as transformation:rearrangement. named_reaction is null: no widely accepted name covers a thionyl chloride activation followed by enol esterification and a cyanohydrin-promoted migration, and stretching for one would be wrong. CONDITIONS: the final transformation states no temperature at all, so the structured field carries the only numeric band in the step, the 5 to 10 C at which the triethylamine is added during the acylation, and heating_method carries the 回流 of the first transformation. 回流 is a heating method and not a temperature, so no number is invented for it and the temperature type is not set from it. No hold time is stated for any of the three transformations, so time_h is null. cooling_method is left null because the text states 5 to 10 C as the addition temperature without naming any cooling operation. Reactor is a 250 ml reaction flask, smaller than the 500 ml flask of the first two steps; no stirrer is named. Process control is stated at both the acylation and the rearrangement, each as LC跟踪至反应完全. SOLVENTS: two different chlorinated solvents are charged in the one step, 二氯乙烷 for the acid chloride formation and 二氯甲烷 for the acylation, and they are kept as separate compound records. The Chinese prints 二氯乙烷 with no locant and A1 left it unresolved on that ground; nothing here resolves it either. ARITHMETIC: every printed pair in this step closes once the printed percentage is applied. The acid substrate at 99.8％ implies 346.5 against 346.70 for C11H10ClF3O5S; the dimethylformamide at 99％ implies 73.3 against 73.09; the thionyl chloride at 99％ implies 118.8 against 118.97; the cyclohexane-1,3-dione at 99％ implies 111.9 against 112.13; the triethylamine at 99％ implies 101.0 against 101.19; the acetone cyanohydrin at 95％ implies 84.6 against 85.11. Product closure holds as well: the charge is 0.1 mol, tembotrione C17H16ClF3O6S has a molecular weight of 440.82 so theory is 44.08 g, and the printed mass corrected by the printed purity is 85.3％ of that against a printed yield of 85.4％. So neither molar_mass_inconsistent nor mass_balance_implausible is raised here. scale_discontinuity IS raised: step 2 isolated 31.1 g of this benzoic acid and this step charges 34.72 g of it, that is more material than the preceding step produced, the same pattern as at the step 1 to step 2 boundary. DRAWING: the single-structure span before the step, SMILES CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F, formula C17H16ClF3O6S, InChIKey IUQAXCIUEPFPSF-UHFFFAOYSA-N, is drawn as the C-acylated cyclohexane-1,3-dione and not as the O-acyl enol ester, which corroborates that the rearrangement is the step's final transformation and that the enol ester is an unisolated intermediate. Drawing and prose agree, so nothing is raised on the drawing. SAFETY: safety_notes is empty because the text carries no safety statement of its own, and rule 15 forbids adding an assessment here. The tag safety:cyanide_handling is nevertheless emitted because the step charges 丙酮氰醇, acetone cyanohydrin, which is a cyanide source; A1 tagged the same compound hazard:cyanide_handling. The Chinese reads 丙酮氰醇 and not the transposed 氰基丙酮, cyanoacetone, which is a different compound."
+  }
+]
