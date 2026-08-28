@@ -1,0 +1,1531 @@
+[
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Background_Step 1",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "halogenation",
+    "reaction_class_confidence": "high",
+    "named_reaction": "Wohl-Ziegler bromination",
+    "mechanism_type": "radical",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "NBS",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 67.0
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "NBS"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 67.0,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "拜耳公司的专利号CN1323292A报道了以2,6-二氯甲苯为起始原料合成环磺酮的工艺，在制备2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的时候，以NBS为溴化剂，会有大量固废产生，且收率偏低，只有67％。",
+    "procedure_summary": "The prior-art route reported in the cited Bayer patent is criticised at its bromination stage, where N-bromosuccinimide serves as the brominating agent to give the bromomethyl methylsulfonyl benzoate ester. The paragraph objects to the large amount of solid waste generated and to the low yield.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "missing_reactant",
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:bromination",
+      "mechanism:radical",
+      "named_rxn:wohl_ziegler_bromination",
+      "scale:not_specified",
+      "green_chemistry:solid_waste",
+      "step_role:intermediate_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART (rule 5e): this section is 背景技术 (background art). This transformation belongs to Bayer's CN1323292A and is not part of the route claimed by CN109678767A. STEP COUNT: A0 estimated 5 steps for this section, one per prior-art document. This pass emits 10, one per transformation the text itself names with a 制备X的时候 or 合成X的时候 clause. The disagreement is deliberate and is recorded here rather than left silent: paragraph [0007] alone names three different products and two different yields (70％ for the bromomethyl ester and 69％ for the herbicide), and paragraphs [0008] and [0009] name two and three transformations respectively, none of which a single record per document could hold in one product_name and one product_yield_pct. No transformation is emitted that the text does not name. ROUTE START, not a reactant of this step: the paragraph names 2,6-二氯甲苯 (2,6-dichlorotoluene) as the 起始原料 of the whole CN1323292A process, several stages upstream of this bromination. It is therefore recorded here and deliberately not placed in compounds[], because the text nowhere says the bromination is performed on it. A1 carries it as a section-level compound; the asymmetry between the section-scoped A1 record and this step-scoped one is expected. MISSING SUBSTRATE: the compound brominated is never named, only the product and the brominating agent, so missing_reactant is raised and reactant_names holds only the brominating agent. No condition of any kind is stated: no temperature, no time, no pressure, no atmosphere, no reactor, no stirring and no solvent, so every field of the conditions block is null and no_conditions is raised. These paragraphs are one-line characterisations of other people's routes, not worked procedures, and the empty fields are the correct record of that. MECHANISM: radical is assigned from the substitution pattern, NBS converting a ring methyl into a bromomethyl group; no initiator, light source or reflux is stated anywhere and none is inferred into the conditions block. WASTE: 会有大量固废产生 (a large amount of solid waste is produced) is the paragraph's own objection and is carried as green_chemistry:solid_waste; it is a waste statement rather than a hazard statement, so it is not put in safety_notes. cross_reference_unresolved is left false: the route is attributed to an identified external document, which is an attribution rather than a dangling reference to unlocated material inside CN109678767A."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Background_Step 2",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "halogenation",
+    "reaction_class_confidence": "high",
+    "named_reaction": "Wohl-Ziegler bromination",
+    "mechanism_type": "radical",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "NBS",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 75.2
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "NBS"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 75.2,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "黑龙江大学的专利号CN105601548A报道了以3-氯-2-甲基苯胺为起始原料合成环磺酮的工艺在制备2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的时候，也是以昂贵NBS为溴化剂，会有大量固废产生，且收率偏低，只有75.2％。",
+    "procedure_summary": "The prior-art route reported in the cited Heilongjiang University patent is criticised at the same bromination stage, where expensive N-bromosuccinimide is again the brominating agent giving the bromomethyl methylsulfonyl benzoate ester. The paragraph objects to the large amount of solid waste generated and to the low yield.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "missing_reactant",
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:bromination",
+      "mechanism:radical",
+      "named_rxn:wohl_ziegler_bromination",
+      "scale:not_specified",
+      "green_chemistry:solid_waste",
+      "step_role:intermediate_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART (rule 5e): this section is 背景技术 (background art). This transformation belongs to Heilongjiang University's CN105601548A and is not part of the route claimed by CN109678767A. STEP COUNT: A0 estimated 5 steps for this section, one per prior-art document. This pass emits 10, one per transformation the text itself names with a 制备X的时候 or 合成X的时候 clause. The disagreement is deliberate and is recorded here rather than left silent: paragraph [0007] alone names three different products and two different yields (70％ for the bromomethyl ester and 69％ for the herbicide), and paragraphs [0008] and [0009] name two and three transformations respectively, none of which a single record per document could hold in one product_name and one product_yield_pct. No transformation is emitted that the text does not name. ROUTE START, not a reactant of this step: the paragraph names 3-氯-2-甲基苯胺 (3-chloro-2-methylaniline) as the 起始原料 of the whole CN105601548A process, several stages upstream of this bromination, so it is recorded here and not placed in compounds[]. MISSING SUBSTRATE: the compound brominated is never named. The paragraph reaches the same product as [0005] by the same reagent from a different starting material; the two records are kept separate because they are two documents. No condition of any kind is stated: no temperature, no time, no pressure, no atmosphere, no reactor, no stirring and no solvent, so every field of the conditions block is null and no_conditions is raised. These paragraphs are one-line characterisations of other people's routes, not worked procedures, and the empty fields are the correct record of that. MECHANISM: radical is assigned from the substitution pattern; no initiator or light source is stated. The text adds 昂贵 (expensive) to NBS here, which [0005] does not; that is a cost objection with no number attached and no field holds it, so it is recorded here. cross_reference_unresolved is left false: the route is attributed to an identified external document, which is an attribution rather than a dangling reference to unlocated material inside CN109678767A."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Background_Step 3",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 3,
+    "step_label": "Step 3",
+    "reaction_class": "halogenation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "radical",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [
+      "以危险性较大的溴素为溴化剂: the brominating agent, elemental bromine, is described by the patent as comparatively hazardous. The statement is the patent's own and no hazard assessment is added here."
+    ],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "bromine",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 70.0
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "bromine"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 70.0,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "武汉工程大学的专利号CN104292137A报道了以2-氯甲苯为起始原料合成环磺酮的工艺，在制备2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的时候，以危险性较大的溴素为溴化剂，收率偏低，只有70％；",
+    "procedure_summary": "The prior-art route reported in the cited Wuhan Institute of Technology patent is criticised at its bromination stage, where elemental bromine, described as comparatively hazardous, is the brominating agent giving the bromomethyl methylsulfonyl benzoate ester. The paragraph objects to the hazard of the reagent and to the low yield.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "missing_reactant",
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:bromination",
+      "mechanism:radical",
+      "scale:not_specified",
+      "step_role:intermediate_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART (rule 5e): this section is 背景技术 (background art). This transformation belongs to Wuhan Institute of Technology's CN104292137A and is not part of the route claimed by CN109678767A. STEP COUNT: A0 estimated 5 steps for this section, one per prior-art document. This pass emits 10, one per transformation the text itself names with a 制备X的时候 or 合成X的时候 clause. The disagreement is deliberate and is recorded here rather than left silent: paragraph [0007] alone names three different products and two different yields (70％ for the bromomethyl ester and 69％ for the herbicide), and paragraphs [0008] and [0009] name two and three transformations respectively, none of which a single record per document could hold in one product_name and one product_yield_pct. No transformation is emitted that the text does not name. ROUTE START, not a reactant of this step: the paragraph names 2-氯甲苯 (2-chlorotoluene) as the 起始原料 of the whole CN104292137A process, several stages upstream of this bromination, so it is recorded here and not placed in compounds[]. MISSING SUBSTRATE: the compound brominated is never named. NAMED REACTION: null, because the brominating agent here is 溴素 (elemental bromine) and not NBS, and Wohl-Ziegler names the NBS variant specifically; stretching the name onto a bromine bromination would be a false attribution. MECHANISM: radical is assigned from the product, a benzylic bromide; the text states no initiator and no light, and ring bromination would be ionic, so the assignment rests on the named product alone. No condition of any kind is stated: no temperature, no time, no pressure, no atmosphere, no reactor, no stirring and no solvent, so every field of the conditions block is null and no_conditions is raised. These paragraphs are one-line characterisations of other people's routes, not worked procedures, and the empty fields are the correct record of that. cross_reference_unresolved is left false: the route is attributed to an identified external document, which is an attribution rather than a dangling reference to unlocated material inside CN109678767A."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Background_Step 4",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 4,
+    "step_label": "Step 4",
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "medium",
+    "named_reaction": "Williamson ether synthesis",
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "sodium 2,2,2-trifluoroethoxide",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "sodium 2,2,2-trifluoroethoxide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "在制备2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸的时候，所用2,2,2-三氟乙醇钠目前无法大规模生产，买不到原料；",
+    "procedure_summary": "In the same cited route, the trifluoroethoxymethyl benzoic acid is prepared using sodium trifluoroethoxide. The paragraph objects that this alkoxide cannot at present be manufactured at scale and cannot be bought.",
+    "precursor_step": "Step 3",
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:etherification",
+      "mechanism:ionic",
+      "named_rxn:williamson_ether_synthesis",
+      "scale:not_specified",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART (rule 5e): 背景技术 (background art). This transformation belongs to Wuhan Institute of Technology's CN104292137A and is not part of the route claimed by CN109678767A. STEP COUNT: A0 estimated 5 steps for this section, one per prior-art document. This pass emits 10, one per transformation the text itself names with a 制备X的时候 or 合成X的时候 clause. The disagreement is deliberate and is recorded here rather than left silent: paragraph [0007] alone names three different products and two different yields (70％ for the bromomethyl ester and 69％ for the herbicide), and paragraphs [0008] and [0009] name two and three transformations respectively, none of which a single record per document could hold in one product_name and one product_yield_pct. No transformation is emitted that the text does not name. CLASSIFICATION: the substrate is not stated, so the class rests on the named reagent and the named product: a sodium alkoxide and a product carrying exactly that alkoxy group on a benzylic carbon, hence nucleophilic_substitution at medium confidence with the Williamson name. PRODUCT OXIDATION STATE, recorded and not resolved: the product named here is the free benzoic acid while the product named in the preceding clause is the methyl ester, so the preparation as worded also implies an ester hydrolysis that the paragraph never describes. No listed validation flag covers that, and no second record is emitted for a transformation the text does not name. LINKAGE: precursor_step is set to Step 3 because the two clauses are consecutive stages of one process in one paragraph, but linkage_confirmed is false because the text neither names the substrate here nor refers back to the earlier product. No condition of any kind is stated: no temperature, no time, no pressure, no atmosphere, no reactor, no stirring and no solvent, so every field of the conditions block is null and no_conditions is raised. These paragraphs are one-line characterisations of other people's routes, not worked procedures, and the empty fields are the correct record of that. cross_reference_unresolved is left false: the route is attributed to an identified external document, which is an attribution rather than a dangling reference to unlocated material inside CN109678767A."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Background_Step 5",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 5,
+    "step_label": "Step 5",
+    "reaction_class": "other",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "intermediate isolation: the 3-oxo-1-cyclohexen-1-yl ester is separately isolated and worked up (中间态...单独分离处理); no method is stated and no workup of the final product is described"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "cyanoacetone",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "3-oxo-1-cyclohexen-1-yl 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoate",
+        "role": "intermediate",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 69.0
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "cyanoacetone"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 69.0,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "在制备环磺酮的时候，使用氰基丙酮价格过于昂贵，生产成本高，而且中间态2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸-3-氧代-1-环己烯酯单独分离处理，导致工艺繁琐，收率偏低，只有69％。",
+    "procedure_summary": "In the same cited route, the herbicide is prepared by way of an enol ester intermediate that is isolated and worked up on its own, with cyanoacetone used in the final stage. The paragraph objects to the cost of that reagent, to the cumbersome process the separate isolation creates, and to the low yield.",
+    "precursor_step": "Step 4",
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "missing_reactant",
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:rearrangement",
+      "transformation:acylation",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART (rule 5e): 背景技术 (background art). This transformation belongs to Wuhan Institute of Technology's CN104292137A and is not part of the route claimed by CN109678767A. STEP COUNT: A0 estimated 5 steps for this section, one per prior-art document. This pass emits 10, one per transformation the text itself names with a 制备X的时候 or 合成X的时候 clause. The disagreement is deliberate and is recorded here rather than left silent: paragraph [0007] alone names three different products and two different yields (70％ for the bromomethyl ester and 69％ for the herbicide), and paragraphs [0008] and [0009] name two and three transformations respectively, none of which a single record per document could hold in one product_name and one product_yield_pct. No transformation is emitted that the text does not name. ONE RECORD FOR TWO TRANSFORMATIONS, stated plainly rather than split: 制备环磺酮 as worded spans the formation of the 中间态 (intermediate) enol ester and its conversion to the herbicide. The text says that intermediate is 单独分离处理 (isolated and worked up on its own), so this is explicitly NOT one-pot and is_one_pot is false; that isolation is the paragraph's objection, the reason it calls the process 繁琐 (cumbersome). The two transformations are nevertheless kept in one record because the paragraph names one preparation and attaches one yield, 69％, to it; splitting would force an invented decision about which half the yield belongs to and would invent a second product record the text does not state. The isolation is recorded in workup.steps. CLASSIFICATION: the final transformation is the migration of the aroyl group from the enol oxygen to the ring carbon of the dione, a Fries-type rearrangement; the closed reaction_class list has no rearrangement entry, so the class is other with transformation:rearrangement carried as a tag, matching the treatment of the same transformation in this repository's CN104292137A annotation. ROLE: cyanoacetone is recorded as a reagent rather than a reactant because the product's whole carbon skeleton is already present in the enol ester; note that A1 for this section records it as a reactant, and the identifier is unchanged so the two artifacts still join. MISSING SUBSTRATE: no starting material is named for this preparation, so missing_reactant is raised even though a reagent and an intermediate are named. LINKAGE: precursor_step is Step 4 because the acyl half of the intermediate's name is the acid prepared there, but linkage_confirmed is false because name containment is not confirmation (rule 24). No condition of any kind is stated: no temperature, no time, no pressure, no atmosphere, no reactor, no stirring and no solvent, so every field of the conditions block is null and no_conditions is raised. These paragraphs are one-line characterisations of other people's routes, not worked procedures, and the empty fields are the correct record of that. cross_reference_unresolved is left false: the route is attributed to an identified external document, which is an attribution rather than a dangling reference to unlocated material inside CN109678767A."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Background_Step 6",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 6,
+    "step_label": "Step 6",
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "medium",
+    "named_reaction": "Williamson ether synthesis",
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "sodium 2,2,2-trifluoroethoxide",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "sodium 2,2,2-trifluoroethoxide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "安徽久易农业股份有限公司的专利号CN106008290A报道了环磺酮的合成工艺，在制备2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸的时候，所用2,2,2-三氟乙醇钠目前无法大规模生产，买不到原料；",
+    "procedure_summary": "The prior-art route reported in the cited Anhui Jiuyi patent prepares the trifluoroethoxymethyl benzoic acid using sodium trifluoroethoxide. The paragraph objects that this alkoxide cannot at present be manufactured at scale and cannot be bought.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:etherification",
+      "mechanism:ionic",
+      "named_rxn:williamson_ether_synthesis",
+      "scale:not_specified",
+      "step_role:intermediate_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART (rule 5e): 背景技术 (background art). This transformation belongs to Anhui Jiuyi Agriculture Co., Ltd.'s CN106008290A and is not part of the route claimed by CN109678767A. STEP COUNT: A0 estimated 5 steps for this section, one per prior-art document. This pass emits 10, one per transformation the text itself names with a 制备X的时候 or 合成X的时候 clause. The disagreement is deliberate and is recorded here rather than left silent: paragraph [0007] alone names three different products and two different yields (70％ for the bromomethyl ester and 69％ for the herbicide), and paragraphs [0008] and [0009] name two and three transformations respectively, none of which a single record per document could hold in one product_name and one product_yield_pct. No transformation is emitted that the text does not name. NO ROUTE START: unlike [0005], [0006] and [0007], this paragraph gives no 起始原料 for the CN106008290A process at all; it says only 报道了环磺酮的合成工艺 (reports a synthesis process for tembotrione). That absence is recorded rather than filled in from the neighbouring paragraphs, which describe different documents. CLASSIFICATION: the substrate is not stated and the class rests on the named alkoxide and the named ether product, as in Step 4. LINKAGE: precursor_step is null. This is the first transformation this paragraph names, and its substrate lives in CN106008290A, not in this patent; it is not linked to Step 4, which is a different document's route even though the product identifier is the same. No condition of any kind is stated: no temperature, no time, no pressure, no atmosphere, no reactor, no stirring and no solvent, so every field of the conditions block is null and no_conditions is raised. These paragraphs are one-line characterisations of other people's routes, not worked procedures, and the empty fields are the correct record of that. cross_reference_unresolved is left false: the route is attributed to an identified external document, which is an attribution rather than a dangling reference to unlocated material inside CN109678767A."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Background_Step 7",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 7,
+    "step_label": "Step 7",
+    "reaction_class": "other",
+    "reaction_class_confidence": "low",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "在制备环磺酮的时候，用到了昂贵的缩合剂，且用量较大，合成成本偏高。",
+    "procedure_summary": "In the same cited route, the herbicide is prepared using a condensing agent that the paragraph does not name. The paragraph objects that the agent is expensive and is used in a fairly large amount, so the synthesis cost is high.",
+    "precursor_step": "Step 6",
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "missing_reactant",
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:condensation",
+      "scale:not_specified",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART (rule 5e): 背景技术 (background art). This transformation belongs to Anhui Jiuyi Agriculture Co., Ltd.'s CN106008290A and is not part of the route claimed by CN109678767A. STEP COUNT: A0 estimated 5 steps for this section, one per prior-art document. This pass emits 10, one per transformation the text itself names with a 制备X的时候 or 合成X的时候 clause. The disagreement is deliberate and is recorded here rather than left silent: paragraph [0007] alone names three different products and two different yields (70％ for the bromomethyl ester and 69％ for the herbicide), and paragraphs [0008] and [0009] name two and three transformations respectively, none of which a single record per document could hold in one product_name and one product_yield_pct. No transformation is emitted that the text does not name. UNNAMED REAGENT, deliberately not given a compound record: the paragraph objects to 昂贵的缩合剂 (an expensive condensing agent) 且用量较大 (used in a fairly large amount) but never names it. No compound entry is emitted for a substance with no identity, and a1_missing_compound is NOT raised, because A1 was right not to record it; inventing an identifier such as condensing agent (unnamed) would put a non-compound into the join. The objection is recorded here instead. 用量较大 is a qualitative statement about amount and not a stoichiometry, so molar_ratio_text stays null. CLASSIFICATION: neither substrate nor reagent is identified, so reaction_class is other at low confidence and mechanism_type is not_determinable; transformation:condensation is tagged only because 缩合剂 is the text's own word. No mechanism tag is emitted, since a tag asserting not_determinable carries no finding. MISSING SUBSTRATE: no starting material is named, compounds[] holds only the product, so missing_reactant is raised and reactant_names is empty. LINKAGE: precursor_step is Step 6, the preceding clause of the same paragraph and the same document's route; linkage_confirmed is false because no substrate is named here at all. No condition of any kind is stated: no temperature, no time, no pressure, no atmosphere, no reactor, no stirring and no solvent, so every field of the conditions block is null and no_conditions is raised. These paragraphs are one-line characterisations of other people's routes, not worked procedures, and the empty fields are the correct record of that. cross_reference_unresolved is left false: the route is attributed to an identified external document, which is an attribution rather than a dangling reference to unlocated material inside CN109678767A."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Background_Step 8",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 8,
+    "step_label": "Step 8",
+    "reaction_class": "halogenation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "radical",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [
+      "以危险性较大的溴素为溴化剂: the brominating agent, elemental bromine, is described by the patent as comparatively hazardous. The statement is the patent's own and no hazard assessment is added here."
+    ],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "bromine",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "bromine"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "《农药》第56卷第5期报道了玉米田除草剂环磺酮的合成工艺，在合成2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的时候，以危险性较大的溴素为溴化剂；",
+    "procedure_summary": "The prior-art route reported in the cited journal article is criticised at its bromination stage, where elemental bromine, described as comparatively hazardous, is the brominating agent giving the bromomethyl methylsulfonyl benzoate ester.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "missing_reactant",
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:bromination",
+      "mechanism:radical",
+      "scale:not_specified",
+      "step_role:intermediate_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART (rule 5e): 背景技术 (background art). This transformation belongs to the synthesis reported in 《农药》 (Pesticides) volume 56 issue 5 and is not part of the route claimed by CN109678767A. The source is a journal article rather than a patent, and no author, title or page range is given. STEP COUNT: A0 estimated 5 steps for this section, one per prior-art document. This pass emits 10, one per transformation the text itself names with a 制备X的时候 or 合成X的时候 clause. The disagreement is deliberate and is recorded here rather than left silent: paragraph [0007] alone names three different products and two different yields (70％ for the bromomethyl ester and 69％ for the herbicide), and paragraphs [0008] and [0009] name two and three transformations respectively, none of which a single record per document could hold in one product_name and one product_yield_pct. No transformation is emitted that the text does not name. NO ROUTE START: the paragraph gives no 起始原料 for the journal route. NO YIELD: unlike [0005], [0006] and [0007], this paragraph states no yield for the bromination, only the hazard objection, so product_yield_pct is null. MISSING SUBSTRATE: the compound brominated is never named. NAMED REACTION: null, because the agent is 溴素 (elemental bromine) and not NBS. MECHANISM: radical is assigned from the named benzylic bromide product; no initiator and no light is stated. No condition of any kind is stated: no temperature, no time, no pressure, no atmosphere, no reactor, no stirring and no solvent, so every field of the conditions block is null and no_conditions is raised. These paragraphs are one-line characterisations of other people's routes, not worked procedures, and the empty fields are the correct record of that. cross_reference_unresolved is left false: the route is attributed to an identified external document, which is an attribution rather than a dangling reference to unlocated material inside CN109678767A."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Background_Step 9",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 9,
+    "step_label": "Step 9",
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [
+      "甲醇钠易燃、易爆、对空气与湿气敏感，遇水迅速分解成甲醇和氢氧化钠，工业化过程中使用条件苛刻: sodium methoxide is flammable, explosive and sensitive to air and moisture, decomposing rapidly on contact with water into methanol and sodium hydroxide, so the conditions for its use in an industrial process are demanding. The statement is the patent's own."
+    ],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "sodium methoxide",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "sodium methoxide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "在合成2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸的时候，使用了甲醇钠为原料，甲醇钠易燃、易爆、对空气与湿气敏感，遇水迅速分解成甲醇和氢氧化钠，工业化过程中使用条件苛刻，",
+    "procedure_summary": "In the same cited route, the trifluoroethoxymethyl benzoic acid is synthesised with sodium methoxide as a raw material. The paragraph objects that sodium methoxide is flammable, explosive and sensitive to air and moisture, decomposing rapidly on contact with water, so the conditions for its use in an industrial process are demanding.",
+    "precursor_step": "Step 8",
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:etherification",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART (rule 5e): 背景技术 (background art). This transformation belongs to the synthesis reported in 《农药》 (Pesticides) volume 56 issue 5 and is not part of the route claimed by CN109678767A. STEP COUNT: A0 estimated 5 steps for this section, one per prior-art document. This pass emits 10, one per transformation the text itself names with a 制备X的时候 or 合成X的时候 clause. The disagreement is deliberate and is recorded here rather than left silent: paragraph [0007] alone names three different products and two different yields (70％ for the bromomethyl ester and 69％ for the herbicide), and paragraphs [0008] and [0009] name two and three transformations respectively, none of which a single record per document could hold in one product_name and one product_yield_pct. No transformation is emitted that the text does not name. REAGENT FUNCTION, recorded and not resolved: the text says only 使用了甲醇钠为原料 (sodium methoxide was used as a raw material), so the role reactant follows both A1 and the text's own word 原料. The product named is the trifluoroethoxymethyl acid, but this paragraph never names a source for the trifluoroethoxy group; sodium methoxide cannot supply it. Whether the methoxide is there as the base that generates the trifluoroethoxide in situ is not stated and is not decided here. CLASSIFICATION: nucleophilic_substitution at medium confidence, taken from the ether product; named_reaction is null rather than Williamson, because the alkoxide that appears in the product is not the alkoxide the text names. LINKAGE: precursor_step is Step 8, the preceding clause of the same paragraph and the same route; linkage_confirmed is false because the substrate is not named here. No condition of any kind is stated: no temperature, no time, no pressure, no atmosphere, no reactor, no stirring and no solvent, so every field of the conditions block is null and no_conditions is raised. These paragraphs are one-line characterisations of other people's routes, not worked procedures, and the empty fields are the correct record of that. cross_reference_unresolved is left false: the route is attributed to an identified external document, which is an attribution rather than a dangling reference to unlocated material inside CN109678767A."
+  },
+  {
+    "patent_id": "CN109678767A",
+    "reaction_id": "Background_Step 10",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 10,
+    "step_label": "Step 10",
+    "reaction_class": "other",
+    "reaction_class_confidence": "low",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [
+      "乙腈属于管制类中等毒性化学品，因极易挥发，[再]生产过程中容易造成慢性中毒事故: acetonitrile is a controlled, moderately toxic chemical and, because it is extremely volatile, readily causes chronic poisoning accidents in the production process. The statement is the patent's own."
+    ],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "acetonitrile",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "在环磺酮的合成的时候使用了乙腈，乙腈属于管制类中等毒性化学品，因极易挥发，再生产过程中容易造成慢性中毒事故。",
+    "procedure_summary": "In the same cited route, the herbicide is synthesised in acetonitrile. The paragraph objects that acetonitrile is a controlled, moderately toxic chemical whose high volatility readily causes chronic poisoning in production.",
+    "precursor_step": "Step 9",
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "missing_reactant",
+      "no_conditions"
+    ],
+    "tags": [
+      "mechanism:not_determinable",
+      "scale:not_specified",
+      "solvent_class:aprotic_polar",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "PRIOR ART (rule 5e): 背景技术 (background art). This transformation belongs to the synthesis reported in 《农药》 (Pesticides) volume 56 issue 5 and is not part of the route claimed by CN109678767A. STEP COUNT: A0 estimated 5 steps for this section, one per prior-art document. This pass emits 10, one per transformation the text itself names with a 制备X的时候 or 合成X的时候 clause. The disagreement is deliberate and is recorded here rather than left silent: paragraph [0007] alone names three different products and two different yields (70％ for the bromomethyl ester and 69％ for the herbicide), and paragraphs [0008] and [0009] name two and three transformations respectively, none of which a single record per document could hold in one product_name and one product_yield_pct. No transformation is emitted that the text does not name. CLASSIFICATION: the clause names only the solvent and the product, no substrate and no reagent, so reaction_class is other at low confidence and mechanism_type is not_determinable; no transformation tag is emitted, because the text says nothing about what the transformation is. Assigning the rearrangement class used for Step 5 on the strength of the product alone would be an inference from another document's route. MISSING SUBSTRATE: no starting material is named, so missing_reactant is raised and reactant_names is empty. A1 ASYMMETRY, expected and not a defect: A1 records methanol, sodium hydroxide and water for this section, taken from the sodium methoxide hazard clause in the preceding sentence; they are decomposition products named in a hazard statement, not participants in any transformation, so they appear in no reaction record here and a1_missing_compound is not raised. TRANSCRIPTION, recorded as printed and not corrected (rule 29): the Chinese prints 再生产过程中, where 再 (again) reads as a typographical slip for 在 (in), giving 在生产过程中 (in the production process); the EN convenience line takes the 再 reading literally and renders it as again in the production process. The Chinese is quoted verbatim in procedure_text and the safety note is worded from the sense. No listed validation flag covers a single-character slip of this kind, and translation_conflict is not raised because it is defined as the Chinese and English naming different compounds, which is not what happens here. LINKAGE: precursor_step is Step 9, the preceding clause of the same paragraph and route; linkage_confirmed is false because no substrate is named. No condition of any kind is stated: no temperature, no time, no pressure, no atmosphere, no reactor, no stirring and no solvent, so every field of the conditions block is null and no_conditions is raised. These paragraphs are one-line characterisations of other people's routes, not worked procedures, and the empty fields are the correct record of that. cross_reference_unresolved is left false: the route is attributed to an identified external document, which is an attribution rather than a dangling reference to unlocated material inside CN109678767A."
+  }
+]

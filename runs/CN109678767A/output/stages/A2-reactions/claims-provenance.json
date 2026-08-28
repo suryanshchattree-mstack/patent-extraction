@@ -1,0 +1,41 @@
+[
+  {
+    "reaction_id": "Claims_Step 1",
+    "source_lines": [
+      49,
+      51,
+      61,
+      63,
+      65
+    ],
+    "quote_zh": "将2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯、溶剂、催化剂、氢溴酸加入反应瓶，在80℃以下滴加双氧水，滴加完毕后继续反应，LC跟踪至反应完全，反应完全后分层，有机层水洗，浓缩，加溶剂进行重结晶，过滤得2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯；",
+    "arithmetic_check": "Nothing to close. Claim 1 is a process claim and states no charge, no mass, no volume, no time and no yield for this step. Claim 2 (line 61) states only the molar ratio 2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯 : 催化剂 : 氢溴酸 : 双氧水 = 1:0.01～0.1:1～2:1～2, a ratio with no absolute quantity, so no mass balance and no molar-mass check can be computed. The ratio is internally consistent: four species are named and four ratio terms are printed. Open point for A5: claim 3 (line 63) allows 间氯过氧苯甲酸 as the 催化剂, which the claim 2 ratio then charges at 0.01～0.1 relative to the substrate, an initiator loading rather than the stoichiometric oxidant loading that reagent normally takes; recorded as printed. The temperature bounds 45～80℃ from claim 3 sit inside claim 1's 80℃以下 ceiling and do not conflict with it.",
+    "drawing_evidence": "None: this section contains no [IMAGE_EXTRACT] spans, so there is no drawn scheme to corroborate or contradict the prose. The steps were bounded from claim 1's own N) markers alone, and all three markers carry a Chinese title naming the step's product."
+  },
+  {
+    "reaction_id": "Claims_Step 2",
+    "source_lines": [
+      53,
+      55,
+      67,
+      69,
+      71
+    ],
+    "quote_zh": "将2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯、碱1、催化剂、溶剂、2,2,2-三氟乙醇加入反应瓶，在80℃以下进行反应，LC跟踪至反应完全，反应完毕后过滤，有机层水洗，浓缩；往剩余物里加碱2、水，在80℃以下进行碱解，LC跟踪至反应完全，反应完全后滴加盐酸酸化，过滤，洗涤，烘干得2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸；",
+    "arithmetic_check": "Nothing to close. No charge, no mass, no volume, no time and no yield are stated for either the etherification or the 碱解. Claim 5 (line 67) states only the molar ratio 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯 : 碱1 : 催化剂 : 2,2,2-三氟乙醇 : 碱2 = 1:1～2:0.01～0.1:1～2:1～2, a ratio with no absolute quantity; five species are named and five ratio terms are printed, so it is internally consistent. No molar-mass check is possible because no mass/mole pair exists. Open point for A5: claim 7 (line 71) gives 反应温度为0～80℃ for 步骤2) without saying whether it governs the etherification, the alkaline hydrolysis, or both, while claim 1 gives 在80℃以下 separately to each; the range was recorded once, on the single conditions object, and the ambiguity left unresolved. Second open point: the product of the etherification is never named, being referred to only as 剩余物, so no intermediate compound record exists for it and no downstream molar-mass check on it is possible.",
+    "drawing_evidence": "None: this section contains no [IMAGE_EXTRACT] spans, so there is no drawn scheme to corroborate or contradict the prose. The one-pot finding therefore rests entirely on the prose, specifically on 往剩余物里加碱2、水, which carries the unisolated residue straight into the second transformation."
+  },
+  {
+    "reaction_id": "Claims_Step 3",
+    "source_lines": [
+      57,
+      59,
+      73,
+      75,
+      77
+    ],
+    "quote_zh": "将2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸、催化剂、氯化亚砜、溶剂加入反应瓶，升温回流反应，反应完毕后脱尽溶剂；将1,3-环己二酮、溶剂加入反应瓶，在30℃以下滴加三乙胺，LC跟踪至反应完全；反应完全后，加入丙酮氰醇，LC跟踪至反应完全，反应完全后加入水进行水洗，分层，油层脱尽溶剂，加溶剂进行重结晶，过滤，烘干得米黄色固体环磺酮。",
+    "arithmetic_check": "Nothing to close. No charge, no mass, no volume, no time and no yield are stated for any of the three transformations, and the only physical datum is 米黄色固体. Claim 8 (line 73) states only the molar ratio 2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸 : 催化剂 : 氯化亚砜 : 1,3-环己二酮 : 三乙胺 : 丙酮氰醇 = 1:0.01～0.1:1～2:1～2:2～3:0.01～0.1, a ratio with no absolute quantity; six species are named and six ratio terms are printed, so it is internally consistent. The loadings are chemically coherent with the roles assigned: the diketone at 1～2 and the triethylamine at 2～3 are stoichiometric, while the 催化剂 and the 丙酮氰醇 at 0.01～0.1 are catalytic. Open point for A5: the claim never recites the acid chloride being combined with the 1,3-环己二酮, so the acylation's charge is not fixed by the text; and no claim names the reaction solvent for this step, claim 10 (line 77) naming only the crystallisation solvent, so no solvent volume or class can be checked.",
+    "drawing_evidence": "None: this section contains no [IMAGE_EXTRACT] spans, so there is no drawn scheme to corroborate or contradict the prose. The three-transformation one-pot finding rests entirely on the prose: no workup appears until 反应完全后加入水进行水洗, after all three transformations."
+  }
+]
