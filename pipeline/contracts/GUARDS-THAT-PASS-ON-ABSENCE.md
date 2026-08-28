@@ -491,3 +491,41 @@ pipeline enforces it.
 The general shape: **a guard whose subject is narrower than the risk it is read as
 covering.** The check is correct about Chinese. The sentence it prints, and the gate
 name, are about English.
+
+## A twelfth: the manifest recorded a hash it did not compute
+
+Found 2026-08-28 on US20100041557A1, and this one is in the artifact whose whole job is
+integrity.
+
+`runs/US20100041557A1/input/US20100041557A1-biblio.json` was edited, the run was resumed
+with `--from finalise`, and the commit that resulted disagreed with itself: the committed
+biblio hashed to `19c2cd..` at 9441 bytes and the committed manifest recorded `92ba69..`
+at 9430 for that same path. Nothing failed. `validate.py` was clean, the deliverable
+matched `output/` on all 11 copied artifacts, and the manifest was internally consistent.
+
+`write_manifest` deliberately carries a skipped stage's row forward rather than writing
+today's disk state under a stage that did not run, and the comment there explains why:
+re-reading disk for a skipped stage is how the frozen-plan bug survived a second run. The
+defect is that the carry-forward does not stay inside that row. `entry()` memoises by
+path, the skipped branch seeds the same table with `hashes.setdefault(e["path"], e)`, and
+stages are walked in pipeline order. `prompts` was skipped and declares the biblio as an
+input, so its stale entry landed first, and `finalise` and `diagrams`, both of which RAN
+and both of which read that file after it changed, were handed the cached stale hash:
+
+    prompts    status=not selected   92ba692fcf05  9430   <- carried forward, intended
+    finalise   status=ran            92ba692fcf05  9430   <- stale, and it ran
+    diagrams   status=ran            92ba692fcf05  9430   <- stale, and it ran
+
+So a stage that ran can have a hash written under its name that was never computed from
+what it read. That is precisely the laundering the comment says the design prevents,
+arriving from the other direction: not a skipped stage claiming fresh hashes, but a fresh
+stage inheriting a skipped stage's stale one.
+
+The shape, and it is the second half of this document's pattern: **a record that agrees
+with itself cannot tell "verified" from "copied".** The manifest exists so a consumer can
+ask whether the artifacts on disk were built from THIS gold "rather than trusting file
+times", and on a resumed run it answers that question with a number it took on trust.
+
+A full run computes every row and the numbers are correct, which is why this survived: it
+only appears when a stage is skipped, and skipping is the normal case for a resumed run.
+Recorded, not fixed. The corrected manifest was committed from a full run.

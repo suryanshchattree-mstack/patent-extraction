@@ -6,7 +6,7 @@
     {
       "stage": "prompts",
       "title": "render the annotation prompts for THIS patent, for the agent to follow",
-      "status": "not selected",
+      "status": "ran",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python render_prompts.py --patent-id US20100041557A1"
       ],
@@ -59,8 +59,8 @@
         },
         {
           "path": "input/US20100041557A1-biblio.json",
-          "sha256": "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
-          "bytes": 9430
+          "sha256": "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
+          "bytes": 9441
         },
         {
           "path": "input/pages/p01.png",
@@ -179,7 +179,7 @@
     {
       "stage": "enrich",
       "title": "vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python build_enriched.py --patent-id US20100041557A1"
       ],
@@ -292,7 +292,7 @@
     {
       "stage": "collect",
       "title": "publish the A0, A3 and A4 stage files under the names finalise.py reads",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "<internal>"
       ],
@@ -335,7 +335,7 @@
     {
       "stage": "merge",
       "title": "concatenate the per-section A1 and A2 stage files into the raw arrays",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python merge_stages.py --patent-id US20100041557A1"
       ],
@@ -1046,8 +1046,8 @@
         },
         {
           "path": "input/US20100041557A1-biblio.json",
-          "sha256": "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
-          "bytes": 9430
+          "sha256": "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
+          "bytes": 9441
         },
         {
           "path": "output/raw-compounds.json",
@@ -1178,7 +1178,7 @@
     {
       "stage": "publish-gold",
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python make_relevant_output.py --patent-id US20100041557A1"
       ],
@@ -2031,8 +2031,8 @@
         },
         {
           "path": "input/US20100041557A1-biblio.json",
-          "sha256": "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
-          "bytes": 9430
+          "sha256": "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
+          "bytes": 9441
         },
         {
           "path": "input/US20100041557A1-enriched.md",
@@ -2304,7 +2304,7 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python make_relevant_output.py --patent-id US20100041557A1"
       ],
@@ -3970,7 +3970,7 @@
       "input_sha256": [
         "c7ade8e0a96d707863bf922499d93c46c08efa52209945268552cffd68f0f283",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "0cf16b3b098a81fab66f56e07d0e042bcc1dc869c073ed81ef382e5947419254",
         "5ec007aefeb3d0014c959d9c417042ad455ee8e0793bb9b3577ff4e20103c730",
         "1794120b577d531133125095dd4131f3d259c2d943d7d7746439b99a47c08e50",
@@ -4124,7 +4124,7 @@
       "input_sha256": [
         "c7ade8e0a96d707863bf922499d93c46c08efa52209945268552cffd68f0f283",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "0cf16b3b098a81fab66f56e07d0e042bcc1dc869c073ed81ef382e5947419254",
         "5ec007aefeb3d0014c959d9c417042ad455ee8e0793bb9b3577ff4e20103c730",
         "1794120b577d531133125095dd4131f3d259c2d943d7d7746439b99a47c08e50",
@@ -4139,7 +4139,7 @@
       "input_sha256": [
         "c7ade8e0a96d707863bf922499d93c46c08efa52209945268552cffd68f0f283",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "0cf16b3b098a81fab66f56e07d0e042bcc1dc869c073ed81ef382e5947419254",
         "5ec007aefeb3d0014c959d9c417042ad455ee8e0793bb9b3577ff4e20103c730",
         "1794120b577d531133125095dd4131f3d259c2d943d7d7746439b99a47c08e50",
@@ -4165,7 +4165,7 @@
       "input_sha256": [
         "c7ade8e0a96d707863bf922499d93c46c08efa52209945268552cffd68f0f283",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "0cf16b3b098a81fab66f56e07d0e042bcc1dc869c073ed81ef382e5947419254",
         "5ec007aefeb3d0014c959d9c417042ad455ee8e0793bb9b3577ff4e20103c730",
         "1794120b577d531133125095dd4131f3d259c2d943d7d7746439b99a47c08e50",
@@ -4180,7 +4180,7 @@
       "input_sha256": [
         "c7ade8e0a96d707863bf922499d93c46c08efa52209945268552cffd68f0f283",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "0cf16b3b098a81fab66f56e07d0e042bcc1dc869c073ed81ef382e5947419254",
         "5ec007aefeb3d0014c959d9c417042ad455ee8e0793bb9b3577ff4e20103c730",
         "1794120b577d531133125095dd4131f3d259c2d943d7d7746439b99a47c08e50",
@@ -4202,7 +4202,7 @@
         "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
         "c4b8c2ee47ca66ef075d73e172f02d546e355ac84be869f4c09adec8724146d1",
         "f8a8d05cb227899bbcd1381ce628de29d708f8738f8b7e153ebc82c46f1cc750",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "99e606d23e4d6ba5b5ae56527f0fa1df191b1c3e892a9b6de0603066c08311a7",
         "f72136cf565c7f912a4e6a53c4b013ca64862d23064b37f401b7a1fd5c2ae53e",
         "c385409e51d81e59e7ded9dae01726c759590603b6cf7c427b28f18b177548a0",
@@ -4235,7 +4235,7 @@
         "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
         "c4b8c2ee47ca66ef075d73e172f02d546e355ac84be869f4c09adec8724146d1",
         "f8a8d05cb227899bbcd1381ce628de29d708f8738f8b7e153ebc82c46f1cc750",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "99e606d23e4d6ba5b5ae56527f0fa1df191b1c3e892a9b6de0603066c08311a7",
         "f72136cf565c7f912a4e6a53c4b013ca64862d23064b37f401b7a1fd5c2ae53e",
         "c385409e51d81e59e7ded9dae01726c759590603b6cf7c427b28f18b177548a0",
@@ -4268,7 +4268,7 @@
         "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
         "c4b8c2ee47ca66ef075d73e172f02d546e355ac84be869f4c09adec8724146d1",
         "f8a8d05cb227899bbcd1381ce628de29d708f8738f8b7e153ebc82c46f1cc750",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "99e606d23e4d6ba5b5ae56527f0fa1df191b1c3e892a9b6de0603066c08311a7",
         "f72136cf565c7f912a4e6a53c4b013ca64862d23064b37f401b7a1fd5c2ae53e",
         "c385409e51d81e59e7ded9dae01726c759590603b6cf7c427b28f18b177548a0",
@@ -4301,7 +4301,7 @@
         "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
         "c4b8c2ee47ca66ef075d73e172f02d546e355ac84be869f4c09adec8724146d1",
         "f8a8d05cb227899bbcd1381ce628de29d708f8738f8b7e153ebc82c46f1cc750",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "99e606d23e4d6ba5b5ae56527f0fa1df191b1c3e892a9b6de0603066c08311a7",
         "f72136cf565c7f912a4e6a53c4b013ca64862d23064b37f401b7a1fd5c2ae53e",
         "c385409e51d81e59e7ded9dae01726c759590603b6cf7c427b28f18b177548a0",
@@ -4334,7 +4334,7 @@
         "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
         "c4b8c2ee47ca66ef075d73e172f02d546e355ac84be869f4c09adec8724146d1",
         "f8a8d05cb227899bbcd1381ce628de29d708f8738f8b7e153ebc82c46f1cc750",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "99e606d23e4d6ba5b5ae56527f0fa1df191b1c3e892a9b6de0603066c08311a7",
         "f72136cf565c7f912a4e6a53c4b013ca64862d23064b37f401b7a1fd5c2ae53e",
         "c385409e51d81e59e7ded9dae01726c759590603b6cf7c427b28f18b177548a0",
@@ -4367,7 +4367,7 @@
         "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
         "c4b8c2ee47ca66ef075d73e172f02d546e355ac84be869f4c09adec8724146d1",
         "f8a8d05cb227899bbcd1381ce628de29d708f8738f8b7e153ebc82c46f1cc750",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "99e606d23e4d6ba5b5ae56527f0fa1df191b1c3e892a9b6de0603066c08311a7",
         "f72136cf565c7f912a4e6a53c4b013ca64862d23064b37f401b7a1fd5c2ae53e",
         "c385409e51d81e59e7ded9dae01726c759590603b6cf7c427b28f18b177548a0",
@@ -4400,7 +4400,7 @@
         "d8bcc2e23a3791d9f77b0f64ef8e833bae889f8caf39033bbcdbdc94fd754e94",
         "c4b8c2ee47ca66ef075d73e172f02d546e355ac84be869f4c09adec8724146d1",
         "f8a8d05cb227899bbcd1381ce628de29d708f8738f8b7e153ebc82c46f1cc750",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "99e606d23e4d6ba5b5ae56527f0fa1df191b1c3e892a9b6de0603066c08311a7",
         "f72136cf565c7f912a4e6a53c4b013ca64862d23064b37f401b7a1fd5c2ae53e",
         "c385409e51d81e59e7ded9dae01726c759590603b6cf7c427b28f18b177548a0",
@@ -4865,7 +4865,7 @@
       "input_sha256": [
         "c7ade8e0a96d707863bf922499d93c46c08efa52209945268552cffd68f0f283",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "0cf16b3b098a81fab66f56e07d0e042bcc1dc869c073ed81ef382e5947419254",
         "5ec007aefeb3d0014c959d9c417042ad455ee8e0793bb9b3577ff4e20103c730",
         "1794120b577d531133125095dd4131f3d259c2d943d7d7746439b99a47c08e50",
@@ -18963,7 +18963,7 @@
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
         "9675ebef37df1ea46f4892a8843cd7c2e90867af9d91b7d49481acc34cfbd090",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "14d5d305e82aa18cfb1f508422dd199ec7e8de2f473bfca6928cdd7ef489e8a6",
         "dd768e78752b1dd9a2bac5562b539cd577a5f2040f33f3fb8417e50f8c880354",
         "cf940282627c83d934407a049f02162f72e450d4ddbfcb21735a7ed33f0e71f4",
@@ -19036,7 +19036,7 @@
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
         "9675ebef37df1ea46f4892a8843cd7c2e90867af9d91b7d49481acc34cfbd090",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "14d5d305e82aa18cfb1f508422dd199ec7e8de2f473bfca6928cdd7ef489e8a6",
         "dd768e78752b1dd9a2bac5562b539cd577a5f2040f33f3fb8417e50f8c880354",
         "cf940282627c83d934407a049f02162f72e450d4ddbfcb21735a7ed33f0e71f4",
@@ -19091,7 +19091,7 @@
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
         "9675ebef37df1ea46f4892a8843cd7c2e90867af9d91b7d49481acc34cfbd090",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "14d5d305e82aa18cfb1f508422dd199ec7e8de2f473bfca6928cdd7ef489e8a6",
         "dd768e78752b1dd9a2bac5562b539cd577a5f2040f33f3fb8417e50f8c880354",
         "cf940282627c83d934407a049f02162f72e450d4ddbfcb21735a7ed33f0e71f4",
@@ -19146,7 +19146,7 @@
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
         "9675ebef37df1ea46f4892a8843cd7c2e90867af9d91b7d49481acc34cfbd090",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "14d5d305e82aa18cfb1f508422dd199ec7e8de2f473bfca6928cdd7ef489e8a6",
         "dd768e78752b1dd9a2bac5562b539cd577a5f2040f33f3fb8417e50f8c880354",
         "cf940282627c83d934407a049f02162f72e450d4ddbfcb21735a7ed33f0e71f4",
@@ -19201,7 +19201,7 @@
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
         "9675ebef37df1ea46f4892a8843cd7c2e90867af9d91b7d49481acc34cfbd090",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "14d5d305e82aa18cfb1f508422dd199ec7e8de2f473bfca6928cdd7ef489e8a6",
         "dd768e78752b1dd9a2bac5562b539cd577a5f2040f33f3fb8417e50f8c880354",
         "cf940282627c83d934407a049f02162f72e450d4ddbfcb21735a7ed33f0e71f4",
@@ -19256,7 +19256,7 @@
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
         "9675ebef37df1ea46f4892a8843cd7c2e90867af9d91b7d49481acc34cfbd090",
         "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
-        "92ba692fcf052275f141b0af56bac229e98745656dc4c0c6fc94f8d553e3daea",
+        "19c2cd4735fd16d6cf40366307b03bdc878527ea6dfa4201cb332d2dee612b10",
         "14d5d305e82aa18cfb1f508422dd199ec7e8de2f473bfca6928cdd7ef489e8a6",
         "dd768e78752b1dd9a2bac5562b539cd577a5f2040f33f3fb8417e50f8c880354",
         "cf940282627c83d934407a049f02162f72e450d4ddbfcb21735a7ed33f0e71f4",
