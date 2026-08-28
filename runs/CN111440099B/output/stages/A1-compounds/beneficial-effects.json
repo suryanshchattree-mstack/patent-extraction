@@ -1,0 +1,67 @@
+[
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "tembotrione",
+    "identifier_type": "trivial_name",
+    "aliases": ["磺酮产品", "环磺酮产品"],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Beneficial Effects",
+    "section_type": "beneficial_effects",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "product",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": ["compound_class:active_ingredient"],
+    "notes": "Merged from three mentions in [0026] at line 137: 磺酮产品 twice and 环磺酮产品 once, all one compound. The section prints the product name two ways in one sentence: 磺酮产品 drops the leading character of 环磺酮, the same slip the abstract makes. It is recorded as an alias and not corrected, and it is not a different compound. Both printed forms are aliases; the bare 磺酮 and the bare 环磺酮 occur in this section only inside those two words. role product, commercially_available false and resolved true are taken from the shared canonical identifier table for this patent, not from this paragraph, which states no role and no preparation; the table's basis for commercially_available false is that later sections of the document prepare it. is_section_product is false because the section states an advantage and no preparation, so no compound here is a section product; the section has no heading of its own. The section claims 提高了产品的纯度 (the purity of the product is improved) with no figure and no method, so purity_pct and purity_method are null. It states no quantity and no characterisation of this compound, so quantity, nmr and melting_point are the literal null rather than objects of nulls, which would overwrite the example sections at merge. The sentence states that an Ames test was carried out on the product before purification and on the product after purification; an Ames assay reports mutagenicity and not a cyanide concentration, and the two ppm figures the sentence credits to it are cyanide impurity content, so both the figures and that misattribution are recorded on the cyanide record and not here."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "cyanide",
+    "identifier_type": "other",
+    "aliases": ["氰化物杂质"],
+    "resolved": false,
+    "unresolved_reference": false,
+    "section_label": "Beneficial Effects",
+    "section_type": "beneficial_effects",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "by_product",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [
+      {
+        "method": "other",
+        "value": 1327,
+        "unit": "ppm",
+        "conditions": "cyanide impurity content of the product before purification; the sentence credits the figure to an Ames test",
+        "raw_text": "原本氰化物杂质含量由1327ppm降至100ppm以下"
+      },
+      {
+        "method": "other",
+        "value": null,
+        "unit": "ppm",
+        "conditions": "cyanide impurity content of the product after purification, stated only as below 100 ppm, so no single value is given; the sentence credits the figure to an Ames test",
+        "raw_text": "降至100ppm以下"
+      }
+    ],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": ["compound_class:impurity"],
+    "notes": "Merged from two mentions in [0026] at line 137, both printed 氰化物杂质, kept as the single alias; the bare 氰化物 occurs in this section only inside that word. role by_product, commercially_available false and resolved false are taken from the shared canonical identifier table for this patent. resolved is false because the paragraph never says which cyanide species is meant, so the name denotes a class and not one compound; unresolved_reference is left false because it is a compound class and not a back-reference to a label the section fails to define. The two ppm figures are the content of this impurity and are recorded here rather than on tembotrione. The sentence credits them to an Ames test (Ames检测), but an Ames assay reports mutagenicity and not a cyanide concentration, so it cannot be the source of a ppm content; the section is not corrected, the attribution is recorded, and analytics method is other because no method that could produce these figures is named. The after-purification figure is an upper bound, so its value is null and the bound is stated in conditions. Ames was seen and deliberately not emitted as a compound: it is an assay, not a substance. 纯度 (purity) and 杂质 (impurity) as a bare word were likewise seen and not emitted, being a property and a generic class."
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "reaction_id": "Example 5_Step 1",
+    "source_lines": [
+      353,
+      359
+    ],
+    "quote_zh": "将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应",
+    "arithmetic_check": "Stated inputs: potassium hydroxide 6.9 g at 85 percent, 0.105 mol, implying MW 55.9 against 56.11 for KOH; methyl ester 34.8 g at 98 percent, 0.1 mol, implying MW 341.0 against 341.6 for C10H10BrClO4S. Both close within half a percent. No product mass and no yield are printed for this step, only an in-process normalised content of 98.3 percent, so the product side cannot be checked and nothing is asserted about it. Closes, with the product side unstated.",
+    "drawing_evidence": "The reaction scheme at line 356 (one arrow, step_id 1): reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl, condition text KOH, product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+]. Reactant, base and potassium counter-ion all agree with the prose of this step, so no conflict is raised. tert-butanol is in the prose only, which is ordinary for a solvent."
+  },
+  {
+    "reaction_id": "Example 5_Alkoxide Preparation",
+    "source_lines": [
+      365,
+      366
+    ],
+    "quote_zh": "室温下投入20g氢化钾(30％，0.15mol)，搅拌至溶解完全，经脱溶后得到三氟乙醇醇钾固体，密封备用",
+    "arithmetic_check": "Stated inputs: potassium hydride 20 g at 30 percent, 0.15 mol, giving 6.0 g of hydride over 0.15 mol and implying MW 40.0 against 40.11 for KH, which closes; trifluoroethanol 150 mL with no mass and no mole figure. No product mass, no yield and no product purity are printed. Closes on the only pair given, and molar_mass_inconsistent is deliberately not raised for this hydride.",
+    "drawing_evidence": "No arrow is drawn for this preparation. The only drawing evidence is the condition text CF3CH2OK on the single arrow of the step (2) scheme at line 363, which agrees with the prose on the alkoxide's identity and potassium counter-ion. Absence of an arrow is not treated as a drawing conflict."
+  },
+  {
+    "reaction_id": "Example 5_Step 2",
+    "source_lines": [
+      360,
+      371
+    ],
+    "quote_zh": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钾盐(98.3％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应3h",
+    "arithmetic_check": "Stated input 0.1 mol of the potassium benzoate salt at 98.3 percent; stated product 33.0 g at 98.2 percent HPLC content; stated yield 93.5 percent, explicitly a two-step yield on methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate. 33.0 g times 98.2 percent is 32.41 g of target; 0.1 mol at the product MW of 346.7 (C11H10ClF3O5S) is 34.67 g of theory; 32.41 over 34.67 is 93.5 percent, which reproduces the printed yield exactly. Closes. The 0.1 mol charged here also equals step (1)'s 0.1 mol input, so there is no scale discontinuity.",
+    "drawing_evidence": "The reaction scheme at line 363 (one arrow, step_id 1) supports this step but disagrees with it: the drawn reactant is the SODIUM salt (C9H7BrClNaO4S, ...CBr.[Na+]) where the prose names the potassium salt. The arrow's condition texts CF3CH2OK and HCl are both written in the procedure, and the drawn product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F matches the acid the text names. Prose kept, drawing_text_conflict raised, both readings in notes."
+  }
+]

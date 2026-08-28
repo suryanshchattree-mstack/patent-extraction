@@ -1,0 +1,22 @@
+[
+  {
+    "reaction_id": "Example 15_Step 1",
+    "source_lines": [
+      524,
+      524
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "arithmetic_check": "No mass, no mole figure and no yield are printed for this step, so there is nothing to check. The only number is the 98.2 percent content of the sodium salt obtained. The 0.1 mol figure that appears later belongs to the charge into step (2). Nothing fails and nothing could be verified; no arithmetic flag is raised and none is cleared.",
+    "drawing_evidence": "None. The single IMAGE_EXTRACT span in this section, on line 531, sits under the step (2) heading on line 526 and draws the step (2) etherification, not this step. No scheme is drawn for step (1) in Examples 13 to 20, so there is no drawing to agree or disagree with the prose here."
+  },
+  {
+    "reaction_id": "Example 15_Step 2",
+    "source_lines": [
+      526,
+      533
+    ],
+    "quote_zh": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为2h，加毕保温反应4h",
+    "arithmetic_check": "Stated input to this step: 0.1 mol of the sodium benzoate salt at 98.2 percent content, no mass printed. Stated product: 32.6 g at 94.6 percent by high performance liquid chromatography, so 30.84 g of the acid; at a molecular weight of 348.8 for C14H17ClO6S that is 0.0884 mol, which is 88.4 percent of the 0.1 mol charged and reproduces the printed yield figure exactly. The text words that figure as a two-step yield calculated on methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate, whose charge is printed nowhere in this section, so the stated basis cannot be verified and is only consistent with the arithmetic if step (1) is quantitative. The mass is below the 34.9 g theoretical from 0.1 mol, so the product mass does not exceed what the input moles could give and mass_balance_implausible is not raised; the discrepancy is in the stated basis of the yield, and it is recorded in notes rather than flagged. Reagent checks close: 17.3 g of 30 percent sodium hydroxide solution is 5.19 g of sodium hydroxide, 0.130 mol at 40.0, against the printed 0.13 mol; 11.8 g of tetrahydrofurfuryl alcohol is 0.1155 mol at 102.1, against the printed 0.115 mol, the printed figure evidently taken on the gross mass rather than on the 99 percent content, which would give 0.114 mol. No molar_mass_inconsistent. Step (1) prints no output quantity, so scale_discontinuity could not be checked.",
+    "drawing_evidence": "The IMAGE_EXTRACT reaction scheme on line 531, one arrow, step_id 1. Its drawn reactant is the sodium benzoate salt and its drawn product is the free ether acid, matching the prose of this step, and its arrow conditions read THFA, NaOH and HCl. It agrees with the prose on the alkali metal, sodium in both, so no drawing_text_conflict. Two differences of completeness only: the reaction solvent named in the prose does not appear on the arrow, which is why reagent_written_not_drawn is raised, and the hydrochloric acid drawn on the arrow is a workup acidification in the prose rather than a reagent of the substitution, so it is recorded in workup and noted rather than promoted to an arrow reagent."
+  }
+]

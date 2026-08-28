@@ -357,3 +357,51 @@ above.
     1             step 3, arithmetically impossible rather than merely offset
 
 Nobody should report this as "the mass defect is explained".
+
+## The container test, measured: it ate the only quantity in a patent
+
+This file already records that `finalise.py:merge_compound` ends with
+
+    elif v not in (None, "", [], {}):
+        out[k] = v
+
+and that an all-null dict is not equal to `{}`, so it survives the test and overwrites
+a populated value from an earlier section. Until `EP2045236A1` that was a described
+hazard. Here is what it costs.
+
+`EP2045236A1` states exactly one mass in the whole document: 2 g of tembotrione,
+charged in each of its three worked examples. `tembotrione` is recorded in 19 sections.
+Three carry the real `quantity` with `mass_g: 2.0`. The other sixteen carried
+`{"mass_g": null, "volume_ml": null, "mmol": null, "equivalents": null,
+"yield_pct": null}`, and `merge_compound` walks the sections in alphabetical filename
+order, so `formulation-...`, `mixtures-...`, `suitability-...` and `table-...` all sort
+after `example-...`.
+
+Measured on the merged deliverable:
+
+    compound records in output/relevant_output/gold/compounds.json
+    carrying a mass_g:  0
+
+Every quantity in the patent, gone. The engine then failed its own sensitivity test,
+"a found mass_g claim exists to corrupt", because there was no found mass claim left in
+the gold to corrupt. That is the only reason it surfaced at all: no check anywhere
+compares a merged record against the section records it came from, so on a patent with
+several masses the loss would have been partial and invisible.
+
+**The fix needed no code change.** A1 rule 17 already says "Set every characterisation
+field you cannot support to `null`. An empty object is not the same as null; use null."
+Writing `null` makes `v` `None`, the branch is skipped, and the populated value
+survives. 21 files were converted and the repair was verified by importing the real
+`merge_compound` and merging all 25 section files for `tembotrione`: the 2.0 survives.
+
+So rule 17 is not a style preference. It is the only thing standing between this branch
+and silent data loss, and it was written before anyone knew that.
+
+**The blast radius is narrower than it looks, and worth stating precisely.**
+`_UNION = ("aliases", "tags", "analytics")` and that branch reads
+`existing.get(k) or []`, which treats `[]` and `None` identically. So an empty
+`analytics` or `aliases` never overwrote anything. **The damage is `quantity` alone**,
+because it is a plain dict outside `_UNION`. Any future plain-dict field added to a
+compound record inherits the same hazard.
+
+`runs/CN104292137A` and `runs/CN109678767A` have not been checked for the same loss.

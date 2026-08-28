@@ -1,0 +1,46 @@
+[
+  {
+    "reaction_id": "Summary of the Invention_Step 1",
+    "source_lines": [
+      113,
+      119,
+      121,
+      123
+    ],
+    "quote_zh": "1)将环磺酮产品溶解在含水溶液中，升温；　　进一步地，所述步骤1)中所述含水溶液，为乙腈、甲醇、乙醇、二甲基甲酰胺与水混合得到的溶液。　　进一步地，所述步骤1)中含水溶液中含水量为20％～40％。　　进一步地，步骤1)所述升温，是将温度升至30℃～60℃。",
+    "arithmetic_check": "Nothing to close. The section is a method recitation and states no charge, no mass, no volume, no mole and no yield anywhere, so no mass balance and no molar-mass check can be computed and product_yield_pct is null. The only numbers on this record are two parameter ranges, the 20% to 40% water content of [0018] and the 30 to 60 degrees C of [0019]; both are recorded as printed, the temperature range in min_c and max_c and the composition range in concentration.text because concentration.value is a single float. Nothing is isolated in this step, so the record carries a reactant entry for tembotrione and no product entry, and missing_product is raised on that fact rather than a product being invented; the run's two-entry form for a purification's substrate and product is used only where the step isolates something, which here is Step 3 alone. Open point for A5: [0017] uses the Chinese enumeration comma between the four organic solvents and does not say whether one or all four are mixed with water; all four are listed and the ambiguity is unresolved by design.",
+    "drawing_evidence": "None. Lines 107 to 136 contain no [IMAGE_EXTRACT] span of any kind, so there is no drawn scheme and no drawn structure to corroborate or contradict the prose, and no drawing_text_conflict is possible in this section. Prompt rule 5f's claim that this section ends with a drawn multi-arrow scheme disagreeing with the prose on two steps is inherited from the previous patent through the shared prompt body and is false of this document; it was checked and no scheme records were manufactured. Step boundaries came from the section's own 1), 2), 3) markers alone."
+  },
+  {
+    "reaction_id": "Summary of the Invention_Step 2",
+    "source_lines": [
+      115,
+      125,
+      129
+    ],
+    "quote_zh": "2)加入吸附剂，进行保温、热过滤；　　进一步地，步骤2)中所述保温的时间在0.2h～1h。　　进一步地，所述吸附剂为活性炭或硅藻土。",
+    "arithmetic_check": "Nothing to close. No charge, no mass, no adsorbent loading and no yield are stated. The only number is the holding-time range 0.2 h to 1 h at [0020], which the single-float time_h cannot hold, so time_h is null and the range is recorded in notes as printed. Nothing is isolated in this step either: the hot filtrate is carried forward, so the record carries a reactant entry and no product entry and missing_product is raised. Open point for A5: conditions_inherited is true on the reading that 保温 maintains the 30 to 60 degrees C of step 1); the opposite reading, that 保温 names no antecedent, is recorded in notes and was deliberately not resolved.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT] span in this section; see the Step 1 entry."
+  },
+  {
+    "reaction_id": "Summary of the Invention_Step 3",
+    "source_lines": [
+      117,
+      131,
+      133,
+      135
+    ],
+    "quote_zh": "3)控温调节含水溶液pH至3以下，降温、从溶液中结晶出纯化的环磺酮。　　进一步地，步骤3)所述控温调节含水溶液pH至3以下的步骤，包括，将含水溶液中加入盐酸调节pH至3以下。　　进一步地，进一步包括，将含水溶液中加入盐酸调节pH至3以下。　　进一步地，所述步骤3)中，搅拌速度在150转至200转。",
+    "arithmetic_check": "Nothing to close. No charge, no mass, no acid concentration and no yield are stated, so no mass balance and no molar-mass check can be computed. Neither of the two numbers present is assignable to a field. pH至3以下, below 3, is an upper bound with no lower bound and no target, so conditions.ph_value and workup.ph_target are both null; a first reading of this record wrote 3.0 into both with a bound note and it was withdrawn, since the field is what a consumer reads and Claims Step 3 leaves the identical wording null. The stirring speed 150转 to 200转 is printed in bare revolutions with no per-minute base and as a range, so stirring.rpm is null and the phrase is kept in notes. This is the only record in the section that isolates anything, so it is the only one carrying the run's two-entry form for tembotrione, one entry role reactant and one role product. Open point for A5: [0024] duplicates the operative clause of [0023] verbatim in substance, and one record covers both; a scorer comparing record counts against paragraph counts will see three paragraphs of narrowing against one record here.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT] span in this section; see the Step 1 entry."
+  },
+  {
+    "reaction_id": "Summary of the Invention_Step 4",
+    "source_lines": [
+      127
+    ],
+    "quote_zh": "进一步地，在所述步骤2)之后，还包括：有机溶剂萃取蒸馏、入含水溶液的步骤。",
+    "arithmetic_check": "Nothing to close and nothing to check: the paragraph states no charge, no mass, no volume, no temperature, no time and no yield, which is why no_conditions is raised. Nothing is isolated: the material ends up in an aqueous solution, so the record carries a reactant entry and no product entry, and missing_product is raised alongside the two flags below. Open points for A5, three left unresolved: first, the paragraph has no verb before 入含水溶液, so the final operation of the step cannot be read and cross_reference_unresolved is raised, that flag being the closest the closed list offers to an unreadable clause rather than a true missing cross-reference; second, the record's step_index of 4 is document order while the paragraph itself places the operation after 步骤2), so process order puts it between Step 2 and Step 3 and the two orders differ on this record alone.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT] span in this section; see the Step 1 entry."
+  }
+]

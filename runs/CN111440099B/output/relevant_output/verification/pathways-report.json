@@ -1,0 +1,252 @@
+{
+  "artifact": "pathways.json",
+  "records_audited": 11,
+  "findings": [
+    {
+      "check": "precision",
+      "severity": "critical",
+      "record": "scope=section / Claims :: Claims_Step 1",
+      "field": "steps[].components",
+      "problem": "components lists the step's solvents, acids, bases, catalysts and adsorbents alongside its reactants, where A3 rule 12 asks for the reactants plus the product and nothing else.",
+      "source_line": 54,
+      "quote": "所述步骤1）中所述含水溶液，为乙腈、甲醇、乙醇、二甲基甲酰胺与水混合得到的溶液",
+      "artifact_says": "[\"tembotrione\", \"acetonitrile\", \"methanol\", \"ethanol\", \"N,N-dimethylformamide\", \"water\"]",
+      "should_be": "[\"tembotrione\"]. The step's own compounds[] gives acetonitrile, methanol, ethanol, N,N-dimethylformamide and water role solvent, and reactant_names holds only tembotrione. components must be reactant_names plus product_name. 13 of the 15 distinct step records projected here are affected (30 step projections in total across the 11 pathways): Claims_Step 1/2/3, Summary of the Invention_Step 1/2/3, Background_Step 3, Example 1_Batch 1, Example 2_Batch 7, Example 3_Batch 11, Example 4_Batch 14, Example 5_Batch 16, Example 6_Step 2. In the reference run runs/CN104292137A, components equals reactant_names plus product_name on 41 of 41 step projections and never carries a solvent or a catalyst, so this is a departure from the format as well as from the rule.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "critical",
+      "record": "scope=patent / null :: Example 6_Step 2",
+      "field": "steps[].components",
+      "problem": "components carries the step's by_product entries, which are neither reactants nor the product under any reading of rule 12, so a species the patent removes is presented as a component of the step.",
+      "source_line": 273,
+      "quote": "过滤出三乙胺盐，减压浓缩得红棕色固体环磺酮产品",
+      "artifact_says": "[\"2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride\", \"1,2-dichloroethane\", \"triethylamine\", \"cyclohexane-1,3-dione\", \"acetone cyanohydrin\", \"triethylamine salt\", \"tembotrione\"]",
+      "should_be": "Drop 'triethylamine salt' (role by_product in the step's own compounds[]; the text says it is filtered off). The same defect puts 'cyanide' into components on Example 1_Batch 1, Example 2_Batch 7, Example 3_Batch 11, Example 4_Batch 14, Example 5_Batch 16 and Background_Step 3, where cyanide is the impurity the whole patent exists to remove.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "major",
+      "record": "scope=section / Synthesis Scheme",
+      "field": "honest_uncertainty_flags",
+      "problem": "Both steps of this pathway carry validation_flags route_attribution_unclear and drawing_text_conflict, and nothing in honest_uncertainty_flags records either, so rule 16 is not met and the drawn route reads as cleanly attributed to the invention.",
+      "source_line": 153,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F\"",
+      "artifact_says": "[\"section_chain_is_the_drawn_scheme_not_the_prose\", \"yield_missing_step\"]",
+      "should_be": "Add a flag recording the attribution problem, e.g. route_attribution_unclear or scheme_reprinted_from_background. I opened p03 and p05 and magnified both schemes from the PDF at 8x: the [0031] scheme on p05 is the same drawing as 式2 on p03 in the Background at [0009] to [0010], structure for structure and reagent for reagent, and the line 97 and line 153 IMAGE_EXTRACT spans carry identical SMILES. The existing flag records prose versus drawing, not prior art versus invention. As it stands the acid to enol ester to tembotrione route appears in pathways.json only as the invention's Synthesis Scheme; the identical Background chain (Background_Scheme Step 1 and Scheme Step 2) is a terminal chain that no pathway carries.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "major",
+      "record": "scope=section / Example 2",
+      "field": "honest_uncertainty_flags",
+      "problem": "Two of this pathway's three steps carry validation_flags drawing_text_conflict and reagent_written_not_drawn and the third is clean, so the pathway presents no problem at all beyond the missing yields, which rule 16 forbids.",
+      "source_line": 145,
+      "quote": "向三口烧瓶加入的2‑氯‑3‑(2,2,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酰氯，1,2‑二氯乙烷，保温15℃搅拌。缓慢加入氯化亚砜。",
+      "artifact_says": "[\"multiple_terminal_steps_in_section\", \"yield_missing_step\"]",
+      "should_be": "Add a flag reflecting drawing_text_conflict, e.g. drawing_text_conflict_in_chain. The prose at line 145 charges the acyl chloride and then adds thionyl chloride while the drawing at line 153 starts from the free acid, which is why Synthesis Scheme_Step 1 records the same compound as its reactant and its product; a consumer of this pathway alone cannot see that its first step is a null transformation. Pathways Example 1, Example 3, Example 4 and Example 5 share the same two steps and the same omission, but their mass_balance_implausible terminal step at least yields inconsistent_step_arithmetic; Example 2 has nothing.",
+      "confidence": "high"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "scope=section / Example 1",
+      "field": "honest_uncertainty_flags",
+      "problem": "The chain splices a 5 g lab aliquot onto a scheme that prints no charge at all, which is exactly rule 15's scale_discontinuity_in_chain, and the flag is absent from all five Example 1 to Example 5 pathways.",
+      "source_line": 163,
+      "quote": "重排反应结束后，蒸馏脱溶后取环磺酮产品5g溶解在20%含水甲醇中",
+      "artifact_says": "[\"multiple_terminal_steps_in_section\", \"yield_missing_step\", \"inconsistent_step_arithmetic\"]",
+      "should_be": "Add scale_discontinuity_in_chain. Synthesis Scheme_Step 2 has scale not_specified and, per reactions-provenance.json, [0029] prints not one quantity; the terminal batch has scale lab and consumes 5 g taken (取) from that batch, so the step-to-step material continuity does not hold and the chain is a paper chain. The same applies to Example 2, Example 3, Example 4 and Example 5. Contrast Example 6, where the whole material is carried step to step and no such flag is due.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "scope=section / Background",
+      "field": "honest_uncertainty_flags",
+      "problem": "All three steps of this pathway carry validation_flags no_conditions and nothing in honest_uncertainty_flags records it, so a pathway with no condition data anywhere presents as merely lacking yields.",
+      "source_line": 95,
+      "quote": "环磺酮的制备是通过2‑氯‑3‑(2,2,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酸与氯化亚砜反应生成2‑氯‑3‑(2,2,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酰氯，再与环己二酮反应生成烯醇酯，经过丙酮氰醇重排反应最终生成环磺酮(tembotrione)。",
+      "artifact_says": "[\"multiple_terminal_steps_in_section\", \"yield_missing_step\"]",
+      "should_be": "Add a flag such as no_conditions_in_chain. The Synthesis Scheme pathway has the same gap: two steps flagged no_conditions, no honest flag reflecting it.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "scope=section / Example 1",
+      "field": "tags",
+      "problem": "The branching and convergence categories were computed over the pathway's own steps only, and Synthesis Scheme_Step 2, which is a step of this pathway, is named as precursor_step by 19 other reaction records, so under a whole-graph reading of rule 14 the tag is branching:branched.",
+      "source_line": 161,
+      "quote": "| 实验批次 | 处理方法 | 原始氰化物杂质含量（ppm） | 处理后氰化物杂质含量（ppm） | 氰化物杂质含量降低% |",
+      "artifact_says": "branching:linear, convergence:linear",
+      "should_be": "Either branching:branched, or a statement of the scope the rule intends. Under a pathway-local reading a linear chain is always branching:linear and the tag carries no information, which argues for the whole-graph reading; the fan-out here is real, since batches 1 to 19 all hang off Synthesis Scheme_Step 2. Example 2 to Example 5 and the Summary of the Invention pathway (whose Step 2 is the precursor of both Step 3 and Step 4) are affected the same way. Convergence has a parallel question: Synthesis Scheme_Step 2 consumes the acid chloride from Step 1 and the enol ester from Scheme Step 1, which is convergent on the whole graph and linear within the chain. What would settle it: the PathwaysBuilder source, or a reference run containing a fan-out step. The reference run CN104292137A has no step named as precursor by more than one step, so it cannot settle it.",
+      "confidence": "low"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "scope=section / Example 3 :: Example 3_Batch 11",
+      "field": "steps[].components",
+      "problem": "components repeats the identifier 'water' twice, which an identifier list cannot mean.",
+      "source_line": 226,
+      "quote": "重排反应结束后，蒸馏脱溶后取产品5g溶解在20%含水甲醇中，升温至60℃，加入1g活性炭保温一小时后热过滤,脱去甲醇后补入10g新水，控温滴加10%稀盐酸调节PH为2",
+      "artifact_says": "[\"tembotrione\", \"methanol\", \"water\", \"water\", \"activated carbon\", \"hydrochloric acid\", \"cyanide\", \"tembotrione\"]",
+      "should_be": "Deduplicate. The step's compounds[] carries water twice, once as the aqueous methanol constituent and once as the 10 g of fresh water added after the methanol is stripped, which is a legitimate distinction in compounds[] but collapses to one identifier in components.",
+      "confidence": "high"
+    },
+    {
+      "check": "translation",
+      "severity": "minor",
+      "record": "scope=section / Example 1 :: Example 1_Batch 1",
+      "field": "steps[].concentration",
+      "problem": "Untranslated Chinese appears in derived summary fields that are not verbatim quote fields, which CLAUDE.md forbids for anything that can reach a screen.",
+      "source_line": 163,
+      "quote": "溶解在20%含水甲醇中",
+      "artifact_says": "\"20%含水甲醇, 20% aqueous methanol, the dissolution medium of the 5 g charge\"",
+      "should_be": "\"20% aqueous methanol, the dissolution medium of the 5 g charge\". The same class of leak is in steps[].conditions.concentration.text (same value), in steps[].compounds[].addition_profile on Claims_Step 3 (\"crystallised out of the aqueous solution on cooling, as 纯化的环磺酮\") and in steps[].process_control.criterion on Synthesis Scheme_Step 2 (\"reaction checked complete (检测反应完全); no technique named\"). procedure_text is a verbatim quote field and its Chinese is correct and authoritative. Rule 11 forbids the pathway pass from re-wording any of these, so the correction belongs in reactions.json and the pathway must then be rebuilt.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "scope=section / Claims",
+      "field": "intermediates",
+      "problem": "The chain has three steps, so rule 4's list of the products of every step but the last has two entries, and the artifact emits an empty list.",
+      "source_line": 50,
+      "quote": "一种环磺酮产品的纯化方法，方法包括以下步骤：\n1）将环磺酮产品溶解在含水溶液中，升温；\n2）加入吸附剂，进行保温、热过滤；",
+      "artifact_says": "[]",
+      "should_be": "Nothing emittable, since Claims_Step 1 and Claims_Step 2 both have product_name null and a CompoundRef needs an identifier, so [] is the only shape available. Recording it because the empty list loses the fact that two intermediate stages exist and are unnamed; chain_length:3 and steps_without_isolated_product together carry it, so this may be intended. The Summary of the Invention pathway is identical. What would settle it: what PathwaysBuilder emits for a step whose product is null.",
+      "confidence": "low"
+    },
+    {
+      "check": "linkage",
+      "severity": "minor",
+      "record": "scope=section / Claims :: Claims_Step 2",
+      "field": "linkage_confirmed",
+      "problem": "linkage_confirmed is true but the check cannot be substantiated, because the named precursor step has product_name null so no product identifier of its can appear among this step's reactants.",
+      "source_line": 51,
+      "quote": "1）将环磺酮产品溶解在含水溶液中，升温；\n2）加入吸附剂，进行保温、热过滤；",
+      "artifact_says": "precursor_step \"Step 1\", linkage_confirmed true",
+      "should_be": "Defensible as it stands, because the link here is the claim's own step numbering rather than a product identity, but it does not satisfy A2 rule 24's test. Same on Claims_Step 3, Summary of the Invention_Step 2 and Summary of the Invention_Step 3. Every other precursor_step in the artifact resolves to a real step whose product does appear among the consuming step's reactants.",
+      "confidence": "low"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "scope=section / Claims",
+      "field": "honest_uncertainty_flags",
+      "problem": "The chain begins from the crude tembotrione product, which the patent itself describes as the output of the rearrangement rather than a purchasable material, so rule 15's truncated_chain arguably applies and is absent.",
+      "source_line": 100,
+      "quote": "上述经过重排过程生成的生成环磺酮产品，通常会生成催化剂丙酮氰醇以及反应",
+      "artifact_says": "[\"yield_missing_step\", \"steps_without_isolated_product\"]",
+      "should_be": "Consider truncated_chain. Weighing against it: tembotrione is a commercial herbicide and so is purchasable in the ordinary sense, and the claims deliberately say nothing about where the crude came from. The Summary of the Invention pathway is the same case. What would settle it: whether PathwaysBuilder tests purchasability against the compound or against the patent's own framing of it.",
+      "confidence": "low"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "provenance - the sidecar this pass was given does not exist",
+      "what_was_verified": "There is no output/pathways-provenance.json and none is expected: the pathway pass projects its steps out of reactions.json rather than out of the source text, so no line-anchored sidecar is produced for it. I am recording the absence rather than scoring it as a pass. In its place I used output/reactions-provenance.json, 38 records each carrying source_lines, quote_zh, arithmetic_check and drawing_evidence, and every pathway step's provenance in this report is that file's entry for the reaction the step projects. Two consequences worth stating: the pathway-only fields (ksm, intermediates, product, overall_yield_pct, overall_purity_pct, tags, honest_uncertainty_flags, components, scope, section_label) have no provenance record anywhere on disk and were checked by re-derivation from reactions.json and compounds.json alone, and reactions-provenance.json was written by the same pass that wrote the records it documents, so it corroborates line anchors and cannot corroborate judgement."
+    },
+    {
+      "check": "rule 11 - verbatim projection, field by field, on every pathway and not just one",
+      "what_was_verified": "For all 30 step projections across all 11 pathways I compared every field rule 11 names against the reaction record of the same reaction_id: reaction_id, reaction_class, named_reaction, conditions (whole nested object), workup, purification, selectivity, process_control, byproduct_recovery, safety_notes, molar_ratio_text, compounds (whole array, every element, every key), reactant_names, product_name, product_yield_pct, product_ms_mz, product_ms_type, product_purity_pct, product_purity_method, procedure_text, procedure_summary, notes, section_label, section_type, step_index, step_label, reaction_class_confidence, is_one_pot, one_pot_steps, mechanism_type, scale, conditions_inherited, precursor_step, linkage_confirmed, cross_reference_unresolved, non_synthetic, is_complete, validation_flags, tags. Zero differences, on all 39 fields, on all 30 projections. No field was silently improved. The two steps that appear in five pathways each (Synthesis Scheme_Step 1 and Step 2) are byte-identical projections in all five."
+    },
+    {
+      "check": "rule 11 - the seven flat values re-derived from conditions",
+      "what_was_verified": "Recomputed from each reaction's conditions object as the rule specifies and compared: temperature_c = conditions.temperature.value_c, room_temperature = (conditions.temperature.type == 'room_temperature'), time_h, atmosphere, reactor_type, pressure = conditions.pressure.value_kpa, concentration = conditions.concentration.text. All 30 projections match, and the check is not vacuous: it exercises real values including 75.0, 40.0 and 60.0 C, 3.0, 6.0 and 1.0 h, 'three-necked flask', the 20% and 40% aqueous methanol concentration texts, and nulls where conditions.temperature.type is not_specified. room_temperature is false on every step, correctly, because no step has temperature.type room_temperature even where the procedure says 常温反应0.5h (that 0.5 h room-temperature hold sits inside a step whose recorded temperature is the 75 C stage). reaction_uuid is populated rather than null, which is finalise.py's documented job."
+    },
+    {
+      "check": "rules 1 and 2 - chain construction and ordering, re-derived from the reaction graph",
+      "what_was_verified": "I rebuilt the precursor graph from all 38 reaction records, resolving bare labels against the record's own section_label and the 'Section::Step' form against its named section. Every one of the 26 non-null precursor_step references resolves to an existing reaction record, so no unresolved_precursor is due anywhere. Terminal steps recomputed as 'not named as any other step's precursor_step' give 26. For each of the 11 pathways, the steps array is exactly the backward closure of its terminal step under precursor_step, contains no extra step, is ordered earliest first with the terminal last, and each step's precursor_step resolves to the step immediately before it in the array. No chain has a gap and none has a cycle."
+    },
+    {
+      "check": "rule 3 - key starting material",
+      "what_was_verified": "For all 11 pathways the ksm is the carbon-skeleton-contributing reactant of the earliest step, not a reagent or a solvent. Thionyl chloride and 1,2-dichloroethane are both reactants of Synthesis Scheme_Step 1 and Example 6_Step 1 and neither was chosen; cyclohexane-1,3-dione is a reactant of Synthesis Scheme_Scheme Step 1 and the benzoic acid was chosen instead. The two acid chloride KSMs equal the product identifier of their own first step, which is faithful: the patent at line 273 charges 231.9 g of the benzoyl chloride and then adds thionyl chloride to it, so reactant and product carry the same name in the source."
+    },
+    {
+      "check": "rules 4, 5 and 6 - intermediates, product and CompoundRef shape",
+      "what_was_verified": "intermediates equals the ordered products of every step but the last, and product equals the terminal step's product_name, on the nine pathways whose non-terminal steps have products (the two exceptions are recorded as a finding). All 33 CompoundRef objects carry exactly identifier, smiles and compound_uuid; smiles is null on every one; every identifier exists in compounds.json; and every compound_uuid equals that compound's compound_uuid in compounds.json, which is finalise.py's job. No SMILES, no molecular formula, no molecular weight and no InChI appears anywhere in pathways.json, which this artifact is not permitted to contain."
+    },
+    {
+      "check": "rules 7 and 8 - scope coverage, checked against the section map",
+      "what_was_verified": "00-sections.json lists 15 sections; exactly 10 of them contain reaction records (Claims, Background, Summary of the Invention, Synthesis Scheme, Example 1 to Example 6) and each has at least one terminal step. The artifact carries exactly one scope=section pathway per those 10, with section_label and section_type matching the section map string for string, plus one scope=patent pathway with section_label null. The Example 6 chain is emitted twice, as section and as patent, which rule 8 explicitly requires. All 11 pathway_uuid values are distinct; finalise.py folds the ordered step signature into the seed, which is what the A3 prompt's note demands and what keeps the five Example pathways (identical patent_id, scope, ksm and product, differing only in terminal step) from collapsing onto one uuid."
+    },
+    {
+      "check": "rule 9 - overall_yield_pct, and the yield that was not invented",
+      "what_was_verified": "No reaction record in this patent has a product_yield_pct, because the patent prints no yield anywhere: every percentage it prints is either a cyanide reduction (98%, 89%, 74%, 91%, 97%, 88%, 81%, 96%, 95%, 94%, 99%), a water content (20%, 30%, 40%), an acid strength (10%), an in-process limit (0.2%) or the 95% content of the final product. overall_yield_pct is therefore null on all 11 pathways and yield_missing_step is present on all 11. Nothing was substituted, assumed 100% or averaged, and no yield was back-computed even though Example 6 would allow it: 231.9 g of the acid chloride at 365.15 g/mol is 0.6351 mol, 262.1 g of tembotrione at 440.88 g/mol is 0.5945 mol, which is 93.6%, and rule 9 gives no licence to put that number in the field."
+    },
+    {
+      "check": "rule 10 - overall_purity_pct",
+      "what_was_verified": "overall_purity_pct equals the terminal step's product_purity_pct on all 11 pathways. It is 95.0 on exactly the two Example 6 chains and null on the other nine, which matches the source: line 278 is the only purity in the document, 烘干得262.1g环磺酮，含量95％, and it belongs to Example 6_Step 3, the terminal step of both. product_purity_method is null throughout, correctly, since the patent names no assay method for that figure."
+    },
+    {
+      "check": "rule 13 - enrichment fields",
+      "what_was_verified": "All 23 step-level enrichment fields (feasibility_score, safety_score, green_score, cost_score, yield_score, byproduct_score, confidence_score, transformation_reaction_count, common_literature_patent_count, common_literature_journal_count, atom_mapped_rxn, atom_map_confident, template_r0/r1/r2 and their three hashes, canonical_rxn, reactant_smiles, smiles_source, product_smiles, product_smiles_source) are present and null on all 30 projections, and all 11 pathway-level aggregates (safety_score, green_score, feasibility_score, cost_score, yield_score, byproduct_score, confidence_score, the three min_*_count fields and all_steps_atom_map_confident) are present and null on all 11 records. Nothing was scored, nothing was atom-mapped, no SMILES leaked into a step."
+    },
+    {
+      "check": "rule 14 - tag union recomputed from scratch",
+      "what_was_verified": "For each of the 11 pathways I rebuilt tags independently: every step's tags in step order, then the tags of the ksm, each intermediate and the product compound record from compounds.json, then the four derived categories. Exact set match on all 11, no missing tag, no extra tag, no duplicate, and first-seen order preserved. chain_length is 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3 and matches len(steps) in every case; lcl is short on all 11, correct for 2 and 3 steps; every tag matches ^[a-z0-9_]+:[a-z0-9_]+$ with a lowercase snake_case ASCII value, at pathway level and on all 30 step projections. The scoping question on branching and convergence is filed as a finding; the union itself is exact."
+    },
+    {
+      "check": "vocabulary - closed lists, checked against the A2 prompt",
+      "what_was_verified": "reaction_class over all projections is {acylation, ester_formation, nucleophilic_substitution, recrystallisation, other}, all in A2 rule 17's list. mechanism_type is {ionic, not_determinable}, both in rule 20's list. section_type is {claims, background, summary_of_invention, experimental_intermediate, experimental_example}, each matching that section's type in 00-sections.json. scale is {lab, pilot, not_specified} and the bands check out against rule 21 and the printed charges: Example 6 and the two Synthesis Scheme prose steps charge 231.9 g of the limiting reagent, inside pilot's 100 g to 10 kg, and the Example 1 to 5 batches take 5 g, inside lab's 1 to 100 g. All six honest_uncertainty_flags codes in use are snake_case ASCII."
+    },
+    {
+      "check": "arithmetic - the only section that carries quantities",
+      "what_was_verified": "Example 6 is the only place in the patent with masses, and it closes. Charges at line 273: acid chloride 231.9 g / 365.15 = 0.6351 mol; thionyl chloride 237.9 g / 118.97 = 2.000 mol, 3.15 equivalents; 1,3-cyclohexanedione 92 g / 112.13 = 0.8205 mol, 1.29 equivalents; triethylamine 200 g / 101.19 = 1.977 mol, 3.11 equivalents; acetone cyanohydrin 0.5 g, catalytic. Output at line 278: 262.1 g at 95% content, 0.5945 mol of tembotrione at 440.88 g/mol, 93.6% of the charge, so the stated mass is comfortably inside what the stated charge could give and no mass-balance failure exists at the section level. No other section prints a single mass, volume, mole or equivalent, so no other step admits an arithmetic check at all, and none was faked. Step-to-step continuity in the Example 6 chain is genuine: the whole batch passes from step 1 to step 2 to step 3 with no aliquot taken."
+    },
+    {
+      "check": "rule 15 and 16 - the flags that are correctly present or correctly absent",
+      "what_was_verified": "inconsistent_step_arithmetic appears on exactly the six pathways containing a step flagged mass_balance_implausible (Example 1, Example 3, Example 4, Example 5, Example 6, patent) and is correctly absent from Example 2, whose terminal batch 7 is the one table row whose own percentage closes, 1125 to 32 ppm being a 97.2% reduction against a printed 97. multiple_terminal_steps_in_section appears on exactly the seven pathways whose section has more than one terminal step (Background 2, Summary 2, Example 1 six, Example 2 four, Example 3 three, Example 4 two, Example 5 four) and is correctly absent from the three whose section has exactly one (Claims, Synthesis Scheme, Example 6). steps_without_isolated_product appears on exactly the two pathways containing a step flagged missing_product. unresolved_precursor is correctly absent everywhere, since all 26 precursor references resolve."
+    },
+    {
+      "check": "drawings - every drawn structure re-read off the page, substituent positions included",
+      "what_was_verified": "I opened p01 to p10 and then cropped and magnified the three IMAGE_EXTRACT spans from the PDF at 8x with pymupdf. Line 92, 式1: cyclohexane-1,3-dione acylated at C2, and on the arene, going round from the carbon that carries the aroyl, Cl then CH2OCH2CF3 then SO2CH3 on consecutive positions, that is 2-Cl, 3-CH2OCH2CF3, 4-SO2CH3, exactly the recorded SMILES CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F, and the formula C17H16ClF3O6S matches line 84. Line 97, arrow 1 substrate: the same ring pattern with HO-C(=O) in place of the aroyl, matching the recorded acid SMILES. Arrow 1 product: the ester oxygen sits on the alkene carbon of a cyclohexenone whose ketone is two carbons away, that is the 3-oxocyclohex-1-en-1-yl ester and not the 2-oxo or 4-oxo isomer, matching OC2=CC(=O)CCC2. The structure below arrow 1 is cyclohexane-1,3-dione, its two carbonyls separated by one CH2, not the 1,2- or 1,4-isomer. Arrow 2 product is 式1 again. No substituent position in any of the three spans was inferred; each was read off the page. Line 153 on p05 is the same drawing as line 97 on p03, confirmed by looking at both pages."
+    },
+    {
+      "check": "drawings - above the arrow versus below the arrow",
+      "what_was_verified": "On arrow 1 of both printings, SOCl2 is written as a label above the arrow line and cyclohexane-1,3-dione is drawn as a full structure below it; on arrow 2, acetone cyanohydrin is drawn as (CH3)2C(OH)CN above the arrow and there is nothing below it. The extract records that placement explicitly in its condition text for both arrows, so nothing above an arrow was silently merged with something below it. The single drawn arrow that both acylates and esterifies is what the page shows, which is why the drawn chain has two steps where the prose at line 95 has three, and the annotation carries both readings rather than reconciling them."
+    },
+    {
+      "check": "precision - no fabricated conditions",
+      "what_was_verified": "atmosphere is null on all 30 projections and the patent names no atmosphere anywhere, so no nitrogen or argon default was invented. conditions.pressure.value_kpa is null on all 30, correctly, even though line 273 prints -0.098mP for the distillation, which is a workup pressure in a unit the patent mis-states and was not converted into a reaction pressure. selectivity is null throughout and the patent reports no ee, de or dr. product_ms_mz and product_ms_type are null throughout and the patent reports no mass spectrum, only the 1H NMR at lines 280 and 282. reactor_type is 'three-necked flask' on exactly the steps whose text says 三口烧瓶."
+    },
+    {
+      "check": "recording disagreement instead of resolving it",
+      "what_was_verified": "Two readings of the same chemistry survive as separate records rather than being averaged, as CLAUDE.md rule 8 requires. The prose at line 145 charges the acyl chloride and the drawing at line 153 starts from the free acid; the artifact carries both, as the Synthesis Scheme pathway with ksm = the benzoic acid and the five Example pathways with ksm = the acid chloride. Likewise the patent's own apparent error at line 273, charging the benzoyl chloride and then adding thionyl chloride to it, is recorded as written, with the acid chloride as both the KSM and the product of step 1 and mass_balance_implausible carried through as inconsistent_step_arithmetic, rather than silently corrected to the benzoic acid that line 95 implies."
+    },
+    {
+      "check": "style",
+      "what_was_verified": "No em dash character anywhere in pathways.json. Chinese is confined to procedure_text, which is a verbatim quote field and authoritative, plus the four derived fields filed as a finding."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 26,
+    "present_in_artifact": 11,
+    "missing": [
+      "26 terminal steps exist in reactions.json; the 11 pathway records terminate on 10 distinct ones, and the 16 below terminate no pathway. Under rule 7, one section pathway per section, that is the prescribed behaviour rather than a recall gap, and multiple_terminal_steps_in_section flags every section where it happens. Listing them so the truncation is visible.",
+      "Background_Scheme Step 2 - the drawn 式2 chain in the Background; the Background pathway follows the prose chain instead, so the prior-art drawing has no pathway anywhere (see the Synthesis Scheme finding)",
+      "Summary of the Invention_Step 4 - the optional organic-solvent extraction and distillation step of [0021], a second terminal step off Summary Step 2, also the only step in the patent flagged cross_reference_unresolved",
+      "Example 1_Batch 2 - 0.2 h hold instead of 1 h",
+      "Example 1_Batch 3 - a further 10 g of 20% aqueous methanol added before the acid",
+      "Example 1_Batch 4 - 50 C instead of 60 C",
+      "Example 1_Batch 5 - 55 C instead of 60 C",
+      "Example 1_Batch 6 - 2 h hold instead of 1 h",
+      "Example 2_Batch 8 - 20% aqueous ethanol",
+      "Example 2_Batch 9 - 20% aqueous acetonitrile",
+      "Example 2_Batch 10 - 20% aqueous dimethylformamide",
+      "Example 3_Batch 12 - 30% aqueous methanol",
+      "Example 3_Batch 13 - 40% aqueous methanol",
+      "Example 4_Batch 15 - diatomaceous earth instead of activated carbon",
+      "Example 5_Batch 17 - pH 4",
+      "Example 5_Batch 18 - pH 3",
+      "Example 5_Batch 19 - pH 2",
+      "Not missing, checked and present: all 10 sections that hold a reaction record have a pathway; the patent-scope chain is the only one the patent gives a mass and a purity for; the 95% content at line 278 and the 262.1 g at line 278 both reach the artifact; the 1327, 1125, 1257, 1029 and 1238 ppm cyanide figures are impurity data on compounds rather than pathway fields and belong to the compounds artifact."
+    ]
+  }
+}

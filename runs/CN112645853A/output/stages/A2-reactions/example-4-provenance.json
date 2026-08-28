@@ -1,0 +1,22 @@
+[
+  {
+    "reaction_id": "Example 4_Step 1",
+    "source_lines": [
+      335,
+      343
+    ],
+    "quote_zh": "向反应瓶中加入叔丁醇200mL，开动搅拌，室温下将4.6g氢氧化钠(96％，0.11mol)滴入其中，待氢氧化钠分散均匀后，控制釜温在40℃，将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应",
+    "arithmetic_check": "Charges: methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate 34.8 g at 98 percent is 34.10 g of pure material over the printed 0.1 mol, implying MW 341.0 against C10H10BrClO4S = 341.60, correct to 0.2 percent. Sodium hydroxide 4.6 g at 96 percent is 4.42 g over 0.11 mol, implying 40.1 against NaOH = 40.00, correct. Ratio: 1.1 mol of base per mol of ester, consistent with a single ester cleavage. Product closure: NOT CHECKABLE, because the step isolates nothing. No product mass, no product mole and no yield are printed for step (1); the only product number is a 96.4 percent normalised in-process liquid chromatography content, and the material goes forward as a solution residue. CLOSES as far as the printed numbers go. No molar_mass_inconsistent and no mass_balance_implausible on this step, and none manufactured.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 337, one arrow: reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl (C10H10BrClO4S), condition text NaOH, product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] (C9H7BrClNaO4S). It corroborates the step boundary, the substrate, the base and the sodium counter-ion of the product, and it confirms that the benzylic bromide survives the cleavage. Drawing and prose agree on every point, so no drawing_text_conflict. The only prose item missing from the arrow is the tert-butanol solvent, which no scheme in this document draws; reagent_written_not_drawn was therefore judged not to apply and the omission is recorded in notes instead."
+  },
+  {
+    "reaction_id": "Example 4_Step 2",
+    "source_lines": [
+      344,
+      350
+    ],
+    "quote_zh": "向反应釜中加入130mL DMF、10.6g三氟乙醇(99％，0.105mol)和14.1g叔丁醇钾(95％，0.12mol)，开动搅拌，控制釜温在10℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(96.4％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应4h。",
+    "arithmetic_check": "Charges: 2,2,2-trifluoroethanol 10.6 g at 99 percent is 10.49 g over 0.105 mol, implying MW 99.9 against C2H3F3O = 100.04, correct. Potassium tert-butoxide 14.1 g at 95 percent is 13.40 g over 0.12 mol, implying 111.6 against C4H9KO = 112.21, low by 0.5 percent, rounding. Benzoate salt charged as 0.1 mol at 96.4 percent, which is the whole of step (1)'s 0.1 mol basis. Ratios: 1.05 mol alcohol and 1.2 mol base per mol of substrate. Product closure: the product 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid is C11H10ClF3O5S, MW 346.70; 0.1 mol gives 34.67 g theoretical; the printed 32.5 g at the assayed 98.0 percent is 31.85 g of pure product, that is 0.0919 mol, or 91.9 percent of theory. The printed figure is 91.4 percent, stated as the two-step yield based on the methyl ester of step (1); against that basis the true input is 34.8 g at 98 percent over MW 341.60 = 0.0998 mol, giving 92.1 percent. The gap between the computed 91.9 to 92.1 percent and the printed 91.4 percent is at most 0.7 percentage points and is covered by rounding of the printed strengths and masses. CLOSES. No mass_balance_implausible and no molar_mass_inconsistent are raised on this step. Continuity: the 0.1 mol charged here equals step (1)'s output basis, so no scale_discontinuity.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 347, one arrow: reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+] (C9H7BrClKO4S), condition texts CF3CH2OH, C4H9ONa and HCl, product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F (C11H10ClF3O5S). It corroborates the step boundary, the displacement of the benzylic bromide by the trifluoroethoxide, and the fact that the isolated material is the free acid rather than a salt, and it places the HCl under the arrow even though the prose uses it only to acidify at the workup. It DISAGREES with the prose twice, in opposite directions on the alkali metal: the drawn reactant is the potassium benzoate while the prose charges the sodium salt made in step (1), and the drawn base is sodium tert-butoxide (C4H9ONa) while the prose charges potassium tert-butoxide. Prose kept in the structured fields per rule 5c; drawing_text_conflict raised for both, and reagent_drawn_not_written raised for the sodium tert-butoxide, which appears in no procedure. The product drawn matches the product named, so the conflict is confined to the counter-ions."
+  }
+]

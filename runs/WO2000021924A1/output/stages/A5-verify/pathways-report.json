@@ -1,0 +1,187 @@
+{
+  "artifact": "pathways",
+  "records_audited": 10,
+  "findings": [
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "The base salt formation of the compounds of formula (I) is described as a transformation of the invention and no pathway (and no step in any pathway) carries it.",
+      "source_line": 113,
+      "quote": "Je nach Art der Substituenten enthalten die Verbindungen der allgemeinen Formel (I) ein acides Proton, das durch Umsetzung mit einer Base entfernt werden kann. Als Basen eignen sich beispielsweise Alkalimetalle, wie Lithium, Natrium und Kalium, Erdalkalimetalle, wie Calcium und Magnesium, Ammoniak und organische Amine. Solche Salze sind ebenfalls Gegenstand der Erfindung.",
+      "artifact_says": "pathways.json carries 21 step projections across 10 records, none of them a salt formation; the section 'Tautomers and Salts' (00-sections.json lines 109 to 115) produced no pathway at all.",
+      "should_be": "One further section pathway, ksm 'compound of formula (I)', product its base salt, one step of reaction_class salt_formation with the named base classes as reagents. The section 'Preparation Schemes 1 to 4' is the same section_type (summary_of_invention) and was given nine step records on prose that states no charge, no temperature and no time, so line 113 clears the same bar.",
+      "confidence": "medium"
+    },
+    {
+      "check": "drawings",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "The IMAGE_EXTRACT span on line 105 types the drawing on page image p006 as ten reactions, but p006 draws a four corner tautomeric equilibrium (four structures joined by double headed equilibrium arrows, including a diagonal cross), which is not ten reactions and is not a synthesis at all; all four drawn structures were also missed.",
+      "source_line": 105,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [], \"conditions\": [], \"products\": []}, {\"step_id\": 2, \"reactants\": [], \"conditions\": [], \"products\": []}, {\"step_id\": 3, \"reactants\": [], \"conditions\": [], \"products\": []}",
+      "artifact_says": "pathways.json emits no record from this span, which is the correct outcome; the defect is in the source the annotation was built from, not in a pathway record.",
+      "should_be": "The span should be typed as a tautomer equilibrium and not as ten reactions, so that a re-run cannot mistake ten arrowheads for ten synthetic steps. Verified by opening input/pages/p006.png; the text immediately under it reads 'Fuer den Fall, dass R6 fuer Hydroxy steht, sind folgende tautomeren Strukturen moeglich' at line 111.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "22726d0a-f4d4-540b-9600-bdd956a1522d",
+      "field": "ksm / product",
+      "problem": "This pathway's ksm and product are the same CompoundRef, identifier 'compound of formula (III)' with compound_uuid a57e897c-e575-5cfd-a172-4f74dbb71ea0 on both sides, so the record asserts a compound is made from itself; the source distinguishes the two sides by the meaning of R and the pathway carries no honest_uncertainty_flag saying the identity is a labelling artifact.",
+      "source_line": 355,
+      "quote": "Verbindungen oben genannter Formel (III) können gemäß bekannten Methoden aus Verbindungen der Formel (III), in der R für Hydroxy oder Alkoxy steht, hergestellt werden.",
+      "artifact_says": "ksm {\"identifier\": \"compound of formula (III)\", \"compound_uuid\": \"a57e897c-e575-5cfd-a172-4f74dbb71ea0\"}, product identical; honest_uncertainty_flags ['truncated_chain', 'yield_missing_step', 'no_conditions_for_any_step', 'cross_reference_unresolved_in_chain', 'general_method_over_markush_formulae_not_a_worked_route']",
+      "should_be": "Minimal correction: add an honest_uncertainty_flag such as 'ksm_equals_product_labelling_artifact' to this record. The step's own notes field already states 'that identity is a labelling artifact and is not evidence of anything', but nothing in the pathway's own fields carries it, and a consumer joining on compound_uuid sees a zero length transformation.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "a4aeb75a-0b1e-5200-aae1-39ba56ae6c8c",
+      "field": "product / intermediates",
+      "problem": "The terminal product 'compound of formula (Ic)' is the same CompoundRef, compound_uuid e7a177dc-e48d-5dd8-a650-7deb6aad8918, as intermediates[1], so the three step chain ends on a compound it already listed as a mid chain intermediate; the source separates the two by the meaning of R6 and the pathway carries no flag for the collapse.",
+      "source_line": 381,
+      "quote": "zu weiteren erfindungsgemäßen Verbindungen der Formel (Ic), in der R6 für Alkylthio, Halogenalkylthio, Alkenylthio, Halogenalkenylthio, Alkinylthio, Halogenalkinylthio, Cyano, Cyanato, Thiocyanato oder OR12 steht",
+      "artifact_says": "intermediates [(Ib), (Ic)], product (Ic) with the same compound_uuid as intermediates[1]; honest_uncertainty_flags do not mention it.",
+      "should_be": "Minimal correction: add an honest_uncertainty_flag such as 'ksm_equals_product_labelling_artifact' (or 'product_equals_intermediate_labelling_artifact') to this record. Step 8 makes (Ic) with R6 alkylthio and related, step 9 makes (Ic) with R6 alkylsulfinyl or alkylsulfonyl, and the same line 381 states both.",
+      "confidence": "high"
+    },
+    {
+      "check": "linkage",
+      "severity": "minor",
+      "record": "633ee174-f0cf-5159-99bb-0232c53a62e5",
+      "field": "steps[0].precursor_step",
+      "problem": "A genuine link is left null: Preparation Schemes 1 to 4_Step 1 consumes 'compound of formula (III)' and Steps 2 to 6 of the same section each produce 'compound of formula (III)', yet precursor_step is null, which splits what the text presents as one route into seven one step stub pathways.",
+      "source_line": 355,
+      "quote": "Verbindungen oben genannter Formel (III) können gemäß bekannten Methoden aus Verbindungen der Formel (III), in der R für Hydroxy oder Alkoxy steht, hergestellt werden.",
+      "artifact_says": "steps[0].precursor_step null, linkage_confirmed false, and the section produces seven separate pathway records with chain_length:1 each (records 2 to 7 plus the three step record 8).",
+      "should_be": "Minimal correction: set Preparation Schemes 1 to 4_Step 1.precursor_step to 'Step 2' with linkage_confirmed false and cross_reference_unresolved true, which merges the Scheme 1 and the activation records into one two step pathway. The step's notes already reason that 'several later steps make formula (III) at different positions, so no single precursor step can be named', which is a defensible reading; the ambiguity is between five candidate producers, not between a link and no link.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "633ee174-f0cf-5159-99bb-0232c53a62e5",
+      "field": "steps[0].components",
+      "problem": "components lists DCC and 'cyanide source' side by side as if one charge, but line 344 offers them as three mutually exclusive reagent variants selected by the meaning of R in formula (III).",
+      "source_line": 344,
+      "quote": "Dazu wird die Verbindung der Formel (II) im Fall von R = Hydroxy in Gegenwart wasserentziehender Mittel, wie DCC, oder im Fall von R = Chlor oder Brom basenkatalysiert und in Anwesenheit einer Cyanid-Quelle, oder im Fall von R = Cyano basenkatalysiert direkt mit (III) umgesetzt.",
+      "artifact_says": "components ['compound of formula (II)', 'compound of formula (III)', 'DCC', 'cyanide source', 'compound of formula (I)']",
+      "should_be": "Either emit one record per variant, or leave components as it is and add an honest_uncertainty_flag such as 'reagent_variants_merged_on_one_record'. The step's notes say 'a consumer must not read compounds[] here as a single charge', but the pathway level components field, which is what a benchmark diffs, carries no such qualifier.",
+      "confidence": "medium"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "Example 1_Step 7",
+      "field": "room_temperature / time_h",
+      "problem": "The step projection pairs room_temperature true with time_h 4.0, which reads as four hours at room temperature; the text puts the room temperature stage at 'ueber Nacht' with no number and the four hours at reflux.",
+      "source_line": 576,
+      "quote": "Man ließ über Nacht bei Raumtemperatur rühren und engte anschließend am Rotationsverdampfer ein. Der Rückstand wurde in 16 ml Tetrahydrofuran und 8 ml Wasser gelöst und zusammen mit 0.55 g NaOH (13.74 mmol) 4 h unter Rückfluß gekocht.",
+      "artifact_says": "conditions.temperature {\"type\": \"room_temperature\"}, conditions.time_h 4.0, conditions.heating_method \"reflux\", flat room_temperature true and time_h 4.0. Example 2_Step 1 carries the identical pairing from the identical wording at line 595.",
+      "should_be": "Minimal correction: set temperature.type to not_specified so that time_h 4.0 and heating_method reflux describe the same stage, or leave time_h null. The pathway builder is not at fault here, rule 11 of A3-pathways.md forces the copy, so the correction belongs in reactions.json and propagates.",
+      "confidence": "medium"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": null,
+      "field": null,
+      "problem": "The Scheme 3 drawing is emitted at line 366, above the paragraph 2.1 text, whereas page image p031 prints it below the 'Schema 3:' caption at line 374; line 374 carries no IMAGE_EXTRACT, so the only arrow reagent the vision pass captured anywhere in this document ('R1-Z2') sits inside the Scheme 2 block.",
+      "source_line": 366,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [], \"conditions\": [{\"text\": \"R1-Z2\"}], \"products\": []}]}]",
+      "artifact_says": "The artifact was not misled: record 7 (pathway_uuid e95593bc-1b43-5d84-b217-68fe4f8f5307) puts R1-Z2 on the (V) to (III) step and the Scheme 2 records 4, 5 and 6 carry no R1-Z2.",
+      "should_be": "The span should sit between line 374 and line 376. Verified against input/pages/p031.png, which prints, in order, 2.1, 2.2, the Scheme 3 prose, the caption 'Schema 3:', and then the drawing (V) with L-Z1 plus R1-Z2 over the arrow giving (III) with L-R1.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "633ee174-f0cf-5159-99bb-0232c53a62e5",
+      "field": "ksm",
+      "problem": "ksm is 'compound of formula (II)', the dicarbonyl partner, where A3 rule 3 asks for the reactant contributing the surviving carbon skeleton and names the aryl substrate as the KSM in this patent; the aryl acyl component in Scheme 1 is formula (III).",
+      "source_line": 344,
+      "quote": "Durch die  in Schema 1 angegebene Umsetzung einer Verbindung der Formel (II) mit einer Verbindung der Formel (III), in der R für Hydroxy, Chlor, Brom oder Cyano steht, erhält man erfindungsgemäße Verbindungen der Formel (I).",
+      "artifact_says": "ksm {\"identifier\": \"compound of formula (II)\", \"compound_uuid\": \"e16d2a2d-30dd-5853-b7bf-ca5070ac7707\"}",
+      "should_be": "Set ksm to 'compound of formula (III)'. Hedged: both fragments survive into (I), the German names (II) first, and line 353 states (II) is commercially available, all of which support the present choice. What would settle it is the convention used elsewhere in the same artifact, where record 0 treats the benzoic acid as the backbone and cyclohexane-1,3-dione as the added partner at Example 1_Step 8; by that convention the aryl formula (III) is the KSM here.",
+      "confidence": "low"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "arithmetic - overall_yield_pct",
+      "what_was_verified": "Recomputed rule 9 for every record. Records 0 and 9: 0.97*0.87*0.48*0.88*0.98*0.67*0.52*0.15*1.00 = 1.8256 percent, artifact 1.83. Record 1: the same first six factors then 0.67*0.60*0.98 = 9.2208 percent, artifact 9.22. Records 2 to 8 have at least one step without a yield and all carry null with the flag yield_missing_step. No step yield was substituted, assumed or averaged."
+    },
+    {
+      "check": "arithmetic - per step mass, mole and yield closure",
+      "what_was_verified": "Recomputed every mass and mole pair and every stated yield in Examples 1 and 2 against the molecular weight of the compound named, at lines 548, 556, 561, 563, 565, 567, 569, 574, 576, 578, 585, 587, 595, 597, 606, 608, 614, 616. All close within printing precision except 88.2 g with 0.5 mol of Jodmethan at line 548, which implies 176.4 against 141.94 for CH3I. That step carries validation_flags ['molar_mass_inconsistent'] and records 0, 1 and 9 carry molar_mass_inconsistent_in_chain, so the flag required by check 4 is present and neither the artifact nor the patent was corrected."
+    },
+    {
+      "check": "arithmetic - step to step continuity",
+      "what_was_verified": "Walked the mass a step isolates against the mass the next step charges across all twelve experimental steps. The only break is Example 1_Step 2 isolating 111.24 g (line 561) against Example 1_Step 3 charging 223.48 g (line 563). That step carries validation_flags ['scale_discontinuity'] and records 0, 1 and 9 carry scale_discontinuity_in_chain. The 38.82 g to 1.0 g drop between Step 6 and Step 7 is a portion taken, not a break, and is correctly not flagged."
+    },
+    {
+      "check": "linkage - every linkage_confirmed true",
+      "what_was_verified": "All twelve steps with linkage_confirmed true were checked by reading the charged compound name off the cited line: Example 1 Steps 2 to 9 at lines 556, 563, 565, 567, 569, 576, 578, 585, and Example 2 Steps 1 to 3 at lines 595, 606, 614, including the cross section link Example 2_Step 1 to 'Example 1::Step 6' where line 595 charges 'Methyl 3-brommethyl-2-chlor-4-methylsulfonyl-benzoat'. Every one is substantiated by the source text. None had to be withdrawn."
+    },
+    {
+      "check": "schema - rule 11 projection fidelity",
+      "what_was_verified": "Field by field diff of all 21 pathway step objects against their reactions.json records for all 39 fields rule 11 lists, plus the seven derived flat fields (temperature_c, room_temperature, time_h, atmosphere, reactor_type, pressure, concentration) recomputed from each conditions object, plus components recomputed as reactant_names plus product_name. Zero mismatches across all 10 records."
+    },
+    {
+      "check": "schema - forbidden and required fields",
+      "what_was_verified": "No 'id' and no 'patent_id' leaked into any step object. Every enrichment field is null at both levels: safety_score, green_score, feasibility_score, cost_score, yield_score, byproduct_score, confidence_score, min_transformation_reaction_count, min_common_literature_patent_count, min_common_literature_journal_count, all_steps_atom_map_confident on pathways, and atom_mapped_rxn, atom_map_confident, template_r0/r1/r2 and hashes, canonical_rxn, reactant_smiles, smiles_source, product_smiles, product_smiles_source, the six *_score fields and the three *_count fields on steps. Every required field of the output shape is present on all 10 records."
+    },
+    {
+      "check": "precision - no structures, no invented conditions",
+      "what_was_verified": "pathways.json contains no SMILES string, no molecular formula, no molecular weight and no InChI; every 'smiles' key on every ksm, intermediate and product CompoundRef is null. Every 'atmosphere' field on every step is null and the source states no atmosphere anywhere, so no default nitrogen was invented."
+    },
+    {
+      "check": "schema - rules 4 and 5, chain shape",
+      "what_was_verified": "For all 10 records, intermediates is exactly the ordered products of every step but the last, and product is exactly the product of the terminal step. Chain construction was checked by resolving every precursor_step label within its section: Example 1 has one terminal step (Step 9), Example 2 one (Step 3), Preparation Schemes seven (Steps 1 to 6 and Step 9), which is the 9 section records emitted, plus 1 patent record. Rule 8's duplicate patent record for the Example 1 chain is present and carries section_label null."
+    },
+    {
+      "check": "vocabulary - rule 14 tag union and closed lists",
+      "what_was_verified": "Recomputed the union for all 10 records from every step's tags plus the tags of the ksm, each intermediate and the product record in compounds.json plus chain_length:N. Exact match on membership and on first seen ordering, with no missing and no extra tag. All 21 tag categories and every value checked against the closed lists in A1-compounds.md and A2-reactions.md: compound_class, solvent_class, catalyst_class, workup_type, purification, safety, step_role, linkage, is_one_pot, mechanism, scale and functional_group are all in list, no value outside its list, no case mismatch, every tag matches category:value with a lowercase snake_case ASCII value. chain_length, branching, convergence and lcl are present on all 10 and correct: 9 steps gives lcl:long, 3 and 1 give lcl:short."
+    },
+    {
+      "check": "honesty - rules 15 and 16",
+      "what_was_verified": "Every step level validation_flag has a corresponding pathway level flag on every record that contains that step: molar_mass_inconsistent to molar_mass_inconsistent_in_chain, scale_discontinuity to scale_discontinuity_in_chain, no_conditions to no_conditions_for_any_step, cross_reference_unresolved to cross_reference_unresolved_in_chain, a1_missing_compound to a1_missing_compound_in_chain. No pathway is presented clean out of flagged steps. a1_missing_compound_in_chain on record 2 was verified independently: of the 21 distinct step components in the artifact, exactly one, 'cyanide source', has no record in compounds.json, and it belongs to that step. truncated_chain is correctly absent from record 2 alone, because line 353 states 'Die Dicarbonylverbindungen der Formel (II) sind entweder kommerziell erhältlich', while records 3 to 8 start from Markush formulae that are not, and all six carry it. inconsistent_step_arithmetic is correctly absent everywhere because no step carries mass_balance_implausible."
+    },
+    {
+      "check": "fidelity - temperature and time handling",
+      "what_was_verified": "Checked every conditions object against its line. The range at line 556, 'bei 15-20 °C zu einer Suspension ... getropft', was neither flattened to a point nor dropped: it is carried in the acetyl chloride addition_profile because it governs only the dropwise addition, and conditions.temperature is room_temperature from 'ueber Nacht bei Raumtemperatur'. Reflux is never recorded as a temperature: Example 1 Steps 5, 6, 7 and 8 and Example 2 Steps 1 and 2 all carry heating_method 'reflux' with temperature not_specified or room_temperature. Units are handled correctly: '1.5 d' at line 563 becomes time_h 36.0, '0,5 h' at line 548 is held in the iodomethane addition_profile rather than time_h, and the 300 W lamp at line 569 becomes light_source.power_w 300.0 rather than a temperature."
+    },
+    {
+      "check": "translation - German against English on the same line",
+      "what_was_verified": "Compared every identifier in every ksm, intermediates entry and product against the German on its line and against the EN rendering below it. The artifact follows the German in every case. The one place they diverge in substance is line 601, where the German heading names the Schritt 2 product '3-Oxo-1-cyclohexenyl 2-chlor-4-methylsulfonyl-3-phenoxymethyl-benzoesäure' although the procedure makes the enol ester; the artifact reproduces the German verbatim in record 1's intermediates and flags molar_mass_inconsistent on the consuming step rather than silently correcting the patent. 'Cyclohexandion' expanded to 'cyclohexane-1,3-dione' is supported by the source's own arithmetic (0.19 g / 1.68 mmol and 0.24 g / 2.16 mmol both give about 112, the mass of C6H8O2) and by the product name at line 583."
+    },
+    {
+      "check": "recall - non synthetic sections and claims",
+      "what_was_verified": "Read the whole document. The Formulation Examples at lines 844 to 872, the Biological Examples at lines 873 to 899 and Tables 1 to 5 at lines 629 to 841 describe mixing, milling, granulation and greenhouse assays and no synthetic transformation, so their absence from pathways is correct; line 620 states the tabulated compounds were made 'analog oben genannten Methoden' and gives no route of its own. Claims 1 to 13 at lines 900 to 1141 are compound, composition, method of control and use claims with no process of preparation claim, so no pathway is missing from them. Lines 162 to 339 are substituent definitions with no reaction verb. The search report pages 1142 to 1344 are citations."
+    },
+    {
+      "check": "drawings - scheme connectivity against the page images",
+      "what_was_verified": "Opened input/pages/p030.png, p031.png and p033.png. p030 draws Scheme 1 as (II) plus (III) giving (I) with a bare arrow, and Scheme 2 as (IV) carrying L-Hal giving (III) carrying L-R1 with a bare arrow. p031 draws Scheme 3 as (V) carrying L-Z1 with R1-Z2 written above the arrow giving (III) carrying L-R1. p033 draws Scheme 4 as exactly two arrows, Ia with OH to Ib with Hal to Ic with R6, no reagent on either arrow. Records 2, 4, 7 and 8 match those connectivities, R1-Z2 is on the (V) to (III) record and on no other, and no reagent above an arrow was merged with one below it because no scheme in this document writes anything below an arrow. Records 2 to 8 rest on the prose alone, which the artifact states, because the IMAGE_EXTRACT spans at lines 351, 361, 366 and 388 return empty reactants and products arrays throughout."
+    },
+    {
+      "check": "drawings - route attribution",
+      "what_was_verified": "No scheme was annotated as the invention's route out of a background section. Schemes 1 to 4 sit in the section 'Preparation Schemes 1 to 4', section_type summary_of_invention, lines 340 to 395, and line 342 reads 'Die erfindungsgemäßen Verbindungen können ... nach einem oder mehreren der in den folgenden Schemata angegebenen Verfahren hergestellt werden'. The Background section is lines 56 to 59 and cites JP-A 08 020554, JP-A 02 00222, WO 99/10327, WO 99/07688 and WO 99/03845 without drawing any scheme, so nothing from it could be or was picked up."
+    },
+    {
+      "check": "identity - uuids and cross artifact consistency",
+      "what_was_verified": "All 10 pathway_uuid values are distinct, including records 0 and 9 which share the same nine steps, the same ksm and the same product but differ in scope, which is what folding the step signature into the seed is meant to preserve. Every identifier used in a ksm, intermediates entry or product resolves to a record in compounds.json, and its compound_uuid is the same string in every pathway that names it and matches the compound_uuid in compounds.json."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 22,
+    "present_in_artifact": 21,
+    "missing": [
+      "Base salt formation of the compounds of formula (I) with alkali metals, alkaline earth metals, ammonia and organic amines, line 113, section 'Tautomers and Salts'"
+    ]
+  }
+}

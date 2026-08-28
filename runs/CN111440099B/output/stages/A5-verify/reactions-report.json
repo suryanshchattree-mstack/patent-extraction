@@ -1,0 +1,295 @@
+{
+  "artifact": "reactions.json",
+  "records_audited": 38,
+  "findings": [
+    {
+      "check": "fidelity",
+      "severity": "critical",
+      "record": "Summary of the Invention_Step 3",
+      "field": "conditions.ph_value",
+      "problem": "The pH is written as the point value 3.0 where the paragraph gives only a one-sided bound, pH to below 3, and the sibling record annotating the identical wording in claim 1 leaves the same two fields null on the explicit ground that writing 3.0 would assert something the text does not.",
+      "source_line": 117,
+      "quote": "[0016] 3)控温调节含水溶液pH至3以下，降温、从溶液中结晶出纯化的环磺酮。",
+      "artifact_says": "conditions.ph_value = 3.0 and workup.ph_target = 3.0",
+      "should_be": "Both null, as on Claims_Step 3, with the bound recorded in notes and in ph_target_stage.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "Example 1_Batch 1",
+      "field": "conditions.concentration.reagent",
+      "problem": "The 20% of 20%含水甲醇 is assigned to the methanol, which states a medium of 20% methanol in water, the inverse of what the document defines; [0018] and claim 1 both define the figure as the water content of the aqueous solution, and the 13 batch records of Examples 2 to 5 assign the identical phrase to water. Batches 2 to 6 of this section carry the same inverted assignment.",
+      "source_line": 163,
+      "quote": "| 1 | 重排反应结束后，蒸馏脱溶后取环磺酮产品5g溶解在20%含水甲醇中，升温至60℃，加入1g活性炭保温一小时后热过滤，控温滴加10%稀盐酸调节PH为2，逐渐降温至15℃，过滤得纯化环磺酮。 | 1327 | 47 | 98% |",
+      "artifact_says": "{\"value\": 20.0, \"unit\": \"%\", \"reagent\": \"methanol\", \"text\": \"20%含水甲醇, 20% aqueous methanol, the dissolution medium of the 5 g charge\"}",
+      "should_be": "reagent \"water\", value 20.0, as Example 2_Batch 7 through Example 4_Batch 15 already have it (see [0018] at line 121, 含水量为20％～40％).",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "Example 6_Step 3",
+      "field": "conditions.concentration.reagent",
+      "problem": "Same inversion at the only pilot-scale purification: the 40% of 40％含水甲醇 is assigned to the methanol, so the record states a 40% methanol medium where the document means 40% water, the top of claim 1's 20% to 40% water range.",
+      "source_line": 273,
+      "quote": "环磺酮产品中加入40％含水甲醇，升温至60℃后加入5g活性炭保温1h，热过滤",
+      "artifact_says": "{\"value\": 40.0, \"unit\": \"%\", \"reagent\": \"methanol\", \"text\": \"40% aqueous methanol\"}",
+      "should_be": "reagent \"water\", value 40.0.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "Synthesis Scheme_Step 2",
+      "field": "reactant_names",
+      "problem": "reactant_names carries the by-product that the step filters off and the intermediate it never isolates, so two of its seven entries are not reactants at all; the same one-pot step in Example 6 lists neither.",
+      "source_line": 145,
+      "quote": "过滤出三乙胺盐，减压浓缩得红棕色固体。",
+      "artifact_says": "reactant_names includes \"triethylamine salt\" (role by_product) and \"enol ester\" (role other), alongside the solvent 1,2-dichloroethane, the base and the catalyst",
+      "should_be": "Drop \"triethylamine salt\" and \"enol ester\" from reactant_names; they remain in compounds[] with their own roles.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "Example 6_Step 3",
+      "field": "reactant_names",
+      "problem": "reactant_names carries four compounds that are not reactants: two solvents, the adsorbent and the acid. The 19 batch records annotating the same purification list only tembotrione, and the reference run at runs/CN104292137A keeps solvents, adsorbents and workup acids out of this field, so a field-by-field comparison scores four false reactants on this record.",
+      "source_line": 273,
+      "quote": "环磺酮产品中加入40％含水甲醇，升温至60℃后加入5g活性炭保温1h，热过滤",
+      "artifact_says": "reactant_names = [tembotrione, methanol, water, activated carbon, hydrochloric acid]",
+      "should_be": "reactant_names = [\"tembotrione\"], as on Example 1_Batch 1 through Example 5_Batch 19.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "major",
+      "record": "Example 6_Step 3",
+      "field": "compounds[].quantity",
+      "problem": "Four compound entries carry quantity as JSON null instead of the quantity object with null members that rule 6 specifies and that the other 210 entries use, so any consumer reading quantity.mass_g on them fails rather than reading a null mass.",
+      "source_line": 273,
+      "quote": "重新加入新的1,2‑二氯乙烷500ml和三乙胺200g，投入1,3环己二酮92g和丙酮氰醇0.5g，40℃保温6h。",
+      "artifact_says": "quantity is null on methanol, water and hydrochloric acid of Example 6_Step 3 and on triethylamine salt of Example 6_Step 2",
+      "should_be": "quantity: {\"mass_g\": null, \"volume_ml\": null, \"mmol\": null, \"equivalents\": null, \"yield_pct\": null} on all four entries.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "Example 2_Batch 7",
+      "field": "process_control",
+      "problem": "Seven of the 19 batch records carry none of their row's three printed numeric columns in any field, while the other 12 do (Example 1 in process_control.criterion, Examples 4 and 5 on the cyanide entry's addition_profile), so on batches 7 to 13 a reader of reactions.json cannot see the figures that the record's own mass_balance_implausible flag was raised on. The figures are held in compounds.json, so nothing is lost from the dataset, but the treatment is not uniform.",
+      "source_line": 201,
+      "quote": "| 7 | 重排反应结束后，蒸馏脱溶后取产品5g溶解在20%含水甲醇中，升温至60℃，加入1g活性炭保温一小时后热过滤，控温滴加10%稀盐酸调节PH为2，逐渐降温至15℃，过滤得纯化环磺酮。 | 1125 | 32 | 97 |",
+      "artifact_says": "Batches 7 to 10 and 11 to 13 carry no ppm figure and no stated reduction anywhere on the record",
+      "should_be": "Carry the row's three figures in one place on every batch record, whichever place the run standardises on.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Example 3_Batch 12",
+      "field": "compounds[].addition_profile",
+      "problem": "The cyanide entry says its ppm figures are recorded in notes and in the provenance, but no ppm figure appears in this record's notes; only the provenance has them, so the record cites a location that does not hold the data. Batches 11 and 13 carry the same claim.",
+      "source_line": 227,
+      "quote": "| 12 | 重排反应结束后，蒸馏脱溶后取产品5g溶解在30%含水甲醇中，升温至60℃，加入1g活性炭保温一小时后热过滤，控温滴加10%稀盐酸调节PH为2,逐渐降温至15℃，过滤得纯化环磺酮。 | 1257 | 37 | 95% |",
+      "artifact_says": "\"its content is reported in ppm, for which no quantity field exists, so it is recorded in notes and in the provenance\"",
+      "should_be": "Either put the figures in notes as the sentence claims, or amend the sentence to name only the provenance.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Example 6_Step 1",
+      "field": "reactant_names",
+      "problem": "The reaction solvent is listed among the reactant names. Example 6_Step 2 and Synthesis Scheme_Step 1 and Step 2 do the same with 1,2-dichloroethane; the batch records and the reference run keep solvents out of this field.",
+      "source_line": 273,
+      "quote": "向2L三口烧瓶加入的2‑氯‑3‑(2 ,2 ,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酰氯231 .9g，1 ,2‑二氯乙烷1L，15℃搅拌。",
+      "artifact_says": "reactant_names includes \"1,2-dichloroethane\" (role solvent)",
+      "should_be": "Drop the solvent from reactant_names on all four records; it stays in compounds[] with role solvent.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Example 1_Batch 1",
+      "field": "process_control.method",
+      "problem": "process_control.method holds a prose disclaimer where rule 13 expects an analytical method name, so a consumer comparing methods reads a sentence where every other record in the artifact reads null. Batches 2 to 6 carry the same string.",
+      "source_line": 163,
+      "quote": "| 1 | ... | 1327 | 47 | 98% |",
+      "artifact_says": "\"not stated; no analytical method is printed for the cyanide measurement anywhere in the section\"",
+      "should_be": "method: null, with the observation left in notes as the other 13 batch records do.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 5_Batch 16",
+      "field": "conditions.concentration.reagent",
+      "problem": "The reagent slot holds a phrase rather than a compound identifier, so it joins to nothing in compounds.json; the field elsewhere in this artifact holds \"water\" or \"methanol\". Batches 17 to 19 carry the same value.",
+      "source_line": 257,
+      "quote": "[0050] ... 取产品5g溶解在20％含水乙醇中，升温至60℃，加入1g硅藻土保温一小时后热过滤",
+      "artifact_says": "{\"value\": 20.0, \"unit\": \"%\", \"reagent\": \"water in ethanol\", \"text\": \"20% aqueous ethanol, the dissolution and crystallisation medium\"}",
+      "should_be": "reagent \"water\", with the medium named in the text field.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "Summary of the Invention_Step 2",
+      "field": "conditions.temperature",
+      "problem": "The same sentence, 加入吸附剂，进行保温、热过滤, is annotated two ways in one artifact: Claims_Step 2 carries the 30 to 60 C range forward and sets conditions_inherited true, while this record sets conditions_inherited true but leaves temperature not_specified and instead invents a heating_method value, \"isothermal hold\", that no line of the document states.",
+      "source_line": 115,
+      "quote": "[0015] 2)加入吸附剂，进行保温、热过滤；",
+      "artifact_says": "temperature not_specified, heating_method \"isothermal hold\", conditions_inherited true",
+      "should_be": "Pick one reading of 保温 and use it on both records; heating_method null, since 保温 names a hold and not a means of heating.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Example 5_Batch 16",
+      "field": "procedure_text",
+      "problem": "procedure_text has the enriched markdown's table row appended, pipes included, so a field defined as the procedure verbatim from the Chinese carries markdown syntax and three result columns that are not procedure. Batches 17 to 19 do the same; the 15 batch records of Examples 1 to 4 do not.",
+      "source_line": 261,
+      "quote": "| 16 | 5 | 1238 | 82 | 88% |",
+      "artifact_says": "procedure_text ends \"...过滤得纯化环磺酮。 | 16 | 5 | 1238 | 82 | 88% |\"",
+      "should_be": "End procedure_text at 过滤得纯化环磺酮。 and carry the row's figures in the same field the other examples use.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "Example 5_Batch 16",
+      "field": "conditions_inherited",
+      "problem": "conditions_inherited is true on all four Example 5 records although no step of the document says its conditions follow another step; the conditions come from the section's own shared paragraph [0050], which every record already quotes in full, and precursor_step points to a step in another section that states none of them. Rule 10 defines the flag for step-to-step inheritance.",
+      "source_line": 257,
+      "quote": "[0050] 不同PH值下对析出的纯化环磺酮的氰化物杂质含量分析，处理方法：重排反应结束后，蒸馏脱溶后取产品5g溶解在20％含水乙醇中",
+      "artifact_says": "conditions_inherited true with the full conditions also populated on the record",
+      "should_be": "false, with the shared-paragraph observation in notes; the batch records of Examples 1 to 4 are annotated that way.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Background_Scheme Step 1",
+      "field": "one_pot_steps",
+      "problem": "The record's own tags assert two transformations on this arrow, acyl chloride formation and esterification, but one_pot_steps is empty and is_one_pot is false, so a consumer reading one_pot_steps sees one transformation where the drawing collapses two. Synthesis Scheme_Scheme Step 1 is the same case, and the two prose one-pot records of this artifact do populate the field.",
+      "source_line": 97,
+      "quote": "[IMAGE_EXTRACT: ... \"conditions\": [{\"text\": \"SOCl2\"}, {\"text\": \"cyclohexane-1,3-dione, drawn as a full structure below the arrow line rather than written as a label\"}]",
+      "artifact_says": "one_pot_steps: [], is_one_pot: false, tags transformation:acyl_chloride_formation and transformation:esterification",
+      "should_be": "List the two transformations in one_pot_steps in drawing order, keeping is_one_pot false if the drawing is not read as a process statement.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "Example 1_Batch 6",
+      "field": "notes",
+      "problem": "The 2 h carbon hold of this batch falls outside the 0.2 h to 1 h hold that claim 1 and [0020] recite for the same step, and no record or provenance entry anywhere says so, although the artifact does record the analogous conflict for Example 6's 280 revolutions per hour against claim 3. The same silence covers Example 5 batches 16 and 17, run at pH 5 and pH 4 against claim 1's pH below 3.",
+      "source_line": 178,
+      "quote": "| 6 | ... 加入 1g 活性炭保温 2 小时后热过滤 ... | 1327 | 45 | 98% |",
+      "artifact_says": "time_h 2.0 with no note of the claim range",
+      "should_be": "One sentence in notes recording that the batch falls outside claim 1's hold range, matching the treatment given to the stirring speed on Example 6_Step 3.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Summary of the Invention_Step 1",
+      "field": "source_lines (provenance sidecar)",
+      "problem": "Four sidecar entries give source_lines as an enumeration of separate lines rather than the [start, end] pair the prompt specifies, so a consumer reading element 0 and element 1 as a span silently drops the remaining citations.",
+      "source_line": 113,
+      "quote": "[0014] 1)将环磺酮产品溶解在含水溶液中，升温；",
+      "artifact_says": "\"source_lines\": [113, 119, 121, 123] on Step 1, [115, 125, 129] on Step 2, [117, 131, 133, 135] on Step 3, [127] on Step 4",
+      "should_be": "A [start, end] pair per entry, with the individual paragraph citations in the quote or in a separate field.",
+      "confidence": "medium"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "recall, step count",
+      "what_was_verified": "38 records against A0's 38 estimated steps, and the per-section counts agree one for one: Background 5 (3 prose plus 2 scheme arrows), Claims 3, Summary 4, Synthesis Scheme 4 (2 prose plus 2 scheme arrows), Example 1 6, Example 2 4, Example 3 3, Example 4 2, Example 5 4, Example 6 3. All 19 printed batch numbers appear exactly once, and no record was emitted for a repeated header row, for either page-break continuation row at lines 174 and 188, or for the [0037] table fragment."
+    },
+    {
+      "check": "arithmetic, Example 6 stoichiometry",
+      "what_was_verified": "Recomputed independently with RDKit molecular weights (acid chloride C11H9Cl2F3O4S 365.16, acid 346.71, tembotrione 440.82, dione 112.13, SOCl2 118.97, triethylamine 101.19, acetone cyanohydrin 85.11): 231.9 g is 0.6351 mol as named; 237.9 g of thionyl chloride is 1.9996 mol, that is 3.149 equivalents on the named acid chloride and 2.990 on the acid reading; 92 g of dione is 0.8205 mol, 1.292 equivalents; 200 g of triethylamine is 1.9764 mol; 0.5 g of acetone cyanohydrin is 0.93 mol%. Theoretical tembotrione from 0.6351 mol is 279.95 g, so the printed 262.1 g at 95% content, 249.00 g and 0.5648 mol, is 88.9% and violates no mass balance. Every figure in the provenance arithmetic_check matches to the last digit, and mass_balance_implausible sits on Step 1, the step whose thionyl chloride charge cannot be consumed by the substrate the paragraph names."
+    },
+    {
+      "check": "arithmetic, the 19 cyanide reduction rows",
+      "what_was_verified": "Recomputed (before minus after) over before for every row: rows 1 to 6, 8 to 19 disagree with the printed reduction by 0.9 to 10.6 percentage points and every one of those 18 records carries a flag; batch 7, 1125 to 32 ppm, computes 97.16% against a printed 97 and is the only row that closes and the only unflagged batch record. Flag placement is exact, no printed cell was altered, and no computed percentage was written into any field."
+    },
+    {
+      "check": "arithmetic, step continuity",
+      "what_was_verified": "The document prints two masses, 231.9 g in and 262.1 g out, on Example 6 Step 1 and Step 3; the steps between them state no mass, so no step consumes more than its precursor produced. The 5 g of each batch is drawn from a crude lot for which the patent states no mass, which is why scale_discontinuity is correctly absent everywhere."
+    },
+    {
+      "check": "precision, no computed number in a structured field",
+      "what_was_verified": "quantity.mmol and quantity.equivalents are null on all 214 compound entries even though Example 6 prints every mass needed to compute them; product_yield_pct is null on all 38 records, which is right because the document states no yield anywhere; the only purity in the artifact, 95.0, is the printed 含量95％. The molar arithmetic lives in the provenance, where a computed number is allowed."
+    },
+    {
+      "check": "precision, no default conditions",
+      "what_was_verified": "conditions.atmosphere is null on all 38 records and the word nitrogen appears nowhere; named_reaction is null on all 38; light_source and cooling_method are null throughout, including on the batches that are cooled to 15 C with no means stated; reactor_type is populated only where the text names a flask. The one invented-looking value is the heating_method reported above."
+    },
+    {
+      "check": "precision, no structures",
+      "what_was_verified": "reactant_smiles, smiles_source, product_smiles, product_smiles_source and canonical_rxn are null on all 38 records although the IMAGE_EXTRACT spans hand the pass SMILES for the acid, the enol ester and tembotrione. No molecular formula and no molecular weight appears in any field of the artifact."
+    },
+    {
+      "check": "vocabulary",
+      "what_was_verified": "All 38 reaction_class values are in the closed list of rule 17; mechanism_type, scale, temperature.type, pressure.type, stirring.type and concentration.unit are all in range; all 271 tags are category:value with a lowercase snake_case ASCII value and every closed category (solvent_class, catalyst_class, workup_type, purification, safety, step_role, linkage, is_one_pot) is within its list; every validation_flag is in the closed list of rule 27; every compounds[].role is in the A1 role enum; is_complete equals (validation_flags empty) on all 38 records; is_product equals (role == product) on every compound entry."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "None of the 14 forbidden enrichment fields appears on any record. id and reaction_uuid are present, but rule 3 and the Output block assign them to finalise.py and the reference run carries them on every record, so they are not reported as surplus. Every record carries the full field set of the output block, with no key missing on any of the 38."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "Every precursor_step resolves and every linkage_confirmed true is substantiated by an identifier match: the 19 batch records point to Synthesis Scheme::Step 2, whose product identifier is tembotrione, which is each batch's charged reactant, and each cell also refers back explicitly with 重排反应结束后; Example 6 Step 2 and Step 3 match Step 1 and Step 2; Background Step 2 and Step 3, both scheme records and the Claims and Summary chains all match on identifier. The four first steps carry precursor_step null with linkage:standalone, and no genuine link is left null."
+    },
+    {
+      "check": "linkage, join to compounds.json",
+      "what_was_verified": "All 24 distinct identifiers used across compounds[], reactant_names and product_name exist verbatim in compounds.json, so the two artifacts join with no orphan and a1_missing_compound is correctly never raised."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "Checked every compound and reagent name against the Chinese on its own line: 氯化亚砜 thionyl chloride, 1,3环己二酮 cyclohexane-1,3-dione, 三乙胺 triethylamine, 丙酮氰醇 acetone cyanohydrin, 活性炭 activated carbon, 硅藻土 diatomaceous earth, 稀盐酸 hydrochloric acid, 乙腈 acetonitrile, 甲醇 methanol, 乙醇 ethanol, 二甲基甲酰胺 dimethylformamide, 1,2-二氯乙烷 1,2-dichloroethane, 烯醇酯 enol ester, 三乙胺盐 triethylamine salt, 环磺酮 tembotrione. No record follows the English gloss over the Chinese. The one place the gloss adds meaning, line 120, where it inserts \"or\" into a four-solvent list that the Chinese joins with enumeration commas only, is not followed: Claims_Step 1 and Summary_Step 1 list all four solvents without choosing, and both records say in notes that the ambiguity is deliberately left open. translation_conflict is correctly never raised."
+    },
+    {
+      "check": "drawings, read against the pixels",
+      "what_was_verified": "Opened p03 and p05 and magnified the 式2 scheme out of the PDF at six times scale. Both pages draw the same scheme with exactly two arrows. Arrow 1 runs from the free carboxylic acid, drawn HO-C(=O), with SOCl2 written above the arrow line and cyclohexane-1,3-dione drawn as a structure below it, to the enol ester; arrow 2 carries acetone cyanohydrin drawn above the line with nothing below, and wraps to the product on row 2. Substituent positions match the identifiers used in the artifact on every ring: carbonyl at C1, Cl at C2, CH2OCH2CF3 at C3, SO2CH3 at C4 para to the carbonyl, the dione's two ketones one CH2 apart, and on the enol ester the C=C between the ester carbon and the next vertex with the ketone one vertex further. Nothing in the reaction records is a structure inferred from chemical knowledge rather than read off the page, and the [0008] Formula 1 structure is the same tembotrione drawing as the scheme product."
+    },
+    {
+      "check": "drawings, above and below the arrow",
+      "what_was_verified": "The reagent written above arrow 1, SOCl2, and the reagent drawn below it, the dione, are on the same record because the page draws one arrow, but they are kept distinguishable by role, reagent against reactant, and the arrow-2 reagent is on the arrow-2 record only. Nothing drawn below arrow 2 exists to be merged: the region under it is blank on both pages."
+    },
+    {
+      "check": "drawings, route attribution",
+      "what_was_verified": "The Background scheme is not annotated as the invention's route. Both Background scheme records carry route_attribution_unclear with both readings written out: the 背景技术 heading and [0009] presenting the route as established fact against the same scheme reprinted at [0031] inside the specific embodiments, where the page vision read it as the invention's route. That is the recorded-disagreement outcome rather than a resolved attribution, and the experimental steps are never renumbered against the scheme arrows."
+    },
+    {
+      "check": "fidelity, units and ranges",
+      "what_was_verified": "1 L becomes volume_ml 1000 and 500 ml becomes 500; 一小时 1.0, 0.2小时 0.2, 2小时 2.0, 3h 3.0, 6h 6.0; claim 1's 30℃～60℃ is a range with min 30 and max 60 on both records that carry it, not flattened to a point; the 0.2 h to 1 h hold that the single time_h float cannot hold is left null with the range in notes rather than either end being picked; -0.098mP is kept verbatim in workup.concentration_method with pressure left not_specified because the strip is a workup operation; the 85 C distillation endpoint is not recorded as a reaction temperature; 280转/h is not written into stirring.rpm, whose unit is per minute. No reflux appears in the document."
+    },
+    {
+      "check": "recall, solvents, adsorbents and washes",
+      "what_was_verified": "Checked explicitly rather than skimmed. Every medium and additive is on its record: 1,2-dichloroethane on both Example 6 steps and both Synthesis Scheme prose steps, the alcohol or nitrile or amide plus water on each batch that uses it, activated carbon at 1 g on batches 1 to 14 and 5 g in Example 6, diatomaceous earth on batch 15 and on all four Example 5 batches, hydrochloric acid on every acidification, triethylamine as base with the triethylamine salt as by-product. The document names no wash, no drying agent and no quench, and those fields are null rather than invented."
+    },
+    {
+      "check": "recall, the two 10 g charges",
+      "what_was_verified": "Batch 3's 补入10g 20%含水甲醇 is carried in workup.steps with the reason no component mass is written, that the 10 g is the mass of a mixture whose split the patent never states, while batch 11's 脱去甲醇后补入10g新水 is a single substance and carries mass_g 10.0 on a second water entry together with the methanol strip in workup.concentration_method. The asymmetry follows the source and is not an inconsistency."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 38,
+    "present_in_artifact": 38,
+    "missing": [
+      "No step, batch row or scheme arrow is missing: the 38 annotatable operations I count in the text are the 38 records, section by section. The gaps below are data inside records that are present.",
+      "Batches 7 to 13: the row's original ppm, treated ppm and stated reduction reach no field of the record, while Examples 1, 4 and 5 carry theirs. Held in compounds.json.",
+      "Example 1_Batch 6's 2 h hold against claim 1's 0.2 h to 1 h, and Example 5 batches 16 and 17 at pH 5 and pH 4 against claim 1's pH below 3: three examples that fall outside the document's own claim, recorded nowhere, although the analogous conflict on Example 6's stirring speed is recorded in full.",
+      "[0011]'s statement that the rearrangement product also carries residual acetone cyanohydrin is on no record; only the cyanide impurity is carried, as a by_product entry on Background_Step 3 and on every batch record.",
+      "Not missing, checked and present: the 2 L flask volume, the 0.5 h room-temperature stage and the 15 C charge hold of Example 6 Step 1 (in notes and addition_profile, since one record holds one temperature and one time), the -0.098mP strip to 85 C, the 0.2% in-process limit, the 280转/h stirring phrase, the 95% content, the 262.1 g, the 1H NMR of [0054] and [0055] (tagged analytics:nmr, the datum itself on the compound record), [0021]'s optional extraction and distillation step, and [0032]'s further distillation."
+    ]
+  }
+}

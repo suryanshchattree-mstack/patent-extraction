@@ -1,0 +1,42 @@
+[
+  {
+    "reaction_id": "Example 5_Batch 16",
+    "source_lines": [
+      257,
+      261
+    ],
+    "quote_zh": "不同PH值下对析出的纯化环磺酮的氰化物杂质含量分析，处理方法：重排反应结束后，蒸馏脱溶后取产品5g溶解在20％含水乙醇中，升温至60℃，加入1g硅藻土保温一小时后热过滤，控温滴加10％稀盐酸调节PH分别为2、3、4、5，逐渐降温至15℃，过滤得纯化环磺酮。得以下数据： | 16 | 5 | 1238 | 82 | 88% |",
+    "arithmetic_check": "No mass or mole pair is printed in this section, so there is no mass balance and no molecular weight to check; the only arithmetic on the page is the stated percentage reduction against its own two ppm figures. Printed for batch 16 at PH 5: original cyanide impurity content 1238 ppm, content after crystallisation 82 ppm, stated reduction 88%. Computed from the printed pair: (1238 - 82) / 1238 = 93.38% reduction, equivalently 6.62% of the original content remaining. The printed and computed reductions DISAGREE, so it does not close, and mass_balance_implausible is raised for it with a note that the flag is being used for a percentage rather than a mass because arithmetic_inconsistent is not in the closed enum. Nothing printed was changed. All four rows of this table were checked and all four fail the same way. Separately: the 5 g charge cannot be checked against the precursor's output because Synthesis Scheme::Step 2 states no product mass, so scale_discontinuity was not raised and that is a check that could not run, not a pass. Note also that the four batches together draw 20 g from a crude batch whose size the document never states.",
+    "drawing_evidence": "None. This section contains no [IMAGE_EXTRACT] span of any kind, neither a reactions scheme nor a molecules structure, so there is no drawing to corroborate the step boundaries or the product name and no drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn check could be run. Recorded as absent rather than as agreeing. The step boundaries come from the four table rows at [0051] and the procedure from the prose at [0050]."
+  },
+  {
+    "reaction_id": "Example 5_Batch 17",
+    "source_lines": [
+      257,
+      262
+    ],
+    "quote_zh": "不同PH值下对析出的纯化环磺酮的氰化物杂质含量分析，处理方法：重排反应结束后，蒸馏脱溶后取产品5g溶解在20％含水乙醇中，升温至60℃，加入1g硅藻土保温一小时后热过滤，控温滴加10％稀盐酸调节PH分别为2、3、4、5，逐渐降温至15℃，过滤得纯化环磺酮。得以下数据： | 17 | 4 | 1238 | 46 | 98% |",
+    "arithmetic_check": "No mass or mole pair is printed in this section, so there is no mass balance and no molecular weight to check; the only arithmetic on the page is the stated percentage reduction against its own two ppm figures. Printed for batch 17 at PH 4: original cyanide impurity content 1238 ppm, content after crystallisation 46 ppm, stated reduction 98%. Computed from the printed pair: (1238 - 46) / 1238 = 96.28% reduction, equivalently 3.72% of the original content remaining. The printed and computed reductions DISAGREE, so it does not close, and mass_balance_implausible is raised for it with a note that the flag is being used for a percentage rather than a mass because arithmetic_inconsistent is not in the closed enum. Nothing printed was changed. All four rows of this table were checked and all four fail the same way. Separately: the 5 g charge cannot be checked against the precursor's output because Synthesis Scheme::Step 2 states no product mass, so scale_discontinuity was not raised and that is a check that could not run, not a pass. Note also that the four batches together draw 20 g from a crude batch whose size the document never states.",
+    "drawing_evidence": "None. This section contains no [IMAGE_EXTRACT] span of any kind, neither a reactions scheme nor a molecules structure, so there is no drawing to corroborate the step boundaries or the product name and no drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn check could be run. Recorded as absent rather than as agreeing. The step boundaries come from the four table rows at [0051] and the procedure from the prose at [0050]."
+  },
+  {
+    "reaction_id": "Example 5_Batch 18",
+    "source_lines": [
+      257,
+      263
+    ],
+    "quote_zh": "不同PH值下对析出的纯化环磺酮的氰化物杂质含量分析，处理方法：重排反应结束后，蒸馏脱溶后取产品5g溶解在20％含水乙醇中，升温至60℃，加入1g硅藻土保温一小时后热过滤，控温滴加10％稀盐酸调节PH分别为2、3、4、5，逐渐降温至15℃，过滤得纯化环磺酮。得以下数据： | 18 | 3 | 1238 | 25 | 99% |",
+    "arithmetic_check": "No mass or mole pair is printed in this section, so there is no mass balance and no molecular weight to check; the only arithmetic on the page is the stated percentage reduction against its own two ppm figures. Printed for batch 18 at PH 3: original cyanide impurity content 1238 ppm, content after crystallisation 25 ppm, stated reduction 99%. Computed from the printed pair: (1238 - 25) / 1238 = 97.98% reduction, equivalently 2.02% of the original content remaining. The printed and computed reductions DISAGREE, so it does not close, and mass_balance_implausible is raised for it with a note that the flag is being used for a percentage rather than a mass because arithmetic_inconsistent is not in the closed enum. Nothing printed was changed. All four rows of this table were checked and all four fail the same way. Separately: the 5 g charge cannot be checked against the precursor's output because Synthesis Scheme::Step 2 states no product mass, so scale_discontinuity was not raised and that is a check that could not run, not a pass. Note also that the four batches together draw 20 g from a crude batch whose size the document never states. One further numeric observation on this row, recorded and not resolved: batches 18 and 19 print the SAME content after crystallisation, 25 ppm, and the SAME stated reduction, 99%, at PH 3 and at PH 2, so the computed reduction is identical for the two rows as well and the patent's own data shows no measurable gain from the lower PH. Nothing is concluded from it here.",
+    "drawing_evidence": "None. This section contains no [IMAGE_EXTRACT] span of any kind, neither a reactions scheme nor a molecules structure, so there is no drawing to corroborate the step boundaries or the product name and no drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn check could be run. Recorded as absent rather than as agreeing. The step boundaries come from the four table rows at [0051] and the procedure from the prose at [0050]."
+  },
+  {
+    "reaction_id": "Example 5_Batch 19",
+    "source_lines": [
+      257,
+      264
+    ],
+    "quote_zh": "不同PH值下对析出的纯化环磺酮的氰化物杂质含量分析，处理方法：重排反应结束后，蒸馏脱溶后取产品5g溶解在20％含水乙醇中，升温至60℃，加入1g硅藻土保温一小时后热过滤，控温滴加10％稀盐酸调节PH分别为2、3、4、5，逐渐降温至15℃，过滤得纯化环磺酮。得以下数据： | 19 | 2 | 1238 | 25 | 99% |",
+    "arithmetic_check": "No mass or mole pair is printed in this section, so there is no mass balance and no molecular weight to check; the only arithmetic on the page is the stated percentage reduction against its own two ppm figures. Printed for batch 19 at PH 2: original cyanide impurity content 1238 ppm, content after crystallisation 25 ppm, stated reduction 99%. Computed from the printed pair: (1238 - 25) / 1238 = 97.98% reduction, equivalently 2.02% of the original content remaining. The printed and computed reductions DISAGREE, so it does not close, and mass_balance_implausible is raised for it with a note that the flag is being used for a percentage rather than a mass because arithmetic_inconsistent is not in the closed enum. Nothing printed was changed. All four rows of this table were checked and all four fail the same way. Separately: the 5 g charge cannot be checked against the precursor's output because Synthesis Scheme::Step 2 states no product mass, so scale_discontinuity was not raised and that is a check that could not run, not a pass. Note also that the four batches together draw 20 g from a crude batch whose size the document never states. One further numeric observation on this row, recorded and not resolved: batches 18 and 19 print the SAME content after crystallisation, 25 ppm, and the SAME stated reduction, 99%, at PH 3 and at PH 2, so the computed reduction is identical for the two rows as well and the patent's own data shows no measurable gain from the lower PH. Nothing is concluded from it here.",
+    "drawing_evidence": "None. This section contains no [IMAGE_EXTRACT] span of any kind, neither a reactions scheme nor a molecules structure, so there is no drawing to corroborate the step boundaries or the product name and no drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn check could be run. Recorded as absent rather than as agreeing. The step boundaries come from the four table rows at [0051] and the procedure from the prose at [0050]."
+  }
+]

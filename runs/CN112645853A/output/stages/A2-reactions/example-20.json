@@ -1,0 +1,566 @@
+[
+ {
+  "patent_id": "CN112645853A",
+  "reaction_id": "Example 20_Step 1",
+  "section_label": "Example 20",
+  "section_type": "experimental_example",
+  "step_index": 1,
+  "step_label": "Step 1",
+  "reaction_class": "hydrolysis",
+  "reaction_class_confidence": "medium",
+  "named_reaction": null,
+  "mechanism_type": "ionic",
+  "scale": "not_specified",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "not_specified",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": null,
+   "reactor_type": null,
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": null,
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": true,
+  "workup": {
+   "steps": [],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": null,
+   "filtration": null,
+   "concentration_method": null,
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": 98.2,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": null,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": 98.2,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+  "procedure_summary": "The methyl ester of the chloro bromomethyl methanesulfonyl benzoic acid is cleaved by the procedure of the earlier worked example to give the sodium benzoate salt, the benzylic bromide being left intact. No procedure, reagent or charge is printed here; only the product and its stated content are given.",
+  "precursor_step": null,
+  "linkage_confirmed": false,
+  "cross_reference_unresolved": true,
+  "non_synthetic": false,
+  "is_complete": false,
+  "validation_flags": [
+   "cross_reference_unresolved",
+   "conditions_unresolved"
+  ],
+  "tags": [
+   "transformation:hydrolysis",
+   "transformation:salt_formation",
+   "mechanism:ionic",
+   "scale:not_specified",
+   "step_role:first_step",
+   "linkage:cross_section_linked",
+   "is_one_pot:false"
+  ],
+  "notes": "Cross-reference only. This paragraph prints no procedure for step (1): it says the procedure is the same as the one described in Example 1 and states the product content as 98.2 percent. Note that this patent marks its experimental steps (1) and (2); it does not use the marker form the pass prompt describes. reaction_class is hydrolysis because the transformation is cleavage of the methyl ester to the alkali metal benzoate while the benzylic bromide survives; ester_formation would be backwards and salt_formation alone would record only the counter ion outcome. Confidence is medium because the classification rests on the referenced procedure rather than on anything written here. No base, solvent, temperature, time or charge is given, so every condition field is null and conditions_inherited is true, the text having said the procedure is the same as the referenced example. Sections are annotated in parallel, so the Example 1 records were not available to this call and the inherited conditions could not be checked against them: conditions_unresolved and cross_reference_unresolved are both raised rather than letting the reference pass unverified. precursor_step is null because no earlier step of this patent supplies a reactant here; the pointer to Example 1 is a procedure reference, not a material one, and that is what linkage:cross_section_linked records. The methyl ester is emitted as the reactant of this step even though this paragraph does not name it: it is named in the closing sentence of step (2) as the basis of the two step yield, and A1 records it for this section as the material the referenced step (1) procedure consumes. Without it this record would have no reactant at all, which would be a recall miss rather than a faithful gap. No scheme is drawn for step (1) in this example, which is why the example carries one drawing where the earlier examples carry two. The 98.2 percent figure is a content and not a yield, so it is recorded as the product purity with no method stated, and product_yield_pct is left null."
+ },
+ {
+  "patent_id": "CN112645853A",
+  "reaction_id": "Example 20_Step 2a",
+  "section_label": "Example 20",
+  "section_type": "experimental_example",
+  "step_index": 2,
+  "step_label": "Step 2a",
+  "reaction_class": "salt_formation",
+  "reaction_class_confidence": "medium",
+  "named_reaction": null,
+  "mechanism_type": "ionic",
+  "scale": "lab",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "room_temperature",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": null,
+   "reactor_type": "reaction kettle",
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": null,
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "strip off the excess alcohol under reduced pressure with a high vacuum oil pump",
+    "collect the solid potassium alkoxide",
+    "seal the solid and set it aside for use"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": null,
+   "filtration": null,
+   "concentration_method": "stripping under reduced pressure with a high vacuum oil pump",
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": "stirred until the potassium metal had dissolved completely"
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "tetrahydrofurfuryl alcohol",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 100.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged first into the reaction kettle, then stirring started",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "potassium metal",
+    "role": "reagent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 5.5,
+     "volume_ml": null,
+     "mmol": 140.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added at room temperature into the stirred alcohol, then stirred until dissolution was complete",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": 99.0,
+    "purity_method": null
+   },
+   {
+    "identifier": "potassium (tetrahydrofuran-2-yl)methoxide",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "tetrahydrofurfuryl alcohol",
+   "potassium metal"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "potassium (tetrahydrofuran-2-yl)methoxide",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": null,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "向反应釜中加入100mL 2-四氢呋喃甲醇，开动搅拌，室温下投入5.5g金属钾(99％，0.14mol)，搅拌至溶解完全，经高真空油泵负压脱溶后得到2-四氢呋喃甲醇醇钾固体，密封备用。",
+  "procedure_summary": "Potassium metal is added to tetrahydrofurfuryl alcohol in a stirred reaction kettle at room temperature and stirred until it has dissolved completely, converting the alcohol into its potassium alkoxide. The excess alcohol is stripped off under reduced pressure with a high vacuum oil pump and the solid alkoxide is sealed and set aside for use.",
+  "precursor_step": null,
+  "linkage_confirmed": false,
+  "cross_reference_unresolved": false,
+  "non_synthetic": false,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:salt_formation",
+   "mechanism:ionic",
+   "scale:lab",
+   "solvent_class:neat",
+   "solvent_class:protic",
+   "catalyst_class:none",
+   "workup_type:distillation",
+   "purification:none",
+   "step_role:intermediate_step",
+   "linkage:standalone",
+   "is_one_pot:false"
+  ],
+  "notes": "The patent prints this preparation inside its step (2), but it is a transformation in its own right, with its own charge and its own isolated product, so it gets its own record. The step label Step 2a says where the document puts it while leaving the document's own marker for the etherification record that follows. A0 estimated three steps for this section and this annotation emits three, so the counts agree: the cross-referenced step (1), this alkoxide preparation, and the etherification. Tetrahydrofurfuryl alcohol is both the medium and the reagent consumed, since the potassium dissolves in it and the excess is then stripped off, so it is carried as a reactant in agreement with A1, and solvent_class carries both neat, no separate solvent being added, and protic, the medium being an alcohol. reaction_class salt_formation is the closest of the permitted values: the alcohol is deprotonated and the product isolated is its potassium salt. Confidence is medium because the process is formally a dissolving metal reaction, so electron transfer and hydrogen evolution are implied, and no permitted class names alkoxide formation directly; other was the alternative. mechanism_type ionic records the net transfer of the hydroxyl proton to the metal, and the text states no mechanism. No inert atmosphere, no reaction time and no stirrer type are given, so those fields stay null even though potassium metal is normally handled under inert gas; nothing is inferred here, and the sealing of the solid is recorded as a workup step rather than read as an atmosphere. The vacuum stripping is recorded as the workup concentration method and not as a reaction pressure, since removal of solvent under reduced pressure is a workup operation. The Chinese name the patent prints for the alcohol is not a well formed name, as A1 records; it is kept as printed and not corrected. The mass, strength and mole figures printed for the potassium charge close, so no arithmetic flag is raised; the working is in the provenance sidecar."
+ },
+ {
+  "patent_id": "CN112645853A",
+  "reaction_id": "Example 20_Step 2",
+  "section_label": "Example 20",
+  "section_type": "experimental_example",
+  "step_index": 3,
+  "step_label": "Step 2",
+  "reaction_class": "nucleophilic_substitution",
+  "reaction_class_confidence": "high",
+  "named_reaction": "Williamson ether synthesis",
+  "mechanism_type": "ionic",
+  "scale": "lab",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "exact",
+    "value_c": 15.0,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 6.0,
+   "reactor_type": "reaction kettle",
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": null,
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": "workup acidification of the aqueous kettle residue with concentrated hydrochloric acid to pH 2"
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "strip off the solvent under reduced pressure",
+    "add water to the kettle residue and stir to dissolve",
+    "add concentrated hydrochloric acid dropwise to acidify the system to pH 2",
+    "filter",
+    "rinse with water",
+    "dry"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": [
+    "water"
+   ],
+   "drying_agent": null,
+   "filtration": "the acidified solid is collected by filtration and the cake rinsed with water",
+   "concentration_method": "solvent stripped under reduced pressure",
+   "ph_target": 2.0
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "potassium (tetrahydrofuran-2-yl)methoxide",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "the acetonitrile is added to the solid alkoxide and stirred to dissolve it",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "acetonitrile",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 130.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added to the solid alkoxide and stirred to dissolve before the benzoate salt was charged",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": 100.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added in eight portions with a total addition time of 1 h, at a controlled kettle temperature of 15 C",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": 98.2,
+    "purity_method": null
+   },
+   {
+    "identifier": "water",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 120.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added to the kettle residue after the solvent was stripped, and stirred to dissolve it; also used to rinse the filtered solid, where no amount is given",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "hydrochloric acid",
+    "role": "acid",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added dropwise to the aqueous residue until the system reached pH 2",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": 32.6,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": 90.8
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": 97.0,
+    "purity_method": "hplc"
+   }
+  ],
+  "reactant_names": [
+   "potassium (tetrahydrofuran-2-yl)methoxide",
+   "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": 90.8,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": 97.0,
+  "product_purity_method": "hplc",
+  "canonical_rxn": null,
+  "procedure_text": "向2-四氢呋喃甲醇醇钾中加入130mL乙腈，搅拌溶解后控制釜温在15℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为1h，加毕保温反应6h。反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至2，之后经过滤、水淋洗、烘干得到产物32.6g，HPLC定量得目标化合物2-氯-3-[(RS)-四氢呋喃-2-基甲氧基甲基]-4-甲磺酰基苯甲酸含量为97.0％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率90.8％。",
+  "procedure_summary": "The potassium alkoxide is dissolved in acetonitrile and the sodium benzoate salt from the first step is added in portions at a controlled kettle temperature, then held at temperature, the alkoxide displacing the benzylic bromide to give the ether. The solvent is stripped under reduced pressure, the residue dissolved in water and acidified with concentrated hydrochloric acid added dropwise, and the product filtered, rinsed with water and dried, its content being determined by quantitative liquid chromatography.",
+  "precursor_step": "Step 1",
+  "linkage_confirmed": true,
+  "cross_reference_unresolved": false,
+  "non_synthetic": false,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:etherification",
+   "mechanism:ionic",
+   "named_rxn:williamson_ether_synthesis",
+   "analytics:hplc",
+   "scale:lab",
+   "solvent_class:aprotic_polar",
+   "catalyst_class:none",
+   "workup_type:distillation",
+   "workup_type:precipitation",
+   "workup_type:filtration",
+   "purification:none",
+   "step_role:final_step",
+   "linkage:precursor_linked",
+   "is_one_pot:false"
+  ],
+  "notes": "Heading of the document's step (2), in translation: preparation of 2-chloro-3-[(RS)-tetrahydrofuran-2-ylmethoxymethyl]-4-methanesulfonylbenzoic acid, with the remark that the main reaction process can be represented by the reaction equation that follows. That heading covers both the alkoxide preparation and this etherification, which is why its line is inside this record's provenance span. The benzylic bromide of the benzoate salt is displaced by the potassium alkoxide, hence nucleophilic_substitution with Williamson ether synthesis as the named reaction. The concentrated hydrochloric acid is a workup acidification that liberates the free acid, not a reagent of the substitution, so it sits in the workup with the pH target, and is_one_pot is false: the solvent is stripped and water added before the acid goes in, so there is a workup between the substitution and the acidification. The pH is recorded as the workup target and the reaction pH is left null, since no pH is controlled during the reaction itself. Vessel naming is internally inconsistent inside one sentence: the kettle temperature is controlled while the benzoate salt is said to be added to the reaction flask. reactor_type records the kettle, which is the vessel the rest of the paragraph operates and which the alkoxide preparation also used, and the flask wording is recorded here; no validation flag covers a vessel naming inconsistency. The total addition time of 1 h and the addition in eight portions belong to the benzoate salt addition profile, not to time_h, which carries the hold after the addition was complete. Drawing against prose: the scheme drawn for this step gives the benzoate salt a sodium counter ion and the alkoxide a potassium counter ion, and the prose says the same in both cases, so the sodium against potassium disagreement that this patent shows in other examples is checked and absent here, and no drawing_text_conflict is raised. The scheme also lists HCl, which the prose has; it draws no solvent, and acetonitrile is treated as a solvent rather than as a reagent missing from the arrow, so no reagent flag is raised either. The (RS) descriptor is kept because the prose prints it; the drawn product carries no stereo bond. The stated yield of 90.8 percent is a two step yield based on methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate, not a yield for this step alone; it is recorded on the product as printed, and the basis compound is carried on the step (1) record, where it is the material consumed. The printed product mass, the liquid chromatography content and the two step yield close against the nominal charge of the benzoate salt, so no arithmetic flag is raised; the working, including the fact that the printed yield does not carry the 98.2 percent content into its basis, is in the provenance sidecar. purification is null because the product is isolated by filtration, water rinsing and drying, with no purification technique stated."
+ }
+]

@@ -1,0 +1,405 @@
+{
+  "artifact": "reactions",
+  "records_audited": 54,
+  "findings": [
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "Example 3_Step 2",
+      "field": "validation_flags",
+      "problem": "The printed two-step yield cannot be reproduced from the printed mass, content and charge, by the same margin that earned Example 2_Step 2 and Example 6_Step 2 a mass_balance_implausible flag, yet no flag is raised here.",
+      "source_line": 332,
+      "quote": "之后经过滤、水淋洗、烘干得到产物30.7g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为95.8％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率84.4％。",
+      "artifact_says": "validation_flags: [\"drawing_text_conflict\"]; the provenance sidecar says \"The gap is 0.4 to 0.6 of a percentage point, which is rounding and a slightly different molecular weight, so this CLOSES\"",
+      "should_be": "Add \"mass_balance_implausible\". 30.7 g at 95.8 percent is 29.411 g of C11H10ClF3O5S (346.703), i.e. 0.084830 mol, which on the 0.09984 mol the 34.8 g at 98 percent charge actually contains is 84.97 percent against a printed 84.4 percent, a gap of +0.57 points. The fourteen examples that do reproduce close within 0.18 points, so 0.57 is not rounding at this precision.",
+      "confidence": "high"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "Example 4_Step 2",
+      "field": "validation_flags",
+      "problem": "Same unreproducible printed yield as Examples 2 and 6, same magnitude, no mass_balance_implausible flag.",
+      "source_line": 350,
+      "quote": "之后经过滤、水淋洗、烘干得到产物32.5g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为98.0％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率91.4％。",
+      "artifact_says": "validation_flags: [\"drawing_text_conflict\", \"reagent_drawn_not_written\"]; the provenance says \"the gap ... is at most 0.7 percentage points and is covered by rounding ... CLOSES\"",
+      "should_be": "Add \"mass_balance_implausible\". 32.5 g at 98.0 percent is 31.850 g, 0.091865 mol, 92.02 percent on 0.09984 mol against a printed 91.4 percent, a gap of +0.62 points.",
+      "confidence": "high"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "Example 8_Step 3",
+      "field": "validation_flags",
+      "problem": "Same unreproducible printed yield as Examples 2 and 6, same magnitude, no mass_balance_implausible flag.",
+      "source_line": 426,
+      "quote": "之后经过滤、水淋洗、烘干得到产物32.6g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为98.2％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率91.9％。",
+      "artifact_says": "validation_flags: [\"drawing_text_conflict\"]; the provenance says \"agree to within 0.4 percentage points ... which is rounding at this precision ... This CLOSES\"",
+      "should_be": "Add \"mass_balance_implausible\". 32.6 g at 98.2 percent is 32.013 g, 0.092335 mol, 92.49 percent on 0.09984 mol against a printed 91.9 percent, a gap of +0.59 points.",
+      "confidence": "high"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "Example 9_Step 2",
+      "field": "validation_flags",
+      "problem": "Same unreproducible printed yield as Examples 2 and 6, the largest gap of the six, and validation_flags is empty.",
+      "source_line": 440,
+      "quote": "之后经过滤、水淋洗、烘干得到产物32.4g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为96.5％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率89.7％。",
+      "artifact_says": "validation_flags: []; is_complete true; the provenance says \"agree to within about 0.5 of a percentage point. That is inside the rounding of a three-figure mass, so the step CLOSES\"",
+      "should_be": "Add \"mass_balance_implausible\". 32.4 g at 96.5 percent is 31.266 g, 0.090180 mol, 90.33 percent on 0.09984 mol against a printed 89.7 percent, a gap of +0.63 points. is_complete then becomes false.",
+      "confidence": "high"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "Example 6_Step 2",
+      "field": "notes",
+      "problem": "The reasoning given for raising the flag here rather than elsewhere is factually wrong about the distribution of the discrepancy, and it is the reason four sibling records were left unflagged.",
+      "source_line": 386,
+      "quote": "得到产物32.4g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为96.0％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率89.3％。",
+      "artifact_says": "provenance for Example 6_Step 2: \"the same small negative bias, the printed yield sitting a few tenths of a point below what the printed mass and content give, recurs across the examples of this patent, so this looks like a systematic yield convention rather than a typographical error here\"",
+      "should_be": "The bias does not recur across the examples. Recomputed for all twenty, the deviation of the printed two-step yield from the value implied by the printed mass, content and 0.09984 mol charge is +0.56 to +0.63 points in exactly six examples (2, 3, 4, 6, 8, 9) and -0.07 to +0.18 points in the other fourteen (1, 5, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20). The root cause is identifiable and should be in notes rather than a claim of a general convention: substituting 348.797 (C14H17ClO6S, the tetrahydrofurfuryl-ether acid of Examples 11 to 20) for 346.703 reproduces the printed yields of all six to within 0.09 points (92.46 vs 92.4; 84.45 vs 84.4; 91.49 vs 91.4; 89.29 vs 89.3; 91.93 vs 91.9; 89.79 vs 89.7). The patent appears to have computed those six trifluoroethyl examples with the other product's molecular weight. Note the sidecar already derived 348.5, 348.3 and 348.3 for Examples 2, 6 and 8 without connecting them.",
+      "confidence": "high"
+    },
+    {
+      "check": "linkage",
+      "severity": "major",
+      "record": "Example 13_Step 1",
+      "field": "precursor_step",
+      "problem": "The record asserts a cross-section link in its tags while precursor_step is null and linkage_confirmed is false, and the referenced step is present in this same artifact.",
+      "source_line": 497,
+      "quote": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯",
+      "artifact_says": "tags contain \"linkage:cross_section_linked\"; precursor_step null; linkage_confirmed false. Identical in Example 14_Step 1, 15_Step 1, 16_Step 1, 17_Step 1, 18_Step 1, 19_Step 1 and 20_Step 1.",
+      "should_be": "Set precursor_step to \"Example 1::Step 1\" per A2 rule 23 and linkage_confirmed to true, since the text names the step explicitly and Example 1_Step 1 is a record in this artifact. Either that, or drop the linkage:cross_section_linked tag; the tag and the fields must not disagree.",
+      "confidence": "high"
+    },
+    {
+      "check": "linkage",
+      "severity": "major",
+      "record": "Example 13_Step 1",
+      "field": "validation_flags",
+      "problem": "conditions_unresolved and cross_reference_unresolved are raised on eight records whose reference does in fact resolve, inside this same artifact and to a fully stated procedure, which suppresses eight otherwise complete records.",
+      "source_line": 280,
+      "quote": "向反应瓶中加入叔丁醇200mL，开动搅拌，室温下将8.8g氢氧化钠(48％，0.105mol)滴入其中，待氢氧化钠分散均匀后，控制釜温在25℃",
+      "artifact_says": "Example 13_Step 1 through Example 20_Step 1 all carry validation_flags [\"cross_reference_unresolved\", \"conditions_unresolved\"], conditions_inherited true, temperature not_specified, time_h null, is_complete false.",
+      "should_be": "A2 rule 27 defines conditions_unresolved as claiming inherited conditions when the referenced record was not found. Example 1_Step 1 was found: 200 mL tert-butanol, NaOH 8.8 g at 48 percent, 25 C, 7 h, lines 280 and 285. Drop conditions_unresolved and cross_reference_unresolved from all eight records, or state in notes why a reference that resolves to a record in the same artifact counts as unresolved. Leaving the condition fields null with conditions_inherited true is correct either way.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "Summary of the Invention_Step 2",
+      "field": "compounds",
+      "problem": "The record omits the alkali metal alkoxide alternative of step (2) entirely, together with the sodium and potassium metal it is made from, although the prose gives both and the scheme draws the alternative below the arrow.",
+      "source_line": 224,
+      "quote": "[0042] 优选地，步骤(2)中所述碱金属醇盐为醇和碱金属反应得到。 / [0043] 优选地，所述碱金属为金属钠或金属钾。",
+      "artifact_says": "compounds carries reactant 2,2,2-trifluoroethanol and tetrahydrofurfuryl alcohol, six bases (NaOH, KOH, NaOtBu, KOtBu, NaH, KH), four solvents and water. No alkoxide and no alkali metal. reactant_names likewise.",
+      "should_be": "Add the alkali metal alkoxide as a reactant and sodium metal and potassium metal with role alkoxide_precursor, exactly as the parallel Claims_Step 2 record already does from claim 7. Page p06 [0021] writes ROH and the word for base above the arrow and 或ROM below it, so the alternative is on the drawing as well as in [0019] and [0041] to [0043].",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "No record exists for the side reaction the specification describes and draws, in which conventional ester hydrolysis of the starting material consumes the benzylic bromide to give benzyl alcohol and a bis-benzyl ether.",
+      "source_line": 182,
+      "quote": "常规的酯的水解手段在本发明中不可行，苄溴基团会参与反应生成大量的苄醇以及二苄醚类化合物，结构式如下：",
+      "artifact_says": "no record for [0024] to [0025]; non_synthetic is false on all 54 records, so it was not captured as a non-synthetic mention either.",
+      "should_be": "Emit one record for this transformation under Summary of the Invention, with the bis-benzyl ether drawn at line 185 and verified on page p06 as a product, benzyl alcohol as the second named product, no charges, no_conditions raised, and notes stating that it is the failure mode of the comparative method rather than a step of the invention. If the convention is to exclude it, say so in notes; a described transformation with a drawn product and no record is otherwise indistinguishable from a recall miss.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "Example 6_Step 2",
+      "field": "compounds",
+      "problem": "Water and hydrochloric acid are absent from compounds although the record's own workup narrative names both and eighteen sibling etherification records carry them.",
+      "source_line": 386,
+      "quote": "反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至2",
+      "artifact_says": "compounds: potassium benzoate salt, 2,2,2-trifluoroethanol, potassium hydroxide, N,N-dimethylformamide 70 mL, product. workup.steps names both water and concentrated hydrochloric acid and workup.ph_target is 2.0.",
+      "should_be": "Add water with volume_ml 120.0 and hydrochloric acid, matching the eighteen sibling records. Example 7_Step 2 has the same omission at line 405.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "Example 7_Step 2",
+      "field": "compounds",
+      "problem": "Water and hydrochloric acid are absent from compounds although the workup narrative names both.",
+      "source_line": 405,
+      "quote": "反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至2",
+      "artifact_says": "compounds: sodium benzoate salt, 2,2,2-trifluoroethanol, sodium tert-butoxide, tetrahydrofuran 130 mL, product. No water, no acid.",
+      "should_be": "Add water with volume_ml 120.0 and hydrochloric acid.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "Example 3_Step 1",
+      "field": "compounds[base].purity_pct",
+      "problem": "The mass concentration printed for the base is dropped, in four records, while the identical figure is captured in a fifth.",
+      "source_line": 325,
+      "quote": "室温下将14g氢氧化钠(30％，0.105mol)滴入其中",
+      "artifact_says": "sodium hydroxide 14.0 g, purity_pct null. Same omission for Example 3_Step 2 (17.3 g NaOH, 30 percent, line 331), Example 15_Step 2 (17.3 g NaOH, 30 percent, line 533) and Example 16_Step 2 (26.1 g KOH, 30 percent, line 543), whereas Example 6_Step 2 records purity_pct 30.0 for the same 26.1 g of 30 percent KOH at line 386.",
+      "should_be": "Set purity_pct to 30.0 in all four records, as was done for Example 1 (48.0), Example 4 (96.0), Example 5 (85.0) and Example 6.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "Example 10_Step 2",
+      "field": "conditions.ph_value",
+      "problem": "conditions.ph_value is populated in only six of the twenty etherification records although all twenty print an acidification pH, and in five of the fourteen nulls the record's own ph_target_stage states the number in words, so the object contradicts itself.",
+      "source_line": 458,
+      "quote": "搅拌溶解后滴加浓盐酸将体系pH值酸化至3",
+      "artifact_says": "conditions.ph_value null with ph_target_stage \"acidification of the redissolved residue with concentrated hydrochloric acid to pH 3 at workup, to precipitate the free acid\", while workup.ph_target is 3.0. ph_value is populated only in Examples 3, 5, 13, 14, 15 and 16; the same self-contradiction appears in Example 17_Step 2b, 18_Step 2, 19_Step 2 and 20_Step 2.",
+      "should_be": "Settle it one way for all twenty. I would leave conditions.ph_value null throughout, because the pH is a workup target that workup.ph_target already carries correctly in all twenty records, and remove it from Examples 3, 5, 13, 14, 15 and 16. Populating all twenty is also defensible under rule 9; what is not defensible is a record whose ph_target_stage names a pH that ph_value does not hold.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 18_Step 2",
+      "field": "step_label",
+      "problem": "Four different step_label conventions are used for the same kind of step, the in-situ preparation of the alkoxide, and in three sections the label order contradicts the step_index order.",
+      "source_line": 571,
+      "quote": "向反应釜中加入150mL  2-四氢呋喃甲醇，开动搅拌，室温下投入20g氢化钾(30％，0.15mol)，搅拌至溶解完全",
+      "artifact_says": "Example 1 and 17 use \"Step 2a\" then \"Step 2b\"; Example 2 and 5 use \"Alkoxide Preparation\" then \"Step 2\"; Example 8 uses \"Step 2\" then \"Step 3\"; Example 18, 19 and 20 use \"Step 2a\" at step_index 2 then \"Step 2\" at step_index 3.",
+      "should_be": "Pick one and apply it to all eight sections that prepare the alkoxide separately. The 2a/2b form of Examples 1 and 17 is the only one that keeps label order and step_index order consistent and keeps the patent's own step (2) numbering, so \"Step 2a\" plus \"Step 2b\" everywhere. It matters twice over: Example 8 renumbers the patent's step (2) as \"Step 3\", and Examples 18 to 20 put \"Step 2a\" before \"Step 2\", so any consumer that sorts or joins on step_label rather than step_index will mis-order or mis-join those five sections.",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": "Example 11_Step 1",
+      "field": "validation_flags",
+      "problem": "reagent_written_not_drawn is applied to two of the twelve example step-1 records although the page images show the drawn and written content of all twelve to be in the same relation, and the same flag is applied to two of four otherwise identical Example 13 to 16 step-2 records.",
+      "source_line": 465,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl\"...}], \"conditions\": [{\"text\": \"Na\"}], ...}]}]",
+      "artifact_says": "reagent_written_not_drawn on Example 7_Step 1, 11_Step 1, 12_Step 1, 15_Step 2, 16_Step 2 and 8_Step 2; absent from Example 1 to 6 and 8 to 10 Step 1, from Example 13_Step 2 and 14_Step 2, and from the seven other alkoxide-preparation records.",
+      "should_be": "Verified on page p15: scheme [0133] for Example 10 letters KH on the arrow and scheme [0140] for Example 11 letters Na on the arrow, and both leave the tertiary alcohol solvent undrawn, so nothing distinguishes them. Either raise the flag on all twelve step-1 records and all four Example 13 to 16 step-2 records, or on none, and state in notes what counts as a reagent for this flag. Example 7_Step 1 is the one genuine case and I confirmed it on p13: [0111] letters NaOH on the arrow while [0112] charges 10.3 g of sodium tert-butoxide. Example 8_Step 2 is the clearest error, since no scheme is drawn for that alkoxide preparation at all.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Example 11_Step 1",
+      "field": "one_pot_steps",
+      "problem": "one_pot_steps asserts the in-situ formation of sodium tert-butoxide, which no line of the patent states, and the identical in-situ alkoxide formation in Examples 9 and 10 is recorded as not one-pot.",
+      "source_line": 467,
+      "quote": "室温下将2.4g金属钠(99％，0.105mol)加入其中，待金属钠溶解完全后，控制釜温在25℃",
+      "artifact_says": "is_one_pot true with one_pot_steps [\"sodium metal dissolved in tert-butanol at room temperature, generating the sodium tert-butoxide in situ\", ...]. Example 12_Step 1 the same with potassium. Example 9_Step 1 (4.2 g NaH in 2-methyl-2-pentanol) and Example 10_Step 1 (14.0 g KH in tert-amyl and tert-butanol) have is_one_pot false and empty one_pot_steps.",
+      "should_be": "Either keep the reading and apply it to Examples 9 and 10, whose hydride does the same thing with the same tertiary alcohol, or drop it. If it is kept, the words \"generating the sodium tert-butoxide in situ\" must be marked in notes as inference, since the text says only that the metal dissolved and never names an alkoxide.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Example 5_Alkoxide Preparation",
+      "field": "tags",
+      "problem": "A hazard characterisation that appears nowhere in the patent is carried as a tag, on one record out of the sixteen that charge a hydride or an alkali metal.",
+      "source_line": 365,
+      "quote": "向反应釜中加入150mL三氟乙醇，开动搅拌，室温下投入20g氢化钾(30％，0.15mol)，搅拌至溶解完全",
+      "artifact_says": "tags contain \"safety:pyrophoric_reagent\"; safety_notes is empty. Fifteen other records charge NaH, KH, sodium metal or potassium metal and carry no such tag.",
+      "should_be": "Drop the tag. A2 rule 15 says not to add a hazard assessment of your own, and the patent says nothing about the reactivity of potassium hydride here. safety:exothermic elsewhere is fine because 反应过程微微放热 is on the page.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 2_Alkoxide Preparation",
+      "field": "mechanism_type",
+      "problem": "The same reaction, an alkali metal dissolving in an alcohol to give the alkoxide, is typed not_determinable in two records and ionic in two others.",
+      "source_line": 310,
+      "quote": "室温下投入2.8g金属钠(99％，0.12mol)，搅拌至溶解完全，经脱溶后得到三氟乙醇醇钠固体",
+      "artifact_says": "not_determinable on Example 2_Alkoxide Preparation and Example 8_Step 2; ionic on Example 19_Step 2a (2.8 g sodium metal, line 584) and Example 20_Step 2a (5.5 g potassium metal, line 602).",
+      "should_be": "One value for all four. not_determinable is the better choice, since a metal reducing an alcohol to the alkoxide with hydrogen evolution is a single-electron process and the closed list has no member for it, but the four records must agree.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 1_Step 1",
+      "field": "named_reaction",
+      "problem": "named_reaction saponification is applied to two of the twenty ester-cleavage steps and to Background_Step 2, and left null on the other eighteen.",
+      "source_line": 285,
+      "quote": "倒入釜中进行碱解反应",
+      "artifact_says": "saponification on Background_Step 2, Example 1_Step 1 and Example 3_Step 1 (with the matching named_rxn:saponification tag); null on Claims_Step 1, Summary_Step 1 and Example 2, 4 to 20 Step 1.",
+      "should_be": "One value for all twenty. Every one of them is the same 碱解 of the same methyl ester. The same asymmetry affects the transformation:salt_formation tag, which is present on Claims_Step 1 and Example 11, 12, 17, 19 and 20 Step 1 and absent from the seventeen other records that produce an alkali metal carboxylate.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Example 3_Step 1",
+      "field": "reactant_names",
+      "problem": "reactant_names does not flatten compounds consistently: the base is listed as a reactant name in eleven records and omitted in eleven others with the same structure.",
+      "source_line": 325,
+      "quote": "室温下将14g氢氧化钠(30％，0.105mol)滴入其中",
+      "artifact_says": "Example 3_Step 1 reactant_names holds only the methyl ester, while Example 1, 2, 4, 6, 7, 8, 11 and 12 Step 1 also list their base, and Example 4, 6 and 7 Step 2 also list theirs. Example 5, 9 and 10 Step 1 and Example 3, 9, 10 and 13 to 16 Step 2 do not.",
+      "should_be": "Pick one rule and apply it. reactant_names should mirror the compounds entries with role reactant, which would drop the base from all eleven; whichever way it goes, a benchmark that scores reactant_names will otherwise see an arbitrary split.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 4_Step 2",
+      "field": "compounds[water].role",
+      "problem": "Water carries three different roles across records for the same workup use.",
+      "source_line": 349,
+      "quote": "釜残加水120mL，搅拌溶解后滴加浓盐酸",
+      "artifact_says": "role \"other\" in Example 4_Step 2, \"workup_agent\" in Claims_Step 2, \"solvent\" in the other seventeen records that carry water.",
+      "should_be": "Use one role for the 120 mL of dissolution water in all nineteen experimental records. role is a free string in the A2 schema so none of the three is out of vocabulary, but the inconsistency will read as a real difference downstream.",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Four IMAGE_EXTRACT spans in the enriched markdown under-read the page: they report no product, or no molecules at all, where the page plainly draws them.",
+      "source_line": 143,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [...], \"conditions\": [{\"text\": \"ROH\"}, {\"text\": \"碱 (base)\"}], \"products\": []}, {\"step_id\": 2, \"reactants\": [], \"conditions\": [...], \"products\": []}]}]",
+      "artifact_says": "line 143 products empty for both arrows and reactants empty for arrow 2; line 164 products empty; line 176 both reactants and products empty; line 135 \"molecules\": [].",
+      "should_be": "Page p05 [0008] draws all four structures: the methyl ester with CH2Br, the methyl ester with CH2-O-R, the same as arrow 2's reactant, and the free acid with CH2-O-R. Page p05 [0017] draws the MO2C product. Page p06 [0021] draws both the MO2C reactant with CH2Br and the HO2C product with CH2-O-R. Page p04 [0006] draws the generic HO2C, 2-Cl, 3-CH2-O-R, 4-SO2Me benzoic acid. Re-run the vision pass on those four spans. The reactions artifact recovered the right products from the prose in every case, so nothing downstream is currently wrong, but the drawings check cannot be said to have passed on a read this thin.",
+      "confidence": "high"
+    },
+    {
+      "check": "linkage",
+      "severity": "minor",
+      "record": "Example 15_Step 2",
+      "field": "cross_reference_unresolved",
+      "problem": "cross_reference_unresolved is false on four etherification records whose sibling records under the same circumstances have it true.",
+      "source_line": 524,
+      "quote": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+      "artifact_says": "Example 13_Step 2 and 14_Step 2 have cross_reference_unresolved true; Example 15_Step 2, 16_Step 2, 17_Step 2b, 18_Step 2, 19_Step 2 and 20_Step 2 have it false. All eight draw their substrate from the same \"same as Example 1\" step (1).",
+      "should_be": "One value for all eight. False is correct on my reading, since the reference resolves, in which case Example 13_Step 2 and 14_Step 2 should be corrected rather than the other six.",
+      "confidence": "medium"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "Example 7_Step 1",
+      "field": "reaction_class",
+      "problem": "reaction_class hydrolysis is used for six ester cleavages in which no water is present, and the specification explicitly says conventional hydrolysis is not what is happening.",
+      "source_line": 182,
+      "quote": "酯的碱解为常规反应，但本发明中所用的原料2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯的分子结构中存在对碱较为敏感的活性基团苄溴，常规的酯的水解手段在本发明中不可行",
+      "artifact_says": "reaction_class hydrolysis on all twenty step-1 records, including Example 7 (sodium tert-butoxide), 8 (potassium tert-butoxide), 9 (sodium hydride), 10 (potassium hydride), 11 (sodium metal) and 12 (potassium metal), where the only proton source is the tertiary alcohol solvent and no water is charged.",
+      "should_be": "Hydrolysis is right for Examples 1 to 6, which charge aqueous NaOH or KOH. For Examples 7 to 12 the closed list of A2 rule 17 has no member for an anhydrous alkoxide ester cleavage, so either use other with the reasoning in notes, or keep hydrolysis and state in every one of the twenty records that it stands for the patent's 碱解 and not for hydrolysis in the water sense. Right now the choice is silent.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 15_Step 1",
+      "field": "reaction_class_confidence",
+      "problem": "The eight cross-reference stub records carry two different confidence values on identical evidence.",
+      "source_line": 524,
+      "quote": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+      "artifact_says": "high on Example 13_Step 1, 14_Step 1 and 18_Step 1; medium on Example 15_Step 1, 16_Step 1, 17_Step 1, 19_Step 1 and 20_Step 1.",
+      "should_be": "One value for all eight. The eight source sentences are identical apart from the example number.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Example 2_Step 1",
+      "field": "compounds[product].quantity.mmol",
+      "problem": "The step-1 product is given a mole figure in three records and left null in seventeen, from the same kind of statement made at the same place in the text.",
+      "source_line": 317,
+      "quote": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(97.8％，0.1mol)分八次加入反应瓶中",
+      "artifact_says": "product mmol 100.0 on Example 2_Step 1, Example 8_Step 1 and Example 10_Step 1; null on the seventeen other step-1 records, including Example 1_Step 1 whose step 2b charges 0.1 mol of the same salt at line 294.",
+      "should_be": "One convention. The 0.1 mol is printed only where the salt is consumed, so leaving it on the consuming record and null on the producing record is the cleaner reading; either way the three outliers should match the seventeen.",
+      "confidence": "high"
+    },
+    {
+      "check": "linkage",
+      "severity": "minor",
+      "record": "Example 1_Step 2b",
+      "field": "precursor_step",
+      "problem": "The alkoxide made in the immediately preceding record is a reactant here and the link is not recorded anywhere.",
+      "source_line": 294,
+      "quote": "向三氟乙醇醇钠中加入200mL THF，搅拌溶解后控制釜温在5℃",
+      "artifact_says": "precursor_step \"Step 1\", linkage_confirmed true; compounds includes reactant \"sodium 2,2,2-trifluoroethoxide\", which is the product of Example 1_Step 2a. Same in Example 2_Step 2, 5_Step 2, 8_Step 3, 17_Step 2b, 18_Step 2, 19_Step 2 and 20_Step 2.",
+      "should_be": "precursor_step holds one string, so naming the benzoate salt chain is defensible; the second link should then be named in notes on all eight records so it is not simply lost. Currently no field and no note records it.",
+      "confidence": "low"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Summary of the Invention_Step 1",
+      "field": "step_label",
+      "problem": "No Scheme Step records were emitted for the two schemes drawn in Summary of the Invention, which A2 rule 5f directs for a section that carries both prose steps and a drawn scheme.",
+      "source_line": 161,
+      "quote": "[0016] 此步骤所述反应过程可以以如下反应式表示：",
+      "artifact_says": "Summary of the Invention has exactly two records, Step 1 and Step 2, each merging the prose paragraph with the scheme that follows it. Background does the same for [0007] and [0008], with notes stating that rule 5f is deliberately not used.",
+      "should_be": "This is a deviation from the pass prompt worth recording rather than a chemistry error, and the annotator's reading is the better one: [0016] and [0020] introduce each scheme as a representation of the step just described, so the prose and the scheme are one route and separate Scheme Step records would double-count. Two things follow. The prompt's stated premise for this document, that the prose and the scheme disagree on at least two steps and that the prose gives eight steps against the scheme's nine, does not hold here and looks carried over from another patent, and the same is true of rule 5e's claim that a scheme in this document was marked unclear by the vision pass. Record that mismatch between the prompt and the document, since a consumer counting records against the prompt will otherwise read two absent records as a recall miss.",
+      "confidence": "medium"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "schema",
+      "what_was_verified": "The union of keys across all 54 records contains no id, no reaction_uuid, no feasibility_score, no template_r field and no vector field. reactant_smiles, smiles_source, product_smiles, product_smiles_source and canonical_rxn are null in all 54, and no record carries a SMILES, a molecular formula or a molecular weight anywhere in a structured field, even though the IMAGE_EXTRACT spans hand them over. Every required field named in the A2 output block is present on every record."
+    },
+    {
+      "check": "precision",
+      "what_was_verified": "No fabricated defaults. atmosphere is null in all 54 records and nitrogen appears nowhere in the artifact, matching a document that never mentions an atmosphere. pressure.type is not_specified in all 54, correctly, since 负压脱溶 is a workup operation and is recorded as workup.concentration_method. light_source, cooling_method, stirring, reactor_type, quenching_agent, extraction_solvent, extraction_count, extraction_volume_ml and drying_agent are null throughout, and none of them is stated in the document. selectivity is null on all 54, correct for a patent that reports no ee, de or dr; the (RS) in the product name is not treated as a stated selectivity."
+    },
+    {
+      "check": "vocabulary",
+      "what_was_verified": "Every enum value is inside its closed list. reaction_class uses only hydrolysis, nucleophilic_substitution and salt_formation, all in the rule 17 list. mechanism_type uses only ionic and not_determinable, temperature.type only exact, range, room_temperature and not_specified, scale only lab and not_specified, reaction_class_confidence only high and medium. All 54 records' tags are category:value with lowercase snake_case ASCII values; the 13 categories used are all within the 16 of rule 26, and every value inside solvent_class, catalyst_class, workup_type, purification, safety, step_role, linkage and is_one_pot is a listed member. All validation_flags used are names defined in rule 27."
+    },
+    {
+      "check": "fidelity",
+      "what_was_verified": "Every temperature and time in the twenty examples was checked against its line. All 32 exact vessel temperatures match (25, 30, 40, 5, 10, 15 and -5 C), room_temperature is used only where 室温 appears, and no range was flattened: Claims_Step 1 and Summary_Step 1 keep 25 to 40 C and Claims_Step 2 and Summary_Step 2 keep -5 to 15 C as ranges. Every time_h matches (5, 6, 7 and 12 h in step 1; 3, 4, 5 and 6 h in step 2), and the 1 to 3 h staged addition of the salt in eight portions is kept in addition_profile and never folded into time_h. Reflux appears nowhere in the document and nowhere in the artifact. All solvent volumes were checked and match, including the two-solvent charge of Example 10 (tert-amyl 50 mL plus tert-butanol 150 mL) and the 70, 130, 160, 200 and 350 mL charges elsewhere."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "All 40 printed mass, strength and mole triples for the bases, alcohols and metals were recomputed. Every one implies the correct molecular weight: NaOH at 48, 30 and 96 percent gives 40.2, 39.9 and 40.15 against 40.00; KOH at 85 and 30 percent gives 55.86 to 56.23 against 56.11; NaH and KH at 60 and 30 percent give 24.0 and 40.0; sodium and potassium tert-butoxide give 96.1 to 96.4 and 111.6 to 112.2; trifluoroethanol gives 99.7 to 99.9 against 100.04 and tetrahydrofurfuryl alcohol 101.6 to 102.2 against 102.13. The worst case is Example 11's 2.4 g of 99 percent sodium for 0.105 mol, implying 22.6 against 22.99, 1.6 percent low, and Example 12's potassium, 1.1 percent low; both are inside the rounding of a two-figure mass, so molar_mass_inconsistent is correctly not raised anywhere. The 34.8 g at 98 percent ester charge gives 0.09984 mol against a printed 0.1 mol in all twelve examples that print it."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "The fourteen examples not named in my findings genuinely close. Recomputing the printed two-step yield from the printed mass, the printed HPLC content and 0.09984 mol, with 346.703 for C11H10ClF3O5S and 348.797 for C14H17ClO6S, gives deviations of +0.01, +0.12, -0.02, +0.07, +0.15, -0.07, +0.12, -0.02, +0.16, -0.05, +0.18, +0.00, +0.10 and +0.01 points for Examples 1, 5, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 and 20. mass_balance_implausible is correctly withheld from all fourteen, and correctly raised on Example 2_Step 2 and Example 6_Step 2."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "Step to step continuity. In every example step 1 charges 0.1 mol of the methyl ester and step 2 charges 0.1 mol of the salt, and step 1 never prints an output mass, so the carry can be neither confirmed nor contradicted and scale_discontinuity is correctly not raised. For Examples 13 to 20, whose step (1) is Example 1's, the text says the procedure is repeated (与实施例1所述步骤相同) rather than that Example 1's single batch is shared, so the nine draws on one 0.1 mol batch are not a continuity failure either. The molar ratios implied by the printed charges all sit inside the claimed windows: 1.00 to 1.10 base to ester in step 1 against claim 3's 1:(1 to 1.1), 1.05 to 1.35 alcohol and 1.2 to 1.5 base in step 2 against claims 5 and 6, and the tertiary alcohol at 70 to 350 mL per 0.1 mol against claim 2's 700 to 3500 mL per mol."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "Every compound and reagent name was compared against the EN line beside it across the claims, the summary and all twenty examples. There is no case where the Chinese and the English name different compounds, and translation_conflict is correctly absent from all 54 records. The artifact follows the Chinese throughout: 钠盐 and 钾盐 become sodium and potassium salt with the right metal in all twenty step-1 products, 叔戊醇 becomes tert-amyl alcohol in Examples 2 and 10, 2-甲基-2-戊醇 becomes 2-methyl-2-pentanol in Example 9, 2-四氢呋喃甲醇 becomes tetrahydrofurfuryl alcohol, and 金属钠 and 金属钾 become sodium and potassium metal rather than a hydride. One thing to note without calling it a defect: the Chinese of [0032] at line 199 and of [0039] at line 218 says 氢氧化钾使用时先制成氢氧化钠水溶液, an aqueous sodium hydroxide solution where the subject is potassium hydroxide, which is an error in the patent, and the EN line reproduces it faithfully, so it is not a translation conflict."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "All twenty step-1 to etherification links were substantiated compound by compound. In every case the precursor record's product identifier appears verbatim among the later record's reactant identifiers, with the right metal, including the six sections where the drawn scheme names the other metal: Example 3, 4, 5, 8 and 12 all keep the prose metal in the structured fields. linkage_confirmed is true on exactly the 20 records with a precursor and false on the 34 without, and precursor_step is null on every first step and on every alkoxide preparation, which consume no earlier product."
+    },
+    {
+      "check": "drawings",
+      "what_was_verified": "Every drawing/text conflict was re-derived from the page images rather than from the IMAGE_EXTRACT spans, and each of the five is a real inconsistency in the patent's own drawings, correctly flagged with the prose kept in the structured fields per rule 5c. Page p10 [0085]: Example 3's step (2) scheme letters the substrate KO2C while [0086] charges the sodium salt. Page p11 [0092]: Example 4's letters KO2C and C4H9ONa while [0093] charges the sodium salt and potassium tert-butoxide, both counter-ions swapped. Page p11 [0099]: Example 5's letters NaO2C while [0101] charges the potassium salt. Page p13 [0111]: Example 7's step (1) letters NaOH while [0112] charges sodium tert-butoxide. Page p14 [0121]: Example 8's letters NaO2C while [0123] charges the potassium salt. Examples 1, 2, 6, 9, 10, 11, 12 and 13 to 20 were checked and their drawings agree with their prose, and no flag is raised on them."
+    },
+    {
+      "check": "drawings",
+      "what_was_verified": "Reagents above and below the arrow were never merged. In every etherification scheme the alcohol and the base sit above the arrow and HCl sits alone below it, and in every corresponding record HCl is carried with role acid and named in the workup narrative, never as a co-reagent of the etherification, while the alcohol and base are carried as reactant and base. Page p05 [0008] arrow 2 letters 1) 碱 and 2) 酸 as two numbered stages, and Background_Step 2 records the acid as a workup step with reagent_drawn_not_written raised because [0007] never names it. Substituent positions were checked against the pages for every drawn structure that matters: p04 [0003] tembotrione and tefuryltrione, both with Cl at 2, the alkoxymethyl at 3 and methanesulfonyl at 4 as the extracted SMILES have them; p06 [0025] the bis-benzyl ether, whose extracted C18H16Cl2O9S2 matches the drawn symmetric 2-Cl, 3-CH2OCH2, 4-SO2Me pattern atom for atom; p19 [0181] and [0187] the drawn potassium and sodium (tetrahydrofuran-2-yl)methoxide, where the CH2-O-M is on the ring carbon adjacent to the ring oxygen and not at the 3 position."
+    },
+    {
+      "check": "drawings",
+      "what_was_verified": "Route attribution. The scheme at [0008] is annotated as prior art and not as the invention's route, on the evidence of the page: [0007] at line 137 attributes it to CN105601548A, CN104292137A, US6376429, CN1364160A and CN1323292A, it stands under 背景技术, and [0010] at line 147 criticises the purity it gives. The invention's own schemes at [0017] and [0021] are annotated under Summary of the Invention. route_attribution_unclear is correctly absent from all 54 records, since the vision pass marked no scheme unclear in this document."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "procedure_text carries no [IMAGE_EXTRACT: ...] span in any of the 54 records, and each one is verbatim from the source, including the four that correctly join across a page break (Example 1_Step 1, Example 2_Step 2, Example 17_Step 2a and Example 19_Step 2). procedure_summary is non-empty on all 54, so no_procedure_summary is correctly never raised. is_complete equals the emptiness of validation_flags on all 54 records, as rule 28 requires. product_name equals the single is_product compound on all 54, and product_yield_pct and product_purity_pct equal that compound's own quantity.yield_pct and purity_pct in every record, so the flattening is internally consistent. Every record's two-step yield is stored with its basis stated, and no step-1 record carries a yield the patent does not print."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 56,
+    "present_in_artifact": 54,
+    "missing": [
+      "The side reaction of [0024] and [0025] at lines 182 to 185: conventional ester hydrolysis of methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate consuming the benzylic bromide to give benzyl alcohol and the bis-benzyl ether drawn on page p06. No record, and non_synthetic is false on all 54.",
+      "The alkali metal alkoxide route of step (2) as recited in Summary of the Invention, [0041] to [0043] at lines 222 to 227 and drawn as 或ROM below the arrow of [0021]: the alkoxide itself and the sodium or potassium metal it is made from are absent from Summary of the Invention_Step 2, although Claims_Step 2 carries both.",
+      "Within otherwise present records: water 120 mL and hydrochloric acid from Example 6_Step 2 and Example 7_Step 2 (lines 386 and 405); the 30 percent mass concentration of the base in Example 3_Step 1, Example 3_Step 2, Example 15_Step 2 and Example 16_Step 2 (lines 325, 331, 533 and 543); the acidification pH in the conditions block of fourteen of the twenty etherification records, five of which state the number in their own ph_target_stage text."
+    ]
+  }
+}

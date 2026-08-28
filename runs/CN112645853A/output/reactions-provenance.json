@@ -1,0 +1,614 @@
+[
+  {
+    "reaction_id": "Background_Step 1",
+    "source_lines": [
+      137,
+      142,
+      143,
+      147
+    ],
+    "quote_zh": "以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯为原料，在碱作用下与相应的醇或直接与相应的醇钠反应制备得到目标物甲酯",
+    "arithmetic_check": "Nothing to close. This section states no mass, no volume, no mole count, no equivalents and no yield for either arrow, and an overview scheme carries none either, so no mass balance check, no molar mass check and no yield check is possible on this record. The only figures anywhere in the section are the market share, the growth rates, the launch and expiry dates in the background prose and the impurity proportions of [0010], and none of them is a charge. Neither mass_balance_implausible nor molar_mass_inconsistent nor scale_discontinuity is raised, and that is a measured absence of numbers and not a skipped check. For A5: the arithmetic of this patent can only be tested in the experimental sections, which do print masses and moles.",
+    "drawing_evidence": "IMAGE_EXTRACT reactions span at line 143, arrow step_id 1. Reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl, formula C10H10BrClO4S, which is methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate atom for atom and matches the name [0007] gives it. Conditions ROH and the word for base. Products empty. It agrees with the prose on the reactant and on the alcohol plus base pair and adds no reagent the prose lacks, so no drawing_text_conflict and no reagent_drawn_not_written. The empty product list is a limit of the read, since the drawn product carries a generic R and so can have no SMILES, and is not a disagreement. The prose alternative of reacting directly with the corresponding sodium alkoxide sits on no arrow, which is the reagent_written_not_drawn flag. The span at line 128 draws tembotrione and tefuryltrione and is not a transformation, and the span at line 135 returned an empty molecule list. The scheme lies between the markers [0008] and [0009] and the page read classifies it as prior art, consistent with [0007] attributing the route to five earlier publications, so route_attribution_unclear is not raised."
+  },
+  {
+    "reaction_id": "Background_Step 2",
+    "source_lines": [
+      132,
+      137,
+      143,
+      145,
+      147
+    ],
+    "quote_zh": "在进一步皂化制备得到2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸",
+    "arithmetic_check": "Nothing to close, for the same reason as arrow one: no mass, no volume, no mole count, no equivalents and no yield is printed for this arrow, and an overview scheme carries none. No mass balance, molar mass or yield check is possible, so mass_balance_implausible, molar_mass_inconsistent and scale_discontinuity are not raised, and that is a measured absence and not a skipped check. The impurity proportions [0010] prints, about 3 to 5 percent where R is trifluoroethyl and up to 8 to 12 percent where R is 2-tetrahydrofurylmethyl, are normalised shares of the impurity inside the product of this route, not a charge, not a yield and not a purity of the product, so nothing about them can be closed or contradicted either.",
+    "drawing_evidence": "IMAGE_EXTRACT reactions span at line 143, arrow step_id 2. Reactants empty, products empty, conditions a numbered pair, the base as stage one and an acid as stage two. The span therefore supplies no structure for this arrow; the connectivity comes from the arrow standing after arrow one plus the prose of [0007], which saponifies the methyl ester of arrow one to the acid, and the product identity comes from [0005] at line 132. Both drawn structures on this arrow carry a generic R, which is why the read could give them no SMILES and no name, and [0009] at line 145 leaves R generic too. The arrow agrees with the prose that a base takes the methyl ester to the acid. It disagrees by carrying an acid stage the prose never mentions, which is the reagent_drawn_not_written flag; that acid is recorded in workup and not as a reagent of the transformation."
+  },
+  {
+    "reaction_id": "Claims_Step 1",
+    "source_lines": [
+      43,
+      45,
+      49,
+      51,
+      53,
+      55,
+      57,
+      59,
+      61,
+      63,
+      108,
+      110
+    ],
+    "quote_zh": "(1)原料2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯在碱性物质存在下于三级醇溶剂中发生酯解反应得到2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐；",
+    "arithmetic_check": "Nothing to close, and nothing wrong. Claim 1 and claim 10 state no charge, no mass, no volume and no yield for this step, only ratios and ranges: the ester to basic substance molar ratio 1:(1 to 1.1) (claim 3), the tertiary alcohol at 700 to 3500 mL per mol of the ester (claim 2), 25 to 40 degrees C and 5 to 12 h (claim 4, restated in claim 10). With no absolute quantity anywhere, no mass balance and no molar mass check can be computed, so neither mass_balance_implausible nor molar_mass_inconsistent is raised. Open point for A5: the time range 5 to 12 h and the base ratio range are not representable in the single-float time_h and equivalents fields and are carried in molar_ratio_text and notes instead.",
+    "drawing_evidence": "None. This section contains no [IMAGE_EXTRACT] spans at all, so there is no drawn scheme to corroborate or contradict the prose, and no drawing_text_conflict, reagent_drawn_not_written or route_attribution_unclear is possible here. The step boundary comes from the claim's own (1) and (2) markers in claim 1 and claim 10."
+  },
+  {
+    "reaction_id": "Claims_Step 2",
+    "source_lines": [
+      43,
+      47,
+      65,
+      67,
+      69,
+      71,
+      73,
+      75,
+      77,
+      79,
+      81,
+      83,
+      85,
+      90,
+      92,
+      94,
+      96,
+      98,
+      100,
+      102,
+      104,
+      106,
+      108,
+      112
+    ],
+    "quote_zh": "(2)2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐在碱性物质存在下与醇反应或者将2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐反应，得到所述2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸。",
+    "arithmetic_check": "Nothing to close, and nothing wrong. Every stoichiometry is a ratio range against the benzoate salt: salt to alcohol 1:(1.05 to 1.35) (claim 5), salt to basic substance 1:(1.2 to 1.5) (claim 6), salt to alkali metal alkoxide 1:(1.2 to 1.5) (claim 7, restated in claim 10), solvent 700 to 3500 mL per mol of salt (claim 8). Conditions are -5 to 15 degrees C, a reaction time of 3 to 6 h, a salt addition time of 1 to 3 h and a post-acidification pH of 2 to 3. No absolute charge, mass or yield is stated, so no mass balance and no molar mass check can be computed and neither arithmetic flag is raised. Two open points for A5, both recorded in notes rather than flagged because no listed flag fits: claim 1 has step (2) give the free acid directly while claim 8 and claim 10 make the acidification the operation that gives it, and claim 7's alcohol plus alkali metal alkoxide preparation is a third transformation that the claims recite without any charge or isolation and that claim 10 omits, so it was not given a record of its own.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT] spans in this section, so nothing is drawn for this step and no drawing based flag applies. Note for A5 that the sodium versus potassium disagreement between drawing and prose seen elsewhere in this patent cannot arise in the claims, which never fix the counter-ion: the salt is printed as the generic 2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐 throughout."
+  },
+  {
+    "reaction_id": "Example 1_Step 1",
+    "source_lines": [
+      275,
+      286
+    ],
+    "quote_zh": "倒入釜中进行碱解反应，反应过程微微放热，控制釜温为25℃，反应7h",
+    "arithmetic_check": "Inputs as printed: sodium hydroxide 8.8 g at 48% stated as 0.105 mol, which gives 4.22 g of NaOH and 4.22/40.00 = 0.1056 mol, so it closes; methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate 34.8 g at 98% stated as 0.1 mol, which gives 34.10 g of ester and 34.10/341.60 (C10H10BrClO4S, from the drawn formula) = 0.0998 mol, so it closes. Base to ester is 1.05 to 1 by the printed moles, which the text never words as a ratio. No product mass, no product mole figure and no yield are stated for this step: the only product number is the in-process normalised content of 98.2%, so there is no mass balance to test and no discrepancy found. mass_balance_implausible and molar_mass_inconsistent are therefore not raised.",
+    "drawing_evidence": "The scheme at line 277 (single arrow, step_id 1) supports this step: reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl is the named methyl ester atom for atom, the arrow condition text is NaOH, and the product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] is the sodium benzoate the prose names in its in-process control. Drawing and prose agree on the alkali metal, on the base and on the surviving benzylic bromide, so no drawing_text_conflict arises. The only asymmetry is that the arrow carries no solvent while the prose charges 200 mL of tert-butanol, which is ordinary scheme abbreviation, not a disagreement, so reagent_written_not_drawn is not raised."
+  },
+  {
+    "reaction_id": "Example 1_Step 2a",
+    "source_lines": [
+      292,
+      293
+    ],
+    "quote_zh": "室温下投入5.2g氢化钠(60％，0.13mol)，搅拌至溶解完全，经脱溶后得到三氟乙醇醇钠固体，密封备用",
+    "arithmetic_check": "Inputs as printed: sodium hydride 5.2 g at 60% stated as 0.13 mol, which gives 3.12 g of NaH and 3.12/24.00 = 0.130 mol, closing exactly on the compound named. 2,2,2-Trifluoroethanol is charged by volume only, 50 mL, with no mass, density or mole figure, so its charge cannot be converted from the page alone and is not converted here; by volume it is a large excess over the hydride. No mass, mole figure or yield is stated for the isolated sodium 2,2,2-trifluoroethoxide, so there is no product-side arithmetic to test. Nothing fails: neither mass_balance_implausible nor molar_mass_inconsistent is raised.",
+    "drawing_evidence": "No IMAGE_EXTRACT span depicts this transformation. The alkoxide appears only as a condition text, CF3CH2ONa, on the single arrow of the scheme at line 290, where it is a reagent of the etherification rather than a product of its own arrow. So this record rests on the prose of line 292 alone, and the drawings neither corroborate nor contradict it. That is also why the section carries two drawings for three annotated steps."
+  },
+  {
+    "reaction_id": "Example 1_Step 2b",
+    "source_lines": [
+      294,
+      295
+    ],
+    "quote_zh": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中",
+    "arithmetic_check": "Stated input: sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate at 98.2%, 0.1 mol, mass not printed. Stated output: 32.9 g of product at 98.7% by HPLC, and a two-step yield of 93.8% based on the methyl ester charged in step (1), which was also 0.1 mol. Check: 32.9 g at 98.7% is 32.47 g of 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid, and 32.47/346.70 (C11H10ClF3O5S, from the drawn formula) = 0.0937 mol, which on the 0.1 mol basis is 93.7%. The printed 93.8% therefore closes to within 0.2 percentage points, inside the rounding of the assay and of the molecular weight. On 32.9 g uncorrected for assay the figure would be 94.9%, so the printed yield is consistent with the assay-corrected mass and not with the gross mass. Nothing fails, and mass_balance_implausible is not raised. The one thing a reader can get wrong here is the scope of the 93.8%: it spans steps (1) and (2), so it must not be scored as this step's yield.",
+    "drawing_evidence": "The scheme at line 290 (single arrow, step_id 1) supports this step: the reactant CS(=O)(=O)c1ccc(C(=O)[O][Na])c(Cl)c1CBr is the sodium benzoate of Step 1, drawn here with a covalent O-Na bond where line 277 drew the same salt as an ion pair, and the product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F is the named free acid. The arrow carries two condition texts, CF3CH2ONa and HCl. Both are in the prose, and the drawing and prose agree on the sodium alkoxide, so no sodium versus potassium conflict exists in this section. The prose does place the HCl after the solvent strip, as an acidification of the aqueous residue to pH 2, while the drawing shows it on the same arrow as the substitution; that is scheme compression of a workup rather than a factual disagreement, so it is recorded in workup and noted, not flagged. THF, water and the eight-portion addition appear only in the prose."
+  },
+  {
+    "reaction_id": "Example 10_Step 1",
+    "source_lines": [
+      446,
+      451
+    ],
+    "quote_zh": "室温下将14.0g氢化钾(30％，0.105mol)滴入其中，待氢化钾溶解完全后，控制釜温在25℃，将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应",
+    "arithmetic_check": "Charges. Potassium hydride 14.0 g at 30 percent strength gives 4.2 g, and the stated 0.105 mol implies a molecular weight of 40.0 against KH = 40.11, so the printed triple closes and molar_mass_inconsistent is not raised, despite the chemically odd wording (dropwise addition of a hydride, then complete dissolution in tertiary alcohols). Methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate 34.8 g at 98 percent gives 34.10 g, and the stated 0.1 mol implies 341.0 against C10H10BrClO4S = 341.60, correct to 0.2 percent; the actual mole content is 0.0998 mol, which is the 0.1 mol printed. Solvent volumes carry no mole figures. Product closure. No product mass and no yield are printed for step (1): the material is never isolated, the solvent is stripped and the residue goes straight into step (2), and the only figure given is an in-process chromatographic normalised content of 98.2 percent. There is therefore no mass balance to close or fail, and mass_balance_implausible is not raised. Continuity. The 0.1 mol carried forward into step (2) is the same charge, so no scale_discontinuity. Nothing in this step required a flag; that is the finding, not an omission.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 449, one arrow, step_id 1: reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl (C10H10BrClO4S), condition text KH, product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+] (C9H7BrClKO4S). It corroborates the single prose step, agrees with the prose on the reagent (potassium hydride), on the alkali metal (potassium, matching 钾盐 in the prose and not sodium), and on the transformation (the methyl ester is cleaved to the carboxylate salt and the benzylic bromide is retained). No drawing_text_conflict. Only the two tertiary alcohol solvents are written and not drawn, which is the normal omission of solvent from such a scheme, so no reagent_written_not_drawn; nothing is drawn that the prose does not write, so no reagent_drawn_not_written. The drawing is one of the 34 the vision pass classified invention_route, and it sits inside an experimental example, so route attribution is not in doubt and route_attribution_unclear is not raised."
+  },
+  {
+    "reaction_id": "Example 10_Step 2",
+    "source_lines": [
+      453,
+      458
+    ],
+    "quote_zh": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钾盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应5h",
+    "arithmetic_check": "Charges. Trifluoroethanol 13.6 g at 99 percent gives 13.46 g, and the stated 0.135 mol implies 99.73 against C2H3F3O = 100.04, correct to 0.3 percent. Potassium hydroxide 9.9 g at 85 percent gives 8.415 g, and the stated 0.15 mol implies 56.10 against KOH = 56.11, exact. The benzoate salt is charged as 98.2 percent material at 0.1 mol with no mass printed, which is the step (1) output unchanged, so no scale_discontinuity. Product closure. Limiting reagent is the benzoate salt at 0.100 mol (1.35 equivalents of alcohol and 1.5 of base are charged). The product 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid as named and drawn is C11H10ClF3O5S, molecular weight 346.70, so 0.100 mol gives 34.67 g theoretical. The printed 32.5 g at the printed 97.1 percent content is 31.56 g of pure acid, which is 0.0910 mol, or 91.0 percent on 0.100 mol and 91.2 percent on the 0.0998 mol of methyl ester actually charged in step (1). The patent prints 91.1 percent explicitly as a two-step yield on that methyl ester. IT CLOSES, on either basis, to within about 0.1 percent. Neither mass_balance_implausible nor molar_mass_inconsistent is raised anywhere in this section, and no number was adjusted to reach that result: the printed figures of Example 10 are simply self-consistent. Note that the printed yield is a two-step figure and must not be read as a yield for step (2) alone; that is recorded in notes and not repaired here.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 456, one arrow, step_id 1: reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+] (C9H7BrClKO4S), condition texts CF3CH2OH, KOH and HCl, product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F (C11H10ClF3O5S). It corroborates the step boundary, confirms connectivity from the step (1) product, and agrees with the prose on every drawn species, including potassium in both the benzoate salt and the base, so this example is not one of the sections where the drawn alkali metal contradicts the prose and no drawing_text_conflict is raised. All three drawn condition texts are written in the procedure, so no reagent_drawn_not_written; the drawn HCl is the workup acidification, which is why it is recorded in workup with ph_target 3.0 rather than as a reagent of the substitution. DMF and the workup water are written and not drawn, the ordinary omission of solvent and workup agent, so no reagent_written_not_drawn. Vision classified this drawing invention_route and it stands inside an experimental example, so route_attribution_unclear is not raised."
+  },
+  {
+    "reaction_id": "Example 11_Step 1",
+    "source_lines": [
+      462,
+      467
+    ],
+    "quote_zh": "向反应瓶中加入叔丁醇200mL，开动搅拌，室温下将2.4g金属钠(99％，0.105mol)加入其中，待金属钠溶解完全后，控制釜温在25℃，将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应",
+    "arithmetic_check": "Charges. Sodium metal 2.4 g at 99 percent stated as 0.105 mol: 0.105 x 22.99 = 2.414 g of sodium, which at the printed 99 percent strength needs 2.44 g of charge against the 2.4 g printed, and read the other way 2.4 g x 0.99 / 22.99 = 0.1033 mol against 0.105 mol printed. The gap is 1.6 percent and is within the rounding of a mass printed to one decimal, so no molar_mass_inconsistent is raised. Methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate 34.8 g at 98 percent stated as 0.1 mol: C10H10BrClO4S = 341.60, so 0.1 mol is 34.16 g pure and 34.86 g at 98 percent against 34.8 g printed, correct to 0.2 percent. Product closure. No mass and no yield are printed for the sodium salt, which is never isolated, so there is nothing to close: the only figure is the in-process normalised content of 98.3 percent, and the 0.1 mol carried into step (2) is the same molar amount as the ester charged here. Both printed pairs close against the compounds named, so neither mass_balance_implausible nor molar_mass_inconsistent is raised on this step, and no number has been adjusted.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 465, a one-arrow scheme: reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl, C10H10BrClO4S, which is the methyl ester the prose charges; conditions text Na, which is the sodium metal; product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, the sodium salt the prose names. The drawing corroborates the step boundary and the connectivity, and it agrees with the prose on the alkali metal, so no drawing_text_conflict. It disagrees only by omission: the tert-butanol is on no arrow, although the prose makes it the alkoxide precursor that cleaves the ester, and that omission is recorded as reagent_written_not_drawn on this record. The drawn product keeps the benzylic bromide, which confirms that only the methyl ester is cleaved."
+  },
+  {
+    "reaction_id": "Example 11_Step 2",
+    "source_lines": [
+      469,
+      477
+    ],
+    "quote_zh": "向反应釜中加入130mL  THF、10.8g  2-四氢呋喃甲醇(99％，0.105mol)和11.8g叔丁醇钠(98％，0.12mol)，开动搅拌，控制釜温在10℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.3％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应4h。",
+    "arithmetic_check": "Charges. Tetrahydrofurfuryl alcohol 10.8 g at 99 percent stated as 0.105 mol: C5H10O2 = 102.13, so 0.105 mol is 10.72 g pure and 10.83 g at 99 percent against 10.8 g printed, correct. Sodium tert-butoxide 11.8 g at 98 percent stated as 0.12 mol: C4H9ONa = 96.10, so 0.12 mol is 11.53 g pure and 11.77 g at 98 percent against 11.8 g printed, correct. The benzoate salt is charged as 0.1 mol at 98.3 percent with no mass printed, so no molecular weight can be tested on it. Product closure. Limiting input 0.1 mol; product C14H17ClO6S = 348.80; 33.0 g of solid assaying 96.6 percent is 31.88 g of the target compound, which is 0.0914 mol, that is 91.4 percent on 0.1 mol. That is exactly the printed 91.4 percent, and the printed yield is explicitly a two-step figure on the methyl ester of step (1), which was itself charged at 0.1 mol, so the basis is consistent. Mass, content and yield all close against the compound named and drawn, so no mass_balance_implausible and no molar_mass_inconsistent. Continuity: step (1) delivered 0.1 mol of the salt and this step charges 0.1 mol of it, so no scale_discontinuity. Nothing in this section required a flag on arithmetic.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 475, a one-arrow scheme: reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, the sodium salt of step (1); conditions texts THFA, C4H9ONa and HCl, which are the tetrahydrofurfuryl alcohol, the sodium tert-butoxide and the acidifying hydrochloric acid of the prose; product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1, C14H17ClO6S, the free acid. The drawing agrees with the prose on the substrate, the alcohol, the base, the alkali metal and the product, so no drawing_text_conflict and no reagent_drawn_not_written; the HCl drawn under the arrow is the workup acidification the prose describes and is recorded in workup rather than as a reagent. The THF medium and the workup water are on no arrow, but they take no part in the transformation, so no reagent_written_not_drawn. The drawn product carries no stereo bond, so the (RS) in the name comes from the prose alone."
+  },
+  {
+    "reaction_id": "Example 12_Step 1",
+    "source_lines": [
+      481,
+      486
+    ],
+    "quote_zh": "向反应瓶中加入叔丁醇200mL，开动搅拌，室温下将4.1g金属钾(99％，0.105mol)加入其中，待金属钾溶解完全后，控制釜温在25℃，将34.8g  2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应",
+    "arithmetic_check": "Charges. Potassium metal 4.1 g at 99 percent stated as 0.105 mol: K = 39.10, so 0.105 mol is 4.11 g of potassium, which at the printed 99 percent strength needs 4.15 g of charge against the 4.1 g printed, and read the other way 4.1 g x 0.99 / 39.10 = 0.1038 mol against 0.105 mol printed. The gap is 1.1 percent and is within the rounding of a mass printed to one decimal, so no molar_mass_inconsistent is raised. Methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate 34.8 g at 98 percent stated as 0.1 mol: C10H10BrClO4S = 341.60, so 0.1 mol is 34.16 g pure and 34.86 g at 98 percent against 34.8 g printed, correct to 0.2 percent. Product closure. No mass and no yield are printed for the potassium salt, which is never isolated, so there is nothing to close on this step: the only figure is the in-process normalised content of 98.1 percent, and the 0.1 mol carried into step (2) is the same molar amount as the ester charged here. Both printed pairs close against the compounds named, so neither mass_balance_implausible nor molar_mass_inconsistent is raised, and no number has been adjusted.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 484, a one-arrow scheme: reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl, C10H10BrClO4S, which is the methyl ester the prose charges; conditions text K, which is the metallic potassium; product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+], C9H7BrClKO4S, the potassium salt the prose names. The drawing corroborates the step boundary and the connectivity, and it agrees with the prose on the alkali metal, so no drawing_text_conflict. It disagrees only by omission: the tert-butanol is on no arrow, although the prose makes it the alkoxide precursor that cleaves the ester, and that omission is recorded as reagent_written_not_drawn on this record. The drawn product keeps the benzylic bromide, which confirms that only the methyl ester is cleaved."
+  },
+  {
+    "reaction_id": "Example 12_Step 2",
+    "source_lines": [
+      488,
+      493
+    ],
+    "quote_zh": "向反应釜中加入130mL  DMF、10.8g  2-四氢呋喃甲醇(99％，0.105mol)和14.1g叔丁醇钾(95％，0.12mol)，开动搅拌，控制釜温在10℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钾盐(98.1％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应4h",
+    "arithmetic_check": "Charges. Tetrahydrofurfuryl alcohol 10.8 g at 99 percent stated as 0.105 mol: C5H10O2 = 102.13, so 0.105 mol is 10.72 g pure and 10.83 g at 99 percent against 10.8 g printed, correct. Potassium tert-butoxide 14.1 g at 95 percent stated as 0.12 mol: C4H9OK = 112.21, so 0.12 mol is 13.47 g pure and 14.18 g at 95 percent against 14.1 g printed, correct to 0.6 percent, and read the other way 14.1 g x 0.95 / 112.21 = 0.1194 mol against 0.12 mol printed. The benzoate salt is charged as 0.1 mol at 98.1 percent with no mass printed, so no molecular weight can be tested on it. Product closure. Limiting input 0.1 mol as printed, or 0.0998 mol taken from the step (1) ester charge; product C14H17ClO6S = 348.80; 33.0 g of solid assaying 96.8 percent is 31.94 g of the target compound, which is 0.0916 mol, that is 91.6 percent on the printed 0.1 mol and 91.7 percent on the 0.0998 mol the ester charge actually gives, against the printed 91.8 percent. The residual gap is 0.1 to 0.2 percentage points; the printed figure is reproduced exactly if the assay is read as 97.0 percent rather than 96.8, or if a slightly lower molecular weight is used, so the difference sits inside the rounding of a mass printed to one decimal and an assay printed to one decimal. It is recorded here rather than flagged: no mass_balance_implausible and no molar_mass_inconsistent is raised, and nothing has been changed. The printed yield is explicitly a two-step figure on the methyl ester of step (1), which was itself charged at 0.1 mol, so the basis is consistent. Continuity: step (1) delivered 0.1 mol of the salt and this step charges 0.1 mol of it, so no scale_discontinuity.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 491, a one-arrow scheme: reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+], C9H7BrClKO4S, the potassium salt of step (1); conditions texts THFA, C4H9OK and HCl, which are the tetrahydrofurfuryl alcohol, the potassium tert-butoxide and the acidifying hydrochloric acid of the prose; product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1, C14H17ClO6S, the free acid. The drawing agrees with the prose on the substrate, the alcohol, the base, the alkali metal and the product, so no drawing_text_conflict and no reagent_drawn_not_written; the HCl drawn under the arrow is the workup acidification the prose describes and is recorded in workup rather than as a reagent. The DMF medium and the workup water are on no arrow, but they take no part in the transformation, so no reagent_written_not_drawn. The drawn product carries no stereo bond, so the (RS) in the name comes from the prose alone."
+  },
+  {
+    "reaction_id": "Example 13_Step 1",
+    "source_lines": [
+      497,
+      502
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯",
+    "arithmetic_check": "Nothing to close. This step prints no charge, no mass, no mole figure and no yield; the only number is the 98.2 percent content of the isolated sodium salt, and no assay method is given for it. No mass balance and no molar-mass check can be computed. The step's quantities live in Example 1, which was not available to this call, so the inheritance is flagged conditions_unresolved rather than checked. Open point for A5: whether Example 1 charges 0.1 mol of the methyl ester and reports a quantitative step (1), which is what step (2)'s stated two-step yield of 89.1 percent would require.",
+    "drawing_evidence": "None. No scheme is drawn for step (1) in this section; the only IMAGE_EXTRACT span in Example 13 is at line 506 and belongs to step (2). Examples 13 to 20 carry one drawing each for this reason, against two in Examples 1 to 12. The step boundary was taken from the document's own (1) and (2) markers."
+  },
+  {
+    "reaction_id": "Example 13_Step 2",
+    "source_lines": [
+      504,
+      509
+    ],
+    "quote_zh": "向反应釜中加入200mL DMF、11.8g 2-四氢呋喃甲醇(99％，0.115mol)和5.4g氢氧化钠(96％，0.13mol)，开动搅拌，控制釜温在5℃",
+    "arithmetic_check": "Closes. Stated inputs: 200 mL DMF; 11.8 g 2-tetrahydrofuran methanol at 99 percent, 0.115 mol; 5.4 g sodium hydroxide at 96 percent, 0.13 mol; benzoate salt at 98.2 percent, 0.1 mol, no mass printed. Stated output: 32.6 g of product at 95.3 percent HPLC content, two-step yield 89.1 percent on the methyl ester. Checks: 11.8 x 0.99 = 11.68 g at 102.13 gives 0.1144 mol against 0.115 mol printed, within 0.6 percent. 5.4 x 0.96 = 5.18 g at 40.00 gives 0.1296 mol against 0.13 mol printed, within 0.4 percent. Product 32.6 x 0.953 = 31.07 g at 348.81 gives 0.0891 mol, which is 89.1 percent of the 0.1 mol of salt charged; theoretical maximum on 0.1 mol is 34.88 g, above the 32.6 g printed. So no mass_balance_implausible and no molar_mass_inconsistent. THE ONE DISCREPANCY: the 89.1 percent that the arithmetic reproduces exactly as a single-step yield on the 0.1 mol charged here is printed as a two-step yield calculated on the methyl ester of step (1). Both readings can only be true together if step (1) were quantitative at exactly 0.1 mol of methyl ester, and step (1) prints no charge in this section, so the stated basis is unverifiable here. Recorded as printed, flagged cross_reference_unresolved, not corrected. For the same reason step (1)'s output charge is absent and scale_discontinuity could not be tested either way.",
+    "drawing_evidence": "The single IMAGE_EXTRACT reaction span at line 506 supports this step and agrees with the prose. One arrow, step_id 1: reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] (C9H7BrClNaO4S), the SODIUM benzoate salt as the prose says, so no alkali metal conflict; conditions THFA, NaOH and HCl, all three written in the procedure, so no reagent_drawn_not_written; product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1 (C14H17ClO6S), the free acid named on lines 504 and 509 and carrying no stereo bond where the prose prints (RS). The arrow omits the DMF solvent and the workup water that the prose charges; treated as scheme abbreviation of a solvent, not as a disagreement, so reagent_written_not_drawn is not raised. The span is stripped from procedure_text per rule 5h."
+  },
+  {
+    "reaction_id": "Example 14_Step 1",
+    "source_lines": [
+      513
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "arithmetic_check": "Nothing to close. This step prints no charge, no mass, no mole figure and no yield; the only number is the 98.2 percent content of the isolated sodium salt, and no assay method is given for it. No mass balance and no molar-mass check can be computed. The step's quantities live in Example 1, which was not available to this call, so the inheritance is flagged conditions_unresolved rather than checked. Open point for A5: whether Example 1 charges 0.1 mol of the methyl ester and reports a quantitative step (1), which is what step (2)'s stated two-step yield of 89.8 percent would require.",
+    "drawing_evidence": "None. No scheme is drawn for step (1) in this section; the only IMAGE_EXTRACT span in Example 14 is at line 517 and belongs to step (2). Examples 13 to 20 carry one drawing each for this reason, against two in Examples 1 to 12. The step boundary was taken from the document's own (1) and (2) markers."
+  },
+  {
+    "reaction_id": "Example 14_Step 2",
+    "source_lines": [
+      515,
+      517,
+      520
+    ],
+    "quote_zh": "向反应釜中加入200mLDMF、11.8g 2-四氢呋喃甲醇(99％，0.115mol)和8.6g氢氧化钾(85％，0.13mol)，开动搅拌，控制釜温在5℃",
+    "arithmetic_check": "Closes within the precision of the printed figures. Stated inputs: 200 mL DMF; 11.8 g 2-tetrahydrofuran methanol at 99 percent, 0.115 mol; 8.6 g potassium hydroxide at 85 percent, 0.13 mol; benzoate salt at 98.2 percent, 0.1 mol, no mass printed. Stated output: 32.6 g of product at 95.9 percent HPLC content, two-step yield 89.8 percent on the methyl ester. Checks: 11.8 x 0.99 = 11.68 g at 102.13 gives 0.1144 mol against 0.115 mol printed, within 0.6 percent. 8.6 x 0.85 = 7.31 g at 56.11 gives 0.1303 mol against 0.13 mol printed, within 0.3 percent, so the potassium hydroxide mass and strength do imply its own molecular weight. Product 32.6 x 0.959 = 31.26 g at 348.80 gives 0.0896 mol, which is 89.6 percent of the 0.1 mol of salt charged, against 89.8 percent printed; taking the printed mass and content at the top of their rounding, 32.649 x 0.9594 = 31.32 g, gives 0.0898 mol and reproduces 89.8 percent exactly, so the 0.2 point residual is rounding. Theoretical maximum on 0.1 mol is 34.88 g, above the 32.6 g printed. So no mass_balance_implausible and no molar_mass_inconsistent. THE ONE DISCREPANCY: the 89.8 percent that the arithmetic reproduces as a single-step yield on the 0.1 mol charged here is printed as a two-step yield calculated on the methyl ester of step (1). Both readings can only be true together if step (1) were quantitative at exactly 0.1 mol of methyl ester, and step (1) prints no charge in this section, so the stated basis is unverifiable here. Recorded as printed, flagged cross_reference_unresolved, not corrected. For the same reason step (1)'s output charge is absent and scale_discontinuity could not be tested either way.",
+    "drawing_evidence": "The single IMAGE_EXTRACT reaction span at line 517 supports this step and agrees with the prose. One arrow, step_id 1: reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] (C9H7BrClNaO4S), the SODIUM benzoate salt as the prose says; conditions THFA, KOH and HCl, all three written in the procedure, the KOH matching the potassium hydroxide of the prose, so there is no alkali metal conflict in either direction and no reagent_drawn_not_written; product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1 (C14H17ClO6S), the free acid named in the heading on line 515 and again in the assay sentence on line 520, carrying no stereo bond where the prose prints (RS). The arrow omits the DMF solvent and the workup water that the prose charges; treated as scheme abbreviation of a solvent, not as a disagreement, so reagent_written_not_drawn is not raised. The span is stripped from procedure_text per rule 5h."
+  },
+  {
+    "reaction_id": "Example 15_Step 1",
+    "source_lines": [
+      524,
+      524
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "arithmetic_check": "No mass, no mole figure and no yield are printed for this step, so there is nothing to check. The only number is the 98.2 percent content of the sodium salt obtained. The 0.1 mol figure that appears later belongs to the charge into step (2). Nothing fails and nothing could be verified; no arithmetic flag is raised and none is cleared.",
+    "drawing_evidence": "None. The single IMAGE_EXTRACT span in this section, on line 531, sits under the step (2) heading on line 526 and draws the step (2) etherification, not this step. No scheme is drawn for step (1) in Examples 13 to 20, so there is no drawing to agree or disagree with the prose here."
+  },
+  {
+    "reaction_id": "Example 15_Step 2",
+    "source_lines": [
+      526,
+      533
+    ],
+    "quote_zh": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为2h，加毕保温反应4h",
+    "arithmetic_check": "Stated input to this step: 0.1 mol of the sodium benzoate salt at 98.2 percent content, no mass printed. Stated product: 32.6 g at 94.6 percent by high performance liquid chromatography, so 30.84 g of the acid; at a molecular weight of 348.8 for C14H17ClO6S that is 0.0884 mol, which is 88.4 percent of the 0.1 mol charged and reproduces the printed yield figure exactly. The text words that figure as a two-step yield calculated on methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate, whose charge is printed nowhere in this section, so the stated basis cannot be verified and is only consistent with the arithmetic if step (1) is quantitative. The mass is below the 34.9 g theoretical from 0.1 mol, so the product mass does not exceed what the input moles could give and mass_balance_implausible is not raised; the discrepancy is in the stated basis of the yield, and it is recorded in notes rather than flagged. Reagent checks close: 17.3 g of 30 percent sodium hydroxide solution is 5.19 g of sodium hydroxide, 0.130 mol at 40.0, against the printed 0.13 mol; 11.8 g of tetrahydrofurfuryl alcohol is 0.1155 mol at 102.1, against the printed 0.115 mol, the printed figure evidently taken on the gross mass rather than on the 99 percent content, which would give 0.114 mol. No molar_mass_inconsistent. Step (1) prints no output quantity, so scale_discontinuity could not be checked.",
+    "drawing_evidence": "The IMAGE_EXTRACT reaction scheme on line 531, one arrow, step_id 1. Its drawn reactant is the sodium benzoate salt and its drawn product is the free ether acid, matching the prose of this step, and its arrow conditions read THFA, NaOH and HCl. It agrees with the prose on the alkali metal, sodium in both, so no drawing_text_conflict. Two differences of completeness only: the reaction solvent named in the prose does not appear on the arrow, which is why reagent_written_not_drawn is raised, and the hydrochloric acid drawn on the arrow is a workup acidification in the prose rather than a reagent of the substitution, so it is recorded in workup and noted rather than promoted to an arrow reagent."
+  },
+  {
+    "reaction_id": "Example 16_Step 1",
+    "source_lines": [
+      537,
+      537
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "arithmetic_check": "No mass, no mole figure and no yield are printed for this step, so there is nothing to check. The only number is the 98.2 percent content of the sodium salt obtained. The 0.1 mol figure that appears later belongs to the charge into step (2). Nothing fails and nothing could be verified; no arithmetic flag is raised and none is cleared.",
+    "drawing_evidence": "None. The single IMAGE_EXTRACT span in this section, on line 541, sits under the step (2) heading on line 539 and draws the step (2) etherification, not this step. No scheme is drawn for step (1) in Examples 13 to 20, so there is no drawing to agree or disagree with the prose here."
+  },
+  {
+    "reaction_id": "Example 16_Step 2",
+    "source_lines": [
+      539,
+      543
+    ],
+    "quote_zh": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为2h，加毕保温反应4h",
+    "arithmetic_check": "Stated input to this step: 0.1 mol of the sodium benzoate salt at 98.2 percent content, no mass printed. Stated product: 32.6 g at 94.8 percent by high performance liquid chromatography, so 30.90 g of the acid; at a molecular weight of 348.8 for C14H17ClO6S that is 0.0886 mol, which is 88.6 percent of the 0.1 mol charged, against the printed 88.8 percent. The gap is 0.2 percentage points. Rounding of the printed mass and content reaches 88.8 percent only at the extreme of the interval, 32.65 g at 94.85 percent giving 88.8 percent, so the printed figure closes only at the edge of rounding and not in the middle of it. The text also words that figure as a two-step yield calculated on methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate, whose charge is printed nowhere in this section, so the stated basis cannot be verified and is only consistent with the arithmetic if step (1) is quantitative. The mass is below the 34.9 g theoretical from 0.1 mol, so the product mass does not exceed what the input moles could give and mass_balance_implausible is not raised; the shortfall against the printed yield is recorded here and in notes rather than flagged, because it is inside the rounding interval of the printed figures. Reagent checks close: 26.1 g of 30 percent potassium hydroxide solution is 7.83 g of potassium hydroxide, 0.1395 mol at 56.11, against the printed 0.14 mol; 12.9 g of tetrahydrofurfuryl alcohol at 99 percent is 12.77 g, 0.1250 mol at 102.13, against the printed 0.125 mol, so here the printed mole figure is taken on the 99 percent content. No molar_mass_inconsistent. Step (1) prints no output quantity, so scale_discontinuity could not be checked.",
+    "drawing_evidence": "The IMAGE_EXTRACT reaction scheme on line 541, one arrow, step_id 1. Its drawn reactant is the sodium benzoate salt and its drawn product is the free ether acid, matching the prose of this step, and its arrow conditions read THFA, KOH and HCl. Prose and drawing agree on both alkali metals, sodium on the substrate and potassium in the base, so the sodium versus potassium conflict seen elsewhere in this patent does not arise here and no drawing_text_conflict is raised. Two differences of completeness only: the reaction solvent named in the prose does not appear on the arrow, which is why reagent_written_not_drawn is raised, and the hydrochloric acid drawn on the arrow is a workup acidification in the prose rather than a reagent of the substitution, so it is recorded in workup and noted rather than promoted to an arrow reagent. The drawn structures carry no stereo bond while the prose prints (RS), and no stereochemistry is added from the drawing."
+  },
+  {
+    "reaction_id": "Example 17_Step 1",
+    "source_lines": [
+      547,
+      548
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "arithmetic_check": "Nothing to check. The paragraph prints one number, the 98.2 percent content of the sodium benzoate salt, and no mass, no volume and no mole figure, so there is no mass/mole pair and no yield to close. The 98.2 percent is a content, not a yield. No arithmetic flag is raised, and the absence of a flag here records the absence of printed numbers, not a check that passed.",
+    "drawing_evidence": "None for this step. The only IMAGE_EXTRACT span in the section, at line 551, is the step (2) reaction scheme; no scheme is drawn for step (1). That scheme's single arrow starts from the sodium benzoate salt, which is this step's product, so it corroborates the identity and the sodium counter ion of the product but says nothing about how step (1) was run. The missing step (1) drawing is consistent with the step being a cross-reference to Example 1."
+  },
+  {
+    "reaction_id": "Example 17_Step 2a",
+    "source_lines": [
+      553,
+      558
+    ],
+    "quote_zh": "向反应釜中加入50mL  2-四氢呋喃甲醇，开动搅拌，室温下投入5.2g氢化钠(60％，0.13mol)，搅拌至溶解完全，经高真空油泵负压脱溶后得到2-四氢呋喃甲醇醇钠固体，密封",
+    "arithmetic_check": "Sodium hydride: 5.2 g printed at 60 percent strength with 0.13 mol. 5.2 x 0.60 = 3.12 g of contained sodium hydride, and 3.12 / 24.00 = 0.130 mol, which is exactly the printed figure, so the pair implies a molecular weight consistent with sodium hydride and no molar_mass_inconsistent arises. Taken gross the 5.2 g would be 0.217 mol, so the printed mole figure is plainly the contained-basis one, which is how the strength is stated. Tetrahydrofurfuryl alcohol: 50 mL printed with no mass and no mole figure, so there is no pair to test; at the usual density that is roughly half a mole of alcohol against 0.13 mol of hydride, the excess the procedure implies by stripping it off afterwards. No mass, yield or content is printed for the isolated alkoxide, so there is no product closure to test and mass_balance_implausible cannot be evaluated on this step rather than having been evaluated and passed. No arithmetic flag is raised.",
+    "drawing_evidence": "No arrow is drawn for this transformation. In the step (2) scheme at line 551 the alkoxide appears only as a condition on the arrow, recorded there as sodium (tetrahydrofuran-2-yl)methoxide drawn as a structure rather than written as a name or formula. That agrees with the prose, which makes the sodium alkoxide of tetrahydrofurfuryl alcohol, so the counter ion in the drawing and the counter ion in the prose match. The scheme carries no charge, no temperature and no time for this preparation, which is why the record is built from the prose alone. The sentence that isolates the alkoxide is split by the page break at line 556: it ends with the sealing instruction on line 553 and resumes on line 558, where the enriched text also carries a stray None token, which is stripped in procedure_text. quote_zh is taken from line 553 alone because no verbatim fragment can span that break."
+  },
+  {
+    "reaction_id": "Example 17_Step 2b",
+    "source_lines": [
+      549,
+      560
+    ],
+    "quote_zh": "向2-四氢呋喃甲醇醇钠中加入200mL  THF，搅拌溶解后控制釜温在5℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应3h。反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至3，之后经过滤、水淋洗、烘干得到产物33.1g，HPLC定量得目标化合物2-氯-3-[(RS)-四氢呋喃-2-基甲氧基甲基]-4-甲磺酰基苯甲酸含量为97.5％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率92.5％。",
+    "arithmetic_check": "Stated input: sodium benzoate salt 0.1 mol at 98.2 percent content, so 0.0982 mol of contained salt; no mass is printed for it, so there is no mass/mole pair to test and molar_mass_inconsistent cannot arise for the charge. Stated output: 33.1 g of product at 97.5 percent by quantitative liquid chromatography, which is 32.27 g of 2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid, C14H17ClO6S, molecular weight 348.80, hence 0.0925 mol. The theoretical maximum from 0.0982 mol of contained salt is 34.26 g of pure acid, above the 32.27 g of contained product, so the stated mass does not exceed what the stated input moles could give and mass_balance_implausible does not apply. Closure against the stated yield: 0.0925 / 0.1000 = 92.5 percent, against the printed two step yield of 92.5 percent, exact agreement. THE ARITHMETIC CLOSES. Two observations, recorded and not flagged: the printed yield closes against the nominal 0.1 mol and not against the content corrected 0.0982 mol, which would give 94.2 percent, so the patent's own two step yield does not carry the 98.2 percent content into its basis; and the basis it names is the methyl ester, whose charge is never printed in this example, so the yield can only be tested on the assumption that the step (1) ester cleavage was quantitative on a 0.1 mol basis. No arithmetic flag is raised on this step.",
+    "drawing_evidence": "The IMAGE_EXTRACT reaction scheme at line 551, step_id 1, is this step. Its reactant is CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, the sodium salt, matching the prose, which also says sodium; its conditions are the sodium (tetrahydrofuran-2-yl)methoxide, noted as drawn as a structure rather than written as a name or formula, and HCl, both of which the prose has, with the same sodium counter ion; its product is CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1, C14H17ClO6S, the free acid the prose names as the target compound. Drawing and prose therefore agree on the counter ions and on the acidification, so no drawing_text_conflict is raised and this example is not one of those where the schemes and the prose disagree about the alkali metal. The scheme draws no solvent, no charge, no temperature and no time, and it puts the acidification on the same arrow as the substitution, whereas the prose separates them by a solvent strip and a water dissolution, which is why the record keeps the acid in the workup and is_one_pot false."
+  },
+  {
+    "reaction_id": "Example 18_Step 1",
+    "source_lines": [
+      564,
+      564
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "arithmetic_check": "Nothing to check. The sentence prints one number, the stated content of the sodium benzoate salt, and no mass, no volume, no mole figure and no yield, so there is no mass and mole pair and no yield to close. The content is a content, not a yield. The 0.1 mol figure that appears later in the section belongs to the charge into step (2). No arithmetic flag is raised, and the absence of a flag here means the absence of printed numbers, not a check that passed.",
+    "drawing_evidence": "None. The single IMAGE_EXTRACT span in this section, on line 569, sits under the step (2) heading on line 566 and draws the step (2) etherification, not this step. No scheme is drawn for step (1) in Examples 13 to 20, which is why those sections carry one drawing where Examples 1 to 12 carry two. The scheme's drawn reactant, CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, is this step's product, so it corroborates the product identity and its sodium counter ion but says nothing about how the step was run."
+  },
+  {
+    "reaction_id": "Example 18_Step 2a",
+    "source_lines": [
+      571,
+      571
+    ],
+    "quote_zh": "向反应釜中加入150mL  2-四氢呋喃甲醇，开动搅拌，室温下投入20g氢化钾(30％，0.15mol)，搅拌至溶解完全，经高真空油泵负压脱溶后得到2-四氢呋喃甲醇醇钾固体，密封备用。",
+    "arithmetic_check": "Potassium hydride: 20 g printed at 30 percent strength with 0.15 mol. 20 x 0.30 = 6.0 g of potassium hydride; at molecular weight 40.11 that is 0.1496 mol, which rounds to the printed 0.15 mol, so the pair closes on the stated strength. Taken gross, 20 / 40.11 = 0.499 mol, which is not the printed figure, so the printed mole figure is the contained hydride and the implied molecular weight is consistent with potassium hydride. No molar_mass_inconsistent. Tetrahydrofurfuryl alcohol: 150 mL printed, with no mass and no mole figure, so there is no pair to check; at the usual density it is roughly 1.5 mol of alcohol against 0.15 mol of hydride, which is the large excess the procedure implies by stripping the excess off afterwards. No mass, content or yield is printed for the isolated alkoxide, so there is no product closure to test, and mass_balance_implausible could not be evaluated on this step rather than having been evaluated and passed. No arithmetic flag is raised. Separately from the arithmetic, which closes, the paragraph says the hydride dissolved completely, which a solid hydride does not do; that is recorded in notes and is not an arithmetic failure.",
+    "drawing_evidence": "No arrow is drawn for this transformation. In the step (2) scheme on line 569 the alkoxide appears only as a condition on the arrow, described there as drawn as a structure rather than written as a name or formula, with only the letters OK lettered in. That agrees with the prose, which makes the potassium alkoxide of tetrahydrofurfuryl alcohol, so the counter ion in the drawing and the counter ion in the prose match. The scheme gives no charge, no temperature and no time for this preparation, which is why the record is built from the prose alone."
+  },
+  {
+    "reaction_id": "Example 18_Step 2",
+    "source_lines": [
+      566,
+      573
+    ],
+    "quote_zh": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应3h",
+    "arithmetic_check": "Stated input: sodium benzoate salt, 0.1 mol at 98.2 percent content, so 0.0982 mol of contained salt; no mass is printed for it, so there is no mass and mole pair to test and molar_mass_inconsistent cannot arise for the charge. No amount at all is printed for the potassium alkoxide, so no equivalents check is possible on the nucleophile. Stated output: 33.1 g of product at 97.0 percent by quantitative liquid chromatography, which is 32.11 g of 2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid, C14H17ClO6S, molecular weight 348.80, hence 0.0920 mol. Theoretical maximum is 34.88 g of the pure acid from the nominal 0.1 mol, or 34.25 g from the content corrected 0.0982 mol, and the 32.11 g of contained product is below both, so the mass does not exceed what the input moles could give and mass_balance_implausible does not apply. Closure against the stated yield: 0.0920 / 0.1000 = 92.0 percent against the printed 92.2 percent, a gap of about 0.15 percentage point, which the rounding of the printed 33.1 g alone covers, half a gram in the last place being worth 0.14 percentage point. THE ARITHMETIC CLOSES within the rounding of the printed figures. Two observations, recorded and not flagged: the printed yield closes against the nominal 0.1 mol and not against the content corrected 0.0982 mol, which would give 93.7 percent, so the patent's own yield does not carry the 98.2 percent content into its basis; and the basis it names is the methyl ester, whose charge is never printed in this section, so the two-step wording can only be tested by assuming the step (1) ester cleavage was quantitative on a 0.1 mol basis. Step (1) prints no output quantity, so scale_discontinuity could not be checked in either direction.",
+    "drawing_evidence": "The IMAGE_EXTRACT reaction scheme on line 569, one arrow, step_id 1, is this step. Its drawn reactant is CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, the sodium salt, matching the prose, which also says sodium; its arrow conditions are the potassium alkoxide, drawn as a structure with only the letters OK lettered in, and HCl, both of which the prose also has and with the same potassium counter ion on the alkoxide; its drawn product is CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1, C14H17ClO6S, which is the free acid the prose names as the target compound. Drawing and prose therefore agree on both counter ions and on the acidification, so no drawing_text_conflict is raised and this example is not one of those where the patent's schemes and prose disagree about the alkali metal. The scheme draws no solvent, no charge, no temperature and no time, and the omission of the solvent is how this patent's schemes are drawn throughout, so it is recorded here rather than flagged as reagent_written_not_drawn. It also draws the acidification on the same arrow as the substitution, whereas the prose separates them by a solvent strip, which is why the record keeps the acid in the workup and is_one_pot is false. No stereo bond is drawn on the product, although the prose prints the RS descriptor."
+  },
+  {
+    "reaction_id": "Example 19_Step 1",
+    "source_lines": [
+      577,
+      578
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "arithmetic_check": "Nothing to check. The paragraph prints one number, the 98.2 percent content of the sodium benzoate salt, and no mass, no volume and no mole figure, so there is no mass/mole pair and no yield to close. The 98.2 percent is a content, not a yield. No arithmetic flag is raised, and the absence of a flag here means absence of printed numbers, not a check that passed.",
+    "drawing_evidence": "None. This example draws no scheme for step (1). The section's only IMAGE_EXTRACT span, at line 582, is the step (2) reaction scheme, whose single arrow starts from the sodium benzoate salt, SMILES CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], formula C9H7BrClNaO4S, which is this step's product. It therefore corroborates the identity and the sodium counter ion of the product but says nothing about how step (1) was run. The lack of a drawing for step (1) is consistent with the step being a cross-reference to Example 1."
+  },
+  {
+    "reaction_id": "Example 19_Step 2a",
+    "source_lines": [
+      584,
+      585
+    ],
+    "quote_zh": "向反应釜中加入50mL  2-四氢呋喃甲醇，开动搅拌，室温下投入2.8g金属钠(99％，0.12mol)，搅拌至溶解完全，经高真空油泵负压脱溶后得到2-四氢呋喃甲醇醇钠固体，密封备用。",
+    "arithmetic_check": "Sodium metal: 2.8 g printed at 99 percent strength with 0.12 mol. 2.8 / 22.990 = 0.1218 mol taken gross, and 2.8 x 0.99 / 22.990 = 0.1206 mol taken on the stated strength. Both round to the printed 0.12 mol, so the pair implies an atomic weight consistent with sodium and no molar_mass_inconsistent arises. Tetrahydrofurfuryl alcohol: 50 mL printed, with no mass and no mole figure, so there is no pair to check; at the usual density that is roughly half a mole of alcohol against 0.12 mol of sodium, the large excess the procedure implies by stripping the excess off afterwards. No mass, yield or content is printed for the isolated alkoxide, so there is no product closure to test, and mass_balance_implausible cannot be evaluated on this step rather than having been evaluated and passed. No arithmetic flag is raised.",
+    "drawing_evidence": "No arrow is drawn for this transformation. In the step (2) scheme at line 582 the alkoxide appears only as a condition on the arrow, described there as sodium (tetrahydrofuran-2-yl)methoxide drawn as a structure rather than written as a name or formula, with only the letters ONa lettered in. That agrees with the prose, which makes the sodium alkoxide of tetrahydrofurfuryl alcohol, so the counter ion in the drawing and the counter ion in the prose match. The scheme gives no SMILES for it, and carries no charge, no temperature and no time for this preparation, which is why the record is built from the prose alone."
+  },
+  {
+    "reaction_id": "Example 19_Step 2",
+    "source_lines": [
+      579,
+      592
+    ],
+    "quote_zh": "(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为2h，加毕保温反应5h。",
+    "arithmetic_check": "Stated input: sodium benzoate salt 0.1 mol at 98.2 percent content, so 0.0982 mol of contained salt; no mass is printed for it, so there is no mass/mole pair to test and molar_mass_inconsistent cannot arise for the charge. Sodium alkoxide: no amount printed at all, so it cannot be tested either. Stated output: 33.4 g of product at 95.5 percent by quantitative liquid chromatography, which is 31.90 g of 2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid, C14H17ClO6S, molecular weight 348.80, hence 0.0915 mol. Theoretical maximum from 0.0982 mol of contained salt is 34.25 g of pure acid, and the printed 31.90 g of contained product is below it, so the mass does not exceed what the input moles could give and mass_balance_implausible does not apply. Closure against the stated yield: 0.0915 / 0.1000 = 91.5 percent, against the printed two step yield of 91.5 percent, exact agreement. THE ARITHMETIC CLOSES. One observation, recorded and not flagged: the printed yield closes against the nominal 0.1 mol and not against the content corrected 0.0982 mol, which would give 93.2 percent, so the patent's own two step yield does not carry the 98.2 percent content into its basis; and the basis it names is the methyl ester, whose charge is never printed in this example, so the yield can only be tested on the assumption that the step (1) ester cleavage was quantitative on a 0.1 mol basis. No arithmetic flag is raised on this step.",
+    "drawing_evidence": "The IMAGE_EXTRACT reaction scheme at line 582, step_id 1, is this step. Its reactant is CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, the sodium salt, matching the prose, which also says sodium; its conditions are the sodium alkoxide, drawn as a structure with only the letters ONa lettered in, and HCl, both of which the prose also has, with the same sodium counter ion; its product is CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1, C14H17ClO6S, which is the free acid the prose names as the target compound. Drawing and prose therefore agree on the counter ion and on the acidification, so no drawing_text_conflict is raised, and this example is not one of those where the patent's schemes and prose disagree about the alkali metal. The scheme draws no solvent, no charge, no temperature and no time, and it draws the acidification on the same arrow as the substitution, whereas the prose separates them by a solvent strip, which is why the record keeps the acid in the workup and is_one_pot false. Note also that this record's quote_zh is the fragment of the procedure that follows the p20 page break, because the sentence itself straddles the break and no single literal substring of the section covers the whole of it."
+  },
+  {
+    "reaction_id": "Example 2_Step 1",
+    "source_lines": [
+      298,
+      301,
+      303
+    ],
+    "quote_zh": "将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应",
+    "arithmetic_check": "Stated inputs 34.8 g methyl ester at 98 percent printed as 0.1 mol, and 8.8 g sodium hydroxide at 48 percent printed as 0.105 mol. 34.8 x 0.98 = 34.10 g; C10H10BrClO4S is 341.6 g/mol, giving 0.0998 mol against the printed 0.1 mol, closes to 0.2 percent. 8.8 x 0.48 = 4.22 g; NaOH is 40.0 g/mol, giving 0.1056 mol against the printed 0.105 mol, closes to 0.6 percent. No product mass and no yield are printed for this step, since the salt is not isolated; the only product figure is the 97.8 percent in-process normalised content. Nothing to reconcile beyond the two input pairs, and both close.",
+    "drawing_evidence": "The reaction-scheme span at line 301 (step_id 1). Reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl matches methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate, the arrow condition reads NaOH, and the product CS(=O)(=O)c1ccc(C(=O)[O][Na])c(Cl)c1CBr is the sodium salt with the benzylic bromide intact. Agrees with the prose on substrate, base, alkali metal and product. Solvent and temperature are not drawn."
+  },
+  {
+    "reaction_id": "Example 2_Alkoxide Preparation",
+    "source_lines": [
+      310
+    ],
+    "quote_zh": "室温下投入2.8g金属钠(99％，0.12mol)，搅拌至溶解完全，经脱溶后得到三氟乙醇醇钠固体，密封备用",
+    "arithmetic_check": "Stated input 2.8 g sodium metal at 99 percent printed as 0.12 mol. 2.8 x 0.99 = 2.77 g; sodium is 22.99 g/mol, giving 0.1206 mol against the printed 0.12 mol, closes to 0.5 percent. Trifluoroethanol is charged by volume only, 50 mL, and is in large excess over the sodium. No mass, no purity and no yield are printed for the alkoxide product, so there is no product-side arithmetic to check.",
+    "drawing_evidence": "No scheme is drawn for this transformation. The only drawing support is indirect: the step (2) scheme span at line 308 names CF3CH2ONa as an arrow condition, which corroborates the identity of the alkoxide made here and its sodium counter-ion, and agrees with the prose 三氟乙醇醇钠. The absence of a drawn arrow is consistent with the patent printing this preparation inside step (2) rather than as a step of its own."
+  },
+  {
+    "reaction_id": "Example 2_Step 2",
+    "source_lines": [
+      305,
+      308,
+      312,
+      317
+    ],
+    "quote_zh": "向三氟乙醇醇钠中加入70mL DMSO，搅拌溶解后控制釜温在-5℃",
+    "arithmetic_check": "Stated input 0.1 mol of sodium 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate at 97.8 percent, no mass printed. Stated product 33.3 g at 96.7 percent by HPLC, stated yield 92.4 percent as a two-step yield on the methyl ester. DOES NOT CLOSE: 33.3 x 0.967 = 32.20 g of the acid; C11H10ClF3O5S is 346.7 g/mol, giving 0.0929 mol, which on 0.1 mol of methyl ester is 92.9 percent, and on the 0.0998 mol the methyl ester charge actually contains is 93.0 percent. Neither is the printed 92.4 percent. Recovering 92.4 percent from 32.20 g requires a molecular weight near 348.5 g/mol, about 1.8 higher than the named compound. Uncorrected mass gives 33.3 / 34.67 = 96.0 percent and the purity-corrected mass on the salt basis gives 95.0 percent, so no combination of the printed numbers reproduces 92.4 percent. The gap is about half a percentage point and the printed yield is the lower figure, and 33.3 g gross is below the 34.67 g theoretical, so nothing is impossible; mass_balance_implausible is raised for the mass-versus-yield disagreement under rule 27 and the numbers are left as printed. Separately, step (1) can deliver at most 0.0998 mol whereas this step charges 0.1 mol of the salt; treated as rounding of the nominal carry-forward, not flagged as scale_discontinuity.",
+    "drawing_evidence": "The reaction-scheme span at line 308 (step_id 1). Reactant CS(=O)(=O)c1ccc(C(=O)[O][Na])c(Cl)c1CBr is the step (1) sodium salt, arrow conditions read CF3CH2ONa and HCl, and the product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F is the free trifluoroethyl ether acid. Agrees with the prose on substrate, nucleophile, alkali metal and product, and its reactant SMILES is byte-identical to the product SMILES of the line 301 scheme, which independently corroborates the Step 1 to Step 2 linkage. The only divergence is placement rather than content: HCl is drawn on the arrow while the prose uses it after solvent removal to acidify the aqueous residue to pH 2, so it is recorded in workup and not as a reagent, and no drawing_text_conflict is raised. Solvent (DMSO), temperature and the portionwise addition are not drawn."
+  },
+  {
+    "reaction_id": "Example 20_Step 1",
+    "source_lines": [
+      595,
+      596
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "arithmetic_check": "Nothing to check. The paragraph prints one number, the 98.2 percent content of the sodium benzoate salt, and no mass, no volume and no mole figure, so there is no mass/mole pair and no yield to close. The 98.2 percent is a content, not a yield. No arithmetic flag is raised, and the absence of a flag here means absence of printed numbers, not a check that passed.",
+    "drawing_evidence": "None. This example draws no scheme for step (1); the only IMAGE_EXTRACT span in the section, at line 599, is the step (2) reaction scheme. Its single arrow starts from the sodium benzoate salt, which is this step's product, so the drawing corroborates the identity and the sodium counter ion of the product but says nothing about how step (1) was run. The lack of a drawing for step (1) is consistent with the step being a cross-reference to Example 1."
+  },
+  {
+    "reaction_id": "Example 20_Step 2a",
+    "source_lines": [
+      602,
+      603
+    ],
+    "quote_zh": "向反应釜中加入100mL 2-四氢呋喃甲醇，开动搅拌，室温下投入5.5g金属钾(99％，0.14mol)，搅拌至溶解完全，经高真空油泵负压脱溶后得到2-四氢呋喃甲醇醇钾固体，密封备用。",
+    "arithmetic_check": "Potassium metal: 5.5 g printed at 99 percent strength with 0.14 mol. 5.5 g / 39.098 = 0.1406 mol taken gross, and 5.5 x 0.99 / 39.098 = 0.1393 mol taken on the stated strength. Both round to the printed 0.14 mol, so the pair implies an atomic weight consistent with potassium and no molar_mass_inconsistent arises. Tetrahydrofurfuryl alcohol: 100 mL printed, with no mass and no mole figure, so there is no pair to check; at the usual density it is roughly a mole of alcohol against 0.14 mol of potassium, which is the large excess the procedure implies by stripping the excess off afterwards. No mass, yield or content is printed for the isolated alkoxide, so there is no product closure to test, and mass_balance_implausible cannot be evaluated on this step rather than having been evaluated and passed. No arithmetic flag is raised.",
+    "drawing_evidence": "No arrow is drawn for this transformation. In the step (2) scheme at line 599 the alkoxide appears only as a condition on the arrow, described there as potassium (tetrahydrofuran-2-yl)methanolate drawn as a tetrahydrofuran ring carrying a CH2-OK group at its 2-position. That agrees with the prose, which makes the potassium alkoxide of tetrahydrofurfuryl alcohol, so the counter ion in the drawing and the counter ion in the prose match. The scheme carries no charge, no temperature and no time for this preparation, which is why the record is built from the prose alone."
+  },
+  {
+    "reaction_id": "Example 20_Step 2",
+    "source_lines": [
+      597,
+      605
+    ],
+    "quote_zh": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为1h，加毕保温反应6h。",
+    "arithmetic_check": "Stated input: sodium benzoate salt 0.1 mol at 98.2 percent content, so 0.0982 mol of contained salt; no mass is printed for it, so there is no mass/mole pair to test and molar_mass_inconsistent cannot arise for the charge. Stated output: 32.6 g of product at 97.0 percent by quantitative liquid chromatography, which is 31.62 g of 2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid, C14H17ClO6S, molecular weight 348.80, hence 0.0907 mol. Theoretical maximum from 0.0982 mol of contained salt is 34.25 g of pure acid, and the printed 31.62 g of contained product is below it, so the mass does not exceed what the input moles could give and mass_balance_implausible does not apply. Closure against the stated yield: 0.0907 / 0.1000 = 90.7 percent, against the printed two step yield of 90.8 percent, agreement to 0.1 percentage point, which is rounding. THE ARITHMETIC CLOSES. One observation, recorded and not flagged: the printed yield closes against the nominal 0.1 mol and not against the content corrected 0.0982 mol, which would give 92.3 percent, so the patent's own two step yield does not carry the 98.2 percent content into its basis; and the basis it names is the methyl ester, whose charge is never printed in this example, so the yield can only be tested on the assumption that the step (1) ester cleavage was quantitative on a 0.1 mol basis. No arithmetic flag is raised on this step.",
+    "drawing_evidence": "The IMAGE_EXTRACT reaction scheme at line 599, step_id 1, is this step. Its reactant is CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, the sodium salt, matching the prose, which also says sodium; its conditions are the potassium alkoxide, drawn as a tetrahydrofuran ring with a CH2-OK group at the 2-position, and HCl, both of which the prose also has, with the same potassium counter ion; its product is CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1, C14H17ClO6S, which is the free acid the prose names as the target compound. Drawing and prose therefore agree on both counter ions and on the acidification, so no drawing_text_conflict is raised, and this example is not one of those where the patent's schemes and prose disagree about the alkali metal. The scheme draws no solvent, no charge, no temperature and no time, and it draws the acidification on the same arrow as the substitution, whereas the prose separates them by a solvent strip, which is why the record keeps the acid in the workup and is_one_pot false."
+  },
+  {
+    "reaction_id": "Example 3_Step 1",
+    "source_lines": [
+      321,
+      326
+    ],
+    "quote_zh": "向反应瓶中加入叔丁醇70mL，开动搅拌，室温下将14g氢氧化钠(30％，0.105mol)滴入其中，待氢氧化钠分散均匀后，控制釜温在30℃，将34.8g  2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应，反应过程微微放热，控制釜温为30℃，反应12h。反应结束，液相色谱中控2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐归一含量为92.5％，负压脱尽溶剂直接用于后续醚化反应。",
+    "arithmetic_check": "Charges: sodium hydroxide 14 g of a 30% solution is 4.2 g of NaOH, which at 40.00 g/mol is 0.105 mol, exactly the printed figure. Substrate 34.8 g at 98% is 34.10 g, which at 341.60 g/mol for methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate (C10H10BrClO4S) is 0.0998 mol against the printed 0.1 mol. Both pairs close, so neither molar_mass_inconsistent nor mass_balance_implausible is raised. Product closure cannot be tested for this step and needs no flag: the salt is not isolated, no mass, mole figure or step yield is printed for it, and the only number given is the in-process HPLC content of 92.5%. Ratio, for the record, is 1.05 mol of base per mol of ester. Numbers recorded exactly as printed.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 323, one arrow: reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl (C10H10BrClO4S), arrow condition NaOH, product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] (C9H7BrClNaO4S). The single arrow corroborates the single prose transformation. Reagent and metal both agree with the prose, and the drawn product reads as the sodium salt of the acid the heading names, so there is no drawing_text_conflict here despite the SMILES_MISMATCH marker A1 left on that compound. Only tert-butanol, the solvent, is absent from the arrow."
+  },
+  {
+    "reaction_id": "Example 3_Step 2",
+    "source_lines": [
+      327,
+      332
+    ],
+    "quote_zh": "向反应釜中加入160mLDMF、11.6g三氟乙醇(99％，0.115mol)和17.3g氢氧化钠溶液(30％，0.13mol)，开动搅拌，控制釜温在5℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(92.5％，0.1mol)分八次加入反应瓶中，总加料时间为2h，加毕保温反应4h。反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至3，之后经过滤、水淋洗、烘干得到产物30.7g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为95.8％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率84.4％。",
+    "arithmetic_check": "Charges: trifluoroethanol 11.6 g at 99% is 11.48 g, which at 100.04 g/mol (C2H3F3O) is 0.1148 mol against the printed 0.115 mol. Sodium hydroxide 17.3 g of a 30% solution is 5.19 g, which at 40.00 g/mol is 0.1298 mol against the printed 0.13 mol. The benzoate salt is charged as 0.1 mol at 92.5%, matching what step (1) produced, so there is no scale_discontinuity. Product closure: input 0.0998 mol of the methyl ester through step (1); product 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid is C11H10ClF3O5S, 346.70 g/mol; the printed 30.7 g at the printed 95.8% assay is 29.41 g of pure acid, which is 0.0848 mol, i.e. 85.0% of the 0.0998 mol charged, or 84.8% against a nominal 0.1 mol. The printed two-step yield is 84.4%. The gap is 0.4 to 0.6 of a percentage point, which is rounding and a slightly different molecular weight, so this CLOSES and no mass_balance_implausible or molar_mass_inconsistent is raised. Recorded here so A5 can re-derive it. Numbers recorded exactly as printed.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 329, one arrow: reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+] (C9H7BrClKO4S), arrow conditions CF3CH2OH, NaOH and HCl, product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F (C11H10ClF3O5S). The arrow corroborates the single prose transformation and the drawn product matches the named target compound. It DISAGREES with the prose on the alkali metal of the reactant: the drawing shows the potassium salt, the prose of both steps says sodium, and the arrow in this same section at line 323 draws the sodium salt as the product of step (1). Prose kept, drawing_text_conflict raised. All three drawn reagents are written in the prose; the drawn HCl is the workup acidification, not a reagent of the substitution, and DMF, the solvent, is absent from the arrow."
+  },
+  {
+    "reaction_id": "Example 4_Step 1",
+    "source_lines": [
+      335,
+      343
+    ],
+    "quote_zh": "向反应瓶中加入叔丁醇200mL，开动搅拌，室温下将4.6g氢氧化钠(96％，0.11mol)滴入其中，待氢氧化钠分散均匀后，控制釜温在40℃，将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应",
+    "arithmetic_check": "Charges: methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate 34.8 g at 98 percent is 34.10 g of pure material over the printed 0.1 mol, implying MW 341.0 against C10H10BrClO4S = 341.60, correct to 0.2 percent. Sodium hydroxide 4.6 g at 96 percent is 4.42 g over 0.11 mol, implying 40.1 against NaOH = 40.00, correct. Ratio: 1.1 mol of base per mol of ester, consistent with a single ester cleavage. Product closure: NOT CHECKABLE, because the step isolates nothing. No product mass, no product mole and no yield are printed for step (1); the only product number is a 96.4 percent normalised in-process liquid chromatography content, and the material goes forward as a solution residue. CLOSES as far as the printed numbers go. No molar_mass_inconsistent and no mass_balance_implausible on this step, and none manufactured.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 337, one arrow: reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl (C10H10BrClO4S), condition text NaOH, product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] (C9H7BrClNaO4S). It corroborates the step boundary, the substrate, the base and the sodium counter-ion of the product, and it confirms that the benzylic bromide survives the cleavage. Drawing and prose agree on every point, so no drawing_text_conflict. The only prose item missing from the arrow is the tert-butanol solvent, which no scheme in this document draws; reagent_written_not_drawn was therefore judged not to apply and the omission is recorded in notes instead."
+  },
+  {
+    "reaction_id": "Example 4_Step 2",
+    "source_lines": [
+      344,
+      350
+    ],
+    "quote_zh": "向反应釜中加入130mL DMF、10.6g三氟乙醇(99％，0.105mol)和14.1g叔丁醇钾(95％，0.12mol)，开动搅拌，控制釜温在10℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(96.4％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应4h。",
+    "arithmetic_check": "Charges: 2,2,2-trifluoroethanol 10.6 g at 99 percent is 10.49 g over 0.105 mol, implying MW 99.9 against C2H3F3O = 100.04, correct. Potassium tert-butoxide 14.1 g at 95 percent is 13.40 g over 0.12 mol, implying 111.6 against C4H9KO = 112.21, low by 0.5 percent, rounding. Benzoate salt charged as 0.1 mol at 96.4 percent, which is the whole of step (1)'s 0.1 mol basis. Ratios: 1.05 mol alcohol and 1.2 mol base per mol of substrate. Product closure: the product 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid is C11H10ClF3O5S, MW 346.70; 0.1 mol gives 34.67 g theoretical; the printed 32.5 g at the assayed 98.0 percent is 31.85 g of pure product, that is 0.0919 mol, or 91.9 percent of theory. The printed figure is 91.4 percent, stated as the two-step yield based on the methyl ester of step (1); against that basis the true input is 34.8 g at 98 percent over MW 341.60 = 0.0998 mol, giving 92.1 percent. The gap between the computed 91.9 to 92.1 percent and the printed 91.4 percent is at most 0.7 percentage points and is covered by rounding of the printed strengths and masses. CLOSES. No mass_balance_implausible and no molar_mass_inconsistent are raised on this step. Continuity: the 0.1 mol charged here equals step (1)'s output basis, so no scale_discontinuity.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 347, one arrow: reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+] (C9H7BrClKO4S), condition texts CF3CH2OH, C4H9ONa and HCl, product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F (C11H10ClF3O5S). It corroborates the step boundary, the displacement of the benzylic bromide by the trifluoroethoxide, and the fact that the isolated material is the free acid rather than a salt, and it places the HCl under the arrow even though the prose uses it only to acidify at the workup. It DISAGREES with the prose twice, in opposite directions on the alkali metal: the drawn reactant is the potassium benzoate while the prose charges the sodium salt made in step (1), and the drawn base is sodium tert-butoxide (C4H9ONa) while the prose charges potassium tert-butoxide. Prose kept in the structured fields per rule 5c; drawing_text_conflict raised for both, and reagent_drawn_not_written raised for the sodium tert-butoxide, which appears in no procedure. The product drawn matches the product named, so the conflict is confined to the counter-ions."
+  },
+  {
+    "reaction_id": "Example 5_Step 1",
+    "source_lines": [
+      353,
+      359
+    ],
+    "quote_zh": "将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应",
+    "arithmetic_check": "Stated inputs: potassium hydroxide 6.9 g at 85 percent, 0.105 mol, implying MW 55.9 against 56.11 for KOH; methyl ester 34.8 g at 98 percent, 0.1 mol, implying MW 341.0 against 341.6 for C10H10BrClO4S. Both close within half a percent. No product mass and no yield are printed for this step, only an in-process normalised content of 98.3 percent, so the product side cannot be checked and nothing is asserted about it. Closes, with the product side unstated.",
+    "drawing_evidence": "The reaction scheme at line 356 (one arrow, step_id 1): reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl, condition text KOH, product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+]. Reactant, base and potassium counter-ion all agree with the prose of this step, so no conflict is raised. tert-butanol is in the prose only, which is ordinary for a solvent."
+  },
+  {
+    "reaction_id": "Example 5_Alkoxide Preparation",
+    "source_lines": [
+      365,
+      366
+    ],
+    "quote_zh": "室温下投入20g氢化钾(30％，0.15mol)，搅拌至溶解完全，经脱溶后得到三氟乙醇醇钾固体，密封备用",
+    "arithmetic_check": "Stated inputs: potassium hydride 20 g at 30 percent, 0.15 mol, giving 6.0 g of hydride over 0.15 mol and implying MW 40.0 against 40.11 for KH, which closes; trifluoroethanol 150 mL with no mass and no mole figure. No product mass, no yield and no product purity are printed. Closes on the only pair given, and molar_mass_inconsistent is deliberately not raised for this hydride.",
+    "drawing_evidence": "No arrow is drawn for this preparation. The only drawing evidence is the condition text CF3CH2OK on the single arrow of the step (2) scheme at line 363, which agrees with the prose on the alkoxide's identity and potassium counter-ion. Absence of an arrow is not treated as a drawing conflict."
+  },
+  {
+    "reaction_id": "Example 5_Step 2",
+    "source_lines": [
+      360,
+      371
+    ],
+    "quote_zh": "将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钾盐(98.3％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应3h",
+    "arithmetic_check": "Stated input 0.1 mol of the potassium benzoate salt at 98.3 percent; stated product 33.0 g at 98.2 percent HPLC content; stated yield 93.5 percent, explicitly a two-step yield on methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate. 33.0 g times 98.2 percent is 32.41 g of target; 0.1 mol at the product MW of 346.7 (C11H10ClF3O5S) is 34.67 g of theory; 32.41 over 34.67 is 93.5 percent, which reproduces the printed yield exactly. Closes. The 0.1 mol charged here also equals step (1)'s 0.1 mol input, so there is no scale discontinuity.",
+    "drawing_evidence": "The reaction scheme at line 363 (one arrow, step_id 1) supports this step but disagrees with it: the drawn reactant is the SODIUM salt (C9H7BrClNaO4S, ...CBr.[Na+]) where the prose names the potassium salt. The arrow's condition texts CF3CH2OK and HCl are both written in the procedure, and the drawn product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F matches the acid the text names. Prose kept, drawing_text_conflict raised, both readings in notes."
+  },
+  {
+    "reaction_id": "Example 6_Step 1",
+    "source_lines": [
+      374,
+      376,
+      379
+    ],
+    "quote_zh": "向反应瓶中加入叔丁醇350mL，开动搅拌，室温下将6.6g氢氧化钾(85％，0.1mol)滴入其中，待氢氧化钾分散均匀后，控制釜温在25℃，将34.8g  2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应，反应过程微微放热，控制釜温为25℃，反应7h。反应结束，液相色谱中控2-氯-3-溴甲基-4-甲磺酰基苯甲酸钾盐归一含量为97.3％，负压脱尽溶剂直接用于后续醚化反应。",
+    "arithmetic_check": "Both printed charges close. Potassium hydroxide: 6.6 g of the 85 percent grade is 5.61 g of KOH; KOH is 56.11 g/mol, giving 0.1000 mol against the printed 0.1 mol, exact to the printed precision. Methyl ester: 34.8 g at 98 percent is 34.10 g; C10H10BrClO4S is 341.60 g/mol, giving 0.0998 mol against the printed 0.1 mol, low by about 0.2 percent, which is rounding of the purity-corrected charge and not a molar-mass error. The two charges are therefore equimolar as printed, one equivalent of base per ester, which the text does not state as a ratio. No product-side check is possible: the salt is never isolated, the step prints no product mass and no yield, and the only product figure is the in-process normalised liquid chromatography content of 97.3 percent. For reference and not printed anywhere in the patent, 0.1 mol of the potassium salt C9H7BrClKO4S at 365.67 g/mol would weigh 36.57 g, but the patent never weighs it. No mass_balance_implausible, no molar_mass_inconsistent, and no scale_discontinuity, this being the first step of the section. Neither the 85 percent grade being dripped in nor the absent product mass is treated as an arithmetic failure: a guard must not report a finding it could not check. Nothing was manufactured to meet the pass prompt's expectation of failing arithmetic, which describes the reference patent and not this one.",
+    "drawing_evidence": "One [IMAGE_EXTRACT] reactions span, line 376, immediately under the step (1) heading: a single arrow, step_id 1. It corroborates the step boundary and the connectivity, and it agrees with the prose on every point. Reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl (C10H10BrClO4S) matches the named methyl ester; product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+] (C9H7BrClKO4S) matches the potassium salt named in the prose, potassium counter-ion included, so the drawing also settles the counter-ion the step heading leaves generic; and the arrow's only condition text, KOH, is the base the prose charges. No drawing_text_conflict and no sodium versus potassium disagreement in this section. tert-Butanol is written but not drawn, the ordinary omission of a solvent from a scheme, so reagent_written_not_drawn is not raised. No attribution question arises: this is an experimental example, not an overview scheme, and no drawing in this patent is marked presented_as unclear."
+  },
+  {
+    "reaction_id": "Example 6_Step 2",
+    "source_lines": [
+      381,
+      383,
+      386
+    ],
+    "quote_zh": "向反应釜中加入70mLDMF、12.6g三氟乙醇(99％，0.125mol)和26.1g氢氧化钾溶液(30％，0.14mol)，开动搅拌，控制釜温在5℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钾盐(97.3％，0.1mol)分八次加入反应瓶中，总加料时间为2h，加毕保温反应4h。反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至2，之后经过滤、水淋洗、烘干得到产物32.4g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为96.0％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率89.3％。",
+    "arithmetic_check": "Inputs close; the product side DOES NOT CLOSE and is flagged. Trifluoroethanol: 12.6 g at 99 percent is 12.47 g; C2H3F3O is 100.04 g/mol, giving 0.1247 mol against the printed 0.125 mol. Potassium hydroxide: 26.1 g of a 30 percent solution is 7.83 g of KOH, giving 0.1396 mol against the printed 0.14 mol, so the 26.1 g is the solution and the 0.14 mol is the KOH it contains, and the pair is consistent. The benzoate salt is charged as 0.1 mol at 97.3 percent with no mass printed, so it cannot be tested on its own; it is the limiting reagent, with the alcohol at 1.25 and the base at 1.4 equivalents on the printed moles. Product side: C11H10ClF3O5S is 346.70 g/mol, so 0.1 mol gives 34.67 g theoretical. The printed 32.4 g at the printed 96.0 percent HPLC content is 31.10 g of the acid, that is 0.08971 mol, which is 89.71 percent of theory on the printed 0.1 mol of methyl ester and 89.86 percent on the 0.0998 mol that charge actually contains. The printed two-step yield is 89.3 percent, on the same methyl ester basis the patent states, and neither figure reproduces it. The rounding of the printed numbers cannot absorb the gap: the lowest value the printed precision allows, 32.35 g at 95.95 percent content, still gives 89.51 percent. Recovering 89.3 percent from the printed mass and content requires a molecular weight near 348.3 g/mol, about 1.6 above the compound actually named and drawn, or a methyl ester basis near 0.1005 mol, which no printed number gives. The uncorrected mass gives 32.4 / 34.67 = 93.45 percent, further away. Nothing is chemically impossible, since 32.4 g gross is below the 34.67 g theoretical and the printed yield is the lower of the two figures; mass_balance_implausible is raised under rule 27 for the mass-versus-yield disagreement and every number is left exactly as printed. molar_mass_inconsistent is NOT raised, because no printed mass and mole pair for a named compound in this section implies a wrong molecular weight; the discrepancy is in the derived yield only. For A5: the same small negative bias, the printed yield sitting a few tenths of a point below what the printed mass and content give, recurs across the examples of this patent, so this looks like a systematic yield convention rather than a typographical error here, and it is the reason the flag is raised on a gap of only about 0.4 points. Also for A5, deliberately not flagged: step (1) can deliver at most 0.0998 mol while this step charges the whole unisolated batch as a nominal 0.1 mol, and step (1) prints no output mass at all, so the carry can be neither confirmed nor contradicted and scale_discontinuity is not raised.",
+    "drawing_evidence": "One [IMAGE_EXTRACT] reactions span, line 383, immediately under the step (2) heading: a single arrow, step_id 1, and it agrees with the prose. Reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+] is the step (1) potassium salt, so the drawing corroborates the linkage to Step 1 as well as the connectivity; the condition texts are CF3CH2OH, KOH and HCl, all three named in the prose; and the product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F (C11H10ClF3O5S) matches the named target acid, drawn as the free acid rather than a salt, which matches the acidification described. The drawn alkali metal is potassium in both the substrate and the base, agreeing with the prose, so the patent's sodium versus potassium conflict does not arise in this section. The only placement difference is HCl, drawn under the arrow but a workup acidification in the prose and recorded in workup; that is not a disagreement and no flag is raised. DMF is written but not drawn, the ordinary omission of a solvent. Two arrows in the section against two numbered prose steps also corroborates the step count of two, and confirms there is no drawn alkoxide preparation."
+  },
+  {
+    "reaction_id": "Example 7_Step 1",
+    "source_lines": [
+      390,
+      396,
+      398
+    ],
+    "quote_zh": "向反应瓶中加入叔丁醇200mL，开动搅拌，室温下将10.3g叔丁醇钠(98％，0.105mol)滴入其中，待叔丁醇钠分散均匀后，控制釜温在25℃，将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应，反应过程微微放热，控制釜温为25℃，反应6h。反应结束，液相色谱中控2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐归一含量为98.3％，负压脱尽溶剂直接用于后续醚化反应。",
+    "arithmetic_check": "Closes; nothing to flag. Sodium tert-butoxide: 10.3 g at 98 percent is 10.09 g of C4H9ONa, MW 96.10, i.e. 0.1050 mol against the printed 0.105 mol. Methyl ester: 34.8 g at 98 percent is 34.10 g of C10H10BrClO4S, MW 341.60, i.e. 0.0998 mol against the printed 0.1 mol, so the printed 0.1 mol is a rounding of the purity-corrected charge and not a molar-mass error. Base to substrate is 1.05 to 1, which the text does not state as a ratio. No product mass and no yield is printed for this step: the salt is never isolated, only its in-process normalised HPLC content of 98.3 percent is given, so no mass balance can be computed here and none is asserted. Neither mass_balance_implausible nor molar_mass_inconsistent is raised, and neither was manufactured to meet the pass prompt's expectation of failing arithmetic, which describes the reference patent and not this one.",
+    "drawing_evidence": "One [IMAGE_EXTRACT] reactions span, line 396, immediately under the [0111] marker and after the p13 page-break comment: a single arrow, step_id 1. It corroborates the step boundary and the connectivity. Its reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl (C10H10BrClO4S) matches the named methyl ester and its product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] (C9H7BrClNaO4S) matches the named sodium salt, sodium counter-ion included, so drawing and prose agree on substrate, product and alkali metal. It DISAGREES on the reagent: the arrow's only condition text is NaOH, while the prose charges sodium tert-butoxide in tert-butanol and names no sodium hydroxide anywhere. Prose kept in the structured fields; drawing_text_conflict, reagent_drawn_not_written and reagent_written_not_drawn raised. No attribution question arises: this is an experimental example, not an overview scheme, and no drawing in this patent is marked presented_as unclear."
+  },
+  {
+    "reaction_id": "Example 7_Step 2",
+    "source_lines": [
+      400,
+      403,
+      405
+    ],
+    "quote_zh": "向反应釜中加入130mL THF、10.6g三氟乙醇(99％，0.105mol)和11.8g叔丁醇钠(98％，0.12mol)，开动搅拌，控制釜温在10℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.3％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应4h。反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至2，之后经过滤、水淋洗、烘干得到产物32.8g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为97.8％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率92.7％。",
+    "arithmetic_check": "Closes on every printed pair; nothing to flag. Trifluoroethanol: 10.6 g at 99 percent is 10.49 g, MW 100.04, i.e. 0.1049 mol against the printed 0.105 mol. Sodium tert-butoxide: 11.8 g at 98 percent is 11.56 g, MW 96.10, i.e. 0.1203 mol against the printed 0.12 mol. Product C11H10ClF3O5S has MW 346.70, so 0.1 mol of substrate gives 34.67 g theoretical; the 32.8 g isolated at 97.8 percent HPLC content is 32.08 g of the acid, i.e. 0.09252 mol. Against the purity-corrected methyl ester charge of step (1), 0.09984 mol, that is 92.68 percent, which rounds to the printed two-step yield of 92.7 percent; against the nominal 0.1 mol it is 92.5 percent. Mass, purity and stated yield are therefore mutually consistent and consistent with the molecular weight of the compound actually named, on either basis. Open point for A5, deliberately not flagged: the step (1) material is charged here as 98.3 percent, 0.1 mol, which is the nominal carry of the entire unisolated step (1) batch, and step (1) prints no output mass at all, so the carry can be neither confirmed nor contradicted; scale_discontinuity is not raised because nothing printed contradicts it, and a guard must not report a finding it could not check.",
+    "drawing_evidence": "One [IMAGE_EXTRACT] reactions span, line 403, under the [0114] marker: a single arrow, step_id 1, and it agrees with the prose. Reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] is the step (1) sodium salt, so the drawing also corroborates the linkage to Step 1; condition texts are CF3CH2OH, C4H9ONa and HCl, all three named in the prose; product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F (C11H10ClF3O5S) matches the named target acid, and the drawn carboxylic acid rather than a salt matches the acidification described. The drawn alkali metal is sodium in both the substrate and the base, agreeing with the prose, so the patent's sodium versus potassium conflict does not arise in this section. The only placement difference is HCl, drawn under the arrow but a workup acidification in the prose and recorded in workup; that is not a disagreement and no flag is raised. Two arrows in the section against two numbered prose steps also corroborates the step count of two."
+  },
+  {
+    "reaction_id": "Example 8_Step 1",
+    "source_lines": [
+      409,
+      415
+    ],
+    "quote_zh": "向反应瓶中加入叔丁醇200mL，开动搅拌，室温下将12.4g叔丁醇钾(95％，0.105mol)滴入其中，待叔丁醇钾分散均匀后，控制釜温在25℃，将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应，反应过程微微放热，控制釜温为25℃，反应6h。反应结束，液相色谱中控2-氯-3-溴甲基-4-甲磺酰基苯甲酸钾盐归一含量为98.0％，负压脱尽溶剂直接用于后续醚化反应。",
+    "arithmetic_check": "Charges: methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate 34.8 g at 98 percent strength and 0.1 mol. 34.8 x 0.98 = 34.10 g over 0.100 mol implies 341.0 against C10H10BrClO4S = 341.60, correct to 0.2 percent. Potassium tert-butoxide 12.4 g at 95 percent and 0.105 mol. 12.4 x 0.95 = 11.78 g over 0.105 mol implies 112.2 against C4H9KO = 112.21, exact. Both printed triples therefore close and molar_mass_inconsistent is NOT raised. Stoichiometry implied by the printed moles is 1.05 mol of base per mol of ester, which the text does not word, so molar_ratio_text is null and equivalents are left null rather than computed into the record. Product closure: NOT TESTABLE. The step prints no product mass and no yield, only an in-process normalised content of 98.0 percent for the potassium salt, and the material is carried forward without isolation. The absence of mass_balance_implausible on this record means the test could not be run, not that the step closed. Numbers recorded exactly as printed.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 412, a single-arrow scheme. Reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl, C10H10BrClO4S, which is the methyl ester the prose charges. Arrow condition text C4H9OK, which is the potassium tert-butoxide the prose charges. Product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+], C9H7BrClKO4S, the POTASSIUM benzoate the prose makes and assays. Reactant, reagent and product all agree with the prose, so no drawing_text_conflict is raised on this record. Read atom by atom the drawn product is 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate with a potassium counter-ion, that is, the compound the prose names, so this pass does not reproduce the SMILES_MISMATCH warning A1 left on the same compound; the two passes disagree and neither reading is silently dropped. tert-butanol is written in the procedure and drawn nowhere, but it is the solvent, not a reagent, so reagent_written_not_drawn is not raised. Nothing on this arrow is drawn and unwritten. The scheme of the NEXT step, at line 421, draws the SODIUM salt as the substrate of the etherification and therefore contradicts the potassium product drawn here; that conflict is flagged on Example 8_Step 3, where the contradicting drawing sits."
+  },
+  {
+    "reaction_id": "Example 8_Step 2",
+    "source_lines": [
+      423,
+      424
+    ],
+    "quote_zh": "向反应釜中加入100mL三氟乙醇，开动搅拌，室温下投入5.5g金属钾(99％，0.14mol)，搅拌至溶解完全，经脱溶后得到三氟乙醇醇钾固体，密封备用。",
+    "arithmetic_check": "Charges: potassium metal 5.5 g at 99 percent and 0.14 mol. 5.5 x 0.99 = 5.445 g over 0.140 mol implies 38.9 against the atomic weight of potassium, 39.10, correct to 0.5 percent, so molar_mass_inconsistent is NOT raised. Trifluoroethanol is printed as a volume only, 100 mL, with no mass, no strength and no mole count, so no mass and mole pair exists to test and no equivalence ratio is stated; the alcohol is plainly in large excess over the metal but no density is printed in the document and none is imported here. Product closure: NOT TESTABLE. No mass, no yield and no purity is printed for the isolated potassium alkoxide, so the absence of mass_balance_implausible on this record means the test could not be run, not that the step closed. Numbers recorded exactly as printed.",
+    "drawing_evidence": "NONE. The patent draws no arrow for the alkoxide preparation. The only drawing in this half of the example is the single-arrow scheme at line 421, which is the etherification: it carries CF3CH2OK as a condition ABOVE its arrow, that is, as a reagent already in hand, and neither potassium metal nor trifluoroethanol appears anywhere in it. This transformation is therefore written and never drawn, and both of its reagents are in the procedure and on no arrow, which is the basis for reagent_written_not_drawn on this record. There is consequently nothing that could disagree with the prose, so no drawing_text_conflict is raised here."
+  },
+  {
+    "reaction_id": "Example 8_Step 3",
+    "source_lines": [
+      416,
+      426
+    ],
+    "quote_zh": "向三氟乙醇醇钾中加入130mL乙腈，搅拌溶解后控制釜温在15℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钾盐(98.0％，0.1mol)分八次加入反应瓶中，总加料时间为1h，加毕保温反应6h。反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至3，之后经过滤、水淋洗、烘干得到产物32.6g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为98.2％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率91.9％。",
+    "arithmetic_check": "Charge: potassium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate at 98.0 percent and 0.1 mol, printed with no mass, so there is no mass and mole pair to test on the substrate. The alkoxide is printed with no charge at all; the metal charge of the preceding step, 0.14 mol, is 1.4 times the substrate on the printed moles, so the alkoxide is in excess and the benzoate salt is limiting. Product closure: product 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid is C11H10ClF3O5S, MW 346.70. Limiting input 0.100 mol gives 34.67 g theoretical. Printed mass is 32.6 g, which is BELOW theory at 94.0 percent of it, so no product mass exceeds what the input moles could give. Taking the printed 98.2 percent content, the contained product is 32.6 x 0.982 = 32.01 g, which is 92.3 percent of theory on the nominal 0.1 mol. The patent prints 91.9 percent, stated as a TWO-STEP yield on the methyl ester of step (1), whose own charge was 0.1 mol at 98 percent. Printed yield and printed purity-corrected mass therefore agree to within 0.4 percentage points, or about 0.5 percent relative, which is rounding at this precision; solving the printed pair for a molecular weight gives 348.3 against the true 346.70, a gap of 1.6. This CLOSES. Neither mass_balance_implausible nor molar_mass_inconsistent is raised on this record. Note for A5: the 91.9 percent is a two-step figure and is stored in product_yield_pct because it is the only yield the section prints; it must not be read as the yield of this step alone. Numbers recorded exactly as printed.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 421, a single-arrow scheme. Reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, the SODIUM benzoate. Arrow conditions CF3CH2OK and HCl. Product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F, C11H10ClF3O5S, the free acid, which matches the name in the heading and in the prose. DISAGREEMENT: the drawn substrate is the sodium salt while the prose of this step charges the potassium salt prepared in step (1), the prose of step (1) makes the potassium salt, and the step (1) scheme at line 412 draws the potassium salt. The alkali metal of the substrate is thus drawn one way and written another, in the same example, and the drawing also contradicts the other drawing. Per rule 5c the structured fields keep the prose reading, potassium, and drawing_text_conflict is raised with both readings in notes. The arrow's own reagents agree with the prose in both directions: CF3CH2OK is the alkoxide made in the preceding paragraph and HCl is the concentrated acid of the workup, which is why the acid is recorded in workup rather than as a reagent of the substitution. Acetonitrile and the workup water are written and on no arrow, but they are solvents and not reagents, so reagent_written_not_drawn is not raised. Nothing on the arrow is drawn and unwritten."
+  },
+  {
+    "reaction_id": "Example 9_Step 1",
+    "source_lines": [
+      429,
+      434
+    ],
+    "quote_zh": "向反应瓶中加入2-甲基-2-戊醇200mL，开动搅拌，室温下将4.2g氢化钠(60％，0.105mol)滴入其中，待氢化钠溶解完全后，控制釜温在25℃，将34.8g2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应",
+    "arithmetic_check": "Charges. Sodium hydride 4.2 g at a stated 60 percent strength is 2.52 g of hydride against 0.105 mol, implying 24.0, and NaH is 24.00: exact. Methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate 34.8 g at a stated 98 percent is 34.10 g against 0.1 mol, implying 341.0, and C10H10BrClO4S is 341.60: low by 0.16 percent, inside rounding. So molar_mass_inconsistent is NOT raised. Stoichiometry implied by the printed moles is 1.05 mol of hydride per mole of ester; no equivalents are printed, so the equivalents fields are left null rather than computed into the record. Product closure. No mass and no yield are printed for this step's product: the solvent is stripped and the residue is carried straight into step (2), and the only product figure is an in-process normalised content of 97.8 percent. There is therefore no mass balance to test and mass_balance_implausible is NOT raised. Continuity. Step (2) charges 0.1 mol of this product, the same molar quantity that was charged of the ester here, so the patent carries the step through as if quantitative. Since this step states no output quantity there is no mismatch between a stated output and a stated input, and scale_discontinuity is NOT raised; the implied lossless carry-through is recorded in notes instead. All numbers transcribed as printed.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 431, one arrow: reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl, C10H10BrClO4S, which is the methyl ester the prose charges; arrow condition text NaH, which is the base the prose charges; product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, which is the sodium salt the prose names in its in-process control. Drawing and prose agree on the transformation, on the reagent and on the alkali metal, so no drawing_text_conflict and no sodium-versus-potassium conflict in this section. The arrow carries no solvent, so the tertiary alcohol 2-methyl-2-pentanol is written and not drawn; it is a solvent rather than a reagent, so reagent_written_not_drawn is not raised. Nothing on the arrow is absent from the prose, so reagent_drawn_not_written does not arise. The scheme sits inside an experimental example and is introduced by the step heading as the reaction equation of this step, so its attribution is not in question and route_attribution_unclear is not raised."
+  },
+  {
+    "reaction_id": "Example 9_Step 2",
+    "source_lines": [
+      435,
+      440
+    ],
+    "quote_zh": "向反应釜中加入200mL DMF、11.6g三氟乙醇(99％，0.115mol)和5.4g氢氧化钠(96％，0.13mol)，开动搅拌，控制釜温在5℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(97.8％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应6h。",
+    "arithmetic_check": "Charges. Trifluoroethanol 11.6 g at a stated 99 percent is 11.48 g against 0.115 mol, implying 99.9, and C2H3F3O is 100.04: low by 0.2 percent. Sodium hydroxide 5.4 g at a stated 96 percent is 5.18 g against 0.13 mol, implying 39.9, and NaOH is 40.00: low by 0.3 percent. Both inside rounding, so molar_mass_inconsistent is NOT raised. The benzoate salt is printed as a strength and a mole figure only, 97.8 percent and 0.1 mol, with no mass, so it yields no molecular weight to test. Implied stoichiometry per mole of salt is 1.15 of the alcohol and 1.3 of the base; not printed as equivalents, so those fields stay null. Product closure. Limiting reagent 0.1 mol of the benzoate salt. Product 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid is C11H10ClF3O5S, 346.70, so theory on 0.1 mol is 34.67 g. Printed crude mass 32.4 g is 93.5 percent of theory on mass alone; at the printed 96.5 percent HPLC content the contained product is 31.27 g, which is 90.2 percent of theory. The patent states 89.7 percent over both steps on the methyl ester, and the methyl ester basis is itself 0.1 mol, so the patent's figure and the figure implied by its own printed mass and content agree to within about 0.5 of a percentage point. That is inside the rounding of a three-figure mass, so the step CLOSES and neither mass_balance_implausible nor scale_discontinuity is raised. Note for A5: the 89.7 percent is a two-step yield on the methyl ester, not a step yield, and it is stored in product_yield_pct with that basis stated in notes. All numbers transcribed as printed.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 437, one arrow: reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+], C9H7BrClNaO4S, the sodium salt the prose charges and the same structure drawn as the product of the arrow at line 431, so the drawing establishes the step-1 to step-2 connectivity independently of the prose cross-reference; arrow condition texts CF3CH2OH, NaOH and HCl; product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F, C11H10ClF3O5S, the free acid the prose names. Every drawn reagent appears in the prose and the drawn counter-ion is sodium as the prose says, so no drawing_text_conflict and no reagent_drawn_not_written. One reading difference worth recording rather than flagging: the hydrochloric acid is drawn on the arrow as though it were a reagent of the substitution, whereas the prose introduces it only after desolvation to acidify the dissolved residue to pH 3, so it is recorded in workup with ph_target 3 and not as a reagent. The arrow carries no solvent, so the dimethylformamide is written and not drawn; as a solvent it does not raise reagent_written_not_drawn. The scheme is introduced by this step's own heading as the reaction equation of the step, so route_attribution_unclear is not raised."
+  },
+  {
+    "reaction_id": "Summary of the Invention_Step 1",
+    "source_lines": [
+      159,
+      189,
+      191,
+      193,
+      195,
+      197,
+      199,
+      201,
+      203,
+      255
+    ],
+    "quote_zh": "(1)原料2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯在碱性物质存在下于三级醇溶剂中发生酯解反应得到2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐；",
+    "arithmetic_check": "No mass, no mole count and no yield is printed anywhere in this section, so there is no arithmetic to close for this step. What is stated is ranges: the raw material to basic substance molar ratio 1:(1～1.1) at [0029] and again at [0056], and 700～3500mL of tertiary alcohol per 1mol of raw material at [0028] and [0056]. Both ranges are self consistent between the two paragraphs that print them. mass_balance_implausible and molar_mass_inconsistent are therefore not raisable here and are not raised, and scale_discontinuity cannot be checked because no charge is stated. This is an absence of numbers, not a check that passed.",
+    "drawing_evidence": "[IMAGE_EXTRACT reactions] at line 164, introduced by [0016] as the reaction equation of this step. One arrow, one reactant, SMILES COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl with formula C10H10BrClO4S, which is the named methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate atom for atom. Its single condition is 碱 (base) and its products list is empty, because [0018] leaves M a generic alkali metal, so the drawing names no product. It agrees with the prose as far as it goes and contradicts nothing, hence no drawing_text_conflict; the tertiary alcohol solvent and the eight specific bases of [0027] and [0030] appear only in the prose, hence reagent_written_not_drawn."
+  },
+  {
+    "reaction_id": "Summary of the Invention_Step 2",
+    "source_lines": [
+      168,
+      205,
+      207,
+      212,
+      214,
+      216,
+      218,
+      220,
+      222,
+      224,
+      226,
+      228,
+      230,
+      232,
+      234,
+      236,
+      238,
+      240,
+      242,
+      244,
+      246,
+      248,
+      257
+    ],
+    "quote_zh": "(2)2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐在碱性物质存在下与醇反应或者将2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐反应，得到所述2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸。",
+    "arithmetic_check": "Again no mass, no mole count and no yield is printed, so nothing can fail to close. The stated ranges are the benzoate salt to alcohol molar ratio 1:(1.05～1.35) at [0036] and [0057], the salt to basic substance ratio 1:(1.2～1.5) at [0040] and [0057], the salt to alkali metal alkoxide ratio 1:(1.2～1.5) at [0041] and [0057], and 700～3500mL of solvent per 1mol of salt at [0048]. Every one of them is printed identically in both places it appears, so there is no internal disagreement to flag. No arithmetic flag is raisable and none is raised. Note that this is absence of data, not a passing check.",
+    "drawing_evidence": "[IMAGE_EXTRACT reactions] at line 176, introduced by [0020] as the reaction equation of this step. One arrow carrying two conditions, ROH、碱 and 或ROM, which is exactly the pair of alternative routes [0019] recites, the alcohol plus base route and the alkali metal alkoxide route. Its reactants and products lists are both empty because M and R are placeholders on the page, per [0022]. It corroborates the reagents and the fact that there are two routes, and contradicts nothing, hence no drawing_text_conflict; the four permitted solvents, the six named bases and the acidification hydrochloric acid are written and drawn nowhere, hence reagent_written_not_drawn. The other span in this section, [IMAGE_EXTRACT molecules] at line 185, is the symmetric dibenzyl ether by-product of the conventional route [0024] rejects; it is a single structure, not an arrow, and no record is emitted for it."
+  }
+]
