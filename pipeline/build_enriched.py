@@ -26,6 +26,7 @@ structures.json with the parse failure recorded.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -69,24 +70,54 @@ ORD = {"1st": 1, "2nd": 2, "3rd": 3, "4th": 4, "5th": 5, "6th": 6, "7th": 7,
        "seventh": 7, "eighth": 8, "ninth": 9, "tenth": 10}
 
 
-def ordinal(label):
-    """Reduce a position label to its ordinal.
+# An ordinal written in digits. The suffix is required, so a page coordinate in a
+# descriptive label ("row 3 (page y 1088-1373)") cannot be mistaken for a structure.
+ORDINAL_RE = re.compile(r"\b(\d+)(?:st|nd|rd|th)\b", re.I)
 
-    The vision pass labels structures descriptively ("1st, row 1 far left") but
-    references them tersely from arrows ("1st"). An exact-string join therefore
-    matches nothing and silently produces empty reactants/products, which is exactly
-    the kind of quiet data loss this whole exercise exists to catch. Match on the
-    leading ordinal token instead, and report anything that still fails to resolve.
+
+def ordinals(label):
+    """Every structure a label points at, in the order written.
+
+    Returns a list rather than a number for two reasons, both found on a scheme
+    that draws sixteen structures where the reference run drew nine.
+
+    An arrow can begin at more than one structure. The vision pass writes
+    `"11th and 12th (joined by '+' on the baseline)"` for a two-component coupling,
+    and reading only the leading ordinal dropped the acid chloride from the one
+    arrow in that document that makes the target: the reaction went into the
+    IMAGE_EXTRACT with a single reactant, which reads as a rearrangement.
+
+    And the ordinals do not stop at twelve. ORD ended at `12th`, so `13th` through
+    `16th` resolved to nothing at all, taking the scheme's final product and one
+    entire arrow with them. Parse the digits instead of enumerating the words, and
+    keep the word table only as the fallback it always was.
     """
     if not label:
-        return None
-    head = str(label).strip().lower().replace(",", " ").split()
+        return []
+    text = str(label)
+    seen, out = set(), []
+    for m in ORDINAL_RE.finditer(text):
+        n = int(m.group(1))
+        if n not in seen:
+            seen.add(n)
+            out.append(n)
+    if out:
+        return out
+    head = text.strip().lower().replace(",", " ").split()
     for tok in head[:2]:
         if tok in ORD:
-            return ORD[tok]
-        if tok.isdigit():
-            return int(tok)
-    return None
+            return [ORD[tok]]
+    # A bare number counts only as the FIRST token. Anywhere else it is prose:
+    # "row 3 (page y 1088-1373)" names no third structure.
+    if head and head[0].isdigit():
+        return [int(head[0])]
+    return []
+
+
+def ordinal(label):
+    """The one structure a descriptive position label names, or None."""
+    got = ordinals(label)
+    return got[0] if got else None
 
 
 UNMATCHED: list[str] = []
@@ -103,14 +134,25 @@ def image_extract_block(dr, page):
             by_pos[ordinal(st.get("position_in_drawing")) or i] = st
         steps = []
         for i, a in enumerate(dr["arrows"], 1):
-            src = by_pos.get(ordinal(a.get("from_structure")))
-            dst = by_pos.get(ordinal(a.get("to_structure")))
-            if src is None and a.get("from_structure"):
-                UNMATCHED.append(f"{page} arrow {i} from={a.get('from_structure')!r}")
-            if dst is None and a.get("to_structure"):
-                UNMATCHED.append(f"{page} arrow {i} to={a.get('to_structure')!r}")
-            reactants = [x for x in [mol_entry((src or {}).get("smiles"), where)] if x]
-            products = [x for x in [mol_entry((dst or {}).get("smiles"), where)] if x]
+            def resolve(side):
+                """The structures one endpoint names, and a report of any it lost.
+
+                Reports a PARTIAL resolution too. Losing two of three reactants is
+                not visibly different downstream from a scheme that only ever had
+                one, and the whole point of this list is that somebody sees it.
+                """
+                label = a.get(side)
+                want = ordinals(label)
+                got = [by_pos[n] for n in want if n in by_pos]
+                if label and len(got) < max(len(want), 1):
+                    UNMATCHED.append(
+                        f"{page} arrow {i} {side.split('_')[0]}={label!r}"
+                        + (f" resolved {len(got)}/{len(want)}" if got else ""))
+                return got
+
+            srcs, dsts = resolve("from_structure"), resolve("to_structure")
+            reactants = [x for x in (mol_entry(s.get("smiles"), where) for s in srcs) if x]
+            products = [x for x in (mol_entry(s.get("smiles"), where) for s in dsts) if x]
             conds, reagent_mols = [], []
             for r in (a.get("reagents_above") or []) + (a.get("reagents_below") or []):
                 conds.append({"text": r})
