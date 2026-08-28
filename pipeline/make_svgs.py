@@ -49,6 +49,60 @@ def esc(s):
     return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
 
 
+def break_token(w, width_chars):
+    """One over-long token as pieces no wider than width_chars.
+
+    Breaks after an existing hyphen inside the window when there is one, so the line
+    ends where the name already ends a part, and cuts mid-token only when the window
+    holds no hyphen at all. Nothing is inserted either way: no hyphen is added, so a
+    break never invents a locant that was not printed.
+    """
+    out = []
+    while len(w) > width_chars:
+        at = w.rfind("-", 1, width_chars)
+        cut = at + 1 if at > 0 else width_chars
+        out.append(w[:cut])
+        w = w[cut:]
+    out.append(w)
+    return out
+
+
+def wrap_lines(s, width_chars):
+    """The lines Canvas.wrap would draw for `s`, without drawing them.
+
+    Shared with Canvas.wrap rather than duplicated, because a caller that needs to
+    SIZE a box around wrapped text has to agree with the code that lays the text
+    out, and two copies of a line-breaking rule drift.
+
+    A token longer than width_chars is broken rather than left whole. Whitespace
+    alone is not enough to lay out a chemical name: WO2000021924A1's target is 83
+    characters with no space anywhere in it, so a whitespace-only rule leaves it on
+    one line at whatever width it likes, off the side of the canvas, and the overflow
+    check then fails the whole diagrams stage. The reference run never showed this
+    because its target is spelled "tembotrione".
+
+    Two people fixed this file independently, and this is the one place they
+    disagreed. The objection to breaking was that cutting a systematic name at an
+    arbitrary character invents a locant break that reads as part of the name. That
+    objection is answered rather than overruled: break_token prefers a hyphen the
+    name already prints, and adds no character of its own. A failed stage is the
+    worse outcome, so the break stays either way.
+    """
+    words, line, out = [], "", []
+    for w in s.split():
+        words.extend(break_token(w, width_chars) if len(w) > width_chars else [w])
+    for w in words:
+        t = (line + " " + w).strip()
+        if len(t) > width_chars and line:
+            out.append(line)
+            line = w
+        else:
+            line = t
+    if line:
+        out.append(line)
+    return out
+
+
 class Canvas:
     def __init__(self, w, h, ns, title, desc):
         self.w, self.h, self.ns = w, h, ns
@@ -96,37 +150,9 @@ class Canvas:
         self.parts.append(f'<polygon points="{p}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>')
 
     # ---- helpers ----------------------------------------------------
-    @staticmethod
-    def wrap_lines(s, width_chars):
-        """The lines wrap() would draw, so a caller can size a box before drawing it.
-
-        A systematic chemical name is one unbroken token: this patent's target is 83
-        characters with no space in it. Splitting on whitespace alone leaves such a
-        token on one line at whatever width it likes, off the side of the canvas, and
-        the overflow check then fails the whole stage. Break the over-long token
-        instead. The reference run never needed this because its target is spelled
-        "tembotrione".
-        """
-        words, line, lines = [], "", []
-        for w in s.split():
-            while len(w) > width_chars:
-                words.append(w[:width_chars])
-                w = w[width_chars:]
-            words.append(w)
-        for w in words:
-            t = (line + " " + w).strip()
-            if len(t) > width_chars and line:
-                lines.append(line)
-                line = w
-            else:
-                line = t
-        if line:
-            lines.append(line)
-        return lines
-
     def wrap(self, x, y, s, width_chars, size=12, fill=INK, anchor="middle", lh=15,
              weight="normal", mono=False):
-        lines = self.wrap_lines(s, width_chars)
+        lines = wrap_lines(s, width_chars)
         for i, ln in enumerate(lines):
             self.text(x, y + i * lh, ln, size=size, fill=fill, anchor=anchor,
                       weight=weight, mono=mono)
@@ -408,14 +434,22 @@ def m2():
                f"L {xb + bw / 2} {ya + bh + 28} L {xb + bw / 2} {yb - 6}", sw=1.8)
 
     xE, yE = positions[-1]
-    # the box grows with the name: a systematic product wraps to several lines and a
-    # fixed 46px box would sit under its own caption
-    p_lines = len(Canvas.wrap_lines(product, 26))
-    P_LH = 17          # must exceed size * 1.08 or consecutive lines overlap
-    box_h = max(46, 22 + p_lines * P_LH + 14)
+    # THE TARGET BOX IS SIZED FROM THE NAME, NOT FIXED AT ONE LINE.
+    #
+    # It used to be a 46px box with the name wrapped at lh=15 and the caption pinned
+    # 16px under the name's first line. That fits exactly one line, which is what the
+    # reference patent needs because its target is called tembotrione. Every other
+    # patent on the list names its target as an IUPAC string of 57 characters or more,
+    # and two things then went wrong at once: the caption sat under the second line,
+    # and the second line sat on the first, because Canvas.text reserves size*1.08 of
+    # height (15.12px at size 14) while lh was 15. Any two-line name collided with
+    # itself by 0.12px. Both are now functions of the line count.
+    pl = wrap_lines(product, 26)
+    plh = 17                      # must exceed size*1.08, or adjacent lines overlap
+    box_h = 30 + len(pl) * plh
     c.rect(xE - 6, yE + bh + 26, bw + 12, box_h, fill="#efe6f1", stroke=PURPLE, sw=2)
-    c.wrap(xE + bw / 2, yE + bh + 48, product, 26, size=14, weight="700", lh=P_LH)
-    c.text(xE + bw / 2, yE + bh + 40 + p_lines * P_LH + 8, "the target", size=10.5, fill=MUTE)
+    c.wrap(xE + bw / 2, yE + bh + 44, product, 26, size=14, weight="700", lh=plh)
+    c.text(xE + bw / 2, yE + bh + 44 + len(pl) * plh + 2, "the target", size=10.5, fill=MUTE)
     c.line(xE + bw / 2, yE + bh + 4, xE + bw / 2, yE + bh + 22, sw=1.8)
 
     ytext = yE + bh + 26 + box_h + 12

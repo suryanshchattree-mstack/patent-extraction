@@ -1,0 +1,421 @@
+[
+  {
+    "patent_id": "CN112645853A",
+    "reaction_id": "Example 7_Step 1",
+    "section_label": "Example 7",
+    "section_type": "experimental_example",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "hydrolysis",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 25.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 6.0,
+      "reactor_type": "reaction flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "strip the solvent off completely under reduced pressure",
+        "use the residue directly in the subsequent etherification without isolation"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": "distillation under reduced pressure",
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": "hplc",
+      "target_compound": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+      "threshold_pct": null,
+      "criterion": "in-process normalised content of the product measured at the end of the reaction"
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [
+      "The reaction is slightly exothermic (反应过程微微放热), and the kettle temperature is held at the stated value while the ester is charged."
+    ],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 34.8,
+          "volume_ml": null,
+          "mmol": 100.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "poured into the kettle in one portion once the sodium tert-butoxide had dispersed uniformly, kettle temperature controlled at 25 C",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 98.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium tert-butoxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 10.3,
+          "volume_ml": null,
+          "mmol": 105.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "dripped in (滴入) at room temperature before the ester was charged, and allowed to disperse uniformly, although the charge is a solid",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 98.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "tert-butanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 200.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged first, stirring then started",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 98.3,
+        "purity_method": "hplc"
+      }
+    ],
+    "reactant_names": [
+      "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+      "sodium tert-butoxide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 98.3,
+    "product_purity_method": "hplc",
+    "canonical_rxn": null,
+    "procedure_text": "向反应瓶中加入叔丁醇200mL，开动搅拌，室温下将10.3g叔丁醇钠(98％，0.105mol)滴入其中，待叔丁醇钠分散均匀后，控制釜温在25℃，将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应，反应过程微微放热，控制釜温为25℃，反应6h。反应结束，液相色谱中控2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐归一含量为98.3％，负压脱尽溶剂直接用于后续醚化反应。",
+    "procedure_summary": "The methyl ester of the benzoic acid is cleaved by sodium tert-butoxide in tert-butanol at a controlled kettle temperature to give the sodium benzoate salt, the benzylic bromide being left untouched. The base is dripped in and allowed to disperse before the ester is poured in, the reaction is slightly exothermic, and its endpoint is checked by in-process liquid chromatography. The solvent is then stripped under reduced pressure and the crude salt goes straight into the etherification without isolation.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "drawing_text_conflict",
+      "reagent_drawn_not_written",
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:hydrolysis",
+      "mechanism:ionic",
+      "analytics:hplc",
+      "scale:lab",
+      "solvent_class:protic",
+      "catalyst_class:base",
+      "workup_type:distillation",
+      "purification:none",
+      "safety:exothermic",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "Chinese heading, line 390: (1)2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐的制备，主要反应过程可以以如下反应方程式表示： The step marker is (1), not the N、 form the pass prompt describes; that form does not occur in this patent. CLASS: the patent calls this 碱解反应 (alkaline cleavage). No water is charged, so this is strictly an alkoxide-promoted cleavage of the methyl ester to the carboxylate, not a hydrolysis in the literal sense, and the isolated product is a salt. hydrolysis is chosen as the closest available class with medium confidence, following the shared convention for this patent: ester_formation is the wrong direction and salt_formation alone would describe the product and not the bond broken. The benzylic bromide survives, which is the point of the step. TEMPERATURE: two stages. The base is dripped in at 室温 (room temperature); the kettle is then controlled at 25 C for the charge of the ester and for the whole reaction, and 25 C is the value recorded. The room-temperature stage is carried in the sodium tert-butoxide addition_profile. REACTOR: printed as 反应瓶 (reaction flask) but referred to twice in the same sentence as 釜 (kettle, 控制釜温, 倒入釜中). No volume and no vessel fittings are given. 开动搅拌 states that stirring was started without saying how, so stirring.type is left null. PRESSURE: 负压脱尽溶剂 (strip the solvent under negative pressure) is a workup operation, so it sets workup.concentration_method and the reaction pressure stays not_specified. DRAWING CONFLICT, recorded not resolved: the scheme at line 396 is one arrow whose drawn reactant (COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl) and drawn product (CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+]) both match the prose, sodium counter-ion included, but its only condition text is NaOH, while the prose charges 10.3 g of 叔丁醇钠 (sodium tert-butoxide) in 叔丁醇 (tert-butanol) and never mentions sodium hydroxide. Per the rule that the prose of the step governs the structured fields, the base recorded here is sodium tert-butoxide; sodium hydroxide is drawn and written nowhere (reagent_drawn_not_written) and sodium tert-butoxide is written and drawn nowhere (reagent_written_not_drawn). Both readings stand; neither is merged into the other. A1 JOIN: A1 carries sodium hydroxide for this section as a deliberate drawing-only record, and it is not repeated in compounds[] here because compounds[] must not let the drawing overwrite the stated procedure. A1 also carries 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt, the counter-ion-free name used in the step heading and left unresolved; that is the same material as the sodium salt recorded here, so it is not emitted a second time as a separate product of one step. No a1_missing_compound: every identifier used here is in the A1 file verbatim. ARITHMETIC: closes. The purity-corrected charges are 0.0998 mol of the ester and 0.1050 mol of the base against the printed 0.1 mol and 0.105 mol, and no product mass or yield is printed for this step because the salt is never isolated. Neither mass_balance_implausible nor molar_mass_inconsistent applies, and neither is asserted. Details in the provenance sidecar. STEP COUNT: A0 estimated three steps for this section and two are emitted; the reasoning is in the notes of Step 2, where the two candidate third transformations sit."
+  },
+  {
+    "patent_id": "CN112645853A",
+    "reaction_id": "Example 7_Step 2",
+    "section_label": "Example 7",
+    "section_type": "experimental_example",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "high",
+    "named_reaction": "Williamson ether synthesis",
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 10.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 4.0,
+      "reactor_type": "reactor kettle",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": "workup acidification after the reaction, once the reaction solvent has been stripped and the residue dissolved in water"
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "strip the solvent under reduced pressure",
+        "add water to the kettle residue and stir to dissolve",
+        "add concentrated hydrochloric acid dropwise to acidify the system to pH 2",
+        "filter",
+        "rinse with water",
+        "dry"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": [
+        "water"
+      ],
+      "drying_agent": null,
+      "filtration": "the acidified solid is collected by filtration and the cake rinsed with water",
+      "concentration_method": "distillation under reduced pressure",
+      "ph_target": 2.0
+    },
+    "purification": "collected by filtration, rinsed with water and dried; no chromatography or recrystallisation is used",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": 100.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the material prepared in step (1), added to the flask in eight portions over a total addition time of 3 h at a kettle temperature of 10 C",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 98.3,
+        "purity_method": "hplc"
+      },
+      {
+        "identifier": "2,2,2-trifluoroethanol",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 10.6,
+          "volume_ml": null,
+          "mmol": 105.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged with the solvent and the base before the substrate was added",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium tert-butoxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 11.8,
+          "volume_ml": null,
+          "mmol": 120.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged with the solvent and the alcohol before the substrate was added",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 98.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "tetrahydrofuran",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 130.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged first, stirring then started",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": 32.8,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 92.7
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 97.8,
+        "purity_method": "hplc"
+      }
+    ],
+    "reactant_names": [
+      "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+      "2,2,2-trifluoroethanol",
+      "sodium tert-butoxide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 92.7,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 97.8,
+    "product_purity_method": "hplc",
+    "canonical_rxn": null,
+    "procedure_text": "向反应釜中加入130mL THF、10.6g三氟乙醇(99％，0.105mol)和11.8g叔丁醇钠(98％，0.12mol)，开动搅拌，控制釜温在10℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.3％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应4h。反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至2，之后经过滤、水淋洗、烘干得到产物32.8g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为97.8％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率92.7％。",
+    "procedure_summary": "The benzylic bromide of the benzoate salt from the preceding step is displaced by trifluoroethoxide, generated in the pot from trifluoroethanol and sodium tert-butoxide in tetrahydrofuran, the salt being added in portions at a controlled kettle temperature and the mixture then held. The solvent is stripped, the residue dissolved in water and acidified with concentrated hydrochloric acid, and the solid filtered, rinsed with water and dried to the target benzoic acid, whose content is measured by HPLC.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "transformation:etherification",
+      "mechanism:ionic",
+      "named_rxn:williamson_ether_synthesis",
+      "analytics:hplc",
+      "scale:lab",
+      "solvent_class:aprotic_polar",
+      "solvent_class:aqueous",
+      "catalyst_class:base",
+      "workup_type:distillation",
+      "workup_type:precipitation",
+      "workup_type:filtration",
+      "purification:none",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Chinese heading, line 400: (2)2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸的制备，主要反应过程可以以如下反应方程式表示： Step marker (2). Final step of the example; the product is one of the two final products of the patent, an intermediate to tembotrione. STEP COUNT: A0 estimated three steps and two are emitted, one per printed marker, matching the two drawn arrows (lines 396 and 403), one per numbered step. There is no alkoxide preparation to emit as a third record: this example uses the variant in which the alcohol and the base are charged together with the substrate in one pot, so no alkali metal alkoxide is prepared, isolated or sealed as its own charge with its own product. The two candidates for A0's third step are the in-pot deprotonation of the trifluoroethanol and the acidification of the carboxylate to the free acid; neither is emitted, for the reasons below. If A0 counted the acidification, the disagreement is a convention difference and not a recall miss. ONE-POT: is_one_pot is false. The text does not describe the deprotonation of 三氟乙醇 by 叔丁醇钠 as a transformation of its own: the solvent, the alcohol and the base are simply charged together and the substrate is then added in portions, so promoting it to a one_pot_steps entry would be inference rather than reading. The acidification with 浓盐酸 happens after the reaction solvent has been stripped, that is after the workup has begun, so the one-pot rule (no workup between the transformations) does not apply to it either; per the shared convention for this patent the concentrated hydrochloric acid is a workup acidification and not a reagent of the substitution, and it is recorded in workup with ph_target 2.0. TIME: the 3 h is the total addition time for the eight portions of the salt and is carried in that compound's addition_profile; time_h is the 4 h hold after the addition was complete (加毕保温反应4h). TEMPERATURE: 10 C is stated for the addition and, by 保温 (hold the temperature), for the hold as well; no second value is printed. REACTOR: the same vessel is called 反应釜 (reactor kettle) at the start of the sentence and 反应瓶 (reaction flask) later in it. No volume is given. 开动搅拌 does not say how, so stirring.type is null. PRESSURE: 负压脱溶 is a workup operation and sets workup.concentration_method; reaction pressure stays not_specified. YIELD: 92.7 percent is printed as a TWO-STEP yield based on the step (1) methyl ester (以...苯甲酸甲酯计两步反应收率), not as a yield for this step alone. It is recorded in product_yield_pct because that is the only yield the section prints, and this note is the record that it spans both steps. LINKAGE: confirmed by the text itself, 步骤(1)制备得到的 (prepared in step (1)), and by an exact identifier match with the Step 1 product. DRAWING: the scheme at line 403 agrees with the prose throughout. Its reactant is the sodium salt, its condition texts are CF3CH2OH, C4H9ONa and HCl, and its product (CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F) matches the named acid. The alkali metal drawn is sodium in both the reactant and the base, which is what the prose says, so the sodium versus potassium conflict seen elsewhere in this patent does not arise in this section. HCl is drawn on the arrow but is a workup acidification in the prose, so it is recorded in workup rather than in compounds[]; that is a placement difference, not a disagreement, and no flag is raised for it. A1 JOIN: hydrochloric acid and water are in A1 for this section but are not repeated in compounds[], which carries only what is charged into the reaction; both are workup agents here and live in workup instead. No a1_missing_compound: every identifier used is in the A1 file verbatim. ARITHMETIC: closes on every printed pair, including the mass, the HPLC content and the two-step yield together. Details in the provenance sidecar. No mass_balance_implausible and no molar_mass_inconsistent. SELECTIVITY: null. No ee, de or dr is reported, and the regiochemistry is implied by the product name only."
+  }
+]

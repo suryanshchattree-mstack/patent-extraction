@@ -1,0 +1,268 @@
+# What is wrong with CN112645853A
+
+Produced by annotating the patent by hand, against the scanned pages rather than
+against anyone's OCR. Every item below is a defect in the **patent**, not in the
+annotation. The annotation records them and changes nothing.
+
+- 54 reactions extracted, of which 26 carry at least one flag
+- 43 unique compounds, 32 pathways
+- 80 discrepancies raised by the page-vision pass
+
+## Flags raised, by kind
+
+| flag | count | what it means |
+|---|---:|---|
+| `cross_reference_unresolved` | 10 |  |
+| `reagent_written_not_drawn` | 9 | a reagent in the procedure appears on no arrow |
+| `conditions_unresolved` | 8 |  |
+| `drawing_text_conflict` | 5 | the drawn scheme and the written procedure disagree |
+| `reagent_drawn_not_written` | 3 | a reagent on an arrow appears in no procedure |
+| `no_conditions` | 2 | no reaction conditions stated at all |
+| `mass_balance_implausible` | 2 | stated product mass cannot be reconciled with the stated input moles and yield |
+
+## The headline findings
+
+No hand-written analysis exists for CN112645853A. The generated sections above and below are complete; this section is not, and is omitted rather than filled with another patent's findings.
+
+## Everything the page-vision pass raised
+
+- **[p01.png]** Text-internal, not a drawing conflict: the abstract's second step starts from a benzoate SALT and ends at the free benzoic ACID, with no acidification or workup step named in between.
+  - drawing: (no drawings on this page - there is nothing on this front page to check the prose against, so this is recorded as a text-internal gap and must be resolved against the description, not here)
+  - text: 苯甲酸盐在碱性物质存在下与醇反应或者将2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐反应，得到所述2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸。 - the reagent side ends in a benzoate salt plus base, or a benzoate salt plus an alkali metal alkoxide, either of which would leave the
+- **[p01.png]** Text-internal: the abstract claims lower impurity content and greatly improved yield and quality but pins no number to either claim.
+  - drawing: (no drawings on this page)
+  - text: 降低了杂质的含量，目标化合物的收率和品质得到了大幅的提升 - no yield percentage, no purity figure, and no comparison baseline appears anywhere on this page. Any number for this patent must come from the description pages.
+- **[p04.png]** Paragraph [0007] announces a reaction scheme that is not on this page. The page ends at the colon, so the prior-art scheme has to be read from the following page and no drawing on p04 corresponds to that announcement.
+  - drawing: no scheme anywhere on p04; both drawings on this page are static structures with no arrows
+  - text: [0007] ends with 反应式如下： ("the reaction scheme is as follows:") and then the page ends
+- **[p04.png]** The drawing at [0006] leaves the side-chain substituent as an undefined letter R, so the key intermediate is drawn generically while the two specific compounds are named only in prose. Nothing on this page defines R.
+  - drawing: CH2-O-R at C3 of the benzoic acid, with R undefined
+  - text: [0005] gives the generic name using 烷氧基甲基 (alkoxymethyl); [0001] gives the two specific cases, 2,2,2-三氟乙氧基 (2,2,2-trifluoroethoxy) and [(RS)-四氢呋喃-2-基甲氧基甲基] ((RS)-tetrahydrofuran-2-ylmethoxymethyl), but neither 
+- **[p04.png]** Stereochemistry is asserted in the prose but absent from the drawing. [0001] prints (RS) for the tetrahydrofuran-2-yl target, while the Tefuryltrione structure at [0003] draws that same stereocentre with plain bonds only.
+  - drawing: tetrahydrofuran C2 drawn with two plain lines, no wedge, no hash, no (RS) or R/S label
+  - text: [0001] prints 2-氯-3-[(RS)-四氢呋喃-2-基甲氧基甲基]-4-甲磺酰基苯甲酸, an explicit (RS) racemate designation
+- **[p04.png]** One compound named in the prose is never drawn. [0004] compares tembotrione's activity against a third herbicide, for which no structure appears on the page.
+  - drawing: only two herbicide structures are drawn, both captioned (Tembotrione, Tefuryltrione)
+  - text: [0004] contains 环磺酮其活性高于硝磺草酮 ("tembotrione has higher activity than mesotrione"), naming a third agent
+- **[p05.png]** The prose for step (1) names a tertiary alcohol solvent, but the scheme drawn at [0017] writes only the base on the arrow and no solvent.
+  - drawing: carbon 碱 above the arrow, nothing below it
+  - text: [0015] 在碱性物质存在下于三级醇溶剂中发生酯解反应, that is, ester cleavage in a tertiary alcohol solvent in the presence of a basic substance
+- **[p05.png]** The prior art scheme at [0008] shows the alkylation with ROH happening on the methyl ester and the ester being cleaved only afterwards, whereas the invention described in the prose reverses the order, cleaving the ester first and then alkylating.
+  - drawing: ester, then ROH/base to the ether, then 1) base 2) acid to the acid
+  - text: [0015] and [0019]: ester cleavage to the benzoate salt first, then reaction of that salt with an alcohol or with an alkali metal alkoxide
+- **[p05.png]** The impurity that the whole page is about is named in the prose but is not drawn anywhere on the page.
+  - drawing: no structure for the impurity appears in either scheme
+  - text: [0010] and [0012] name 杂质2-氯-3-甲氧基甲基-4-甲磺酰基苯甲酸, the impurity 2-chloro-3-methoxymethyl-4-methylsulfonylbenzoic acid
+- **[p05.png]** The second arrow of the prior art scheme performs the ester to acid conversion, but no prose on this page describes that hydrolysis step or names its base or acid.
+  - drawing: 1) 碱 above and 2) 酸 below the second arrow
+  - text: nothing on this page; [0009] only assigns identities to R
+- **[p06.png]** [0024] names two by-products but only one is drawn.
+  - drawing: Only the dibenzyl ether by-product is drawn in [0025].
+  - text: 苄溴基团会参与反应生成大量的苄醇以及二苄醚类化合物 - the benzyl bromide group generates large amounts of benzyl alcohol AND dibenzyl ether type compounds. No structure is drawn for the benzyl alcohol.
+- **[p06.png]** The scheme's second reagent option is more general than the prose's.
+  - drawing: 或ROM below the arrow, with M defined in [0022] as any alkali metal.
+  - text: [0023] says the salt reacts with 相应的醇或醇钠, the corresponding alcohol or sodium alkoxide, naming sodium specifically.
+- **[p06.png]** The drawn scheme shows the carboxylate salt becoming the free acid, but the arrow carries no acidification reagent.
+  - drawing: Left structure has C(=O)OM, right structure has C(=O)OH; the only reagents written on the arrow are ROH with base, or ROM.
+  - text: [0023] describes only the condensation of the salt with the alcohol or sodium alkoxide and does not mention an acidification or work-up step at this point.
+- **[p07.png]** The page carries no drawings, so no scheme-versus-prose comparison was possible on this page.
+  - drawing: no drawing present on p07
+  - text: prose only, paragraphs [0037] to [0055] plus a continuation fragment
+- **[p07.png]** Paragraph [0039] concerns potassium hydroxide but says it is first made into an aqueous sodium hydroxide solution, while giving a potassium hydroxide concentration.
+  - drawing: n/a, no drawing
+  - text: 优选地，所述氢氧化钾使用时先制成氢氧化钠水溶液，氢氧化钾的质量浓度为30～96％
+- **[p08.png]** The tert-butanol solvent used in the worked example is not written on the arrow.
+  - drawing: Only NaOH appears above the arrow; no solvent is shown.
+  - text: [0067] charges 200 mL of tert-butanol to the flask, and [0056] and [0060] specify a tertiary alcohol as the solvent for this step.
+- **[p08.png]** The scheme fixes the counter-ion as sodium while the prose names the product generically as the benzoate salt.
+  - drawing: The product is drawn as the sodium carboxylate, Na-O-C(=O)-.
+  - text: [0065] and [0056] call the product the 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate salt without naming the cation.
+- **[p08.png]** The stoichiometry and conditions of the worked example are absent from the scheme.
+  - drawing: No temperature, time or stoichiometry is written above or below the arrow.
+  - text: [0067] gives 8.8 g sodium hydroxide (48%, 0.105 mol), 34.8 g of the ester and a kettle temperature of 25 degrees C.
+- **[p09.png]** The etherification solvent in Example 1 is named in the prose but does not appear on the scheme.
+  - drawing: Arrow at [0069] carries only CF3CH2ONa above and HCl below; no solvent.
+  - text: [0071] adds 200mL THF to the sodium trifluoroethoxide before charging the substrate.
+- **[p09.png]** The etherification solvent in Example 2 is named in the prose but does not appear on the scheme.
+  - drawing: Arrow at [0077] carries only CF3CH2ONa above and HCl below; no solvent.
+  - text: [0079] adds 70mL DMSO to the sodium trifluoroethoxide.
+- **[p09.png]** The two etherification schemes on this page are drawn identically, so the drawings do not distinguish Example 1 from Example 2 at all.
+  - drawing: [0069] and [0077] are the same scheme, both CF3CH2ONa over HCl.
+  - text: Example 1 makes the alkoxide with sodium hydride ([0070]) in THF at 5 C ([0071]); Example 2 makes it with metallic sodium ([0078]) in DMSO at -5 C ([0079]).
+- **[p09.png]** The base source for the alkoxide is written in the prose but not drawn.
+  - drawing: Only the preformed reagent CF3CH2ONa is shown above the arrow.
+  - text: [0070] 5.2g 氢化钠 (sodium hydride, 60%); [0078] 2.8g 金属钠 (metallic sodium, 99%).
+- **[p09.png]** The hydrolysis solvent in Example 2 is named in the prose but does not appear on the scheme.
+  - drawing: Arrow at [0074] carries only NaOH above it and nothing below.
+  - text: [0075] charges 200mL 叔戊醇 (tert-amyl alcohol) as the reaction solvent.
+- **[p09.png]** The heading for step (1) of Example 2 names the product only as a benzoate salt, while the drawing and the body text make it specifically the sodium salt.
+  - drawing: [0074] draws the product with NaO-C(=O)- at C1.
+  - text: [0073] heading reads 2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐 (benzoate salt, counter-ion unnamed); [0075] then calls the in-process product the 钠盐 (sodium salt).
+- **[p10.png]** The starting material of the Example 3 etherification is drawn as the potassium salt but described in the prose as the sodium salt.
+  - drawing: Left-hand structure of the [0085] scheme carries KO on the carboxyl, i.e. the potassium carboxylate.
+  - text: [0086] uses 2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐, the sodium salt prepared in step (1), and step (1) at [0083] uses sodium hydroxide and reports the sodium salt as its product; the [0082] scheme likewise draws NaO.
+- **[p10.png]** The tert-butanol solvent of the salt-forming step is written but not drawn.
+  - drawing: The [0082] and [0089] arrows carry only NaOH above them, with nothing below.
+  - text: [0083] specifies 叔丁醇70mL as the reaction medium.
+- **[p10.png]** The DMF solvent of the etherification is written but not drawn.
+  - drawing: The [0085] arrow carries only CF3CH2OH、NaOH above and HCl below.
+  - text: [0086] specifies 160mLDMF as the reaction medium.
+- **[p10.png]** The HCl below the [0085] arrow is not a reagent of the etherification but of the workup, which the drawing does not distinguish.
+  - drawing: HCl appears below the single arrow, in the same position a co-reagent would occupy.
+  - text: [0086] uses 浓盐酸 only after solvent removal, to acidify the aqueous kettle residue to pH 3 before filtration.
+- **[p11.png]** The scheme at [0092] draws a potassium carboxylate as the etherification substrate, but the prose for the same step says sodium salt.
+  - drawing: KO-C(=O)- on the left-hand structure (potassium 3-(bromomethyl)-2-chloro-4-(methanesulfonyl)benzoate)
+  - text: [0090] makes the salt with 氢氧化钠 (NaOH) and calls it 苯甲酸钠盐; [0093] charges 苯甲酸钠盐 (the sodium salt)
+- **[p11.png]** The base drawn above the arrow at [0092] is the sodium alkoxide, but the prose charges the potassium alkoxide.
+  - drawing: C4H9ONa (sodium butoxide)
+  - text: [0093] 14.1g叔丁醇钾 (potassium tert-butoxide, i.e. C4H9OK)
+- **[p11.png]** The scheme at [0099] draws a sodium carboxylate as the etherification substrate, but Example 5 step (1) prepares the potassium salt.
+  - drawing: NaO-C(=O)- on the left-hand structure (sodium 3-(bromomethyl)-2-chloro-4-(methanesulfonyl)benzoate)
+  - text: [0097] makes the salt with 氢氧化钾 (KOH) and calls it 苯甲酸钾盐; the scheme at [0096] also draws KO- as that step's product
+- **[p11.png]** DMF is charged as the etherification solvent in the prose but is not written on the scheme.
+  - drawing: only CF3CH2OH、C4H9ONa above the arrow and HCl below
+  - text: [0093] 向反应釜中加入130mL DMF
+- **[p11.png]** The scheme at [0099] carries HCl below the arrow, but no acidification step is written in the prose visible on this page.
+  - drawing: HCl below the arrow
+  - text: [0100] describes only preparing the potassium trifluoroethoxide solid; the rest of Example 5 step (2) continues past the bottom of this page
+- **[p11.png]** Trifluoroethanol is the solvent in the prose for Example 5 step (2) but the scheme shows only the alkoxide.
+  - drawing: CF3CH2OK above the arrow
+  - text: [0100] 加入150mL三氟乙醇 plus 20g氢化钾, giving 三氟乙醇醇钾
+- **[p12.png]** The step (1) scheme omits the reaction solvent that the prose specifies.
+  - drawing: Only KOH is written above the arrow at [0104].
+  - text: [0105] specifies 350 mL tert-butanol (叔丁醇) as solvent, 25 C and 7 h.
+- **[p12.png]** The step (2) scheme omits the reaction solvent that the prose specifies.
+  - drawing: CF3CH2OH and KOH above the arrow, HCl below it, at [0107]; no solvent shown.
+  - text: [0108] specifies 70 mL DMF as solvent, 5 C, 2 h addition and 4 h hold.
+- **[p12.png]** The step (1) heading names a generic benzoate salt while the drawing fixes the cation.
+  - drawing: The product at [0104] is drawn as the potassium carboxylate, K-O-C(=O)-.
+  - text: [0103] heading reads 2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐, the benzoate salt, with no cation named; [0105] then names the product as the potassium salt (钾盐).
+- **[p12.png]** The step (2) scheme shows KOH as a reagent whereas the prose adds it as an aqueous solution of stated strength.
+  - drawing: KOH, written plainly above the arrow.
+  - text: [0108] specifies 26.1 g of potassium hydroxide solution (30％, 0.14 mol).
+- **[p12.png]** A reaction equation is announced at the foot of the page but no drawing appears there.
+  - drawing: Nothing is drawn below [0110]; the lower third of the page is blank.
+  - text: [0110] states the main reaction process can be represented by the following reaction equation.
+- **[p13.png]** The base drawn over the first arrow is not the base the accompanying procedure uses.
+  - drawing: NaOH above the arrow in the [0111] scheme.
+  - text: [0112] charges 200mL tert-butanol and 10.3g sodium tert-butoxide (叔丁醇钠, 98％, 0.105mol); NaOH is never mentioned in the procedure.
+- **[p13.png]** The solvent used in the etherification is written in the prose but not drawn on the scheme.
+  - drawing: The [0114] arrow carries only CF3CH2OH、C4H9ONa above and HCl below; no solvent.
+  - text: [0115] charges 130mL THF as the solvent.
+- **[p13.png]** The stoichiometry of the base in the etherification is given only in the prose.
+  - drawing: C4H9ONa above the arrow with no amount.
+  - text: [0115] gives 11.8g sodium tert-butoxide (98％, 0.12mol) against 0.1mol substrate, i.e. an excess.
+- **[p13.png]** The step title names an unspecified salt while the scheme specifies the cation.
+  - drawing: The [0118] scheme draws the potassium carboxylate (KO-C(=O)-) and C4H9OK as reagent.
+  - text: [0117] is titled 2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐 (the benzoate salt), with no cation; [0119] then specifies potassium tert-butoxide and the potassium salt.
+- **[p14.png]** The substrate of the first scheme is drawn as the sodium carboxylate, but the prose on the same page calls it the potassium salt.
+  - drawing: Left-hand structure at [0121] is labelled NaO-C(=O)- , i.e. the sodium benzoate.
+  - text: [0123]: 将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钾盐(98.0％，0.1mol) , i.e. the potassium salt at 98.0％.
+- **[p14.png]** The acetonitrile solvent named in the prose is not drawn on the first scheme.
+  - drawing: Only CF3CH2OK above the arrow and HCl below it.
+  - text: [0123]: 向三氟乙醇醇钾中加入130mL乙腈 , 130mL of acetonitrile.
+- **[p14.png]** The 2-methyl-2-pentanol solvent named in the prose is not drawn on the second scheme.
+  - drawing: Only NaH above the arrow.
+  - text: [0127]: 向反应瓶中加入2-甲基-2-戊醇200mL , 200mL of 2-methyl-2-pentanol.
+- **[p14.png]** The DMF solvent named in the prose is not drawn on the third scheme.
+  - drawing: CF3CH2OH and NaOH above the arrow, HCl below it.
+  - text: [0130]: 向反应釜中加入200mL DMF , 200mL of DMF.
+- **[p14.png]** The prose gives a two-step yield but the page's schemes for Example 9 are split across two separate drawings, so no single scheme carries the 89.7％ figure.
+  - drawing: Two independent arrows, at [0126] and [0129], with no yield annotation on either.
+  - text: [0130]: 以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率89.7％ , two-step yield 89.7％ on the methyl ester.
+- **[p15.png]** The solvents of step (1) of the first example are in the prose but nowhere in the scheme.
+  - drawing: Only KH above the arrow.
+  - text: [0134] charges 叔戊醇50mL (50 mL tert-amyl alcohol) and 叔丁醇150mL (150 mL tert-butanol) as the reaction medium.
+- **[p15.png]** The solvent of the etherification is in the prose but not in the scheme.
+  - drawing: Above the arrow only CF3CH2OH and KOH; below only HCl.
+  - text: [0137] charges 200mL DMF as the solvent.
+- **[p15.png]** The scheme shows HCl as a reagent below the arrow, whereas the prose has it only as a pH adjustment in the workup.
+  - drawing: HCl written below the etherification arrow.
+  - text: [0137] adds 浓盐酸 (concentrated hydrochloric acid) after solvent stripping to acidify the system to pH 3, i.e. workup, not a reagent of the etherification.
+- **[p15.png]** The solvent of step (1) of Example 11 is in the prose but not in the scheme.
+  - drawing: Only Na above the arrow.
+  - text: [0141] charges 叔丁醇200mL (200 mL tert-butanol).
+- **[p15.png]** The trifluoroethanol reagent is written with a different level of detail in the drawing and the text.
+  - drawing: CF3CH2OH.
+  - text: [0137] 三氟乙醇 (trifluoroethanol), unqualified by position; the product name in [0135] and [0137] confirms the 2,2,2-trifluoroethoxy group.
+- **[p15.png]** The alkali metal salts are drawn with a covalent metal-oxygen bond rather than as ionic carboxylates.
+  - drawing: KO-C(=O)- and NaO-C(=O)- drawn as ordinary single bonds.
+  - text: [0134] and [0141] name the products 钾盐 and 钠盐 (potassium salt, sodium salt).
+- **[p16.png]** Drawing 1 omits the reaction solvent that the prose specifies.
+  - drawing: Above the arrow only THFA, C4H9ONa; below it only HCl.
+  - text: [0144] adds 130mL THF as solvent, plus 120mL water in the workup, neither of which appears on the scheme.
+- **[p16.png]** Drawing 2 omits the reaction solvent that the prose specifies.
+  - drawing: Above the arrow only K; nothing below the arrow.
+  - text: [0148] adds 200 mL tert-butanol as solvent along with 4.1g metallic potassium.
+- **[p16.png]** Drawing 3 omits the reaction solvent that the prose specifies.
+  - drawing: Above the arrow only THFA, C4H9OK; below it only HCl.
+  - text: [0151] adds 130mL DMF as solvent, plus 120mL water in the workup.
+- **[p16.png]** The reagent written over the arrow in drawing 2 is not the reagent the prose says does the work.
+  - drawing: K, i.e. potassium metal, converts the methyl ester directly to the potassium carboxylate.
+  - text: [0148] dissolves the metallic potassium in tert-butanol first and then adds the ester, so the actual base is potassium tert-butoxide formed in situ; the scheme shows only K.
+- **[p16.png]** Drawing 2 fixes a cation that the paragraph heading leaves open.
+  - drawing: The product is the potassium salt (KO-C(=O)-).
+  - text: [0146] calls it only "the 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate salt", without naming the cation; [0148] does confirm potassium.
+- **[p16.png]** The drawn HCl is unqualified while the prose specifies concentrated acid used only to set pH.
+  - drawing: HCl below the arrows of drawings 1 and 3.
+  - text: [0144] and [0151] both use concentrated hydrochloric acid added dropwise to acidify the system to pH 3.
+- **[p17.png]** The solvent DMF is written in the prose of both examples but appears nowhere in either drawing.
+  - drawing: Above the arrow, only THFA and the base (NaOH in drawing 1, KOH in drawing 2); below the arrow, only HCl. No solvent shown.
+  - text: [0156] 向反应釜中加入200mL DMF... and [0161] 向反应釜中加入200mLDMF... (200mL DMF charged to the kettle).
+- **[p17.png]** Each drawing compresses two operations into one arrow: the etherification with THFA and base, and the separate acidification workup that liberates the free acid from the salt.
+  - drawing: One solid arrow, base above and HCl below, going straight from the sodium benzoate to the free benzoic acid.
+  - text: The prose makes acidification a distinct workup step, after solvent stripping and water addition: 滴加浓盐酸将体系pH值酸化至3 (concentrated hydrochloric acid added dropwise to acidify the system to pH 3).
+- **[p17.png]** The tetrahydrofuran stereocentre is named as racemic in the prose but drawn with no stereochemistry at all.
+  - drawing: Plain bonds at the tetrahydrofuran C2; no wedge, no hash, no (RS) label on the drawing.
+  - text: 2-氯-3-[(RS)-四氢呋喃-2-基甲氧基甲基]-4-甲磺酰基苯甲酸, i.e. the (RS) racemate.
+- **[p17.png]** The two-step yield is stated against the methyl ester, but step (1) of each example is stated to give the sodium salt, and the sodium salt is what is drawn.
+  - drawing: The drawn starting material is the sodium salt, NaO-C(=O)-, not a methyl ester.
+  - text: 以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率89.1％ / 89.8％ (yield calculated on the methyl ester), while (1) 得到...苯甲酸钠盐 (gives the sodium salt).
+- **[p17.png]** Paragraph [0164] announces a reaction equation for Example 15 that is not present on this page.
+  - drawing: No third drawing; the lower third of the page is blank.
+  - text: [0164] ...主要反应过程可以以如下反应方程式表示： (the main reaction process can be represented by the following reaction equation:)
+- **[p18.png]** The DMF solvent used in Examples 15 and 16 appears only in the prose, never in the schemes.
+  - drawing: The arrows at [0165] and [0170] carry only THFA and the hydroxide base above, and HCl below. No solvent.
+  - text: [0166] charges 160mL DMF and [0171] charges 70mL DMF as the reaction solvent.
+- **[p18.png]** The reagent abbreviation THFA over the arrows is never expanded anywhere on this page.
+  - drawing: THFA above the arrows at [0165] and [0170].
+  - text: [0166] and [0171] name the reagent as 2-tetrahydrofuranmethanol, i.e. tetrahydrofurfuryl alcohol, which matches THFA, but the page never states the abbreviation.
+- **[p18.png]** In Example 17 the sodium hydride that generates the alkoxide is written but not drawn.
+  - drawing: The [0175] arrow shows the preformed alkoxide, sodium (tetrahydrofuran-2-yl)methoxide, as the only reagent above it.
+  - text: [0176] makes the alkoxide in situ from 50mL 2-tetrahydrofuranmethanol and 5.2g sodium hydride (60％, 0.13mol), then strips solvent to isolate it as a solid; the hydride step is absent from the scheme.
+- **[p18.png]** The schemes draw a single achiral product while the prose names it as a racemate.
+  - drawing: All three product structures show plain bonds at the tetrahydrofuran C2, so no configuration is assigned.
+  - text: [0166], [0169], [0171] and [0174] all name the product 2-chloro-3-[(RS)-tetrahydrofuran-2-ylmethoxymethyl]-4-methylsulfonylbenzoic acid, with an explicit (RS) descriptor.
+- **[p18.png]** The yields in Examples 15 and 16 are stated against a methyl ester that is not the starting material drawn.
+  - drawing: The schemes at [0165] and [0170] start from the sodium carboxylate salt.
+  - text: [0166] and [0171] both report the two-step yield calculated on methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate, the methyl ester, which is the starting material of step (1) on an earlier page.
+- **[p19.png]** The reaction solvent appears only in the prose, never on either arrow.
+  - drawing: The arrows at [0181] and [0187] carry the alkoxide above and HCl below, with no solvent.
+  - text: [0183] charges 200mL THF for Example 18 and [0189] charges 70mL DMSO for Example 19.
+- **[p19.png]** The reagent that generates the alkoxide is written but not drawn.
+  - drawing: Both arrows show the preformed alkoxide as the only reagent above them.
+  - text: [0182] makes the potassium alkoxide from 150mL 2-tetrahydrofuranmethanol and 20g potassium hydride (30％, 0.15mol); [0188] makes the sodium alkoxide from 50mL 2-tetrahydrofuranmethanol and 2.8g sodium metal (99％
+- **[p19.png]** The schemes draw an achiral product while the prose names it as a racemate.
+  - drawing: Both product structures use plain bonds at the tetrahydrofuran C2, so no configuration is assigned.
+  - text: [0177], [0180], [0183] and [0186] all name the product 2-氯-3-[(RS)-四氢呋喃-2-基甲氧基甲基]-4-甲磺酰基苯甲酸, with an explicit (RS) descriptor.
+- **[p19.png]** The two-step yields are stated against a methyl ester that is not the starting material drawn.
+  - drawing: Both schemes start from the sodium carboxylate salt.
+  - text: [0177] and [0183] report the two-step yield calculated on 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯, the methyl ester, which is the step (1) starting material described on an earlier page.
+- **[p19.png]** The alkoxide stoichiometry differs between the two examples but the schemes are otherwise identical, so the difference is invisible in the drawings.
+  - drawing: Neither arrow carries any equivalents or amounts.
+  - text: [0182] uses 0.15mol of potassium hydride and [0188] uses 0.12mol of sodium metal, both against 0.1mol of the benzoate salt.
+- **[p20.png]** The acetonitrile solvent is written in the prose but does not appear anywhere on the arrow.
+  - drawing: Above the arrow only the potassium alkoxide structure; below the arrow only HCl. No solvent.
+  - text: [0195] 向2-四氢呋喃甲醇醇钾中加入130mL乙腈 (130 mL of acetonitrile added), reaction run at 15℃.
+- **[p20.png]** The reaction temperature and hold time on the arrow are absent; the prose gives both.
+  - drawing: No conditions other than the reagent and HCl.
+  - text: [0195] kettle temperature 15℃, addition over 1 h, hold 6 h.
+- **[p20.png]** The scheme shows the alkoxide as an isolated reagent, whereas the prose forms it in situ from potassium metal and the alcohol in a separate step.
+  - drawing: Potassium tetrahydrofurfuryl alkoxide drawn as a single reagent above the arrow.
+  - text: [0194] 100 mL 2-tetrahydrofurfuryl alcohol plus 5.5 g potassium metal (99％, 0.14 mol), then solvent stripped to give the solid alkoxide.
+- **[p20.png]** The yield basis named in the prose is a compound that never appears in the drawn scheme.
+  - drawing: The scheme starts from the sodium carboxylate salt.
+  - text: [0195] two-step yield 90.8％ 以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计 (based on the methyl ester), which is the starting material of step (1) on an earlier page.
+- **[p20.png]** The prose specifies the product stereochemistry as racemic; the drawing does not encode it.
+  - drawing: No wedge, hash or stereo label at the tetrahydrofuran 2-position.
+  - text: [0192] and [0195] name the product 2-氯-3-[(RS)-四氢呋喃-2-基甲氧基甲基]-4-甲磺酰基苯甲酸, i.e. (RS).

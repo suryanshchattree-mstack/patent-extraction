@@ -1,0 +1,96 @@
+{
+  "_readme": [
+    "Hand-authored English for the Chinese strings of one patent that",
+    "resolve_translations.py cannot get any other way. One entry per exact Chinese",
+    "string, keyed by the string as the gold spells it, byte for byte.",
+    "",
+    "WHY THIS FILE EXISTS: the gold keeps the patent's Chinese, because the Chinese",
+    "is the authoritative text and at least one finding in FINDINGS.md was only",
+    "catchable by reading it. The consuming team cannot read Chinese. Almost all of",
+    "the gap closes from data already in the pipeline: the enriched source carries a",
+    "machine translation of nearly every line, and most Chinese aliases sit on a",
+    "record that already names the same molecule in English. What is left is the",
+    "handful of class terms and misprints that neither can reach.",
+    "",
+    "TRANSLATE THESE AS CHEMISTRY, NOT AS TEXT. Check every name against the",
+    "structure or against the context in the patent rather than word by word. There",
+    "is no OPSIN and no network here, so nothing verifies a hand-authored name",
+    "except a human doing it, and a wrong chemical translation reads exactly as",
+    "convincingly as a right one. A wrong translation is worse than an admitted gap:",
+    "the gap is visible in the report, the wrong name is not.",
+    "",
+    "PRESERVE THE PATENT'S ERRORS. Where the Chinese itself is wrong, translate the",
+    "error faithfully and explain it in 'note'. Silently correcting it would make the",
+    "gold agree with chemistry instead of agreeing with the document, which is the",
+    "one thing a reference annotation may never do.",
+    "",
+    "WHAT NOT TO PUT HERE: anything the pipeline already resolves. A quotation whose",
+    "source line carries a '> EN:' line resolves with origin 'source_mt'. A Chinese",
+    "alias of a compound the gold also names in English resolves with origin",
+    "'gold_alias'. Both are stronger provenance claims than 'curated', because both",
+    "are the document's or the annotation's own words rather than ours. An entry here",
+    "for one of those is harmless, and is reported as overridden, but it is work you",
+    "did not need to do.",
+    "",
+    "OVERRIDE, and when it is honest to use it. An entry may carry",
+    "'override': true, which makes it beat the source and the gold instead of",
+    "losing to them. That is normally exactly backwards, because both are",
+    "better provenance than we are. The one shape that earns it is a SHORT",
+    "PHRASE whose source-line answer is the translation of the WHOLE PARAGRAPH",
+    "it was quoted out of. A consumer substitutes the index into the",
+    "annotator's English commentary, and a 695-character paragraph spliced into",
+    "the middle of a sentence is not a translation of a 14-character phrase, it",
+    "is a different and much worse answer. 'override' requires both an 'en' and",
+    "a 'note', so the reasoning is attached to the decision in the artifact.",
+    "",
+    "FIELDS: 'en' is the English form and must contain no Chinese. 'note' is free",
+    "text and is appended to the entry's note whichever tier ends up supplying the",
+    "English, so it is the right place for anything a reader has to know about the",
+    "string. Set 'en' to null, with a note, to record a gap deliberately left open:",
+    "the coverage gate still reports it, and the reasoning travels with it instead",
+    "of being lost.",
+    "",
+    "NOT EVERY ENTRY IS A MOLECULE. [0002] ends with a list of the weeds the",
+    "target herbicide controls, and the source's machine translation keeps the",
+    "Chinese plant names beside their English glosses, so those runs reach a",
+    "screen too and are indexed here. They are translated as botany on the same",
+    "terms the compounds are translated as chemistry: against what the name",
+    "denotes, with the genus-versus-species distinction the Chinese makes",
+    "preserved rather than flattened.",
+    "",
+    "Each name below was worked out from the patent's own context, and the",
+    "confidence in each is stated in its note."
+  ],
+  "patent_id": "CN112645853A",
+  "entries": {
+    "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [], \"conditions\": [{\"text\": \"ROH、碱\"}, {\"text\": \"或ROM\"}], \"products\": []}]}]": {
+      "en": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [], \"conditions\": [{\"text\": \"ROH, base\"}, {\"text\": \"or ROM\"}], \"products\": []}]}]",
+      "note": "A machine-read reaction scheme span, quoted whole as the evidence for an A5 audit finding. The English differs from the Chinese only inside the conditions[].text values; every other byte is JSON, SMILES or a formula and is already language neutral. The Chinese in it is the lettering of the patent's own Markush scheme at [0021]: ROH is the alcohol, ROM the alkali metal alkoxide, and line 167 states that M represents an alkali metal. 碱 is base and 酸 is acid; 、 is the enumeration comma, rendered as a plain comma. Where the vision pass had already appended its own parenthesised gloss, that gloss is not repeated."
+    },
+    "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl\", \"molecular_formula\": \"C10H10BrClO4S\", \"inchi_key\": \"YQYVOGFWLVVXMM-UHFFFAOYSA-N\"}], \"conditions\": [{\"text\": \"ROH\"}, {\"text\": \"碱 (base)\"}], \"products\": []}, {\"step_id\": 2, \"reactants\": [], \"conditions\": [{\"text\": \"1) 碱 (1) base)\"}, {\"text\": \"2) 酸 (2) acid)\"}], \"products\": []}]}]": {
+      "en": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl\", \"molecular_formula\": \"C10H10BrClO4S\", \"inchi_key\": \"YQYVOGFWLVVXMM-UHFFFAOYSA-N\"}], \"conditions\": [{\"text\": \"ROH\"}, {\"text\": \"base\"}], \"products\": []}, {\"step_id\": 2, \"reactants\": [], \"conditions\": [{\"text\": \"1) base\"}, {\"text\": \"2) acid\"}], \"products\": []}]}]",
+      "note": "A machine-read reaction scheme span, quoted whole as the evidence for an A5 audit finding. The English differs from the Chinese only inside the conditions[].text values; every other byte is JSON, SMILES or a formula and is already language neutral. The Chinese in it is the lettering of the patent's own Markush scheme at [0021]: ROH is the alcohol, ROM the alkali metal alkoxide, and line 167 states that M represents an alkali metal. 碱 is base and 酸 is acid; 、 is the enumeration comma, rendered as a plain comma. Where the vision pass had already appended its own parenthesised gloss, that gloss is not repeated."
+    },
+    "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [...], \"conditions\": [{\"text\": \"ROH\"}, {\"text\": \"碱 (base)\"}], \"products\": []}, {\"step_id\": 2, \"reactants\": [], \"conditions\": [...], \"products\": []}]}]": {
+      "en": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [...], \"conditions\": [{\"text\": \"ROH\"}, {\"text\": \"base\"}], \"products\": []}, {\"step_id\": 2, \"reactants\": [], \"conditions\": [...], \"products\": []}]}]",
+      "note": "A machine-read reaction scheme span, quoted whole as the evidence for an A5 audit finding. The English differs from the Chinese only inside the conditions[].text values; every other byte is JSON, SMILES or a formula and is already language neutral. The Chinese in it is the lettering of the patent's own Markush scheme at [0021]: ROH is the alcohol, ROM the alkali metal alkoxide, and line 167 states that M represents an alkali metal. 碱 is base and 酸 is acid; 、 is the enumeration comma, rendered as a plain comma. Where the vision pass had already appended its own parenthesised gloss, that gloss is not repeated."
+    },
+    "钾盐": {
+      "en": "potassium salt",
+      "note": "钾 = potassium, 盐 = salt. Quoted inside the annotator's English commentary on a provenance row, where it names the step (1) product of the examples that use a potassium base, i.e. potassium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate. Translated as the bare phrase it is, not expanded to the full name, because a consumer splices this into the middle of an English sentence."
+    },
+    "碱": {
+      "en": "base",
+      "note": "The generic class term, not a named compound. It is what the patent writes above the arrow of its Markush scheme and throughout the claims as 碱性物质, a basic substance. Not translated as alkali: the patent's own instances include hydroxides, tert-alkoxides, hydrides and the free alkali metals, and base is the term that covers all of them."
+    },
+    "或": {
+      "en": "or",
+      "note": "The conjunction, quoted inside the annotator's English commentary. It is load bearing where it appears: the patent's step (2) offers the alcohol plus a base OR a preformed alkali metal alkoxide, so this character is what marks the two variants as alternatives rather than as a sequence."
+    },
+    "浓盐酸": {
+      "en": "concentrated hydrochloric acid",
+      "override": true,
+      "note": "浓 means concentrated, and the gold's own alias resolves this string to the unqualified 'hydrochloric acid', which the name fidelity gate flagged as losing the qualifier. The qualifier is a fact about what was charged: every example acidifies the reaction mass with concentrated hydrochloric acid added dropwise to a stated pH, not with a dilute solution. override is set because the competing answer comes from the gold's own alias rather than from a source line, and it is the more specific reading that is correct here. The reference run carries the mirror-image entry, 稀盐酸 to 'dilute hydrochloric acid', for the same reason."
+    }
+  }
+}
