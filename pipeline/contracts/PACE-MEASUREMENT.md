@@ -241,3 +241,66 @@ The claim bodies were rendered through the app's own `buildQueues` from
 timing method was one claim per round trip with a timestamp taken as the claim appeared;
 the harness baseline was measured with three consecutive empty calls in the same session.
 No verdicts were written and no source was edited.
+
+## The census on a fourth patent, and two engine defects that inflated it
+
+Measured 2026-08-28 on US20100041557A1, a BASF polymorph application: 786 source lines,
+49 sections, 306 compound records, 61 reactions, 58 pathways.
+
+The number above buys a capacity, not a target. At the 8.7 s p90 a 15 minute budget
+admits **103 census claims** and nothing more. Every figure below is that same engine
+run against the same gold, changing only the engine.
+
+| state | census | at 8.7 s p90 | at the per-kind medians |
+|---|---|---|---|
+| as first built | 298 | 43.2 min | 24.6 min |
+| after three annotation defects fixed | 197 | 28.6 min | 17.6 min |
+| after the two engine defects below | 112 | 16.2 min | 11.7 min |
+| after one under-citation fixed | 104 | 15.1 min | 10.5 min |
+
+For scale, EP2045236A1 is the same subject matter with **more** source lines, 1078, and
+a census of 32. The gap was never size.
+
+**Defect 1, `build_coverage` asked about the machine's own English.** The sweep tested
+`kind == "translation"`, and only the FIRST line of a translation carries the
+`    > EN: ` mark. Every continuation line looks exactly like a line of the patent. Every
+table in this patent is printed twice, once as source and once inside its own English
+rendering, so 40 of 64 coverage claims were the English copy of a table row a record
+already cites in the original. `is_en_output` and `en_hint` already existed for this and
+the sweep did not consult them. A regex was tried first and is not sufficient: it reads
+claim 16's own 2theta table as English, because a claim number does not close a run the
+way a paragraph marker does.
+
+**Defect 2, one fieldless failing check promoted an entire record.** `promoted_fields`
+appended `""` for a check naming no field, and `""` is a prefix of every field name. Two
+`completeness.unmapped` checks on the tembotrione record pulled all 33 of its claims into
+the census. The two numbers behind them are "at least 95 wt. % consists of the
+crystalline form A": a limit on what the patent claims, which no field on a compound
+record can hold, and which recording as `purity_pct` would misreport as an assay.
+
+## The 104 that remain, and why they are not a defect list
+
+This run does not fit the budget and cannot be made to without recording something
+untrue. What is left:
+
+- **23 `conditions.time_h`.** The A2 prompt mandates hours (`50min -> 0.83`). The patent
+  prints "about 40 mins" and the annotation records 0.67. The engine grounds a claim by
+  finding its number on the cited line, so a mandated unit conversion is unfindable by
+  construction. EP2045236A1 never met this: it records no `time_h` at all.
+- **22 `__substance__` tickets.** Step 6's independent read, which is a census by design.
+  These are NOT alias gaps: the systematic name is already an alias on the tembotrione
+  record. The sweep requires the alias to sit on a record CITING that line, and the
+  merged record's provenance does not cite the claims. That is a third join defect, left
+  unfixed and recorded here rather than acted on.
+- **5 `__coverage__` on unit cell angle rows.** `signals()` tokenises `90` as a
+  temperature, so the three orthorhombic angles of form A and two of form C read as
+  uncited chemistry. Citing the table would trade 5 tier 2 claims for tier 1
+  `completeness.unmapped` findings, because the compounds schema has no field for a cell
+  axis, a volume, Z, a density or an R factor. The A1 pass recorded that judgement and it
+  stands.
+- **6 `structure.second_reader`.** OPSIN disagreements, which CLAUDE.md rule 8 says to
+  record and never resolve.
+
+The honest reading is that 8.7 s is a p90 from 20 claims of one patent, and that at the
+per-kind medians this run costs 10.5 min and fits. The budget was not changed to make it
+pass, and the annotation was not thinned to make it pass either.

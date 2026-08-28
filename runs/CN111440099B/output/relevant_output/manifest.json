@@ -6,9 +6,9 @@
     {
       "stage": "prompts",
       "title": "render the annotation prompts for THIS patent, for the agent to follow",
-      "status": "current",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python render_prompts.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python render_prompts.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -154,9 +154,9 @@
     {
       "stage": "enrich",
       "title": "vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
-      "status": "current",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python build_enriched.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python build_enriched.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -242,7 +242,7 @@
     {
       "stage": "collect",
       "title": "publish the A0, A3 and A4 stage files under the names finalise.py reads",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "<internal>"
       ],
@@ -285,9 +285,9 @@
     {
       "stage": "merge",
       "title": "concatenate the per-section A1 and A2 stage files into the raw arrays",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python merge_stages.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python merge_stages.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -578,9 +578,9 @@
     {
       "stage": "finalise",
       "title": "deterministic ids and uuids, rollup, bibliographic merge",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python finalise.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python finalise.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -656,9 +656,9 @@
     {
       "stage": "validate",
       "title": "JSON Schema conformance of the finalised artifacts",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python schemas/validate.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python schemas/validate.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -728,9 +728,9 @@
     {
       "stage": "publish-gold",
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python make_relevant_output.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python make_relevant_output.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -1011,9 +1011,9 @@
     {
       "stage": "names",
       "title": "read every compound name a second time, with a parser instead of a model",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python resolve_names.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python resolve_names.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -1049,9 +1049,9 @@
     {
       "stage": "mentions",
       "title": "reading B: ChemDataExtractor over the same lines reading A read",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python mentions.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python mentions.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -1076,9 +1076,9 @@
     {
       "stage": "structures",
       "title": "identifier -> drawable molecule over six tiers, plus the coverage gate",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python resolve_structures.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python resolve_structures.py --patent-id CN111440099B"
       ],
       "gate": true,
       "inputs": [
@@ -1224,9 +1224,9 @@
     {
       "stage": "translations",
       "title": "Chinese string -> English for everything that can reach a screen, plus the coverage gate",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python resolve_translations.py CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python resolve_translations.py CN111440099B"
       ],
       "gate": true,
       "inputs": [
@@ -1287,10 +1287,10 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python make_svgs.py --patent-id CN111440099B",
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python make_approach.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python make_svgs.py --patent-id CN111440099B",
+        "/private/tmp/ep2045/venv/bin/python make_approach.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -1451,9 +1451,9 @@
     {
       "stage": "rasterise",
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python svg2jpg.py --all"
+        "/private/tmp/ep2045/venv/bin/python svg2jpg.py --all"
       ],
       "gate": false,
       "inputs": [
@@ -1559,9 +1559,9 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python make_relevant_output.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python make_relevant_output.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -2105,11 +2105,43 @@
       ]
     },
     {
+      "stage": "export",
+      "title": "every reaction joined to the structures of its participants",
+      "status": "not selected",
+      "commands": [
+        "/private/tmp/ep2045/venv/bin/python export_reactions.py --patent-id CN111440099B"
+      ],
+      "gate": false,
+      "inputs": [
+        {
+          "path": "export_reactions.py",
+          "sha256": "cc221f05ef2ee13aa6b9acdb621ef35c36f3dda195d4e2e28a892eedd5da3c0c",
+          "bytes": 6877
+        },
+        {
+          "path": "pipeline_context.py",
+          "sha256": "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
+          "bytes": 15905
+        },
+        {
+          "path": "output/relevant_output/gold/reactions.json",
+          "sha256": "bfa9f0417b59f765bca41eee85da0f8351a75a4cf70ea5593121a1cc84f26f70",
+          "bytes": 602401
+        },
+        {
+          "path": "output/relevant_output/gold/structures-resolved.json",
+          "sha256": "4f31685887ff3e9eaf3ed73cf74dcc0e5e0e5537e9dd0947e2e85c65f23c4d22",
+          "bytes": 17256
+        }
+      ],
+      "outputs": []
+    },
+    {
       "stage": "visual",
       "title": "the page index, the structure comparisons and the drawing claims the UI shows",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python make_visual_evidence.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python make_visual_evidence.py --patent-id CN111440099B"
       ],
       "gate": true,
       "inputs": [
@@ -2312,7 +2344,7 @@
       "title": "the verification contract file the reviewer UI reads",
       "status": "failed (1)",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python verify.py CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python verify.py CN111440099B"
       ],
       "gate": true,
       "inputs": [
@@ -2339,7 +2371,7 @@
       "title": "grade the verification engine's own output without trusting its exit code",
       "status": "ran",
       "commands": [
-        "/private/tmp/claude-503/-Users-sathvik-k-Desktop-pipeline-for-patent-patent-extraction/19a799a8-6ada-400b-9dc8-d4a9b3271878/scratchpad/venv/bin/python verify_selfcheck.py CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python verify_selfcheck.py CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -2355,8 +2387,8 @@
         },
         {
           "path": "output/relevant_output/verification/checks-CN111440099B.json",
-          "sha256": "1ac159f2c8619b70b8909cce0dc6fd98f1685809f8d41b27e3f2ab8f82c58f22",
-          "bytes": 4980044
+          "sha256": "a111085c5b9c78ac476e07c429ce657765a582a010e8c05d74b5f6bcc1a9d822",
+          "bytes": 4961809
         }
       ],
       "outputs": []
@@ -6664,8 +6696,8 @@
     },
     {
       "path": "output/relevant_output/verification/checks-CN111440099B.json",
-      "sha256": "1ac159f2c8619b70b8909cce0dc6fd98f1685809f8d41b27e3f2ab8f82c58f22",
-      "bytes": 4980044,
+      "sha256": "a111085c5b9c78ac476e07c429ce657765a582a010e8c05d74b5f6bcc1a9d822",
+      "bytes": 4961809,
       "stage": "verify",
       "input_sha256": [
         "6a0cb0136c5eaf9c0a4584a99aef6c1562d62c1044563e8246077f1b58d0570b",
@@ -7588,8 +7620,8 @@
     },
     {
       "path": "svg/approach.jpg",
-      "sha256": "79d582b9a9174b45f6dadafe485a5a44e9d99999be81190fed263b691d396c04",
-      "bytes": 577829,
+      "sha256": "ee02eacf57704070ebeeafa8c4e59ff6cfca55d79e089b64399f8c9085d2b524",
+      "bytes": 579977,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -7602,12 +7634,13 @@
         "6a14f750ace316dc3405588b2bc8aae0af78936fa7065f435dde31e2a29d77e8",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 79d582b9a9174b45..."
     },
     {
       "path": "svg/approach.svg",
-      "sha256": "4ded9ee36fdbaf184aed0308cecbb4fd7773ba2b07259faf5439c0be7aa75674",
-      "bytes": 20892,
+      "sha256": "6fbc68e0b612c71c5c9b6b1ea2ca03fb5ea4d0efa9289d6cdb0e831c62f9c763",
+      "bytes": 20901,
       "stage": "diagrams",
       "input_sha256": [
         "41355bb352176e32b0b839b43f36228fa1ad4a15c38389ec11a7210e1f684b2d",
@@ -7634,7 +7667,8 @@
         "bfa9f0417b59f765bca41eee85da0f8351a75a4cf70ea5593121a1cc84f26f70",
         "65652276adb54d3476b8dff0e124d533e6a4fe996b52b69e7ccd7c2c348b2870",
         "f149d556aa3b976d23ef73af7cad52e86d3d346bc8c1ee8ca79416c40475b2df"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 4ded9ee36fdbaf18..."
     },
     {
       "path": "svg/evidence-inverts-with-need.jpg",
@@ -7656,8 +7690,8 @@
     },
     {
       "path": "svg/m1-pass-map.jpg",
-      "sha256": "16736df5c30824ed238aa66c776efe1b9755dc2612398cef941811cc98778267",
-      "bytes": 640613,
+      "sha256": "66d82cf9c66d1abaaf6dcb439238ea819f5e5703f01209fba209b1bc26ee411f",
+      "bytes": 640886,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -7670,12 +7704,13 @@
         "6a14f750ace316dc3405588b2bc8aae0af78936fa7065f435dde31e2a29d77e8",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 16736df5c30824ed..."
     },
     {
       "path": "svg/m1-pass-map.svg",
-      "sha256": "9aff6c2c8707b651a227c7b107dae7b4a5347523f30b46e45f896e1a4ba93a8f",
-      "bytes": 16296,
+      "sha256": "cc9d8b5238dd1edb546955692b8d3cdf6a4cf1ee1b03c20f6f09b1abc9abe0e1",
+      "bytes": 16297,
       "stage": "diagrams",
       "input_sha256": [
         "41355bb352176e32b0b839b43f36228fa1ad4a15c38389ec11a7210e1f684b2d",
@@ -7702,12 +7737,13 @@
         "bfa9f0417b59f765bca41eee85da0f8351a75a4cf70ea5593121a1cc84f26f70",
         "65652276adb54d3476b8dff0e124d533e6a4fe996b52b69e7ccd7c2c348b2870",
         "f149d556aa3b976d23ef73af7cad52e86d3d346bc8c1ee8ca79416c40475b2df"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 9aff6c2c8707b651..."
     },
     {
       "path": "svg/m2-route.jpg",
-      "sha256": "bad50d0f0b246ff0f4935bb9b93ffaaf173fe791d57e73e935d0411634c5db58",
-      "bytes": 315385,
+      "sha256": "4ee6885016c9a9f5f9d58cc459904d7cebbfa343b951deb3bb164a11b7efc7cb",
+      "bytes": 289156,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -7720,12 +7756,13 @@
         "6a14f750ace316dc3405588b2bc8aae0af78936fa7065f435dde31e2a29d77e8",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 bad50d0f0b246ff0..."
     },
     {
       "path": "svg/m2-route.svg",
-      "sha256": "5e472c52b4fae919e6ce205a4cff634a46da8e618aed34e3a79778f24ff5c73a",
-      "bytes": 8835,
+      "sha256": "48ca091b54a76f945f06551b3e8d5359dde4aeaf3124226c30a3f7e7035662d4",
+      "bytes": 6865,
       "stage": "diagrams",
       "input_sha256": [
         "41355bb352176e32b0b839b43f36228fa1ad4a15c38389ec11a7210e1f684b2d",
@@ -7752,7 +7789,8 @@
         "bfa9f0417b59f765bca41eee85da0f8351a75a4cf70ea5593121a1cc84f26f70",
         "65652276adb54d3476b8dff0e124d533e6a4fe996b52b69e7ccd7c2c348b2870",
         "f149d556aa3b976d23ef73af7cad52e86d3d346bc8c1ee8ca79416c40475b2df"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 5e472c52b4fae919..."
     },
     {
       "path": "svg/m3-artifact-joins.jpg",
@@ -7856,8 +7894,8 @@
     },
     {
       "path": "svg/m5-ocr-comparison.jpg",
-      "sha256": "f9d79f6ff17722e51b0c539ce8aba793cc8a1f1043726ac12d50bc12163835e7",
-      "bytes": 290752,
+      "sha256": "87fa84f5aaca3c15dcb82b6067788a1fca4fbcb3c6826b99a8f5433c739cc916",
+      "bytes": 289658,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -7870,12 +7908,13 @@
         "6a14f750ace316dc3405588b2bc8aae0af78936fa7065f435dde31e2a29d77e8",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 f9d79f6ff17722e5..."
     },
     {
       "path": "svg/m5-ocr-comparison.svg",
-      "sha256": "6a14f750ace316dc3405588b2bc8aae0af78936fa7065f435dde31e2a29d77e8",
-      "bytes": 9854,
+      "sha256": "9a302895cc65aa9dea1b4f11e847e10053133d4f78e885871797ebda206eeba7",
+      "bytes": 9852,
       "stage": "diagrams",
       "input_sha256": [
         "41355bb352176e32b0b839b43f36228fa1ad4a15c38389ec11a7210e1f684b2d",
@@ -7902,7 +7941,8 @@
         "bfa9f0417b59f765bca41eee85da0f8351a75a4cf70ea5593121a1cc84f26f70",
         "65652276adb54d3476b8dff0e124d533e6a4fe996b52b69e7ccd7c2c348b2870",
         "f149d556aa3b976d23ef73af7cad52e86d3d346bc8c1ee8ca79416c40475b2df"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 6a14f750ace316dc..."
     },
     {
       "path": "svg/one-route-four-tellings.jpg",
@@ -7942,11 +7982,11 @@
     }
   ],
   "totals": {
-    "stages": 17,
+    "stages": 18,
     "artifacts_produced": 133,
     "artifacts_unclaimed": 0,
     "artifacts_stray": 0,
-    "bytes_produced": 21405102
+    "bytes_produced": 21360003
   },
   "deliverable_matches_output": true,
   "stale_copies": []

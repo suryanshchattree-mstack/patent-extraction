@@ -415,7 +415,7 @@
     {
       "stage": "merge",
       "title": "concatenate the per-section A1 and A2 stage files into the raw arrays",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python merge_stages.py --patent-id EP2045236A1"
       ],
@@ -858,7 +858,7 @@
     {
       "stage": "finalise",
       "title": "deterministic ids and uuids, rollup, bibliographic merge",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python finalise.py --patent-id EP2045236A1"
       ],
@@ -936,7 +936,7 @@
     {
       "stage": "validate",
       "title": "JSON Schema conformance of the finalised artifacts",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python schemas/validate.py --patent-id EP2045236A1"
       ],
@@ -1008,7 +1008,7 @@
     {
       "stage": "publish-gold",
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python make_relevant_output.py --patent-id EP2045236A1"
       ],
@@ -1356,7 +1356,7 @@
     {
       "stage": "names",
       "title": "read every compound name a second time, with a parser instead of a model",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python resolve_names.py --patent-id EP2045236A1"
       ],
@@ -1394,7 +1394,7 @@
     {
       "stage": "mentions",
       "title": "reading B: ChemDataExtractor over the same lines reading A read",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python mentions.py --patent-id EP2045236A1"
       ],
@@ -1421,7 +1421,7 @@
     {
       "stage": "structures",
       "title": "identifier -> drawable molecule over six tiers, plus the coverage gate",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python resolve_structures.py --patent-id EP2045236A1"
       ],
@@ -1589,7 +1589,7 @@
     {
       "stage": "translations",
       "title": "Chinese string -> English for everything that can reach a screen, plus the coverage gate",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python resolve_translations.py EP2045236A1"
       ],
@@ -1652,7 +1652,7 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python make_svgs.py --patent-id EP2045236A1",
         "/private/tmp/ep2045/venv/bin/python make_approach.py --patent-id EP2045236A1"
@@ -1881,7 +1881,7 @@
     {
       "stage": "rasterise",
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python svg2jpg.py --all"
       ],
@@ -1989,7 +1989,7 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python make_relevant_output.py --patent-id EP2045236A1"
       ],
@@ -2640,9 +2640,41 @@
       ]
     },
     {
+      "stage": "export",
+      "title": "every reaction joined to the structures of its participants",
+      "status": "not selected",
+      "commands": [
+        "/private/tmp/ep2045/venv/bin/python export_reactions.py --patent-id EP2045236A1"
+      ],
+      "gate": false,
+      "inputs": [
+        {
+          "path": "export_reactions.py",
+          "sha256": "cc221f05ef2ee13aa6b9acdb621ef35c36f3dda195d4e2e28a892eedd5da3c0c",
+          "bytes": 6877
+        },
+        {
+          "path": "pipeline_context.py",
+          "sha256": "fab6c5c337e1ec44b65d554f7c5a112b765911b6b532aedda0409e786b0102ab",
+          "bytes": 15905
+        },
+        {
+          "path": "output/relevant_output/gold/reactions.json",
+          "sha256": "1213b6d5dedc8fd6fa2575fbcf4554e6a03f987dd4f43585fd787151384c602a",
+          "bytes": 63812
+        },
+        {
+          "path": "output/relevant_output/gold/structures-resolved.json",
+          "sha256": "1b8d7be20755ef52fae68a6882e5dbd3226fb881ea5949b0ea8a94d23a8bd387",
+          "bytes": 201972
+        }
+      ],
+      "outputs": []
+    },
+    {
       "stage": "visual",
       "title": "the page index, the structure comparisons and the drawing claims the UI shows",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "/private/tmp/ep2045/venv/bin/python make_visual_evidence.py --patent-id EP2045236A1"
       ],
@@ -3030,8 +3062,8 @@
         },
         {
           "path": "output/relevant_output/verification/checks-EP2045236A1.json",
-          "sha256": "406a0b6747bd6162c8a061903d272a009d4473af77d54d33ff0c22d3a469c126",
-          "bytes": 7153529
+          "sha256": "7e2ea3eb93669888ea3f7520bae0470677a8fbd2b9f5d1a1175bfc167ea7adc3",
+          "bytes": 7133821
         }
       ],
       "outputs": []
@@ -8849,8 +8881,8 @@
     },
     {
       "path": "output/relevant_output/verification/checks-EP2045236A1.json",
-      "sha256": "406a0b6747bd6162c8a061903d272a009d4473af77d54d33ff0c22d3a469c126",
-      "bytes": 7153529,
+      "sha256": "7e2ea3eb93669888ea3f7520bae0470677a8fbd2b9f5d1a1175bfc167ea7adc3",
+      "bytes": 7133821,
       "stage": "verify",
       "input_sha256": [
         "6a0cb0136c5eaf9c0a4584a99aef6c1562d62c1044563e8246077f1b58d0570b",
@@ -9862,8 +9894,8 @@
     },
     {
       "path": "svg/approach.jpg",
-      "sha256": "38207ad3c07b9c01908306adcc2e47b19f6dc921c53294152e8a073d5f01ca86",
-      "bytes": 573816,
+      "sha256": "ee02eacf57704070ebeeafa8c4e59ff6cfca55d79e089b64399f8c9085d2b524",
+      "bytes": 579977,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -9876,12 +9908,13 @@
         "b3c6ec6cc2a7fcf6293fd1273212349af23d18e9cf49726aef62b32d16bd4a28",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 38207ad3c07b9c01..."
     },
     {
       "path": "svg/approach.svg",
-      "sha256": "b0537cff353eac84a412cba67ea01a9db1a7ab6bdb806658ed97af249d9befed",
-      "bytes": 20883,
+      "sha256": "6fbc68e0b612c71c5c9b6b1ea2ca03fb5ea4d0efa9289d6cdb0e831c62f9c763",
+      "bytes": 20901,
       "stage": "diagrams",
       "input_sha256": [
         "3a8080a89a05e46708deb0d51192bae5b3b2992f107a87291f80b612d37770b4",
@@ -9921,7 +9954,8 @@
         "1213b6d5dedc8fd6fa2575fbcf4554e6a03f987dd4f43585fd787151384c602a",
         "136185b5ad29fb396b41356e5dec91cb3aa2be2e4b7dd0a2f942f45f81b4648c",
         "6ca0bc298083d4a49e9aef9280434658eb56b11c3ecfaa69078eb25596f4ea8e"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 b0537cff353eac84..."
     },
     {
       "path": "svg/evidence-inverts-with-need.jpg",
@@ -9943,8 +9977,8 @@
     },
     {
       "path": "svg/m1-pass-map.jpg",
-      "sha256": "a81f4e2f0a90a147873ef966065d2696582b68bbba6007791be8b6c07c100690",
-      "bytes": 641183,
+      "sha256": "66d82cf9c66d1abaaf6dcb439238ea819f5e5703f01209fba209b1bc26ee411f",
+      "bytes": 640886,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -9957,11 +9991,12 @@
         "b3c6ec6cc2a7fcf6293fd1273212349af23d18e9cf49726aef62b32d16bd4a28",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 a81f4e2f0a90a147..."
     },
     {
       "path": "svg/m1-pass-map.svg",
-      "sha256": "02f47605dc66257abf73a9fcfa9ad4907ed0beb85b33b2946a6cd74f49eebb69",
+      "sha256": "cc9d8b5238dd1edb546955692b8d3cdf6a4cf1ee1b03c20f6f09b1abc9abe0e1",
       "bytes": 16297,
       "stage": "diagrams",
       "input_sha256": [
@@ -10002,12 +10037,13 @@
         "1213b6d5dedc8fd6fa2575fbcf4554e6a03f987dd4f43585fd787151384c602a",
         "136185b5ad29fb396b41356e5dec91cb3aa2be2e4b7dd0a2f942f45f81b4648c",
         "6ca0bc298083d4a49e9aef9280434658eb56b11c3ecfaa69078eb25596f4ea8e"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 02f47605dc66257a..."
     },
     {
       "path": "svg/m2-route.jpg",
-      "sha256": "eb96730b18988aa77d63b7c34551c0727999860784fe3163ad43be67d54dc8bb",
-      "bytes": 273741,
+      "sha256": "4ee6885016c9a9f5f9d58cc459904d7cebbfa343b951deb3bb164a11b7efc7cb",
+      "bytes": 289156,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -10020,12 +10056,13 @@
         "b3c6ec6cc2a7fcf6293fd1273212349af23d18e9cf49726aef62b32d16bd4a28",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 eb96730b18988aa7..."
     },
     {
       "path": "svg/m2-route.svg",
-      "sha256": "72c0d4c416be915de5d2ab566bced2d927e8d8f764d30b55cd69ddbe2c916ac9",
-      "bytes": 5840,
+      "sha256": "48ca091b54a76f945f06551b3e8d5359dde4aeaf3124226c30a3f7e7035662d4",
+      "bytes": 6865,
       "stage": "diagrams",
       "input_sha256": [
         "3a8080a89a05e46708deb0d51192bae5b3b2992f107a87291f80b612d37770b4",
@@ -10065,7 +10102,8 @@
         "1213b6d5dedc8fd6fa2575fbcf4554e6a03f987dd4f43585fd787151384c602a",
         "136185b5ad29fb396b41356e5dec91cb3aa2be2e4b7dd0a2f942f45f81b4648c",
         "6ca0bc298083d4a49e9aef9280434658eb56b11c3ecfaa69078eb25596f4ea8e"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 72c0d4c416be915d..."
     },
     {
       "path": "svg/m3-artifact-joins.jpg",
@@ -10195,8 +10233,8 @@
     },
     {
       "path": "svg/m5-ocr-comparison.jpg",
-      "sha256": "f69a9fd8072154ff9c624e5df257a70428498d8f028d9f2ccbae9766382f60f6",
-      "bytes": 290555,
+      "sha256": "87fa84f5aaca3c15dcb82b6067788a1fca4fbcb3c6826b99a8f5433c739cc916",
+      "bytes": 289658,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -10209,11 +10247,12 @@
         "b3c6ec6cc2a7fcf6293fd1273212349af23d18e9cf49726aef62b32d16bd4a28",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 f69a9fd8072154ff..."
     },
     {
       "path": "svg/m5-ocr-comparison.svg",
-      "sha256": "b3c6ec6cc2a7fcf6293fd1273212349af23d18e9cf49726aef62b32d16bd4a28",
+      "sha256": "9a302895cc65aa9dea1b4f11e847e10053133d4f78e885871797ebda206eeba7",
       "bytes": 9852,
       "stage": "diagrams",
       "input_sha256": [
@@ -10254,7 +10293,8 @@
         "1213b6d5dedc8fd6fa2575fbcf4554e6a03f987dd4f43585fd787151384c602a",
         "136185b5ad29fb396b41356e5dec91cb3aa2be2e4b7dd0a2f942f45f81b4648c",
         "6ca0bc298083d4a49e9aef9280434658eb56b11c3ecfaa69078eb25596f4ea8e"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 b3c6ec6cc2a7fcf6..."
     },
     {
       "path": "svg/one-route-four-tellings.jpg",
@@ -10294,11 +10334,11 @@
     }
   ],
   "totals": {
-    "stages": 17,
+    "stages": 18,
     "artifacts_produced": 135,
     "artifacts_unclaimed": 0,
     "artifacts_stray": 0,
-    "bytes_produced": 20039788
+    "bytes_produced": 20041505
   },
   "deliverable_matches_output": true,
   "stale_copies": []
