@@ -38,9 +38,10 @@ COMPOUNDS (full `compounds.json`):
    substrate whose ring or backbone you can still see in the final product is the
    KSM; the reagent that decorates it is not, however much of it is charged.
 
-   **When no reactant on that step contributes the skeleton, `ksm` is null.** Say
-   why in the pathway's `notes` and, where the step carries `missing_reactant`,
-   name that flag.
+   **When no reactant on that step contributes the skeleton, `ksm` is null**, and
+   the pathway carries `ksm_not_stated` in `honest_uncertainty_flags` so the null
+   is a recorded finding rather than an empty field. `PathwayRecord` has no free
+   text field, and the flag list is what it has for exactly this.
 
    This case is real and it is not rare. A background section that criticises a
    prior-art route commonly names only the reagent it objects to and the product,
@@ -139,6 +140,10 @@ COMPOUNDS (full `compounds.json`):
     - `truncated_chain` - the chain does not reach a purchasable starting material
     - `unresolved_precursor` - a `precursor_step` pointed at a step not found
     - `yield_missing_step` - `overall_yield_pct` is null because a step lacks yield
+    - `ksm_not_stated` - `ksm` is null because no reactant of the earliest step
+      contributes the carbon skeleton, per rule 3. Common on a prior-art route
+      recited in a background, where the source names only the reagent it objects
+      to and the product
     - `scale_discontinuity_in_chain` - a step's input charge does not match the
       previous step's output, so the chain is a paper chain rather than a
       material one
