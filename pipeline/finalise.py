@@ -294,13 +294,57 @@ def finalise_pathways(pws, mols, rxns):
     return pws
 
 
+def pathway_section_type(p: dict) -> str:
+    """Which kind of section a pathway came from.
+
+    The pathway record carries only `section_label`; the type it needs is on its
+    steps, which are projections of reactions and do carry `section_type`.
+    """
+    for s in p.get("steps") or []:
+        t = s.get("section_type")
+        if t:
+            return t
+    return ""
+
+
+# Sections that describe somebody ELSE'S chemistry. A route recited in the
+# background is prior art by definition, and A0's own rule says so.
+#
+# A comparative example is deliberately NOT here. That is the applicant's own
+# experiment, run at the conditions they are arguing against and reported as their
+# own data, so it belongs to this patent in a way a cited competitor's route does
+# not.
+NOT_THIS_PATENTS_CHEMISTRY = {"background"}
+
+
 def rollup(mols, rxns, pws):
-    """PatentRecord.ExtractionRollup, computed not asked for."""
+    """PatentRecord.ExtractionRollup, computed not asked for.
+
+    THE "BEST" AND "KEY" FIELDS ARE ABOUT THIS PATENT, SO PRIOR ART IS EXCLUDED.
+    Both used to be computed over everything annotated. On a patent whose
+    background recites competitors' routes, that made `best_overall_yield_pct`
+    report 75.2 for CN109678767A: the yield of the Heilongjiang University NBS
+    route, which the background quotes only in order to criticise it, against the
+    invention's own best of 69.88. `key_starting_materials` likewise listed three
+    feedstocks belonging to routes this patent argues against.
+
+    It was invisible on the reference run for one reason: its A0 marked the
+    background as carrying no procedures, so it produced no background pathways
+    and no background starting materials, and the max happened to be right. The
+    counts are 0 and 0 there, so this exclusion cannot change it.
+
+    A wrong number here is the worst kind available: `best_overall_yield_pct` is
+    exactly the field that gets read out of the artifact and put on a slide, and
+    a competitor's yield reported as this patent's is not a defect anyone would
+    catch downstream.
+    """
     from collections import Counter
     sec = Counter(r.get("section_type") or "unknown" for r in rxns)
     scale = Counter(r.get("scale") or "not_specified" for r in rxns)
     cls = Counter(r.get("reaction_class") or "other" for r in rxns)
-    best = max((p for p in pws if p.get("overall_yield_pct") is not None),
+    ours = [p for p in pws
+            if pathway_section_type(p) not in NOT_THIS_PATENTS_CHEMISTRY]
+    best = max((p for p in ours if p.get("overall_yield_pct") is not None),
                key=lambda p: p["overall_yield_pct"], default=None)
     ref = lambda c: {"identifier": c["identifier"], "smiles": c.get("smiles"),
                      "compound_uuid": c["compound_uuid"]}
@@ -310,8 +354,10 @@ def rollup(mols, rxns, pws):
         "pathway_count": len(pws),
         "section_summary": dict(sec),
         "target_compounds": [ref(m) for m in mols if m.get("is_section_product")],
-        "key_starting_materials": [ref(m) for m in mols
-                                   if "compound_class:starting_material" in (m.get("tags") or [])],
+        "key_starting_materials": [
+            ref(m) for m in mols
+            if "compound_class:starting_material" in (m.get("tags") or [])
+            and (m.get("section_type") or "") not in NOT_THIS_PATENTS_CHEMISTRY],
         "chemistry_focus": [k for k, _ in cls.most_common(5)],
         "best_overall_yield_pct": best["overall_yield_pct"] if best else None,
         "best_overall_yield_pathway_uuid": best["pathway_uuid"] if best else None,
