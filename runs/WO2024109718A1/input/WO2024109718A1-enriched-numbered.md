@@ -172,9 +172,9 @@
  172 | [0028] R1为CH3-、且R2为CH3-S-。
  173 |     > EN: R1 is CH3-, and R2 is CH3-S-.
  174 | [0029] (10)环磺酮制备方法，其特征在于，使用上述(9)所述的化合物作为中间体。
- 175 |     > EN: (10) A process for preparing tembotrione (cyclic sulfone ketone), characterised in that the compound according to (9) above is used as an intermediate.
+ 175 |     > EN: (10) A process for preparing tembotrione, characterised in that the compound according to (9) above is used as an intermediate.
  176 | [0030] (11)根据上述(9)所述的化合物用作环磺酮制备中间体的用途。
- 177 |     > EN: (11) Use of the compound according to (9) above as an intermediate for the preparation of 环磺酮 (cyclic sulfone ketone / tembotrione).
+ 177 |     > EN: (11) Use of the compound according to (9) above as an intermediate for the preparation of tembotrione.
  178 | None 附图说明
  179 |     > EN: Brief description of the drawings
  180 | [0031] 图1为实施例1中制备的式(VI)化合物的1HNMR谱图。
@@ -209,9 +209,9 @@
  209 | [0044] 图14为实施例9中制备的式(VIII)化合物的¹³CNMR谱图。
  210 |     > EN: Figure 14 is the 13C NMR spectrum of the compound of formula (VIII) prepared in Example 9.
  211 | [0045] 图15为实施例10中制备的环磺酮化合物的¹HNMR谱图。
- 212 |     > EN: Figure 15 is the 1H NMR spectrum of the cyclic sulfone ketone compound prepared in Example 10.
+ 212 |     > EN: Figure 15 is the 1H NMR spectrum of the tembotrione compound prepared in Example 10.
  213 | [0046] 图16为实施例10中制备的环磺酮化合物的¹³CNMR谱图。
- 214 |     > EN: Figure 16 is the 13C NMR spectrum of the cyclic sulfone ketone compound prepared in Example 10.
+ 214 |     > EN: Figure 16 is the 13C NMR spectrum of the tembotrione compound prepared in Example 10.
  215 | None 具体实施方式
  216 |     > EN: Detailed embodiments
  217 | [0047] 本发明一方面提供如下式(A)所示的新化合物：
@@ -346,19 +346,19 @@
  346 | <!-- page p13 :: 12 :: description :: confidence=high -->
  347 | 
  348 | None 由式(VIII)的酯化合物重排制备环磺酮时，优选使用氰类催化剂，特别优选使用丙酮氰醇作为催化剂。
- 349 |     > EN: When preparing the cyclic sulfone ketone (huanhuangtong) by rearrangement of the ester compound of formula (VIII), a cyanide-type catalyst is preferably used, and acetone cyanohydrin is particularly preferably used as the catalyst.
+ 349 |     > EN: When preparing the tembotrione by rearrangement of the ester compound of formula (VIII), a cyanide-type catalyst is preferably used, and acetone cyanohydrin is particularly preferably used as the catalyst.
  350 | [IMAGE_EXTRACT: {"reactions": [{"step_id": 1, "reactants": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C11H10ClF3O5S", "inchi_key": "YGMJOCQCLVNPOD-UHFFFAOYSA-N"}], "conditions": [], "products": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C11H9Cl2F3O4S", "inchi_key": "YGWVWXIUXUSKSY-UHFFFAOYSA-N"}]}, {"step_id": 2, "reactants": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C11H9Cl2F3O4S", "inchi_key": "YGWVWXIUXUSKSY-UHFFFAOYSA-N"}], "conditions": [], "products": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C17H16ClF3O6S", "inchi_key": "OBAMHTWSCBVWGB-UHFFFAOYSA-N"}]}, {"step_id": 3, "reactants": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C17H16ClF3O6S", "inchi_key": "OBAMHTWSCBVWGB-UHFFFAOYSA-N"}], "conditions": [], "products": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C17H16ClF3O6S", "inchi_key": "IUQAXCIUEPFPSF-UHFFFAOYSA-N"}]}]}]
  351 | 
  352 | [0092] 在更具体的实施方式中，上述(v′－1)的反应的实施方法除了反应物中不加水之外，其它与前文所述(v-1)的反应的实施方法相同。
  353 |     > EN: In a more specific embodiment, the method for carrying out the above reaction (v'-1) is the same as the method for carrying out the reaction (v-1) described earlier, except that no water is added to the reactants.
  354 | [0093] 由式(IV)化合物制备式(VIII)的中间体酯化合物后，可以先分离该中间体酯化合物，分步制备环磺酮，也可以不分离该中间体酯化合物而通过一锅法直接制备环磺酮。
- 355 |     > EN: After preparing the intermediate ester compound of formula (VIII) from the compound of formula (IV), the intermediate ester compound may first be isolated and the cyclic sulfone ketone prepared stepwise, or the intermediate ester compound may be left unisolated and the cyclic sulfone ketone prepared directly by a one-pot method.
+ 355 |     > EN: After preparing the intermediate ester compound of formula (VIII) from the compound of formula (IV), the intermediate ester compound may first be isolated and the tembotrione prepared stepwise, or the intermediate ester compound may be left unisolated and the tembotrione prepared directly by a one-pot method.
  356 | [0094] 上述(v-1)和(v′－1)的反应中，列举了通过CO插羰的方式，但本发明不限于此，通过其它方式由式(IV)化合物制备式(V)所示的中间体酸化合物、或直接制备式(VIII)的中间体酯化合物的实施方式都包括在本发明范围内。
  357 |     > EN: In the above reactions (v-1) and (v'-1), the mode of carbonyl insertion using CO is exemplified, but the present invention is not limited thereto; embodiments in which the intermediate acid compound shown by formula (V) is prepared from the compound of formula (IV) by other means, or in which the intermediate ester compound of formula (VIII) is prepared directly, are all included within the scope of the present invention.
  358 | [0095] 本发明另一方面提供一种制备环磺酮的新方法，该方法包括使用上述式(I)～式(IV)中的任意一个或两个以上化合物作为中间体。不管这些中间体化合物在制备过程中是否被分离出来，以单独形式或未分离的混合物形式使用这些中间体来制备环磺酮均属于本发明新方法的范围。
- 359 |     > EN: Another aspect of the present invention provides a new method for preparing the cyclic sulfone ketone, the method comprising using any one, or two or more, of the compounds of the above formulae (I) to (IV) as intermediates. Regardless of whether these intermediate compounds are isolated during the preparation process, the use of these intermediates, either in isolated form or as an unisolated mixture, to prepare the cyclic sulfone ketone falls within the scope of the new method of the present invention.
+ 359 |     > EN: Another aspect of the present invention provides a new method for preparing the tembotrione, the method comprising using any one, or two or more, of the compounds of the above formulae (I) to (IV) as intermediates. Regardless of whether these intermediate compounds are isolated during the preparation process, the use of these intermediates, either in isolated form or as an unisolated mixture, to prepare the tembotrione falls within the scope of the new method of the present invention.
  360 | [0096] 本发明再一方面提供一种制备环磺酮的新方法，其包括如下的任意一个步骤：
- 361 |     > EN: A further aspect of the present invention provides a new method for preparing the cyclic sulfone ketone, comprising any one of the following steps:
+ 361 |     > EN: A further aspect of the present invention provides a new method for preparing the tembotrione, comprising any one of the following steps:
  362 | [IMAGE_EXTRACT: {"reactions": [{"step_id": 1, "reactants": [{"smiles": "CS(=O)(=O)c1ccc(Br)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C10H9BrClF3O3S", "inchi_key": "VHLAIVUXGGOCMJ-UHFFFAOYSA-N"}], "conditions": [], "products": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C11H10ClF3O5S", "inchi_key": "YGMJOCQCLVNPOD-UHFFFAOYSA-N"}]}]}]
  363 | 
  364 | 
@@ -506,13 +506,13 @@
  506 | [0132] 向高压釜中加入式(IV)化合物40g、水20g、三乙胺26.49g、PdCl2催化剂0.4g、配体1,3-双(二苯基膦)丙烷3.95g、溶剂四氢呋喃400g，抽真空，氮气置换，以约1～4MPa的压力通入CO，在80℃反应约12h。通过高效液相色谱监测反应完成后，过滤，旋蒸除去溶剂四氢呋喃，加入甲醇溶解，调酸至pH为2～3，析出白色固体，过滤，滤饼经水洗、打浆后过滤，得到式(V)化合物，收率67.57％，熔点155-157℃。
  507 |     > EN: Into an autoclave were added 40 g of the compound of formula (IV), 20 g of water, 26.49 g of triethylamine, 0.4 g of PdCl2 catalyst, 3.95 g of the ligand 1,3-bis(diphenylphosphino)propane and 400 g of the solvent tetrahydrofuran; vacuum was applied and the atmosphere replaced with nitrogen, CO was introduced at a pressure of about 1 to 4 MPa, and the reaction was run at 80 degrees C for about 12 h. After completion of the reaction as monitored by HPLC, the mixture was filtered, the solvent tetrahydrofuran was removed by rotary evaporation, methanol was added to dissolve the residue, the acidity was adjusted to pH 2 to 3, a white solid precipitated, it was filtered, and the filter cake was washed with water, slurried and filtered to give the compound of formula (V), yield 67.57%, melting point 155-157 degrees C.
  508 | [0133] 实施例8 环磺酮的制备1
- 509 |     > EN: Example 8 Preparation of sulcotrione 1
+ 509 |     > EN: Example 8 Preparation of tembotrione 1
  510 | [IMAGE_EXTRACT: {"reactions": [{"step_id": 1, "reactants": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C11H10ClF3O5S", "inchi_key": "YGMJOCQCLVNPOD-UHFFFAOYSA-N"}], "conditions": [{"text": "SOCl2"}], "products": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C11H9Cl2F3O4S", "inchi_key": "YGWVWXIUXUSKSY-UHFFFAOYSA-N"}]}, {"step_id": 2, "reactants": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C11H9Cl2F3O4S", "inchi_key": "YGWVWXIUXUSKSY-UHFFFAOYSA-N"}], "conditions": [{"text": "cyclohexane-1,3-dione, drawn as a structure above the arrow"}], "products": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C17H16ClF3O6S", "inchi_key": "OBAMHTWSCBVWGB-UHFFFAOYSA-N"}]}, {"step_id": 3, "reactants": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C17H16ClF3O6S", "inchi_key": "OBAMHTWSCBVWGB-UHFFFAOYSA-N"}], "conditions": [{"text": "[illegible]"}], "products": [{"smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F", "molecular_formula": "C17H16ClF3O6S", "inchi_key": "IUQAXCIUEPFPSF-UHFFFAOYSA-N"}]}]}]
  511 | 
  512 | [0134] 将式(V)化合物1.5g溶于20mL 1,4-二氧六环中，在5℃下滴加氯化亚砜1.03g，升温至55℃反应，通过高效液相色谱监测反应完成后，旋蒸除去溶剂，得到式(VII)化合物。另将0.5g 1,3-环己二酮溶于15mL二氧六环中，加入0.44g三乙胺，冰浴下滴加到上述制备的式(VII)化合物中。滴加完毕后，室温搅拌约2h后，通过高效液相色谱监测反应完成后，旋蒸除去溶剂，得到式(V III)化合物的溶液。
  513 |     > EN: 1.5 g of the compound of formula (V) was dissolved in 20 mL of 1,4-dioxane, 1.03 g of thionyl chloride was added dropwise at 5 degrees C, the temperature was raised to 55 degrees C for reaction, and after completion of the reaction as monitored by HPLC the solvent was removed by rotary evaporation to give the compound of formula (VII). Separately, 0.5 g of 1,3-cyclohexanedione was dissolved in 15 mL of dioxane, 0.44 g of triethylamine was added, and the mixture was added dropwise under ice bath to the compound of formula (VII) prepared above. After the addition was complete, the mixture was stirred at room temperature for about 2 h, and after completion of the reaction as monitored by HPLC the solvent was removed by rotary evaporation to give a solution of the compound of formula (V III).
  514 | [0135] 往上述得到的式(VIII)化合物溶液中加入0.1mL丙酮氰醇，60℃反应4h，通过高效液相色谱监测反应完成后，过滤，滤液旋蒸除去溶剂，加入水，用盐酸调节pH为2～3，过滤得到的固体并干燥，得到环磺酮，收率76.59％。
- 515 |     > EN: To the solution of the compound of formula (VIII) obtained above was added 0.1 mL of acetone cyanohydrin, and the reaction was run at 60 degrees C for 4 h. After completion of the reaction as monitored by HPLC, the mixture was filtered, the solvent was removed from the filtrate by rotary evaporation, water was added, the pH was adjusted to 2 to 3 with hydrochloric acid, and the solid obtained by filtration was dried to give sulcotrione, yield 76.59%.
+ 515 |     > EN: To the solution of the compound of formula (VIII) obtained above was added 0.1 mL of acetone cyanohydrin, and the reaction was run at 60 degrees C for 4 h. After completion of the reaction as monitored by HPLC, the mixture was filtered, the solvent was removed from the filtrate by rotary evaporation, water was added, the pH was adjusted to 2 to 3 with hydrochloric acid, and the solid obtained by filtration was dried to give tembotrione, yield 76.59%.
  516 | [0136] 高效液相色谱条件：与实施例5相同。
  517 |     > EN: HPLC conditions: the same as in Example 5.
  518 | [0137] 实施例9 式(VIII)酯中间体的直接制备
@@ -540,9 +540,9 @@
  540 | <!-- page p23 :: 22 :: description :: confidence=high -->
  541 | 
  542 | None 滤，水洗，过滤，60℃干燥，得到黄白色粉末状固体环磺酮，收率64.67％，熔点120～122℃。
- 543 |     > EN: filtered, washed with water, filtered, dried at 60℃, giving sulcotrione (环磺酮) as a yellowish-white powdery solid, yield 64.67％, melting point 120～122℃.
+ 543 |     > EN: filtered, washed with water, filtered, dried at 60℃, giving tembotrione as a yellowish-white powdery solid, yield 64.67％, melting point 120～122℃.
  544 | [0144] 所得环磺酮的¹HNMR(DMSO)谱图如图15所示，¹³CNMR(DMSO)谱图如图16所示。
- 545 |     > EN: The ¹H NMR (DMSO) spectrum of the sulcotrione obtained is shown in Figure 15, and the ¹³C NMR (DMSO) spectrum is shown in Figure 16.
+ 545 |     > EN: The ¹H NMR (DMSO) spectrum of the tembotrione obtained is shown in Figure 15, and the ¹³C NMR (DMSO) spectrum is shown in Figure 16.
  546 | [0145] 实施例11
  547 |     > EN: Example 11
  548 | [0146] 向高压釜中加入式(IV)化合物56.84g、1,3-环己二酮21.84g、三乙胺37.95g、PdCl₂催化剂0.5g、配体2-双环己基膦-2',6'-二甲氧基联苯或4,5-双二苯基膦-9,9-二甲基氧杂蒽4g、溶剂1,4-二氧六环290g，抽真空，氮气置换3次，通入1～4MPa的CO，在85℃反应约10h。收率低于10％，不理想。
