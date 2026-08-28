@@ -180,3 +180,16 @@ not a catalyst under any reading.
 `reagent`, "transforms the substrate but is not the carbon skeleton source", is the
 closest value the closed list holds. There is no `initiator` value; that absence is
 a limitation of the vocabulary and is worth saying rather than papering over.
+
+## 9. Class terms drop the article
+
+Also added after the first sweep. `Background` recorded the class term as
+`radical initiator` and `Summary of the Invention` as `a radical initiator`, which
+is one class under two join keys and the same fragmentation
+`contracts/DUPLICATE-FAMILIES.md` measures on the reference run.
+
+**A class term's identifier is the bare noun phrase, with no leading article and no
+attributive fragment carried in from the sentence.** So `radical initiator`, not
+`a radical initiator` and not `radical initiator-induced`. The form with the article
+goes in `aliases`. This matches how the same sweep already handled
+`oxidizing agent`, whose line prints `an additional oxidizing agent`.

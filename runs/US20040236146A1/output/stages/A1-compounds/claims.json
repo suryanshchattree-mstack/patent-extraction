@@ -30,7 +30,7 @@
       "functional_group:carboxylic_acid",
       "functional_group:halide_bromo"
     ],
-    "notes": "Product of both independent process claims. Merged from the claim 6 preamble (L150), the claim 13 preamble (L175) and the compound claim 19 (L191), which claims the same genus per se. A Markush genus with variable R1 and R2, so it names no one compound and is left unresolved; formula II is a pointer to a drawing that this section never states a name for. The R1 and R2 definitions at L156, L158 and L175 define substituents and are not emitted as compounds. The drawn formula II at L177 and L193 is a Markush generic and its IMAGE_EXTRACT carries no molecules, so no structure reached this record. Claim 20 (L195) narrows R1 to chlorine and R2 to (C2)alkyl but prints no compound name, so it yields no separate record."
+    "notes": "Product of both independent process claims. Merged from the claim 6 preamble (L150), the claim 13 preamble (L175) and compound claim 19 (L191), which claims the same genus per se. A Markush genus with variable R1 and R2, so it names no one compound and is left unresolved; formula II is a pointer to a drawing that this section never states a name for. The R1 and R2 definitions at L156, L158, L175 and L191 define substituents and are not emitted as compounds. The drawn formula II at L177 and L193 is a Markush generic and its IMAGE_EXTRACT carries no molecules, so no structure reached this record. Claim 20 (L195) narrows R1 to chlorine and R2 to (C2)alkyl but prints no name for the compound that results, so no record is created for it and its existence is recorded here instead."
   },
   {
     "patent_id": "US20040236146A1",
@@ -91,9 +91,10 @@
     "tags": [
       "compound_class:reagent",
       "chemical_family:succinimide",
+      "functional_group:imide",
       "functional_group:halide_bromo"
     ],
-    "notes": "Brominating agent of claim 6, process variant A. Printed N-bromosuccimide at L154, a misprint; the corrected spelling used as the identifier is one the document itself prints in the description, and the EN line at L155 also reads it as N-bromosuccinimide. The as-printed variant is carried in aliases."
+    "notes": "Brominating agent of claim 6, process variant A. Printed N-bromosuccimide at L154, a misprint; the identifier is the corrected spelling, which is one the document itself prints in the description, and the EN line at L155 reads it the same way. The as-printed variant is carried in aliases."
   },
   {
     "patent_id": "US20040236146A1",
@@ -106,7 +107,7 @@
     "section_type": "claims",
     "is_section_product": false,
     "commercially_available": true,
-    "role": "catalyst",
+    "role": "reagent",
     "quantity": null,
     "ms_mz": null,
     "nmr": null,
@@ -118,11 +119,12 @@
     "purity_pct": null,
     "purity_method": null,
     "tags": [
-      "compound_class:catalyst",
+      "compound_class:reagent",
       "chemical_family:azonitrile",
+      "functional_group:azo",
       "functional_group:nitrile"
     ],
-    "notes": "One of the two radical initiators claim 7 (L160) allows for the variant A bromination. Printed correctly on this line, so no alias is carried. role catalyst follows the reference run's treatment of a radical initiator, which is used sub-stoichiometrically."
+    "notes": "One of the two radical initiators claim 7 (L160) allows for the variant A bromination. Printed correctly on this line, so no alias is carried. The closed role list has no initiator value; reagent is chosen because the list's catalyst is defined as not consumed and an initiator is consumed in fragmenting to the chain-carrying radical. That vocabulary gap is recorded rather than hidden."
   },
   {
     "patent_id": "US20040236146A1",
@@ -135,7 +137,7 @@
     "section_type": "claims",
     "is_section_product": false,
     "commercially_available": true,
-    "role": "catalyst",
+    "role": "reagent",
     "quantity": null,
     "ms_mz": null,
     "nmr": null,
@@ -147,11 +149,12 @@
     "purity_pct": null,
     "purity_method": null,
     "tags": [
-      "compound_class:catalyst",
+      "compound_class:reagent",
       "chemical_family:diaroyl_peroxide",
+      "functional_group:peroxide",
       "hazard:peroxide_former"
     ],
-    "notes": "The second radical initiator claim 7 (L160) allows for the variant A bromination. role catalyst follows the reference run's treatment of a radical initiator."
+    "notes": "The second radical initiator claim 7 (L160) allows for the variant A bromination. The closed role list has no initiator value; reagent is chosen because the list's catalyst is defined as not consumed and an initiator is consumed. The examples of this patent show the consumption directly, recharging this initiator through the reaction. That vocabulary gap is recorded rather than hidden."
   },
   {
     "patent_id": "US20040236146A1",
@@ -177,7 +180,7 @@
     "purity_method": null,
     "tags": [
       "compound_class:solvent",
-      "chemical_family:chlorobenzene",
+      "chemical_family:halogenated_aromatic",
       "functional_group:halide_chloro"
     ],
     "notes": "Merged from claim 9 (L167), the solvent for variant A, and claim 15 (L183), the solvent for variant B. One record, not one per claim."
@@ -240,7 +243,7 @@
       "hazard:corrosive",
       "hazard:toxic"
     ],
-    "notes": "Brominating agent of claim 13 (L175), process variant B, printed as elemental bromine. This is the one occurrence of bromine in the section that is a compound; bromine at L156, L175 and L191 is a value of the substituent R1 and is not emitted."
+    "notes": "Brominating agent of claim 13 (L175), process variant B, printed there as elemental bromine. That is the only occurrence of bromine in this section that names a substance; bromine at L156, L175 and L191 is a permitted value of the substituent R1 and is not emitted."
   },
   {
     "patent_id": "US20040236146A1",
@@ -303,6 +306,6 @@
       "functional_group:halide_bromo",
       "functional_group:halide_chloro"
     ],
-    "notes": "The only fully enumerated compound name in the section. It appears solely as the compound excluded from the genus of compound claim 19 (L191), hence role other and is_section_product false. Printed there with a hyphen as 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoic acid; that variant is carried in aliases and the unhyphenated form used as the identifier is one the document prints elsewhere. commercially_available is false because an example of this patent prepares it."
+    "notes": "The only fully enumerated compound name in the section. It appears solely as the compound excluded from the genus of compound claim 19 (L191), hence role other and is_section_product false. Printed there as 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoic acid; that variant is carried in aliases and the identifier is a spelling the document prints elsewhere. commercially_available is false because Example 1 of this patent prepares it."
   }
 ]

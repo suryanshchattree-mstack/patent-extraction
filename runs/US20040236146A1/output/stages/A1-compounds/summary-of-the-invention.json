@@ -29,7 +29,7 @@
       "functional_group:carboxylic_acid",
       "functional_group:sulfone"
     ],
-    "notes": "Markush genus, not one drawable molecule: the halogen and the alkyl of the alkylsulfonyl group are both variable, so it is kept unresolved. Identifier is the string as printed on L57, which omits the hyphen before the 4 locant; the EN normalisation line at L58 prints 2-halo-3-methyl-4-alkylsulfonylbenzoic acids and that repaired form is carried as an alias. The substrate genus of the finding in [0003]. Kept separate from the formula I genus of [0005] because R1 and R2 are defined at L75 and L77, outside this section, so this section does not state that the two scopes are the same."
+    "notes": "Markush genus, not one drawable molecule: the ring halogen and the alkyl of the alkylsulfonyl group are both variable, so it is kept unresolved. Identifier is the string as printed on L57, which omits the hyphen before the 4 locant; the EN normalisation line at L58 prints 2-halo-3-methyl-4-alkylsulfonylbenzoic acids and that repaired form is carried as an alias. The substrate genus of the finding in [0003]. Kept separate from the formula I genus of [0005] because R1 and R2 are defined at L75 and L77, outside this section, so this section does not state that the two scopes are the same."
   },
   {
     "patent_id": "US20040236146A1",
@@ -60,7 +60,7 @@
       "functional_group:sulfone",
       "functional_group:halide_bromo"
     ],
-    "notes": "Markush genus, not one drawable molecule: the ring halogen and the sulfonyl alkyl are variable, so it is kept unresolved. Printed identically on L57 and L58. The product genus of the finding in [0003]. Kept separate from the formula II genus of [0004] because R1 and R2 are defined outside this section."
+    "notes": "Markush genus, not one drawable molecule: the ring halogen and the sulfonyl alkyl are variable, so it is kept unresolved. Printed identically on L57 and L58, so there is no as-printed variant to carry. The product genus of the finding in [0003]. Kept separate from the formula II genus of [0004] because R1 and R2 are defined outside this section."
   },
   {
     "patent_id": "US20040236146A1",
@@ -92,7 +92,7 @@
       "functional_group:carboxylic_acid",
       "functional_group:halide_bromo"
     ],
-    "notes": "Markush genus, not one drawable molecule. Formula II is drawn at L61 and the drawing is a generic with variable R1 and R2, so the IMAGE_EXTRACT span carries no molecules and no structure reached this record. Merged with the bare genus 3-bromomethylbenzoic acids named in the first sentence of [0003] on L57, carried as an alias. This is the product genus of the process the section provides, so is_section_product is true."
+    "notes": "Markush genus, not one drawable molecule. Formula II is drawn at L61 but the drawing is a Markush generic with variable R1 and R2, so the IMAGE_EXTRACT span carries an empty molecules list and no structure reached this record; the structure is drawn but generic, and smiles stays null for that reason and not for want of looking. Merged per A1 rule 4 with the bare genus 3-bromomethylbenzoic acids named in the first sentence of [0003] on L57, which is carried as an alias. This is the product genus of the process the section provides, so is_section_product is true."
   },
   {
     "patent_id": "US20040236146A1",
@@ -121,7 +121,7 @@
       "chemical_family:benzoic_acid",
       "functional_group:carboxylic_acid"
     ],
-    "notes": "Markush genus, not one drawable molecule. Formula I is drawn at L65 and the drawing is a generic with variable R1 and R2, so the IMAGE_EXTRACT span carries no molecules and no structure reached this record. The substrate genus of the process in [0005]."
+    "notes": "Markush genus, not one drawable molecule. Formula I is drawn at L65 but the drawing is a Markush generic with variable R1 and R2, so the IMAGE_EXTRACT span carries an empty molecules list and no structure reached this record; the structure is drawn but generic. The substrate genus of the process in [0005]."
   },
   {
     "patent_id": "US20040236146A1",
@@ -152,13 +152,15 @@
       "chemical_family:succinimide",
       "functional_group:imide"
     ],
-    "notes": "Printed N-bromosuccimide on L69, with the n of succinimide missing; the EN normalisation line at L70 prints N-bromosuccinimide. The corrected spelling is the one this document itself prints elsewhere, so it is the identifier and the as-printed L69 variant is carried as an alias. The brominating agent of variant A)."
+    "notes": "Printed N-bromosuccimide on L69, with the n of succinimide missing; the EN normalisation line at L70 prints N-bromosuccinimide. Identifier is the corrected spelling fixed by PROMPT-CORRECTIONS section 2, which is a form this document itself prints, and the as-printed L69 variant is carried as an alias. The brominating agent of variant A). Bulk commodity reagent that no step of this patent prepares, so commercially_available is true."
   },
   {
     "patent_id": "US20040236146A1",
-    "identifier": "a radical initiator",
+    "identifier": "radical initiator",
     "identifier_type": "other",
-    "aliases": [],
+    "aliases": [
+      "a radical initiator"
+    ],
     "resolved": false,
     "unresolved_reference": true,
     "section_label": "Summary of the Invention",
@@ -179,7 +181,7 @@
     "tags": [
       "compound_class:reagent"
     ],
-    "notes": "Generic reference to a class of reagents, not a named compound, so it is kept unresolved. This section names no member of the class; the examples at L79 do, but that is outside this section. commercially_available is false because nothing in this section states it."
+    "notes": "Class term, not a named compound, so resolved is false and unresolved_reference is true. L69 prints it as a radical initiator; per PROMPT-CORRECTIONS section 9 the identifier is the bare noun phrase with the article dropped and the as-printed form goes in aliases, so this record joins the same class term recorded from L55 in Background rather than splitting it across two keys. This section names no member of the class; the examples do, outside this section. role is reagent and compound_class is reagent per PROMPT-CORRECTIONS section 8: an initiator is consumed in initiating and so does not meet A1 rule 9's definition of catalyst. commercially_available is false because nothing in this section states it. The co-reagent of variant A)."
   },
   {
     "patent_id": "US20040236146A1",
@@ -210,6 +212,6 @@
       "hazard:corrosive",
       "hazard:toxic"
     ],
-    "notes": "Printed as elemental bromine on L71; the identifier is the bare name this document prints elsewhere and the as-printed phrase is carried as an alias. The brominating agent of variant B), used with photolamp irradiation."
+    "notes": "Printed as elemental bromine on L71; elemental is a description of the form and not part of a name, so the identifier is the bare name this document prints elsewhere and the as-printed phrase is carried as an alias. The brominating agent of variant B), used with photolamp irradiation. The photolamp is equipment, not a compound, so no record is made for it. hazard tags are emitted because A1 rule 18 names bromine explicitly; this section itself makes no hazard statement."
   }
 ]

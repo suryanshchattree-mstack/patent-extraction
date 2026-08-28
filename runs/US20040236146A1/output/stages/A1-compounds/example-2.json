@@ -4,8 +4,7 @@
     "identifier": "2-chloro-3-methyl-4-ethylsulfonylbenzoic acid",
     "identifier_type": "iupac",
     "aliases": [
-      "2-chloro-3-methyl-4-sulfonylethylbenzoic acid",
-      "2-chloro-3-methyl-4-(ethylsulfonyl)benzoic acid"
+      "2-chloro-3-methyl-4-sulfonylethylbenzoic acid"
     ],
     "resolved": true,
     "unresolved_reference": false,
@@ -37,7 +36,7 @@
       "functional_group:carboxylic_acid",
       "functional_group:halide_chloro"
     ],
-    "notes": "Printed at line 140 as 2-chloro-3-methyl-4-sulfonylethylbenzoic acid, with the sulfone written backwards. sulfonylethyl names a divalent linker and cannot be a terminal ring substituent, so it is a transposition of ethylsulfonyl. The patent settles this itself: the Example 2 title at lines 136 to 138 prints the ethylsulfonyl order, and the printed 20 g charge with the 28.2 g product at 88% purity and 95.6% of theory closes only for the ethylsulfonyl substrate. The second alias is the EN normalisation printed at line 141, which silently repairs the name; it is a reading of the line and not a form the document prints."
+    "notes": "Substrate, charged at 20 g. Printed at line 140 as 2-chloro-3-methyl-4-sulfonylethylbenzoic acid, with the sulfone written backwards, and that as-printed form is carried in aliases. sulfonylethyl names a divalent linker and cannot be a terminal ring substituent, so it is a transposition of ethylsulfonyl. The patent settles this itself: the Example 2 title at lines 136 to 138 prints the ethylsulfonyl order, and the printed charge, product mass, purity and yield close only for the ethylsulfonyl substrate. The EN line at 141 prints 2-chloro-3-methyl-4-(ethylsulfonyl)benzoic acid, but that is the vision pass silently repairing the name rather than a form the document prints, so it is not carried as an alias. The text states no source for this compound and no step of this patent prepares it."
   },
   {
     "patent_id": "US20040236146A1",
@@ -71,7 +70,7 @@
       "compound_class:solvent",
       "functional_group:nitrile"
     ],
-    "notes": "Suspension and reaction medium."
+    "notes": "Suspension and reaction medium, 150 ml, heated to reflux."
   },
   {
     "patent_id": "US20040236146A1",
@@ -106,7 +105,7 @@
       "chemical_family:succinimide",
       "functional_group:imide"
     ],
-    "notes": "Brominating agent. Printed correctly here at line 140; the misprint N-bromosuccimide occurs elsewhere in the document, not in this section."
+    "notes": "Brominating agent, charged once at 17.6 g with the first portion of initiator. Printed correctly here at line 140; the misprint N-bromosuccimide the patent uses at lines 69 and 154 is not on the lines of this section."
   },
   {
     "patent_id": "US20040236146A1",
@@ -119,7 +118,7 @@
     "section_type": "experimental_example",
     "is_section_product": false,
     "commercially_available": true,
-    "role": "catalyst",
+    "role": "reagent",
     "quantity": {
       "mass_g": 2.8,
       "volume_ml": null,
@@ -137,9 +136,12 @@
     "purity_pct": null,
     "purity_method": null,
     "tags": [
-      "compound_class:catalyst"
+      "compound_class:reagent",
+      "chemical_family:diaroyl_peroxide",
+      "functional_group:peroxide",
+      "hazard:peroxide_former"
     ],
-    "notes": "Charged four times: 0.7 g at room temperature with the N-bromosuccinimide, then 3 further portions of 0.7 g each at 1 h intervals, so 2.8 g in total. Merged into one record per rule 4, with the total in mass_g and the charging profile here. The patent calls it a radical initiator ([0012], claim 7); the role enum has no initiator value, so it is recorded as catalyst because it is charged sub-stoichiometrically to initiate rather than to transform the substrate. The repeated charging is the text's own evidence that it is consumed."
+    "notes": "Radical initiator, charged four times at line 140: 0.7 g at room temperature with the N-bromosuccinimide, then 3 further portions of 0.7 g each at 1 h intervals, 2.8 g in total. Merged into one record per rule 4, with the total in mass_g and the addition profile here. Role is reagent, not catalyst: the closed role list has no initiator value, rule 9 defines catalyst as present sub-stoichiometrically and not consumed, and this procedure is itself the evidence that it is consumed, since it has to be replenished three times through one reaction. reagent, transforms the substrate but is not the carbon skeleton source, is the closest value the list holds."
   },
   {
     "patent_id": "US20040236146A1",
@@ -172,7 +174,7 @@
     "tags": [
       "compound_class:workup_agent"
     ],
-    "notes": "Reductive quench. The text charges 100 ml of a 2% sodium bisulfite solution, so the volume is of the solution and not of the neat compound. The solvent of that solution is not named in this section and no water record is emitted."
+    "notes": "Reductive quench, added to the cooled reaction mixture. The text charges 100 ml of a 2% sodium bisulfite solution, so volume_ml is a volume of solution and not a mass of the salt; no mass of sodium bisulfite is stated anywhere in the section and none is computed. The solvent of that solution is not named, so no water record is emitted."
   },
   {
     "patent_id": "US20040236146A1",
@@ -206,7 +208,7 @@
       "compound_class:solvent",
       "functional_group:ester"
     ],
-    "notes": "Extraction solvent, added after the quench; the organic phase is removed, washed and concentrated. The wash medium is not named."
+    "notes": "Extraction solvent, 300 ml added after the quench; the organic phase is then removed, washed and concentrated. The wash medium is not named, so nothing is recorded for it."
   },
   {
     "patent_id": "US20040236146A1",
@@ -240,7 +242,7 @@
       "compound_class:solvent",
       "functional_group:ether"
     ],
-    "notes": "The solid residue is suspended in 50 ml of diethyl ether and 20 ml of heptane before filtration."
+    "notes": "First of the two solvents the solid residue is suspended in before filtration, 50 ml."
   },
   {
     "patent_id": "US20040236146A1",
@@ -273,7 +275,7 @@
     "tags": [
       "compound_class:solvent"
     ],
-    "notes": "Second suspension solvent for the solid residue before filtration. Printed without an isomer locant, so no n- is added."
+    "notes": "Second of the two solvents the solid residue is suspended in before filtration, 20 ml. Printed without an isomer locant, so no n- is added."
   },
   {
     "patent_id": "US20040236146A1",
@@ -310,7 +312,7 @@
         "method": "hplc",
         "value": null,
         "unit": null,
-        "conditions": "in-process check after the last initiator portion",
+        "conditions": "in-process check 2 h after the last initiator portion",
         "raw_text": "HPLC analysis indicated complete conversion"
       }
     ],
@@ -324,6 +326,6 @@
       "functional_group:halide_bromo",
       "functional_group:halide_chloro"
     ],
-    "notes": "Isolated product of Process Variant A) and the product of the section. Printed correctly at line 140 and in the title at lines 136 to 138. physical_form is taken from the solid residue that is filtered off and dried; no colour or appearance is stated. Purity and melting point come from [0034] at line 142."
+    "notes": "Isolated product of Process Variant A) and the product of the section, the only procedure Example 2 runs. Printed correctly at line 140 and in the title at lines 136 to 138, so there is no misprint to carry. physical_form is taken from the solid residue that is filtered off and dried; no colour or appearance is stated. Purity 88% (HPLC) and melting point 103 C come from [0034] at line 142. Arithmetic checks: 28.2 g at 88% is 24.8 g of C10H10BrClO4S (MW 341.6) against 20 g of C10H11ClO4S (MW 262.7), giving 95.4% against the 95.6% printed, so nothing is raised. No structure is drawn for this compound: the two IMAGE_EXTRACT spans filed in this section, at lines 144 and 146, are the Markush formulae of claim 6 and carry no molecules, so no SMILES reached this record."
   }
 ]
