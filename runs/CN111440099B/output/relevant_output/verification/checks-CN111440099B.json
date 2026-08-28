@@ -15862,58 +15862,6 @@
     {
       "about": "extraction",
       "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        265
-      ],
-      "claim_id": "55d29cf3e271cd47",
-      "claimed_en": "line 265: | Test batch | PH value | Original cyanide impurity content (ppm) | Cyanide impurity content after crystallisation (ppm) | Cyanide impurity content reduction % |",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "| Test batch | PH value | Original cyanide impurity content (ppm) | Cyanide impurity content after crystallisation (ppm) | Cyanide impurity content reduction % |",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 265,
-          "names_en": [
-            "cyanide"
-          ],
-          "pairing": "self",
-          "text_en": "| Test batch | PH value | Original cyanide impurity content (ppm) | Cyanide impurity content after crystallisation (ppm) | Cyanide impurity content reduction % |"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 265 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:CN111440099B",
-      "rec_field": "__coverage__.line_265",
-      "record_id": "CN111440099B_line_265",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 265",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Example 5",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Example 5",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
       "auto_reason_en": "No record in the whole annotation cites this line, and it carries a percentage. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
       "basis": null,
       "cited_lines": [
@@ -63414,20 +63362,20 @@
         "uncited_chemistry_lines": 0
       },
       {
-        "claims": 80,
+        "claims": 79,
         "found": 59,
         "lines_total": 16,
-        "not_checkable": 10,
+        "not_checkable": 9,
         "not_found": 4,
         "not_reconciled": 0,
         "partial": 7,
-        "records": 11,
+        "records": 10,
         "section_en": "Example 5",
         "substance_accounted": 2,
         "substance_none": 12,
         "substance_unaccounted": 0,
         "substance_unread": 0,
-        "uncited_chemistry_lines": 5
+        "uncited_chemistry_lines": 4
       },
       {
         "claims": 22,
@@ -63463,14 +63411,14 @@
       }
     ],
     "score": {
-      "covered_pct": 85.4,
+      "covered_pct": 90.8,
       "grounded_pct": 87.5,
       "structure_pct": 80.0
     },
-    "verdict_en": "372 claims were put to the source. 274 were found on the lines the annotation itself cites, 20 were only partly found, 19 were NOT found and are the ones to read first, and 59 are judgements no string match can settle. Of the 313 grounding claims a machine can decide, 87.5% are grounded. 5 source lines carry chemistry that no record cites, and each has its own entry in the queue. 9 record checks fail and 102 warn. 20 of 25 compound identifiers resolve to a drawable structure. Nothing here is a verdict: every line is a prompt for a human to agree or overrule."
+    "verdict_en": "371 claims were put to the source. 274 were found on the lines the annotation itself cites, 20 were only partly found, 19 were NOT found and are the ones to read first, and 58 are judgements no string match can settle. Of the 313 grounding claims a machine can decide, 87.5% are grounded. 4 source lines carry chemistry that no record cites, and each has its own entry in the queue. 9 record checks fail and 102 warn. 20 of 25 compound identifiers resolve to a drawable structure. Nothing here is a verdict: every line is a prompt for a human to agree or overrule."
   },
   "engine_version": 1,
-  "generated_at": "2026-08-27T17:39:06Z",
+  "generated_at": "2026-08-28T08:14:16Z",
   "patent_id": "CN111440099B",
   "records": [
     {
@@ -70475,25 +70423,6 @@
       "annotation_flags_en": [],
       "checks": [],
       "cited_lines": [
-        265
-      ],
-      "claim_ids": [
-        "55d29cf3e271cd47"
-      ],
-      "label_en": "Source line 265",
-      "rec": "pt:CN111440099B",
-      "record_id": "CN111440099B_line_265",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Example 5",
-      "stratum": "source_line:Example 5",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
         267
       ],
       "claim_ids": [
@@ -71659,7 +71588,7 @@
         "n": 75,
         "section_en": "Technical Field",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Technical field"
       },
@@ -71711,7 +71640,7 @@
         "n": 79,
         "section_en": "Background",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Background art"
       },
@@ -72168,7 +72097,7 @@
         "n": 108,
         "section_en": "Summary of the Invention",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Summary of the invention"
       },
@@ -72691,7 +72620,7 @@
         "n": 140,
         "section_en": "Synthesis Scheme",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Specific embodiments"
       },
@@ -72713,7 +72642,7 @@
         "n": 142,
         "section_en": "Synthesis Scheme",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "The present invention is further described in detail below in conjunction with specific examples. It should be understood that these examples serve to illustrate the basic principles, main features and advantages of the present invention, and that the present invention is not limited by the following worked examples; the implementation conditions used in the worked examples may be further adjusted according to specific requirements, and implementation conditions not stated are usually those of routine experiments."
       },
@@ -73006,7 +72935,7 @@
         "n": 158,
         "section_en": "Example 1",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Example 1"
       },
@@ -73665,7 +73594,7 @@
         "n": 193,
         "section_en": "Example 2",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Example 2"
       },
@@ -74116,7 +74045,7 @@
         "n": 218,
         "section_en": "Example 3",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Example 3"
       },
@@ -74527,7 +74456,7 @@
         "n": 241,
         "section_en": "Example 4",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Example 4"
       },
@@ -74805,7 +74734,7 @@
         "n": 256,
         "section_en": "Example 5",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Example 5"
       },
@@ -74986,7 +74915,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "named_only",
         "text_en": "| Test batch | PH value | Original cyanide impurity content (ppm) | Cyanide impurity content after crystallisation (ppm) | Cyanide impurity content reduction % |"
       },
@@ -75071,7 +75000,7 @@
         "n": 272,
         "section_en": "Example 6",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Example 6"
       },
@@ -75292,7 +75221,7 @@
         "n": 283,
         "section_en": "Example 6",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "2.47 (t, 2H), 2.81 (t, 2H), 3.25 (S, 3H), 4.01 (q, 2H), 5.21 (s, 2H), 7.33 (d, H), 8.12 (d, H), 15.37 (s, H)."
       },
@@ -75314,16 +75243,16 @@
         "n": 285,
         "section_en": "Closing Statement",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Those of ordinary skill in the art will understand that the foregoing is merely a preferred embodiment of the present invention and is not intended to limit the present invention. Although the present invention has been described in detail with reference to the foregoing embodiments, a person skilled in the art may still modify the technical solutions recorded in each of the foregoing embodiments, or make equivalent substitutions for some of the technical features therein. Any modification, equivalent substitution, improvement and the like made within the spirit and principles of the present invention shall be included within the scope of protection of the present invention."
       }
     ],
     "summary": {
-      "covered": 234,
+      "covered": 248,
       "total": 285,
-      "uncited_plain": 46,
-      "uncited_with_chemistry": 5
+      "uncited_plain": 33,
+      "uncited_with_chemistry": 4
     }
   },
   "summary": {
@@ -75352,15 +75281,15 @@
     },
     "claims": {
       "found": 274,
-      "needs_human": 135,
-      "not_checkable": 59,
+      "needs_human": 134,
+      "not_checkable": 58,
       "not_found": 19,
       "not_reconciled": 0,
       "partial": 20,
-      "total": 372
+      "total": 371
     },
     "claims_by_family": {
-      "completeness": 8,
+      "completeness": 7,
       "consistency": 39,
       "drawing": 0,
       "grounding": 325,
@@ -75374,23 +75303,23 @@
       "critical": 2,
       "high": 0,
       "low": 23,
-      "medium": 109,
+      "medium": 108,
       "none": 238
     },
     "claims_by_subject": {
-      "extraction": 334,
+      "extraction": 333,
       "patent": 33,
       "schema": 5
     },
     "claims_by_tier": {
       "1": 82,
-      "2": 13,
+      "2": 12,
       "3": 237,
       "4": 40
     },
     "claims_by_work_kind": {
       "comparison": 313,
-      "judgement": 59
+      "judgement": 58
     },
     "field_basis": {
       "analytics_value": {
@@ -75720,14 +75649,14 @@
       "patent": 1,
       "pathway": 11,
       "reaction": 38,
-      "source_line": 5,
+      "source_line": 4,
       "total": 75
     },
     "source_coverage": {
-      "covered": 234,
+      "covered": 248,
       "total": 285,
-      "uncited_plain": 46,
-      "uncited_with_chemistry": 5
+      "uncited_plain": 33,
+      "uncited_with_chemistry": 4
     },
     "substance_coverage": {
       "accounted": 80,
@@ -75801,9 +75730,9 @@
       },
       "2": {
         "agrees": true,
-        "claims": 13,
-        "from_en": "5 source lines no record cites, plus 3 quantities on cited lines no claim asserts, plus 5 schema tickets pooled from 27 instances",
-        "population": 13
+        "claims": 12,
+        "from_en": "4 source lines no record cites, plus 3 quantities on cited lines no claim asserts, plus 5 schema tickets pooled from 27 instances",
+        "population": 12
       },
       "3": {
         "agrees": true,
