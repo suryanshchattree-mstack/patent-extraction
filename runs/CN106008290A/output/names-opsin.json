@@ -4,8 +4,8 @@
  "what_this_is_en": "Every compound identifier in the gold, read a second time by a name parser that knows nothing about this patent. A parse is used as a structure only where nothing better exists, and is compared against every structure the pipeline already had.",
  "summary": {
   "ambiguous": 4,
-  "parsed": 48,
-  "unparseable": 18
+  "parsed": 47,
+  "unparseable": 17
  },
  "names": [
   {
@@ -705,15 +705,19 @@
    ]
   },
   {
-   "identifier": "二氯乙烷",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "identifier": "dichloroethane",
+   "outcome": "ambiguous",
+   "query": "dichloroethane",
+   "via": "verbatim",
+   "guess_smiles": "ClC(C)Cl",
+   "guess_canonical": "CC(Cl)Cl",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
    "attempts": [
     {
-     "query": "二氯乙烷",
+     "query": "dichloroethane",
      "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: Connection of chloro to eth"
     }
    ]
   },
@@ -734,27 +738,6 @@
     {
      "query": "1-hydroxybenzotriazole",
      "via": "alias",
-     "status": "SUCCESS"
-    }
-   ]
-  },
-  {
-   "identifier": "甲、醇",
-   "outcome": "parsed",
-   "query": "methanol",
-   "via": "the pipeline's English for 甲、醇",
-   "smiles": "CO",
-   "canonical": "CO",
-   "attempts": [
-    {
-     "query": "甲、醇",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    },
-    {
-     "query": "methanol",
-     "via": "the pipeline's English for 甲、醇",
      "status": "SUCCESS"
     }
    ]
@@ -991,23 +974,6 @@
      "via": "verbatim",
      "status": "FAILURE",
      "note": "not parsed"
-    }
-   ]
-  },
-  {
-   "identifier": "dichloroethane",
-   "outcome": "ambiguous",
-   "query": "dichloroethane",
-   "via": "verbatim",
-   "guess_smiles": "ClC(C)Cl",
-   "guess_canonical": "CC(Cl)Cl",
-   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
-   "attempts": [
-    {
-     "query": "dichloroethane",
-     "via": "verbatim",
-     "status": "WARNING",
-     "note": "APPEARS_AMBIGUOUS: Connection of chloro to eth"
     }
    ]
   },

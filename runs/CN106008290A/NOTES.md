@@ -5,59 +5,85 @@ A method for preparing tembotrione. Anhui Jiuyi Agriculture Co., Ltd., filed
 characters of text layer on all seven, so every readable character in this run
 came from the vision pass.
 
-## Status: blocked, and on one thing only
+## Status: blocked on one thing, and it is a known open question
 
 `selfcheck` reports **35 pass, 1 warn, 2 fail**. The two failures are the same
-measurement counted twice: the reviewer census is 128 claims, 18.6 minutes at the
+measurement counted twice: the reviewer census is 131 claims, 19.0 minutes at the
 pinned P90 rate, against a pinned 15 minute budget that allows 103.
 
 I did not change the budget. It is a pinned number and rule 4 forbids moving it to
 make a check pass.
 
-The overrun has a single identified cause, in shared pipeline code, and I did not
-patch it because the fix would change `runs/CN104292137A/` and that run is read
-only.
+### What the overrun actually is
 
-### The cause: `pipeline/finalise.py:208` drops quantities it thinks it is keeping
+It is the last paragraph of `pipeline/contracts/ONE-ROUTE-TOLD-FOUR-TIMES.md`, which
+asks
 
-`merge_compound` merges the per-section A1 rows for one identifier. Its scalar rule
-is `elif v not in (None, "", [], {})`. A nested `quantity` dict whose every value is
-null is not literally `{}`, so it passes that guard and **replaces** a populated
-one. Whichever section merges last wins, and the section labels sort such that a
-section with no numbers wins.
+> whether the queue should present the four tellings of a step together, since a
+> reviewer checking step 3 four times in four places spends four times the budget of
+> a reviewer checking it once with three corroborations shown alongside. Not
+> measured, and not filed as a defect.
 
-Demonstrated, not inferred:
+This patent measures it. It tells one two-step route **five** times, as Examples 1 to
+5, which differ only in base, condensing agent, solvent and temperature, and then
+again in the claims and the summary. 108 of the 131 census claims are tier 1
+`comparison` work of the form "Does the patent say 1000 ml of N,N-dimethylformamide?"
+and "Does the patent say 5 C for the high end of the temperature range of this step?",
+asked once per telling. The reference run has one worked example and 81 census claims
+and passes at 11.7 minutes.
 
-    raw-compounds.json   tembotrione, Example 1   mass_g=366.4  yield=86.3  purity=96.5
-                         tembotrione, Example 2   mass_g=362.5  yield=86.0  purity=95.8
-                         tembotrione, Example 3   mass_g=375.4  yield=87.5  purity=97.5
-                         tembotrione, Example 4   mass_g=332.9  yield=80.1  purity=94.6
-                         tembotrione, Example 5   mass_g=355.5  yield=83.9  purity=96.3
-    compounds.json       tembotrione, Technical Field  mass_g=None  yield=None  purity=96.3
+So the overrun is a property of the queue's design meeting a patent with five
+tellings, not a defect in this annotation. Fixing it means pooling the repeated
+tellings of one step into one card with its corroborations shown alongside. That is a
+change to the review queue, it would change the census of every run including the
+read only reference run, and the contract that raises it deliberately leaves it
+unowned. I did not build it: CLAUDE.md is explicit that this repo is not software and
+that designing a module here means having misread the task.
 
-Five product masses and five yields that A1 read correctly are absent from the
-deliverable. `purity_pct` survives only because it is a top level scalar rather
-than a member of the nested dict.
+### What I did fix, which was a different thing
 
-The knock-on is the budget: 17 census claims sit on `compound:Technical Field`,
-which is only where the merge parked the collapsed tembotrione record, and 16 more
-are tier 2 "the annotation does not record it anywhere" candidate misses about
-numbers the annotation did record before the merge. 128 minus those 25 is 103,
-which is the budget exactly.
+My first diagnosis was wrong and is recorded here because it was wrong for an
+instructive reason. I attributed the overrun to `finalise.py` losing quantities,
+on the strength of 17 census claims sitting on the collapsed `tembotrione` record and
+16 tier 2 candidate misses about numbers the annotation had recorded, which summed to
+exactly the 25 claims of the overrun. That arithmetic was a coincidence. Repairing
+the loss took the census **up**, from 125 to 131, because a restored number generates
+its own "does the patent say this" comparison claim.
 
-This is **pre-existing, not introduced here.** The reference run shows the same
-shape: `tembotrione` there has 7 raw section rows, 1 carrying a mass, and
-`mass_g=None` in its finalised record. `pipeline/contracts/SINGLE-VALUED-FIELDS.md`
-item 3 documents the neighbouring symptom, a merged record carrying a quantity
-under the wrong `section_label`, but not this one, where the quantity is gone
-rather than mislabelled.
+The loss was real all the same, and it is fixed in `pipeline/finalise.py`:
 
-I could not determine whether the behaviour faithfully mirrors production's
-`PersistentRecordBuilder.mergeCompoundFields`, because no production code is on
-disk. If it does mirror it, the gold is right and the budget is simply too small
-for this patent. If it does not, the gold is losing data on every run. Someone
-with access to that code should decide which, and that is why this is blocked
-rather than done.
+    populated()   new, and it looks INSIDE a nested object
+    merge_compound()   its scalar rule now asks populated(v)
+
+The old rule was `v not in (None, "", [], {})`. `quantity` is a nested object, and one
+whose every member is null is not literally `{}`, so it passed that test and replaced
+a populated one. A1 runs per section, most sections print no numbers, and whichever
+section merges last wins.
+
+Measured, both runs, by collapsing `raw-compounds.json` under the old rule and the new
+one:
+
+    CN106008290A   records carrying a quantity   13 -> 26     13 regained
+    CN104292137A   records carrying a quantity   30 -> 31      1 regained
+
+The 13 include `tembotrione` itself at 355.5 g and 83.9 percent, and the charges of
+sodium trifluoroethoxide, 1,3-cyclohexanedione, three of the bases and the pyridine.
+In the reference run the one regained record is also `tembotrione`, at 188.0 g and
+95.0 percent: the target compound of the worked example, its mass previously absent
+from the gold.
+
+The whole `quantity` block still moves as one unit, deliberately. Merging its members
+field by field would also have restored the numbers, and would have let a mass from
+Example 1 sit beside a yield from Example 3, asserting a pair no example printed.
+
+`section_label` on the merged record still reads `Technical Field` while the numbers
+are Example 5's. That is the separate, already documented flaw at
+`pipeline/contracts/SINGLE-VALUED-FIELDS.md` item 3, and it is untouched here.
+
+The reference run still reports **37 pass, 1 warn, 0 fail** with this change in place,
+and no file under `runs/CN104292137A/` was written: rule 2 makes it read only, so its
+artifacts on disk still hold the lossy values and now differ from what the current
+code would produce. Regenerating it is the owner's call, not mine.
 
 ## A second guard that passes on absence
 
