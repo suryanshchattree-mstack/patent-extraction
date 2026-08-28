@@ -1,0 +1,240 @@
+[
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "enol ester of formula (II)",
+    "identifier_type": "local_label",
+    "aliases": [
+      "enol ester",
+      "formula (II)"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 5",
+    "section_type": "experimental_intermediate",
+    "is_section_product": true,
+    "commercially_available": false,
+    "role": "product",
+    "quantity": {
+      "mass_g": 0.89,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": 65.0
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": {
+      "min_c": 152.0,
+      "max_c": 158.0,
+      "range_text": "Melting point 152-158°C",
+      "decomposition": null
+    },
+    "appearance": "off white crystalline solid",
+    "color": "off white",
+    "physical_form": "crystals",
+    "analytics": [
+      {
+        "method": "hplc",
+        "value": 85.0,
+        "unit": "%",
+        "conditions": "purity printed as a lower bound",
+        "raw_text": "HPLC purity > 85%"
+      }
+    ],
+    "purity_pct": 85.0,
+    "purity_method": "hplc",
+    "tags": [
+      "compound_class:intermediate",
+      "chemical_family:benzoate_ester",
+      "functional_group:ester",
+      "functional_group:ketone",
+      "functional_group:sulfone",
+      "functional_group:nitro"
+    ],
+    "notes": "Product of the single esterification step in this section. Merged from the title line, which prints \"enol ester of formula (II)\", and the procedure, which prints \"enol ester\" bare; the section gives it no chemical name, so the formula-number label is the identifier, as in the Summary. No IMAGE_EXTRACT span falls inside lines 304-311, so no SMILES alias is recorded here even though the same compound is drawn elsewhere in the document. Yield, HPLC purity and melting point come from the unmarked line 310, which belongs to paragraph [0051] above it. Printed purity is \"> 85%\", so purity_pct is the stated bound and not a measured value. Melting point is printed without a colon after \"Melting point\", unlike Examples 1 to 4. physical_form recorded as crystals because the text says crystalline; the full phrase is kept in appearance. Isomeric with mesotrione and a different compound."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+    "identifier_type": "iupac",
+    "aliases": [
+      "NMSBA",
+      "formula (III)"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 5",
+    "section_type": "experimental_intermediate",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "reactant",
+    "quantity": {
+      "mass_g": 1.0,
+      "volume_ml": null,
+      "mmol": 4.0,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:intermediate",
+      "chemical_family:benzoic_acid",
+      "functional_group:carboxylic_acid",
+      "functional_group:sulfone",
+      "functional_group:nitro"
+    ],
+    "notes": "This section prints only the abbreviation NMSBA, in the title with its formula number and in the procedure with its charge; the identifier is the document-wide spelled-out form, which this section never prints, and the abbreviation is kept as an alias. Prepared by Examples 1 to 3, so not commercially available. Charged as 0.004mol, recorded as 4.0 mmol, which is a unit change only."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "N,N’-dicyclohexylcarbodiimide",
+    "identifier_type": "iupac",
+    "aliases": [
+      "N, N’-dicyclohexylcarbodiimide",
+      "N, N’-dicyclohexylcarbodiimide (DCC)",
+      "DCC"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 5",
+    "section_type": "experimental_intermediate",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "reagent",
+    "quantity": {
+      "mass_g": 0.8,
+      "volume_ml": null,
+      "mmol": 4.0,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:reagent",
+      "chemical_family:carbodiimide",
+      "functional_group:carbodiimide"
+    ],
+    "notes": "Coupling agent for the esterification. This section prints \"N, N’-dicyclohexylcarbodiimide (DCC)\", with a space after the first comma and a space before the bracket, against Example 6's closed-up \"N,N’-dicyclohexylcarbodiimide(DCC)\"; the comma spacing and the bracket spacing are orthographic and both printed forms are kept as aliases rather than emitted as a second record. The prime here is U+2019; the document also prints U+2032 on the claims pages and a plain ASCII apostrophe at line 209, for the same reagent. Charged with the NMSBA before the 1,3-cyclohexanedione in this example, the reverse of Example 4's order."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "1,3-cyclohexanedione",
+    "identifier_type": "iupac",
+    "aliases": [
+      "1, 3-cyclohexanedione"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 5",
+    "section_type": "experimental_intermediate",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "reactant",
+    "quantity": {
+      "mass_g": 0.45,
+      "volume_ml": null,
+      "mmol": 4.0,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:starting_material",
+      "chemical_family:cyclohexanedione",
+      "functional_group:ketone"
+    ],
+    "notes": "Printed here with a space after the comma, \"1, 3-cyclohexanedione\"; that spacing is orthographic and the spaced form is kept as an alias, not as a second record. The locants are printed, so nothing is inferred. Added second, to the mixture of NMSBA and DCC; the sentence that introduces it prints \"Tothismixture,\" set solid as one word, which is kept verbatim in provenance."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "dichloromethane",
+    "identifier_type": "iupac",
+    "aliases": [],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 5",
+    "section_type": "experimental_intermediate",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "solvent",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": 10.0,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:solvent",
+      "chemical_family:chloroalkane",
+      "functional_group:halide_chloro"
+    ],
+    "notes": "Reaction solvent, charged first. The source prints no punctuation between the volume and the next reagent, \"dichloromethane (10mL) NMSBA\", which is kept as printed."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "water",
+    "identifier_type": "trivial_name",
+    "aliases": [],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 5",
+    "section_type": "experimental_intermediate",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "other",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": 10.0,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:workup_agent"
+    ],
+    "notes": "Used to quench the reaction mixture before the organic layer is separated, so no reaction role more specific than other is supported by the text."
+  }
+]

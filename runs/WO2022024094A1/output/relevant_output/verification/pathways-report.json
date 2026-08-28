@@ -1,0 +1,189 @@
+{
+  "artifact": "pathways",
+  "records_audited": 16,
+  "findings": [
+    {
+      "check": "vocabulary",
+      "severity": "major",
+      "record": "pathways[13] Example 6 / step Example 6_Step 1",
+      "field": "steps[0].compounds[].role",
+      "problem": "Two role values in this pathway step are outside CompoundRecord's role enum and disagree with the same entries in reactions.json, which carries 'other' for both.",
+      "source_line": 316,
+      "quote": "To this mixture, N,N’-dicyclohexylcarbodiimide(DCC) (21g, 0.10mol) was added and stirred for about 2 hours at 25-30°C.",
+      "artifact_says": "N,N’-dicyclohexylcarbodiimide role 'coupling_agent'; water role 'workup_solvent'. reactions.json carries 'other' for both. Neither value is in VALID_ROLES (pipeline/finalise.py:105).",
+      "should_be": "Carry the reaction record's value ('other' for both), per A3 rule 11 'copy verbatim ... do not re-derive, re-word or re-classify'. Root cause: pipeline/finalise.py calls normalise_role from finalise_reactions (line 240) but not from finalise_pathways (line 251), so pathway step roles bypass the enum and are never logged in ROLE_FIXES. Fix finalise_pathways and re-run; do not hand-edit output.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "major",
+      "record": "pathways[14] Example 7 / step Example 7_Step 1",
+      "field": "steps[0].compounds[].role",
+      "problem": "The quench water carries role 'quenching_agent', outside CompoundRecord's role enum, where reactions.json carries 'other' for the same entry.",
+      "source_line": 329,
+      "quote": "The reaction mixture is cooled at 10-15°C and maintained for about 2 hours and quenched with water (100mL).",
+      "artifact_says": "water role 'quenching_agent' (reactions.json: 'other'); the identical quench in Example 4 carries 'other' in both files, so the pathway artifact is internally inconsistent as well as out of vocabulary.",
+      "should_be": "'other', matching the reaction record and Example 4. Same root cause as the Example 6 finding: normalise_role is not applied to pathway steps.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "pathways[0] Background of the Invention (and pathways[5], [6], [7], [15])",
+      "field": "steps[].components / compounds[].identifier",
+      "problem": "One molecule is carried under two identifiers across pathway records with no equivalence entry anywhere on disk, so the fragmentation is undetected rather than recorded.",
+      "source_line": 64,
+      "quote": "(iii) reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester",
+      "artifact_says": "pathways[0] step 3 components name 'cyclohexanedione'; pathways[5], [6], [7] and [15] step 2 name '1,3-cyclohexanedione'. compounds.json holds both as separate records with the same alias SMILES 'O=C1CCCC(=O)C1', and compounds-equivalence.json is '{}'. Two further pairs behave the same way: '(CH3CH2 )3N' in pathways[0] step 3 versus 'triethylamine' in pathways[6] and [15] step 3, and 'dichloroethane' in pathways[6] step 2 versus '1,2-dichloroethane' in pathways[7] step 2.",
+      "should_be": "The three groups belong in compounds-equivalence.json so a benchmark can join on them. The keeping-apart of the identifiers is correct (production keys on the identifier string, and the unlocanted name is what line 64 prints), but the empty file currently asserts that nothing fragmented. Root cause: equivalence_index in pipeline/finalise.py:129-157 normalises only 'methanesulphonyl', 'methanesulfonyl', 'methylsulfonyl' and 'bromomethyl', a substitution list tuned to the reference patent CN104292137A; it cannot see a locant prefix ('13cyclohexanedione' vs 'cyclohexanedione' hash to different keys) and it does not even cover the 'methylsulphonyl' spelling that dominates this document. This is a guard passing on absence in the sense of CLAUDE.md rule 6.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "pathways[6] Detailed Description of the Invention and pathways[5] Summary of the Invention",
+      "field": "honest_uncertainty_flags",
+      "problem": "Both sections recite processes whose endpoint is not mesotrione and for which no pathway is emitted, and neither record says so, although the Claims pathway does say exactly that for the equivalent case.",
+      "source_line": 211,
+      "quote": "[0038] In certain embodiments, there is provided a process for preparation of enol ester of formula (II) using 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) as starting material, wherein the process can include the steps of:",
+      "artifact_says": "pathways[6] flags are ['yield_missing_step', 'no_conditions_in_chain', 'reagent_written_not_drawn_in_chain']; pathways[5] flags are ['yield_missing_step', 'no_conditions_for_any_step']. pathways[7] (Claims) carries 'claimed_processes_with_other_endpoints_not_emitted' for the same situation (claims 5, 7 and 10).",
+      "should_be": "Add an equivalent flag to pathways[6] for [0038]'s two-step NMST to enol ester process at lines 211-215, and to pathways[5] for [0015] at line 109 (NMSBA alone) and [0016] at line 113 (enol ester alone). Emitting extra pathway records would be wrong here: A3 rule 1 builds chains from precursor_step and each of these sections has exactly one terminal step, so the sub-endpoints are prefixes of the emitted chain and the flag list is the only field that can record them. The inconsistency, not the omission, is the defect.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "pathways[0] Background of the Invention",
+      "field": "tags",
+      "problem": "One tag required by A3 rule 14 is missing from the union: the enol ester intermediate's 'chemical_family:benzoate_ester'.",
+      "source_line": 64,
+      "quote": "to form an enol ester followed by a rearrangement process to give mesotrione, as shown in the following reaction scheme:",
+      "artifact_says": "tags carry 'functional_group:ester' from the enol ester compound record but not 'chemical_family:benzoate_ester', although that record's tags are ['compound_class:intermediate', 'functional_group:ester', 'chemical_family:benzoate_ester', 'functional_group:ketone', 'functional_group:sulfone', 'functional_group:nitro'] and every other pathway carrying that intermediate (pathways[5], [6], [7], [11], [12], [13], [14], [15]) has the tag.",
+      "should_be": "Insert 'chemical_family:benzoate_ester' after 'functional_group:ester'. Recomputing the rule 14 union for all 16 records showed this as the only missing tag in the artifact.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "pathways[5], [6], [7], [11], [12], [13], [14], [15]",
+      "field": "tags",
+      "problem": "Tag order departs from the first-seen order A3 rule 14 requires: the enol ester's two tags are emitted in the opposite order to the compound record that supplies them.",
+      "source_line": 113,
+      "quote": "[0016] In another aspect, there is provided a process for preparation of an enol ester of formula (II) by reaction of 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III) with 1,3-cyclohexanedione.",
+      "artifact_says": "'chemical_family:benzoate_ester' precedes 'functional_group:ester' in all eight records; the compound record lists 'functional_group:ester' first. Set membership is otherwise exact in every one of the 16 records.",
+      "should_be": "Swap the two entries so the union preserves the compound record's order. Cosmetic, but rule 14 states the ordering and this is the only place the artifact deviates from it.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "pathways[13] Example 6 / step Example 6_Step 1",
+      "field": "steps[0].compounds[].role",
+      "problem": "After the role vocabulary is corrected, the carbodiimide still carries a different role from the identical reagent in Examples 4 and 5, for a function the text describes in the same words.",
+      "source_line": 316,
+      "quote": "To this mixture, N,N’-dicyclohexylcarbodiimide(DCC) (21g, 0.10mol) was added and stirred for about 2 hours at 25-30°C.",
+      "artifact_says": "role 'coupling_agent' here (normalising to 'other'), versus 'reagent' in pathways[11] (Example 4, line 295 'N,N’-dicyclohexylcarbodiimide (DCC) (24g, 0.12mol) was added') and pathways[12] (Example 5).",
+      "should_be": "'reagent' in all three, which requires the fix in reactions.json and a re-run rather than a change in pathways.json. Left as it stands, a field-by-field comparison scores Example 6's coupling agent differently from Examples 4 and 5 for a difference the source does not contain.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": null,
+      "field": null,
+      "problem": "No pathway anywhere in the artifact is built from a drawn scheme, so the drawings contribute no route of their own to any section.",
+      "source_line": 340,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"Cc1ccc(S(C)(=O)=O)cc1[N+](=O)[O-]\", \"molecular_formula\": \"C8H9NO4S\", \"inchi_key\": \"OXBDLEXAVKAJFD-UHFFFAOYSA-N\"}], \"conditions\": [{\"text\": \"Oxidant / RuO2\"}], \"products\": [{\"smiles\": \"CS(=O)(=O)c1ccc(C(=O)O)c([N+](=O)[O-])c1\", \"molecular_formula\": \"C8H7NO6S\", \"inchi_key\": \"QNOUABMNRMROSL-UHFFFAOYSA-N\"}]}]}]",
+      "artifact_says": "All 24 steps behind the 16 pathways carry step_label 'Step N'; there is no 'Scheme Step' record and therefore no scheme-derived chain. A2 rule 5f asks for both sets where a section carries prose steps and an overview scheme, and Background, Summary, Detailed Description and Claims each do (4, 5, 8 and 7 IMAGE_EXTRACT spans respectively).",
+      "should_be": "Reported for the reviewer's decision, not as a silent miss: the departure is argued explicitly in the notes of every affected reaction record ('5f's doubling does not apply ... this section would carry 16 records', and for the Background, that line 64 itself says the scheme shows the prose route). Under a literal reading of 5f, pathways.json would carry a second chain for each of those four sections and would roughly double in record count. The pathway builder had no choice given reactions.json; the decision to be reviewed sits in A2.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "pathways[7] Claims",
+      "field": "steps[].notes",
+      "problem": "Molecular formulae appear inside the artifact, which A5 check 2 says this annotation is not permitted to contain.",
+      "source_line": 344,
+      "quote": "\"molecular_formula\": \"C14H13NO7S\"",
+      "artifact_says": "All three Claims step notes contain 'NMST C8H9NO4S, NMSBA C8H7NO6S, 1,3-cyclohexanedione C6H8O2, and the enol ester of formula (II) and mesotrione both C14H13NO7S, isomers and different compounds'.",
+      "should_be": "Hedged: no structured field carries a formula, SMILES, InChI or molecular weight anywhere in pathways.json (verified: every reactant_smiles, product_smiles, canonical_rxn, atom_mapped_rxn and template field is null, and every CompoundRef smiles is null), and these four formulae sit in free prose that records a cross-check the annotator ran. If notes prose is exempt, no change. If not, drop the four formulae from the sentence and keep the conclusion that the enol ester and mesotrione are isomers.",
+      "confidence": "low"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "linkage - chain connectivity",
+      "what_was_verified": "For all four multi-step pathways (pathways[0] 4 steps, pathways[5], [6], [7], [15] 3 steps each), every consecutive step pair shares a compound: the earlier step's is_product entry appears among the later step's role='reactant' entries. Zero breaks. Every precursor_step equals the previous step's step_label, and every linkage_confirmed:true is substantiated by that shared compound."
+    },
+    {
+      "check": "linkage - links left null",
+      "what_was_verified": "The four unlinked example chains (pathways[11]-[14]) carry precursor_step_not_stated, and the null is correct rather than a miss: the patent never says Example 4 uses Example 1's product, and the charges rule out material continuity (Example 1 takes 61.2 g NMST at 70% yield, about 47.7 g NMSBA, while Example 4 charges 27 g). Had the link been asserted, rule 15's scale_discontinuity_in_chain would have been required."
+    },
+    {
+      "check": "precision - endpoints are patent-named",
+      "what_was_verified": "Every ksm, intermediate and product identifier in all 16 records is a name the patent prints or a recorded alias of one: 2-nitro-4-methylsulfonyl toluene (line 70; line 64 prints the -sulphonyl spelling, held as an alias), 2-nitro-4-methylsulphonyl benzoic acid (line 64), 2-nitro-4-methylsulphonyl benzoyl chloride (line 64), cyclohexanedione (line 64), 1,3-cyclohexanedione (line 113), enol ester of formula (II) (line 113), mesotrione (line 55). No fabricated endpoint."
+    },
+    {
+      "check": "precision - no asserted route the source lacks",
+      "what_was_verified": "Each chain anchors to a stated recitation: pathways[0] to [005] at line 64 (four transformations, matching the four drawn arrows at lines 66 and 68); pathways[1]-[4] to [006] line 70, [007] line 77, [008] line 81 and [009] line 88; pathways[5] to [0017] lines 117-126; pathways[6] and [15] to [0031]/[0035]/[0039] lines 179-232; pathways[7] to claim 1 line 348; pathways[8]-[14] to Examples 1-7 at lines 264, 272, 285, 295, 308, 316, 329. Nothing is chained across sections and no step is inferred from a compound's name."
+    },
+    {
+      "check": "drawings - prior-art attribution",
+      "what_was_verified": "The five Background chains all carry prior_art_route_not_invention_route, and the four single-step ones also carry single_step_fragment_of_a_cited_route. The invention chains (pathways[5], [6], [7], [15]) contain no NMSBC anywhere: the step the patent says it eliminates ([0010] line 92, 'conversion of NMSBA to NMSBC') appears as a real intermediate only in pathways[0]. No background scheme is annotated as the invention's route, and no invention scheme is annotated as prior art."
+    },
+    {
+      "check": "drawings - structures and arrow labels",
+      "what_was_verified": "p03, p04 and p05 opened and compared with the IMAGE_EXTRACT spans at lines 66, 68, 75, 79, 90. Substituent positions are read off the page, not inferred: every ring carries CH3/COOH/COCl at C1, NO2 at C2 and SO2CH3 at C4; the enol ester is drawn O-acylated on the enol of the 1,3-dione (OC2=CC(=O)CCC2) and mesotrione C-acylated at C2 of the dione, which is the pair of isomers the page shows. Reagents above the arrow were not merged with what is written below it: p04 prints '145 °C' below the US5424481 arrow and '140-150°C' below the CN105669504A arrow, and both were recorded as temperatures in notes rather than as reagents."
+    },
+    {
+      "check": "drawings - every drawing_text_conflict flag substantiated",
+      "what_was_verified": "Each of the five in-chain conflict flags was checked against the page. pathways[0]: p03 prints '(CH3CH2 )3N' above and 'Solvent' below the arrow, neither in [005]'s prose. pathways[1]: p04 prints 'Sodium acetate' where [006] line 70 says only 'acetate ion'. pathways[2]: prose says 'vanadium or cobalt compounds' and only Vanadium Pentoxide is drawn, plus the drawn 145 °C. pathways[3]: 'Nitric acid/O2' is drawn and [008] names no oxygen. pathways[4]: the drawn 140-150 °C against a silent prose. None of the five is a flag on a scheme that matches its prose."
+    },
+    {
+      "check": "near-duplicate pathways are genuinely distinct",
+      "what_was_verified": "pathways[1]-[4] all read NMST to NMSBA in one oxidation step and are four different cited documents with four different reagent sets: acetic acid + sodium acetate + cobalt(II) acetate tetrahydrate (US 5,591,890); sulfuric acid + nitric acid + vanadium pentoxide (US5424481); the same plus a drawn O2 (CN105669504A); nitric acid + vanadium pentoxide with no sulfuric acid (CN106565561A). pathways[5], [6], [7] and [15] are the same three transformations at four scopes, which A3 rules 7 and 8 mandate ('When the section chain and the patent chain are the same steps, emit both records anyway'), and the four pathway_uuids differ because the step signature is in the seed."
+    },
+    {
+      "check": "flags do not contradict their own fields",
+      "what_was_verified": "Every one of the 16 records was checked flag by flag. yield_missing_step appears exactly where overall_yield_pct is null and a step yield is null. The split between no_conditions_for_any_step (pathways[0]-[5], [7]) and no_conditions_in_chain (pathways[6], [15]) is correct: the Detailed Description step 1 carries heating_method 'reflux' and so is not flagged no_conditions at step level. truncated_chain appears only where the ksm is NMSBA or the enol ester, never where it is NMST. ksm_selected_from_two_skeleton_reactants appears only on the three single-step ester pathways, correctly absent from the multi-step chains whose first step has one skeleton reactant. Rule 16 inheritance is complete: every step validation_flag has a pathway-level counterpart in all 16 records."
+    },
+    {
+      "check": "arithmetic - mass, mole and yield closure",
+      "what_was_verified": "Every printed mass/mole pair in Examples 1-7 recomputed at the printed precision. Inconsistent: Example 1 NMST 61.2 g / 215.23 = 0.2843 mol against 0.278 printed, and Example 3 20 g / 215.23 = 0.0929 against 0.088 printed; both pathways carry molar_mass_inconsistent_in_chain. Consistent to the printed significant figures and correctly unflagged: Example 2 (5.0/215.23 = 0.0232 -> 0.023; RuO2 0.5/133.07 = 0.00376 -> 0.004), Example 4 (NMSBA 0.1101 -> 0.11, dione 0.107 -> 0.11, DCC 0.1163 -> 0.12), Example 5, Example 6, Example 7 (enol ester 0.0589 -> 0.06, NaCN 0.0245 -> 0.025, Et3N 0.0652 -> 0.065). Product closure: Example 4 25.4 g / (0.11 x 339.32) = 68.0% against 68% printed; Example 5 0.89 / 1.357 = 65.6% against 65%; Example 6 22.8 / 33.93 = 67.2% against 66%; Example 7 17 / 20.36 = 83.5% against the printed 85%, which is the mass ratio 17/20 of two isomers. The flag threshold is applied consistently, not selectively."
+    },
+    {
+      "check": "fidelity - aggregates",
+      "what_was_verified": "overall_yield_pct and overall_purity_pct recomputed for all 16 records under A3 rules 9 and 10. The seven example pathways match the printed values exactly (70/95, 67/92, 68/95, 68/85, 65/85, 66/85, 85/95, taking each terminal step's purity). The nine chains containing a yield-less step are null, with nothing substituted or assumed."
+    },
+    {
+      "check": "fidelity - conditions not flattened",
+      "what_was_verified": "Reflux is recorded as heating_method 'reflux' with temperature.type 'not_specified' in Examples 1-3 and Detailed Description step 1, never as a number. Temperature ranges are kept as min_c/max_c (25-30 in Examples 4-6, 10-15 in Example 7), never collapsed to a midpoint. time_h is null on Examples 1-3 and Detailed Description step 1 because the source prints ranges ('for 6-8hours' at line 264, and [0035]'s nested preferences at line 194); the scalar field cannot hold a range, procedure_text retains the range verbatim, and the notes state the decision and its precedent in the reference run. That is a recorded null, not a lost datum."
+    },
+    {
+      "check": "schema and projection fidelity",
+      "what_was_verified": "All 39 fields A3 rule 11 lists as verbatim copies were compared between each of the 24 step projections and its reaction record; the only divergences in the whole artifact are the three role values reported above. The six derived flats (temperature_c, room_temperature, pressure, concentration, time_h, atmosphere, reactor_type) match the conditions object as rule 11's getters define. All 23 enrichment and vector fields on every step, and all nine pathway-level aggregates, are present and null per rule 13. No 'id' field on any pathway or step. CompoundRefs are exactly {identifier, smiles, compound_uuid} with smiles null and compound_uuid matching compounds.json. procedure_text carries no IMAGE_EXTRACT span (A2 rule 5h). intermediates equals the products of every step but the last, and product equals the terminal step's product, in all 16 records."
+    },
+    {
+      "check": "scope coverage",
+      "what_was_verified": "Exactly one scope 'patent' record, and one scope 'section' record per terminal step. A0's section map (00-sections.json) gives 11 sections with estimated_steps > 0 totalling 24 steps; reactions.json holds 24 records across those same 11 sections, and all 11 are represented in pathways.json. The Background's five terminal steps (Step 4, and Steps 5-8, none of which is any other step's precursor) produce exactly the five Background pathways. No section with chemistry is unrepresented."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "Not applicable and confirmed so rather than skipped: the document is English throughout (line 22, 'Filing Language: English'). All 137 'EN:' convenience lines were compared with the source lines they follow and are verbatim copies; the 18 apparent differences are all on the bibliographic front page and are the dropped '(NN)' INID markers. There is no Chinese in the source and no translated identifier in the artifact."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 22,
+    "present_in_artifact": 16,
+    "missing": [
+      "Detailed Description [0038] lines 211-215: the two-step process from NMST to the enol ester of formula (II). Not a separate chain under A3 rule 1 (the section has one terminal step and this is a prefix of it), but pathways[6] does not flag the unemitted endpoint the way pathways[7] does.",
+      "Claim 10 line 380: the same two-step process, claimed independently. Disclosed by pathways[7]'s claimed_processes_with_other_endpoints_not_emitted flag.",
+      "Claim 5 line 363: NMST to NMSBA claimed as a standalone process. Present as pathways[7] step 1, absent as a route of its own; disclosed by the same flag.",
+      "Claim 7 line 367: NMSBA plus 1,3-cyclohexanedione to the enol ester claimed as a standalone process. Present as pathways[7] step 2; disclosed by the same flag.",
+      "Summary [0015] line 109: NMSBA by oxidant/RuO2 stated as an aspect in its own right. Present as pathways[5] step 1, undisclosed as an endpoint.",
+      "Summary [0016] line 113: the enol ester stated as an aspect in its own right. Present as pathways[5] step 2, undisclosed as an endpoint.",
+      "Not counted in found_in_text, but the same shortfall in a different direction: no scheme-derived chain exists for the Background (4 arrows), Summary (5 spans), Detailed Description (8 spans) or Claims (7 spans). Under a literal A2 rule 5f each would carry a second chain. The departure is argued in the reaction notes, so it is recorded rather than lost."
+    ]
+  }
+}

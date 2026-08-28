@@ -1,0 +1,230 @@
+[
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Example 6_Step 1",
+    "section_label": "Example 6",
+    "section_type": "experimental_intermediate",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "ester_formation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": 25.0,
+        "max_c": 30.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 2.0,
+      "reactor_type": "round bottomed flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "reaction mixture filtered under vacuum to obtain the wet cake",
+        "wet cake dried to obtain the crude enol ester",
+        "crude enol ester taken up with water and filtered under vacuum to obtain pure enol ester"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "vacuum filtration twice: the reaction mixture to give the wet cake, then the water-treated crude to give the pure solid",
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": "the crude enol ester was taken up with water and filtered under vacuum to give the pure solid; the text states no quantity, temperature or time for the water and does not say whether it washes, slurries or triturates the cake",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 25.0,
+          "volume_ml": null,
+          "mmol": 100.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the flask with the dichloromethane and the 1,3-cyclohexanedione, under stirring at the temperature of 25-30°C",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "1,3-cyclohexanedione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 12.0,
+          "volume_ml": null,
+          "mmol": 110.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the flask with the dichloromethane and the NMSBA, under stirring at the temperature of 25-30°C; printed as '1, 3-cyclohexanedione' with a space after the comma",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "N,N’-dicyclohexylcarbodiimide",
+        "role": "coupling_agent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 21.0,
+          "volume_ml": null,
+          "mmol": 100.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added second, to the mixture of the other two, in one portion, then stirred for about 2 hours at 25-30°C; the reverse of Example 5, which charges the carbodiimide first and the dione second",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloromethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 100.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged first, into the clean and pre-dried flask",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "workup_solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "used on the dried crude ester before the second vacuum filtration; no quantity is printed, and it is not a quench",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "enol ester of formula (II)",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": 22.8,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 66.0
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 85.0,
+        "purity_method": "hplc"
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulphonyl benzoic acid",
+      "1,3-cyclohexanedione",
+      "N,N’-dicyclohexylcarbodiimide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "enol ester of formula (II)",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 66.0,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 85.0,
+    "product_purity_method": "hplc",
+    "canonical_rxn": null,
+    "procedure_text": "To a clean and pre-dried 250mL round bottomed flask, dichloromethane (100mL) NMSBA (25g, 0.10mol) and 1, 3-cyclohexanedione (12g, 0.11mol) were added under stirring at the temperature of 25-30°C. To this mixture, N,N’-dicyclohexylcarbodiimide(DCC) (21g, 0.10mol) was added and stirred for about 2 hours at 25-30°C. The reaction mixture was filtered under vacuum to obtain the wet cake. The wet cake is dried to obtain the crude enol ester. The crude enol ester with water was filtered under vacuum to obtain pure enol ester as off white colour solid. HPLC purity > 85%; Yield: 22.8g (66%). Melting point 157-163°C and Solvent recovery >85%.",
+    "procedure_summary": "NMSBA and 1,3-cyclohexanedione are stirred together in dichloromethane and then treated with N,N’-dicyclohexylcarbodiimide, which couples the acid to the enol of the dione and gives the enol ester of formula (II) without any acid chloride intermediate. The mixture is filtered under vacuum to a wet cake, the cake is dried to the crude ester, and the crude is taken up with water and filtered again to give the pure solid.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "transformation:esterification",
+      "mechanism:ionic",
+      "analytics:hplc",
+      "analytics:melting_point",
+      "scale:lab",
+      "solvent_class:halogenated",
+      "catalyst_class:none",
+      "workup_type:filtration",
+      "step_role:intermediate_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "ONE reaction record, matching A0's estimated_steps of 1. This is step (ii) of the invention's three-step route: the coupling of NMSBA of formula (III) with 1,3-cyclohexanedione to the enol ester of formula (II), carried out with a carbodiimide and with no acid chloride anywhere in the section. The section carries no numbered step markers of its own, so step_label is the synthetic \"Step 1\".\n\nSECTION LABEL. The page prints the title with a trailing colon, \"Example 6:\", the only example title in the document that does. section_label is A0's \"Example 6\" so that reaction_id joins the other examples; the printed colon is recorded here rather than in the label.\n\nNO NMSBC. The acid chloride does not appear in this section in any role, and no record here has it as a reactant or a product. That is the point of the invention: step (ii) goes straight from the acid.\n\nNO DRAWING. There is no IMAGE_EXTRACT span inside lines 312-319. The nearest scheme spans are outside the section, and the one printed inside Example 3's range draws this same transformation for a neighbouring example, not for this one. So every reagent, the solvent, the temperature and the time in this record come from the prose of lines 316 and 318 and nothing was imported from a drawing or from another example. Because the section owns no arrow, there is nothing to compare the prose against: drawing_text_conflict, reagent_drawn_not_written, reagent_written_not_drawn and route_attribution_unclear are all left unraised, since each of them asserts a relation between a drawing and a procedure and this section has no drawing. Raising one against a scheme that lives in another section would be a false finding.\n\nREACTOR. \"a clean and pre-dried 250mL round bottomed flask\". The 250 mL volume is recorded here rather than in a numeric field because no field holds it. \"under stirring\" names a stirrer without saying which kind, so stirring.type is left null per prompt rule 9 rather than guessed as mechanical.\n\nATMOSPHERE. Left null. The flask is \"pre-dried\", which is glassware preparation and implies an intent to exclude moisture, but the text names no drying tube, no desiccant and no inert gas, so atmosphere \"dry\" would state more than the page does.\n\nTEMPERATURE. \"at the temperature of 25-30°C\" for the charge and \"stirred for about 2 hours at 25-30°C\" for the reaction: one printed range, stated twice, covering both the addition and the hold. Recorded as a range, and the phrase is also kept in each charged compound's addition_profile, which is not an alternative to the temperature field but an addition to it.\n\nTIME. \"stirred for about 2 hours\" is a SINGLE printed figure, not a range, so time_h is populated. This is the one condition on this page that does not fall under the range rule that empties time_h on the reflux steps, whose times are printed as \"6-8hours\" and \"6-8 hours\". The hedge \"about\" is preserved verbatim in procedure_text; time_h carries the figure the patent prints and nothing was rounded, converted or averaged. The document prints its times in hours already, so no unit conversion arises. Note that Example 4 prints the same interval with a printing fault, \"about2 hours\", and Example 5 prints it spaced; the three examples state the same time.\n\nPRESSURE. Left not_specified. \"filtered under vacuum\", printed twice, is a work-up operation and sets workup.filtration, not the pressure of the reaction, in the same way that \"distilled off under reduced pressure\" sets a concentration method elsewhere in this document. Nothing is stated about the pressure over the stirred mixture.\n\nISOLATION, AND HOW IT DIFFERS FROM THE NEIGHBOURING EXAMPLES. This example does not quench. Examples 4 and 5 run the same transformation and then quench with water, separate the organic layer and concentrate it; here the mixture is filtered under vacuum straight to a wet cake, the cake is dried to the crude ester, and the crude is then taken up with water and filtered again to the pure solid. So quenching_agent is null, extraction and concentration fields are null, and the two filtrations are what workup records. The second operation is the section's only purification and is recorded as free text: the sentence \"The crude enol ester with water was filtered under vacuum to obtain pure enol ester\" does not say whether the water washes the cake, slurries it or triturates it, and it gives no quantity, temperature or time for the water, so washes is left null and none of the enumerated purification tag values is claimed. The purification tag category is skipped for that reason rather than filled with \"none\", which would say there was no purification when there plainly is an operation.\n\nWATER. Carried on compounds with a work-up role, no quantity, because the text prints none for it. Unlike Examples 4 and 5, the water here is not a quench.\n\nPURITY. The unmarked analytical line at 318 prints \"HPLC purity > 85%\". That line belongs to the marked paragraph [0052] above it. It is a measurement on the single batch this example made, reported as a lower bound rather than as an equality, so the number is recorded: product_purity_pct 85.0 and the product compound's purity_pct 85.0, with purity_method hplc. The inequality is kept verbatim in procedure_text and in provenance, and the figure is understood as that printed bound and not an assayed equality. This matches A1, which holds purity_pct 85.0 for the same compound with raw_text \"HPLC purity > 85%\" and the same caveat, so the two artifacts agree on the same printed fact. Contrast the summary section's \"at least 65%\" and \"at least 85%\", which are specifications of the invention in general, not measurements, and which are recorded in no numeric field of this run.\n\nYIELD, AND THE PATENT'S OWN ARITHMETIC. The printed figures are \"Yield: 22.8g (66%)\". product_yield_pct is 66.0, the printed value, and the product mass is 22.8 g, the printed value. Recomputing the isolated mass against a theoretical yield gives a percentage slightly above the printed one if the theoretical is taken from the rounded mole charge, and one that rounds to exactly the printed one if it is taken from the printed mass charge; the full arithmetic, with the molecular weight used, is set out in the provenance sidecar, which is where a recomputation belongs, and it appears nowhere in the patent. Nothing printed was changed to match it. mass_balance_implausible is NOT raised: the isolated mass is well below the theoretical on either basis, and the printed mass and the printed yield do close against each other once the basis is the printed charge mass rather than its rounded mole figure, so the small gap is the patent's rounding and not an internal contradiction. Example 4, the same transformation at a nearby scale, closes on both bases, which is the control.\n\nMOLECULAR WEIGHTS. All three printed mass/mole pairs close within the precision at which the moles are printed, so molar_mass_inconsistent is not raised. The numbers are in the provenance sidecar. The dione is the only one of the three charges whose printed mole figure differs from the acid's; no equivalents are written onto the compounds because the patent states none, and the computed ratios are kept in provenance only.\n\nSOLVENT RECOVERY. The same unmarked line 318 also prints \"Solvent recovery >85%\". It can only refer to the dichloromethane, and it is deliberately NOT recorded as a number anywhere on this record: it is a property of the solvent, not of the product, so it is not product_purity_pct, not a purity of any compound, and not an analytics entry on the product. It is also not byproduct_recovery: the dichloromethane is the reaction solvent rather than a by-product, and the written procedure isolates the product by two vacuum filtrations and never describes distilling, condensing, drying or reusing the solvent, so there is no recovery operation in the text for that field to describe. The statement is recorded here and in provenance as an observation about what the page states, which is how Pass V and A1 both recorded it, and not as a contradiction of the procedure. The green_chemistry tag category is skipped for the same reason: tagging the record as recovering solvent would assert an operation the procedure does not contain.\n\nBY-PRODUCT. A carbodiimide coupling co-produces the corresponding urea, and the wet cake filtered off here is where it would go, but dicyclohexylurea is not named anywhere in this section, so it is on no compound record and byproduct_recovery is empty. Nothing was inferred about the composition of the cake.\n\nCLASSIFICATION. reaction_class is ester_formation: a carboxylic acid and the enol of a 1,3-diketone are joined to an ester by a dehydrating agent, and the section title itself calls the product an enol ester. acylation was considered and is the same event described from the other partner's side; ester_formation names the bond made and is the more specific of the two. mechanism_type is ionic: the acid adds across the carbodiimide to an O-acylisourea, which the enol then attacks, and there is no radical initiator, no light and no metal on the page. named_reaction is null. Steglich esterification was considered and rejected, because a Steglich runs with an acyl-transfer catalyst and no DMAP, pyridine or other catalyst appears in this procedure; a plain carbodiimide esterification has no widely accepted name and stretching for one would be worse than leaving the field empty. catalyst_class is tagged none, which is a statement about this procedure: the carbodiimide is charged stoichiometrically, on the same mole figure the acid is charged on, and is consumed, so it is a reagent and not a catalyst.\n\nREACTANT_NAMES. The two coupling partners and the carbodiimide. The carbodiimide is included because it is charged stoichiometrically and consumed, which is the same treatment Example 1 of this run gave to its stoichiometric oxidant while excluding its catalyst. The solvent and the work-up water are on compounds with their roles and are not in reactant_names.\n\nLINKAGE. precursor_step is null and linkage_confirmed is false, and that is a deliberate refusal rather than a gap. NMSBA is genuinely made inside this patent, and its identifier here is the same string that earlier sections carry as their product, so a cross-section link exists by identity. But three earlier examples each prepare NMSBA and this section names no batch, no example and no lot: it simply charges the acid. Writing one of them into precursor_step would pick a winner the document does not, so the field is left null and the situation is recorded here instead. cross_reference_unresolved is false, because the step makes no reference for me to fail to resolve. scale_discontinuity is not raised for the same reason: with no batch named there is no stated previous output for this charge to disagree with, and the flag would be asserting a continuity the page never claims. The linkage tag is standalone, matching the null precursor_step.\n\nONE-POT. is_one_pot is false. The section describes one transformation, with the reagents charged in two portions and no second chemical change before the work-up. Note the charge ORDER differs from Example 5, which adds the carbodiimide with the acid and the dione second; here the dione goes in with the acid and the carbodiimide is added second. Same transformation, and the difference is recorded in the addition profiles.\n\nPROCESS CONTROL. None. The HPLC figure is an analysis of the isolated product, not in-process monitoring, so process_control is left empty.\n\nMODEL PROVENANCE. This record was produced by Claude Opus 5 reading lines 312-319 of the enriched source, the A0 section map and the A1 compound records for this section. The document is English throughout; the source lines were quoted and the byte-identical \"> EN:\" duplicates were not."
+  }
+]

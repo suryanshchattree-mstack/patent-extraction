@@ -1,0 +1,634 @@
+[
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Claims_Step 1",
+    "section_label": "Claims",
+    "section_type": "claims",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "oxidation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "catalytic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulfonyl toluene",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "claim 10 calls it the starting material of the two-step process; no charge and no order of addition is given",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium hypochlorite",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the only oxidant named in the claim set, by claim 2 as a dependent of claim 1 and by claim 6 as a dependent of claim 5; claims 1, 5 and 10 say only 'an oxidant'",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ruthenium oxide",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "required by claims 1(i), 5 and 10(i); claim 6 does not restate it and inherits it from claim 5",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulfonyl toluene",
+      "sodium hypochlorite"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-nitro-4-methylsulphonyl benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "(i) oxidizing2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) using an oxidant in presence of ruthenium oxide as a catalyst, to produce 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III); 2. The process for preparation of mesotrione as claimed in claim 1, wherein the NMST of formula (IV) is oxidized using sodium hypochloritein presence of ruthenium oxide. 5. A process for preparation of 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III) by oxidizing 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) using an oxidant in presence of ruthenium oxide as a catalyst. 6. The process for preparation of 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) as claimed in claim 5, wherein the oxidant is sodium hypochlorite. (i) oxidizing 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) using an oxidant in presence of ruthenium oxide as a catalyst, to produce 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III); and",
+    "procedure_summary": "2-Nitro-4-methylsulfonyl toluene is oxidized by an oxidant, which the dependent claims narrow to sodium hypochlorite, in the presence of ruthenium oxide as a catalyst, to give 2-nitro-4-methylsulphonyl benzoic acid. The claims recite this transformation as the first step of two multi-step processes and also as a process in its own right, and state no condition of any kind.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:oxidation",
+      "mechanism:catalytic",
+      "scale:not_specified",
+      "catalyst_class:ruthenium",
+      "workup_type:none",
+      "purification:none",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "CLAIMS RECITING THIS TRANSFORMATION: 1(i) at line 348, 2 at 350, 5 at 363, 6 at 365, 10(i) at 380. Claim 5 claims it standalone and is independent; claim 1(i) and claim 10(i) are its first step; claims 2 and 6 name the oxidant, claim 2 as a dependent of claim 1 and claim 6 as a dependent of claim 5. That pair is a second instance of the patent's own redundancy, alongside claims 3 and 8, and is not collapsed. Claim 1(i) prints 'oxidizing2-nitro-4-methylsulfonyl' with no space after the verb and claim 2 prints 'sodium hypochloritein presence'; both are transcribed as printed. Claim 1(i) is transcribed here without the claim 1 header, which is transcribed in Step 3 on the rule the other files of this run use, that an enumeration header goes with the final step of the enumeration it heads; claim 10's header goes with Step 2 for the same reason, claim 10 ending at step (ii). OXIDANT: 'an oxidant' in claims 1, 5 and 10 names no compound and no record is made for it, matching A1 for this section. Only sodium hypochlorite is recorded, and it is in reactant_names because the claims make it the oxidising species rather than a catalyst. CLASSIFICATION: a methyl group on an arene becomes a carboxylic acid, drawn and named, so oxidation at high confidence. mechanism_type is catalytic because every recitation of the step requires the ruthenium oxide catalyst. No named reaction is asserted. DRAWING: the three copies of this arrow, at 340, 355 and 374, print 'Oxidant / RuO2', which is claim 1(i), 5 and 10(i) word for word, so nothing there conflicts and drawing_text_conflict is not raised. reagent_written_not_drawn IS raised, and it comes only from claims 2 and 6: sodium hypochlorite is written in the claim set and appears on no arrow in this section. 'Oxidant' is a superclass of sodium hypochlorite and not a contradiction of it, which is why the superclass flag is used and not the conflict flag. reagent_drawn_not_written is not raised: RuO2 on the arrow is ruthenium oxide in the prose. The label joins reagent and catalyst with a slash and does not separate them, while the claims do; recorded, not flagged. LINKAGE: precursor_step is null and the tag is linkage:standalone, because this is the first transformation of the claimed route and claim 5 claims it with no antecedent. The same oxidation is recorded by the Detailed Description and by Examples 1, 2 and 3; no cross-section precursor is set, because the claims recite a route rather than consume material from another section. ONE POT: no claim says the steps share a vessel or skip isolation, so is_one_pot is false and one_pot_steps is empty. The one-and-the-same-vessel statement is in the description, not the claims. DIVISION OF THE SECTION, and the basis, stated so a consumer who counts differently can see why. Three records, one per DISTINCT TRANSFORMATION recited, which is the same basis A0 states for estimated_steps 3 on this section, so prompt rule 4 is satisfied with no A0/A2 disagreement. The ten claims recite those three transformations at four levels of specificity: claim 1 recites all three as one process to mesotrione, claim 10 recites the first two as one process that STOPS at the enol ester, claims 5 and 7 claim transformations (i) and (ii) standalone, and claims 2, 3, 4, 6, 8 and 9 narrow a reagent, a solvent or a solvent list on one of them. Each record therefore aggregates every claim that recites its transformation, and names them. Other counts are available and are recorded here rather than hidden: 10 if one record per claim, 7 if one record per step recitation across the four independent claims (3 in claim 1, 1 in claim 5, 1 in claim 7, 2 in claim 10), 4 if one record per separately claimed process. The reference run runs/CN104292137A emits eight claims reactions for its own patent; that is a fact about its claim set, which recites more distinct transformations, and is not a target count for this one. This section is being extracted late: an earlier A0 map marked the claims non-procedural to avoid counting the invention's three steps a third time, which left the legally operative part of the patent contributing nothing. Restating transformations that the Detailed Description and Examples 1 to 7 also record is correct here; the claims are an independent extraction unit, as they are in the reference run. CONVENTIONS, the two the other nine A2 files of this run use: (a) compounds[] carries every species the claim text attaches to this transformation, including alternatives a claim offers, and (b) reactant_names lists the compounds[] entries that are not the product, not a catalyst, not a base and not a solvent. NO NUMBERS ANYWHERE IN THIS SECTION. No claim carries a quantity, a temperature, a time, a concentration, a pH or a molar ratio, so every conditions field is null, no_conditions is raised on all three records, scale is not_specified, and nothing is imported from an Example or from another section. SCHEMES. Seven IMAGE_EXTRACT spans fall in lines 338 to 382, at 340, 342, 344, 355, 357, 374 and 376. Every claims paragraph correctly carries a null marker, so none of them anchored and each was emitted at the top of its page: 340, 342 and 344 at the top of p19, 355 and 357 at the top of p20, 374 and 376 at the top of p21. Their printed positions are inside claims 1 and 10, not where they appear in the enriched file, so position alone was not used to assign any of them. Read for content they are only THREE distinct arrows, each drawn two or three times: NMST to NMSBA with the arrow text 'Oxidant / RuO2' at 340, 355 and 374; NMSBA plus 1,3-cyclohexanedione to the enol ester with a bare arrow at 342, 357 and 376; the enol ester to mesotrione with a bare arrow at 344 only. These are the claims pages' own drawings, so this section OWNS a scheme and the three drawing-comparison flags are evaluable here, unlike Examples 2 and 3. No separate 'Scheme Step' records are emitted under prompt rule 5f: there is no independent overview scheme, no arrow whose transformation the claims lack, and no arrow carrying a reagent or a connectivity the claims do not state, so scheme records would restate the same three transformations seven more times. That departure from rule 5f is the same one the Detailed Description file records, and it is recorded rather than taken silently. The drawn formulas were checked with RDKit against the spans' own molecular_formula fields and all agree: NMST C8H9NO4S, NMSBA C8H7NO6S, 1,3-cyclohexanedione C6H8O2, and the enol ester of formula (II) and mesotrione both C14H13NO7S, isomers and different compounds. ROUTE ATTRIBUTION is not unclear and route_attribution_unclear is not raised: these are the applicant's own claims, so the route is the invention's by construction, and no prior-art step appears. 2-Nitro-4-methylsulphonyl benzoyl chloride (NMSBC) is not named anywhere in the claims and appears in no record. CORRECTIONS TO THE TASK BRIEFING, from the source. (1) Claim 6 does NOT restate the ruthenium oxide catalyst; it reads only 'wherein the oxidant is sodium hypochlorite'. The catalyst reaches claim 6 by dependency on claim 5. Claim 2 is the claim that prints both, as 'sodium hypochloritein presence of ruthenium oxide'. (2) Claim 4 does not merely name sodium cyanide: it recites the whole conversion of the enol ester to mesotrione with sodium cyanide 'in presence of a base and a solvent', neither of which it names. (3) The A2 brief section 4 says the carbodiimide prints with U+2019 and no space after the comma; in THIS section both occurrences, claims 3 and 8, print a space after the comma and U+2032 PRIME. The identifier used is A1's U+2019 closed-up form, per prompt rule 7, and the printed form is kept verbatim in procedure_text and provenance. (4) Claim 9's second solvent is printed '1,2-dichloroethane' and A1 recorded it so for this section, while the Detailed Description prints and records the unlocanted 'dichloroethane'; the two identifiers differ by section and neither is normalised to the other. Everything else in the briefed claim structure matches the source, including that there are exactly ten claims with nothing after claim 10, that claims 3 and 8 add the same limitation to different parents and are not collapsed, and that claim 7 is the bare coupling and broader than claim 3."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Claims_Step 2",
+    "section_label": "Claims",
+    "section_type": "claims",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "ester_formation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "1,3-cyclohexanedione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "N,N’-dicyclohexylcarbodiimide",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "made essential twice, by claim 3 as a dependent of claim 1 and by claim 8 as a dependent of claim 7; claims 1(ii), 7 and 10(ii) recite the coupling bare",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloromethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "first of one of the five solvent alternatives in claim 9, which depends on claim 8; claim 9 is the only claim in the set that names a solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "1,2-dichloroethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "second of one of the five solvent alternatives in claim 9, which depends on claim 8; claim 9 is the only claim in the set that names a solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloropropanes",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "one of the five solvent alternatives in claim 9, which depends on claim 8; claim 9 is the only claim in the set that names a solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichlorobutanes",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "one of the five solvent alternatives in claim 9, which depends on claim 8; claim 9 is the only claim in the set that names a solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloropentanes",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "one of the five solvent alternatives in claim 9, which depends on claim 8; claim 9 is the only claim in the set that names a solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "enol ester of formula (II)",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulphonyl benzoic acid",
+      "1,3-cyclohexanedione",
+      "N,N’-dicyclohexylcarbodiimide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "enol ester of formula (II)",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "(ii) reacting NMSBA of formula (III) with 1,3-cyclohexanedione to produce an enol ester of formula (II); and 3. The process for preparation of mesotrione as claimed in claim 1, wherein the reaction of NMSBA of formula (III) with 1,3-cyclohexanedione is carried out in presence of N, N′-dicyclohexylcarbodiimide and a solvent. 7. A process for preparation of an enol ester of formula (II) by reaction of 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III) with 1,3-cyclohexanedione. 8. The process for preparation of an enol ester as claimed in claim 7, wherein the reaction is carried out in presence of N, N′-dicyclohexylcarbodiimide and a solvent. 9. The process for preparation of an enol ester as claimed in claim 8, wherein the solvent is selected from the group consisting of dichloromethane, 1,2-dichloroethane, dichloropropanes, dichlorobutanes, dichloropentanes,and mixtures thereof. 10. A process for preparation of an enol ester of formula (II) using 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) as starting material, wherein the process comprises the steps of: (ii) reacting NMSBA of formula (III) with 1,3-cyclohexanedione to produce the enol ester of formula (II).",
+    "procedure_summary": "2-Nitro-4-methylsulphonyl benzoic acid is reacted with 1,3-cyclohexanedione to give the enol ester, the dependent claims requiring a carbodiimide and a chlorinated solvent chosen from a list. The claims recite the coupling bare as a process of its own, as the second step of the route to mesotrione, and as the final step of a two-step process from the toluene, and state no condition of any kind.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:esterification",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "solvent_class:halogenated",
+      "workup_type:none",
+      "purification:none",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "CLAIMS RECITING THIS TRANSFORMATION: 1(ii) at line 348, 3 at 359, 7 at 367, 8 at 369, 9 at 378, 10 header and 10(ii) at 380. This is the transformation the claim set covers most heavily and at the most different scopes, and the scope hierarchy is the thing not to flatten: claim 7 is INDEPENDENT and recites the bare coupling with no reagent at all, claim 8 adds the carbodiimide and a solvent to claim 7, claim 9 narrows claim 8's solvent to a list of five, claim 3 adds the same carbodiimide and solvent limitation to claim 1 instead, and claim 10(ii) is the coupling as the last step of a two-step process from NMST. Claim 7 is therefore BROADER than claim 3 and not a duplicate of it. Claims 3 and 8 ARE the duplicate pair, adding one limitation to two different parents; that redundancy is the patent's own and is not collapsed. All of it is aggregated into this one record because it is one transformation, and the claims are named individually here so a consumer who wants one record per claim scope can rebuild them. CLAIM 10 STOPS HERE. Claim 10 is a process for the ENOL ESTER and never reaches mesotrione, so for claims 7, 8, 9 and 10 this transformation is the final step, while for claim 1 it is the middle step. The step_role tag reads intermediate_step, which is this record's position in the section's own three-step sequence, the same sense the other nine A2 files of this run use; a consumer reading step_role as claim scope should read final_step for claims 7 to 10. Recorded rather than resolved. REAGENT: the carbodiimide is in reactant_names, as the Detailed Description file also has it, because claims 3 and 8 put the reaction 'in presence of' it and it is consumed as the dicyclohexylurea. IDENTIFIER: claims 3 and 8 both print 'N, N′-dicyclohexylcarbodiimide', with a space after the comma and U+2032 PRIME. The identifier here is A1's 'N,N’-dicyclohexylcarbodiimide' with U+2019 and no space, per prompt rule 7 and so that the one reagent joins across the Claims, Detailed Description and Example files; the printed form is A1's alias and is kept verbatim in procedure_text. SOLVENT: claim 9's five alternatives are all recorded, as A1 recorded them, and 'and mixtures thereof' names no compound. Claim 9's second entry is printed '1,2-dichloroethane' with locants, where the Detailed Description prints 'dichloroethane'; the identifier follows this section's own A1 file and is not normalised to the other section's. Claims 3 and 8 require 'a solvent' without naming one. All five named alternatives are chlorinated, which is what solvent_class:halogenated is tagged from. No claim gives a volume. CLASSIFICATION: a carboxylic acid and the enol of a 1,3-diketone give an ester, drawn at 342, 357 and 376 as formula (III) plus C6H8O2 to formula (II) C14H13NO7S, so ester_formation at high confidence. mechanism_type ionic. No named reaction: the Steglich name needs an acyl transfer catalyst and no claim names one, so asserting it would be a stretch under prompt rule 19. DRAWING: the three copies of this arrow are BARE, with nothing above and nothing below, so the drawing contributes connectivity only and states nothing the claims can contradict; drawing_text_conflict is not raised. reagent_written_not_drawn is raised, because the carbodiimide of claims 3 and 8 and all five solvents of claim 9 are written and appear on no arrow. reagent_drawn_not_written is not raised: the arrows carry no reagent to be missing from the text. LINKAGE: precursor_step is Step 1 and linkage_confirmed is true, because Step 1's product identifier is character for character the first reactant identifier here, and because claims 1 and 10 both enumerate (i) then (ii) with NMSBA of formula (III) passing between them. Claim 7 on its own claims the coupling with no antecedent step, which is why claim 7 alone would give linkage:standalone; the enumerated claims decide the tag. DIVISION OF THE SECTION, and the basis, stated so a consumer who counts differently can see why. Three records, one per DISTINCT TRANSFORMATION recited, which is the same basis A0 states for estimated_steps 3 on this section, so prompt rule 4 is satisfied with no A0/A2 disagreement. The ten claims recite those three transformations at four levels of specificity: claim 1 recites all three as one process to mesotrione, claim 10 recites the first two as one process that STOPS at the enol ester, claims 5 and 7 claim transformations (i) and (ii) standalone, and claims 2, 3, 4, 6, 8 and 9 narrow a reagent, a solvent or a solvent list on one of them. Each record therefore aggregates every claim that recites its transformation, and names them. Other counts are available and are recorded here rather than hidden: 10 if one record per claim, 7 if one record per step recitation across the four independent claims (3 in claim 1, 1 in claim 5, 1 in claim 7, 2 in claim 10), 4 if one record per separately claimed process. The reference run runs/CN104292137A emits eight claims reactions for its own patent; that is a fact about its claim set, which recites more distinct transformations, and is not a target count for this one. This section is being extracted late: an earlier A0 map marked the claims non-procedural to avoid counting the invention's three steps a third time, which left the legally operative part of the patent contributing nothing. Restating transformations that the Detailed Description and Examples 1 to 7 also record is correct here; the claims are an independent extraction unit, as they are in the reference run. CONVENTIONS, the two the other nine A2 files of this run use: (a) compounds[] carries every species the claim text attaches to this transformation, including alternatives a claim offers, and (b) reactant_names lists the compounds[] entries that are not the product, not a catalyst, not a base and not a solvent. NO NUMBERS ANYWHERE IN THIS SECTION. No claim carries a quantity, a temperature, a time, a concentration, a pH or a molar ratio, so every conditions field is null, no_conditions is raised on all three records, scale is not_specified, and nothing is imported from an Example or from another section. SCHEMES. Seven IMAGE_EXTRACT spans fall in lines 338 to 382, at 340, 342, 344, 355, 357, 374 and 376. Every claims paragraph correctly carries a null marker, so none of them anchored and each was emitted at the top of its page: 340, 342 and 344 at the top of p19, 355 and 357 at the top of p20, 374 and 376 at the top of p21. Their printed positions are inside claims 1 and 10, not where they appear in the enriched file, so position alone was not used to assign any of them. Read for content they are only THREE distinct arrows, each drawn two or three times: NMST to NMSBA with the arrow text 'Oxidant / RuO2' at 340, 355 and 374; NMSBA plus 1,3-cyclohexanedione to the enol ester with a bare arrow at 342, 357 and 376; the enol ester to mesotrione with a bare arrow at 344 only. These are the claims pages' own drawings, so this section OWNS a scheme and the three drawing-comparison flags are evaluable here, unlike Examples 2 and 3. No separate 'Scheme Step' records are emitted under prompt rule 5f: there is no independent overview scheme, no arrow whose transformation the claims lack, and no arrow carrying a reagent or a connectivity the claims do not state, so scheme records would restate the same three transformations seven more times. That departure from rule 5f is the same one the Detailed Description file records, and it is recorded rather than taken silently. The drawn formulas were checked with RDKit against the spans' own molecular_formula fields and all agree: NMST C8H9NO4S, NMSBA C8H7NO6S, 1,3-cyclohexanedione C6H8O2, and the enol ester of formula (II) and mesotrione both C14H13NO7S, isomers and different compounds. ROUTE ATTRIBUTION is not unclear and route_attribution_unclear is not raised: these are the applicant's own claims, so the route is the invention's by construction, and no prior-art step appears. 2-Nitro-4-methylsulphonyl benzoyl chloride (NMSBC) is not named anywhere in the claims and appears in no record. CORRECTIONS TO THE TASK BRIEFING, from the source. (1) Claim 6 does NOT restate the ruthenium oxide catalyst; it reads only 'wherein the oxidant is sodium hypochlorite'. The catalyst reaches claim 6 by dependency on claim 5. Claim 2 is the claim that prints both, as 'sodium hypochloritein presence of ruthenium oxide'. (2) Claim 4 does not merely name sodium cyanide: it recites the whole conversion of the enol ester to mesotrione with sodium cyanide 'in presence of a base and a solvent', neither of which it names. (3) The A2 brief section 4 says the carbodiimide prints with U+2019 and no space after the comma; in THIS section both occurrences, claims 3 and 8, print a space after the comma and U+2032 PRIME. The identifier used is A1's U+2019 closed-up form, per prompt rule 7, and the printed form is kept verbatim in procedure_text and provenance. (4) Claim 9's second solvent is printed '1,2-dichloroethane' and A1 recorded it so for this section, while the Detailed Description prints and records the unlocanted 'dichloroethane'; the two identifiers differ by section and neither is normalised to the other. Everything else in the briefed claim structure matches the source, including that there are exactly ten claims with nothing after claim 10, that claims 3 and 8 add the same limitation to different parents and are not collapsed, and that claim 7 is the bare coupling and broader than claim 3."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Claims_Step 3",
+    "section_label": "Claims",
+    "section_type": "claims",
+    "step_index": 3,
+    "step_label": "Step 3",
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "enol ester of formula (II)",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium cyanide",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "named only by claim 4, which also requires 'a base and a solvent' and names neither",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "mesotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "enol ester of formula (II)",
+      "sodium cyanide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "mesotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "1. A process for preparation of mesotrione of formula (I), which comprises: (iii) converting the enol ester of formula (II) to mesotrione of formula (I) 4. The process for preparation of mesotrione as claimed in claim 1, wherein the conversion of the enol ester of formula (II) to mesotrione of formula (I) comprises reaction of the enol ester of formula (II) with sodium cyanide in presence of a base and a solvent to produce mesotrione of formula (I).",
+    "procedure_summary": "The enol ester is converted to mesotrione, the dependent claim requiring reaction with sodium cyanide in the presence of a base and a solvent, neither of which it names. The claims recite this transformation only as the final step of the process to mesotrione, never standalone, and state no condition of any kind.",
+    "precursor_step": "Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:acylation",
+      "transformation:rearrangement",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "catalyst_class:base",
+      "workup_type:none",
+      "purification:none",
+      "safety:cyanide_handling",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "CLAIMS RECITING THIS TRANSFORMATION: 1 header and 1(iii) at line 348, and 4 at 361. This is the least-claimed of the three transformations and the only one with no independent claim of its own: it appears as claim 1's step (iii) and is narrowed by claim 4, and claim 10 deliberately stops before it. The claim 1 header is transcribed here, on the rule the other files of this run use, that an enumeration header goes with the final step of the enumeration it heads; claim 1(iii) ends without a full stop, as printed. CLAIM 4 IS MORE THAN THE REAGENT NAME. It recites the whole conversion: 'reaction of the enol ester of formula (II) with sodium cyanide in presence of a base and a solvent to produce mesotrione of formula (I)'. The base and the solvent are required and unnamed, so no compound record is made for either, matching A1 for this section. That is the difference between this record and the Detailed Description's step 3, which names seven organic bases and five solvents in [0043]: the claims name none of them, and none is imported. catalyst_class:base is tagged from claim 4's own requirement of a base 'in presence of'; no solvent_class tag is possible because no solvent is named for this step, claim 9's list depending on claim 8 and belonging to the coupling. CLASSIFICATION: the transformation is an isomerisation. The span at line 344 draws formula (II) C14H13NO7S going to a product of the same formula C14H13NO7S, checked with RDKit, and they are different compounds; the aryl carboxylate migrates from the enol oxygen to the ring carbon to give the 2-aroyl-1,3-dione. The closed list in prompt rule 17 has no rearrangement value, so reaction_class is acylation, for the C-acylation that results, with confidence medium because of that list fit and not because the chemistry is unclear; both transformation:acylation and transformation:rearrangement are tagged. This is the same call the Detailed Description file made on the same transformation and the same call the reference run made on its analogous enol ester step. named_reaction is null: the cyanide-promoted acyl migration is sometimes called a Fries-type rearrangement, which is a stretch under prompt rule 19. SODIUM CYANIDE is kept as role reagent and listed in reactant_names, on claim 4's own 'reaction of the enol ester ... with sodium cyanide', matching A1 and the Detailed Description file. In the accepted mechanism the cyanide is catalytic; the document's wording is followed rather than the mechanism, and the difference is recorded here. SAFETY: safety:cyanide_handling is tagged from the named reagent, but no claim makes any safety statement, so safety_notes is empty. No hazard assessment is added; that is A5's work. DRAWING: the single span that draws this transformation, at line 344, has a BARE arrow, so it contributes connectivity only and contradicts nothing; drawing_text_conflict is not raised. It is also the only one of the three arrows drawn once rather than three times, which matches the claims giving this step the least coverage. reagent_written_not_drawn is raised, because sodium cyanide is written in claim 4 and appears on no arrow. reagent_drawn_not_written is not raised. LINKAGE: precursor_step is Step 2 and linkage_confirmed is true, because Step 2's product identifier is character for character the first reactant identifier here and because claim 1 enumerates (ii) then (iii) with the enol ester of formula (II) passing between them. DIVISION OF THE SECTION, and the basis, stated so a consumer who counts differently can see why. Three records, one per DISTINCT TRANSFORMATION recited, which is the same basis A0 states for estimated_steps 3 on this section, so prompt rule 4 is satisfied with no A0/A2 disagreement. The ten claims recite those three transformations at four levels of specificity: claim 1 recites all three as one process to mesotrione, claim 10 recites the first two as one process that STOPS at the enol ester, claims 5 and 7 claim transformations (i) and (ii) standalone, and claims 2, 3, 4, 6, 8 and 9 narrow a reagent, a solvent or a solvent list on one of them. Each record therefore aggregates every claim that recites its transformation, and names them. Other counts are available and are recorded here rather than hidden: 10 if one record per claim, 7 if one record per step recitation across the four independent claims (3 in claim 1, 1 in claim 5, 1 in claim 7, 2 in claim 10), 4 if one record per separately claimed process. The reference run runs/CN104292137A emits eight claims reactions for its own patent; that is a fact about its claim set, which recites more distinct transformations, and is not a target count for this one. This section is being extracted late: an earlier A0 map marked the claims non-procedural to avoid counting the invention's three steps a third time, which left the legally operative part of the patent contributing nothing. Restating transformations that the Detailed Description and Examples 1 to 7 also record is correct here; the claims are an independent extraction unit, as they are in the reference run. CONVENTIONS, the two the other nine A2 files of this run use: (a) compounds[] carries every species the claim text attaches to this transformation, including alternatives a claim offers, and (b) reactant_names lists the compounds[] entries that are not the product, not a catalyst, not a base and not a solvent. NO NUMBERS ANYWHERE IN THIS SECTION. No claim carries a quantity, a temperature, a time, a concentration, a pH or a molar ratio, so every conditions field is null, no_conditions is raised on all three records, scale is not_specified, and nothing is imported from an Example or from another section. SCHEMES. Seven IMAGE_EXTRACT spans fall in lines 338 to 382, at 340, 342, 344, 355, 357, 374 and 376. Every claims paragraph correctly carries a null marker, so none of them anchored and each was emitted at the top of its page: 340, 342 and 344 at the top of p19, 355 and 357 at the top of p20, 374 and 376 at the top of p21. Their printed positions are inside claims 1 and 10, not where they appear in the enriched file, so position alone was not used to assign any of them. Read for content they are only THREE distinct arrows, each drawn two or three times: NMST to NMSBA with the arrow text 'Oxidant / RuO2' at 340, 355 and 374; NMSBA plus 1,3-cyclohexanedione to the enol ester with a bare arrow at 342, 357 and 376; the enol ester to mesotrione with a bare arrow at 344 only. These are the claims pages' own drawings, so this section OWNS a scheme and the three drawing-comparison flags are evaluable here, unlike Examples 2 and 3. No separate 'Scheme Step' records are emitted under prompt rule 5f: there is no independent overview scheme, no arrow whose transformation the claims lack, and no arrow carrying a reagent or a connectivity the claims do not state, so scheme records would restate the same three transformations seven more times. That departure from rule 5f is the same one the Detailed Description file records, and it is recorded rather than taken silently. The drawn formulas were checked with RDKit against the spans' own molecular_formula fields and all agree: NMST C8H9NO4S, NMSBA C8H7NO6S, 1,3-cyclohexanedione C6H8O2, and the enol ester of formula (II) and mesotrione both C14H13NO7S, isomers and different compounds. ROUTE ATTRIBUTION is not unclear and route_attribution_unclear is not raised: these are the applicant's own claims, so the route is the invention's by construction, and no prior-art step appears. 2-Nitro-4-methylsulphonyl benzoyl chloride (NMSBC) is not named anywhere in the claims and appears in no record. CORRECTIONS TO THE TASK BRIEFING, from the source. (1) Claim 6 does NOT restate the ruthenium oxide catalyst; it reads only 'wherein the oxidant is sodium hypochlorite'. The catalyst reaches claim 6 by dependency on claim 5. Claim 2 is the claim that prints both, as 'sodium hypochloritein presence of ruthenium oxide'. (2) Claim 4 does not merely name sodium cyanide: it recites the whole conversion of the enol ester to mesotrione with sodium cyanide 'in presence of a base and a solvent', neither of which it names. (3) The A2 brief section 4 says the carbodiimide prints with U+2019 and no space after the comma; in THIS section both occurrences, claims 3 and 8, print a space after the comma and U+2032 PRIME. The identifier used is A1's U+2019 closed-up form, per prompt rule 7, and the printed form is kept verbatim in procedure_text and provenance. (4) Claim 9's second solvent is printed '1,2-dichloroethane' and A1 recorded it so for this section, while the Detailed Description prints and records the unlocanted 'dichloroethane'; the two identifiers differ by section and neither is normalised to the other. Everything else in the briefed claim structure matches the source, including that there are exactly ten claims with nothing after claim 10, that claims 3 and 8 add the same limitation to different parents and are not collapsed, and that claim 7 is the bare coupling and broader than claim 3."
+  }
+]

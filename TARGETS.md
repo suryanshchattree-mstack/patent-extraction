@@ -42,7 +42,7 @@ than silent.
 | 17 | [`US4774360A`](https://patents.google.com/patent/US4774360A/en) |  |  | 22073364 | US | Molecule Class | Converting enol ester precursor of a benzoyl-1,3-cycloalkyldione |
 | 18 | [`US4780127A`](https://patents.google.com/patent/US4780127A/en) |  |  | 27408525 | US | Molecule Class | Certain 2-(substituted benzoyl)-1,3-cyclohexanediones and their  |
 | 19 | [`US5728889A`](https://patents.google.com/patent/US5728889A/en) |  |  | 10768536 | US | Molecule Class | Process for the production of 2-(substituted benzoyl)-1,3 cycloh |
-| 20 | [`WO2022024094A1`](https://patents.google.com/patent/WO2022024094A1/en) | **Sathvik** | claimed | 80036183 | WO | Molecule Class | Process for preparation of mesotrione and its intermediates |
+| 20 | [`WO2022024094A1`](https://patents.google.com/patent/WO2022024094A1/en) | **Sathvik** | done | 80036183 | WO | Molecule Class | Process for preparation of mesotrione and its intermediates |
 
 ## One note, on row 3
 

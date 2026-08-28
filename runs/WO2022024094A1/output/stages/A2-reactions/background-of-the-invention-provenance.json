@@ -1,0 +1,82 @@
+[
+  {
+    "reaction_id": "Background of the Invention_Step 1",
+    "source_lines": [
+      64,
+      66
+    ],
+    "quote_zh": "(document is ENGLISH; the source line is quoted, not its byte-identical '> EN:' partner) [005] In this patent reference, mesotrione is prepared by (i) oxidation of 2-nitro-4-methylsulphonyl toluene (NMST) to give 2-nitro-4-methylsulphonyl benzoic acid (NMSBA)",
+    "arithmetic_check": "Nothing to close, and nothing hidden by that. This section states no mass, volume, mole, equivalent, yield, purity, ratio or concentration figure for any of its eight steps - it is a recitation of five cited routes, not a procedure. So no mass balance, no molar-mass check and no yield check is possible, and mass_balance_implausible and molar_mass_inconsistent are NOT raised because there is no arithmetic to fail, not because arithmetic was checked and passed. The only numerals in the section's chemistry are the patent numbers, the compound locants and the two temperatures that appear in schemes only.",
+    "drawing_evidence": "Arrow 1 (step_id 1) of the IMAGE_EXTRACT reactions span at line 66: reactant C8H9NO4S, product C8H7NO6S, conditions []. AGREES with the prose on substrate, product and the absence of any oxidant. The spans at lines 66 and 68 are one printed scheme split by the page region, each restarting step_id at 1; arrow order across the section is 66#1, 66#2, 68#1, 68#2, which is Steps 1 to 4."
+  },
+  {
+    "reaction_id": "Background of the Invention_Step 2",
+    "source_lines": [
+      64,
+      66
+    ],
+    "quote_zh": "[005] (ii) conversion of NMSBA to 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC)",
+    "arithmetic_check": "Nothing to close, and nothing hidden by that. This section states no mass, volume, mole, equivalent, yield, purity, ratio or concentration figure for any of its eight steps - it is a recitation of five cited routes, not a procedure. So no mass balance, no molar-mass check and no yield check is possible, and mass_balance_implausible and molar_mass_inconsistent are NOT raised because there is no arithmetic to fail, not because arithmetic was checked and passed. The only numerals in the section's chemistry are the patent numbers, the compound locants and the two temperatures that appear in schemes only.",
+    "drawing_evidence": "Arrow 2 (step_id 2) of the span at line 66: reactant C8H7NO6S, product C8H6ClNO5S, conditions []. AGREES with the prose; neither names a chlorinating agent. This SMILES appears in only two spans in the whole document, lines 66 and 68, both in this section, which is the structural confirmation that NMSBC is prior art only."
+  },
+  {
+    "reaction_id": "Background of the Invention_Step 3",
+    "source_lines": [
+      64,
+      68
+    ],
+    "quote_zh": "[005] (iii) reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester",
+    "arithmetic_check": "Nothing to close, and nothing hidden by that. This section states no mass, volume, mole, equivalent, yield, purity, ratio or concentration figure for any of its eight steps - it is a recitation of five cited routes, not a procedure. So no mass balance, no molar-mass check and no yield check is possible, and mass_balance_implausible and molar_mass_inconsistent are NOT raised because there is no arithmetic to fail, not because arithmetic was checked and passed. The only numerals in the section's chemistry are the patent numbers, the compound locants and the two temperatures that appear in schemes only.",
+    "drawing_evidence": "Arrow 1 (step_id 1) of the span at line 68: reactants C8H6ClNO5S and C6H8O2, products C14H13NO7S (the enol ester, inchi_key NGSRUCJZGJEESC), conditions ['(CH3CH2 )3N', 'Solvent']. DISAGREES twice. The two condition labels have no counterpart in the prose, which names no base and no solvent for this step; and the drawing draws the 1,3-dione where the prose prints 'cyclohexanedione' with no locant. Also a counterexample to the A2 brief's claim that every step (ii) and (iii) scheme has a bare arrow."
+  },
+  {
+    "reaction_id": "Background of the Invention_Step 4",
+    "source_lines": [
+      64,
+      68
+    ],
+    "quote_zh": "[005] followed by a rearrangement process to give mesotrione, as shown in the following reaction scheme:",
+    "arithmetic_check": "Nothing to close, and nothing hidden by that. This section states no mass, volume, mole, equivalent, yield, purity, ratio or concentration figure for any of its eight steps - it is a recitation of five cited routes, not a procedure. So no mass balance, no molar-mass check and no yield check is possible, and mass_balance_implausible and molar_mass_inconsistent are NOT raised because there is no arithmetic to fail, not because arithmetic was checked and passed. The only numerals in the section's chemistry are the patent numbers, the compound locants and the two temperatures that appear in schemes only.",
+    "drawing_evidence": "Arrow 2 (step_id 2) of the span at line 68: reactant the enol ester C14H13NO7S (NGSRUCJZGJEESC), product mesotrione C14H13NO7S (KPUREKXXPHOJQT), conditions []. AGREES with the prose. The two are isomers of one formula and different compounds, and the inchi_keys are what separate them. The molecules span at line 57 independently gives the mesotrione structure and matches. Note for A5: the prose groups this arrow and Step 3 under one enumerated item (iii) and states no workup between them, so a one-pot reading is available; it was not asserted, because an overview scheme states no workup for any step."
+  },
+  {
+    "reaction_id": "Background of the Invention_Step 5",
+    "source_lines": [
+      70,
+      75
+    ],
+    "quote_zh": "[006] The United States Patent No. 5,591,890 discloses a process for preparation of 2-nitro-4-methylsulfonyl benzoic acid (NMSBA) by oxidation of 2-nitro-4-methylsulfonyl toluene (NMST) in the presence of a cobalt salt as a catalyst. In particular, the oxidation is carried out in the presence of acetic acid and acetate ion and using cobalt(II) acetate tetra hydrate as a catalyst.",
+    "arithmetic_check": "Nothing to close, and nothing hidden by that. This section states no mass, volume, mole, equivalent, yield, purity, ratio or concentration figure for any of its eight steps - it is a recitation of five cited routes, not a procedure. So no mass balance, no molar-mass check and no yield check is possible, and mass_balance_implausible and molar_mass_inconsistent are NOT raised because there is no arithmetic to fail, not because arithmetic was checked and passed. The only numerals in the section's chemistry are the patent numbers, the compound locants and the two temperatures that appear in schemes only.",
+    "drawing_evidence": "The span at line 75, one arrow: NMST to NMSBA, conditions ['Acetic acid', 'Sodium acetate', 'Cobalt (II) acetate tetrahydrate']. Agrees on acetic acid and on the cobalt catalyst, differing only in case and in the split of 'tetra hydrate', both of which A1 holds as aliases. DISAGREES on the acetate: the arrow names the sodium salt where the prose says only 'acetate ion'. Neither source names an oxidant for a step both call an oxidation."
+  },
+  {
+    "reaction_id": "Background of the Invention_Step 6",
+    "source_lines": [
+      77,
+      79
+    ],
+    "quote_zh": "[007] In particular, oxidation of 2-nitro-4-methylsulphonyl toluene (NMST) is carried out in the presence of sulfuric acid and nitric acid using vanadium pentoxide as a catalyst to obtain 2-nitro-4-methylsulfonyl benzoic acid (NMSBA). (first sentence, the general one: 'oxidizing the corresponding methylsulfonyl toluenes with nitric acid and sulfuric acid in the presence of vanadium or cobalt compounds')",
+    "arithmetic_check": "Nothing to close, and nothing hidden by that. This section states no mass, volume, mole, equivalent, yield, purity, ratio or concentration figure for any of its eight steps - it is a recitation of five cited routes, not a procedure. So no mass balance, no molar-mass check and no yield check is possible, and mass_balance_implausible and molar_mass_inconsistent are NOT raised because there is no arithmetic to fail, not because arithmetic was checked and passed. The only numerals in the section's chemistry are the patent numbers, the compound locants and the two temperatures that appear in schemes only.",
+    "drawing_evidence": "The span at line 79, one arrow: NMST to NMSBA, conditions ['Sulphuric Acid/', 'Nitric acid', 'Vanadium Pentoxide', '145 degree-C']. Agrees with [007]'s 'In particular' sentence on both acids and the catalyst; the trailing slash on the acid label is a printed separator. DISAGREES twice: the 145 degree-C has no counterpart anywhere in the prose of this section, and the arrow drops the cobalt option that [007]'s general sentence allows. conditions.temperature was left not_specified, carrying the prose reading per prompt rule 5c, with the drawn number in notes."
+  },
+  {
+    "reaction_id": "Background of the Invention_Step 7",
+    "source_lines": [
+      81,
+      83
+    ],
+    "quote_zh": "[008] Specifically, the oxidation of NMST is carried out in presence of sulphuric acid and nitric acid using vanadium pentoxide as a catalyst.",
+    "arithmetic_check": "Nothing to close, and nothing hidden by that. This section states no mass, volume, mole, equivalent, yield, purity, ratio or concentration figure for any of its eight steps - it is a recitation of five cited routes, not a procedure. So no mass balance, no molar-mass check and no yield check is possible, and mass_balance_implausible and molar_mass_inconsistent are NOT raised because there is no arithmetic to fail, not because arithmetic was checked and passed. The only numerals in the section's chemistry are the patent numbers, the compound locants and the two temperatures that appear in schemes only.",
+    "drawing_evidence": "The span at line 83, one arrow: NMST to NMSBA, conditions ['Sulphuric Acid/', 'Nitric acid/O2', 'Vanadium Pentoxide', '140-150 degree-C']. DISAGREES twice: the O2 appears in no prose and on neither parallel arrow at 79 or 90, and the 140-150 degree-C appears in no prose. O2 is recorded as a compound with reagent_drawn_not_written; the temperature stayed out of the structured field per prompt rule 5c and is in notes."
+  },
+  {
+    "reaction_id": "Background of the Invention_Step 8",
+    "source_lines": [
+      88,
+      90
+    ],
+    "quote_zh": "[009] a step of oxidation of 2-nitro-4-methylsulfonyltoluene (NMST) is carried out in presence of nitric acid using vanadium pentoxide as a catalyst to obtain 2-nitro-4-methylsulfonylbenzoic acid (NMSBA)",
+    "arithmetic_check": "Nothing to close, and nothing hidden by that. This section states no mass, volume, mole, equivalent, yield, purity, ratio or concentration figure for any of its eight steps - it is a recitation of five cited routes, not a procedure. So no mass balance, no molar-mass check and no yield check is possible, and mass_balance_implausible and molar_mass_inconsistent are NOT raised because there is no arithmetic to fail, not because arithmetic was checked and passed. The only numerals in the section's chemistry are the patent numbers, the compound locants and the two temperatures that appear in schemes only.",
+    "drawing_evidence": "The span at line 90, one arrow: NMST to NMSBA, conditions ['Nitric acid', 'V2O5', '140-150 degree-C']. Agrees with the prose on the reagent set, including the absence of sulphuric acid, which is what distinguishes this citation's oxidation from Step 7's. The formula V2O5 for the spelled-out name is an A1 alias, not a conflict. DISAGREES on the 140-150 degree-C, which no prose in this section states; left out of the structured field per prompt rule 5c and recorded in notes."
+  }
+]

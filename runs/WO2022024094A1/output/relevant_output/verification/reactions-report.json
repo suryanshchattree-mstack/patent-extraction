@@ -1,0 +1,205 @@
+{
+  "artifact": "reactions",
+  "records_audited": 24,
+  "findings": [
+    {
+      "check": "linkage",
+      "severity": "major",
+      "record": "Example 7_Step 1",
+      "field": "precursor_step",
+      "problem": "The experimental chain is left entirely unlinked: Example 7 charges a reactant whose identifier is character-for-character the product identifier of Examples 4, 5 and 6, yet precursor_step is null.",
+      "source_line": 329,
+      "quote": "A mixture of enol ester (20g, 0.06mol) and dichloromethane (60mL) taken in a clean, pre-dried 250mL round bottomed flask",
+      "artifact_says": "precursor_step: null, linkage_confirmed: false",
+      "should_be": "Set precursor_step to \"Example 4::Step 1\" (or the candidate the reviewer selects) with linkage_confirmed left false, so the document's own supply of the material is visible in a structured field rather than only in notes. Prompt rule 23 permits null only for the first step of a synthesis or where no precursor can be found, and here three can be found; rule 24 governs only linkage_confirmed, not precursor_step.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "Summary of the Invention_Step 1",
+      "field": "reaction_id",
+      "problem": "No \"Scheme Step N\" records are emitted anywhere in the artifact, although Summary of the Invention, Detailed Description and Claims each recite the route in prose and then draw it, which is the case prompt rule 5f names explicitly.",
+      "source_line": 111,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"Cc1ccc(S(C)(=O)=O)cc1[N+](=O)[O-]\", \"molecular_formula\": \"C8H9NO4S\"}], \"conditions\": [{\"text\": \"Oxidant / RuO2\"}], \"products\": [{\"smiles\": \"CS(=O)(=O)c1ccc(C(=O)O)c([N+](=O)[O-])c1\", \"molecular_formula\": \"C8H7NO6S\"}]}]}]",
+      "artifact_says": "Only Step 1/2/3 for this section; five scheme spans at lines 111, 115, 128, 130 and 132 produce no records of their own.",
+      "should_be": "Either emit Scheme Step records per rule 5f, or leave as-is and accept the documented deviation. The decision is reasoned in the notes of every affected record and the schemes genuinely restate the same three transformations, so this is raised as a divergence from the prompt and from the reference run CN104292137A (which emitted nine Summary Scheme Step records), not as a silent miss.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 7_Step 1",
+      "field": "tags",
+      "problem": "Example 7 is the only one of 24 records with no linkage: tag, while Examples 4, 5 and 6 carry linkage:standalone in the identical situation, so one of the two treatments is wrong.",
+      "source_line": 329,
+      "quote": "A mixture of enol ester (20g, 0.06mol) and dichloromethane (60mL) taken in a clean, pre-dried 250mL round bottomed flask",
+      "artifact_says": "Example 7_Step 1 tags omit the linkage category; Examples 4, 5 and 6 tags include \"linkage:standalone\".",
+      "should_be": "Apply one rule to all four. Example 7's own note argues that linkage:standalone \"would say this step's material comes from outside the document, which is false\"; that argument holds verbatim for Examples 4, 5 and 6, which charge NMSBA that Examples 1 to 3 make. Minimal correction: drop linkage:standalone from Examples 4, 5 and 6.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "Example 6_Step 1",
+      "field": "compounds[].role",
+      "problem": "N,N'-dicyclohexylcarbodiimide is given role \"other\" in Example 6 but role \"reagent\" in Examples 4 and 5, for the identical function in three replicate procedures.",
+      "source_line": 316,
+      "quote": "To this mixture, N,N’-dicyclohexylcarbodiimide(DCC) (21g, 0.10mol) was added and stirred for about 2 hours at 25-30°C.",
+      "artifact_says": "role: \"other\" (Example 6); role: \"reagent\" (Examples 4 and 5)",
+      "should_be": "role: \"reagent\", matching Examples 4 and 5. Example 6's own note already concludes \"it is a reagent and not a catalyst\", so the field contradicts the record's stated reasoning.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Example 6_Step 1",
+      "field": "reactant_names",
+      "problem": "Example 6 lists the carbodiimide in reactant_names while Examples 4 and 5 do not, although it is charged stoichiometrically and consumed in all three.",
+      "source_line": 316,
+      "quote": "NMSBA (25g, 0.10mol) and 1, 3-cyclohexanedione (12g, 0.11mol) were added under stirring at the temperature of 25-30°C. To this mixture, N,N’-dicyclohexylcarbodiimide(DCC) (21g, 0.10mol) was added",
+      "artifact_says": "Example 6 reactant_names: [\"2-nitro-4-methylsulphonyl benzoic acid\", \"1,3-cyclohexanedione\", \"N,N’-dicyclohexylcarbodiimide\"]; Examples 4 and 5 omit the carbodiimide.",
+      "should_be": "One treatment across the three replicates. A scorer comparing reactant_names would read a chemical difference between three examples of one procedure where the patent states none.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": null,
+      "field": "compounds-equivalence.json",
+      "problem": "compounds-equivalence.json is an empty object although reactions.json carries two pairs of identifiers that are one molecule under two spellings, so the fragmentation is undetected rather than recorded.",
+      "source_line": 209,
+      "quote": "Examples of solvent include dichloromethane, dichloroethane, dichloropropanes, dichlorobutanes, dichloropentanes,and mixtures thereof.",
+      "artifact_says": "\"cyclohexanedione\" (Background_Step 3) and \"1,3-cyclohexanedione\" (6 records) are separate identifiers; \"dichloroethane\" (line 209) and \"1,2-dichloroethane\" (line 379) likewise. compounds-equivalence.json is {}.",
+      "should_be": "Register both pairs in compounds-equivalence.json. Each identifier is a faithful verbatim transcription of its own source line, so the reactions records are correct; the defect is that the deliberate non-merge is not recorded in the side channel that exists for it. File against compounds-equivalence.json, not against reactions.json.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Background of the Invention_Step 4",
+      "field": "reaction_class",
+      "problem": "The enol ester to mesotrione transformation is classed \"other\" here but \"acylation\" in Claims Step 3, Detailed Description Step 3, Summary Step 3 and Example 7, so one transformation carries two labels.",
+      "source_line": 64,
+      "quote": "to form an enol ester followed by a rearrangement process to give mesotrione, as shown in the following reaction scheme:",
+      "artifact_says": "reaction_class: \"other\" (Background Step 4); reaction_class: \"acylation\" (four other records for the same transformation)",
+      "should_be": "Either label consistently, or state in Background Step 4's notes why the prose word \"rearrangement\" changes the class where the other four sections' wording does not. The choice is defensible under rule 17 (the closed list has no rearrangement class, and this arrow carries no reagent), so this is flagged as an inconsistency a reaction_class scorer would see rather than as a clear error.",
+      "confidence": "low"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "arithmetic - every mass/mole pair recomputed with RDKit",
+      "what_was_verified": "I computed molecular weights independently from the drawn SMILES with RDKit (NMST C8H9NO4S 215.230; NMSBA C8H7NO6S 245.212; 1,3-cyclohexanedione C6H8O2 112.128; DCC C13H22N2 206.333; enol ester and mesotrione both C14H13NO7S 339.325; NaCN 49.008; TEA 101.193; RuO2 133.068) and tested all 19 printed mass/mole pairs. Exactly two fail at the precision the patent prints: Example 1 NMST 61.2 g / 0.278 mol (true 0.28435 mol; mass interval 61.15-61.25 g implies [0.28411, 0.28458], which excludes 0.278) and Example 3 NMST 20 g / 0.088 mol (true 0.09292 mol; interval [0.09060, 0.09525] excludes 0.088). Both records carry molar_mass_inconsistent. Example 2's 5.0 g / 0.023 mol passes and is correctly NOT flagged. No false positives and no missed failures.",
+      "verified_independently": true
+    },
+    {
+      "check": "arithmetic - every stated yield recomputed against the charges",
+      "what_was_verified": "Example 4: 25.4 g / 339.325 = 0.07486 mol on 27 g NMSBA (0.11011 mol) = 67.98%, printed 68%. Example 5: 0.89 g = 0.002623 mol on 1.0 g NMSBA (0.004078 mol) = 64.3%, or 65.6% on the printed 0.004 mol, printed 65%. Example 6: 22.8 g = 0.06719 mol on 25 g NMSBA (0.101951 mol) = 65.91%, printed 66%. Example 7: 17 g = 0.050100 mol on 20 g enol ester (0.058941 mol) = 85.00%, printed 85%. All four close. Examples 1, 2 and 3 print a yield percentage but no isolated mass, so no mass-versus-yield test is possible and mass_balance_implausible is correctly not raised.",
+      "verified_independently": true
+    },
+    {
+      "check": "arithmetic - boundary case not accepted on the annotation's word",
+      "what_was_verified": "Example 7's sodium cyanide, 1.2 g / 0.025 mol, implies 48.0 g/mol against a true 49.008 (2.1% deviation, comparable to Example 1's flagged 2.3%). I recomputed the mass-precision interval myself: 1.15-1.25 g implies [0.023466, 0.025506] mol, which contains the printed 0.025, so the pair is consistent at the precision printed and the decision not to flag it is correct. The same propagation does not rescue Examples 1 and 3, so the test is applied uniformly rather than as special pleading.",
+      "verified_independently": true
+    },
+    {
+      "check": "arithmetic - solution concentrations and step-to-step continuity",
+      "what_was_verified": "Sodium hypochlorite is internally consistent across the three oxidations (1.490, 1.490, 1.480 M). Hydrochloric acid gives 10.25, 9.44, 9.44 and 10.00 M, all plausible for a concentrated aqueous acid; none is molecular-weight checkable and none is flagged. Continuity: Examples 1-3 print no isolated NMSBA mass so the Example 4/5/6 charges cannot be covered by arithmetic; Examples 4 and 6 (25.4 g, 22.8 g) each cover Example 7's 20 g charge, Example 5 (0.89 g) does not. scale_discontinuity correctly not raised.",
+      "verified_independently": true
+    },
+    {
+      "check": "drawings - structures read off the page images",
+      "what_was_verified": "I opened p03, p04, p15, p16 and p18 at full resolution, with crops of the p03 enol ester. Every ring system, substituent and substituent POSITION in the IMAGE_EXTRACT spans matches what is drawn: NMST (methyl C1, nitro C2, methylsulfonyl C4), NMSBA and NMSBC (same pattern with COOH / COCl at C1), 1,3-cyclohexanedione, mesotrione (aroyl on the C2 of cyclohexane-1,3-dione). The p03 enol ester is drawn with the ester oxygen on the alkene carbon and the ketone at ring position 3, which is exactly OC2=CC(=O)CCC2; the position was read off the page, not inferred.",
+      "verified_independently": true
+    },
+    {
+      "check": "drawings - reagents above versus below the arrow",
+      "what_was_verified": "p04 scheme 2 prints three reagents above the arrow (Sulphuric Acid/, Nitric acid, Vanadium Pentoxide) and 145 °C below it; scheme 3 prints three above and 140-150°C below. Both are captured completely. p03's enol-ester arrow prints (CH3CH2)3N above and Solvent below, both captured. p15's Example 1 arrow prints Oxidant / RuO2 above and nothing below. p16's Example 4 arrow and p18's Example 7 arrow are genuinely bare, which the artifact relies on repeatedly and which I confirmed on the page. The flat conditions[] list loses the above/below distinction, but no record mis-assigns a below-arrow temperature as a reagent or vice versa.",
+      "verified_independently": true
+    },
+    {
+      "check": "drawings - the drawing never overwrote a silent prose",
+      "what_was_verified": "Background Steps 6, 7 and 8 have arrows printing 145 °C, 140-150°C and 140-150°C while their prose states no temperature. All three records keep temperature type not_specified and raise drawing_text_conflict with both readings in notes, exactly per rule 5c. No drawn condition leaked into a structured field anywhere in the artifact.",
+      "verified_independently": true
+    },
+    {
+      "check": "drawings - route attribution",
+      "what_was_verified": "The four-step US 7,820,863 scheme (p03) and the four single-arrow prior-art schemes (p04, p05) are all under section_label \"Background of the Invention\" with section_type background and are described as prior art in notes; none is annotated as the invention's route. The Example schemes on p15, p16 and p18 sit under the EXAMPLES heading and are the invention's. The Example 4 scheme is printed inside Example 3's line range on p16; I confirmed on the page that it sits between the Example 4 title and [0050], and the artifact correctly refuses to import it into Example 3.",
+      "verified_independently": true
+    },
+    {
+      "check": "precision - no fabricated conditions",
+      "what_was_verified": "atmosphere is null on all 24 records and nitrogen appears nowhere; the text names no atmosphere. Every temperature traces to a printed figure: 25-30 (Examples 4-6), 10-15 (Example 7), not_specified with heating_method reflux on Examples 1-3 per rule 9 (reflux is not recorded as a temperature). stirring.type is null throughout, correct where the text says only \"under stirring\". light_source, cooling_method, concentration, ph_value and process_control are null where the text is silent. Reactor volumes (1L, 250ml, 500ml, 100mL) are in notes, not in numeric fields.",
+      "verified_independently": true
+    },
+    {
+      "check": "precision - no structures, SMILES, formulae or molecular weights in the artifact",
+      "what_was_verified": "reactant_smiles, smiles_source, product_smiles, product_smiles_source and canonical_rxn are null on all 24 records, despite every drawing supplying SMILES. No molecular formula or molecular weight appears in any numeric field. The recomputed molecular weights and theoretical masses appear only in the provenance sidecar, never in reactions.json.",
+      "verified_independently": true
+    },
+    {
+      "check": "fidelity - unit handling on every printed quantity",
+      "what_was_verified": "All 19 mol figures are converted to mmol correctly (0.278 to 278.0, 0.745 to 745.0, 0.011 to 11.0, 1.23 to 1230.0, 0.023, 0.149, 0.004, 0.17, 0.088, 0.222, 0.51, 0.11, 0.12, 0.10, 0.06, 0.025, 0.065, 0.054 all consistent). Solution charges carry volume_ml and no mass_g, correctly. Temperature ranges are preserved as min_c/max_c and none is flattened to a point: 25-30, 10-15, 5-10, 35-45 all survive. I verified every number in Example 7's procedure_text against p18 character by character.",
+      "verified_independently": true
+    },
+    {
+      "check": "fidelity - ranged reaction time left null is the run's convention, not a loss",
+      "what_was_verified": "Examples 1-3 print \"6-8hours\" and time_h is null; Examples 4-7 print \"about 2 hours\" and time_h is 2.0. I checked the claim that this follows the reference run: in CN104292137A every step whose time is printed as a range (1-5h, 1-10h, 1-4h) has time_h null and every single figure is populated. The convention holds, so this is not a defect. The scalar field cannot hold a range and a midpoint would state a number the patent does not print.",
+      "verified_independently": true
+    },
+    {
+      "check": "linkage - every linkage_confirmed: true substantiated",
+      "what_was_verified": "All 9 records with precursor_step set (Background Steps 2-4, Claims Steps 2-3, Detailed Description Steps 2-3, Summary Steps 2-3) were resolved programmatically: in every case the named step's product_name appears verbatim among this step's non-product compound identifiers. Zero unsubstantiated true values.",
+      "verified_independently": true
+    },
+    {
+      "check": "vocabulary - all closed lists",
+      "what_was_verified": "Zero violations across 24 records: reaction_class, mechanism_type, scale, reaction_class_confidence, temperature.type, pressure.type and stirring.type are all inside their A2 enums. All 208 tags are unique per record, lowercase, ASCII, of the form category:value, in the 16 permitted categories, with every value inside its closed list where one exists. All 21 validation_flags used are from the rule 27 list.",
+      "verified_independently": true
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "No enrichment field is present (atom_mapped_rxn, template_r0/r1/r2, feasibility_score, yield_score, cost_score, safety_score, green_score, byproduct_score, confidence_score, transformation_reaction_count, reaction_vector, procedure_vector all absent). id and reaction_uuid ARE present, which the A2 prompt forbids for the pass output but finalise.py computes downstream; the reference run's finalised reactions.json carries both, so their presence is correct and is NOT reported as a defect. is_complete equals (validation_flags == []) on all 24 records. Every record has a product and a reactant-role compound; product_name, product_yield_pct and product_purity_pct agree with the product compound entry on all 24; reactant_names is a subset of the compound identifiers on all 24.",
+      "verified_independently": true
+    },
+    {
+      "check": "text fields",
+      "what_was_verified": "No procedure_text contains an IMAGE_EXTRACT span (rule 5h). No procedure_summary contains any quantity with a unit; the digits present are locants inside chemical names (2-nitro-, 1,3-cyclohexanedione), which is unavoidable. No procedure_summary is empty.",
+      "verified_independently": true
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "Not applicable in the usual sense and correctly handled. The document is English throughout (line 22, Filing Language: English) and every \"> EN:\" line is a byte-identical duplicate of its source line, so no Chinese-versus-English conflict can arise and translation_conflict is raised nowhere. I confirmed the duplication holds on the Example paragraphs. The identifiers do follow the source's own inconsistent spelling: the Example headings print \"2-nitro-4-methylsulphonyl benzoic acid\" and \"2-nitro-4-methylsulfonyl toluene\" in one sentence, which is exactly what the artifact carries, verified against p15 and p16.",
+      "verified_independently": true
+    },
+    {
+      "check": "recall - solvents, washes, quenches and drying",
+      "what_was_verified": "Checked explicitly rather than skimmed. Dichloromethane is on all six records that use it with its volume (160, 10, 100, 60 mL). Quench water is a compound entry with its volume on Examples 4, 5 and 7 and quenching_agent is set. Example 7's second water portion (60 mL) is in workup.washes and the reason it is not in the quantity block is stated. Example 6's water carries no volume because the patent prints none. Drying at 50 C under reduced pressure and the two filtrations are in workup.steps on Examples 1-3; drying_agent is null throughout, correct because no drying agent is named anywhere. pH target 3.0 is captured on Examples 1-3 and 7.",
+      "verified_independently": true
+    },
+    {
+      "check": "recall - step count against the document",
+      "what_was_verified": "I enumerated transformations independently, section by section: Background 8 (arrows 66#1, 66#2, 68#1, 68#2, 75, 79, 83, 90), Summary prose 3, Detailed Description prose 3, Claims 3, Examples 1-7 one each = 24, matching the 24 records exactly. The molecule-only spans at lines 57 and 177 correctly generate no records.",
+      "verified_independently": true
+    },
+    {
+      "check": "recall - one-pot detection",
+      "what_was_verified": "Rule 5 warns that a route whose selling point is not isolating intermediates has several one-pots, and [0040] at line 234 and [0041] at line 241 do describe running all three steps in one vessel without isolating formula (III) or (II). All records carry is_one_pot false. Both readings are recorded in the notes of Detailed Description Steps 1-3 and Summary Step 3, with the reasoning that this is an optional mode of the whole sequence rather than a property of any single numbered step, and the section still recites the route as three steps at [0038] and [0039]. That is a defensible reading and the disagreement is recorded rather than resolved silently, so no finding is raised. Similarly the in-situ formation of RuO2 from ruthenium trichloride at [0034] is carried as a catalyst species on Detailed Description Step 1 rather than as a separate catalyst_preparation record; it has no separate charge and no workup, so it is not a step under rule 1.",
+      "verified_independently": true
+    },
+    {
+      "check": "fidelity - purity reported as a bound",
+      "what_was_verified": "Every example prints purity as an inequality (\">95%\", \"> 92%\", \">85%\") and the artifact records the bare number with purity_method hplc. There is no schema field for the inequality, the sign is preserved verbatim in procedure_text and notes on every record, and the treatment is uniform across all seven examples, so no finding is raised. The Summary's \"at least 65%\" and \"at least 85%\" are specifications of the invention rather than measurements and correctly enter no numeric field.",
+      "verified_independently": true
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 24,
+    "present_in_artifact": 24,
+    "missing": [
+      "No reaction record is missing. Every prose transformation and every drawn arrow in the document has a record, on an independent section-by-section enumeration.",
+      "Arguable only: the 'Scheme Step N' duplicate records that prompt rule 5f asks for in Summary of the Invention, Detailed Description and Claims, which would add up to 16 further records restating the same three transformations. Deliberately omitted with reasoning in every affected record; raised as a minor finding."
+    ]
+  }
+}

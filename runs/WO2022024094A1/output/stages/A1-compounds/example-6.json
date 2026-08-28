@@ -1,0 +1,240 @@
+[
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "enol ester of formula (II)",
+    "identifier_type": "local_label",
+    "aliases": [
+      "enol ester",
+      "formula (II)",
+      "crude enol ester",
+      "pure enol ester"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_intermediate",
+    "is_section_product": true,
+    "commercially_available": false,
+    "role": "product",
+    "quantity": {
+      "mass_g": 22.8,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": 66.0
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": {
+      "min_c": 157.0,
+      "max_c": 163.0,
+      "range_text": "Melting point 157-163°C",
+      "decomposition": null
+    },
+    "appearance": "off white colour solid",
+    "color": "off white",
+    "physical_form": "solid",
+    "analytics": [
+      {
+        "method": "hplc",
+        "value": 85.0,
+        "unit": "%",
+        "conditions": "purity printed as a lower bound",
+        "raw_text": "HPLC purity > 85%"
+      }
+    ],
+    "purity_pct": 85.0,
+    "purity_method": "hplc",
+    "tags": [
+      "compound_class:intermediate",
+      "chemical_family:benzoate_ester",
+      "functional_group:ester",
+      "functional_group:ketone",
+      "functional_group:sulfone",
+      "functional_group:nitro"
+    ],
+    "notes": "Product of the single step in this section, step (ii) of the invention, the same esterification as Example 5 at 25g rather than 1.0g scale and isolated by filtration to a wet cake instead of by aqueous quench. The section never gives the compound a chemical name, only the class term plus its formula number, so the identifier is the label as printed on the title line 314; 'crude enol ester' and 'pure enol ester' are the same material at two points of the workup and are kept as aliases, not as separate records. Resolved on the formula number, which the document uses for one specific compound; this section prints no scheme, so nothing inside it draws the structure and no SMILES alias is added. Purity, yield and melting point come from the unmarked line 318, which belongs to paragraph [0052] on line 316. Printed purity is '> 85%', so purity_pct is the stated lower bound and not a measurement; the inequality is kept verbatim in analytics raw_text. Printed yield is 66%. Recomputing 22.8g against the theoretical from the 0.10mol charge gives about 67%, one point higher; the printed 66% is recorded as it stands and is not corrected, and the 67 is a recomputation that appears nowhere in the patent."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+    "identifier_type": "iupac",
+    "aliases": [
+      "NMSBA",
+      "formula (III)"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_intermediate",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "reactant",
+    "quantity": {
+      "mass_g": 25.0,
+      "volume_ml": null,
+      "mmol": 100.0,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:intermediate",
+      "chemical_family:benzoic_acid",
+      "functional_group:carboxylic_acid",
+      "functional_group:sulfone",
+      "functional_group:nitro"
+    ],
+    "notes": "Acid component of the coupling. This section prints only the abbreviation NMSBA, on the title line and in the procedure, and never spells the name out; the document-wide canonical name is used as the identifier so the record joins the same molecule extracted from the other sections, and the abbreviation and formula number are kept as aliases. Prepared by Examples 1 to 4 of this patent, so not commercially available. mmol is the printed 0.10mol as mmol."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "1,3-cyclohexanedione",
+    "identifier_type": "iupac",
+    "aliases": [
+      "1, 3-cyclohexanedione"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_intermediate",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "reactant",
+    "quantity": {
+      "mass_g": 12.0,
+      "volume_ml": null,
+      "mmol": 110.0,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:reagent",
+      "chemical_family:cyclohexanedione",
+      "functional_group:ketone"
+    ],
+    "notes": "Enol component of the coupling. Printed once, as '1, 3-cyclohexanedione' with a space after the comma; the comma spacing is orthography and not a second compound, so the closed-up form already used elsewhere in this patent is the identifier and the spaced form as printed here is the alias. The locants are printed, so nothing is inferred about which dione. mmol is the printed 0.11mol as mmol; it is the only charge in this step that is not 0.10mol. No scheme in this section, so no SMILES alias."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "N,N’-dicyclohexylcarbodiimide",
+    "identifier_type": "iupac",
+    "aliases": [
+      "DCC"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_intermediate",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "reagent",
+    "quantity": {
+      "mass_g": 21.0,
+      "volume_ml": null,
+      "mmol": 100.0,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:reagent",
+      "chemical_family:carbodiimide",
+      "functional_group:carbodiimide"
+    ],
+    "notes": "Coupling agent. Printed once, on line 316, with no space after the first comma and with the name closed up against its abbreviation, 'N,N’-dicyclohexylcarbodiimide(DCC)', and with U+2019 RIGHT SINGLE QUOTATION MARK for the prime. Example 5 on the same page prints the opposite convention, 'N, N’-dicyclohexylcarbodiimide (DCC)' spaced, and the claims on p20 print 'N, N′-dicyclohexylcarbodiimide' with U+2032 PRIME. Same reagent throughout; the identifier here is the string this section prints, prime character included, and the punctuation variants are orthography, not different molecules. mmol is the printed 0.10mol as mmol. The dicyclohexylurea that a carbodiimide coupling co-produces is not named anywhere in this section and is not recorded."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "dichloromethane",
+    "identifier_type": "iupac",
+    "aliases": [],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_intermediate",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "solvent",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": 100.0,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:solvent",
+      "chemical_family:chloroalkane",
+      "functional_group:halide_chloro"
+    ],
+    "notes": "Reaction solvent, charged first. The unmarked analytical line 318 also reports 'Solvent recovery >85%', which can only refer to this solvent, but the written procedure isolates the product by vacuum filtration and never describes distilling or otherwise recovering the dichloromethane. Recorded as an observation about what the page states, not as a contradiction, and not carried into any quantity field."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "identifier": "water",
+    "identifier_type": "iupac",
+    "aliases": [],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_intermediate",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "solvent",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:workup_agent"
+    ],
+    "notes": "Used in the workup: the crude enol ester is taken up with water and filtered again to give the pure solid. No quantity, temperature or time is printed for it. Unlike Example 5, this example does not quench the reaction with water."
+  }
+]

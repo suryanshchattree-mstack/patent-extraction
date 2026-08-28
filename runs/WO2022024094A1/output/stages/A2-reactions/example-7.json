@@ -1,0 +1,258 @@
+[
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Example 7_Step 1",
+    "section_label": "Example 7",
+    "section_type": "experimental_example",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": 10.0,
+        "max_c": 15.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 2.0,
+      "reactor_type": "round bottomed flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "quenched with water (100mL)",
+        "dichloromethane separated through distillation under reduced pressure at 35-45°C",
+        "aqueous mass cooled to 5-10°C",
+        "acidified to pH < 3 using aqueous hydrochloric acid (5.4mL, 0.054mol)",
+        "product precipitated",
+        "precipitate separated through filtration",
+        "washed with water (60 mL)",
+        "dried under reduced pressure"
+      ],
+      "quenching_agent": "water",
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": [
+        "water (60 mL)"
+      ],
+      "drying_agent": null,
+      "filtration": "the precipitated product separated through filtration",
+      "concentration_method": "distillation under reduced pressure at 35-45°C, removing the dichloromethane",
+      "ph_target": 3.0
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "enol ester of formula (II)",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 20.0,
+          "volume_ml": null,
+          "mmol": 60.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "taken in the flask with the dichloromethane at the start, as a mixture, and cooled to 10-15°C before any reagent was added",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloromethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 60.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start as a mixture with the enol ester; later distilled off under reduced pressure at 35-45°C",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium cyanide",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 1.2,
+          "volume_ml": null,
+          "mmol": 25.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the mixture at 10-15°C, before the triethylamine; the text states no addition rate for it",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "triethylamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 6.6,
+          "volume_ml": null,
+          "mmol": 65.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "slow addition over 15-20mins at 10-15°C under stirring, after the sodium cyanide",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "quenching_agent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 100.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "100mL added to quench the reaction mixture after the 2 hour hold; a further 60 mL was used to wash the filtered product, and that second portion is recorded in workup rather than in this quantity block, which holds the quench charge only",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "aqueous hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 5.4,
+          "mmol": 54.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the aqueous mass after it was cooled to 5-10°C, to acidify to pH < 3; a work-up reagent, not part of the reaction charge",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "mesotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": 17.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 85.0
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 95.0,
+        "purity_method": "hplc"
+      }
+    ],
+    "reactant_names": [
+      "enol ester of formula (II)"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "mesotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 85.0,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 95.0,
+    "product_purity_method": "hplc",
+    "canonical_rxn": null,
+    "procedure_text": "A mixture of enol ester (20g, 0.06mol) and dichloromethane (60mL) taken in a clean, pre-dried 250mL round bottomed flask and cooled to 10-15°C. To this mixture, added sodium cyanide (1.2g, 0.025mol) followed by slow addition of triethylamine (6.6g, 0.065mol) for 15-20mins at 10-15°C under stirring. The reaction mixture is cooled at 10-15°C and maintained for about 2 hours and quenched with water (100mL). Dichloromethane was separated through distillation under reduced pressure at 35-45°C. The aqueous mass obtained was cooled to 5-10°C and acidified to pH < 3 using aqueous hydrochloric acid (5.4mL, 0.054mol). The precipitated product obtained was separated through filtration, washed with water (60 mL) and dried under reduced pressure to obtain mesotrione as yellow to tan colour solid. HPLC purity >95%; Yield: 17g (85%); Melting point of the solid was 155-157°C;and solvent recovery: > 85%.",
+    "procedure_summary": "The enol ester of formula (II) is converted to mesotrione in dichloromethane at reduced temperature, sodium cyanide being charged first and triethylamine then added slowly, and the mixture held cold before being quenched with water. The dichloromethane is distilled off under reduced pressure, the cooled aqueous mass is acidified with aqueous hydrochloric acid to precipitate the product, and the solid is filtered, washed with water and dried under reduced pressure.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:rearrangement",
+      "transformation:acylation",
+      "mechanism:ionic",
+      "analytics:hplc",
+      "analytics:melting_point",
+      "scale:lab",
+      "solvent_class:halogenated",
+      "workup_type:precipitation",
+      "workup_type:filtration",
+      "workup_type:distillation",
+      "purification:none",
+      "green_chemistry:solvent_recovery",
+      "safety:cyanide_handling",
+      "step_role:final_step",
+      "is_one_pot:false"
+    ],
+    "notes": "ONE reaction record, matching A0's estimated_steps of 1. This is step (iii) of the invention's three-step route and the last of them: the conversion of the enol ester of formula (II) into mesotrione of formula (I). It is the only Example in the document that makes the target compound, which is why this is the only section A0 typed experimental_example. The section carries no numbered step markers of its own, so step_label is the synthetic \"Step 1\".\n\nSCOPE OF THE SECTION. Lines 320-332: the title line 320 \"Example 7\" and the sub-title 322 sit on printed page 17 (p17.png), the scheme span at 327, the procedure [0053] at 329 and the unmarked analytical line at 331 sit on printed page 18, so the section crosses a page boundary. [0054] at 333 begins the Closing Remarks section and carries no chemistry.\n\nONE RECORD, NOT TWO. The scheme at 327 is this section's own and draws the same single transformation the prose describes, so prompt rule 5f does not apply: there is no separate overview route here to keep apart from the prose steps, and emitting a \"Scheme Step 1\" alongside \"Step 1\" would duplicate one reaction. The scheme is used as rule 5a and 5b intend, to corroborate the step boundary and the product identity.\n\nREACTION CLASS. Recorded as acylation with medium confidence, and the alternative is recorded here rather than hidden. What happens is an intramolecular migration of the 2-nitro-4-methylsulphonyl benzoyl group from the enol oxygen of the ester to C2 of the cyclohexane-1,3-dione ring, promoted by cyanide with triethylamine as base. Reactant and product are isomers, both C14H13NO7S, so by conservation of formula the step is an isomerisation and the most precise single word for it is rearrangement. The prompt's reaction_class enumeration has no rearrangement or isomerisation member. acylation was chosen because it names the bond actually formed, a carbon-carbon bond to an acyl group at the dione 2-position, and it is the class an automated extractor would most plausibly reach for the same transformation; other was the alternative and would have carried less information. Confidence is medium for that reason and not because the chemistry is unclear. Both readings are carried in the tags, transformation:rearrangement and transformation:acylation.\n\nMECHANISM. ionic. Cyanide is a nucleophile and triethylamine deprotonates, so the intermediates on any reasonable reading of this step are anionic. catalytic was considered and rejected: the sodium cyanide charge is 0.025 mol against 0.06 mol of enol ester, so it is sub-stoichiometric and a catalytic reading is available, but the text does not call it a catalyst and does not describe recovering or recycling it. A1 recorded its role as reagent for the same reason and this record agrees.\n\nCATALYST TAG. The catalyst_class category is skipped rather than guessed, per prompt rule 26. The text names no catalyst. catalyst_class:base would assert that the triethylamine is catalytic when it is charged at 0.065 mol against 0.06 mol of substrate, that is stoichiometric; catalyst_class:none would deny the sub-stoichiometric cyanide any promoter role; and the enumeration has no member for a nucleophilic promoter.\n\nTEMPERATURE. range 10 to 15 C. The patent prints 10-15 C three times in the same sentence pair: the flask is cooled to 10-15 C, the triethylamine is added at 10-15 C, and the mixture is then \"cooled at 10-15 C and maintained for about 2 hours\". So this is the reaction temperature stated directly and not merely an addition temperature. The other three printed temperatures are all post-reaction: 35-45 C is the distillation of the dichloromethane, 5-10 C is the cooling of the aqueous mass before acidification, and both are recorded in workup.steps. 155-157 C is the product melting point and lives on the A1 compound.\n\nTIME. time_h is 2.0. The patent prints \"about 2 hours\", which is a single figure and not a range, so the scalar field can hold it without stating a number the patent does not print. This is the point where this section differs from most of the document: Examples 1, 2 and 3 print \"6-8hours\" and the summary prints \"about 2 hours to about 8 hours\", all ranges, on which time_h must stay null. The 15-20mins over which the triethylamine is added is an addition time, not the reaction time, so per prompt rule 9 it is recorded in that compound's addition_profile and not in time_h. The hedge \"about\" is preserved verbatim in procedure_text and is not represented in the numeric field, which has no place for it.\n\nREACTOR. \"a clean, pre-dried 250mL round bottomed flask\". The 250 mL volume and the pre-dried condition are recorded here because no numeric field holds them. atmosphere is left null: \"pre-dried\" describes the state of the glassware before the charge and not a maintained dry atmosphere, and no drying tube, no nitrogen and no inert gas is named. \"under stirring\" names a stirrer without saying which kind, so stirring.type stays null per prompt rule 9 rather than being guessed as mechanical.\n\nPRESSURE. not_specified. Reduced pressure is printed twice, for the distillation of the dichloromethane and for the drying of the isolated solid, and both are workup operations, so per prompt rule 9 they set workup.concentration_method and appear in workup.steps rather than the reaction pressure.\n\npH. \"acidified to pH < 3\" is a workup target, so it is workup.ph_target 3.0 and conditions.ph_value stays null, exactly as Example 1 recorded its own \"acidified to pH <3\". The printed form is an upper bound and 3.0 is that bound, not a measured pH. Note the printing differs between pages: page 18 prints \"pH < 3\" with spaces on both sides of the sign where printed page 14 printed \"pH <3\"; procedure_text keeps this page's spacing.\n\nISOLATION. purification is null and the purification tag is none. The product is isolated by acidification, precipitation, filtration, a water wash and drying under reduced pressure, all of which are workup, and the text states no recrystallisation, chromatography or other purification.\n\nPURITY AND YIELD. The unmarked line 331 belongs to [0053] above it; the p18 vision report notes it is set on the same line pitch and left indent as the body of that paragraph, so it is typographically a continuation line rather than a tacked-on line, and it is joined onto the tail of procedure_text here as it was for Example 1. \"HPLC purity >95%\" is a measurement on the one batch this Example made, reported as a lower bound, so product_purity_pct is 95.0 with purity_method hplc and the inequality is kept verbatim in procedure_text and in provenance; 95.0 is that printed bound and not an assayed equality. This matches A1, which holds purity_pct 95.0 and raw_text \"HPLC purity >95%\" for mesotrione. \"Yield: 17g (85%)\" is a stated measurement and both numbers are recorded. Contrast the Detailed Description's \"at least 65%\" and \"at least 85%\", which are specifications for a class of embodiments and are recorded in no numeric field anywhere in this run.\n\nSOLVENT RECOVERY. Line 331 also prints \"solvent recovery: > 85%\". This is a property of the dichloromethane and not of mesotrione, so it does not go anywhere near product_purity_pct or product_yield_pct. byproduct_recovery is left empty: prompt rule 14 scopes that block to recovering or reusing a by-product, and the dichloromethane is the reaction solvent rather than a by-product of the reaction; the Detailed Description records left the same field null for the same document-wide statement. There is also no field in that block that means recovery percentage, only concentration_pct, and putting 85 there would file a recovery fraction as a concentration. So the recovery is carried by workup.concentration_method, by this note, and by the tag green_chemistry:solvent_recovery, and the figure stays in prose where the wording \"> 85%\" is unambiguous. Unlike Example 6, whose analytical line reports a solvent recovery its procedure never distils, this Example does describe the distillation, so here the figure is consistent with the written procedure.\n\nPROCESS CONTROL. None. The HPLC figure is an analysis of the isolated product and the text names no in-process monitoring, so process_control is left empty.\n\nSAFETY. safety_notes is empty. Per prompt rule 15 that list may only carry safety statements present in the text, and this Example makes no safety statement of any kind, which is worth saying explicitly because the step charges sodium cyanide and later acidifies the same vessel contents to pH < 3, and the text neither warns about that nor describes any sequence to avoid it. No hazard assessment is added here; that is A5's job. The tag safety:cyanide_handling is emitted as a classification of the reagent actually used, matching the hazard:cyanide_handling tag A1 put on the sodium cyanide compound.\n\nDRAWING. The scheme span at line 327 is the only IMAGE_EXTRACT in this section and is this section's own; build_enriched.py anchored it with between_markers [null, \"[0053]\"], the null first entry being correct because the Example heading that introduces it falls on the previous page. The vision pass marked it presented_as \"invention_route\", so no attribution question arises and route_attribution_unclear is not raised. Its two structures agree with the prose: reactant C14H13NO7S is the enol ester of formula (II), product C14H13NO7S is mesotrione, and both SMILES are the ones A1 carries as aliases on those two compounds. Both are labelled on the drawing, \"Formula II\" and \"Formula I\", printed without parentheses unlike the \"formula (III)\" style the prose uses elsewhere.\n\nDRAWING VERSUS PROSE, and this is the largest such gap in the document. The arrow carries NOTHING. The p18 vision report did not read this by eye alone: it scanned the 190 pixel band spanning the arrow over 390 rows above and below and found no ink except the arrow line itself, so reagents_above and reagents_below are empty because the page is empty there, not because a label went unread. Every scheme for step (iii) anywhere in this patent is drawn the same way, so the prose at 329 is the only source in the whole document for this step's conditions. Consequently reagent_written_not_drawn is raised, and it is raised for five materials at once: sodium cyanide, triethylamine, dichloromethane, water and aqueous hydrochloric acid, none of which appears on any arrow anywhere. drawing_text_conflict was considered and deliberately NOT raised: a bare arrow states nothing and so contradicts nothing, and the two drawn structures match the two written names atom for atom. A conflict flag on a drawing that does not contradict its prose would be a false finding. This is the same distinction Example 1 drew for its \"Oxidant / RuO2\" arrow.\n\nTWO FURTHER DRAWING OBSERVATIONS, recorded and not flagged. First, neither \"Formula I\" nor \"Formula II\" appears in any text on printed page 18, so on that page alone the identification of the drawn structures with the named compounds rests on the drawing; the sub-title at line 322, on the preceding page, does connect them by printing \"Synthesis of mesotrione from enol ester of formula (II)\". Second, the product is drawn in the keto form, with plain single bonds from the benzoyl-bearing carbon to both flanking carbonyls and no OH anywhere, checked at 6x by the vision pass; the prose states no tautomer and gives no spectroscopic evidence, so which tautomer the isolated solid is cannot be settled from this page. Neither observation is a disagreement, so neither raises a flag.\n\nARITHMETIC. All three printed mass and mole pairs are consistent with the compounds named, and the printed mass and yield close, so neither molar_mass_inconsistent nor mass_balance_implausible is raised. ENOL ESTER: 20 g at 339.325 g/mol for C14H13NO7S, computed with RDKit from the drawn SMILES, is 0.05894 mol, and the printed 0.06 mol is that figure at the two decimal places printed. MASS BALANCE: 17 g of mesotrione at the same 339.325 g/mol, the two compounds being isomers, is 0.05010 mol, which is 85.0% of 0.05894 mol, matching the printed 85% exactly. Because the two molecular weights are identical the theoretical maximum output is 20 g, and 17 g is below it, so no impossibility arises. TRIETHYLAMINE: 6.6 g at 101.19 g/mol is 0.06523 mol, rounding to the printed 0.065 mol. SODIUM CYANIDE is a boundary case, judged consistent, and is written up in full in the provenance sidecar: 1.2 g at 49.007 g/mol is 0.024486 mol, which rounds to 0.024 at the three decimals printed, whereas the page prints 0.025, an implied 48.0 g/mol and 2.1% low. It is not flagged because the printed MASS carries only two significant figures, so 1.2 g stands for 1.15 to 1.25 g and implies 0.02347 to 0.02551 mol, an interval containing the printed 0.025. The same propagation does not rescue the sibling cases that were flagged: Example 1's 61.2 g implies 0.28412 to 0.28458 mol against a printed 0.278, and Example 3's 20 g implies 0.0906 to 0.0953 mol against a printed 0.088, both excluded. The contrary reading, that a rounding-window test on the mole figure alone would flag this pair, is recorded in the sidecar rather than suppressed. Nothing in the record turns on it: the sodium cyanide is sub-stoichiometric and enters no balance. HYDROCHLORIC ACID admits no molecular weight check: 5.4 mL with 0.054 mol is a solution volume, implying 10.0 mol per litre, which is plausible for a concentrated aqueous acid, and the text prints no concentration for it.\n\nSCALE AND SCALE CONTINUITY. scale is lab from the limiting reagent, 20 g of enol ester. scale_discontinuity is not raised. No precursor step is asserted, so there is no previous step's output for this charge to be compared against. For the record, the three sections that make this material report 25.4 g (Example 4), 0.89 g (Example 5) and 22.8 g (Example 6), so a 20 g charge is available from either Example 4 or Example 6 and could not have come from Example 5 alone. That narrows the candidates but is not a linkage: mass sufficiency is weaker evidence than the name similarity prompt rule 24 already refuses to accept as confirmation, and it is recorded as an observation only.\n\nLINKAGE, and this is the one place in the document where the question arises. precursor_step is null and linkage_confirmed is false. The reactant, the enol ester of formula (II), is the product of THREE earlier sections: Example 4 at lines 291-303, Example 5 at 304-311 and Example 6 at 312-319, each titled \"Synthesis of enol ester of formula (II) from NMSBA of formula (III)\" and each a separate batch of the same esterification. Nothing in this section chooses between them. The sub-title at 322 names the material by formula, \"from enol ester of formula (II)\", and the procedure at 329 names it only as \"enol ester\"; there is no back reference of the \"product of Example 6\" or \"the above compound\" kind anywhere in lines 320-332. So there are three candidate precursors and the text does not select one, and setting precursor_step to any of the three would state a linkage the document does not. It is left null deliberately, not for want of looking. The A2 records for all three were on disk when this one was written, and all three carry product_name \"enol ester of formula (II)\", the same string as this step's reactant identifier, so on prompt rule 24's identifier test all three of Example 4_Step 1, Example 5_Step 1 and Example 6_Step 1 qualify equally and none of them qualifies uniquely. None of the three mentions Example 7 in its own record, so no counterpart claim exists to settle it from the other end. cross_reference_unresolved is nevertheless FALSE: the material is not an unlocated cross reference, it is located three times over, and the defect is that it is located too often rather than not at all. The linkage tag category is skipped for the same reason, per prompt rule 26: linkage:standalone would say this step's material comes from outside the document, which is false and is exactly the fact this record exists to preserve, and linkage:cross_section_linked would assert the link the text declines to make.\n\nNMSBC. The 2-nitro-4-methylsulphonyl benzoyl chloride of the four-step prior art appears nowhere in this section, in any role.\n\nMODEL PROVENANCE. This record was produced by Claude Opus 5 reading lines 320-332 of the enriched markdown, the p18 vision report, and the A1 compound records for this section."
+  }
+]

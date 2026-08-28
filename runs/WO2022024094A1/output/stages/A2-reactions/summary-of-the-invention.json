@@ -1,0 +1,490 @@
+[
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Summary of the Invention_Step 1",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "oxidation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "catalytic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulfonyl toluene",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ruthenium oxide",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "named in [0015] and in step (i) as ruthenium (IV) oxide (RuO2), the catalyst the oxidation is run in presence of; no charge, form or loading is given",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulfonyl toluene"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-nitro-4-methylsulphonyl benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "[0015] The foregoing and other objects are attained by the present disclosure, which in one aspect provides a process for preparation of 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III) by oxidation of 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) using an oxidant in presence of ruthenium (IV) oxide (RuO2) as a catalyst. (i) oxidizing 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) with an oxidant in presence of ruthenium (IV) oxide (RuO2) as a catalyst, to produce 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III);",
+    "procedure_summary": "2-Nitro-4-methylsulfonyl toluene is oxidized with an unnamed oxidant in the presence of ruthenium (IV) oxide as a catalyst to give 2-nitro-4-methylsulphonyl benzoic acid. The section recites the step as one aspect of the disclosure and as the first item of the route to mesotrione, and gives no reagent name, no solvent and no conditions.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:oxidation",
+      "mechanism:catalytic",
+      "scale:not_specified",
+      "catalyst_class:ruthenium",
+      "workup_type:none",
+      "purification:none",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "PROSE step (i) of the invention's three-step route, stated twice in this section: [0015] at line 109 states it as one aspect of the disclosure, and step (i) of [0017]'s list at line 122 recites it again in almost the same words. Both are transcribed here. THE OXIDANT IS NOT NAMED. Both statements say only 'an oxidant', so no oxidant compound is in compounds[] or in reactant_names; A1 made the same call for this section. The two arrows print the class word 'Oxidant' and name no compound either. Sodium hypochlorite, alkali metal hypochlorite and hydrogen peroxide are named in the Detailed Description, not here, and are deliberately not carried across. The catalyst is recorded under A1's document-wide identifier 'ruthenium oxide'; the parenthesised 'ruthenium (IV) oxide (RuO2)' this section actually prints is A1's alias, and prompt rule 7 fixes the identifier. It is excluded from reactant_names as a catalyst, per the convention the Detailed Description records. LINKAGE: precursor_step is null. NMST is the starting material of the route and nothing in this section prepares it, so this is the first step and the tag is linkage:standalone. No cross-section link is asserted to the Background's prior-art oxidations, which are other documents' routes with other reagents. DRAWING FLAGS ARE EVALUABLE HERE AND NONE OF THE THREE FIRES. This section owns five scheme spans of its own, each adjacent to the paragraph that recites the same transformation, so drawing_text_conflict, reagent_drawn_not_written and reagent_written_not_drawn were all evaluated, paragraph by paragraph against that paragraph's own arrow, and not against the document. For this step the two spans, at lines 111 and 128, both print 'Oxidant / RuO2' on the arrow, which is exactly what this step's own prose says: a generic oxidant and RuO2 as catalyst. Nothing is written that is not drawn, so reagent_written_not_drawn does NOT fire here, unlike the Detailed Description's step (i), where eight prose-named species appear on no arrow. Nothing is drawn that is not written, so reagent_drawn_not_written does not fire. The drawn structures match the written names atom for atom, so drawing_text_conflict does not fire; a flag on a scheme that matches its prose would be a false finding under prompt rule 5c. Limit of the drawing, recorded and not flagged: the label joins reagent and catalyst with a slash and does not say which is which, while the prose does. ONE RECORD PER TRANSFORMATION, NOT PER DRAWING, and this is a deliberate departure from prompt rule 5f that is recorded rather than taken silently. Rule 5f names this exact section type: a Summary of the Invention commonly recites the route in words and then draws it, and it asks for separate 'Scheme Step' records in that case. The case examined here and rejected on the evidence: this section prints five IMAGE_EXTRACT scheme spans, at lines 111, 115, 128, 130 and 132, and they depict only three distinct transformations. Span 111 sits immediately under [0015] and draws what [0015] states; span 115 sits immediately under [0016] and draws what [0016] states; spans 128, 130 and 132 are the three arrows of one drawing printed immediately under the enumerated list (i) to (iii) of [0017] at lines 122 to 126 and draw those three items in that order. So there is no independent overview scheme here, no arrow whose transformation the prose lacks, no prose transformation the drawing lacks, and no arrow that introduces a reagent, a solvent or a connectivity the prose does not state. Separate scheme records would restate the same three transformations five times and inflate the section from three steps to eight. The Detailed Description of the Invention section took the same decision on the same grounds for its eight spans, so the two sections are counted on one basis. A0 also set estimated_steps to 3 here and prompt rule 4 is satisfied without a disagreement. THIS SECTION RESTATES CHEMISTRY OTHER SECTIONS ALSO RECORD, BY DESIGN. The same three transformations are recorded in the Detailed Description of the Invention and are recited again in the Claims. A0's audit note for this section says why: an earlier map set contains_procedure false here to avoid counting the invention's route three times, and the reference run runs/CN104292137A counts per section instead, measuring recall against each section's own estimated_steps. These records are therefore expected restatements and not duplicates to be deduped away. What differs between the two sections is the CONTENT, not the transformations: the Detailed Description names the oxidant alternatives, the carbodiimide, the bases, the solvents and one reflux, and this section names none of them. NO CONDITION AND NO QUANTITY ANYWHERE IN THIS SECTION, and that is the finding, not an omission. Across lines 107 to 135 there is no mass, no volume, no mole, no equivalent, no molar ratio, no temperature, no time, no pressure, no atmosphere, no pH, no concentration, no reactor and no yield or purity figure, not even a specification floor of the kind [0037] and [0043] print in the Detailed Description. So no_conditions is raised on every record, every conditions field is null, scale is not_specified, and nothing is imported from the Detailed Description, from the Examples or from any scheme. The two step (i) arrows print the only reagent text in the section and it is a class word, not a condition. NMSBC IS NOT ON THIS ROUTE. [0016] names 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) once, and only as the additional step this method does not require. It is absent from compounds[], from reactant_names and from product_name on all three records; A1 carries it for this section with role 'other' for the same reason. Nothing in the five spans draws an acid chloride, which is the structural half of the same evidence. ROUTE ATTRIBUTION IS NOT IN DOUBT, and it was checked rather than assumed. The section is SUMMARY OF THE INVENTION, [0015] to [0017] each say 'there is provided a process' of the present disclosure, and the vision pass marked all five spans in range presented_as 'invention_route': p06 drawings 0 and 1, anchored between [0015]/[0016] and [0016]/[0017], and the three p07 drawings anchored before [0018]. None is marked 'unclear', so rule 5e's unclear case does not arise and route_attribution_unclear is not raised. These are the invention's own schemes, not the prior art of the Background. FORMULA NUMBERS bind consistently in this section: (I) is mesotrione, (II) the enol ester, (III) NMSBA, (IV) NMST. [0017] AND THE PAGE BREAK. [0017] at line 117 ends on a colon and its list continues after the p07 page-break comment at line 120, but the continuation is inside this section: (i), (ii) and (iii) are all in range, at lines 122, 124 and 126, and the list is complete here. Line 126 is printed with no closing full stop and [0018] at line 134 begins a new paragraph, so no list item runs into the next section, whose first line is the DETAILED DESCRIPTION heading at line 136. [0018] is the section's last paragraph and names no compound and no chemistry, so it is transcribed in no procedure_text. The document is English throughout. Each '> EN:' line in this range is byte identical to the source line above it apart from the dropped [00NN] paragraph marker, so no translation conflict is possible and procedure_text quotes the source lines. Lines 107, 122, 124 and 126 are printed with a leading 'None' marker column, which is the enriched file's null marker and not document text, so it is stripped from procedure_text. No printing fault of the run-together kind found elsewhere in this document appears in these six prose lines; the only orthographic variants are the f-spelled toluene against the ph-spelled acid inside one sentence at line 109, and the dione's comma, closed up at line 113 and spaced at line 124."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Summary of the Invention_Step 2",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "ester_formation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "1,3-cyclohexanedione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "enol ester of formula (II)",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulphonyl benzoic acid",
+      "1,3-cyclohexanedione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "enol ester of formula (II)",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "[0016] In another aspect, there is provided a process for preparation of an enol ester of formula (II) by reaction of 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III) with 1,3-cyclohexanedione. The method disclosed herein is extremely advantageous over the methods existing in the art for the preparation of enol ester, in that it does not require the additional step of converting NMSBA to an intermediate of 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC). (ii) reacting NMSBA of formula (III) with 1, 3-cyclohexanedione to produce an enol ester of formula (II); and",
+    "procedure_summary": "2-Nitro-4-methylsulphonyl benzoic acid is reacted directly with 1,3-cyclohexanedione to give the enol ester. The section states the advantage over the existing art as being that the acid need not first be converted to its benzoyl chloride, and names no coupling reagent, no solvent and no conditions.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:esterification",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "workup_type:none",
+      "purification:none",
+      "green_chemistry:step_economy",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "PROSE step (ii) of the invention's three-step route and the inventive contribution, stated twice in this section: [0016] at line 113 states it and states why, and step (ii) of [0017]'s list at line 124 recites it again. Both are transcribed here. NO REAGENT AND NO SOLVENT IS NAMED FOR THIS STEP ANYWHERE IN THIS SECTION. The carbodiimide and the five chlorinated solvents belong to [0037] in the Detailed Description and are deliberately not carried across, so compounds[] holds only the acid, the dione and the product. That is why no solvent_class tag is emitted and why this record's reactant list is shorter than the Detailed Description's record of the same transformation. CLASSIFICATION: an acid plus the enol of a 1,3-diketone giving an enol ester, so ester_formation with high confidence, tagged transformation:esterification. mechanism_type is ionic from the polar acyl transfer the structural change requires; no promoter is named here, so the mechanism is read from the transformation and not from a stated reagent, and the Detailed Description classified the same transformation the same way. named_reaction is null: the Steglich name needs a carbodiimide plus an acyl transfer catalyst and this section names neither, so nothing is stretched to fit under prompt rule 19. green_chemistry:step_economy is tagged from [0016]'s own claim that the method does not require the additional NMSBC step; no solvent recovery figure is printed in this section, so no green_chemistry:solvent_recovery tag is emitted here although the Detailed Description's record of this step carries one. LINKAGE: precursor_step is Step 1 and linkage_confirmed is true, because Step 1's product identifier is character for character a reactant identifier here, and because [0017] enumerates (i) then (ii) with NMSBA passing between them, [0016] naming the same acid by both full name and abbreviation. DRAWING FLAGS ARE EVALUABLE HERE AND NONE OF THE THREE FIRES. This section owns five scheme spans of its own, each adjacent to the paragraph that recites the same transformation, so drawing_text_conflict, reagent_drawn_not_written and reagent_written_not_drawn were all evaluated, paragraph by paragraph against that paragraph's own arrow, and not against the document. For this step the two spans, at lines 115 and 130, are IDENTICAL and BARE: reactants C8H7NO6S and C6H8O2, conditions empty with nothing above and nothing below the arrow, product C14H13NO7S. The connectivity is exactly what [0016] and step (ii) state, so drawing_text_conflict does not fire, and a bare arrow states nothing the prose could contradict. Both reactants and the product are named in the prose, so reagent_drawn_not_written does not fire. reagent_written_not_drawn does not fire either, because this section's prose names no reagent, solvent or catalyst for this step at all: there is nothing written that could be missing from the arrow. The drawing therefore contributes connectivity only, and it is the only thing in the section that fixes which enol ester of formula (II) is meant, since the prose never gives it a chemical name. ONE RECORD PER TRANSFORMATION, NOT PER DRAWING, and this is a deliberate departure from prompt rule 5f that is recorded rather than taken silently. Rule 5f names this exact section type: a Summary of the Invention commonly recites the route in words and then draws it, and it asks for separate 'Scheme Step' records in that case. The case examined here and rejected on the evidence: this section prints five IMAGE_EXTRACT scheme spans, at lines 111, 115, 128, 130 and 132, and they depict only three distinct transformations. Span 111 sits immediately under [0015] and draws what [0015] states; span 115 sits immediately under [0016] and draws what [0016] states; spans 128, 130 and 132 are the three arrows of one drawing printed immediately under the enumerated list (i) to (iii) of [0017] at lines 122 to 126 and draw those three items in that order. So there is no independent overview scheme here, no arrow whose transformation the prose lacks, no prose transformation the drawing lacks, and no arrow that introduces a reagent, a solvent or a connectivity the prose does not state. Separate scheme records would restate the same three transformations five times and inflate the section from three steps to eight. The Detailed Description of the Invention section took the same decision on the same grounds for its eight spans, so the two sections are counted on one basis. A0 also set estimated_steps to 3 here and prompt rule 4 is satisfied without a disagreement. THIS SECTION RESTATES CHEMISTRY OTHER SECTIONS ALSO RECORD, BY DESIGN. The same three transformations are recorded in the Detailed Description of the Invention and are recited again in the Claims. A0's audit note for this section says why: an earlier map set contains_procedure false here to avoid counting the invention's route three times, and the reference run runs/CN104292137A counts per section instead, measuring recall against each section's own estimated_steps. These records are therefore expected restatements and not duplicates to be deduped away. What differs between the two sections is the CONTENT, not the transformations: the Detailed Description names the oxidant alternatives, the carbodiimide, the bases, the solvents and one reflux, and this section names none of them. NO CONDITION AND NO QUANTITY ANYWHERE IN THIS SECTION, and that is the finding, not an omission. Across lines 107 to 135 there is no mass, no volume, no mole, no equivalent, no molar ratio, no temperature, no time, no pressure, no atmosphere, no pH, no concentration, no reactor and no yield or purity figure, not even a specification floor of the kind [0037] and [0043] print in the Detailed Description. So no_conditions is raised on every record, every conditions field is null, scale is not_specified, and nothing is imported from the Detailed Description, from the Examples or from any scheme. The two step (i) arrows print the only reagent text in the section and it is a class word, not a condition. NMSBC IS NOT ON THIS ROUTE. [0016] names 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) once, and only as the additional step this method does not require. It is absent from compounds[], from reactant_names and from product_name on all three records; A1 carries it for this section with role 'other' for the same reason. Nothing in the five spans draws an acid chloride, which is the structural half of the same evidence. ROUTE ATTRIBUTION IS NOT IN DOUBT, and it was checked rather than assumed. The section is SUMMARY OF THE INVENTION, [0015] to [0017] each say 'there is provided a process' of the present disclosure, and the vision pass marked all five spans in range presented_as 'invention_route': p06 drawings 0 and 1, anchored between [0015]/[0016] and [0016]/[0017], and the three p07 drawings anchored before [0018]. None is marked 'unclear', so rule 5e's unclear case does not arise and route_attribution_unclear is not raised. These are the invention's own schemes, not the prior art of the Background. FORMULA NUMBERS bind consistently in this section: (I) is mesotrione, (II) the enol ester, (III) NMSBA, (IV) NMST. [0017] AND THE PAGE BREAK. [0017] at line 117 ends on a colon and its list continues after the p07 page-break comment at line 120, but the continuation is inside this section: (i), (ii) and (iii) are all in range, at lines 122, 124 and 126, and the list is complete here. Line 126 is printed with no closing full stop and [0018] at line 134 begins a new paragraph, so no list item runs into the next section, whose first line is the DETAILED DESCRIPTION heading at line 136. [0018] is the section's last paragraph and names no compound and no chemistry, so it is transcribed in no procedure_text. The document is English throughout. Each '> EN:' line in this range is byte identical to the source line above it apart from the dropped [00NN] paragraph marker, so no translation conflict is possible and procedure_text quotes the source lines. Lines 107, 122, 124 and 126 are printed with a leading 'None' marker column, which is the enriched file's null marker and not document text, so it is stripped from procedure_text. No printing fault of the run-together kind found elsewhere in this document appears in these six prose lines; the only orthographic variants are the f-spelled toluene against the ph-spelled acid inside one sentence at line 109, and the dione's comma, closed up at line 113 and spaced at line 124."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Summary of the Invention_Step 3",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 3,
+    "step_label": "Step 3",
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "enol ester of formula (II)",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "mesotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "enol ester of formula (II)"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "mesotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "[0017] In yet another aspect, there is provided a process for preparation of mesotrione of formula (I), which can include the steps of: (iii) converting the enol ester of formula (II) to mesotrione of formula (I)",
+    "procedure_summary": "The enol ester is converted to mesotrione, the last item of the route the section recites and the target of the disclosed process. No reagent, base, solvent, method or condition is given for the conversion.",
+    "precursor_step": "Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:acylation",
+      "transformation:rearrangement",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "workup_type:none",
+      "purification:none",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "PROSE step (iii) of the invention's three-step route and the last transformation of the section. [0017] at line 117 heads the list and step (iii) at line 126 states the step; both are transcribed here, on the rule the Detailed Description records, that an enumeration header goes with the final step of the enumeration it heads. Steps (i) and (ii) of the same list are transcribed in Step 1 and Step 2 of this file. Unlike [0015] and [0016], which each state their transformation twice, this transformation is stated once in prose in this section. NO REAGENT AT ALL IS NAMED, and the prose gives no method: step (iii) says only 'converting the enol ester of formula (II) to mesotrione of formula (I)'. Sodium cyanide, the seven organic bases and the five solvents belong to [0043] in the Detailed Description and are not carried across, so compounds[] holds only the enol ester and mesotrione. Consequently no safety:cyanide_handling tag and no catalyst_class:base tag is emitted here, although the Detailed Description's record of the same transformation carries both; and safety_notes is empty because the section makes no safety statement. CLASSIFICATION: the transformation is an isomerisation. The span at line 132 draws reactant and product with the same molecular formula, C14H13NO7S, and different InChIKeys, NGSRUCJZGJEESC and KPUREKXXPHOJQT, verified with RDKit from the span SMILES: the enol ester's aryl carboxylate migrates from the enol oxygen to the ring carbon to give the 2-aroyl-1,3-dione. The closed list in prompt rule 17 has no rearrangement value, so reaction_class is acylation for the C-acylation that results, with confidence medium because of that list fit and not because the chemistry is unclear, and both transformation:acylation and transformation:rearrangement are tagged. This is the same call the Detailed Description made on the same transformation, and the reference run classified the analogous enol ester to tembotrione step the same way. mechanism_type is ionic from the acyl migration itself, since this section names no promoter. named_reaction is null; calling it a Fries-type rearrangement would be a stretch under prompt rule 19. LINKAGE: precursor_step is Step 2 and linkage_confirmed is true, because Step 2's product identifier is character for character this step's reactant identifier and because [0017] enumerates (ii) then (iii) with the enol ester passing between them. DRAWING FLAGS ARE EVALUABLE HERE AND NONE OF THE THREE FIRES. This section owns five scheme spans of its own, each adjacent to the paragraph that recites the same transformation, so drawing_text_conflict, reagent_drawn_not_written and reagent_written_not_drawn were all evaluated, paragraph by paragraph against that paragraph's own arrow, and not against the document. For this step the one span, at line 132, is BARE: reactant C14H13NO7S, conditions empty, product C14H13NO7S. It is the third arrow of the drawing under [0017]'s list and it is the ONLY place in this section where mesotrione, formula (I), is drawn, so it is the only structural evidence for the product of the route. The connectivity is what step (iii) says, so drawing_text_conflict does not fire; both structures are named in the prose, so reagent_drawn_not_written does not fire; and the prose names no reagent for this step, so there is nothing written that could be missing from the arrow and reagent_written_not_drawn does not fire either. SEQUENCE: this section says nothing about isolating or not isolating the intermediates. The 'one and the same reaction vessel' statements are [0040] and [0041] in the Detailed Description, outside this section, so is_one_pot is false on all three records here through the section's silence, and one_pot_steps is empty. ONE RECORD PER TRANSFORMATION, NOT PER DRAWING, and this is a deliberate departure from prompt rule 5f that is recorded rather than taken silently. Rule 5f names this exact section type: a Summary of the Invention commonly recites the route in words and then draws it, and it asks for separate 'Scheme Step' records in that case. The case examined here and rejected on the evidence: this section prints five IMAGE_EXTRACT scheme spans, at lines 111, 115, 128, 130 and 132, and they depict only three distinct transformations. Span 111 sits immediately under [0015] and draws what [0015] states; span 115 sits immediately under [0016] and draws what [0016] states; spans 128, 130 and 132 are the three arrows of one drawing printed immediately under the enumerated list (i) to (iii) of [0017] at lines 122 to 126 and draw those three items in that order. So there is no independent overview scheme here, no arrow whose transformation the prose lacks, no prose transformation the drawing lacks, and no arrow that introduces a reagent, a solvent or a connectivity the prose does not state. Separate scheme records would restate the same three transformations five times and inflate the section from three steps to eight. The Detailed Description of the Invention section took the same decision on the same grounds for its eight spans, so the two sections are counted on one basis. A0 also set estimated_steps to 3 here and prompt rule 4 is satisfied without a disagreement. THIS SECTION RESTATES CHEMISTRY OTHER SECTIONS ALSO RECORD, BY DESIGN. The same three transformations are recorded in the Detailed Description of the Invention and are recited again in the Claims. A0's audit note for this section says why: an earlier map set contains_procedure false here to avoid counting the invention's route three times, and the reference run runs/CN104292137A counts per section instead, measuring recall against each section's own estimated_steps. These records are therefore expected restatements and not duplicates to be deduped away. What differs between the two sections is the CONTENT, not the transformations: the Detailed Description names the oxidant alternatives, the carbodiimide, the bases, the solvents and one reflux, and this section names none of them. NO CONDITION AND NO QUANTITY ANYWHERE IN THIS SECTION, and that is the finding, not an omission. Across lines 107 to 135 there is no mass, no volume, no mole, no equivalent, no molar ratio, no temperature, no time, no pressure, no atmosphere, no pH, no concentration, no reactor and no yield or purity figure, not even a specification floor of the kind [0037] and [0043] print in the Detailed Description. So no_conditions is raised on every record, every conditions field is null, scale is not_specified, and nothing is imported from the Detailed Description, from the Examples or from any scheme. The two step (i) arrows print the only reagent text in the section and it is a class word, not a condition. NMSBC IS NOT ON THIS ROUTE. [0016] names 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) once, and only as the additional step this method does not require. It is absent from compounds[], from reactant_names and from product_name on all three records; A1 carries it for this section with role 'other' for the same reason. Nothing in the five spans draws an acid chloride, which is the structural half of the same evidence. ROUTE ATTRIBUTION IS NOT IN DOUBT, and it was checked rather than assumed. The section is SUMMARY OF THE INVENTION, [0015] to [0017] each say 'there is provided a process' of the present disclosure, and the vision pass marked all five spans in range presented_as 'invention_route': p06 drawings 0 and 1, anchored between [0015]/[0016] and [0016]/[0017], and the three p07 drawings anchored before [0018]. None is marked 'unclear', so rule 5e's unclear case does not arise and route_attribution_unclear is not raised. These are the invention's own schemes, not the prior art of the Background. FORMULA NUMBERS bind consistently in this section: (I) is mesotrione, (II) the enol ester, (III) NMSBA, (IV) NMST. [0017] AND THE PAGE BREAK. [0017] at line 117 ends on a colon and its list continues after the p07 page-break comment at line 120, but the continuation is inside this section: (i), (ii) and (iii) are all in range, at lines 122, 124 and 126, and the list is complete here. Line 126 is printed with no closing full stop and [0018] at line 134 begins a new paragraph, so no list item runs into the next section, whose first line is the DETAILED DESCRIPTION heading at line 136. [0018] is the section's last paragraph and names no compound and no chemistry, so it is transcribed in no procedure_text. The document is English throughout. Each '> EN:' line in this range is byte identical to the source line above it apart from the dropped [00NN] paragraph marker, so no translation conflict is possible and procedure_text quotes the source lines. Lines 107, 122, 124 and 126 are printed with a leading 'None' marker column, which is the enriched file's null marker and not document text, so it is stripped from procedure_text. No printing fault of the run-together kind found elsewhere in this document appears in these six prose lines; the only orthographic variants are the f-spelled toluene against the ph-spelled acid inside one sentence at line 109, and the dione's comma, closed up at line 113 and spaced at line 124."
+  }
+]

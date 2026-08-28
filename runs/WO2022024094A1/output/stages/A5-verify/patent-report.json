@@ -1,0 +1,209 @@
+{
+  "artifact": "patent",
+  "status": "complete",
+  "records_audited": 1,
+  "findings": [
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "WO2022024094A1",
+      "field": "extraction_rollup.chemistry_focus",
+      "problem": "chemistry_focus names halogenation as one of this patent's five chemistry classes, but the only halogenation reaction annotated for this document is a prior-art step recited in the background, the very step the invention's stated contribution consists of avoiding.",
+      "source_line": 64,
+      "quote": "[005] The United States Patent No. 7,820,863 describes a process for preparation of mesotrione. In this patent reference, mesotrione is prepared by (i) oxidation of 2-nitro-4-methylsulphonyl toluene (NMST) to give 2-nitro-4-methylsulphonyl benzoic acid (NMSBA), (ii) conversion of NMSBA to 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC)",
+      "artifact_says": "\"chemistry_focus\": [\"oxidation\", \"ester_formation\", \"acylation\", \"halogenation\", \"other\"]",
+      "should_be": "Exclude section_type 'background' from the reaction_class counter in pipeline/finalise.py rollup(), as is already done for best_overall_yield_pct and key_starting_materials, giving [\"oxidation\", \"ester_formation\", \"acylation\"]. Counts verified: reaction_class over all 24 reactions is oxidation 11, ester_formation 7, acylation 4, halogenation 1, other 1; over the 16 non-background reactions it is oxidation 6, ester_formation 6, acylation 4. The single halogenation reaction is reaction_id 'Background of the Invention_Step 2'.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "WO2022024094A1",
+      "field": "extraction_rollup.chemistry_focus",
+      "problem": "The fifth chemistry_focus value, 'other', is likewise contributed by exactly one background reaction, the enol-ester-to-mesotrione rearrangement of US 7,820,863, so it characterises the cited reference rather than this document.",
+      "source_line": 64,
+      "quote": "(iii) reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester followed by a rearrangement process to give mesotrione, as shown in the following reaction scheme:",
+      "artifact_says": "\"other\" present in chemistry_focus",
+      "should_be": "Drop with the same fix as the finding above. The sole 'other'-classed reaction is reaction_id 'Background of the Invention_Step 4'.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "WO2022024094A1",
+      "field": "novelty_claims",
+      "problem": "novelty_claims puts quotation marks round 'using sodium hypochlorite in presence of ruthenium oxide' and attributes it to claims 5 and 6, but that wording is printed in claim 2; claim 5 says 'an oxidant' and claim 6 says only 'wherein the oxidant is sodium hypochlorite'.",
+      "source_line": 350,
+      "quote": "2. The process for preparation of mesotrione as claimed in claim 1, wherein the NMST of formula (IV) is oxidized using sodium hypochloritein presence of ruthenium oxide.",
+      "artifact_says": "alongside it stands the oxidation of claims 5 and 6, NMST oxidised \"using sodium hypochlorite in presence of ruthenium oxide\"",
+      "should_be": "Either cite claim 2 for the quoted phrase, or paraphrase claims 5 and 6 without quotation marks, e.g. 'claim 5 oxidises NMST with an oxidant in presence of ruthenium oxide and claim 6 fixes the oxidant as sodium hypochlorite'. The string is not verbatim in claim 5, claim 6, or even claim 2, which prints 'hypochloritein' with no space.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "WO2022024094A1",
+      "field": "patent_summary",
+      "problem": "patent_summary states the final step uses 'an organic base, preferably triethylamine', which narrows the disclosure: [0043] offers organic and inorganic base, prefers an organic base, and only more preferably triethylamine, while claim 4 requires no more than 'a base'.",
+      "source_line": 245,
+      "quote": "[0043] In one preferred embodiment, the enol ester of formula (II) can be converted into mesotrione by reacting the enol ester of formula (II) with sodium cyanide in presence of a base and a solvent. ... The base that can be used for this purpose includes organic and inorganic base. Preferably, the base may be an organic base such as triethylamine, N,N-diisopropylethylamine (DIPEA), N,N-diisopropylamine, ethanolamine, diethanolamine, triethanolamine or N-methylglucamine. More preferably, the base can be triethylamine.",
+      "artifact_says": "conversion of that enol ester to mesotrione with sodium cyanide in the presence of an organic base, preferably triethylamine, and a solvent",
+      "should_be": "'in the presence of a base, preferably an organic base and more preferably triethylamine, and a solvent'",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "WO2022024094A1",
+      "field": "novelty_claims",
+      "problem": "novelty_claims quotes all three of the background's objections but answers only two: the objection to 'isolation and purification of intermediates at each step' is quoted and then left unanswered, although [0040] and [0041] state the answer to it.",
+      "source_line": 241,
+      "quote": "[0041] In some embodiments, all the reaction steps of the process for producing the final product mesotrione of formula (I) from the starting material NMST of formula (IV) may be conducted in one and the same reaction vessel without isolation of the intermediates of formula (III) and (II) and without difficulty",
+      "artifact_says": "The background at [0010] objects that the known routes \"involve tedious procedures, e.g. a relatively greater number of steps, which includes conversion of NMSBA to NMSBC, as well as isolation and purification of intermediates at each step\"",
+      "should_be": "Add one clause noting that against the isolation objection the document offers [0040] and [0041]: the intermediates 'may each be isolated if desired' or the sequence carried on without isolating them, in one and the same reaction vessel. The fact is present in patent_summary but the A4 rule for novelty_claims asks that stated objections be answered there.",
+      "confidence": "medium"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "WO2022024094A1",
+      "field": "extraction_rollup.best_overall_yield_pct",
+      "problem": "best_overall_yield_pct reports 85.0, which is the single-step yield of Example 7 (enol ester to mesotrione), presented under a field name a reader will take as the yield of the disclosed route; the document prints no end-to-end figure, and the three-step route as exemplified would be near 0.70 x 0.68 x 0.85, about 40%.",
+      "source_line": 331,
+      "quote": "HPLC purity >95%; Yield: 17g (85%); Melting point of the solid was 155-157°C;and solvent recovery: > 85%.",
+      "artifact_says": "\"best_overall_yield_pct\": 85.0, \"best_overall_yield_pathway_uuid\": \"3b25de20-7374-51bc-bb73-320bdb7109b8\"",
+      "should_be": "The value is correct as computed (the max over pathways, and pathway 3b25de20 is Example 7 whose overall_yield_pct is 85.0), so the defect is upstream: every yield-bearing pathway in pathways.json spans a single example, and the one multi-step pathway covering NMST to mesotrione (a213ad3c) carries overall_yield_pct null. Either that pathway carries a computed cumulative yield with a validation flag, or the field wants a note that no end-to-end yield is disclosed. Do not change 85.0 by hand.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "WO2022024094A1",
+      "field": "parties.examiners",
+      "problem": "parties.examiners is null although the document, published with its international search report under Art. 21(3), prints a named authorized officer of the ISA on p22.",
+      "source_line": 401,
+      "quote": "Name and mailing address of the ISA/ Indian Patent Office Plot No.32, Sector 14,Dwarka,New Delhi-110075 Facsimile No. | Authorized officer Sayantan Dasgupta Telephone No. +91-1125300200",
+      "artifact_says": "\"examiners\": null",
+      "should_be": "Either populate examiners with 'Sayantan Dasgupta' (ISA/IN authorized officer), or record in the run notes that the field is reserved for national-office examiners and that a PCT authorized officer is deliberately not one. Note that finalise.py hard-codes \"examiners\": None with no biblio channel, so this cannot be fixed from the biblio file alone, and the reference run CN104292137A carries the same null; it is a pipeline gap, not a regression in this run.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "WO2022024094A1",
+      "field": "tags",
+      "problem": "No legal_status tag is present although bibliographic.legal_status is 'Ceased', and A4 rule 4 asserts that patent_type and legal_status are metadata-derived tag categories that finalise.py unions in; finalise.py unions in only jurisdiction, patent_family, time_period, assignee and assignee_type.",
+      "source_line": 0,
+      "quote": "(no source line: this is a prompt-to-code disagreement, not a source-text claim)",
+      "artifact_says": "tags carry jurisdiction:wo, patent_family:80036183, time_period:2022, assignee:rallis_india_limited, assignee_type:multinational_corp and no legal_status: or patent_type: tag",
+      "should_be": "Either add f\"legal_status:{tag_slug(b['legal_status'])}\" to the metadata union in finalise.py, or delete the patent_type and legal_status mention from A4 rule 4. Pre-existing and pipeline-wide: the reference run CN104292137A has legal_status 'Expired - Fee Related (terminated 2018-10-15)' and likewise no legal_status tag, so this is not a defect this run introduced.",
+      "confidence": "low"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "WO2022024094A1",
+      "field": "tags",
+      "problem": "claim_type:intermediate is emitted, but all ten printed claims are process claims; none is directed to an intermediate as a compound in its own right.",
+      "source_line": 367,
+      "quote": "7. A process for preparation of an enol ester of formula (II) by reaction of 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III) with 1,3-cyclohexanedione.",
+      "artifact_says": "\"claim_type:process\", \"claim_type:intermediate\"",
+      "should_be": "Defensible either way and hedged accordingly: claims 5, 7 and 10 are directed to preparing the intermediates and the title reads 'AND ITS INTERMEDIATES', which supports the tag; but read strictly as a claim type, no claim covers a composition of matter. What would settle it is the closed list's intent, which the A4 prompt does not gloss. If it means 'a claim to an intermediate compound', drop the tag.",
+      "confidence": "low"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "WO2022024094A1",
+      "field": "abstract",
+      "problem": "The abstract is correct and verbatim, but it reaches the record through the hand-authored biblio key 'abstract_zh', which holds English prose on a document whose language is 'en' and whose title_zh is null; finalise.py reads abstract only from abstract_zh, so on a patent with both a Chinese and an English abstract this single channel would silently carry whichever the annotator typed.",
+      "source_line": 40,
+      "quote": "(57) Abstract: The present disclosure provides a new and improved process for preparation of intermediate compounds and synthesis of mesotrione therefrom. The present disclosure provides an economical, efficient and eco-friendly process for preparation of mesotrione.",
+      "artifact_says": "abstract matches the front page character for character; input biblio stores it under \"abstract_zh\"",
+      "should_be": "Rename the biblio key to something language-neutral (or add abstract_en and have finalise.py prefer it by language) so an English abstract is not filed under a _zh key. No change to the emitted value, which is right.",
+      "confidence": "medium"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "fidelity - bibliographic dates against the printed front page",
+      "what_was_verified": "Read input/pages/p01.png directly rather than trusting either JSON. (43) prints 'International Publication Date 03 February 2022 (03.02.2022)' = publication_date 2022-02-03; (22) prints 'International Filing Date: 31 July 2021 (31.07.2021)' = filing_date 2021-07-31; (30) prints 'Priority Data: 202021032977 31 July 2020 (31.07.2020) IN' = priority_date 2020-07-31. All three agree with patent.json and with the hand-authored biblio. grant_date null is correct: this is an unexamined A1 international publication and no grant is printed."
+    },
+    {
+      "check": "fidelity - classification",
+      "what_was_verified": "(51) on p01 prints exactly one classification, 'C07C 315/06 (2006.01)'. ipc_codes is [\"C07C 315/06\"], a single entry, matching. The ISR on p22 independently prints 'C07C315/06 Version=2021.01', the same symbol, so nothing was dropped from a second classification. cpc_codes null is structural: finalise.py hard-codes it to None and the reference run carries null too; no CPC symbol is printed anywhere in the document."
+    },
+    {
+      "check": "fidelity - parties against the front page",
+      "what_was_verified": "(71) prints 'RALLIS INDIA LIMITED [IN/IN]', Mumbai, Maharashtra: one assignee, country IN, both as recorded. (72) prints three inventors and only three: 'PANIRAJ, A.S.', 'KUMAR. D, Suresh', 'S.V.R, Adithya', all with Indian addresses. The record's natural-order renderings 'A.S. Paniraj', 'Suresh Kumar D' and 'Adithya S.V.R' each invert exactly one printed comma and invent no name part. The stop after KUMAR is genuinely printed on the page; the biblio note describing it is accurate and not a transcription slip."
+    },
+    {
+      "check": "fidelity - title, abstract, language",
+      "what_was_verified": "(54) prints 'PROCESS FOR PREPARATION OF MESOTRIONE AND ITS INTERMEDIATES'; the record's sentence case is a typographic convention, not a content change. (57) matches the record's abstract character for character including 'therefrom' as one word. (25) and (26) both print English, so language 'en' is right, and jurisdiction 'wo' matches the (10) publication number WO 2022/024094 A1."
+    },
+    {
+      "check": "precision - claim count and structure",
+      "what_was_verified": "Read the claims through to the end on p21.png: the last claim printed is 10, on page 20 of the description-and-claims sequence, immediately before the ISR at p22, so nothing was lost at a page break. Independent claims are 1, 5, 7 and 10; dependents are 2-4 on 1, 6 on 5, 8 on 7 and 9 on 8. patent_summary's assertion that separate independent claims cover the oxidation, the coupling, and the two-step NMST-to-enol-ester route is exactly claims 5, 7 and 10."
+    },
+    {
+      "check": "precision - figures presented as measured results",
+      "what_was_verified": "This was the defect class most likely to be present and it genuinely held. novelty_claims labels the three coupling figures correctly as 'specification minima': [0037] prints 'in high yields, e.g. at least 65%, with a purity of at least 85%' and 'solvent recovery of >85%', all three as embodiments of what the process can produce, not as measurements, and the artifact says so in those words. The one measured figure it carries, best_overall_yield_pct 85.0, traces to Example 7's printed 'Yield: 17g (85%)'. No specification limit is anywhere reported as a result."
+    },
+    {
+      "check": "precision - novelty not claimed over material the document credits to a reference",
+      "what_was_verified": "The third step is the trap here: [0042] says 'the conversion of the enol ester of formula (II) to mesotrione can be achieved by any method known in the art', and [005] shows US 7,820,863 performing that same rearrangement. novelty_claims does not assert it as new; it positions only the direct NMSBA/1,3-cyclohexanedione coupling of claim 7 and the RuO2 oxidation of claims 5-6, neither of which the document attributes to any citation. Correspondingly the novelty tags do not include improved_yield or improved_purity, which is consistent with novelty_claims' own statement that no comparative data is printed - and that statement is true: Examples 1-7 contain no comparison against any cited process."
+    },
+    {
+      "check": "fidelity - every quotation in novelty_claims re-read against its cited paragraph",
+      "what_was_verified": "Nine of ten quotations are verbatim at the paragraph cited: the two [0010] objections at line 92, claim 7 at line 367, the [0036] 'does not require the additional step of converting NMSBA to an intermediate of 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC)' at line 198, the abstract phrase, and the three [0037] figures at line 209. The [0033] paraphrase is accurate: 'it can be filtered off and reused ... in another cycle'. The characterisation of the four cited oxidations is accurate one by one: US 5,591,890 cobalt(II) acetate tetrahydrate with acetic acid and acetate [006]; US5424481 vanadium pentoxide with sulfuric and nitric acid [007]; CN105669504A the same [008]; CN106565561A vanadium pentoxide with nitric acid [009]. Only the claims 5-and-6 attribution failed, reported above."
+    },
+    {
+      "check": "arithmetic - extraction_rollup recomputed from the three artifacts",
+      "what_was_verified": "Recomputed every rollup number independently. reaction_count 24 = len(reactions.json); compound_count 43 = len(compounds.json); pathway_count 16 = len(pathways.json). section_summary sums to 24 and matches a Counter over section_type: background 8, claims 3, summary_of_invention 6 (Summary 3 plus Detailed Description 3, both typed summary_of_invention in 00-sections.json), experimental_intermediate 6 (Examples 1-6), experimental_example 1 (Example 7). scale_distribution not_specified 17 plus lab 7 = 24. best_overall_yield_pathway_uuid 3b25de20 is Example 7's pathway and its overall_yield_pct is 85.0, so the pointer and the value agree. The background count of 8 also matches the source: four transformations from US 7,820,863 in [005] plus one oxidation each from [006] to [009]."
+    },
+    {
+      "check": "precision - prior-art exclusion where the pipeline does apply it",
+      "what_was_verified": "The two rollup fields that do carry the background exclusion carry it correctly. key_starting_materials lists only NMST and 1,3-cyclohexanedione; the compound record 'cyclohexanedione' is tagged compound_class:starting_material but has section_type background, and it is correctly absent. target_compounds are mesotrione, NMSBA and the enol ester, all three from records whose section_type is summary_of_invention, so none is a background product even though that field has no exclusion filter. best_overall_yield_pct draws from a non-background pathway. Only chemistry_focus leaks, which is the major finding above."
+    },
+    {
+      "check": "schema - tags reconstructed byte for byte",
+      "what_was_verified": "Rebuilt the 85-tag list from raw-patent.json plus the finalise.py metadata union plus every compound, reaction and pathway tag, in order: the reconstruction equals patent.json's tags exactly, with no extra and none missing. Every tag matches ^[a-z_]+:[a-z0-9_/.+-]+$ with no case mismatch and no duplicate. The A4 pass itself emitted only the five permitted categories (domain, target_class, claim_type, novelty, process_focus) and no others; the other 26 categories arrive by finalise.py's documented full inheritance from the record-level artifacts, not from the A4 prompt overstepping. hazard:cyanide_handling and safety:cyanide_handling both appear, but they are inherited under two different record-level category names, not an A4 invention."
+    },
+    {
+      "check": "schema - required and forbidden fields",
+      "what_was_verified": "patent_uuid is present and is the uuid5 finalise.py stamps, which the schema expects at patent level; no *_uuid appears where it should not, and no enrichment or vector field is present. No SMILES, formula or molecular weight appears in the patent record: the three target_compounds and two key_starting_materials each carry smiles null, which is what this annotation is permitted to hold. The structural nulls patent_type, cpc_codes, examiners, source_refs.extracted_at and source_refs.extractor_commit_sha are all hard-coded in finalise.py and all present as null in the reference run CN104292137A too, so they are the pipeline's shape rather than this run's omissions."
+    },
+    {
+      "check": "precision - honest_uncertainty_flags and key_examples",
+      "what_was_verified": "key_examples is an empty array and the flag key_examples_not_referenced is set. Checked this against the claims rather than assuming: claims 1 to 10 cite no example label at all, so the empty array is correct and no example was manufactured. This also matches the reference run's pairing of [] with the same flag. Note that A4 rule 7 and rule 3 are written for a Chinese original ('the source text is a machine translation of a Chinese original', 'CN process claims'); this document is English-original, and the pass correctly did not emit patent_summary_truncated_input on the strength of a rule that does not apply."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "Not applicable and confirmed not applicable rather than skipped. (25) Filing Language and (26) Publication Language both print English, the biblio records title_zh null, and every EN: line in the enriched markdown is a copy of the line above it rather than a translation. There is no Chinese anywhere in this document, so there is no Chinese-versus-English divergence to record and no case where the artifact could have followed the wrong one."
+    },
+    {
+      "check": "drawings - front page read directly",
+      "what_was_verified": "The audit of the drawn schemes belongs to the compounds and reactions artifacts, but the two pages this artifact depends on were opened and read at full resolution rather than taken from the enriched markdown: p01.png for every bibliographic claim, and p21.png to confirm claim 10 is the last claim and that its two drawn schemes are the RuO2 oxidation and the NMSBA plus 1,3-cyclohexanedione coupling, consistent with the claim text above them. On p21 both schemes show the sulfone para and the nitro ortho to the changing carbon, matching the claim wording."
+    },
+    {
+      "check": "limits of what the source can settle",
+      "what_was_verified": "Three bibliographic values are not printed anywhere in the 23 pages and cannot be checked against the document at all: family_id 80036183, legal_status 'Ceased', and the absence of cpc_codes. All three rest on the Google Patents retrieval the biblio records as 2026-08-28, and legal_status in particular is a value that will rot silently because the record carries no as-of date (source_refs.extracted_at is null). Stated here so that a reviewer does not read this report as having verified them. The biblio's own legal_status_note is careful about this and says the status was taken from the page rather than inferred, and that the family is not dead."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 19,
+    "present_in_artifact": 10,
+    "missing": [
+      "ISA authorized officer 'Sayantan Dasgupta', p22 line 401 - the only absence for which the record has a field (parties.examiners); reported as a finding",
+      "International application number PCT/IB2021/057013, p01 field (21) - present in the biblio, no slot in PatentRecord.bibliographic",
+      "Priority application number 202021032977, p01 field (30) - only its date and country survive; no slot",
+      "Agent KHURANA & KHURANA, ADVOCATES & IP ATTORNEYS, p01 field (74) - no slot",
+      "Designated states, p01 fields (81) and (84) - no slot",
+      "Filing language and publication language as distinct fields, p01 (25) and (26) - collapsed into language 'en'",
+      "ISR cited documents CN104557639A1, US20160355472A1, CN102584650A and the 10-11-2021 search dates, p22 - no slot",
+      "cpc_codes - null, and no CPC symbol is printed in the document to recover it from",
+      "The (43) publication note that the application as filed contained colour or greyscale - no slot; recorded in the biblio's text_provenance note instead"
+    ]
+  },
+  "recall_basis": "The unit counted is a patent-level fact the document prints on its front page or in its search report: 19 such facts, of which 10 are carried by the record (publication date, publication number via patent_id, IPC symbol, filing date, priority date, language, assignee with country, three inventors with country, title, abstract). Of the 9 absent, 8 have no field in PatentRecord to hold them and are listed for completeness rather than as defects; exactly 1, the authorized officer, has a field that is null. Recall against the schema's own capacity is therefore 10 of 11, about 91%. For the two narrative fields the estimate is separate and softer: patent_summary carries all three disclosed steps, their reagents, their preferred solvent and base, the four independent claims and the one-vessel statement, and I found nothing in the disclosure it omits; novelty_claims carries both positioned contributions, all three background objections, the catalyst-reuse point and the absence of comparative data, and omits one thing, the answer to the isolation objection, which is reported above."
+}

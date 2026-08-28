@@ -1,0 +1,151 @@
+{
+  "page": "p21.png",
+  "page_label": "20",
+  "doc_part": "claims",
+  "header": "WO 2022/024094                    PCT/IB2021/057013",
+  "footer": "",
+  "paragraphs": [
+    {
+      "marker": null,
+      "zh": "9. The process for preparation of an enol ester as claimed in claim 8, wherein the solvent is selected from the group consisting of dichloromethane, 1,2-dichloroethane, dichloropropanes, dichlorobutanes, dichloropentanes,and mixtures thereof.",
+      "en": "9. The process for preparation of an enol ester as claimed in claim 8, wherein the solvent is selected from the group consisting of dichloromethane, 1,2-dichloroethane, dichloropropanes, dichlorobutanes, dichloropentanes,and mixtures thereof.",
+      "notes": "Claim 9. Dependent on claim 8. marker is null because a claim is not a bracketed paragraph; the printed claim number is kept at the start of the text. This entry is NOT a continuation: the page opens with the printed number 9. at the left margin and the claim is complete on this page, ending 'and mixtures thereof.' Printed oddity kept verbatim: 'dichloropentanes,and' has no space after the comma. The task brief warned the first entry might continue from p20; on this page it does not."
+    },
+    {
+      "marker": null,
+      "zh": "10. A process for preparation of an enol ester of formula (II) using 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) as starting material, wherein the process comprises the steps of: (i) oxidizing 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) using an oxidant in presence of ruthenium oxide as a catalyst, to produce 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III); and (ii) reacting NMSBA of formula (III) with 1,3-cyclohexanedione to produce the enol ester of formula (II).",
+      "en": "10. A process for preparation of an enol ester of formula (II) using 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) as starting material, wherein the process comprises the steps of: (i) oxidizing 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) using an oxidant in presence of ruthenium oxide as a catalyst, to produce 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III); and (ii) reacting NMSBA of formula (III) with 1,3-cyclohexanedione to produce the enol ester of formula (II).",
+      "notes": "Claim 10. Independent claim, depends on nothing; it is the LAST claim on the page and the last claim of the patent, so the total claim count is 10. marker is null for the same reason as claim 9. On the page this claim is printed as three text blocks with a reaction scheme drawn between them: the opening wherein clause ending 'the steps of:', then step (i), then the Formula IV to Formula III scheme (drawing 1), then step (ii), then the Formula III plus 1,3-cyclohexanedione to Formula II scheme (drawing 2). The three blocks are joined here with single spaces because the task asks for one claim per entry and rule 3 forbids an interior blank line; the two drawings are recorded separately in drawings[] and their between_markers say where they sit. The two spellings of the moiety appear one line apart and are transcribed exactly as printed: 'methylsulfonyl toluene' with an f (twice) and 'methylsulphonyl benzoic acid' with a ph (once). Nothing on the page is numbered after claim 10; p22 is the search report."
+    }
+  ],
+  "drawings": [
+    {
+      "kind": "scheme",
+      "between_markers": [
+        "claim 10 step (i)",
+        "claim 10 step (ii)"
+      ],
+      "presented_as": "invention_route",
+      "structures": [
+        {
+          "position_in_drawing": "1st, left of the arrow",
+          "core": "benzene",
+          "substituents": [
+            "CH3 at C1",
+            "NO2 at C2",
+            "SO2CH3 at C4"
+          ],
+          "name": "Formula IV; 2-nitro-4-methylsulfonyl toluene (NMST)",
+          "smiles": "Cc1ccc(S(C)(=O)=O)cc1[N+](=O)[O-]",
+          "confidence": "high"
+        },
+        {
+          "position_in_drawing": "2nd, right of the arrow",
+          "core": "benzene",
+          "substituents": [
+            "COOH at C1",
+            "NO2 at C2",
+            "SO2CH3 at C4"
+          ],
+          "name": "Formula III; 2-nitro-4-methylsulphonyl benzoic acid (NMSBA)",
+          "smiles": "OC(=O)c1ccc(S(C)(=O)=O)cc1[N+](=O)[O-]",
+          "confidence": "high"
+        }
+      ],
+      "arrows": [
+        {
+          "from_structure": "1st",
+          "to_structure": "2nd",
+          "reagents_above": [
+            "Oxidant / RuO2"
+          ],
+          "reagents_below": [],
+          "arrow_style": "solid",
+          "confidence": "high"
+        }
+      ],
+      "notes": "Two-structure oxidation scheme printed inside claim 10, between step (i) and step (ii). Printed labels under the structures, without parentheses: 'Formula IV' under the left toluene, 'Formula III' under the right benzoic acid; the prose of the claim writes the same numbers with parentheses, as 'formula (IV)' and 'formula (III)'. Both labels recorded in the name of the structure they sit under. The arrow ink is broken dotted throughout, as brief section 9 predicts for this scan; it is a degraded SOLID line with one solid filled arrowhead at the right, not a dashed arrow. 'Oxidant / RuO2' is the only text on the arrow and it sits ABOVE it; below the arrow there is nothing. Subscript 2 of RuO2 read at 5x magnification. presented_as is invention_route because this is a claim, not a background section."
+    },
+    {
+      "kind": "scheme",
+      "between_markers": [
+        "claim 10 step (ii)",
+        "end of page"
+      ],
+      "presented_as": "invention_route",
+      "structures": [
+        {
+          "position_in_drawing": "1st, left of the plus sign",
+          "core": "benzene",
+          "substituents": [
+            "COOH at C1",
+            "NO2 at C2",
+            "SO2CH3 at C4"
+          ],
+          "name": "Formula III; 2-nitro-4-methylsulphonyl benzoic acid (NMSBA)",
+          "smiles": "OC(=O)c1ccc(S(C)(=O)=O)cc1[N+](=O)[O-]",
+          "confidence": "high"
+        },
+        {
+          "position_in_drawing": "2nd, right of the plus sign and left of the arrow",
+          "core": "cyclohexane-1,3-dione",
+          "substituents": [
+            "C=O at C1",
+            "C=O at C3"
+          ],
+          "name": "1,3-cyclohexanedione",
+          "smiles": "O=C1CC(=O)CCC1",
+          "confidence": "high"
+        },
+        {
+          "position_in_drawing": "3rd, right of the arrow",
+          "core": "benzene ring ester-linked to a cyclohex-2-en-1-one ring",
+          "substituents": [
+            "C(=O)O- ester carbonyl at benzene C1",
+            "NO2 at benzene C2",
+            "SO2CH3 at benzene C4",
+            "ester oxygen bonded to C3 of cyclohex-2-en-1-one, that is to the enol carbon of the ring double bond",
+            "ring ketone C=O at C1 of the cyclohexenone",
+            "C=C between C2 and C3 of the cyclohexenone"
+          ],
+          "name": "Formula II; 3-oxocyclohex-1-en-1-yl 2-nitro-4-(methylsulfonyl)benzoate",
+          "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c([N+](=O)[O-])c1",
+          "confidence": "high"
+        }
+      ],
+      "arrows": [
+        {
+          "from_structure": "1st and 2nd, joined by a printed plus sign",
+          "to_structure": "3rd",
+          "reagents_above": [],
+          "reagents_below": [],
+          "arrow_style": "solid",
+          "confidence": "high"
+        }
+      ],
+      "notes": "Condensation scheme printed inside claim 10, after step (ii), at the foot of the inked area. A printed plus sign joins Formula III and 1,3-cyclohexanedione on the left of a single arrow. Printed labels, without parentheses: 'Formula III' under the benzoic acid and 'Formula II' under the product; the 1,3-cyclohexanedione carries NO printed label at all, so its name comes from the claim text on the same page and not from a label. The arrow carries no text above it and none below it. Its ink is broken like every other stroke on the page; recorded as solid, with a solid filled arrowhead. Product connectivity checked at 5x: the ketone C=O sits on the top vertex of the right-hand ring and the ring C=C sits on the edge between the ester-bearing carbon and the carbon next to that ketone, which makes the ester oxygen the enol oxygen at C3 of cyclohex-2-en-1-one. All four SMILES on this page were parsed with rdkit and give C8H9NO4S for Formula IV, C8H7NO6S for Formula III, C6H8O2 for the dione and C14H13NO7S for Formula II."
+    }
+  ],
+  "discrepancies": [
+    {
+      "what": "Step (ii) of claim 10 is drawn with a completely bare arrow, no solvent and no condensing agent, while claim 9 on the same page speaks of 'the solvent' used in the enol ester process of claim 8.",
+      "drawing_says": "Formula III plus 1,3-cyclohexanedione, arrow with nothing written above or below it, Formula II",
+      "text_says": "step (ii) names only the two reactants and the product, and claim 9 on the same page lists dichloromethane, 1,2-dichloroethane, dichloropropanes, dichlorobutanes and dichloropentanes as the solvent for the process of claim 8"
+    },
+    {
+      "what": "Claim 10 spells the same methylsulfonyl moiety two ways within one claim, transcribed exactly as printed and not unified.",
+      "drawing_says": "the drawings carry no spelt-out name at all, only the labels Formula IV, Formula III and Formula II",
+      "text_says": "'2-nitro-4-methylsulfonyl toluene (NMST)' with an f in the opening clause and again in step (i), and '2-nitro-4-methylsulphonyl benzoic acid (NMSBA)' with a ph in step (i), a line apart"
+    },
+    {
+      "what": "The formula numbers are printed with parentheses in the claim prose and without parentheses in the labels under the drawings.",
+      "drawing_says": "Formula IV, Formula III, Formula II",
+      "text_says": "formula (IV), formula (III), formula (II)"
+    }
+  ],
+  "illegible": [
+    "A single ink speck about 3 pixels wide at roughly x=1252, y=1629 in the 1652 by 2338 image, that is below and to the right of the 'Formula II' label and clear of it. It could be a stray full stop or a scan artefact. Not transcribed into any paragraph.",
+    "Nothing else. All prose on the page was resolved at 2.0x to 2.7x magnification and every drawing at 2.6x to 5x. No character or bond on this page was left unread."
+  ],
+  "page_confidence": "high"
+}

@@ -1,0 +1,1443 @@
+[
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Background of the Invention_Step 1",
+    "section_label": "Background of the Invention",
+    "section_type": "background",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "oxidation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulfonyl toluene",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulfonyl toluene"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-nitro-4-methylsulphonyl benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "The United States Patent No. 7,820,863 describes a process for preparation of mesotrione. In this patent reference, mesotrione is prepared by (i) oxidation of 2-nitro-4-methylsulphonyl toluene (NMST) to give 2-nitro-4-methylsulphonyl benzoic acid (NMSBA), (ii) conversion of NMSBA to 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC), and (iii) reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester followed by a rearrangement process to give mesotrione, as shown in the following reaction scheme:",
+    "procedure_summary": "A cited United States patent oxidises NMST to NMSBA as the first step of its route to mesotrione. Neither the sentence nor the drawn arrow names an oxidant, a solvent or a catalyst.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:oxidation",
+      "mechanism:not_determinable",
+      "scale:not_specified",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "Step (i) of the four-step US 7,820,863 route, the document's own marker for it being '(i)'. COUNTING BASIS: PER CITING DOCUMENT. Eight records, matching A0's estimated_steps of 8. Four transformations from US 7,820,863 (Steps 1 to 4) plus one NMST to NMSBA oxidation each from US 5,591,890 (Step 5), US5424481 (Step 6), CN105669504A (Step 7) and CN106565561A (Step 8). The four oxidations are NOT deduped even though they are the same transformation, because each cited document states its own reagents, catalyst and, in three of the four drawings, its own temperature. Deduping by transformation would give 5 records and would destroy the per-citation reagent detail. Anyone comparing this section against a machine extraction that deduped should expect 5, not 8, and the difference is a counting basis, not a recall miss. PROSE AND DRAWING MERGED, NOT SPLIT. Prompt rule 5f would keep prose steps and overview-scheme arrows as separate records, but that rule guards against assuming a scheme and a neighbouring recitation are the same route. Here the document says they are: line 64 ends 'as shown in the following reaction scheme:' and each of [006] to [009] is followed immediately by the single arrow that draws exactly the sentence above it. So each record merges one prose statement with its own drawn arrow, and 5f's doubling does not apply. Had they been split, this section would carry 16 records. Overview scheme under the BACKGROUND heading, so prompt rule 5d applies: connectivity and reagents but no charge, no yield and, in the prose, no condition. scale is not_specified for that reason and no_conditions is expected on every record of this section. ATTRIBUTION: prior art, not the invention's route. Stated explicitly - the section is headed BACKGROUND OF THE INVENTION and every route is introduced by a named citation. presented_as is not 'unclear' here, so route_attribution_unclear is deliberately NOT raised; raising it on an unambiguous attribution would be a false finding. DRAWING: arrow 1 of the scheme span at line 66, NMST to NMSBA, with an empty conditions list. It AGREES with the prose - same substrate, same product, and both are silent on the oxidant - so no drawing_text_conflict is raised. The prose calls this an 'oxidation' but names nothing that does the oxidising; that is a gap in the citing document's summary of its own prior art, not a reading failure, and it is why mechanism_type is not_determinable rather than catalytic. The two spans at lines 66 and 68 are ONE printed scheme broken by the p03/p04 region; each span restarts its own step_id at 1, so arrow order across the section is 66#1, 66#2, 68#1, 68#2 and that is Steps 1 to 4 here. [0010] criticises these routes as having too many steps and using too much solvent; that is a comparative claim about the set of prior-art routes, so it is not tagged green_chemistry on any single step."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Background of the Invention_Step 2",
+    "section_label": "Background of the Invention",
+    "section_type": "background",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "halogenation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoyl chloride",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulphonyl benzoic acid"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-nitro-4-methylsulphonyl benzoyl chloride",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "The United States Patent No. 7,820,863 describes a process for preparation of mesotrione. In this patent reference, mesotrione is prepared by (i) oxidation of 2-nitro-4-methylsulphonyl toluene (NMST) to give 2-nitro-4-methylsulphonyl benzoic acid (NMSBA), (ii) conversion of NMSBA to 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC), and (iii) reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester followed by a rearrangement process to give mesotrione, as shown in the following reaction scheme:",
+    "procedure_summary": "The same cited route then converts NMSBA to the corresponding acid chloride, NMSBC. No chlorinating agent is named in the prose or on the arrow.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:halogenation",
+      "mechanism:not_determinable",
+      "scale:not_specified",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Step (ii) of the US 7,820,863 route. See Step 1's notes for the full counting basis. THIS IS THE STEP THE INVENTION ELIMINATES: [0010] names 'conversion of NMSBA to NMSBC' as one of the tedious procedures of the art, and NMSBC therefore appears as a real intermediate on a real route only in this Background. reaction_class is halogenation, chosen as the closest member of the closed list for carboxylic acid to acyl chloride conversion; nucleophilic_substitution is the alternative reading and confidence is medium because the list has no acyl-halide-formation class and no reagent is stated to decide the mechanism. DRAWING: arrow 2 of the scheme span at line 66, NMSBA to NMSBC, empty conditions. It AGREES with the prose and adds nothing, so no drawing_text_conflict. linkage_confirmed is true on identifier match plus the document's own enumeration of (i), (ii), (iii) as one route."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Background of the Invention_Step 3",
+    "section_label": "Background of the Invention",
+    "section_type": "background",
+    "step_index": 3,
+    "step_label": "Step 3",
+    "reaction_class": "ester_formation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoyl chloride",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyclohexanedione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "(CH3CH2 )3N",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "enol ester of formula (II)",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulphonyl benzoyl chloride",
+      "cyclohexanedione",
+      "(CH3CH2 )3N"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "enol ester of formula (II)",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "The United States Patent No. 7,820,863 describes a process for preparation of mesotrione. In this patent reference, mesotrione is prepared by (i) oxidation of 2-nitro-4-methylsulphonyl toluene (NMST) to give 2-nitro-4-methylsulphonyl benzoic acid (NMSBA), (ii) conversion of NMSBA to 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC), and (iii) reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester followed by a rearrangement process to give mesotrione, as shown in the following reaction scheme:",
+    "procedure_summary": "NMSBC is acylated with cyclohexanedione to give the enol ester. The drawn arrow supplies a trialkylamine base and an unnamed solvent that the prose does not mention.",
+    "precursor_step": "Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_drawn_not_written",
+      "drawing_text_conflict"
+    ],
+    "tags": [
+      "transformation:esterification",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "First transformation of prose item (iii) of the US 7,820,863 route; see Step 1's notes for the counting basis. reaction_class ester_formation, from the prose's own words 'to form an enol ester'; acylation is the equally defensible alternative since the drawing shows O-acylation of the dione's enol by an acid chloride. DISAGREEMENT 1, reagents: the arrow of the scheme span at line 68 carries '(CH3CH2 )3N' and 'Solvent'. The prose of [005] names NO base and NO solvent for this step. Both readings kept: the drawn base is recorded in compounds[] with role base and flagged reagent_drawn_not_written, and 'Solvent' is deliberately not recorded as a compound because it names none. The identifier is the printed condensed formula, including the space before the closing bracket, because the section never prints the name triethylamine. DISAGREEMENT 2, the locant: the prose prints 'cyclohexanedione' with no locant, which does not say which dione; the drawing draws the 1,3-dione. A1 kept the unlocanted name and left it unresolved, so the identifier here is the unlocanted prose name and the drawn locant is recorded only in this note. Neither disagreement is resolved. BRIEF CORRECTION: the A2 brief's section 5 states that every scheme for steps (ii) and (iii) has a bare arrow and that only step (i) ever carries drawn condition text. That measurement does not hold in this section - this arrow carries two condition labels. The brief was measuring the invention's own schemes; the prior-art scheme at line 68 is a counterexample."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Background of the Invention_Step 4",
+    "section_label": "Background of the Invention",
+    "section_type": "background",
+    "step_index": 4,
+    "step_label": "Step 4",
+    "reaction_class": "other",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "enol ester of formula (II)",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "mesotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "enol ester of formula (II)"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "mesotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "The United States Patent No. 7,820,863 describes a process for preparation of mesotrione. In this patent reference, mesotrione is prepared by (i) oxidation of 2-nitro-4-methylsulphonyl toluene (NMST) to give 2-nitro-4-methylsulphonyl benzoic acid (NMSBA), (ii) conversion of NMSBA to 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC), and (iii) reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester followed by a rearrangement process to give mesotrione, as shown in the following reaction scheme:",
+    "procedure_summary": "The enol ester rearranges to mesotrione, closing the cited four-step prior-art route. No reagent, base or catalyst is named for the rearrangement in either the prose or the drawing.",
+    "precursor_step": "Step 3",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:rearrangement",
+      "mechanism:not_determinable",
+      "scale:not_specified",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Second transformation of prose item (iii) of the US 7,820,863 route; see Step 1's notes for the counting basis. reaction_class is other because the closed list in prompt rule 17 has no rearrangement class, and 'rearrangement process' is exactly what the prose calls it; the transformation tag carries the real content. named_reaction is left null rather than stretched to a Fries-type name the document does not use. ONE-POT READING NOT ASSERTED: prose item (iii) is a single enumerated item covering both this transformation and Step 3, and it states no workup between them, so a one-pot reading is available and is recorded here. It is not asserted, for two reasons: the drawing draws two separate arrows, and this is an overview scheme which states no workup for ANY step, so silence about a workup here is absence of evidence and not evidence of a one-pot. Splitting also keeps the record count on A0's per-citation basis of four for this citation. DRAWING: arrow 2 of the scheme span at line 68, enol ester to mesotrione, empty conditions. It AGREES with the prose, so no drawing_text_conflict. The single-structure span at line 57 independently confirms the mesotrione structure, introduced by [003] with 'has the structural formula given below'; it is not a reaction and gets no record of its own."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Background of the Invention_Step 5",
+    "section_label": "Background of the Invention",
+    "section_type": "background",
+    "step_index": 5,
+    "step_label": "Step 5",
+    "reaction_class": "oxidation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "catalytic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulfonyl toluene",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "acetic acid",
+        "role": "additive",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "Sodium acetate",
+        "role": "additive",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cobalt(II) acetate tetra hydrate",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulfonyl toluene",
+      "acetic acid",
+      "Sodium acetate"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-nitro-4-methylsulphonyl benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "The United States Patent No. 5,591,890 discloses a process for preparation of 2-nitro-4-methylsulfonyl benzoic acid (NMSBA) by oxidation of 2-nitro-4-methylsulfonyl toluene (NMST) in the presence of a cobalt salt as a catalyst. In particular, the oxidation is carried out in the presence of acetic acid and acetate ion and using cobalt(II) acetate tetra hydrate as a catalyst.",
+    "procedure_summary": "A second cited United States patent oxidises NMST to NMSBA over a cobalt acetate catalyst in the presence of acetic acid and acetate. No oxidant is named.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_drawn_not_written",
+      "drawing_text_conflict"
+    ],
+    "tags": [
+      "transformation:oxidation",
+      "mechanism:catalytic",
+      "scale:not_specified",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "The single step cited from US 5,591,890, [006]. See Step 1's notes for the counting basis: this record exists separately from Steps 1, 6, 7 and 8 although all five draw the same NMST to NMSBA arrow, because each names its own reagents. DISAGREEMENT: the arrow of the scheme span at line 75 prints 'Sodium acetate'. The prose of [006] names only 'acetate ion' and never a salt, so the drawing supplies the sodium counter ion. Both readings kept - the drawn salt is in compounds[] as an additive and flagged reagent_drawn_not_written, and the prose's 'acetate ion' is recorded here rather than coined into a compound. Not resolved. The drawing agrees with the prose on acetic acid and on the cobalt catalyst; only the case differs, and A1 holds those as aliases. NO OXIDANT STATED: [006] calls this an oxidation and the arrow carries acid, acetate and catalyst, but nothing in either is an oxidant. Recorded, not filled in. mechanism_type is catalytic because a catalyst is named; the text describes no mechanism. catalyst_class is not tagged: the closed list in prompt rule 26 has no cobalt value, and picking a neighbouring metal to fill the slot would be a fabrication."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Background of the Invention_Step 6",
+    "section_label": "Background of the Invention",
+    "section_type": "background",
+    "step_index": 6,
+    "step_label": "Step 6",
+    "reaction_class": "oxidation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "catalytic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulfonyl toluene",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sulfuric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "nitric acid",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "vanadium pentoxide",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulfonyl toluene",
+      "sulfuric acid",
+      "nitric acid"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-nitro-4-methylsulphonyl benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "The U.S. patent, US5424481 describes a process for preparation of methyl sulfonyl benzoic acids comprising oxidizing the corresponding methylsulfonyl toluenes with nitric acid and sulfuric acid in the presence of vanadium or cobalt compounds. In particular, oxidation of 2-nitro-4-methylsulphonyl toluene (NMST) is carried out in the presence of sulfuric acid and nitric acid using vanadium pentoxide as a catalyst to obtain 2-nitro-4-methylsulfonyl benzoic acid (NMSBA).",
+    "procedure_summary": "A third cited United States patent oxidises NMST to NMSBA with nitric and sulfuric acid over a vanadium pentoxide catalyst. The drawn arrow adds a temperature the prose never states and shows only the vanadium option of the two the prose allows.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "drawing_text_conflict",
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:oxidation",
+      "mechanism:catalytic",
+      "scale:not_specified",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "The single step cited from US5424481, [007]. See Step 1's notes for the counting basis. DISAGREEMENT 1, temperature: the arrow of the scheme span at line 79 prints '145 degree-C'. No prose anywhere in lines 51 to 97 states a temperature for any of these five routes. Per prompt rule 5c the structured field carries the prose reading, so conditions.temperature stays not_specified, and the drawn 145 degree-C is recorded here. Both readings are on the record and neither is resolved; a consumer that wants the drawn number must read this note, which is the intended behaviour and not a loss. DISAGREEMENT 2, catalyst option dropped: [007]'s general sentence permits 'vanadium or cobalt compounds' and the drawing prints only Vanadium Pentoxide, dropping the cobalt option. Flagged reagent_written_not_drawn. Stated precisely, because the imprecise version overstates it: the drawing agrees exactly with [007]'s second, 'In particular', sentence, which names vanadium pentoxide alone; the cobalt option appears only in the first sentence, which describes the citation's whole substrate class of methyl sulfonyl benzoic acids rather than this specific NMST oxidation. No cobalt compound is added to compounds[] because 'cobalt compounds' names none. Because temperature is the only condition either source offers and the structured field carries the prose, every conditions field ends null and no_conditions still fires. catalyst_class is not tagged: the closed list has no vanadium value. Sulfuric acid keeps A1's role of acid, not oxidant: [007] names both acids together as what does the oxidising and nothing says which."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Background of the Invention_Step 7",
+    "section_label": "Background of the Invention",
+    "section_type": "background",
+    "step_index": 7,
+    "step_label": "Step 7",
+    "reaction_class": "oxidation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "catalytic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulfonyl toluene",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sulfuric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "nitric acid",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "O2",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "vanadium pentoxide",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulfonyl toluene",
+      "sulfuric acid",
+      "nitric acid",
+      "O2"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-nitro-4-methylsulphonyl benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "The Chinese patent application, CN105669504A discloses a process for the preparation of 2-nitro-4-methylsulfonylbenzoic acid (NMSBA) by oxidation of 2-nitro-4-methylsulfonyltoluene (NMST). Specifically, the oxidation of NMST is carried out in presence of sulphuric acid and nitric acid using vanadium pentoxide as a catalyst.",
+    "procedure_summary": "A cited Chinese application oxidises NMST to NMSBA with sulphuric and nitric acid over vanadium pentoxide. The drawn arrow also carries molecular oxygen and a temperature range that the prose omits.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_drawn_not_written",
+      "drawing_text_conflict"
+    ],
+    "tags": [
+      "transformation:oxidation",
+      "mechanism:catalytic",
+      "scale:not_specified",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "The single step cited from CN105669504A, [008]. See Step 1's notes for the counting basis. DISAGREEMENT 1, an extra oxidant: the arrow of the scheme span at line 83 prints 'Nitric acid/O2'. The prose of [008] names only sulphuric acid, nitric acid and vanadium pentoxide and mentions no oxygen, and the parallel arrows at lines 79 and 90 carry no O2 either. Both readings kept: O2 is recorded in compounds[] as an oxidant, exactly as the formula is printed, and flagged reagent_drawn_not_written. Not resolved. This is the clearest case in the section of something a text-only extractor cannot see. DISAGREEMENT 2, temperature: the same arrow prints '140-150 degree-C' and the prose states no temperature. conditions.temperature stays not_specified per prompt rule 5c and the drawn range is recorded here. Not resolved, which is also why no_conditions still fires. catalyst_class is not tagged: the closed list has no vanadium value."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Background of the Invention_Step 8",
+    "section_label": "Background of the Invention",
+    "section_type": "background",
+    "step_index": 8,
+    "step_label": "Step 8",
+    "reaction_class": "oxidation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "catalytic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulfonyl toluene",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "nitric acid",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "vanadium pentoxide",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulfonyl toluene",
+      "nitric acid"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-nitro-4-methylsulphonyl benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "The Chinese patent application, CN106565561A discloses a process for the preparation of 2-nitro-4-methylsulfonylbenzoyl benzoyl chloride. In the process of preparing 2-nitro-4-methylsulfonylbenzoyl benzoyl chloride, a step of oxidation of 2-nitro-4-methylsulfonyltoluene (NMST) is carried out in presence of nitric acid using vanadium pentoxide as a catalyst to obtain 2-nitro-4-methylsulfonylbenzoic acid (NMSBA).",
+    "procedure_summary": "A second cited Chinese application oxidises NMST to NMSBA with nitric acid alone over vanadium pentoxide, as one step of its own route to the benzoyl chloride. The drawn arrow adds a temperature range the prose never states.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "drawing_text_conflict"
+    ],
+    "tags": [
+      "transformation:oxidation",
+      "mechanism:catalytic",
+      "scale:not_specified",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "The single step cited from CN106565561A, [009]. See Step 1's notes for the counting basis. Note what is cited: CN106565561A's own target is the benzoyl chloride, and [009] cites only the NMST oxidation step inside that process. Its acid chloride step is NOT described, so no record is emitted for it and none is inferred from the target's name; only Step 2 carries NMSBC as a product in this document. DISAGREEMENT, temperature: the arrow of the scheme span at line 90 prints '140-150 degree-C' and the prose states no temperature. conditions.temperature stays not_specified per prompt rule 5c, the drawn range is recorded here, neither reading is resolved, and no_conditions still fires. Otherwise the drawing AGREES with the prose, including the absence of sulphuric acid, which [009] does not name and the arrow does not print - the only one of the four oxidations where that is so, and the reason it is a separate record from Step 7. The arrow prints the catalyst as the formula 'V2O5' where the prose spells the name; A1 holds that as an alias, so it is not a conflict. catalyst_class is not tagged: the closed list has no vanadium value. [009] prints the target compound's name twice as '2-nitro-4-methylsulfonylbenzoyl benzoyl chloride', with 'benzoyl' doubled, which names no compound that can exist; A1 kept that verbatim as an alias and it is not corrected here either."
+  }
+]

@@ -1,0 +1,218 @@
+[
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Example 2_Step 1",
+    "section_label": "Example 2",
+    "section_type": "experimental_intermediate",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "oxidation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "catalytic",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": "round bottomed flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": "reflux",
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "cooled to 25-30°C",
+        "filtered",
+        "filtrate further cooled to 5-10°C",
+        "acidified to pH < 3 with concentrated hydrochloric acid",
+        "product precipitated",
+        "precipitate filtered",
+        "dried at 50°C under reduced pressure"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "filtered twice: the reaction mixture after cooling to 25-30°C, then the precipitated product",
+      "concentration_method": null,
+      "ph_target": 3.0
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulfonyl toluene",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 5.0,
+          "volume_ml": null,
+          "mmol": 23.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the flask at the start, together with the sodium hypochlorite and the ruthenium oxide",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium hypochlorite",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 100.0,
+          "mmol": 149.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the flask at the start, together with the NMST and the ruthenium oxide; charged as a solution, so the text gives a volume and no mass",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ruthenium oxide",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 0.5,
+          "volume_ml": null,
+          "mmol": 4.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the flask at the start, together with the NMST and the sodium hypochlorite",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "concentrated hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 18.0,
+          "mmol": 170.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the filtrate after it was cooled to 5-10°C, to acidify to pH < 3; a work-up reagent, not part of the oxidation charge",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 67.0
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 92.0,
+        "purity_method": "hplc"
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulfonyl toluene",
+      "sodium hypochlorite"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-nitro-4-methylsulphonyl benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 67.0,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 92.0,
+    "product_purity_method": "hplc",
+    "canonical_rxn": null,
+    "procedure_text": "NMST (5.0g, 0.023mol), sodium hypochlorite (100ml, 0.149mol) and ruthenium oxide (0.5g, 0.004mol) were charged into a 250ml round bottomed flask. This mixture was heated to reflux temperature under stirring for 6-8hours, cooled to 25-30°C and filtered. The filtrate obtained was further cooled to 5-10°C and acidified to pH < 3 using concentrated hydrochloric acid (18mL, 0.17mol) to form precipitated product (NMSBA).The product obtained was filtered and dried at 50°C under reduced pressure to obtain NMSBA as light yellow solid. HPLC purity > 92%; Yield: 67%; and Melting point: 207-210°C.",
+    "procedure_summary": "NMST is oxidised at its methyl group to NMSBA with sodium hypochlorite over a ruthenium oxide catalyst, the mixture being held at reflux and then cooled and filtered to remove the catalyst. The filtrate is cooled further and acidified with concentrated hydrochloric acid to precipitate the product, which is filtered and dried under reduced pressure.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "transformation:oxidation",
+      "mechanism:catalytic",
+      "analytics:hplc",
+      "analytics:melting_point",
+      "scale:lab",
+      "solvent_class:aqueous",
+      "catalyst_class:ruthenium",
+      "workup_type:precipitation",
+      "workup_type:filtration",
+      "purification:none",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "ONE reaction record, matching A0's estimated_steps of 1. This is step (i) of the invention's three-step route: the benzylic oxidation of NMST of formula (IV) to NMSBA of formula (III), the same transformation Example 1 runs, here at 5.0g of NMST. The section carries no numbered step markers of its own, so step_label is the synthetic \"Step 1\".\n\nSCOPE OF THE SECTION. Lines 268-280: the Example 2 heading at 268, the title line at 270, paragraph [0048] at 272, its unmarked continuation at 277 and the unmarked analytical line at 279. [0048] is cut mid-sentence at \"This mixture was\" by the p15/p16 page boundary and resumes at \"heated to reflux temperature\"; the two halves are one paragraph and are joined with a single space in procedure_text. The analytical line at 279 belongs to [0048], as A0's note records, and is the only place this Example states yield, purity and melting point.\n\nNO DRAWING IN THIS SECTION. There is no IMAGE_EXTRACT span anywhere in lines 268-280. The nearest scheme spans are line 256, which is Example 1's own, and line 287, which is Example 4's scheme printed inside Example 3's line range; both are outside this section and neither was read into these fields. So every reagent, every condition and the connectivity here come from the prose alone. Because this section owns no arrow, no drawing-versus-prose comparison is possible on the evidence in range: drawing_text_conflict, reagent_drawn_not_written and reagent_written_not_drawn are all deliberately NOT raised. Example 1 raises reagent_written_not_drawn because it owns the scheme at 256 and that scheme's arrow says only \"Oxidant / RuO2\"; repeating the flag here would mean importing another section's drawing to manufacture the comparison, and a flag asserted from an absent drawing is a finding about nothing. route_attribution_unclear is likewise not raised: the section stands under the EXAMPLES heading and its title names the invention's own step (i), so attribution is not in question and no vision pass marked anything unclear here.\n\nREACTOR. \"a 250ml round bottomed flask\". The 250 ml volume is recorded here rather than in a numeric field because no field holds it. \"under stirring\" names a stirrer without saying which kind, so stirring.type is left null per prompt rule 9 rather than guessed as mechanical.\n\nTEMPERATURE AND TIME. \"heated to reflux temperature\" is a heating method, not a temperature, so heating_method is reflux and temperature stays not_specified; the patent prints no number for the reaction temperature. The three temperatures it does print, 25-30°C, 5-10°C and 50°C, are all post-reaction operations and are recorded in workup.steps. The reaction time is printed as the range \"6-8hours\", closed up with no space, the same form Example 1 prints and not the spaced \"6-8 hours\" of Example 3; procedure_text keeps it as printed. The scalar time_h field cannot hold a range, and both an 8.0 upper bound and a 7.0 midpoint would state a number the patent does not, so time_h is left null and the range is preserved in procedure_text and here. This follows the reference run CN104292137A, which left time_h null on every step whose time was printed as a range, and matches Example 1.\n\npH. \"acidified to pH < 3\" is a work-up target, not a reaction condition, so it is recorded as workup.ph_target 3.0 and conditions.ph_value is left null. The printed form is an upper bound; 3.0 is that bound, not a measured pH. Note the spacing differs from Example 1's \"pH <3\" in an otherwise identical sentence, and each is transcribed as printed.\n\nPRESSURE. Left not_specified. Reflux implies atmospheric pressure but the text does not say so, and \"dried at 50°C under reduced pressure\" describes drying of the isolated solid, not the reaction.\n\nISOLATION. purification is null: the product is isolated by acidic precipitation and filtration and then dried, and the text states no further purification method. That isolation is recorded in workup.steps and the purification tag is \"none\".\n\nPURITY AND YIELD. The analytical line at 279 prints \"HPLC purity > 92%\". This is a measurement on the one batch this Example made, reported as a lower bound rather than as an equality, so the number is recorded: product_purity_pct 92.0 and the product compound's purity_pct 92.0, with purity_method hplc. The inequality is kept verbatim in procedure_text and in provenance, and 92.0 is that printed bound and not an assayed equality. This matches A1, which recorded purity_pct 92.0 for the same compound with raw_text \"HPLC purity > 92%\" and a note that the figure is a printed bound, so the two artifacts agree on the printed fact. It is a different kind of statement from the summary section's \"at least 65%\" and \"at least 85%\", which are specifications of the invention in general and belong in no numeric field. \"Yield: 67%\" is a stated measurement and is recorded. The melting point 207-210°C has no field on this record and lives on the A1 compound.\n\nPROCESS CONTROL. None. The HPLC figure is an analysis of the isolated product, not in-process monitoring, so process_control is left empty.\n\nARITHMETIC. Both printed mass/mole pairs close against the formula weights of the compounds named, at the precision the patent prints: NMST at 5.0g and 0.023mol, and ruthenium oxide at 0.5g and 0.004mol read as RuO2. molar_mass_inconsistent is therefore NOT raised. The working is in the provenance sidecar, which is where computed numbers belong. This is the pair Example 1's record cites as its control, and it does close. It is the only one of the three Examples printing this charge whose pair does: Example 1's and Example 3's printed mole figures are both low against the formula weight, Example 3's by more than Example 1's, so Example 1's note that its own discrepancy is specific to Example 1 goes further than the numbers allow. The comparison is set out in the provenance sidecar; Example 3's pair is Example 3's record to flag, not this one's. mass_balance_implausible is not raised either: the patent prints a yield but no isolated mass for NMSBA, so there is no stated mass to test against the stated input moles and no printed pair that disagrees. The hypochlorite and the hydrochloric acid are charged as solution volumes with mole figures rather than as masses of substance, so neither admits a molecular-weight check.\n\nONE-POT. is_one_pot is false. The acidification that liberates the free acid from its sodium salt could be read as a second transformation, but the text places a filtration between it and the oxidation, so it is the work-up rather than a step with its own charge, and it is recorded as such.\n\nLINKAGE. precursor_step is null: NMST is the route's purchased starting material and no step of this patent prepares it. Examples 1 and 3 run the same oxidation at other scales, but they are separate sections and a repeat of a transformation is not a precursor to it, so linkage_confirmed is false and the linkage tag is standalone. NMSBC appears nowhere in this section, in any role.\n\nIDENTIFIERS. All five compounds are the five A1 recorded for this section and the strings are A1's verbatim, so a1_missing_compound is not raised. In particular the catalyst is \"ruthenium oxide\" as printed, with no oxidation state: A1 declined to import Example 1's \"RuO2\" alias, which came from a drawing that is not in this section, and this record does not import it either. Reading it as RuO2 in the arithmetic check is a test of the printed mole figure, not a claim about which oxide the prose means.\n\nVALIDATION. validation_flags is empty and is_complete is true. That is a real outcome here, not an unexamined one: every check in prompt rule 27 was run, the two mass/mole pairs were computed rather than assumed, and no drawing exists in range for the three drawing flags to be tested against. Example 1's record on the same transformation carries two flags; this one carries none, and the difference is entirely those two facts.\n\nMODEL PROVENANCE. This record was produced by Claude Opus 5 reading lines 268-280 of the enriched markdown, the A1 records for this section and the A0 section note. No vision report was used, because this section has no drawing."
+  }
+]
