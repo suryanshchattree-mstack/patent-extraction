@@ -3398,10 +3398,10 @@
   },
   {
     "patent_id": "CN106008290A",
-    "identifier": "二氯乙烷",
+    "identifier": "dichloroethane",
     "identifier_type": "iupac",
     "aliases": [
-      "dichloroethane"
+      "二氯乙烷"
     ],
     "resolved": false,
     "unresolved_reference": false,
@@ -3431,7 +3431,7 @@
       "compound_class:solvent",
       "functional_group:halide_chloro"
     ],
-    "notes": "Printed without a locant, so the isomer is not determined by the text; kept verbatim and left unresolved. The EN line likewise reads only dichloroethane."
+    "notes": "Printed 二氯乙烷 with no locant. The Chinese resolves unambiguously to English dichloroethane, so the identifier is the English name with the Chinese kept as an alias, but the text does not say which isomer, so the record stays unresolved. Claim 9 and the summary of the invention print the 1,2- locant; this step does not, so the 1,2-isomer is not inferred here. The EN line likewise reads only dichloroethane."
   },
   {
     "patent_id": "CN106008290A",
@@ -3548,9 +3548,11 @@
   },
   {
     "patent_id": "CN106008290A",
-    "identifier": "甲、醇",
-    "identifier_type": "other",
-    "aliases": [],
+    "identifier": "methanol",
+    "identifier_type": "iupac",
+    "aliases": [
+      "甲、醇"
+    ],
     "resolved": false,
     "unresolved_reference": false,
     "section_label": "Example 3",
@@ -3578,7 +3580,7 @@
     "tags": [
       "compound_class:solvent"
     ],
-    "notes": "Printed 加甲、醇打浆, with an enumeration comma inside the name; as printed this names no compound. The EN line reads slurried with methanol. Kept verbatim and left unresolved rather than silently corrected."
+    "notes": "Printed 加甲、醇打浆, with an enumeration comma sitting inside the two characters of the word for methanol, so the string as printed names no compound. The identifier is resolved to English methanol and the printed form 甲、醇 kept as an alias; the record stays unresolved because that reading rests on the parallel step of the other examples rather than on this line, and the misprint is left uncorrected. The EN line reads slurried with methanol. No quantity given."
   },
   {
     "patent_id": "CN106008290A",

@@ -1723,7 +1723,8 @@
     "identifier": "methanol",
     "identifier_type": "iupac",
     "aliases": [
-      "甲醇"
+      "甲醇",
+      "甲、醇"
     ],
     "resolved": true,
     "unresolved_reference": false,
@@ -1752,7 +1753,7 @@
       "compound_class:solvent",
       "chemical_family:alcohol"
     ],
-    "notes": "Added to slurry the crude product in step b. No amount given. | Used to slurry the crude product (加甲醇打浆); no quantity printed. | Slurrying medium in the step b workup. No quantity is given. Printed cleanly here as 加甲醇打浆, unlike Example 3. | Used to slurry the crude product in the step b workup (加甲醇打浆); no amount stated.",
+    "notes": "Added to slurry the crude product in step b. No amount given. | Used to slurry the crude product (加甲醇打浆); no quantity printed. | Printed 加甲、醇打浆, with an enumeration comma sitting inside the two characters of the word for methanol, so the string as printed names no compound. The identifier is resolved to English methanol and the printed form 甲、醇 kept as an alias; the record stays unresolved because that reading rests on the parallel step of the other examples rather than on this line, and the misprint is left uncorrected. The EN line reads slurried with methanol. No quantity given. | Slurrying medium in the step b workup. No quantity is given. Printed cleanly here as 加甲醇打浆, unlike Example 3. | Used to slurry the crude product in the step b workup (加甲醇打浆); no amount stated.",
     "id": "CN106008290A_methanol",
     "compound_uuid": "8fc156ee-2f89-54e1-aae8-59132f84eac8"
   },
@@ -1832,10 +1833,10 @@
   },
   {
     "patent_id": "CN106008290A",
-    "identifier": "二氯乙烷",
+    "identifier": "dichloroethane",
     "identifier_type": "iupac",
     "aliases": [
-      "dichloroethane"
+      "二氯乙烷"
     ],
     "resolved": false,
     "unresolved_reference": false,
@@ -1865,9 +1866,9 @@
       "compound_class:solvent",
       "functional_group:halide_chloro"
     ],
-    "notes": "Printed without a locant, so the isomer is not determined by the text; kept verbatim and left unresolved. The EN line likewise reads only dichloroethane.",
-    "id": "CN106008290A_二氯乙烷",
-    "compound_uuid": "153f0ef9-c0b9-53ae-afde-8e089c92e454"
+    "notes": "Printed 二氯乙烷 with no locant. The Chinese resolves unambiguously to English dichloroethane, so the identifier is the English name with the Chinese kept as an alias, but the text does not say which isomer, so the record stays unresolved. Claim 9 and the summary of the invention print the 1,2- locant; this step does not, so the 1,2-isomer is not inferred here. The EN line likewise reads only dichloroethane.",
+    "id": "CN106008290A_dichloroethane",
+    "compound_uuid": "931a0c1f-ab93-5348-8e4b-eaad3316345b"
   },
   {
     "patent_id": "CN106008290A",
@@ -1907,42 +1908,6 @@
     "notes": "Named 缩合剂HOBT, the condensing agent. Printed 3mol(405g) is consistent with the molecular weight of 1-hydroxybenzotriazole.",
     "id": "CN106008290A_HOBT",
     "compound_uuid": "0804361a-5749-51eb-b06b-e7a3d1130111"
-  },
-  {
-    "patent_id": "CN106008290A",
-    "identifier": "甲、醇",
-    "identifier_type": "other",
-    "aliases": [],
-    "resolved": false,
-    "unresolved_reference": false,
-    "section_label": "Example 3",
-    "section_type": "experimental_example",
-    "is_section_product": false,
-    "commercially_available": false,
-    "role": "solvent",
-    "quantity": {
-      "mass_g": null,
-      "volume_ml": null,
-      "mmol": null,
-      "equivalents": null,
-      "yield_pct": null
-    },
-    "smiles": null,
-    "ms_mz": null,
-    "nmr": null,
-    "melting_point": null,
-    "appearance": null,
-    "color": null,
-    "physical_form": null,
-    "analytics": null,
-    "purity_pct": null,
-    "purity_method": null,
-    "tags": [
-      "compound_class:solvent"
-    ],
-    "notes": "Printed 加甲、醇打浆, with an enumeration comma inside the name; as printed this names no compound. The EN line reads slurried with methanol. Kept verbatim and left unresolved rather than silently corrected.",
-    "id": "CN106008290A_甲、醇",
-    "compound_uuid": "b38d5e39-c226-5ec1-b04b-8254139282b2"
   },
   {
     "patent_id": "CN106008290A",

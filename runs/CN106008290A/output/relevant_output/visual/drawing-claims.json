@@ -3,13 +3,13 @@
   "engine_version": 1,
   "what_this_is_en": "Review items that come from the PICTURES in the patent rather than from its words. Two kinds. First, every place the patent's own drawing and the patent's own text disagree - these are defects in the patent, and the question put to the reviewer is whether we recorded the contradiction faithfully instead of tidying it away. Second, every place the structure we recorded and the structure the patent drew are not the same molecule - these are defects in the extraction.",
   "summary": {
-    "claims_total": 16,
+    "claims_total": 15,
     "patent_self_contradictions": 11,
     "structure_cross_checks_run": 0,
     "structure_cross_checks_note_en": "A cross-check runs only where our record was chosen by the compound name in the patent's text rather than by the drawing, because only then can the two readings genuinely disagree.",
     "drawing_comparisons_to_review": 4,
     "structure_disagreements": 0,
-    "drawn_but_not_recorded": 1,
+    "drawn_but_not_recorded": 0,
     "drawings_total": 4,
     "comparisons_written": 4,
     "comparisons_with_detected_region": 4,
@@ -105,12 +105,12 @@
           "drawn_name_en": "sodium bromide",
           "drawn_smiles": "[Na+].[Br-]",
           "drawn_canonical": "[Br-].[Na+]",
-          "gold_identifier": null,
-          "gold_smiles": null,
-          "gold_canonical": null,
-          "linked_by": "none",
+          "gold_identifier": "sodium bromide",
+          "gold_smiles": "[Br-].[Na+]",
+          "gold_canonical": "[Br-].[Na+]",
+          "linked_by": "structure",
           "oriented_to_patent_layout": null,
-          "structure_svg_path": null
+          "structure_svg_path": "output/relevant_output/structures/sodium-bromide.svg"
         }
       ]
     },
@@ -438,9 +438,9 @@
             },
             {
               "label_en": "sodium bromide",
-              "src": null,
-              "smiles": "[Na+].[Br-]",
-              "in_gold": false,
+              "src": "output/relevant_output/structures/sodium-bromide.svg",
+              "smiles": "[Br-].[Na+]",
+              "in_gold": true,
               "position_en": "5th, written as a line formula after CH3OH; unlabelled"
             }
           ]
@@ -462,40 +462,6 @@
           }
         },
         "composite_src": "output/relevant_output/visual/comparisons/CN106008290A_p02_d1.png"
-      }
-    },
-    {
-      "claim_id": "3b33fdc5ef085d71",
-      "record_id": "CN106008290A_p02_d1_s5_missing",
-      "record_kind": "compound",
-      "record_label_en": "sodium bromide",
-      "field": "structure.drawn_but_not_recorded",
-      "field_label_en": "A molecule the patent draws and we did not record",
-      "question_en": "The patent draws a molecule here that we hold no record of at all (sodium bromide). Open the picture and say whether there really is a structure drawn at that spot.",
-      "claimed_en": "no record",
-      "claimed_value": null,
-      "claimed_unit": null,
-      "cited_lines": [],
-      "evidence_en": "Read off the drawing as [Na+].[Br-]. No record in the gold has this structure.",
-      "evidence_lines": [],
-      "highlights": [],
-      "auto": "not_found",
-      "auto_reason_en": "No gold record carries this canonical structure.",
-      "needs_human": true,
-      "risk": 0.8,
-      "risk_reasons_en": [
-        "A drawn molecule with no record is a missed extraction, which no per-record check can see."
-      ],
-      "structure_svg_path": null,
-      "tier": 1,
-      "stratum": "compound:drawing on page 2",
-      "about": "extraction",
-      "evidence_kind": "comparison_image",
-      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
-      "images": {
-        "comparison_image": "comparisons/CN106008290A_p02_d1.png",
-        "patent_crop_image": "comparisons/CN106008290A_p02_d1-patent.png",
-        "page_image_path": "input/pages/p02.png"
       }
     },
     {
@@ -805,8 +771,8 @@
       "disagreement": {
         "drawing_says_en": "product II is accompanied by + CH3OH + NaBr",
         "text_says_en": "在反应溶剂中进行反应，Step a: using methyl 2-chloro-3-bromomethyl-4-(methanesulfonyl)benzoate and sodium trifluoroethoxide as the reaction substrates, adding MOH or M2CO3, and carrying out the reaction in a reaction solvent to obtain 2-chloro-3-(trifluoroethoxymethyl)-4-(methanesulfonyl)benzoic acid; the specific chemical reaction equation is as shown in equation (1) below: (nothing about CH3OH or NaBr)",
-        "we_followed": "unknown",
-        "we_followed_note_en": "Which side our annotation took could not be determined without guessing. Read what we recorded, below, against the two quotations."
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
       },
       "page": "p02",
       "page_number": 2,
@@ -880,9 +846,9 @@
             },
             {
               "label_en": "sodium bromide",
-              "src": null,
-              "smiles": "[Na+].[Br-]",
-              "in_gold": false,
+              "src": "output/relevant_output/structures/sodium-bromide.svg",
+              "smiles": "[Br-].[Na+]",
+              "in_gold": true,
               "position_en": "5th, written as a line formula after CH3OH; unlabelled"
             }
           ]
@@ -946,8 +912,8 @@
       "disagreement": {
         "drawing_says_en": "NaBr",
         "text_says_en": "M为Li、Na、K离子中的一种",
-        "we_followed": "unknown",
-        "we_followed_note_en": "Which side our annotation took could not be determined without guessing. Read what we recorded, below, against the two quotations."
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
       },
       "page": "p02",
       "page_number": 2,
@@ -992,9 +958,9 @@
             },
             {
               "label_en": "sodium bromide",
-              "src": null,
-              "smiles": "[Na+].[Br-]",
-              "in_gold": false,
+              "src": "output/relevant_output/structures/sodium-bromide.svg",
+              "smiles": "[Br-].[Na+]",
+              "in_gold": true,
               "position_en": "5th, written as a line formula after CH3OH; unlabelled"
             }
           ]
@@ -1058,8 +1024,8 @@
       "disagreement": {
         "drawing_says_en": "MOH/M2CO3 above the arrow, with a subscript 2 on M",
         "text_says_en": "Step a: using methyl 2-chloro-3-bromomethyl-4-(methanesulfonyl)benzoate and sodium trifluoroethoxide as the reaction substrates, adding MOH or M2CO3, and carrying out the reaction in a reaction solvent to obtain 2-chloro-3-(trifluoroethoxymethyl)-4-(methanesulfonyl)benzoic acid; the specific chemical reaction equation is as shown in equation (1) below: and, in claim 3, MOH/M2CO3, both printed without subscripts",
-        "we_followed": "unknown",
-        "we_followed_note_en": "Which side our annotation took could not be determined without guessing. Read what we recorded, below, against the two quotations."
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
       },
       "page": "p02",
       "page_number": 2,
@@ -1126,9 +1092,9 @@
             },
             {
               "label_en": "sodium bromide",
-              "src": null,
-              "smiles": "[Na+].[Br-]",
-              "in_gold": false,
+              "src": "output/relevant_output/structures/sodium-bromide.svg",
+              "smiles": "[Br-].[Na+]",
+              "in_gold": true,
               "position_en": "5th, written as a line formula after CH3OH; unlabelled"
             }
           ]
@@ -1192,8 +1158,8 @@
       "disagreement": {
         "drawing_says_en": "product IV is accompanied by + H2O",
         "text_says_en": "在反应溶剂中进行缩合反应，获得tembotrione (no byproduct named)",
-        "we_followed": "unknown",
-        "we_followed_note_en": "Which side our annotation took could not be determined without guessing. Read what we recorded, below, against the two quotations."
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
       },
       "page": "p02",
       "page_number": 2,
@@ -1246,9 +1212,9 @@
             },
             {
               "label_en": "sodium bromide",
-              "src": null,
-              "smiles": "[Na+].[Br-]",
-              "in_gold": false,
+              "src": "output/relevant_output/structures/sodium-bromide.svg",
+              "smiles": "[Br-].[Na+]",
+              "in_gold": true,
               "position_en": "5th, written as a line formula after CH3OH; unlabelled"
             }
           ]
@@ -1312,8 +1278,8 @@
       "disagreement": {
         "drawing_says_en": "CH2OCH2CF3, i.e. a (2,2,2-trifluoroethoxy)methyl group",
         "text_says_en": "三氟乙氧甲基, with no locants on the trifluoroethoxy",
-        "we_followed": "unknown",
-        "we_followed_note_en": "Which side our annotation took could not be determined without guessing. Read what we recorded, below, against the two quotations."
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
       },
       "page": "p02",
       "page_number": 2,
@@ -1358,9 +1324,9 @@
             },
             {
               "label_en": "sodium bromide",
-              "src": null,
-              "smiles": "[Na+].[Br-]",
-              "in_gold": false,
+              "src": "output/relevant_output/structures/sodium-bromide.svg",
+              "smiles": "[Br-].[Na+]",
+              "in_gold": true,
               "position_en": "5th, written as a line formula after CH3OH; unlabelled"
             }
           ]

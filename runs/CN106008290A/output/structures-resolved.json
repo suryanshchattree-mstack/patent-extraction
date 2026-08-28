@@ -95,7 +95,7 @@
     "note": "Drawn in the patent on p02, p04. Structure from the record's own aliases[].",
     "name_check": {
       "outcome": "no_parse",
-      "note_en": "no spelling of this name was accepted; tried 'tembotrione', 'CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F', 'compound IV'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+      "note_en": "no spelling of this name was accepted; tried 'tembotrione'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
     }
   },
   {
@@ -404,7 +404,7 @@
     "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
     "name_check": {
       "outcome": "no_parse",
-      "note_en": "no spelling of this name was accepted; tried \"N,N'-carbonyldiimidazole\", 'CDI'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+      "note_en": "no spelling of this name was accepted; tried \"N,N'-carbonyldiimidazole\". Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
     }
   },
   {
@@ -419,7 +419,7 @@
     "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
     "name_check": {
       "outcome": "no_parse",
-      "note_en": "no spelling of this name was accepted; tried 'O-benzotriazol-tetramethyluronium hexafluorophosphate', 'HBTU'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+      "note_en": "no spelling of this name was accepted; tried 'O-benzotriazol-tetramethyluronium hexafluorophosphate'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
     }
   },
   {
@@ -787,26 +787,26 @@
     ],
     "note": "Drawn in the patent on p02, p04. Structure from input/structures-curated.json. Reaction product. 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid. The five example sections use the bare local label and never define it; the definition is at line 95 of the summary, 2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸, the free acid. Checked atom by atom against that name: ring C1 carboxyl, C2 chloro, C3 (2,2,2-trifluoroethoxy)methyl, C4 methylsulfonyl. Formula from the SMILES is C11H10ClF3O5S at 346.71, and the formula the name implies is the same. Corroborated by the patent's own arithmetic rather than by the name alone: step a prints 314.8 g at 91 percent, 321.7 at 93, 311.4 at 90, 321.7 at 93 and 318.3 at 92 on a 1.0 mol charge, which imply 346 g/mol in all five examples. The methyl ester would be 360.73 and does not fit any of them. Both A5 audits reached the free acid independently.",
     "name_check": {
-      "outcome": "no_parse",
-      "note_en": "no spelling of this name was accepted; tried 'compound II'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+      "query": "2-chloro-3-trifluoroethoxymethyl-4-methanesulfonylbenzoic acid",
+      "via": "alias",
+      "outcome": "agree",
+      "opsin_canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+      "note_en": "An independent parse of the name lands on the same molecule."
     }
   },
   {
     "identifier": "CDI",
-    "smiles": "C(=O)(N1C=NC=C1)N1C=NC=C1",
+    "smiles": "O=C(n1ccnc1)n1ccnc1",
     "canonical": "O=C(n1ccnc1)n1ccnc1",
     "formula": "C7H6N4O",
     "mw": 162.15,
-    "origin": "name_parsed",
+    "origin": "curated",
     "svg": "structures/cdi.svg",
     "aliases": [],
-    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN (parsed as \"1,1'-carbonyldiimidazole\"), independently of any reading of this document.",
+    "note": "Named in the patent but never drawn. Structure from input/structures-curated.json. Carries a mass and a mole count. 1,1'-carbonyldiimidazole, the condensing agent of examples 1 and 5. Checked atom by atom: a carbonyl bridging the N1 of two imidazoles. Formula from the SMILES is C7H6N4O at 162.15, and the formula the name implies is the same. Corroborated by the patent's own charge rather than by the name alone: example 1 prints 194.6 g for 1.2 mol, which is 162.2 g/mol, and example 5 prints 291.6 g for 1.8 mol, which is 162.0. The step 6 reader, which never saw the extraction, authored the same structure independently.",
     "name_check": {
-      "query": "1,1'-carbonyldiimidazole",
-      "via": "alias",
-      "outcome": "is_the_source",
-      "opsin_canonical": "O=C(n1ccnc1)n1ccnc1",
-      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'CDI'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
     }
   },
   {
@@ -861,7 +861,7 @@
     }
   },
   {
-    "identifier": "二氯乙烷",
+    "identifier": "dichloroethane",
     "smiles": null,
     "canonical": null,
     "formula": null,
@@ -872,7 +872,7 @@
     "note": "No structure, because the NAME does not pin one molecule down. OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
     "name_check": {
       "query": "dichloroethane",
-      "via": "alias",
+      "via": "verbatim",
       "outcome": "ambiguous",
       "opsin_canonical": "CC(Cl)Cl",
       "note_en": "OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure."
@@ -899,36 +899,18 @@
     }
   },
   {
-    "identifier": "甲、醇",
-    "smiles": null,
-    "canonical": null,
-    "formula": null,
-    "mw": null,
-    "origin": "none",
-    "svg": null,
-    "aliases": [],
-    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
-    "name_check": {
-      "outcome": "no_parse",
-      "note_en": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
-    }
-  },
-  {
     "identifier": "DBU",
-    "smiles": "N12CCCCCC2=NCCC1",
+    "smiles": "C1CCC2=NCCCN2CC1",
     "canonical": "C1CCC2=NCCCN2CC1",
     "formula": "C9H16N2",
     "mw": 152.24,
-    "origin": "name_parsed",
+    "origin": "curated",
     "svg": "structures/dbu.svg",
     "aliases": [],
-    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN (parsed as '1,8-diazabicyclo[5.4.0]undec-7-ene'), independently of any reading of this document.",
+    "note": "Named in the patent but never drawn. Structure from input/structures-curated.json. Carries a mass and a mole count. 1,8-diazabicyclo[5.4.0]undec-7-ene, the condensing agent of example 4. Checked atom by atom: the bicyclic amidine, C=N at the 7-position, the two nitrogens bridged in a 5.4.0 fusion. Formula from the SMILES is C9H16N2 at 152.24, and the formula the name implies is the same. Corroborated by the patent's own charge: example 4 prints 152 g for 1 mol. The patent's printed Chinese name omits the [5.4.0] bridge descriptor and A1 recorded that; it is not corrected here. Note that the same 152 g is printed for 1 mol of pyridine on the same line, where it does not fit, pyridine being 79.10, and that stays a recorded finding rather than something this structure resolves. The step 6 reader authored the same structure independently.",
     "name_check": {
-      "query": "1,8-diazabicyclo[5.4.0]undec-7-ene",
-      "via": "alias",
-      "outcome": "is_the_source",
-      "opsin_canonical": "C1CCC2=NCCCN2CC1",
-      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'DBU'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
     }
   },
   {
@@ -1024,8 +1006,8 @@
     "aliases": [],
     "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
     "name_check": {
-      "outcome": "not_run",
-      "note_en": "This identifier was not in the name-parsing stage's input."
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'MOH/M2CO3'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
     }
   },
   {
@@ -1039,8 +1021,8 @@
     "aliases": [],
     "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
     "name_check": {
-      "outcome": "not_run",
-      "note_en": "This identifier was not in the name-parsing stage's input."
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'condensing agent'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
     }
   },
   {
@@ -1054,23 +1036,26 @@
     "aliases": [],
     "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
     "name_check": {
-      "outcome": "not_run",
-      "note_en": "This identifier was not in the name-parsing stage's input."
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'base catalyst'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
     }
   },
   {
     "identifier": "sodium bromide",
-    "smiles": null,
-    "canonical": null,
-    "formula": null,
-    "mw": null,
-    "origin": "none",
-    "svg": null,
+    "smiles": "[Br-].[Na+]",
+    "canonical": "[Br-].[Na+]",
+    "formula": "BrNa",
+    "mw": 102.89,
+    "origin": "name_parsed",
+    "svg": "structures/sodium-bromide.svg",
     "aliases": [],
-    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
     "name_check": {
-      "outcome": "not_run",
-      "note_en": "This identifier was not in the name-parsing stage's input."
+      "query": "sodium bromide",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "[Br-].[Na+]",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
     }
   }
 ]

@@ -5,7 +5,7 @@ against anyone's OCR. Every item below is a defect in the **patent**, not in the
 annotation. The annotation records them and changes nothing.
 
 - 18 reactions extracted, of which 18 carry at least one flag
-- 54 unique compounds, 9 pathways
+- 53 unique compounds, 9 pathways
 - 11 discrepancies raised by the page-vision pass
 
 ## Flags raised, by kind
@@ -15,8 +15,8 @@ annotation. The annotation records them and changes nothing.
 | `molar_mass_inconsistent` | 9 | a stated mass/mole pair implies a molecular weight that is not the named compound's |
 | `no_conditions` | 6 | no reaction conditions stated at all |
 | `mass_balance_implausible` | 5 | stated product mass cannot be reconciled with the stated input moles and yield |
+| `scale_discontinuity` | 4 | a step charges more material than the previous step produced |
 | `a1_missing_compound` | 4 |  |
-| `scale_discontinuity` | 3 | a step charges more material than the previous step produced |
 | `missing_product` | 2 |  |
 | `missing_reactant` | 2 |  |
 

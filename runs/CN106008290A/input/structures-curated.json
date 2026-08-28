@@ -53,6 +53,16 @@
       "smiles": "CN(C)C(=[N+](C)C)On1nnc2ccccc21.F[P-](F)(F)(F)(F)F",
       "slug": "hbtu",
       "note": "Carries a mass and a mole count. O-(benzotriazol-1-yl)-N,N,N',N'-tetramethyluronium hexafluorophosphate, the condensing agent of example 2. Checked atom by atom: tetramethyluronium cation O-linked at benzotriazole N1, hexafluorophosphate counter-ion. Formula from the SMILES is C11H16F6N5OP at 379.24, and the formula the name implies is the same. The full salt rather than the bare cation, because example 2 prints 758 g for 2 mol at line 151, which is 379.0 g/mol; the cation alone would be 234.28. The patent's printed Chinese name is incomplete against the standard one, omitting the benzotriazol-1-yl attachment locant and the N,N,N',N' locants and reading 六氟磷酸酯 as an ester where this is a salt; A1 recorded that and it is not corrected here."
+    },
+    "CDI": {
+      "smiles": "O=C(n1ccnc1)n1ccnc1",
+      "slug": "cdi",
+      "note": "Carries a mass and a mole count. 1,1'-carbonyldiimidazole, the condensing agent of examples 1 and 5. Checked atom by atom: a carbonyl bridging the N1 of two imidazoles. Formula from the SMILES is C7H6N4O at 162.15, and the formula the name implies is the same. Corroborated by the patent's own charge rather than by the name alone: example 1 prints 194.6 g for 1.2 mol, which is 162.2 g/mol, and example 5 prints 291.6 g for 1.8 mol, which is 162.0. The step 6 reader, which never saw the extraction, authored the same structure independently."
+    },
+    "DBU": {
+      "smiles": "C1CCC2=NCCCN2CC1",
+      "slug": "dbu",
+      "note": "Carries a mass and a mole count. 1,8-diazabicyclo[5.4.0]undec-7-ene, the condensing agent of example 4. Checked atom by atom: the bicyclic amidine, C=N at the 7-position, the two nitrogens bridged in a 5.4.0 fusion. Formula from the SMILES is C9H16N2 at 152.24, and the formula the name implies is the same. Corroborated by the patent's own charge: example 4 prints 152 g for 1 mol. The patent's printed Chinese name omits the [5.4.0] bridge descriptor and A1 recorded that; it is not corrected here. Note that the same 152 g is printed for 1 mol of pyridine on the same line, where it does not fit, pyridine being 79.10, and that stays a recorded finding rather than something this structure resolves. The step 6 reader authored the same structure independently."
     }
   }
 }

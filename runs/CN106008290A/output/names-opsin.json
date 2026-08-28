@@ -3,9 +3,9 @@
  "engine": "OPSIN via https://opsin.ch.cam.ac.uk/opsin/",
  "what_this_is_en": "Every compound identifier in the gold, read a second time by a name parser that knows nothing about this patent. A parse is used as a structure only where nothing better exists, and is compared against every structure the pipeline already had.",
  "summary": {
-  "ambiguous": 5,
-  "parsed": 47,
-  "unparseable": 56
+  "ambiguous": 4,
+  "parsed": 48,
+  "unparseable": 18
  },
  "names": [
   {
@@ -21,12 +21,6 @@
      "via": "verbatim",
      "status": "WARNING",
      "note": "APPEARS_AMBIGUOUS: Connection of fluoro to ethoxide"
-    },
-    {
-     "query": "三氟乙醇钠",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
     },
     {
      "query": "sodium 2,2,2-trifluoroethoxide",
@@ -83,43 +77,13 @@
   {
    "identifier": "tembotrione",
    "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted; tried 'tembotrione', 'CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F', 'compound IV'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "reason": "no spelling of this name was accepted; tried 'tembotrione'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
    "attempts": [
     {
      "query": "tembotrione",
      "via": "verbatim",
      "status": "FAILURE",
      "note": "not parsed"
-    },
-    {
-     "query": "环磺酮",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    },
-    {
-     "query": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
-     "via": "alias",
-     "status": "FAILURE",
-     "note": "not parsed"
-    },
-    {
-     "query": "化合物IV",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    },
-    {
-     "query": "compound IV",
-     "via": "alias",
-     "status": "FAILURE",
-     "note": "not parsed"
-    },
-    {
-     "query": "成品环磺酮",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
     }
    ]
   },
@@ -137,12 +101,6 @@
      "via": "verbatim",
      "status": "WARNING",
      "note": "APPEARS_AMBIGUOUS: Connection of fluoro to eth"
-    },
-    {
-     "query": "三氟乙醇",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
     }
    ]
   },
@@ -359,56 +317,26 @@
   {
    "identifier": "N,N'-carbonyldiimidazole",
    "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted; tried \"N,N'-carbonyldiimidazole\", 'CDI'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "reason": "no spelling of this name was accepted; tried \"N,N'-carbonyldiimidazole\". Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
    "attempts": [
     {
      "query": "N,N'-carbonyldiimidazole",
      "via": "verbatim",
      "status": "FAILURE",
      "note": "not parsed"
-    },
-    {
-     "query": "CDI",
-     "via": "alias",
-     "status": "FAILURE",
-     "note": "not parsed"
-    },
-    {
-     "query": "N,N'-羰基二咪唑",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    },
-    {
-     "query": "N,N’-羰基二咪唑",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
     }
    ]
   },
   {
    "identifier": "O-benzotriazol-tetramethyluronium hexafluorophosphate",
    "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted; tried 'O-benzotriazol-tetramethyluronium hexafluorophosphate', 'HBTU'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "reason": "no spelling of this name was accepted; tried 'O-benzotriazol-tetramethyluronium hexafluorophosphate'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
    "attempts": [
     {
      "query": "O-benzotriazol-tetramethyluronium hexafluorophosphate",
      "via": "verbatim",
      "status": "FAILURE",
      "note": "not parsed"
-    },
-    {
-     "query": "HBTU",
-     "via": "alias",
-     "status": "FAILURE",
-     "note": "not parsed"
-    },
-    {
-     "query": "O-苯并三氮唑-四甲基脲六氟磷酸酯",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
     }
    ]
   },
@@ -531,12 +459,6 @@
      "via": "verbatim",
      "status": "WARNING",
      "note": "APPEARS_AMBIGUOUS: xylen describes multiple structures"
-    },
-    {
-     "query": "二甲苯",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
     }
    ]
   },
@@ -707,8 +629,11 @@
   },
   {
    "identifier": "化合物II",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted; tried 'compound II'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "outcome": "parsed",
+   "query": "2-chloro-3-trifluoroethoxymethyl-4-methanesulfonylbenzoic acid",
+   "via": "alias",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
    "attempts": [
     {
      "query": "化合物II",
@@ -717,37 +642,22 @@
      "note": "not English; OPSIN parses English chemical nomenclature only"
     },
     {
-     "query": "compound II",
+     "query": "2-chloro-3-trifluoroethoxymethyl-4-methanesulfonylbenzoic acid",
      "via": "alias",
-     "status": "FAILURE",
-     "note": "not parsed"
+     "status": "SUCCESS"
     }
    ]
   },
   {
    "identifier": "CDI",
-   "outcome": "parsed",
-   "query": "1,1'-carbonyldiimidazole",
-   "via": "alias",
-   "smiles": "C(=O)(N1C=NC=C1)N1C=NC=C1",
-   "canonical": "O=C(n1ccnc1)n1ccnc1",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'CDI'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
    "attempts": [
     {
      "query": "CDI",
      "via": "verbatim",
      "status": "FAILURE",
      "note": "not parsed"
-    },
-    {
-     "query": "缩合剂CDI",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    },
-    {
-     "query": "1,1'-carbonyldiimidazole",
-     "via": "alias",
-     "status": "SUCCESS"
     }
    ]
   },
@@ -791,35 +701,19 @@
      "via": "verbatim",
      "status": "FAILURE",
      "note": "not parsed"
-    },
-    {
-     "query": "缩合剂HBTU",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
     }
    ]
   },
   {
    "identifier": "二氯乙烷",
-   "outcome": "ambiguous",
-   "query": "dichloroethane",
-   "via": "alias",
-   "guess_smiles": "ClC(C)Cl",
-   "guess_canonical": "CC(Cl)Cl",
-   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
    "attempts": [
     {
      "query": "二氯乙烷",
      "via": "verbatim",
      "status": "NOT_ASKED",
      "note": "not English; OPSIN parses English chemical nomenclature only"
-    },
-    {
-     "query": "dichloroethane",
-     "via": "alias",
-     "status": "WARNING",
-     "note": "APPEARS_AMBIGUOUS: Connection of chloro to eth"
     }
    ]
   },
@@ -838,12 +732,6 @@
      "note": "not parsed"
     },
     {
-     "query": "缩合剂HOBT",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    },
-    {
      "query": "1-hydroxybenzotriazole",
      "via": "alias",
      "status": "SUCCESS"
@@ -852,41 +740,35 @@
   },
   {
    "identifier": "甲、醇",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "outcome": "parsed",
+   "query": "methanol",
+   "via": "the pipeline's English for 甲、醇",
+   "smiles": "CO",
+   "canonical": "CO",
    "attempts": [
     {
      "query": "甲、醇",
      "via": "verbatim",
      "status": "NOT_ASKED",
      "note": "not English; OPSIN parses English chemical nomenclature only"
+    },
+    {
+     "query": "methanol",
+     "via": "the pipeline's English for 甲、醇",
+     "status": "SUCCESS"
     }
    ]
   },
   {
    "identifier": "DBU",
-   "outcome": "parsed",
-   "query": "1,8-diazabicyclo[5.4.0]undec-7-ene",
-   "via": "alias",
-   "smiles": "N12CCCCCC2=NCCC1",
-   "canonical": "C1CCC2=NCCCN2CC1",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'DBU'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
    "attempts": [
     {
      "query": "DBU",
      "via": "verbatim",
      "status": "FAILURE",
      "note": "not parsed"
-    },
-    {
-     "query": "缩合剂DBU",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    },
-    {
-     "query": "1,8-diazabicyclo[5.4.0]undec-7-ene",
-     "via": "alias",
-     "status": "SUCCESS"
     }
    ]
   },
@@ -949,96 +831,60 @@
      "via": "verbatim",
      "status": "WARNING",
      "note": "APPEARS_AMBIGUOUS: Positioning of radical on: azazazol"
-    },
+    }
+   ]
+  },
+  {
+   "identifier": "MOH/M2CO3",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'MOH/M2CO3'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
     {
-     "query": "HBTU",
-     "via": "alias",
+     "query": "MOH/M2CO3",
+     "via": "verbatim",
      "status": "FAILURE",
      "note": "not parsed"
-    },
-    {
-     "query": "O-苯并三氮唑-四甲基脲六氟磷酸酯",
-     "via": "alias",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
     }
    ]
   },
   {
-   "identifier": "1,2-二氯乙烷",
+   "identifier": "condensing agent",
    "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "reason": "no spelling of this name was accepted; tried 'condensing agent'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
    "attempts": [
     {
-     "query": "1,2-二氯乙烷",
+     "query": "condensing agent",
      "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
+     "status": "FAILURE",
+     "note": "not parsed"
     }
    ]
   },
   {
-   "identifier": "1,3-环己二酮",
+   "identifier": "base catalyst",
    "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "reason": "no spelling of this name was accepted; tried 'base catalyst'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
    "attempts": [
     {
-     "query": "1,3-环己二酮",
+     "query": "base catalyst",
      "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
+     "status": "FAILURE",
+     "note": "not parsed"
     }
    ]
   },
   {
-   "identifier": "1,4-二氧六环",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "identifier": "sodium bromide",
+   "outcome": "parsed",
+   "query": "sodium bromide",
+   "via": "verbatim",
+   "smiles": "[Br-].[Na+]",
+   "canonical": "[Br-].[Na+]",
    "attempts": [
     {
-     "query": "1,4-二氧六环",
+     "query": "sodium bromide",
      "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "1,8-二氮杂二环十一碳-7-烯",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "1,8-二氮杂二环十一碳-7-烯",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "1-羟基苯并三唑",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "1-羟基苯并三唑",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "1，3-环己二酮",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "1，3-环己二酮",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
+     "status": "SUCCESS"
     }
    ]
   },
@@ -1073,32 +919,6 @@
    ]
   },
   {
-   "identifier": "2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
    "identifier": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
    "outcome": "unparseable",
    "reason": "the identifier is itself a SMILES string, so there is no name to parse; the structure is already explicit",
@@ -1115,19 +935,6 @@
    "outcome": "unparseable",
    "reason": "the identifier is itself a SMILES string, so there is no name to parse; the structure is already explicit",
    "attempts": []
-  },
-  {
-   "identifier": "Huanhuangtong",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted; tried 'Huanhuangtong'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "Huanhuangtong",
-     "via": "verbatim",
-     "status": "FAILURE",
-     "note": "not parsed"
-    }
-   ]
   },
   {
    "identifier": "K",
@@ -1156,45 +963,6 @@
    ]
   },
   {
-   "identifier": "N,N'-羰基二咪唑",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "N,N'-羰基二咪唑",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "N,N-二甲基甲酰胺",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "N,N-二甲基甲酰胺",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "N,N’-羰基二咪唑",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "N,N’-羰基二咪唑",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
    "identifier": "Na",
    "outcome": "unparseable",
    "reason": "no spelling of this name was accepted; tried 'Na'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
@@ -1208,44 +976,18 @@
    ]
   },
   {
-   "identifier": "N，N-二甲基甲酰胺",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "N，N-二甲基甲酰胺",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "O-苯并三氮唑-四甲基脲六氟磷酸酯",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "O-苯并三氮唑-四甲基脲六氟磷酸酯",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
    "identifier": "O=C1CCCC(=O)C1",
    "outcome": "unparseable",
    "reason": "the identifier is itself a SMILES string, so there is no name to parse; the structure is already explicit",
    "attempts": []
   },
   {
-   "identifier": "cyclic sulfone ketone",
+   "identifier": "Tembotrione",
    "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted; tried 'cyclic sulfone ketone'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "reason": "no spelling of this name was accepted; tried 'Tembotrione'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
    "attempts": [
     {
-     "query": "cyclic sulfone ketone",
+     "query": "Tembotrione",
      "via": "verbatim",
      "status": "FAILURE",
      "note": "not parsed"
@@ -1270,19 +1012,6 @@
    ]
   },
   {
-   "identifier": "huanhuangtong",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted; tried 'huanhuangtong'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "huanhuangtong",
-     "via": "verbatim",
-     "status": "FAILURE",
-     "note": "not parsed"
-    }
-   ]
-  },
-  {
    "identifier": "methyl 2-chloro-3-bromomethyl-4-(methanesulfonyl)benzoate",
    "outcome": "parsed",
    "query": "methyl 2-chloro-3-bromomethyl-4-(methanesulfonyl)benzoate",
@@ -1294,357 +1023,6 @@
      "query": "methyl 2-chloro-3-bromomethyl-4-(methanesulfonyl)benzoate",
      "via": "verbatim",
      "status": "SUCCESS"
-    }
-   ]
-  },
-  {
-   "identifier": "三乙胺",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "三乙胺",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "三氟乙醇",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "三氟乙醇",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "三氟乙醇钠",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "三氟乙醇钠",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "丙酮氰醇",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "丙酮氰醇",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "乙腈",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "乙腈",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "乙醚",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "乙醚",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "二氯亚砜",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "二氯亚砜",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "二氯甲烷",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "二氯甲烷",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "二甲苯",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "二甲苯",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "叔丁醇钾",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "叔丁醇钾",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "吡啶",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "吡啶",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "四氢呋喃",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "四氢呋喃",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "己烷",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "己烷",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "氢氧化钙",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "氢氧化钙",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "氢氧化钠",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "氢氧化钠",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "氢氧化钾",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "氢氧化钾",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "氢氧化锂",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "氢氧化锂",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "氯仿",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "氯仿",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "水",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "水",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "环己烷",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "环己烷",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "环磺酮",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "环磺酮",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "甲苯",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "甲苯",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "甲醇",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "甲醇",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "盐酸",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "盐酸",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "碳酸钠",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "碳酸钠",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "碳酸钾",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "碳酸钾",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
-    }
-   ]
-  },
-  {
-   "identifier": "苯",
-   "outcome": "unparseable",
-   "reason": "no spelling of this name was accepted and no English spelling was available to try. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
-   "attempts": [
-    {
-     "query": "苯",
-     "via": "verbatim",
-     "status": "NOT_ASKED",
-     "note": "not English; OPSIN parses English chemical nomenclature only"
     }
    ]
   }

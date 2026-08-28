@@ -1,8 +1,8 @@
 {
  "patent_id": "CN106008290A",
  "reader": "llm",
- "what_this_is_en": "Every substance named on every line of CN106008290A-enriched-numbered.md, read line by line and asked only that: not roles, not quantities, not whether the extraction already holds it. `specific` names one substance a chemist could draw; `generic` refers to a substance without naming one, and is counted apart because 缩合剂 is sometimes an anaphor for a reagent named elsewhere and sometimes the only thing the patent ever says. Compound labels (化合物I, compound II) are filed as generic on the same reasoning: the span itself names nothing, and resolving it needs a definition on another line. One entry per distinct span per line; a name repeated inside one line is not repeated here. On the [IMAGE_EXTRACT] lines the drawn structures are filed under their SMILES, which is what the line literally prints, and the drawn conditions under the role words printed with them.",
- "verified_en": "Every span below was checked, by script, to be a literal substring of the line it is filed under with the NNNN | prefix stripped, and every line of the document from 1 to 182 is keyed, including the lines that carry no substance, whose value is an empty list. A span that is not on its line fails the build rather than reaching a reviewer. SMILES were authored only where the printed span is an abbreviation, a bare element symbol or a scanning artefact that no name parser would resolve, and only where every atom and bond is certain; everywhere else smiles is absent rather than guessed.",
+ "what_this_is_en": "Every substance named on every line of CN106008290A, read line by line against the English rendering of each line, and asked only that: not roles, not quantities, not whether the extraction already holds it. `specific` names one substance a chemist could draw; `generic` refers to a substance without naming one, and is counted apart because \"condensing agent\" is sometimes an anaphor for a reagent named elsewhere and sometimes the only thing the patent ever says. Compound labels (compound I, compound II) are filed as generic on the same reasoning: the span itself names nothing, and resolving it needs a definition on another line. One entry per distinct span per line; a name repeated inside one line is not repeated here. On the \"Drawn on the page\" lines the drawn structures are filed under their SMILES, which is what the line literally prints. Where the English rendering carries an artefact of the vision read, the pinyin \"huanhuangtong\" or the literal \"cyclic sulfone ketone\" in place of tembotrione, the span is recorded as it appears and the canonical name is given beside it.",
+ "verified_en": "Every span below was checked, by script, to be a literal substring of `source.text_en[n] or lines[n]` for its line number, which is the exact string pipeline/verify.py compares a span against. The document was therefore read in its English rendering, not in the Chinese: a Chinese span filed against a Chinese line is rejected by that check even when the reading is right. Every line from 1 to 183 is keyed, including the lines that carry no substance, whose value is an empty list. A span that is not on its line fails the build rather than reaching a reviewer. SMILES were authored only where the printed span is an abbreviation, a bare element symbol or a scanning artefact that no name parser would resolve, and only where every atom and bond is certain; everywhere else smiles is absent rather than guessed.",
  "lines": {
   "1": [],
   "2": [],
@@ -40,23 +40,33 @@
   "34": [],
   "35": [
    {
-    "span": "环磺酮",
-    "kind": "specific"
+    "span": "tembotrione",
+    "kind": "specific",
+    "why_en": "The printed English of the title renders 环磺酮 literally as a class of compound rather than as the herbicide it is. Not a second substance: the same one the patent is about. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
+    "smiles": null,
+    "canonical": "tembotrione"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
+    "smiles": null,
+    "canonical": "tembotrione"
    }
   ],
   "36": [],
   "37": [
    {
-    "span": "cyclic sulfone ketone",
+    "span": "tembotrione",
     "kind": "specific",
-    "why_en": "The printed English of the title renders 环磺酮 literally as a class of compound rather than as the herbicide it is. Not a second substance: the same one the patent is about.",
+    "why_en": "The printed English of the title renders 环磺酮 literally as a class of compound rather than as the herbicide it is. Not a second substance: the same one the patent is about. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
     "smiles": null,
     "canonical": "tembotrione"
    },
    {
-    "span": "huanhuangtong",
+    "span": "tembotrione",
     "kind": "specific",
-    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance.",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
     "smiles": null,
     "canonical": "tembotrione"
    }
@@ -64,35 +74,49 @@
   "38": [],
   "39": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "三氟乙醇钠",
+    "span": "tembotrione",
+    "kind": "specific",
+    "why_en": "The printed English of the title renders 环磺酮 literally as a class of compound rather than as the herbicide it is. Not a second substance: the same one the patent is about. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
+    "smiles": null,
+    "canonical": "tembotrione"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
+    "smiles": null,
+    "canonical": "tembotrione"
+   },
+   {
+    "span": "sodium trifluoroethoxide",
     "kind": "specific"
    },
    {
-    "span": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
+    "span": "methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
     "kind": "specific"
    },
    {
-    "span": "2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸",
+    "span": "2-chloro-3-trifluoroethoxymethyl-4-methanesulfonylbenzoic acid",
     "kind": "specific"
    },
    {
-    "span": "1，3-环己二酮",
+    "span": "1,3-cyclohexanedione",
     "kind": "specific"
    },
    {
-    "span": "三氟乙醇",
+    "span": "trifluoroethanol",
     "kind": "specific"
    },
    {
-    "span": "叔丁醇钾",
+    "span": "potassium tert-butoxide",
     "kind": "specific"
    },
    {
-    "span": "丙酮氰醇",
+    "span": "acetone cyanohydrin",
     "kind": "specific"
    }
   ],
@@ -103,16 +127,16 @@
     "kind": "specific"
    },
    {
-    "span": "cyclic sulfone ketone",
+    "span": "tembotrione",
     "kind": "specific",
-    "why_en": "The printed English of the title renders 环磺酮 literally as a class of compound rather than as the herbicide it is. Not a second substance: the same one the patent is about.",
+    "why_en": "The printed English of the title renders 环磺酮 literally as a class of compound rather than as the herbicide it is. Not a second substance: the same one the patent is about. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
     "smiles": null,
     "canonical": "tembotrione"
    },
    {
-    "span": "huanhuangtong",
+    "span": "tembotrione",
     "kind": "specific",
-    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance.",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
     "smiles": null,
     "canonical": "tembotrione"
    },
@@ -150,7 +174,7 @@
   "44": [],
   "45": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    }
   ],
@@ -158,19 +182,15 @@
    {
     "span": "tembotrione",
     "kind": "specific"
-   },
-   {
-    "span": "环磺酮",
-    "kind": "specific"
    }
   ],
   "47": [
    {
-    "span": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
+    "span": "methyl 2-chloro-3-bromomethyl-4-(methanesulfonyl)benzoate",
     "kind": "specific"
    },
    {
-    "span": "三氟乙醇钠",
+    "span": "sodium trifluoroethoxide",
     "kind": "specific"
    },
    {
@@ -182,15 +202,15 @@
     "kind": "generic"
    },
    {
-    "span": "反应溶剂",
+    "span": "reaction substrates",
     "kind": "generic"
    },
    {
-    "span": "反应底物",
+    "span": "reaction solvent",
     "kind": "generic"
    },
    {
-    "span": "2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸",
+    "span": "2-chloro-3-(trifluoroethoxymethyl)-4-(methanesulfonyl)benzoic acid",
     "kind": "specific"
    }
   ],
@@ -232,40 +252,36 @@
    {
     "span": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
     "kind": "specific"
-   },
-   {
-    "span": "MOH/M2CO3",
-    "kind": "generic"
    }
   ],
   "50": [],
   "51": [
    {
-    "span": "2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸",
+    "span": "2-chloro-3-(trifluoroethoxymethyl)-4-(methanesulfonyl)benzoic acid",
     "kind": "specific"
    },
    {
-    "span": "1,3-环己二酮",
+    "span": "1,3-cyclohexanedione",
     "kind": "specific"
    },
    {
-    "span": "反应底物",
+    "span": "reaction substrates",
     "kind": "generic"
    },
    {
-    "span": "缩合剂",
+    "span": "reaction solvent",
     "kind": "generic"
    },
    {
-    "span": "碱催化剂",
+    "span": "condensing agent",
     "kind": "generic"
    },
    {
-    "span": "反应溶剂",
+    "span": "base catalyst",
     "kind": "generic"
    },
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    }
   ],
@@ -311,22 +327,6 @@
    {
     "span": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
     "kind": "specific"
-   },
-   {
-    "span": "缩合剂",
-    "kind": "generic"
-   },
-   {
-    "span": "condensing agent",
-    "kind": "generic"
-   },
-   {
-    "span": "碱催化剂",
-    "kind": "generic"
-   },
-   {
-    "span": "base catalyst",
-    "kind": "generic"
    }
   ],
   "54": [],
@@ -378,15 +378,15 @@
   ],
   "57": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "三氟乙醇钠",
+    "span": "sodium trifluoroethoxide",
     "kind": "specific"
    },
    {
-    "span": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
+    "span": "methyl 2-chloro-3-bromomethyl-4-(methanesulfonyl)benzoate",
     "kind": "specific"
    }
   ],
@@ -406,7 +406,7 @@
   ],
   "59": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
@@ -418,7 +418,7 @@
     "kind": "generic"
    },
    {
-    "span": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
+    "span": "methyl 2-chloro-3-bromomethyl-4-(methanesulfonyl)benzoate",
     "kind": "specific"
    }
   ],
@@ -442,7 +442,7 @@
   ],
   "61": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    }
   ],
@@ -454,23 +454,23 @@
   ],
   "63": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "1,3-环己二酮",
+    "span": "1,3-cyclohexanedione",
     "kind": "specific"
    },
    {
-    "span": "2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸",
+    "span": "2-chloro-3-(trifluoroethoxymethyl)-4-(methanesulfonyl)benzoic acid",
     "kind": "specific"
    },
    {
-    "span": "碱催化剂",
+    "span": "base catalyst",
     "kind": "generic"
    },
    {
-    "span": "缩合剂",
+    "span": "condensing agent",
     "kind": "generic"
    }
   ],
@@ -498,31 +498,31 @@
   ],
   "65": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "碱催化剂",
+    "span": "base catalyst",
     "kind": "generic"
    },
    {
-    "span": "碳酸钠",
+    "span": "sodium carbonate",
     "kind": "specific"
    },
    {
-    "span": "碳酸钾",
+    "span": "potassium carbonate",
     "kind": "specific"
    },
    {
-    "span": "氢氧化钙",
+    "span": "calcium hydroxide",
     "kind": "specific"
    },
    {
-    "span": "三乙胺",
+    "span": "triethylamine",
     "kind": "specific"
    },
    {
-    "span": "吡啶",
+    "span": "pyridine",
     "kind": "specific"
    }
   ],
@@ -558,11 +558,11 @@
   ],
   "67": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "缩合剂",
+    "span": "condensing agent",
     "kind": "generic"
    },
    {
@@ -594,19 +594,19 @@
     "canonical": "1,8-diazabicyclo[5.4.0]undec-7-ene"
    },
    {
-    "span": "N,N'-羰基二咪唑",
+    "span": "N,N'-carbonyldiimidazole",
     "kind": "specific"
    },
    {
-    "span": "O-苯并三氮唑-四甲基脲六氟磷酸酯",
+    "span": "O-benzotriazol-tetramethyluronium hexafluorophosphate",
     "kind": "specific"
    },
    {
-    "span": "1-羟基苯并三唑",
+    "span": "1-hydroxybenzotriazole",
     "kind": "specific"
    },
    {
-    "span": "1,8-二氮杂二环十一碳-7-烯",
+    "span": "1,8-diazabicycloundec-7-ene",
     "kind": "specific"
    }
   ],
@@ -666,7 +666,7 @@
   ],
   "69": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    }
   ],
@@ -678,63 +678,63 @@
   ],
   "71": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "反应溶剂",
+    "span": "reaction solvent",
     "kind": "generic"
    },
    {
-    "span": "己烷",
+    "span": "hexane",
     "kind": "specific"
    },
    {
-    "span": "环己烷",
+    "span": "cyclohexane",
     "kind": "specific"
    },
    {
-    "span": "N,N-二甲基甲酰胺",
+    "span": "N,N-dimethylformamide",
     "kind": "specific"
    },
    {
-    "span": "苯",
+    "span": "benzene",
     "kind": "specific"
    },
    {
-    "span": "甲苯",
+    "span": "toluene",
     "kind": "specific"
    },
    {
-    "span": "二甲苯",
+    "span": "xylene",
     "kind": "specific"
    },
    {
-    "span": "二氯甲烷",
+    "span": "dichloromethane",
     "kind": "specific"
    },
    {
-    "span": "1,2-二氯乙烷",
+    "span": "1,2-dichloroethane",
     "kind": "specific"
    },
    {
-    "span": "氯仿",
+    "span": "chloroform",
     "kind": "specific"
    },
    {
-    "span": "1,4-二氧六环",
+    "span": "1,4-dioxane",
     "kind": "specific"
    },
    {
-    "span": "乙醚",
+    "span": "diethyl ether",
     "kind": "specific"
    },
    {
-    "span": "四氢呋喃",
+    "span": "tetrahydrofuran",
     "kind": "specific"
    },
    {
-    "span": "乙腈",
+    "span": "acetonitrile",
     "kind": "specific"
    }
   ],
@@ -802,19 +802,19 @@
   ],
   "73": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "反应溶剂",
+    "span": "reaction solvent",
     "kind": "generic"
    },
    {
-    "span": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
+    "span": "methyl 2-chloro-3-bromomethyl-4-(methanesulfonyl)benzoate",
     "kind": "specific"
    },
    {
-    "span": "2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸",
+    "span": "2-chloro-3-(trifluoroethoxymethyl)-4-(methanesulfonyl)benzoic acid",
     "kind": "specific"
    }
   ],
@@ -846,8 +846,15 @@
   "82": [],
   "83": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
+    "smiles": null,
+    "canonical": "tembotrione"
    }
   ],
   "84": [
@@ -856,48 +863,18 @@
     "kind": "specific"
    },
    {
-    "span": "huanhuangtong",
+    "span": "tembotrione",
     "kind": "specific",
-    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance.",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
     "smiles": null,
     "canonical": "tembotrione"
    }
   ],
   "85": [
    {
-    "span": "环磺酮",
-    "kind": "specific"
-   },
-   {
-    "span": "三氟乙醇",
-    "kind": "specific"
-   },
-   {
-    "span": "叔丁醇钾",
-    "kind": "specific"
-   },
-   {
-    "span": "2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸",
-    "kind": "specific"
-   },
-   {
-    "span": "丙酮氰醇",
-    "kind": "specific"
-   },
-   {
-    "span": "二氯亚砜",
-    "kind": "specific"
-   },
-   {
-    "span": "试剂",
-    "kind": "generic"
-   }
-  ],
-  "86": [
-   {
-    "span": "Huanhuangtong",
+    "span": "Tembotrione",
     "kind": "specific",
-    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance.",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
     "smiles": null,
     "canonical": "tembotrione"
    },
@@ -922,7 +899,36 @@
     "kind": "specific"
    },
    {
-    "span": "二氯亚砜",
+    "span": "reagents",
+    "kind": "generic"
+   }
+  ],
+  "86": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
+    "smiles": null,
+    "canonical": "tembotrione"
+   },
+   {
+    "span": "trifluoroethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "potassium tert-butoxide",
+    "kind": "specific"
+   },
+   {
+    "span": "2-chloro-3-trifluoroethoxymethyl-4-methylsulfonylbenzoic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "acetone cyanohydrin",
+    "kind": "specific"
+   },
+   {
+    "span": "thionyl chloride",
     "kind": "specific"
    },
    {
@@ -932,30 +938,36 @@
   ],
   "87": [
    {
-    "span": "环磺酮",
-    "kind": "specific"
+    "span": "tembotrione",
+    "kind": "specific",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
+    "smiles": null,
+    "canonical": "tembotrione"
    }
   ],
   "88": [
    {
-    "span": "huanhuangtong",
+    "span": "tembotrione",
     "kind": "specific",
-    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance.",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
     "smiles": null,
     "canonical": "tembotrione"
    }
   ],
   "89": [
    {
-    "span": "环磺酮",
-    "kind": "specific"
+    "span": "tembotrione",
+    "kind": "specific",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
+    "smiles": null,
+    "canonical": "tembotrione"
    }
   ],
   "90": [
    {
-    "span": "huanhuangtong",
+    "span": "tembotrione",
     "kind": "specific",
-    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance.",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
     "smiles": null,
     "canonical": "tembotrione"
    }
@@ -964,30 +976,33 @@
   "92": [],
   "93": [
    {
-    "span": "环磺酮",
-    "kind": "specific"
+    "span": "tembotrione",
+    "kind": "specific",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
+    "smiles": null,
+    "canonical": "tembotrione"
    }
   ],
   "94": [
    {
-    "span": "huanhuangtong",
+    "span": "tembotrione",
     "kind": "specific",
-    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance.",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
     "smiles": null,
     "canonical": "tembotrione"
    }
   ],
   "95": [
    {
-    "span": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
+    "span": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
     "kind": "specific"
    },
    {
-    "span": "化合物I",
+    "span": "compound I",
     "kind": "generic"
    },
    {
-    "span": "三氟乙醇钠",
+    "span": "sodium trifluoroethoxide",
     "kind": "specific"
    },
    {
@@ -999,19 +1014,19 @@
     "kind": "generic"
    },
    {
-    "span": "反应溶剂",
+    "span": "reaction substrates",
     "kind": "generic"
    },
    {
-    "span": "反应底物",
+    "span": "reaction solvent",
     "kind": "generic"
    },
    {
-    "span": "2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸",
+    "span": "2-chloro-3-trifluoroethoxymethyl-4-methylsulfonylbenzoic acid",
     "kind": "specific"
    },
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    }
   ],
@@ -1062,48 +1077,47 @@
    {
     "span": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
     "kind": "specific"
-   },
-   {
-    "span": "MOH/M2CO3",
-    "kind": "generic"
    }
   ],
   "99": [],
   "100": [
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    },
    {
-    "span": "1,3-环己二酮",
+    "span": "1,3-cyclohexanedione",
     "kind": "specific"
    },
    {
-    "span": "化合物III",
+    "span": "compound III",
     "kind": "generic"
    },
    {
-    "span": "缩合剂",
+    "span": "condensing agent",
     "kind": "generic"
    },
    {
-    "span": "碱催化剂",
+    "span": "basic catalyst",
     "kind": "generic"
    },
    {
-    "span": "反应溶剂",
+    "span": "reaction solvent",
     "kind": "generic"
    },
    {
-    "span": "环磺酮",
-    "kind": "specific"
-   },
-   {
-    "span": "化合物IV",
+    "span": "reaction substrates",
     "kind": "generic"
    },
    {
-    "span": "反应底物",
+    "span": "tembotrione",
+    "kind": "specific",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
+    "smiles": null,
+    "canonical": "tembotrione"
+   },
+   {
+    "span": "compound IV",
     "kind": "generic"
    }
   ],
@@ -1137,9 +1151,9 @@
     "kind": "generic"
    },
    {
-    "span": "huanhuangtong",
+    "span": "tembotrione",
     "kind": "specific",
-    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance.",
+    "why_en": "A transliteration of 环磺酮 left untranslated by the source English. Not a second substance. Span re-pointed after the run corrected the vision read's English: this line previously rendered 环磺酮 as a pinyin or as 'cyclic sulfone ketone' and now names tembotrione, so the span was moved onto the corrected text rather than dropped.",
     "smiles": null,
     "canonical": "tembotrione"
    },
@@ -1161,22 +1175,6 @@
    {
     "span": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
     "kind": "specific"
-   },
-   {
-    "span": "缩合剂",
-    "kind": "generic"
-   },
-   {
-    "span": "condensing agent",
-    "kind": "generic"
-   },
-   {
-    "span": "碱催化剂",
-    "kind": "generic"
-   },
-   {
-    "span": "basic catalyst",
-    "kind": "generic"
    }
   ],
   "104": [],
@@ -1228,11 +1226,11 @@
   ],
   "107": [
    {
-    "span": "三氟乙醇钠",
+    "span": "sodium trifluoroethoxide",
     "kind": "specific"
    },
    {
-    "span": "化合物I",
+    "span": "compound I",
     "kind": "generic"
    }
   ],
@@ -1259,7 +1257,7 @@
     "kind": "generic"
    },
    {
-    "span": "化合物I",
+    "span": "compound I",
     "kind": "generic"
    }
   ],
@@ -1281,19 +1279,19 @@
   "115": [],
   "116": [
    {
-    "span": "化合物III",
+    "span": "compound III",
     "kind": "generic"
    },
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    },
    {
-    "span": "碱催化剂",
+    "span": "base catalyst",
     "kind": "generic"
    },
    {
-    "span": "缩合剂",
+    "span": "condensing agent",
     "kind": "generic"
    }
   ],
@@ -1317,27 +1315,27 @@
   ],
   "118": [
    {
-    "span": "碱催化剂",
+    "span": "base catalyst",
     "kind": "generic"
    },
    {
-    "span": "碳酸钠",
+    "span": "sodium carbonate",
     "kind": "specific"
    },
    {
-    "span": "碳酸钾",
+    "span": "potassium carbonate",
     "kind": "specific"
    },
    {
-    "span": "氢氧化钙",
+    "span": "calcium hydroxide",
     "kind": "specific"
    },
    {
-    "span": "三乙胺",
+    "span": "triethylamine",
     "kind": "specific"
    },
    {
-    "span": "吡啶",
+    "span": "pyridine",
     "kind": "specific"
    }
   ],
@@ -1369,7 +1367,7 @@
   ],
   "120": [
    {
-    "span": "缩合剂",
+    "span": "condensing agent",
     "kind": "generic"
    },
    {
@@ -1401,19 +1399,19 @@
     "canonical": "1,8-diazabicyclo[5.4.0]undec-7-ene"
    },
    {
-    "span": "N,N’-羰基二咪唑",
+    "span": "N,N'-carbonyldiimidazole",
     "kind": "specific"
    },
    {
-    "span": "O-苯并三氮唑-四甲基脲六氟磷酸酯",
+    "span": "O-benzotriazol-tetramethyluronium hexafluorophosphate",
     "kind": "specific"
    },
    {
-    "span": "1-羟基苯并三唑",
+    "span": "1-hydroxybenzotriazole",
     "kind": "specific"
    },
    {
-    "span": "1,8-二氮杂二环十一碳-7-烯",
+    "span": "1,8-diazabicycloundec-7-ene",
     "kind": "specific"
    }
   ],
@@ -1471,59 +1469,59 @@
   "123": [],
   "124": [
    {
-    "span": "反应溶剂",
+    "span": "reaction solvent",
     "kind": "generic"
    },
    {
-    "span": "己烷",
+    "span": "hexane",
     "kind": "specific"
    },
    {
-    "span": "环己烷",
+    "span": "cyclohexane",
     "kind": "specific"
    },
    {
-    "span": "N,N-二甲基甲酰胺",
+    "span": "N,N-dimethylformamide",
     "kind": "specific"
    },
    {
-    "span": "苯",
+    "span": "benzene",
     "kind": "specific"
    },
    {
-    "span": "甲苯",
+    "span": "toluene",
     "kind": "specific"
    },
    {
-    "span": "二甲苯",
+    "span": "xylene",
     "kind": "specific"
    },
    {
-    "span": "二氯甲烷",
+    "span": "dichloromethane",
     "kind": "specific"
    },
    {
-    "span": "1,2-二氯乙烷",
+    "span": "1,2-dichloroethane",
     "kind": "specific"
    },
    {
-    "span": "氯仿",
+    "span": "chloroform",
     "kind": "specific"
    },
    {
-    "span": "1,4-二氧六环",
+    "span": "1,4-dioxane",
     "kind": "specific"
    },
    {
-    "span": "乙醚",
+    "span": "diethyl ether",
     "kind": "specific"
    },
    {
-    "span": "四氢呋喃",
+    "span": "tetrahydrofuran",
     "kind": "specific"
    },
    {
-    "span": "乙腈",
+    "span": "acetonitrile",
     "kind": "specific"
    }
   ],
@@ -1587,15 +1585,15 @@
   ],
   "126": [
    {
-    "span": "反应溶剂",
+    "span": "reaction solvent",
     "kind": "generic"
    },
    {
-    "span": "化合物I",
+    "span": "compound I",
     "kind": "generic"
    },
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    }
   ],
@@ -1615,27 +1613,27 @@
   ],
   "128": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "三氟乙醇钠",
+    "span": "sodium trifluoroethoxide",
     "kind": "specific"
    },
    {
-    "span": "三氟乙醇",
+    "span": "2-chloro-3-(2,2,2-trifluoroethoxymethyl)-4-methylsulfonylbenzoic acid",
     "kind": "specific"
    },
    {
-    "span": "叔丁醇钾",
+    "span": "trifluoroethanol",
     "kind": "specific"
    },
    {
-    "span": "2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸",
+    "span": "potassium tert-butoxide",
     "kind": "specific"
    },
    {
-    "span": "丙酮氰醇",
+    "span": "acetone cyanohydrin",
     "kind": "specific"
    }
   ],
@@ -1673,7 +1671,7 @@
   "135": [],
   "136": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    }
   ],
@@ -1685,87 +1683,87 @@
   ],
   "138": [
    {
-    "span": "三氟乙醇钠",
+    "span": "sodium trifluoroethoxide",
     "kind": "specific"
    },
    {
-    "span": "氢氧化钠",
+    "span": "sodium hydroxide",
     "kind": "specific"
    },
    {
-    "span": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
+    "span": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
     "kind": "specific"
    },
    {
-    "span": "化合物I",
+    "span": "compound I",
     "kind": "generic"
    },
    {
-    "span": "N,N-二甲基甲酰胺",
+    "span": "N,N-dimethylformamide",
     "kind": "specific"
    },
    {
-    "span": "水",
+    "span": "water",
     "kind": "specific"
    },
    {
-    "span": "盐酸",
+    "span": "hydrochloric acid",
     "kind": "specific"
    },
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    },
    {
-    "span": "反应溶剂",
+    "span": "reaction solvent",
     "kind": "generic"
    },
    {
-    "span": "己烷",
+    "span": "hexane",
     "kind": "specific"
    },
    {
-    "span": "环己烷",
+    "span": "cyclohexane",
     "kind": "specific"
    },
    {
-    "span": "苯",
+    "span": "benzene",
     "kind": "specific"
    },
    {
-    "span": "甲苯",
+    "span": "toluene",
     "kind": "specific"
    },
    {
-    "span": "二甲苯",
+    "span": "xylene",
     "kind": "specific"
    },
    {
-    "span": "二氯甲烷",
+    "span": "dichloromethane",
     "kind": "specific"
    },
    {
-    "span": "1,2-二氯乙烷",
+    "span": "1,2-dichloroethane",
     "kind": "specific"
    },
    {
-    "span": "氯仿",
+    "span": "chloroform",
     "kind": "specific"
    },
    {
-    "span": "1,4-二氧六环",
+    "span": "1,4-dioxane",
     "kind": "specific"
    },
    {
-    "span": "乙醚",
+    "span": "diethyl ether",
     "kind": "specific"
    },
    {
-    "span": "四氢呋喃",
+    "span": "tetrahydrofuran",
     "kind": "specific"
    },
    {
-    "span": "乙腈",
+    "span": "acetonitrile",
     "kind": "specific"
    }
   ],
@@ -1857,23 +1855,23 @@
   ],
   "140": [
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    },
    {
-    "span": "1,2-二氯乙烷",
+    "span": "1,2-dichloroethane",
     "kind": "specific"
    },
    {
-    "span": "1,3-环己二酮",
+    "span": "1,3-cyclohexanedione",
     "kind": "specific"
    },
    {
-    "span": "化合物III",
+    "span": "compound III",
     "kind": "generic"
    },
    {
-    "span": "缩合剂",
+    "span": "condensing agent",
     "kind": "generic"
    },
    {
@@ -1884,75 +1882,75 @@
     "canonical": "N,N'-carbonyldiimidazole"
    },
    {
-    "span": "三乙胺",
+    "span": "triethylamine",
     "kind": "specific"
    },
    {
-    "span": "甲醇",
+    "span": "methanol",
     "kind": "specific"
    },
    {
-    "span": "水",
+    "span": "water",
     "kind": "specific"
    },
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "化合物IV",
+    "span": "compound IV",
     "kind": "generic"
    },
    {
-    "span": "反应溶剂",
+    "span": "reaction solvent",
     "kind": "generic"
    },
    {
-    "span": "己烷",
+    "span": "hexane",
     "kind": "specific"
    },
    {
-    "span": "环己烷",
+    "span": "cyclohexane",
     "kind": "specific"
    },
    {
-    "span": "N,N-二甲基甲酰胺",
+    "span": "N,N-dimethylformamide",
     "kind": "specific"
    },
    {
-    "span": "苯",
+    "span": "benzene",
     "kind": "specific"
    },
    {
-    "span": "甲苯",
+    "span": "toluene",
     "kind": "specific"
    },
    {
-    "span": "二甲苯",
+    "span": "xylene",
     "kind": "specific"
    },
    {
-    "span": "二氯甲烷",
+    "span": "dichloromethane",
     "kind": "specific"
    },
    {
-    "span": "氯仿",
+    "span": "chloroform",
     "kind": "specific"
    },
    {
-    "span": "1,4-二氧六环",
+    "span": "1,4-dioxane",
     "kind": "specific"
    },
    {
-    "span": "乙醚",
+    "span": "diethyl ether",
     "kind": "specific"
    },
    {
-    "span": "四氢呋喃",
+    "span": "tetrahydrofuran",
     "kind": "specific"
    },
    {
-    "span": "乙腈",
+    "span": "acetonitrile",
     "kind": "specific"
    }
   ],
@@ -2064,7 +2062,7 @@
   "146": [],
   "147": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    }
   ],
@@ -2076,35 +2074,35 @@
   ],
   "149": [
    {
-    "span": "三氟乙醇钠",
+    "span": "sodium trifluoroethoxide",
     "kind": "specific"
    },
    {
-    "span": "氢氧化钾",
+    "span": "potassium hydroxide",
     "kind": "specific"
    },
    {
-    "span": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
+    "span": "methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
     "kind": "specific"
    },
    {
-    "span": "化合物I",
+    "span": "compound I",
     "kind": "generic"
    },
    {
-    "span": "N,N-二甲基甲酰胺",
+    "span": "N,N-dimethylformamide",
     "kind": "specific"
    },
    {
-    "span": "水",
+    "span": "water",
     "kind": "specific"
    },
    {
-    "span": "盐酸",
+    "span": "hydrochloric acid",
     "kind": "specific"
    },
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    }
   ],
@@ -2144,23 +2142,23 @@
   ],
   "151": [
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    },
    {
-    "span": "二氯甲烷",
+    "span": "dichloromethane",
     "kind": "specific"
    },
    {
-    "span": "1,3-环己二酮",
+    "span": "1,3-cyclohexanedione",
     "kind": "specific"
    },
    {
-    "span": "化合物III",
+    "span": "compound III",
     "kind": "generic"
    },
    {
-    "span": "缩合剂",
+    "span": "condensing agent",
     "kind": "generic"
    },
    {
@@ -2171,23 +2169,23 @@
     "canonical": "O-(benzotriazol-1-yl)-N,N,N',N'-tetramethyluronium hexafluorophosphate"
    },
    {
-    "span": "碳酸钠",
+    "span": "sodium carbonate",
     "kind": "specific"
    },
    {
-    "span": "甲醇",
+    "span": "methanol",
     "kind": "specific"
    },
    {
-    "span": "水",
+    "span": "water",
     "kind": "specific"
    },
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "化合物IV",
+    "span": "compound IV",
     "kind": "generic"
    }
   ],
@@ -2244,7 +2242,7 @@
   "154": [],
   "155": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    }
   ],
@@ -2256,35 +2254,35 @@
   ],
   "157": [
    {
-    "span": "三氟乙醇钠",
+    "span": "sodium trifluoroethoxide",
     "kind": "specific"
    },
    {
-    "span": "碳酸钠",
+    "span": "sodium carbonate",
     "kind": "specific"
    },
    {
-    "span": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
+    "span": "methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
     "kind": "specific"
    },
    {
-    "span": "化合物I",
+    "span": "compound I",
     "kind": "generic"
    },
    {
-    "span": "N,N-二甲基甲酰胺",
+    "span": "N,N-dimethylformamide",
     "kind": "specific"
    },
    {
-    "span": "水",
+    "span": "water",
     "kind": "specific"
    },
    {
-    "span": "盐酸",
+    "span": "hydrochloric acid",
     "kind": "specific"
    },
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    }
   ],
@@ -2324,23 +2322,23 @@
   ],
   "159": [
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    },
    {
-    "span": "二氯乙烷",
+    "span": "dichloroethane",
     "kind": "specific"
    },
    {
-    "span": "1,3-环己二酮",
+    "span": "1,3-cyclohexanedione",
     "kind": "specific"
    },
    {
-    "span": "化合物III",
+    "span": "compound III",
     "kind": "generic"
    },
    {
-    "span": "缩合剂",
+    "span": "condensing agent",
     "kind": "generic"
    },
    {
@@ -2351,26 +2349,23 @@
     "canonical": "1-hydroxybenzotriazole"
    },
    {
-    "span": "氢氧化钙",
+    "span": "calcium hydroxide",
     "kind": "specific"
    },
    {
-    "span": "甲、醇",
-    "kind": "specific",
-    "why_en": "The page prints 加甲、醇打浆: an enumeration comma has been set inside the word 甲醇. Recorded as printed; the substance is methanol, as the parallel steps in the other examples confirm.",
-    "smiles": "CO",
-    "canonical": "methanol"
-   },
-   {
-    "span": "水",
+    "span": "methanol",
     "kind": "specific"
    },
    {
-    "span": "环磺酮",
+    "span": "water",
     "kind": "specific"
    },
    {
-    "span": "化合物IV",
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "compound IV",
     "kind": "generic"
    }
   ],
@@ -2427,7 +2422,7 @@
   "162": [],
   "163": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    }
   ],
@@ -2439,35 +2434,35 @@
   ],
   "165": [
    {
-    "span": "三氟乙醇钠",
+    "span": "sodium trifluoroethoxide",
     "kind": "specific"
    },
    {
-    "span": "碳酸钾",
+    "span": "potassium carbonate",
     "kind": "specific"
    },
    {
-    "span": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
+    "span": "methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
     "kind": "specific"
    },
    {
-    "span": "化合物I",
+    "span": "compound I",
     "kind": "generic"
    },
    {
-    "span": "N,N-二甲基甲酰胺",
+    "span": "N,N-dimethylformamide",
     "kind": "specific"
    },
    {
-    "span": "水",
+    "span": "water",
     "kind": "specific"
    },
    {
-    "span": "盐酸",
+    "span": "hydrochloric acid",
     "kind": "specific"
    },
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    }
   ],
@@ -2507,23 +2502,23 @@
   ],
   "167": [
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    },
    {
-    "span": "环己烷",
+    "span": "cyclohexane",
     "kind": "specific"
    },
    {
-    "span": "1,3-环己二酮",
+    "span": "1,3-cyclohexanedione",
     "kind": "specific"
    },
    {
-    "span": "化合物III",
+    "span": "compound III",
     "kind": "generic"
    },
    {
-    "span": "缩合剂",
+    "span": "condensing agent",
     "kind": "generic"
    },
    {
@@ -2534,23 +2529,23 @@
     "canonical": "1,8-diazabicyclo[5.4.0]undec-7-ene"
    },
    {
-    "span": "吡啶",
+    "span": "pyridine",
     "kind": "specific"
    },
    {
-    "span": "甲醇",
+    "span": "methanol",
     "kind": "specific"
    },
    {
-    "span": "水",
+    "span": "water",
     "kind": "specific"
    },
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "化合物IV",
+    "span": "compound IV",
     "kind": "generic"
    }
   ],
@@ -2607,7 +2602,7 @@
   "170": [],
   "171": [
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    }
   ],
@@ -2619,23 +2614,23 @@
   ],
   "173": [
    {
-    "span": "三氟乙醇钠",
+    "span": "sodium trifluoroethoxide",
     "kind": "specific"
    },
    {
-    "span": "氢氧化锂",
+    "span": "lithium hydroxide",
     "kind": "specific"
    },
    {
-    "span": "2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯",
+    "span": "methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
     "kind": "specific"
    },
    {
-    "span": "化合物I",
+    "span": "compound I",
     "kind": "generic"
    },
    {
-    "span": "N,N-二甲基甲酰胺",
+    "span": "N,N-dimethylformamide",
     "kind": "specific"
    }
   ],
@@ -2666,19 +2661,19 @@
   "177": [],
   "178": [
    {
-    "span": "N，N-二甲基甲酰胺",
+    "span": "N,N-dimethylformamide",
     "kind": "specific"
    },
    {
-    "span": "水",
+    "span": "water",
     "kind": "specific"
    },
    {
-    "span": "盐酸",
+    "span": "hydrochloric acid",
     "kind": "specific"
    },
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    }
   ],
@@ -2702,23 +2697,23 @@
   ],
   "180": [
    {
-    "span": "化合物II",
+    "span": "compound II",
     "kind": "generic"
    },
    {
-    "span": "环己烷",
+    "span": "cyclohexane",
     "kind": "specific"
    },
    {
-    "span": "1，3-环己二酮",
+    "span": "1,3-cyclohexanedione",
     "kind": "specific"
    },
    {
-    "span": "化合物III",
+    "span": "compound III",
     "kind": "generic"
    },
    {
-    "span": "缩合剂",
+    "span": "condensing agent",
     "kind": "generic"
    },
    {
@@ -2729,23 +2724,23 @@
     "canonical": "N,N'-carbonyldiimidazole"
    },
    {
-    "span": "碳酸钾",
+    "span": "potassium carbonate",
     "kind": "specific"
    },
    {
-    "span": "甲醇",
+    "span": "methanol",
     "kind": "specific"
    },
    {
-    "span": "水",
+    "span": "water",
     "kind": "specific"
    },
    {
-    "span": "环磺酮",
+    "span": "tembotrione",
     "kind": "specific"
    },
    {
-    "span": "化合物IV",
+    "span": "compound IV",
     "kind": "generic"
    }
   ],
