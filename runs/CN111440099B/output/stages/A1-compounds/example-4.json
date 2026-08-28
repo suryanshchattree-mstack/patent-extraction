@@ -1,0 +1,323 @@
+[
+ {
+  "patent_id": "CN111440099B",
+  "identifier": "tembotrione",
+  "identifier_type": "trivial_name",
+  "aliases": [
+   "环磺酮",
+   "产品环磺酮",
+   "纯化环磺酮"
+  ],
+  "resolved": true,
+  "unresolved_reference": false,
+  "section_label": "Example 4",
+  "section_type": "experimental_example",
+  "is_section_product": true,
+  "commercially_available": false,
+  "role": "product",
+  "quantity": {
+   "mass_g": 5.0,
+   "volume_ml": null,
+   "mmol": null,
+   "equivalents": null,
+   "yield_pct": null
+  },
+  "ms_mz": null,
+  "nmr": null,
+  "melting_point": null,
+  "appearance": null,
+  "color": null,
+  "physical_form": null,
+  "analytics": [],
+  "purity_pct": null,
+  "purity_method": null,
+  "tags": [
+   "compound_class:active_ingredient"
+  ],
+  "notes": "Merged from the [0047] lead-in at line 242 and both table rows at lines 249 and 250. The lead-in prints it as 产品环磺酮 (the tembotrione product) and each treatment cell ends with 纯化环磺酮 (purified tembotrione); the bare word 产品 (product) in each cell's instruction to take 5 g of product is the same compound, since the section names no other substance that could be that product. mass_g 5.0 is a real charged mass and it is per batch: batches 14 and 15 each take 5 g of product. The table states no isolated mass and no yield, so yield_pct is null. The cyanide figures of this section are an impurity content and are carried as analytics on the cyanide record, not as a purity and not as a quantity here. role product, commercially_available false and resolved true are the shared canonical values for this patent; this section on its own only purifies an already existing product, so it would have supported neither the preparation that makes commercially_available false nor any other role. The procedures of this section exist only inside the treatment method cells of the table image at [0048], which has no text layer. Nothing in this section reads as sulcotrione or as mesotrione."
+ },
+ {
+  "patent_id": "CN111440099B",
+  "identifier": "adsorbent",
+  "identifier_type": "functional_ref",
+  "aliases": [
+   "吸附剂"
+  ],
+  "resolved": false,
+  "unresolved_reference": true,
+  "section_label": "Example 4",
+  "section_type": "experimental_example",
+  "is_section_product": false,
+  "commercially_available": null,
+  "role": "additive",
+  "quantity": null,
+  "ms_mz": null,
+  "nmr": null,
+  "melting_point": null,
+  "appearance": null,
+  "color": null,
+  "physical_form": null,
+  "analytics": [],
+  "purity_pct": null,
+  "purity_method": null,
+  "tags": [
+   "compound_class:workup_agent"
+  ],
+  "notes": "From the [0047] lead-in only, which says the product was treated in different adsorbents (在不同吸附剂中处理). Kept as an unresolved functional reference with the shared canonical values, because the word is generic wherever the document uses it. This section alone would have resolved it, since its two batches name the two adsorbents outright, activated carbon in batch 14 and diatomaceous earth in batch 15, and both are emitted as their own records; the canonical table fixes resolved false because the claims and the summary use the same word generically. role additive because the role enum has no value for an adsorbent. commercially_available is null rather than false: the document says nothing about the source of a generic adsorbent, and that is not knowing rather than knowing it is unavailable."
+ },
+ {
+  "patent_id": "CN111440099B",
+  "identifier": "activated carbon",
+  "identifier_type": "other",
+  "aliases": [
+   "活性炭"
+  ],
+  "resolved": true,
+  "unresolved_reference": false,
+  "section_label": "Example 4",
+  "section_type": "experimental_example",
+  "is_section_product": false,
+  "commercially_available": true,
+  "role": "additive",
+  "quantity": {
+   "mass_g": 1.0,
+   "volume_ml": null,
+   "mmol": null,
+   "equivalents": null,
+   "yield_pct": null
+  },
+  "ms_mz": null,
+  "nmr": null,
+  "melting_point": null,
+  "appearance": null,
+  "color": null,
+  "physical_form": null,
+  "analytics": [],
+  "purity_pct": null,
+  "purity_method": null,
+  "tags": [
+   "compound_class:workup_agent"
+  ],
+  "notes": "Batch 14 only. The treatment cell at line 249 adds 1 g of activated carbon (加入1g活性炭), holds for one hour and filters hot. mass_g 1.0 is a real charged mass. Named only inside the treatment method cell (处理方法, treatment method) of the table image printed at [0048], which has no text layer; this section prints no prose procedure at all, so a reader of the prose alone would miss this compound. This is the adsorbent claim 1 chooses, so the record carries its real role rather than being folded into the generic adsorbent record. role additive because the role enum has no value for an adsorbent; it adsorbs the cyanide impurity from the hot solution and is removed by the hot filtration. The two batches differ in the solvent as well as in the adsorbent: batch 14 dissolves the product in 20% aqueous methanol (20%含水甲醇) and adds 1 g of activated carbon, batch 15 dissolves it in 20% aqueous ethanol (20%含水乙醇) and adds 1 g of diatomaceous earth. Both variables move together, so this section does not in fact isolate the adsorbent and its result cannot be read as a clean activated carbon against diatomaceous earth comparison. Recorded as printed; the experimental design is not corrected here. The 1.0 is this section's own charge and it does not survive the merge. Every batch from 1 to 15 across Examples 1 to 4 charges 1 g of adsorbent onto a 5 g portion of product, but Example 6 at [0053] charges 5 g of activated carbon at its 231.9 g benzoyl chloride scale. The schema holds one mass per compound, example-6.json sorts after example-4.json, and the merge in finalise.py overwrites with whichever section file sorts last, so the merged activated carbon record in the finished deliverable carries mass_g 5.0 and not this section's 1.0. Which of the two survives is decided by filename order, not by which charge is representative. diatomaceous earth is unaffected: only Examples 4 and 5 charge it and both charge 1 g."
+ },
+ {
+  "patent_id": "CN111440099B",
+  "identifier": "diatomaceous earth",
+  "identifier_type": "other",
+  "aliases": [
+   "硅藻土"
+  ],
+  "resolved": true,
+  "unresolved_reference": false,
+  "section_label": "Example 4",
+  "section_type": "experimental_example",
+  "is_section_product": false,
+  "commercially_available": true,
+  "role": "additive",
+  "quantity": {
+   "mass_g": 1.0,
+   "volume_ml": null,
+   "mmol": null,
+   "equivalents": null,
+   "yield_pct": null
+  },
+  "ms_mz": null,
+  "nmr": null,
+  "melting_point": null,
+  "appearance": null,
+  "color": null,
+  "physical_form": null,
+  "analytics": [],
+  "purity_pct": null,
+  "purity_method": null,
+  "tags": [
+   "compound_class:workup_agent"
+  ],
+  "notes": "Batch 15 only. The treatment cell at line 250 adds 1 g of diatomaceous earth (加入1g硅藻土), holds for one hour and filters hot. mass_g 1.0 is a real charged mass. Named only inside the treatment method cell (处理方法, treatment method) of the table image printed at [0048], which has no text layer; this section prints no prose procedure at all, so a reader of the prose alone would miss this compound. This is the second of the two adsorbents claim 1 chooses between, so the record carries its real role rather than being folded into the generic adsorbent record. role additive because the role enum has no value for an adsorbent. The two batches differ in the solvent as well as in the adsorbent: batch 14 dissolves the product in 20% aqueous methanol (20%含水甲醇) and adds 1 g of activated carbon, batch 15 dissolves it in 20% aqueous ethanol (20%含水乙醇) and adds 1 g of diatomaceous earth. Both variables move together, so this section does not in fact isolate the adsorbent and its result cannot be read as a clean activated carbon against diatomaceous earth comparison. Recorded as printed; the experimental design is not corrected here."
+ },
+ {
+  "patent_id": "CN111440099B",
+  "identifier": "methanol",
+  "identifier_type": "iupac",
+  "aliases": [
+   "甲醇",
+   "20%含水甲醇"
+  ],
+  "resolved": true,
+  "unresolved_reference": false,
+  "section_label": "Example 4",
+  "section_type": "experimental_example",
+  "is_section_product": false,
+  "commercially_available": true,
+  "role": "solvent",
+  "quantity": null,
+  "ms_mz": null,
+  "nmr": null,
+  "melting_point": null,
+  "appearance": null,
+  "color": null,
+  "physical_form": null,
+  "analytics": [],
+  "purity_pct": null,
+  "purity_method": null,
+  "tags": [
+   "compound_class:solvent"
+  ],
+  "notes": "Batch 14 only. The treatment cell at line 249 dissolves the 5 g of product in 20% aqueous methanol (20%含水甲醇) and warms to 60 C. That is a mixture and not a compound, so methanol and water are emitted separately and the 20% composition belongs in the reaction record rather than in the identifier. Named only inside the treatment method cell (处理方法, treatment method) of the table image printed at [0048], which has no text layer; this section prints no prose procedure at all, so a reader of the prose alone would miss this compound. The table gives no volume and no mass for it, so quantity is null. The two batches differ in the solvent as well as in the adsorbent: batch 14 dissolves the product in 20% aqueous methanol (20%含水甲醇) and adds 1 g of activated carbon, batch 15 dissolves it in 20% aqueous ethanol (20%含水乙醇) and adds 1 g of diatomaceous earth. Both variables move together, so this section does not in fact isolate the adsorbent and its result cannot be read as a clean activated carbon against diatomaceous earth comparison. Recorded as printed; the experimental design is not corrected here."
+ },
+ {
+  "patent_id": "CN111440099B",
+  "identifier": "ethanol",
+  "identifier_type": "iupac",
+  "aliases": [
+   "乙醇",
+   "20%含水乙醇"
+  ],
+  "resolved": true,
+  "unresolved_reference": false,
+  "section_label": "Example 4",
+  "section_type": "experimental_example",
+  "is_section_product": false,
+  "commercially_available": true,
+  "role": "solvent",
+  "quantity": null,
+  "ms_mz": null,
+  "nmr": null,
+  "melting_point": null,
+  "appearance": null,
+  "color": null,
+  "physical_form": null,
+  "analytics": [],
+  "purity_pct": null,
+  "purity_method": null,
+  "tags": [
+   "compound_class:solvent"
+  ],
+  "notes": "Batch 15 only. The treatment cell at line 250 dissolves the 5 g of product in 20% aqueous ethanol (20%含水乙醇) and warms to 60 C. That is a mixture and not a compound, so ethanol and water are emitted separately and the 20% composition belongs in the reaction record rather than in the identifier. Named only inside the treatment method cell (处理方法, treatment method) of the table image printed at [0048], which has no text layer; this section prints no prose procedure at all, so a reader of the prose alone would miss this compound. The table gives no volume and no mass for it, so quantity is null. The two batches differ in the solvent as well as in the adsorbent: batch 14 dissolves the product in 20% aqueous methanol (20%含水甲醇) and adds 1 g of activated carbon, batch 15 dissolves it in 20% aqueous ethanol (20%含水乙醇) and adds 1 g of diatomaceous earth. Both variables move together, so this section does not in fact isolate the adsorbent and its result cannot be read as a clean activated carbon against diatomaceous earth comparison. Recorded as printed; the experimental design is not corrected here."
+ },
+ {
+  "patent_id": "CN111440099B",
+  "identifier": "water",
+  "identifier_type": "trivial_name",
+  "aliases": [
+   "含水"
+  ],
+  "resolved": true,
+  "unresolved_reference": false,
+  "section_label": "Example 4",
+  "section_type": "experimental_example",
+  "is_section_product": false,
+  "commercially_available": true,
+  "role": "solvent",
+  "quantity": null,
+  "ms_mz": null,
+  "nmr": null,
+  "melting_point": null,
+  "appearance": null,
+  "color": null,
+  "physical_form": null,
+  "analytics": [],
+  "purity_pct": null,
+  "purity_method": null,
+  "tags": [
+   "compound_class:solvent"
+  ],
+  "notes": "Present in both batches only as the aqueous qualifier 含水 of the dissolution solvent, in 20% aqueous methanol at line 249 and 20% aqueous ethanol at line 250; the word for water never stands alone in this section. Emitted because the canonical identifier table treats 20% aqueous methanol as a mixture of methanol and water. Named only inside the treatment method cell (处理方法, treatment method) of the table image printed at [0048], which has no text layer; this section prints no prose procedure at all, so a reader of the prose alone would miss this compound. No amount is given for the water itself, so quantity is null. Water is also implied by the 10% dilute hydrochloric acid of both batches, which is carried on the hydrochloric acid record."
+ },
+ {
+  "patent_id": "CN111440099B",
+  "identifier": "hydrochloric acid",
+  "identifier_type": "trivial_name",
+  "aliases": [
+   "10%稀盐酸",
+   "稀盐酸"
+  ],
+  "resolved": true,
+  "unresolved_reference": false,
+  "section_label": "Example 4",
+  "section_type": "experimental_example",
+  "is_section_product": false,
+  "commercially_available": true,
+  "role": "acid",
+  "quantity": null,
+  "ms_mz": null,
+  "nmr": null,
+  "melting_point": null,
+  "appearance": null,
+  "color": null,
+  "physical_form": null,
+  "analytics": [],
+  "purity_pct": null,
+  "purity_method": null,
+  "tags": [
+   "compound_class:acid"
+  ],
+  "notes": "Both batches. The treatment cells at lines 249 and 250 add 10% dilute hydrochloric acid (10%稀盐酸) dropwise under temperature control to adjust the pH to 2, then cool gradually to 15 C and filter. One merged record for the two batches, which print the identical phrase. Named only inside the treatment method cell (处理方法, treatment method) of the table image printed at [0048], which has no text layer; this section prints no prose procedure at all, so a reader of the prose alone would miss this compound. The 10% is a concentration and belongs in the reaction record, not in the identifier; no volume and no mass is given, so quantity is null. role acid: it acidifies the filtrate before the cooling crystallisation."
+ },
+ {
+  "patent_id": "CN111440099B",
+  "identifier": "cyanide",
+  "identifier_type": "other",
+  "aliases": [
+   "氰化物",
+   "氰化物杂质"
+  ],
+  "resolved": false,
+  "unresolved_reference": true,
+  "section_label": "Example 4",
+  "section_type": "experimental_example",
+  "is_section_product": false,
+  "commercially_available": false,
+  "role": "by_product",
+  "quantity": null,
+  "ms_mz": null,
+  "nmr": null,
+  "melting_point": null,
+  "appearance": null,
+  "color": null,
+  "physical_form": null,
+  "analytics": [
+   {
+    "method": "other",
+    "value": 1029.0,
+    "unit": "ppm",
+    "conditions": "original content before treatment; the same starting value is printed for both batch 14 and batch 15",
+    "raw_text": "原始氰化物杂质含量（ppm） 1029"
+   },
+   {
+    "method": "other",
+    "value": 38.0,
+    "unit": "ppm",
+    "conditions": "after treatment, batch 14, 1 g activated carbon in 20% aqueous methanol",
+    "raw_text": "处理后氰化物杂质含量（ppm） 38"
+   },
+   {
+    "method": "other",
+    "value": 46.0,
+    "unit": "ppm",
+    "conditions": "after treatment, batch 15, 1 g diatomaceous earth in 20% aqueous ethanol",
+    "raw_text": "处理后氰化物杂质含量（ppm） 46"
+   },
+   {
+    "method": "other",
+    "value": 97.0,
+    "unit": null,
+    "conditions": "stated reduction, batch 14; printed as a bare number with no percent sign",
+    "raw_text": "氰化物杂质含量降低% 97"
+   },
+   {
+    "method": "other",
+    "value": 94.0,
+    "unit": "%",
+    "conditions": "stated reduction, batch 15",
+    "raw_text": "氰化物杂质含量降低% 94%"
+   }
+  ],
+  "purity_pct": null,
+  "purity_method": null,
+  "tags": [
+   "compound_class:impurity"
+  ],
+  "notes": "The impurity this section measures, from the [0047] lead-in at line 242 and the three ppm columns of the table at lines 247, 249 and 250. resolved false and unresolved_reference true because the printed 氰化物杂质 (cyanide impurity) names a class and the patent never says which cyanide species is present. The table figures are carried here as analytics, not in any quantity field and not on tembotrione, because they are an impurity content in ppm rather than a charge or an isolated amount. Both batches start from the same original content, recorded once. The table names no analytical method for the ppm determination, so method is other on every entry. Batch 14's reduction cell prints a bare 97 with no percent sign while batch 15 prints 94%, so unit is null on the first and % on the second; the column header carries the percent for both. Neither stated reduction figure follows from the pair of ppm values printed in its own row. Both are recorded exactly as printed and nothing is recomputed. The missing percent sign may be a loss in the table image, which has no text layer, but the vision read is what the page shows and it is not corrected here."
+ }
+]

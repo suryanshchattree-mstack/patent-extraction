@@ -387,7 +387,7 @@
       "title": "concatenate the per-section A1 and A2 stage files into the raw arrays",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 merge_stages.py"
+        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 merge_stages.py --patent-id CN112645853A"
       ],
       "gate": false,
       "inputs": [
@@ -1028,7 +1028,7 @@
       "title": "JSON Schema conformance of the finalised artifacts",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 schemas/validate.py"
+        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 schemas/validate.py --patent-id CN112645853A"
       ],
       "gate": false,
       "inputs": [
@@ -1792,7 +1792,7 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN112645853A",
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN112645853A"
@@ -2006,7 +2006,7 @@
     {
       "stage": "rasterise",
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 svg2jpg.py --all"
       ],
@@ -2114,7 +2114,7 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN112645853A"
       ],
@@ -2882,7 +2882,7 @@
     {
       "stage": "export",
       "title": "every reaction joined to the structures of its participants",
-      "status": "current",
+      "status": "not selected",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 export_reactions.py --patent-id CN112645853A"
       ],
@@ -2925,7 +2925,7 @@
     {
       "stage": "visual",
       "title": "the page index, the structure comparisons and the drawing claims the UI shows",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_visual_evidence.py --patent-id CN112645853A"
       ],
@@ -11455,8 +11455,8 @@
     },
     {
       "path": "output/relevant_output/verification/checks-CN112645853A.json",
-      "sha256": "8a2fd31dbf67a155185a1da9c609f3804f94b813ef25ff87311e26ceb661bfca",
-      "bytes": 11185687,
+      "sha256": "119f507aed6ed8e18ad5e641adcae85677fe5b5132298283dec5dc337792ea26",
+      "bytes": 11181625,
       "stage": "verify",
       "input_sha256": [
         "6a0cb0136c5eaf9c0a4584a99aef6c1562d62c1044563e8246077f1b58d0570b",
@@ -18735,8 +18735,8 @@
     },
     {
       "path": "svg/approach.jpg",
-      "sha256": "9ac50248a024ff8a0e6ca5050df1855fa12e2bdad62be1f4bece1cc24bbb13db",
-      "bytes": 580531,
+      "sha256": "3e4bce32e63674cd04fc2df8113a87c9504d8102ae3f61a1be0eac2f7c12b0f8",
+      "bytes": 686117,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -18749,12 +18749,13 @@
         "50dbfc6b9f635722a43ba229fd3eaf4cfc1a8eaaf7c9b864fa98d066bd2bbd69",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 9ac50248a024ff8a..."
     },
     {
       "path": "svg/approach.svg",
-      "sha256": "86031c13ae63f23eff31dc60621cdaf3b706ce699ac2a6784027063c4e6e7bcc",
-      "bytes": 20892,
+      "sha256": "8353ee53e4e223bed1903cfcc498f229ff83bbc7fd39e72df291b37208ccca35",
+      "bytes": 23398,
       "stage": "diagrams",
       "input_sha256": [
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
@@ -18791,7 +18792,8 @@
         "f65f305c1942eac0f0ee9bd9865b85f39797b7a961aa18f27eb0353305974141",
         "9bd5b64714714ae9921ac17ec81b03aa409684e47e1b98c3a14e621a4b0d16fd",
         "47895e30b0234991ec82a174b89423b84074b19c0ab92d64b06a876834005ea6"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 86031c13ae63f23e..."
     },
     {
       "path": "svg/evidence-inverts-with-need.jpg",
@@ -18813,8 +18815,8 @@
     },
     {
       "path": "svg/m1-pass-map.jpg",
-      "sha256": "ba1c6e6da850169c4a426937360b27ae39aada449262a6f1f144eefb6bfcca53",
-      "bytes": 641164,
+      "sha256": "6d95bfe854e30e56401614c912efe5f09c7d800ca7b31fa3561686c78de303ee",
+      "bytes": 640678,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -18827,12 +18829,13 @@
         "50dbfc6b9f635722a43ba229fd3eaf4cfc1a8eaaf7c9b864fa98d066bd2bbd69",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 ba1c6e6da850169c..."
     },
     {
       "path": "svg/m1-pass-map.svg",
-      "sha256": "1010fa336245158c7f62a6692f68d0b8a8b2f6ea0d96edd810ead644aa71fb81",
-      "bytes": 16298,
+      "sha256": "02ecbe13caeb3ff9ab3b9efe0dd98a4410b52a4d61fa6aebed98fa72d5f43eb0",
+      "bytes": 16295,
       "stage": "diagrams",
       "input_sha256": [
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
@@ -18869,12 +18872,13 @@
         "f65f305c1942eac0f0ee9bd9865b85f39797b7a961aa18f27eb0353305974141",
         "9bd5b64714714ae9921ac17ec81b03aa409684e47e1b98c3a14e621a4b0d16fd",
         "47895e30b0234991ec82a174b89423b84074b19c0ab92d64b06a876834005ea6"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 1010fa336245158c..."
     },
     {
       "path": "svg/m2-route.jpg",
-      "sha256": "883a7bbed99aa604abb4a66517f016d1a3ff1c2e90cc95394ce5808fe97a2e90",
-      "bytes": 322543,
+      "sha256": "69aac453872e6fadd519cc40e574150dc7016e40e2f90fbfaf9cb4e6c60780e1",
+      "bytes": 457908,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -18887,12 +18891,13 @@
         "50dbfc6b9f635722a43ba229fd3eaf4cfc1a8eaaf7c9b864fa98d066bd2bbd69",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 883a7bbed99aa604..."
     },
     {
       "path": "svg/m2-route.svg",
-      "sha256": "6f641f08f3e1d70b476b17c583bae72a129d6e2402d03bbb8eb626fc82eb5c91",
-      "bytes": 7361,
+      "sha256": "8cecb4d14e0f64c970213df7ae2960173e7beaba5c9f76c5d1993d945c59609d",
+      "bytes": 15209,
       "stage": "diagrams",
       "input_sha256": [
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
@@ -18929,7 +18934,8 @@
         "f65f305c1942eac0f0ee9bd9865b85f39797b7a961aa18f27eb0353305974141",
         "9bd5b64714714ae9921ac17ec81b03aa409684e47e1b98c3a14e621a4b0d16fd",
         "47895e30b0234991ec82a174b89423b84074b19c0ab92d64b06a876834005ea6"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 6f641f08f3e1d70b..."
     },
     {
       "path": "svg/m3-artifact-joins.jpg",
@@ -19053,8 +19059,8 @@
     },
     {
       "path": "svg/m5-ocr-comparison.jpg",
-      "sha256": "259e896ed80284c4514ab7d7ed9f1cf1c1ce238ff30948058726beb9e13a0c7b",
-      "bytes": 290725,
+      "sha256": "e275ee201f6afaa05e0b3e8f91eb76760f7cb2e0c1786a9dbf12beadd423a2a8",
+      "bytes": 290473,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -19067,12 +19073,13 @@
         "50dbfc6b9f635722a43ba229fd3eaf4cfc1a8eaaf7c9b864fa98d066bd2bbd69",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 259e896ed80284c4..."
     },
     {
       "path": "svg/m5-ocr-comparison.svg",
-      "sha256": "50dbfc6b9f635722a43ba229fd3eaf4cfc1a8eaaf7c9b864fa98d066bd2bbd69",
-      "bytes": 9854,
+      "sha256": "c0fc3e1c93b21a8494825a5400e0db154acc3177810582140b521dbbfb98fa46",
+      "bytes": 9853,
       "stage": "diagrams",
       "input_sha256": [
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
@@ -19109,7 +19116,8 @@
         "f65f305c1942eac0f0ee9bd9865b85f39797b7a961aa18f27eb0353305974141",
         "9bd5b64714714ae9921ac17ec81b03aa409684e47e1b98c3a14e621a4b0d16fd",
         "47895e30b0234991ec82a174b89423b84074b19c0ab92d64b06a876834005ea6"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 50dbfc6b9f635722..."
     },
     {
       "path": "svg/one-route-four-tellings.jpg",
@@ -19153,7 +19161,7 @@
     "artifacts_produced": 274,
     "artifacts_unclaimed": 1,
     "artifacts_stray": 0,
-    "bytes_produced": 42676764
+    "bytes_produced": 42923265
   },
   "deliverable_matches_output": true,
   "stale_copies": []

@@ -1,0 +1,247 @@
+[
+  {
+    "page": "p03",
+    "kind": "structure",
+    "between_markers": [
+      "[0007]",
+      "[0009]"
+    ],
+    "presented_as": "intermediate_structure",
+    "structures": [
+      {
+        "position_in_drawing": "1st, the only structure in the drawing, left of centre",
+        "core": "cyclohexane-1,3-dione bearing an aroyl group at C2, the aroyl group joined to a benzene ring",
+        "substituents": [
+          "on the cyclohexane-1,3-dione: C(=O)Ar at C2, drawn between the two ring ketones, with C2 drawn as a plain vertex (the diketone tautomer, not an enol)",
+          "on the benzene ring: C(=O) linkage to the dione at C1",
+          "Cl at C2",
+          "CH2OCH2CF3 at C3 (drawn as a condensed label)",
+          "SO2CH3 at C4 (drawn as a condensed label)",
+          "two unsubstituted benzene vertices, at C5 and C6"
+        ],
+        "name": "2-[2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoyl]cyclohexane-1,3-dione (tembotrione)",
+        "smiles": "O=C1CCCC(=O)C1C(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+        "confidence": "high"
+      }
+    ],
+    "arrows": [],
+    "notes": "Single standalone structure, no arrow and no reagent label. It is the structural formula of tembotrione itself, announced by [0007] and captioned \"Formula 1\" below the drawing. presented_as is set to intermediate_structure because that is the schema's only value for a standalone structure; the honest description is that this is an identity drawing of the compound the invention purifies, printed in the background section, and it is NOT an intermediate of any route and NOT a prior-art route. Ring numbering above is read off the drawing geometry: C1 is the benzene vertex bonded to the bridging carbonyl, and the four substituted benzene vertices are CONSECUTIVE (attachment, then Cl, then CH2OCH2CF3, then SO2CH3), leaving the remaining two vertices bare. Verified at 3x magnification: the Cl label sits directly above the vertex adjacent to the attachment vertex, the CH2OCH2CF3 chain leaves the next vertex clockwise, and the SO2CH3 label leaves the vertex below that. Both ketones of the carbocycle are drawn as explicit C=O, one up-left and one down-right, each one bond from the substituted C2, so it is the 1,3-dione."
+  },
+  {
+    "page": "p03",
+    "kind": "scheme",
+    "between_markers": [
+      "[0009]",
+      "[0011]"
+    ],
+    "presented_as": "prior_art",
+    "structures": [
+      {
+        "position_in_drawing": "1st, row 1 far left (starting material)",
+        "core": "benzene",
+        "substituents": [
+          "COOH at C1 (drawn HO-C(=O), with the OH written to the left as HO)",
+          "Cl at C2",
+          "CH2OCH2CF3 at C3 (condensed label)",
+          "SO2CH3 at C4 (condensed label)",
+          "two unsubstituted vertices, at C5 and C6"
+        ],
+        "name": "2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoic acid",
+        "smiles": "OC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+        "confidence": "high"
+      },
+      {
+        "position_in_drawing": "2nd, row 1 below the first arrow (co-reagent drawn as a structure, not as a label)",
+        "core": "cyclohexane-1,3-dione",
+        "substituents": [
+          "ketone C=O at one ring vertex (upper right of the hexagon, double bond drawn up)",
+          "ketone C=O at the ring vertex two bonds away (right of the hexagon, double bond drawn down-right), i.e. separated from the first by one CH2",
+          "no other substituent drawn; the remaining four vertices are bare"
+        ],
+        "name": "cyclohexane-1,3-dione",
+        "smiles": "O=C1CCCC(=O)C1",
+        "confidence": "high"
+      },
+      {
+        "position_in_drawing": "3rd, row 1 right of the first arrow (product of the first arrow, substrate of the second)",
+        "core": "a benzoate ring joined through the ester oxygen to a cyclohex-2-en-1-one ring (an enol ester)",
+        "substituents": [
+          "on the benzene ring: C(=O)O-(3-oxocyclohex-1-en-1-yl) at C1",
+          "Cl at C2",
+          "CH2OCH2CF3 at C3 (condensed label)",
+          "SO2CH3 at C4 (condensed label)",
+          "two unsubstituted benzene vertices, at C5 and C6",
+          "on the carbocycle: the ester oxygen is drawn on the lower-right vertex, the C=C is drawn between that ester-bearing vertex and the vertex above it, and the ketone C=O is drawn at the top vertex one vertex further along, with three bare CH2 vertices completing the ring"
+        ],
+        "name": "3-oxocyclohex-1-en-1-yl 2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoate",
+        "smiles": "O=C1CCCC(OC(=O)c2ccc(S(C)(=O)=O)c(COCC(F)(F)F)c2Cl)=C1",
+        "confidence": "high"
+      },
+      {
+        "position_in_drawing": "4th, row 1 above the second arrow (reagent drawn as a structure, not as a label)",
+        "core": "acyclic quaternary carbon, no ring",
+        "substituents": [
+          "two CH3 groups drawn as plain bond stubs on the central carbon, one up-left and one down-left",
+          "OH at the central carbon (label written up-right)",
+          "CN at the central carbon (label written down-right)"
+        ],
+        "name": "2-hydroxy-2-methylpropanenitrile (acetone cyanohydrin)",
+        "smiles": "CC(C)(O)C#N",
+        "confidence": "high"
+      },
+      {
+        "position_in_drawing": "5th, row 2 left (final product, the continuation of the second arrow after the line wrap)",
+        "core": "cyclohexane-1,3-dione bearing an aroyl group at C2, the aroyl group joined to a benzene ring",
+        "substituents": [
+          "on the cyclohexane-1,3-dione: C(=O)Ar at C2, drawn between the two ring ketones, C2 drawn as a plain vertex (diketone tautomer, not an enol)",
+          "on the benzene ring: C(=O) linkage to the dione at C1",
+          "Cl at C2",
+          "CH2OCH2CF3 at C3 (condensed label)",
+          "SO2CH3 at C4 (condensed label)",
+          "two unsubstituted benzene vertices, at C5 and C6"
+        ],
+        "name": "2-[2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoyl]cyclohexane-1,3-dione (tembotrione)",
+        "smiles": "O=C1CCCC(=O)C1C(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+        "confidence": "high"
+      }
+    ],
+    "arrows": [
+      {
+        "from_structure": "1st",
+        "to_structure": "3rd",
+        "reagents_above": [
+          "SOCl2"
+        ],
+        "reagents_below": [
+          "cyclohexane-1,3-dione, drawn as a full structure below the arrow line rather than written as a label (the 2nd structure above)"
+        ],
+        "arrow_style": "solid",
+        "confidence": "high",
+        "note": "One single-headed solid arrow. SOCl2 is written as a condensed label above the arrow line, with the 2 as a typeset subscript; the cyclohexane-1,3-dione is drawn as a structure clearly below the arrow line. Above and below are visually unambiguous here and have been kept apart. This one arrow covers TWO of the three stages named in [0009]: the acyl chloride intermediate that [0009] names in prose is not drawn anywhere in the scheme. No base, solvent or temperature is drawn on or near this arrow."
+      },
+      {
+        "from_structure": "3rd",
+        "to_structure": "5th",
+        "reagents_above": [
+          "acetone cyanohydrin, drawn as a full structure (CH3)2C(OH)CN above the arrow line rather than written as a label (the 4th structure above)"
+        ],
+        "reagents_below": [],
+        "arrow_style": "solid",
+        "confidence": "high",
+        "note": "One single-headed solid arrow running to the right page margin; the product is drawn on the row below because the scheme wraps, and there is no explicit wrap or continuation mark. NOTHING is drawn or written below this arrow line: the region under it was checked at magnification and is blank. No base, solvent or temperature is drawn. This arrow is the acetone cyanohydrin rearrangement of [0009]."
+      }
+    ],
+    "notes": "The prior-art preparation route, announced by [0009] and captioned \"Formula 2\" below the drawing. PRESENTED AS PRIOR ART, not as the invention's route, on four grounds: the drawing sits inside the background section, whose heading is printed above [0002] with no later heading before it anywhere on this page; [0009] introduces it as how the preparation of tembotrione is done, not as anything the applicant proposes; the invention itself is stated in the title and in [0001] to be a purification / impurity-reduction method rather than a preparation route; and [0011], immediately after the drawing, treats this route's output as the problem to be solved, since it leaves acetone cyanohydrin behind. Layout: two rows, read left to right then down. Row 1 carries the acid, the first arrow, the enol ester and the second arrow; row 2 carries the final product alone. The 2nd and 4th structures are reagents sitting off the reaction line rather than members of the main chain; they are recorded in the structures array so their connectivity is not lost, with their arrow roles given in the arrows array."
+  },
+  {
+    "page": "p05",
+    "kind": "scheme",
+    "between_markers": [
+      "[0031]",
+      "[0032]"
+    ],
+    "presented_as": "invention_route",
+    "structures": [
+      {
+        "position_in_drawing": "1st, top-left, before the first arrow",
+        "core": "benzene",
+        "substituents": [
+          "COOH at C1",
+          "Cl at C2",
+          "CH2OCH2CF3 at C3",
+          "SO2CH3 at C4",
+          "H at C5",
+          "H at C6"
+        ],
+        "name": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+        "smiles": "OC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+        "confidence": "high"
+      },
+      {
+        "position_in_drawing": "2nd, top row, drawn below the first arrow as a reagent",
+        "core": "cyclohexane-1,3-dione",
+        "substituents": [
+          "C=O at C1",
+          "C=O at C3",
+          "no other substituent drawn; C2, C4, C5 and C6 are unlabelled CH2"
+        ],
+        "name": "cyclohexane-1,3-dione",
+        "smiles": "O=C1CC(=O)CCC1",
+        "confidence": "high"
+      },
+      {
+        "position_in_drawing": "3rd, top-right, after the first arrow and before the second",
+        "core": "cyclohex-1-ene ring joined through an ester oxygen to a benzene ring",
+        "substituents": [
+          "on the cyclohexene ring: ester O at C1, the alkene carbon, bonded to the benzoyl carbonyl",
+          "on the cyclohexene ring: ring C=C drawn between C1 and C2",
+          "on the cyclohexene ring: ketone C=O at C3, with one unlabelled CH (C2) between it and C1",
+          "on the cyclohexene ring: C4, C5, C6 drawn as unlabelled CH2",
+          "on the benzene ring: C(=O)O at C1",
+          "on the benzene ring: Cl at C2",
+          "on the benzene ring: CH2OCH2CF3 at C3",
+          "on the benzene ring: SO2CH3 at C4",
+          "on the benzene ring: H at C5 and C6"
+        ],
+        "name": "3-oxocyclohex-1-en-1-yl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoate",
+        "smiles": "O=C1CCCC(=C1)OC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+        "confidence": "high"
+      },
+      {
+        "position_in_drawing": "4th, top-right, drawn above the second arrow as a reagent, unlabelled",
+        "core": "acyclic, a single quaternary carbon",
+        "substituents": [
+          "OH on the central carbon",
+          "CN on the central carbon",
+          "two methyls on the central carbon, drawn as bare line ends"
+        ],
+        "name": "2-hydroxy-2-methylpropanenitrile (acetone cyanohydrin)",
+        "smiles": "CC(C)(O)C#N",
+        "confidence": "high"
+      },
+      {
+        "position_in_drawing": "5th, second row, left; the product the second arrow leads to",
+        "core": "cyclohexane-1,3-dione bearing an aroyl group, attached to a benzene ring",
+        "substituents": [
+          "on the cyclohexanedione ring: C=O at C1",
+          "on the cyclohexanedione ring: C=O at C3",
+          "on the cyclohexanedione ring: aroyl C(=O)-aryl at C2, between the two ketones",
+          "on the cyclohexanedione ring: C4, C5, C6 drawn as unlabelled CH2",
+          "on the benzene ring: the aroyl carbonyl at C1",
+          "on the benzene ring: Cl at C2",
+          "on the benzene ring: CH2OCH2CF3 at C3",
+          "on the benzene ring: SO2CH3 at C4",
+          "on the benzene ring: H at C5 and C6"
+        ],
+        "name": "2-{2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl}cyclohexane-1,3-dione",
+        "smiles": "O=C1CCCC(=O)C1C(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+        "confidence": "high"
+      }
+    ],
+    "arrows": [
+      {
+        "from_structure": "1st",
+        "to_structure": "3rd",
+        "reagents_above": [
+          "SOCl2"
+        ],
+        "reagents_below": [
+          "cyclohexane-1,3-dione, drawn as a structure and not as a written label (the 2nd structure above)"
+        ],
+        "arrow_style": "solid",
+        "confidence": "high"
+      },
+      {
+        "from_structure": "3rd",
+        "to_structure": "5th",
+        "reagents_above": [
+          "acetone cyanohydrin, drawn as a structure and not as a written label (the 4th structure above)"
+        ],
+        "reagents_below": [],
+        "arrow_style": "solid",
+        "confidence": "high"
+      }
+    ],
+    "notes": "One scheme, two arrows, read left to right and then wrapping to the second row. The second arrow points into blank space at the right edge of the top row and the product it leads to is drawn at the left of the second row, so that wrap is a layout continuation and not a third structure. Nothing is drawn below the second arrow, and the label SOCl2 above the first arrow is the only thing written anywhere on the scheme; both reagent molecules are drawn as structures. No solvent, base, temperature, time or yield appears on the drawing. It is presented as the invention's route, not as prior art: it stands inside the embodiments section, is announced at [0028] as the synthesis scheme and at [0030] by the sentence saying its synthesis reaction formula is shown below, where the possessive refers to the invention just described, and its final structure is the tembotrione product that the whole patent purifies. The prior art discussion sits earlier, on p03 and p04, and carries no drawing of its own. Ring positions on both benzene rings were read off the drawing, going round from the carbonyl-bearing carbon, and were not inferred from the compound's identity."
+  }
+]

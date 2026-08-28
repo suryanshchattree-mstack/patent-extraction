@@ -1,0 +1,830 @@
+[
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Synthesis Scheme_Step 1",
+    "section_label": "Synthesis Scheme",
+    "section_type": "experimental_intermediate",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "scale": "not_specified",
+    "conditions_inherited": false,
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+      "threshold_pct": 0.2,
+      "criterion": "residual starting-material content not more than 0.2% before the solvent strip"
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 75.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 3.0,
+      "reactor_type": "three-necked flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "workup": {
+      "steps": [
+        "distil off the solvent under reduced pressure, taking the batch temperature up",
+        "remove the excess thionyl chloride with the solvent"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": "distillation under reduced pressure, printed as -0.098mP, carried up to 85 C",
+      "ph_target": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the flask at the start of [0029], with the solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "thionyl chloride",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added slowly (缓慢加入), no addition time given",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "1,2-dichloroethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged with the benzoyl chloride, then held at 15 C with stirring",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride"
+    ],
+    "product_name": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+    "procedure_text": "向三口烧瓶加入的2‑氯‑3‑(2,2,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酰氯，1,2‑二氯乙烷，保温15℃搅拌。缓慢加入氯化亚砜。常温反应0.5h，升温至75℃，保温3h。中控检测原料含量≤0.2％，在‑0.098mP下减压蒸出溶剂至85℃，脱去溶剂以及过量的氯化亚砜。",
+    "procedure_summary": "The benzoyl chloride and 1,2-dichloroethane are charged into a three-necked flask and stirred cold, thionyl chloride is added slowly, and the mixture is held at room temperature and then warmed and held until an in-process check on residual starting material passes. The solvent and the excess thionyl chloride are then distilled off under reduced pressure.",
+    "validation_flags": [
+      "drawing_text_conflict",
+      "reagent_written_not_drawn"
+    ],
+    "is_complete": false,
+    "tags": [
+      "transformation:chlorination",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "solvent_class:halogenated",
+      "catalyst_class:none",
+      "workup_type:distillation",
+      "purification:none",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "Step boundary. [0029] is one continuous paragraph with no numbered markers, so the boundary is taken at 重新加入新的 (fresh solvent added again), after the first charge has been stripped to a residue. Two prose steps plus the two arrows at [0031] gives four records, which agrees with A0's estimate of four. \n\nCONTRADICTION 1, recorded and not resolved. [0029] names the charged material as the 苯甲酰氯 (benzoyl chloride) and then adds thionyl chloride to it, holds it hot, and strips the excess, which is the operation one performs on the 苯甲酸 (benzoic acid). [0009] states that it is the acid which reacts with thionyl chloride to give this very acyl chloride. Reading A: the material charged is really the benzoic acid, [0029] misnaming it by one Chinese character, and this step is the acid-to-acid-chloride conversion. Reading B: the material charged is the acyl chloride as printed and the whole thionyl chloride stage is redundant, carried over from the route [0009] describes. The document does not choose and neither does this record. Per rule 5c the structured fields keep what the prose of this step says, so the reactant is the acyl chloride as named. Under BOTH readings the product of the step is that same acyl chloride, which is why one identifier appears on this record once as reactant and once as product; that duplication is the finding, not an error. The closed validation-flag list has no value for a contradiction internal to the prose, so this finding is carried on drawing_text_conflict, which the record earns independently for contradiction 2 below; the two are described separately here and are deliberately not merged into one statement. \n\nCONTRADICTION 2, drawing_text_conflict. Arrow 1 of the [0031] scheme draws the free carboxylic acid as the substrate and draws no acyl chloride anywhere, disagreeing with this step's printed name on the same axis as contradiction 1. The acid is therefore NOT in this record's compounds, because for this step it is drawn and not written; it carries Scheme Step 1 instead. \n\nCONTRADICTION 3, reagent_written_not_drawn. 1,2-二氯乙烷 (1,2-dichloroethane) is this step's solvent and appears on no arrow of [0031]; the arrow carries only SOCl2 and the drawn dione, and no solvent, base, temperature or time at all. \n\nClassification. nucleophilic_substitution because chloride replaces hydroxyl at the carboxyl carbon; acylation and halogenation are both defensible for the same transformation, hence reaction_class_confidence medium. The value follows this run's shared class table. The reference run CN104292137A never annotates this step on its own (it is always folded into a one-pot with the esterification), so there is no precedent to follow. \n\nConditions, as printed and not summed. Charged and stirred at 15 C, reacted 0.5 h at room temperature, warmed to 75 C, held 3 h. temperature carries the 75 C hold and time_h the 3 h hold, since one record holds one temperature and one time; the 0.5 h room-temperature stage and the 15 C charge hold are recorded here rather than being added together into a number the patent does not print. 搅拌 (stirred) is stated with no stirrer type and no speed, so conditions.stirring is left null. The reduced pressure is printed -0.098mP, which is plainly MPa; it is recorded as printed and only in workup, because 减压蒸出 (distilling off under reduced pressure) is a workup operation and sets concentration_method, not reaction pressure (rule 9). The 85 C is the endpoint of the distillation, not a reaction temperature. 中控检测原料含量≤0.2％ (in-process check, starting-material content not more than 0.2 per cent) is the in-process control; no analytical technique is named, so process_control.method stays null, and which material 原料 (starting material) denotes is subject to contradiction 1. \n\nLinkage. The same transformation is described at [0009] as Background_Step 1. That is a duplicate description of one route and not a precursor, so precursor_step is null and the Background id is named here instead, per the registry's instruction. The registry supplied to this pass was constructed from the A0 map rather than read out of an A2 artifact, so no Background reaction_id here has been substantiated against an existing record. \n\nAttribution of the model contributions: the [0031] structures come from the vision pass, the prose reading is this extraction pass, and both were produced by Claude, so they are not independent witnesses. \n\nreactant_names follows the reactant role and not every compound named in the step: it carries exactly the identifiers whose compounds[] entry is role reactant, so the flattened field and the structured array cannot disagree. Solvent, reagent, base, catalyst and by_product entries stay in compounds[] only. The reference run CN104292137A flattens every non-product compound into reactant_names, so this field will diff against it; the difference is deliberate and follows an audit of this artifact, not a miss.\n\nThe prompt's rule 1 (\"each N、<compound name> marker starts a step\"), rule 5f (\"the prose gives eight steps and the scheme draws nine\") and rule 29 (\"at least three steps in this document have arithmetic that does not close\") describe the previous patent, because the prompt body is shared and only the id is substituted. This section prints no N、 markers, and [0029] states no mass, volume, mole, equivalent, yield or purity at all, so there is no arithmetic in this section to check and scale is not_specified on every record. The rules were followed; the counts and examples were not."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Synthesis Scheme_Step 2",
+    "section_label": "Synthesis Scheme",
+    "section_type": "experimental_intermediate",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "scale": "not_specified",
+    "conditions_inherited": false,
+    "purification": "none in this step: the red-brown solid is isolated crude. [0032] adds that after the rearrangement further distillation gives the tembotrione product, but states no distillation conditions and no procedure",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": "reaction checked complete (检测反应完全); no technique named"
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "is_one_pot": true,
+    "one_pot_steps": [
+      "O-acylation of cyclohexane-1,3-dione by the benzoyl chloride in 1,2-dichloroethane in the presence of triethylamine, giving the enol ester, which is never isolated",
+      "rearrangement of that enol ester to the C-acylated 2-aroyl-cyclohexane-1,3-dione, tembotrione, promoted by the acetone cyanohydrin charged in the same portion"
+    ],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 40.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 6.0,
+      "reactor_type": "three-necked flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "workup": {
+      "steps": [
+        "filter off the triethylamine salt",
+        "concentrate the filtrate under reduced pressure to a red-brown solid"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "filtered to remove the triethylamine salt",
+      "concentration_method": "concentration under reduced pressure",
+      "ph_target": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "carried straight on as the stripped residue of Step 1, in the same flask",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "1,2-dichloroethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "fresh charge added again after the first charge had been distilled off with the excess thionyl chloride",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "triethylamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added with the fresh 1,2-dichloroethane, before the dione",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyclohexane-1,3-dione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged in one portion together with the acetone cyanohydrin",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "acetone cyanohydrin",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged in one portion together with the dione, not added separately after the enol ester had formed",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "enol ester",
+        "role": "other",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "not charged and not isolated: formed in situ and consumed in the same pot",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "triethylamine salt",
+        "role": "by_product",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+      "cyclohexane-1,3-dione"
+    ],
+    "product_name": "tembotrione",
+    "procedure_text": "重新加入新的1,2‑二氯乙烷和三乙胺，投入1,3环己二酮和丙酮氰醇40℃保温6h。检测反应完全。过滤出三乙胺盐，减压浓缩得红棕色固体。",
+    "procedure_summary": "Fresh 1,2-dichloroethane and triethylamine are added to the same flask, then cyclohexane-1,3-dione and acetone cyanohydrin are charged together and the mixture is held warm until the reaction is checked complete, so that the enol ester forms and rearranges without being isolated. The triethylamine salt is filtered off and the filtrate is concentrated under reduced pressure to a red-brown solid.",
+    "validation_flags": [
+      "drawing_text_conflict",
+      "reagent_written_not_drawn"
+    ],
+    "is_complete": false,
+    "tags": [
+      "transformation:acylation",
+      "transformation:esterification",
+      "transformation:rearrangement",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "solvent_class:halogenated",
+      "catalyst_class:base",
+      "safety:cyanide_handling",
+      "workup_type:filtration",
+      "purification:none",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:true"
+    ],
+    "notes": "ONE-POT, and this is why A0 counts four steps and not five. 1,3环己二酮 (cyclohexane-1,3-dione) and 丙酮氰醇 (acetone cyanohydrin) are charged together in one 投入 ... 和 ... (charge ... and ...) clause and held at one temperature for one period, with no quench, no filtration and no isolation between the O-acylation and the rearrangement, so rule 5 makes it one record: is_one_pot true, both transformations in one_pot_steps in document order, and reaction_class taken from the FINAL transformation, the rearrangement. Splitting it into two records would invent a workup the patent does not print. \n\nClassification. acylation because the O-acyl enol ester becomes a C-acyl 2-aroyl-1,3-dione, which is an acyl transfer to carbon. Confidence is medium, not high: the reference run CN104292137A calls this same transformation acylation twice and other once, so it is not settled there either, and other would be defensible for a rearrangement that makes and breaks bonds at one carbon. The value follows this run's shared class table. \n\nRoles. acetone cyanohydrin is catalyst per the shared identifier table, which takes it from [0011] 催化剂丙酮氰醇 (catalyst acetone cyanohydrin). This section on its own would have said reagent: [0029] charges it alongside the dione with no catalytic language and no quantity. enol ester is on the record with role other and is_product false because it is the unisolated intermediate of the one-pot and the role enum has no value for an intermediate; the shared table's product role for it is a compound-level field owned by A1, not this one. triethylamine is base; its salt is filtered off, which implies it is consumed rather than catalytic, but the text neither says so nor gives a quantity, so no equivalents are recorded and catalyst_class:base is tagged only as the base-promoted slot. \n\nProduct. [0029] never names it, isolating only a 红棕色固体 (red-brown solid). It is tembotrione by [0032], which says further distillation after the rearrangement gives the 环磺酮产品 (the tembotrione product), and by the step 2 product drawn at [0031]. No yield and no purity is stated anywhere in the section, so product_yield_pct and product_purity_pct are null; the only purity in the whole document is Example 6's. This crude solid is the material Examples 1 to 5 each purify, so this record is where the pathway builder should hang those examples. \n\nVessel and inheritance. reactor_type repeats the three-necked flask because [0029] is one paragraph and 重新加入 (added again) is an addition to the same flask, not a transfer. conditions_inherited is false: this step states its own temperature and its own time. \n\ndrawing_text_conflict. The [0031] scheme splits this one pot into two arrows and draws the enol ester as an isolated intermediate, and its arrow 1 forms that ester from the FREE ACID rather than from the acyl chloride this step uses. Both disagreements are with the prose of this step and the prose is what the structured fields keep (rule 5c). \n\nreagent_written_not_drawn. 1,2-二氯乙烷 (1,2-dichloroethane) and 三乙胺 (triethylamine) are in this procedure and on no arrow of [0031], which carries no solvent, no base, no temperature and no time at all. \n\nLinkage. precursor_step is Step 1 and linkage_confirmed is true on the identifier: Step 1's product identifier is a reactant identifier here, and the text is continuous in one flask. Background_Step 2 and Background_Step 3 taken together describe the same chemistry as this one-pot step, and [0009] splits it in two where [0029] runs it as one; that is a duplicate description of one route and not a precursor, so it is named here and not in precursor_step. \n\nOn this record specifically, 三乙胺盐 (the triethylamine salt) is a by_product, filtered off before the concentration, and the enol ester is the transient intermediate of the one-pot sequence, never charged and never isolated; it is recorded in one_pot_steps and in compounds[] and is not a reactant of the step. Neither is in reactant_names. \n\nContext recorded but not used to fill any field: [0011] says the rearrangement usually leaves the catalyst acetone cyanohydrin and cyanide impurity contamination in the product, which is the reason this crude solid needs the purification the patent claims. No cyanide compound is charged in this step, so none is on the record. \n\nreactant_names follows the reactant role and not every compound named in the step: it carries exactly the identifiers whose compounds[] entry is role reactant, so the flattened field and the structured array cannot disagree. Solvent, reagent, base, catalyst and by_product entries stay in compounds[] only. The reference run CN104292137A flattens every non-product compound into reactant_names, so this field will diff against it; the difference is deliberate and follows an audit of this artifact, not a miss.\n\nThe prompt's rule 1 (\"each N、<compound name> marker starts a step\"), rule 5f (\"the prose gives eight steps and the scheme draws nine\") and rule 29 (\"at least three steps in this document have arithmetic that does not close\") describe the previous patent, because the prompt body is shared and only the id is substituted. This section prints no N、 markers, and [0029] states no mass, volume, mole, equivalent, yield or purity at all, so there is no arithmetic in this section to check and scale is not_specified on every record. The rules were followed; the counts and examples were not."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Synthesis Scheme_Scheme Step 1",
+    "section_label": "Synthesis Scheme",
+    "section_type": "experimental_intermediate",
+    "step_index": 3,
+    "step_label": "Scheme Step 1",
+    "scale": "not_specified",
+    "conditions_inherited": false,
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "reaction_class": "ester_formation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "thionyl chloride",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyclohexane-1,3-dione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "enol ester",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+      "cyclohexane-1,3-dione"
+    ],
+    "product_name": "enol ester",
+    "procedure_text": "",
+    "procedure_summary": "Drawn arrow, the first of the two: thionyl chloride and cyclohexane-1,3-dione carry the free benzoic acid through to its 3-oxocyclohexenyl enol ester across a single arrow, so the arrow does the chlorination and the O-acylation together and the acid chloride is never drawn. No procedure, no solvent, no base and no temperature accompany the drawing.",
+    "validation_flags": [
+      "no_conditions",
+      "route_attribution_unclear",
+      "drawing_text_conflict",
+      "reagent_written_not_drawn"
+    ],
+    "is_complete": false,
+    "tags": [
+      "transformation:chlorination",
+      "transformation:esterification",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "workup_type:none",
+      "purification:none",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "Arrow 1 of the two-arrow scheme drawn at [0031] and announced by [0030]. It belongs to this Synthesis Scheme section and is an overview drawing: it carries connectivity and reagents and nothing else, so scale is not_specified and no_conditions is raised because no condition exists to record, not because one was missed (rule 5d). It is kept strictly apart from the prose steps by step_label, per rule 5f, and its numbering is independent of Step 1 and Step 2; the two sets are not merged and not renumbered against each other. \n\nTwo transformations on one arrow, and why is_one_pot is nevertheless false. The arrow carries SOCl2 and the drawn dione and runs from the free acid to the enol ester, so it depicts the acid-to-acid-chloride conversion and the O-acylation with nothing drawn between them, and the acid chloride itself is drawn nowhere. reaction_class is taken from the final transformation, ester_formation, and the chlorination is recorded in this note, in the procedure_summary and in the transformation tags rather than being dropped, which rule 5g would make a recall miss. is_one_pot stays false because a drawing states no operations at all, so it cannot support a claim about vessels: rule 5 detects one pot in a numbered step that describes two transformations with no workup between them, and this arrow describes nothing. The reference run does exactly this on its own Scheme Step 7, where one drawn arrow both displaces a benzylic bromide and hydrolyses an ester and is recorded with is_one_pot false, the class from the final transformation and the other transformation in prose. The Background section of this patent annotates the identical drawing at [0010] and reached the same shape, so the two sections agree; that agreement is worth stating because it was reached separately. \n\ndrawing_text_conflict. The drawn substrate is the free carboxylic ACID; the prose counterpart, Step 1 of this section, charges the material [0029] names the benzoyl CHLORIDE, and Step 2 forms the enol ester from that acyl chloride. The scheme also draws no acyl chloride anywhere, though both [0009] and [0029] name one. Per rule 5c the prose keeps the structured fields on the prose records; this record reports what is drawn, which is the acid. \n\nreagent_written_not_drawn. [0029] gives 1,2-dichloroethane and triethylamine for this chemistry and the arrow carries neither; it also carries no temperature and no time against the prose's 15 C, room temperature, 75 C, 40 C, 0.5 h, 3 h and 6 h. Nothing is drawn that the prose fails to write, so reagent_drawn_not_written is NOT raised. \n\nRoute attribution, left open. [0031] sits inside the 具体实施方式 (specific embodiments) region and is announced by [0030] 其合成反应式表示如下 (its synthesis reaction scheme is represented as follows), and the vision pass on this page read it as the invention's own route on exactly that ground. The same two arrows, over the same structures, are drawn at [0010] in 背景技术 (background art), where a different page's pass read them as prior art and where [0009] introduces the route as how tembotrione 的制备 (the preparation of tembotrione) is done, that is, as the known preparation. Against the invention reading: what this patent claims is a purification of tembotrione, not a synthesis of it, and the route is recited identically in the background. For it: the placement and the 其 (its) in [0030]. Neither page decides it and the two passes are not independent of each other in the way the word usually implies, so route_attribution_unclear is raised and no side is taken.\n\nNo SMILES from the drawing is transcribed into any field here, per rule 8; the drawn structures live in A1's aliases. \n\nreactant_names follows the reactant role and not every compound named in the step: it carries exactly the identifiers whose compounds[] entry is role reactant, so the flattened field and the structured array cannot disagree. Solvent, reagent, base, catalyst and by_product entries stay in compounds[] only. The reference run CN104292137A flattens every non-product compound into reactant_names, so this field will diff against it; the difference is deliberate and follows an audit of this artifact, not a miss.\n\nThe prompt's rule 1 (\"each N、<compound name> marker starts a step\"), rule 5f (\"the prose gives eight steps and the scheme draws nine\") and rule 29 (\"at least three steps in this document have arithmetic that does not close\") describe the previous patent, because the prompt body is shared and only the id is substituted. This section prints no N、 markers, and [0029] states no mass, volume, mole, equivalent, yield or purity at all, so there is no arithmetic in this section to check and scale is not_specified on every record. The rules were followed; the counts and examples were not."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Synthesis Scheme_Scheme Step 2",
+    "section_label": "Synthesis Scheme",
+    "section_type": "experimental_intermediate",
+    "step_index": 4,
+    "step_label": "Scheme Step 2",
+    "scale": "not_specified",
+    "conditions_inherited": false,
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "precursor_step": "Scheme Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "compounds": [
+      {
+        "identifier": "enol ester",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "acetone cyanohydrin",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "enol ester"
+    ],
+    "product_name": "tembotrione",
+    "procedure_text": "",
+    "procedure_summary": "Drawn arrow, the last of the scheme: acetone cyanohydrin rearranges the enol ester to the C-acylated cyclohexane-1,3-dione, tembotrione. No procedure, no solvent, no base and no temperature accompany the drawing.",
+    "validation_flags": [
+      "no_conditions",
+      "route_attribution_unclear",
+      "drawing_text_conflict",
+      "reagent_written_not_drawn"
+    ],
+    "is_complete": false,
+    "tags": [
+      "transformation:acylation",
+      "transformation:rearrangement",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "safety:cyanide_handling",
+      "workup_type:none",
+      "purification:none",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Arrow 2 of the two-arrow scheme drawn at [0031], announced by [0030]. Overview drawing, so scale not_specified and no_conditions, which here means no condition is drawn rather than that one was overlooked (rule 5d). Kept apart from the prose steps by step_label per rule 5f. \n\nClassification. acylation, from the O-acyl to C-acyl transfer the two drawn structures show; confidence medium for the same reason as Step 2, that the reference run annotates this same transformation as acylation twice and other once. The value follows this run's shared class table. \n\ndrawing_text_conflict. Its prose counterpart is the second half of Step 2, and they disagree twice: the prose runs the rearrangement in the same pot as the ester formation with the cyanohydrin charged together with the dione, so no enol ester is ever isolated, while the drawing presents an isolated enol ester as the substrate of a separate step; and the prose runs it in 1,2-dichloroethane with triethylamine at 40 C for 6 h, while the arrow carries the cyanohydrin alone. Per rule 5c the prose keeps the structured fields on Step 2; this record reports the drawing. \n\nreagent_written_not_drawn. 1,2-dichloroethane and triethylamine are written in [0029] for this chemistry and appear on no arrow. Note that the reference run's equivalent record earns reagent_drawn_not_written because ITS drawing puts triethylamine under the arrow; this drawing puts nothing under the arrow, so the flag points the other way here. \n\nRoles. acetone cyanohydrin is catalyst per the shared identifier table, from [0011]; on the strength of this drawing alone it is simply the arrow's only label and reagent would have been the local reading. safety:cyanide_handling is tagged from the reagent's identity, which is also how the reference run tags the same arrow; safety_notes stays empty because the section states no safety text and a hazard assessment is A5's job, not this pass's. \n\nLinkage. precursor_step is Scheme Step 1 and linkage_confirmed is true on the identifier: the enol ester drawn as arrow 1's product is drawn again as arrow 2's reactant, with the same SMILES in the extract. \n\nRoute attribution, left open. [0031] sits inside the 具体实施方式 (specific embodiments) region and is announced by [0030] 其合成反应式表示如下 (its synthesis reaction scheme is represented as follows), and the vision pass on this page read it as the invention's own route on exactly that ground. The same two arrows, over the same structures, are drawn at [0010] in 背景技术 (background art), where a different page's pass read them as prior art and where [0009] introduces the route as how tembotrione 的制备 (the preparation of tembotrione) is done, that is, as the known preparation. Against the invention reading: what this patent claims is a purification of tembotrione, not a synthesis of it, and the route is recited identically in the background. For it: the placement and the 其 (its) in [0030]. Neither page decides it and the two passes are not independent of each other in the way the word usually implies, so route_attribution_unclear is raised and no side is taken.\n\nNo SMILES from the drawing is transcribed into any field here, per rule 8. \n\nreactant_names follows the reactant role and not every compound named in the step: it carries exactly the identifiers whose compounds[] entry is role reactant, so the flattened field and the structured array cannot disagree. Solvent, reagent, base, catalyst and by_product entries stay in compounds[] only. The reference run CN104292137A flattens every non-product compound into reactant_names, so this field will diff against it; the difference is deliberate and follows an audit of this artifact, not a miss.\n\nThe prompt's rule 1 (\"each N、<compound name> marker starts a step\"), rule 5f (\"the prose gives eight steps and the scheme draws nine\") and rule 29 (\"at least three steps in this document have arithmetic that does not close\") describe the previous patent, because the prompt body is shared and only the id is substituted. This section prints no N、 markers, and [0029] states no mass, volume, mole, equivalent, yield or purity at all, so there is no arithmetic in this section to check and scale is not_specified on every record. The rules were followed; the counts and examples were not."
+  }
+]

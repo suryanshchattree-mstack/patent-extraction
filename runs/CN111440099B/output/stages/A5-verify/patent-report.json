@@ -1,0 +1,251 @@
+{
+  "artifact": "patent.json",
+  "records_audited": 1,
+  "provenance_sidecar": "ABSENT. No patent-provenance.json exists anywhere under output/, and output/stages/A4-patent/ holds only patent-llm.json with no provenance sibling, unlike output/stages/A1-compounds/ and A2-reactions/ where every section file has one. There are also no run notes for this run (runs/CN111440099B/ contains only input/ and output/; runs/CN109678767A/ carries a NOTES.md). This absence is recorded as a finding below and is NOT treated as a pass: no assertion in patent_summary or novelty_claims carries a line anchor, and no model attribution exists for either, which is what CLAUDE.md asks the run notes to supply. Bibliographic fields were audited instead against runs/CN111440099B/input/CN111440099B-biblio.json and against the front page itself (input/pages/p01.png plus the page 1 text layer read with pymupdf).",
+  "findings": [
+    {
+      "check": "schema",
+      "severity": "major",
+      "record": "CN111440099B",
+      "field": "parties.assignees[0].type",
+      "problem": "The assignee type is 'company', which is not one of the six values patent.schema.json allows, and it is the one violation pipeline/schemas/validate.py reports on this artifact.",
+      "source_line": 23,
+      "quote": "(73) 专利权人 利民化学有限责任公司",
+      "artifact_says": "\"type\": \"company\"",
+      "should_be": "One of multinational_corp | sme | university | government | individual | null. The value originates in input/CN111440099B-biblio.json line 20 and finalise.py copies it through unchanged, so the correction belongs in the biblio file. It also propagates into the tag assignee_type:company, so both the field and the tag change together. Note this is not local to this run: runs/CN109678767A/input also carries type 'company', so the biblio convention and the schema enum have diverged systematically.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "CN111440099B",
+      "field": "patent_summary",
+      "problem": "patent_summary resolves claim 1's solvent enumeration to a disjunctive reading ('acetonitrile, methanol, ethanol or dimethylformamide') while novelty_claims in the same record states that this cannot be settled from the document, so the record both refuses and performs the same resolution.",
+      "source_line": 54,
+      "quote": "所述步骤1）中所述含水溶液，为乙腈、甲醇、乙醇、二甲基甲酰胺与水混合得到的溶液",
+      "artifact_says": "the product is dissolved in an aqueous organic solution of acetonitrile, methanol, ethanol or dimethylformamide and warmed",
+      "should_be": "Carry the enumeration without a conjunction in patent_summary as well, matching the Chinese enumeration comma and matching what novelty_claims says about it. The contrast is visible one line later at source line 56, where the adsorbent choice really is disjunctive and the Chinese writes 或 explicitly ('所述吸附剂为活性炭或硅藻土'); the solvent list never does. CLAUDE.md rule 8 forbids resolving that difference silently.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "CN111440099B",
+      "field": "parties.examiners",
+      "problem": "parties.examiners is null although the front page prints an examiner and the schema has an array slot with a name property for exactly this.",
+      "source_line": 37,
+      "quote": "[examiner] 审查员 靳贝贝",
+      "artifact_says": "\"examiners\": null",
+      "should_be": "[{\"name\": \"Jin Beibei\"}]. The null is not a merge artifact: pipeline/finalise.py hardcodes \"examiners\": None in the parties block, so no biblio file can populate it. That hardcode is the shape CLAUDE.md rule 6 warns about, a field that reads as a checked absence when nothing was ever checked. The biblio input has no examiners key either, so both need the addition.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "CN111440099B",
+      "field": "patent_summary, novelty_claims",
+      "problem": "Both narrative fields cite description paragraphs that the A4 prompt's declared input never supplied, and with no provenance sidecar and no run notes there is nothing that records what the model actually saw or which model it was.",
+      "source_line": 137,
+      "quote": "[0026] 本发明的磺酮产品的纯化方法，可大大降低磺酮产品中氰化物杂质的含量",
+      "artifact_says": "novelty_claims cites [0011], [0012] and [0026] and describes Example 2 and the nineteen batches; patent_summary cites the [0002] HPPD classification and the [0009] synthesis. A4-patent.md declares the input as the title, the abstract, the claims and the computed chemistry rollup only.",
+      "should_be": "Either the rendered A4 prompt understates what was passed, in which case the prompt should state the full input, or the narrative was written with access to the whole description, in which case the record's own provenance must say so. Emit output/patent-provenance.json in the shape used by compounds-provenance.json and reactions-provenance.json, and add run notes naming the model behind the narrative and the model behind the vision pass. Until then the correlated-blindness handle that CLAUDE.md's provenance section asks for does not exist for this artifact.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "CN111440099B",
+      "field": "novelty_claims",
+      "problem": "One of the five quoted strings in novelty_claims appears in quotation marks but is not verbatim from any line of the source; it is a re-translation of the Chinese rather than the gloss the document carries.",
+      "source_line": 106,
+      "quote": "after mutagenicity testing of the contaminant (Ames) a positive Ames test result can be obtained, but this is not an intrinsic property of it, it is a result produced by the residual cyanide impurities.",
+      "artifact_says": "\"can obtain a positive Ames test result, but this is not an intrinsic property of it, it is a result produced by the residual cyanide impurities\"",
+      "should_be": "Quote line 106 as written ('a positive Ames test result can be obtained, but this is not...'), or drop the quotation marks and attribute it as a paraphrase. The artifact's wording is arguably closer to the Chinese 能得到正的Ames测试实验结果, so the meaning is not wrong, but it is presented as a quotation and matches nothing in the document. The other four quotations in novelty_claims are verbatim and were each anchored to lines 59, 60, 61 and 110.",
+      "confidence": "high"
+    },
+    {
+      "check": "translation",
+      "severity": "minor",
+      "record": "CN111440099B",
+      "field": "input/CN111440099B-enriched-numbered.md",
+      "problem": "The enriched markdown glosses the identical Chinese solvent enumeration two different ways, once without a conjunction and once with 'or', and the artifact followed the second, which is what let the preceding patent_summary defect through.",
+      "source_line": 120,
+      "quote": "EN: Further, the aqueous solution in said step 1) is a solution obtained by mixing acetonitrile, methanol, ethanol or dimethylformamide with water.",
+      "artifact_says": "patent_summary follows line 120 ('or'); novelty_claims quotes line 61, which glosses the same Chinese as 'acetonitrile, methanol, ethanol, dimethylformamide with water' with no conjunction.",
+      "should_be": "Make line 120's gloss match line 61's, since the Chinese at line 54 (claim 1) and line 119 ([0017]) is the same enumeration with 、 throughout and no 或. The Chinese is authoritative and it does not disambiguate, so neither gloss may.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "CN111440099B",
+      "field": "bibliographic",
+      "problem": "The front page prints an application publication date distinct from every date the record carries, and it appears nowhere in patent.json or in the biblio input, while publication_date and grant_date are both the grant publication date and so are indistinguishable.",
+      "source_line": 21,
+      "quote": "(43) 申请公布日 2020.07.24",
+      "artifact_says": "publication_date 2022-01-04, grant_date 2022-01-04, and no field for 2020-07-24",
+      "should_be": "publication_date = 2022-01-04 is defensible and is the convention the other two runs use (the publication date of the document the patent_id names), so I am not asserting it is wrong. What is lost is the A publication date, printed at (43) alongside the (65) application publication number CN 111440099 A at line 19. patent.schema.json has no slot for it, so the minimal correction is to record it in input/CN111440099B-biblio.json, which already carries publication_number and grant_publication and could carry application_publication_date next to them.",
+      "confidence": "medium"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "CN111440099B",
+      "field": "bibliographic.ipc_codes",
+      "problem": "The IPC codes are neither verbatim from the front page nor in the format the other two runs use: a space is inserted before the version parenthesis that the page does not print, and the other two runs strip the version entirely.",
+      "source_line": 34,
+      "quote": "C07C 317/24(2006.01)",
+      "artifact_says": "[\"C07C 317/24 (2006.01)\", \"C07C 315/06 (2006.01)\"]",
+      "should_be": "[\"C07C 317/24\", \"C07C 315/06\"], matching runs/CN104292137A and runs/CN109678767A. Verified from the page 1 text layer that CN109678767A's front page also prints '(2006.01)' on all four of its codes and its biblio strips it, so this run is the outlier rather than the other two being lossy. A field-by-field comparison of ipc_codes across runs cannot succeed while the two formats coexist. Both classification symbols themselves are correct: C07C 317/24 and C07C 315/06, checked character by character.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "CN111440099B",
+      "field": "parties.inventors[].country",
+      "problem": "All nine inventors carry country 'CN', which the front page does not print for any of them; it is finalise.py's jurisdiction fallback presented in the record as data, with nothing saying so.",
+      "source_line": 27,
+      "quote": "(72) 发明人 李林虎　许辉　石卫　李新生　孙敬权　许宜伟　孙丽梅　白光　钱敏",
+      "artifact_says": "{\"name\": \"Li Linhu\", \"country\": \"CN\"} and eight more the same",
+      "should_be": "Either null, or CN with the inference stated. The inventors are given in input/CN111440099B-biblio.json as bare strings, and finalise.py's inventors() docstring says the bare-string form falls back to the issuing jurisdiction and that 'Where it matters, state it'. Nothing in patent.json states it. The nine names and their order are correct: verified against the page 1 text layer, 李林虎 Li Linhu, 许辉 Xu Hui, 石卫 Shi Wei, 李新生 Li Xinsheng, 孙敬权 Sun Jingquan, 许宜伟 Xu Yiwei, 孙丽梅 Sun Limei, 白光 Bai Guang, 钱敏 Qian Min.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "CN111440099B",
+      "field": "bibliographic.patent_type",
+      "problem": "patent_type is null although the front page states the document type in field (12), and as a consequence no patent_type tag is emitted either, although A4-patent.md rule 4 declares patent_type a metadata-derived category that finalise.py unions in.",
+      "source_line": 8,
+      "quote": "(12) 发明专利",
+      "artifact_says": "\"patent_type\": null, and no patent_type:* tag among the 89 tags",
+      "should_be": "An invention-patent value, for instance 'invention', plus the corresponding tag. pipeline/finalise.py hardcodes \"patent_type\": None rather than reading it from the biblio, and the biblio has no patent_type key, so both need the field. This is the same hardcoded-absence shape as the examiners finding above.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "CN111440099B",
+      "field": "tags",
+      "problem": "A4-patent.md rule 4 names legal_status among the categories finalise.py unions in from the biblio file, but no legal_status tag is present, so the prompt's stated tag contract and the artifact disagree.",
+      "source_line": 45,
+      "quote": "(57) 摘要 一种环磺酮产品的纯化方法",
+      "artifact_says": "The metadata-derived tags are exactly jurisdiction:cn, patent_family:71652835, time_period:2022, assignee:limin_chemical_co_ltd, assignee_type:company. No legal_status:* and no patent_type:*.",
+      "should_be": "Either emit legal_status:active from the biblio's legal_status, or correct rule 4 in the prompt so it lists only what finalise.py actually adds. finalise.py lines 354 to 359 add five tags and rule 4 promises six categories plus assignee_type, which rule 4 does not mention at all. No source line can carry this one; line 45 is cited only because the finding is about a field with no page anchor.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "CN111440099B",
+      "field": "patent_summary",
+      "problem": "patent_summary states the preparation as thionyl chloride activation of the benzoic acid as though the document were consistent about it, when the only worked synthesis charges the benzoyl chloride and then adds thionyl chloride to it.",
+      "source_line": 273,
+      "quote": "向2L三口烧瓶加入的2‑氯‑3‑(2 ,2 ,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酰氯231 .9g，1 ,2‑二氯乙烷1L，15℃搅拌。缓慢加入氯化亚砜237 .9g。",
+      "artifact_says": "whose preparation by thionyl chloride activation of 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+      "should_be": "The [0009] and [0031] reading that patent_summary follows is one of two readings the document offers; [0029] and [0053] both charge 苯甲酰氯, the acid chloride, and then add thionyl chloride, which cannot be activation of an acid. reactions.json does record the disagreement (mass_balance_implausible on Example 6_Step 1, inconsistent_step_arithmetic on the Example 6 pathway) and extraction_rollup.key_starting_materials carries both the acid and the acid chloride, so the patent-level narrative is the only place the disagreement is averaged away. One clause noting that the worked example starts from the acid chloride would restore it.",
+      "confidence": "medium"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "CN111440099B",
+      "field": "patent_summary",
+      "problem": "patent_summary says the six examples 'vary one parameter each', which its own parenthetical contradicts by assigning two parameters to the first example, and which Example 6 does not do at all.",
+      "source_line": 178,
+      "quote": "| 6 | 重排反应结束后，蒸馏脱溶后取环磺酮产品 5g 溶解在20%含水甲醇中，升温至 60℃，加入 1g 活性炭保温 2 小时后热过滤",
+      "artifact_says": "six examples vary one parameter each across nineteen numbered batches (hold time and temperature, aqueous solvent, water content, adsorbent, pH), the last of them running the synthesis and the purification end to end at increased scale",
+      "should_be": "Five examples vary one or two parameters each and the sixth is a scale-up run. Example 1 alone varies hold time (batches 1, 2, 6: one hour, 0.2 h, 2 hours) and dissolution temperature (batches 4, 5: 50 C, 55 C) and in batch 3 the solvent charge as well, since batch 3 adds 10 g of further 20% aqueous methanol after the hot filtration and changes nothing else. Batch 11 in Example 3 likewise strips the methanol and adds 10 g of fresh water rather than varying the water content. The counts of six examples and nineteen batches are both correct.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "CN111440099B",
+      "field": "bibliographic.legal_status",
+      "problem": "legal_status is a mutable value that the document does not carry and the record states it with no as-of date, unlike the reference run, whose legal_status string carries its own date.",
+      "source_line": 10,
+      "quote": "(10) 授权公告号 CN 111440099 B",
+      "artifact_says": "\"legal_status\": \"Active\"",
+      "should_be": "Either a status string carrying its retrieval date, as runs/CN104292137A does with 'Expired - Fee Related (terminated 2018-10-15)', or a null. The value comes from input/CN111440099B-biblio.json, which does record 'retrieved': '2026-08-27', so the date exists and is simply not carried into the field a consumer reads. Line 10 is cited only as the nearest front-page anchor; the front page states no legal status.",
+      "confidence": "low"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "arithmetic - extraction_rollup re-derived from source artifacts",
+      "what_was_verified": "Every figure in extraction_rollup was recomputed from compounds.json, reactions.json and pathways.json with the same expressions pipeline/finalise.py rollup() uses, and all of them reconcile exactly. reaction_count 38, compound_count 24 and pathway_count 11 equal the record counts of the three files. section_summary {background 5, claims 3, experimental_example 22, summary_of_invention 4, experimental_intermediate 4} sums to 38 and matches a Counter over reactions section_type; the 22 experimental_example reactions decompose as Example 1 six, Example 2 four, Example 3 three, Example 4 two, Example 5 four, Example 6 three. scale_distribution {not_specified 16, lab 19, pilot 3} sums to 38, the 16 not_specified being exactly the non-experimental sections (5+3+4+4) and the 3 pilot being exactly Example 6, which is consistent with A2 rule 21 given the 231.9 g charge at line 273 and the 5 g charges everywhere else. chemistry_focus is the top five reaction_class values in Counter.most_common order with the observed counts recrystallisation 22, acylation 5, other 5, nucleophilic_substitution 3, ester_formation 3."
+    },
+    {
+      "check": "arithmetic - best_overall_yield_pct null is correct, not a gap",
+      "what_was_verified": "Checked whether the null could have been populated. No pathway in pathways.json carries an overall_yield_pct, and A3-pathways.md rule 9 defines it as the product of every step's yield_pct, so a single stepless yield makes it null. The document states no yield percentage anywhere: [0053] gives 262.1 g of tembotrione at 95% content from 231.9 g of the benzoyl chloride, which is a mass and a purity, not a yield. The Example 6 pathway carries yield_missing_step, so the absence is flagged rather than silent. overall_purity_pct 95.0 on that pathway does match the 含量95％ at line 278. best_overall_yield_pathway_uuid is correctly null with it."
+    },
+    {
+      "check": "precision - target_compounds and key_starting_materials",
+      "what_was_verified": "Both lists were re-derived. target_compounds is the single compound with is_section_product true, tembotrione, uuid 594ae41c-08a2-5713-a2b2-e58411f55919, matching compounds.json. key_starting_materials is exactly the three compounds tagged compound_class:starting_material, and all three identifiers and uuids match compounds.json character for character. Every smiles field in both lists is null, as patent.schema.json requires with type 'null', so the artifact carries no structure, formula or molecular weight anywhere. Grepped the whole record: no SMILES, no InChI, no molecular formula, no MW."
+    },
+    {
+      "check": "vocabulary - the five LLM tag categories against their closed lists",
+      "what_was_verified": "Separated the model's tags from the inherited ones by set difference against the union of all compounds, reactions and pathways tags plus the five metadata tags. The model contributed exactly six tags across exactly the five permitted categories, and every value is in its closed list in A4-patent.md rule 4: domain:agrochemical (one value, as required), target_class:herbicide (one value), claim_type:process, novelty:new_process, novelty:improved_purity, process_focus:batch. No sixth category was invented and assignee_type was correctly not emitted by the model, per rule 5."
+    },
+    {
+      "check": "vocabulary - all 89 tags against the A1, A2 and A3 closed lists",
+      "what_was_verified": "All 89 tags are unique, all match the schema pattern ^[a-z_]+:[a-z0-9_/.+-]+$, and all are lowercase snake_case ASCII with no case mismatches and no malformed pairs. Every inherited value was checked against its list: the 12 compound_class values and the 3 hazard values against A1 rule 18; solvent_class (aqueous, protic, aprotic_polar, halogenated, other), catalyst_class (none, base), workup_type (none, filtration, crystallisation, distillation), purification (none, recrystallisation, distillation), safety (cyanide_handling), step_role, linkage, is_one_pot, mechanism and scale (not_specified, lab, pilot) against A2 rule 26 and rule 21; and chain_length:3, chain_length:2, branching:linear, convergence:linear and lcl:short against A3 lines 106 to 111, where lcl:short is the defined value for a 1 to 3 step route. Nothing is outside its list."
+    },
+    {
+      "check": "schema - fields present that should have been omitted",
+      "what_was_verified": "patent_uuid and the compound_uuid values inside extraction_rollup are the only uuid fields, and both are permitted: patent.schema.json declares them, finalise.py's header states the prompts deliberately do not ask for ids or uuids because finalise adds them, and the reference run runs/CN104292137A/output/patent.json carries patent_uuid in the same position. patent_uuid is also reproducible: uuid5(NAMESPACE_DNS, 'CN111440099B') gives 0c29ce81-8288-5352-8cd5-676f4d3f7f35 exactly. No id, no enrichment field and no vector field is present, additionalProperties is satisfied at every level, and the single required field patent_id is present and correct."
+    },
+    {
+      "check": "fidelity - abstract transcribed verbatim from the front page",
+      "what_was_verified": "The abstract field was compared programmatically against the page 1 text layer read with pymupdf, with the layer's line breaks removed. It matches exactly, character for character, including the two places where the page prints 磺酮 rather than 环磺酮 and the unspaced '1327ppm' and '100ppm'. The patent's own slip is preserved rather than tidied, which is the right call and is documented in the biblio's abstract_note. The field keeps the Chinese, which CLAUDE.md permits for the gold and which matches the reference run, whose abstract is also Chinese."
+    },
+    {
+      "check": "fidelity - dates, numbers and names on the front page",
+      "what_was_verified": "Checked against input/pages/p01.png and the page 1 text layer. Grant publication number CN 111440099 B matches patent_id. 授权公告日 2022.01.04 matches both publication_date and grant_date. 申请日 2020.04.09 matches filing_date. Application number 202010273665.5 matches the biblio's CN:202010273665.5 digit for digit; patent.schema.json has no slot for it, so its absence from patent.json is not a defect. jurisdiction cn and language zh are correct. Both IPC symbols are correct (formatting reported separately). All nine inventor names, their pinyin and their order are correct. The assignee's country CN is supported by the printed address 221400 江苏省徐州市新沂经济开发区. priority_date 2020-04-09 is worth stating as an inference rather than a reading: the front page carries no (30) priority field at all, so the value is the filing date under the no-priority-claimed convention, which is defensible and matches what Google Patents reports, but it cannot be verified from the document."
+    },
+    {
+      "check": "translation - title and the compound name behind it",
+      "what_was_verified": "一种环磺酮产品的纯化方法 to 'Purification method for a tembotrione product'. 环磺酮 is tembotrione and not sulcotrione, fixed independently of the title by three facts on page 3: CAS 335104-84-2 at [0003], C17H16ClF3O6S at [0004] and 440.88 at [0005], all three of which are tembotrione. 一种 is rendered 'a' rather than dropped. The Chinese and English on lines 42, 43, 45 and 46 name the same thing. The assignee 利民化学有限责任公司 is literally a limited liability company and is rendered 'Limin Chemical Co Ltd', a normalisation that loses the liability form but names the same entity; the biblio's name_note explains why the punctuation was dropped, and the resulting tag assignee:limin_chemical_co_ltd satisfies the schema pattern."
+    },
+    {
+      "check": "drawings - both drawn schemes read off the page at 600 dpi",
+      "what_was_verified": "Opened input/pages/p03.png and input/pages/p05.png, then cropped and magnified Formula 1, the Formula 2 arrow row and the Formula 2 product with pymupdf at 600 dpi. Every substituent position in every [IMAGE_EXTRACT] span was read off the page rather than inferred. Formula 1 at [0008]: cyclohexane-1,3-dione acylated at C2, and on the ring Cl ortho to the acyl carbon, CH2OCH2CF3 meta, SO2CH3 para to the acyl carbon, which is the 2-chloro, 3-trifluoroethoxymethyl, 4-methylsulfonyl arrangement the SMILES encodes and the name at [0009] gives. The benzoic acid, the enol ester and the tembotrione product in Formula 2 carry the same three substituents in the same three positions on the page. The enol ester is drawn as the 3-oxocyclohex-1-en-1-yl ester and the SMILES encodes the enol oxygen 1,3 to the remaining ketone, which is what is drawn. Verified with rdkit that all three SMILES parse and that all three molecular formulae and all three InChIKeys in the spans are the ones the SMILES actually give: C11H10ClF3O5S YGMJOCQCLVNPOD-UHFFFAOYSA-N for the acid, C17H16ClF3O6S OBAMHTWSCBVWGB-UHFFFAOYSA-N for the enol ester, C17H16ClF3O6S IUQAXCIUEPFPSF-UHFFFAOYSA-N for tembotrione, whose formula also matches [0004] and whose computed 440.82 matches the 440.88 at [0005] to within the patent's own rounding. Nothing in either drawing was plausibly inferred from chemical knowledge."
+    },
+    {
+      "check": "drawings - above-arrow and below-arrow reagents, and the background scheme",
+      "what_was_verified": "At 600 dpi the first arrow of Formula 2 carries SOCl2 above it and a full cyclohexane-1,3-dione structure below it, and the second arrow carries the acetone cyanohydrin structure (CH3)2C(OH)CN above it. The spans keep the two apart and say which side each was drawn on, and their structure-position labels are right: counting left to right the dione is the 2nd structure and the cyanohydrin the 4th. The page draws two arrows and the spans encode two steps, with the acyl chloride correctly absent because the page does not draw it. On the background question, Formula 2 at [0009] and [0010] sits in 背景技术 and the scheme at [0031] on page 5 is the same drawing repeated inside 具体实施方式; patent_summary presents that route as the preparation whose product needs purifying, and novelty_claims says explicitly that what claim 1 positions as new is 'a purification rather than any change to that synthesis', so the background scheme is not annotated as the invention's route."
+    },
+    {
+      "check": "fidelity - the vision read of the tables that have no text layer",
+      "what_was_verified": "The biblio's text_provenance says the five data tables are images with no text layer, so every impurity number depends on the vision pass. Spot-checked Table 1 rows 1 and 2 against input/pages/p05.png at full page resolution: batch 1 reads 1327, 47, 98% and batch 2 reads 1327, 86, 89%, both exactly as lines 163 and 164 transcribe them, including the 一小时 and 0.2 小时 hold times and the 60℃ dissolution temperature. The 1327 ppm figure that patent.json's abstract and novelty_claims both carry is therefore anchored in the page as well as in the front-page abstract."
+    },
+    {
+      "check": "precision - every remaining narrative assertion anchored to a line",
+      "what_was_verified": "Each clause of patent_summary and novelty_claims was matched to a line. The triketone HPPD-inhibitor herbicide classification to line 80, the synthesis via SOCl2 then cyclohexanedione then acetone cyanohydrin rearrangement to line 95, the cyanide contamination to lines 100 and 105, the [0012] object to line 110, the four solvents to lines 54 and 61, the 20 to 40% water, 30 to 60 C and 0.2 to 1 h all pulled into claim 1 to lines 54 and 55, the activated carbon or diatomaceous earth to line 56, the pH below 3 and the crystallisation to line 53, hydrochloric acid in claim 2 to line 65, the stirring speed in claim 3 to line 67, the 1327 ppm to below 100 ppm at [0026] to line 137, Example 2 testing the four solvents singly to lines 201, 202, 203 and 213, and the scale-up end-to-end run to lines 273 and 278. Two of these deserve credit rather than a finding: the observation that [0026] attributes a ppm figure to an Ames test, which reports mutagenicity and not a concentration, is a correct reading of line 137, and the refusal to decide the solvent enumeration is the correct handling of line 54 under CLAUDE.md rule 8, whatever patent_summary then did with it. No condition, no atmosphere and no default-looking value appears anywhere in the record."
+    },
+    {
+      "check": "schema and prompt compliance of the narrative fields",
+      "what_was_verified": "novelty_claims is four sentences, inside A4 rule 2's two-to-four range, and carries no yield, mass or temperature. patent_summary carries none either, satisfying rule 1's prohibition, although it is one very long sentence and rule 1 asks for one to two. key_examples is an empty array and this is correct: the three claims cite no example label anywhere, which A4 rule 3 says is common and correct in CN process claims, and the reference run made the same call. honest_uncertainty_flags carries only key_examples_not_referenced, from the closed list in rule 6, and matches the reference run's flags exactly; patent_summary_truncated_input is correctly absent because novelty_claims states the claim-1 ambiguity is in the drafting rather than in the translation, which rule 7 makes the deciding test. source_refs matches the reference run field for field."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "patent.json carries no precursor_step, no linkage_confirmed and no step-level reference of any kind, so check 6 has no target in this artifact. The linkage:standalone, linkage:precursor_linked and linkage:cross_section_linked tags are inherited unions from reactions.json and assert nothing at patent level. Recorded here so the check is not silently skipped; linkage belongs to the reactions.json audit."
+    },
+    {
+      "check": "style",
+      "what_was_verified": "Scanned the serialised record for the em dash character U+2014: none present, in any field, including both narrative fields. Outside the abstract, which is the authoritative Chinese and is permitted to stay Chinese, every string that can reach a screen is English; no Chinese leaks into patent_summary, novelty_claims, tags, the title or any bibliographic field."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 24,
+    "present_in_artifact": 20,
+    "missing": [
+      "The examiner named at line 37, 审查员 靳贝贝 / Jin Beibei, against a schema slot at parties.examiners that finalise.py hardcodes to null",
+      "The document type at line 8, (12) 发明专利, against bibliographic.patent_type, which finalise.py hardcodes to null",
+      "The application publication date at line 21, (43) 申请公布日 2020.07.24, which no field in patent.json or in the biblio input carries",
+      "The application number 202010273665.5 at line 14 and the agency and agent at lines 29 and 31, none of which patent.schema.json has a slot for; the application number is at least held in the biblio input, the agency and agent are held nowhere"
+    ]
+  }
+}

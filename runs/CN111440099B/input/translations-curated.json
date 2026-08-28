@@ -1,0 +1,171 @@
+{
+  "_readme": [
+    "Hand-authored English for the Chinese strings of one patent that",
+    "resolve_translations.py cannot get any other way. One entry per exact Chinese",
+    "string, keyed by the string as the gold spells it, byte for byte.",
+    "",
+    "WHY THIS FILE EXISTS: the gold keeps the patent's Chinese, because the Chinese",
+    "is the authoritative text and at least one finding in FINDINGS.md was only",
+    "catchable by reading it. The consuming team cannot read Chinese. Almost all of",
+    "the gap closes from data already in the pipeline: the enriched source carries a",
+    "machine translation of nearly every line, and most Chinese aliases sit on a",
+    "record that already names the same molecule in English. What is left is the",
+    "handful of class terms and misprints that neither can reach.",
+    "",
+    "TRANSLATE THESE AS CHEMISTRY, NOT AS TEXT. Check every name against the",
+    "structure or against the context in the patent rather than word by word. There",
+    "is no OPSIN and no network here, so nothing verifies a hand-authored name",
+    "except a human doing it, and a wrong chemical translation reads exactly as",
+    "convincingly as a right one. A wrong translation is worse than an admitted gap:",
+    "the gap is visible in the report, the wrong name is not.",
+    "",
+    "PRESERVE THE PATENT'S ERRORS. Where the Chinese itself is wrong, translate the",
+    "error faithfully and explain it in 'note'. Silently correcting it would make the",
+    "gold agree with chemistry instead of agreeing with the document, which is the",
+    "one thing a reference annotation may never do.",
+    "",
+    "WHAT NOT TO PUT HERE: anything the pipeline already resolves. A quotation whose",
+    "source line carries a '> EN:' line resolves with origin 'source_mt'. A Chinese",
+    "alias of a compound the gold also names in English resolves with origin",
+    "'gold_alias'. Both are stronger provenance claims than 'curated', because both",
+    "are the document's or the annotation's own words rather than ours. An entry here",
+    "for one of those is harmless, and is reported as overridden, but it is work you",
+    "did not need to do.",
+    "",
+    "OVERRIDE, and when it is honest to use it. An entry may carry",
+    "'override': true, which makes it beat the source and the gold instead of",
+    "losing to them. That is normally exactly backwards, because both are",
+    "better provenance than we are. The one shape that earns it is a SHORT",
+    "PHRASE whose source-line answer is the translation of the WHOLE PARAGRAPH",
+    "it was quoted out of. A consumer substitutes the index into the",
+    "annotator's English commentary, and a 695-character paragraph spliced into",
+    "the middle of a sentence is not a translation of a 14-character phrase, it",
+    "is a different and much worse answer. 'override' requires both an 'en' and",
+    "a 'note', so the reasoning is attached to the decision in the artifact.",
+    "",
+    "FIELDS: 'en' is the English form and must contain no Chinese. 'note' is free",
+    "text and is appended to the entry's note whichever tier ends up supplying the",
+    "English, so it is the right place for anything a reader has to know about the",
+    "string. Set 'en' to null, with a note, to record a gap deliberately left open:",
+    "the coverage gate still reports it, and the reasoning travels with it instead",
+    "of being lost.",
+    "",
+    "NOT EVERY ENTRY IS A MOLECULE. [0002] ends with a list of the weeds the",
+    "target herbicide controls, and the source's machine translation keeps the",
+    "Chinese plant names beside their English glosses, so those runs reach a",
+    "screen too and are indexed here. They are translated as botany on the same",
+    "terms the compounds are translated as chemistry: against what the name",
+    "denotes, with the genus-versus-species distinction the Chinese makes",
+    "preserved rather than flattened.",
+    "",
+    "Each name below was worked out from the patent's own context, and the",
+    "confidence in each is stated in its note."
+  ],
+  "patent_id": "CN111440099B",
+  "entries": {
+    "式": {
+      "en": "formula",
+      "note": "As in 式1 and 式2 at [0007] and [0009], which the source's own English renders Formula 1 and Formula 2. It labels a printed structure or reaction equation, not a mathematical expression. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "保温": {
+      "en": "hold at temperature",
+      "note": "The operation of holding a charge at the temperature it has been brought to, not insulation. Every purification batch in this patent uses it for the adsorbent contact time, and claim 1 fixes that hold at 0.2 h to 1 h. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "至": {
+      "en": "to",
+      "note": "The preposition of a range or an endpoint: 升温至60℃, warm to 60 C, and pH至3以下, to below 3. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "以下": {
+      "en": "below",
+      "note": "An open upper bound with no lower bound, as in pH至3以下 at [0016] and in claim 1. Rendered 'below' rather than 'or less' because the patent's own English pairing uses below, and because the distinction decides whether pH 3 itself is inside the claim. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "转至": {
+      "en": "revolutions to",
+      "note": "The middle of the printed range 150转至200转 in claim 3 and [0025], where the two digit groups fall outside the Chinese run. 转 here is a count of revolutions with no time base printed, so no rate is implied. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "转": {
+      "en": "revolutions",
+      "note": "A count of revolutions, printed with no per-minute base in claim 3 and [0025] and with an hourly base only at [0053], 280转/h. Not translated rpm, because the patent does not print a minute anywhere. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "处理方法": {
+      "en": "treatment method",
+      "note": "The second column header of all five results tables, holding the whole procedure for that batch. In this patent it is the only place the procedures of Examples 1 to 4 appear at all. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "补入": {
+      "en": "add a further portion of",
+      "note": "A top-up charge of something already present, distinct from 加入 (add). It occurs twice and both are findings: batch 3 tops up with 10 g of aqueous methanol after the hot filtration, and batch 11 tops up with 10 g of fresh water after the methanol has been stripped. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "试验批次": {
+      "en": "test batch",
+      "note": "The first column header of the tables in Examples 2, 3, 4 and 5. NOT the same characters as 实验批次, which heads the same column of Example 1's table: 试 is test or trial, 实 is actual or experiment. Verified on the page images at 900 dpi on both p05 and p07. The two are translated differently on purpose, so that a reader of the English can still see that the patent is inconsistent between its own tables. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "实验批次": {
+      "en": "experiment batch",
+      "note": "The first column header of Example 1's table, printed on p05. See the note on 试验批次: the other four tables print a different first character for the same column, and the difference is preserved in English rather than flattened. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "取": {
+      "en": "take",
+      "note": "As in 取产品5g, take 5 g of the product. It marks an aliquot being drawn from a larger batch, which is why Examples 1 to 5 are parallel treatments of one crude lot rather than a sequence. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "含": {
+      "en": "containing",
+      "note": "The bound form inside 含水 (water-containing) and 含量 (content). It reaches a screen on its own only where a page break cuts 40%含水甲醇 in half, leaving 40%含 at the end of one table row and 水甲醇 at the start of the next. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "含量降低": {
+      "en": "content reduction",
+      "note": "The tail of the fifth column header of all five tables, 氰化物杂质含量降低%. It is the percentage by which the cyanide impurity content fell. Recorded here because the printed values in that column do not follow arithmetically from the two ppm columns beside them in 18 of the 19 batches, which is the patent's own defect and is not corrected anywhere in this annotation. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "入": {
+      "en": "into",
+      "note": "The bound verb of 加入 (add into) and 投入 (charge into). It reaches a screen on its own at [0021], 入含水溶液, where the patent is missing the verb that should precede it, so the phrase cannot be read with confidence. Translated as the bare preposition rather than supplying the missing verb. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "步骤": {
+      "en": "step",
+      "note": "A numbered step of the claimed method, as in 所述步骤1). It refers to one of the three steps of claim 1, not to a synthetic step in the reaction sense. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "背景技术": {
+      "en": "background art",
+      "note": "The standard CNIPA section heading, at line 78. The section it heads describes how tembotrione is prepared; whether that route is prior art or the invention's own is left open by this annotation, and the heading is one of the two pieces of evidence for reading it as prior art. Quoted inside the annotator's English commentary on a provenance row, so a consumer splices this English into an English sentence. Translated against the patent's own use of the term rather than word by word."
+    },
+    "20%含水甲醇": {
+      "en": "20% aqueous methanol",
+      "override": true,
+      "note": "The dissolution medium of batches 1 to 7, 11 and 14, printed with a half-width percent sign. The 20% is the WATER content, not the methanol content: [0018] says 含水溶液中含水量为20％～40％ and claim 1 repeats it. OVERRIDES gold_alias. The alias sits on the pure compound's record, so the gold's own English for it drops the strength, and the name fidelity gate reports that the substance is right while a fact about what was charged is gone. The strength is restored here, which is the same shape as the reference run's 无水三氯化铝 entry. Recorded disagreement: the A5 compounds audit argues that a mixture name should not be an alias of one of its components at all, and would delete the alias instead. The alias is kept and qualified, because the gate itself says the substance is right and because deleting it would lose the printed form from the record."
+    },
+    "20%含水乙醇": {
+      "en": "20% aqueous ethanol",
+      "override": true,
+      "note": "The dissolution medium of batch 8 and batch 15, printed with a half-width percent sign. The 20% is the water content, per [0018]. OVERRIDES gold_alias. The alias sits on the pure compound's record, so the gold's own English for it drops the strength, and the name fidelity gate reports that the substance is right while a fact about what was charged is gone. The strength is restored here, which is the same shape as the reference run's 无水三氯化铝 entry. Recorded disagreement: the A5 compounds audit argues that a mixture name should not be an alias of one of its components at all, and would delete the alias instead. The alias is kept and qualified, because the gate itself says the substance is right and because deleting it would lose the printed form from the record."
+    },
+    "20％含水乙醇": {
+      "en": "20% aqueous ethanol",
+      "override": true,
+      "note": "The same medium as 20%含水乙醇 but printed with a FULL-WIDTH percent sign, at [0050] in Example 5. Both forms are indexed because both are printed and the gold keeps each verbatim. The 20% is the water content, per [0018]. OVERRIDES gold_alias. The alias sits on the pure compound's record, so the gold's own English for it drops the strength, and the name fidelity gate reports that the substance is right while a fact about what was charged is gone. The strength is restored here, which is the same shape as the reference run's 无水三氯化铝 entry. Recorded disagreement: the A5 compounds audit argues that a mixture name should not be an alias of one of its components at all, and would delete the alias instead. The alias is kept and qualified, because the gate itself says the substance is right and because deleting it would lose the printed form from the record."
+    },
+    "20%含水乙腈": {
+      "en": "20% aqueous acetonitrile",
+      "override": true,
+      "note": "The dissolution medium of batch 9. The 20% is the water content, per [0018]. OVERRIDES gold_alias. The alias sits on the pure compound's record, so the gold's own English for it drops the strength, and the name fidelity gate reports that the substance is right while a fact about what was charged is gone. The strength is restored here, which is the same shape as the reference run's 无水三氯化铝 entry. Recorded disagreement: the A5 compounds audit argues that a mixture name should not be an alias of one of its components at all, and would delete the alias instead. The alias is kept and qualified, because the gate itself says the substance is right and because deleting it would lose the printed form from the record."
+    },
+    "20%含水二甲基甲酰胺": {
+      "en": "20% aqueous dimethylformamide",
+      "override": true,
+      "note": "The dissolution medium of batch 10, recoverable only by reading the two halves of a table row split across the p07 page break as one cell. The 20% is the water content, per [0018]. Note that the Chinese prints 二甲基甲酰胺 without the N,N locants throughout, and the gold's identifier supplies them. OVERRIDES gold_alias. The alias sits on the pure compound's record, so the gold's own English for it drops the strength, and the name fidelity gate reports that the substance is right while a fact about what was charged is gone. The strength is restored here, which is the same shape as the reference run's 无水三氯化铝 entry. Recorded disagreement: the A5 compounds audit argues that a mixture name should not be an alias of one of its components at all, and would delete the alias instead. The alias is kept and qualified, because the gate itself says the substance is right and because deleting it would lose the printed form from the record."
+    },
+    "稀盐酸": {
+      "en": "dilute hydrochloric acid",
+      "override": true,
+      "note": "The acid used to set the pH in every batch. 稀 is dilute, and the gold's alias resolves to plain hydrochloric acid, so the gate reports the qualifier lost. OVERRIDES gold_alias. The alias sits on the pure compound's record, so the gold's own English for it drops the strength, and the name fidelity gate reports that the substance is right while a fact about what was charged is gone. The strength is restored here, which is the same shape as the reference run's 无水三氯化铝 entry. Recorded disagreement: the A5 compounds audit argues that a mixture name should not be an alias of one of its components at all, and would delete the alias instead. The alias is kept and qualified, because the gate itself says the substance is right and because deleting it would lose the printed form from the record."
+    },
+    "10%稀盐酸": {
+      "en": "10% dilute hydrochloric acid",
+      "override": true,
+      "note": "The acid as printed in the table cells, with a half-width percent sign. Both the strength and 稀, dilute, are printed, and the gold's alias drops both. OVERRIDES gold_alias. The alias sits on the pure compound's record, so the gold's own English for it drops the strength, and the name fidelity gate reports that the substance is right while a fact about what was charged is gone. The strength is restored here, which is the same shape as the reference run's 无水三氯化铝 entry. Recorded disagreement: the A5 compounds audit argues that a mixture name should not be an alias of one of its components at all, and would delete the alias instead. The alias is kept and qualified, because the gate itself says the substance is right and because deleting it would lose the printed form from the record."
+    },
+    "10％稀盐酸": {
+      "en": "10% dilute hydrochloric acid",
+      "override": true,
+      "note": "The same acid printed with a FULL-WIDTH percent sign, at [0050]. Both forms are indexed because both are printed. OVERRIDES gold_alias. The alias sits on the pure compound's record, so the gold's own English for it drops the strength, and the name fidelity gate reports that the substance is right while a fact about what was charged is gone. The strength is restored here, which is the same shape as the reference run's 无水三氯化铝 entry. Recorded disagreement: the A5 compounds audit argues that a mixture name should not be an alias of one of its components at all, and would delete the alias instead. The alias is kept and qualified, because the gate itself says the substance is right and because deleting it would lose the printed form from the record."
+    }
+  }
+}

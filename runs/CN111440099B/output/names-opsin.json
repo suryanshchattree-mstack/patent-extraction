@@ -1,0 +1,518 @@
+{
+ "patent_id": "CN111440099B",
+ "engine": "OPSIN via https://opsin.ch.cam.ac.uk/opsin/",
+ "what_this_is_en": "Every compound identifier in the gold, read a second time by a name parser that knows nothing about this patent. A parse is used as a structure only where nothing better exists, and is compared against every structure the pipeline already had.",
+ "summary": {
+  "ambiguous": 1,
+  "parsed": 24,
+  "unparseable": 9
+ },
+ "names": [
+  {
+   "identifier": "tembotrione",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'tembotrione'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "tembotrione",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "water",
+   "outcome": "parsed",
+   "query": "water",
+   "via": "verbatim",
+   "smiles": "O",
+   "canonical": "O",
+   "attempts": [
+    {
+     "query": "water",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "adsorbent",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'adsorbent'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "adsorbent",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "cyanide",
+   "outcome": "parsed",
+   "query": "cyanide",
+   "via": "verbatim",
+   "smiles": "[C-]#N",
+   "canonical": "[C-]#N",
+   "attempts": [
+    {
+     "query": "cyanide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "ethanol",
+   "outcome": "parsed",
+   "query": "ethanol",
+   "via": "verbatim",
+   "smiles": "C(C)O",
+   "canonical": "CCO",
+   "attempts": [
+    {
+     "query": "ethanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "dichloromethane",
+   "outcome": "parsed",
+   "query": "dichloromethane",
+   "via": "verbatim",
+   "smiles": "ClCCl",
+   "canonical": "ClCCl",
+   "attempts": [
+    {
+     "query": "dichloromethane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "toluene",
+   "outcome": "parsed",
+   "query": "toluene",
+   "via": "verbatim",
+   "smiles": "CC1=CC=CC=C1",
+   "canonical": "Cc1ccccc1",
+   "attempts": [
+    {
+     "query": "toluene",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+   "outcome": "parsed",
+   "query": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "thionyl chloride",
+   "outcome": "parsed",
+   "query": "thionyl chloride",
+   "via": "verbatim",
+   "smiles": "S(=O)(Cl)Cl",
+   "canonical": "O=S(Cl)Cl",
+   "attempts": [
+    {
+     "query": "thionyl chloride",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+   "outcome": "parsed",
+   "query": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)Cl)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "cyclohexane-1,3-dione",
+   "outcome": "parsed",
+   "query": "cyclohexane-1,3-dione",
+   "via": "verbatim",
+   "smiles": "C1(CC(CCC1)=O)=O",
+   "canonical": "O=C1CCCC(=O)C1",
+   "attempts": [
+    {
+     "query": "cyclohexane-1,3-dione",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "enol ester",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'enol ester'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "enol ester",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "acetone cyanohydrin",
+   "outcome": "parsed",
+   "query": "acetone cyanohydrin",
+   "via": "verbatim",
+   "smiles": "CC(C#N)(O)C",
+   "canonical": "CC(C)(O)C#N",
+   "attempts": [
+    {
+     "query": "acetone cyanohydrin",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "acetonitrile",
+   "outcome": "parsed",
+   "query": "acetonitrile",
+   "via": "verbatim",
+   "smiles": "C(C)#N",
+   "canonical": "CC#N",
+   "attempts": [
+    {
+     "query": "acetonitrile",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "methanol",
+   "outcome": "parsed",
+   "query": "methanol",
+   "via": "verbatim",
+   "smiles": "CO",
+   "canonical": "CO",
+   "attempts": [
+    {
+     "query": "methanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "N,N-dimethylformamide",
+   "outcome": "parsed",
+   "query": "N,N-dimethylformamide",
+   "via": "verbatim",
+   "smiles": "CN(C=O)C",
+   "canonical": "CN(C)C=O",
+   "attempts": [
+    {
+     "query": "N,N-dimethylformamide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "activated carbon",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'activated carbon'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "activated carbon",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "diatomaceous earth",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'diatomaceous earth'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "diatomaceous earth",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "hydrochloric acid",
+   "outcome": "parsed",
+   "query": "hydrochloric acid",
+   "via": "verbatim",
+   "smiles": "Cl",
+   "canonical": "Cl",
+   "attempts": [
+    {
+     "query": "hydrochloric acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "1,2-dichloroethane",
+   "outcome": "parsed",
+   "query": "1,2-dichloroethane",
+   "via": "verbatim",
+   "smiles": "ClCCCl",
+   "canonical": "ClCCCl",
+   "attempts": [
+    {
+     "query": "1,2-dichloroethane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "triethylamine",
+   "outcome": "parsed",
+   "query": "triethylamine",
+   "via": "verbatim",
+   "smiles": "C(C)N(CC)CC",
+   "canonical": "CCN(CC)CC",
+   "attempts": [
+    {
+     "query": "triethylamine",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "triethylamine salt",
+   "outcome": "parsed",
+   "query": "triethylamine",
+   "via": "alias",
+   "smiles": "C(C)N(CC)CC",
+   "canonical": "CCN(CC)CC",
+   "attempts": [
+    {
+     "query": "triethylamine salt",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "triethylamine",
+     "via": "alias",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "chloroform",
+   "outcome": "parsed",
+   "query": "chloroform",
+   "via": "verbatim",
+   "smiles": "C(Cl)(Cl)Cl",
+   "canonical": "ClC(Cl)Cl",
+   "attempts": [
+    {
+     "query": "chloroform",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "organic solvent",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'organic solvent', 'organic'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "organic solvent",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "organic",
+     "via": "dropped 'solvent'",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "base",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'base'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "base",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "1,3-cyclohexanedione",
+   "outcome": "parsed",
+   "query": "1,3-cyclohexanedione",
+   "via": "verbatim",
+   "smiles": "C1(CC(CCC1)=O)=O",
+   "canonical": "O=C1CCCC(=O)C1",
+   "attempts": [
+    {
+     "query": "1,3-cyclohexanedione",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoyl chloride",
+   "outcome": "parsed",
+   "query": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoyl chloride",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)Cl)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoyl chloride",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+   "outcome": "parsed",
+   "query": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride",
+   "outcome": "parsed",
+   "query": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)Cl)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "CDCl3",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'CDCl3'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "CDCl3",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Tembotrione",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Tembotrione'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Tembotrione",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Thionyl chloride",
+   "outcome": "parsed",
+   "query": "Thionyl chloride",
+   "via": "verbatim",
+   "smiles": "S(=O)(Cl)Cl",
+   "canonical": "O=S(Cl)Cl",
+   "attempts": [
+    {
+     "query": "Thionyl chloride",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "cyclohexanedione",
+   "outcome": "ambiguous",
+   "query": "cyclohexanedione",
+   "via": "verbatim",
+   "guess_smiles": "C1(C(CCCC1)=O)=O",
+   "guess_canonical": "O=C1CCCCC1=O",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "attempts": [
+    {
+     "query": "cyclohexanedione",
+     "via": "verbatim",
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: Addition of one suffix to: hex"
+    }
+   ]
+  },
+  {
+   "identifier": "dimethylformamide",
+   "outcome": "parsed",
+   "query": "dimethylformamide",
+   "via": "verbatim",
+   "smiles": "CN(C=O)C",
+   "canonical": "CN(C)C=O",
+   "attempts": [
+    {
+     "query": "dimethylformamide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  }
+ ]
+}

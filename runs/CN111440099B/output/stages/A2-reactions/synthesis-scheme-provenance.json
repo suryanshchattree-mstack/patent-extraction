@@ -1,0 +1,42 @@
+[
+  {
+    "reaction_id": "Synthesis Scheme_Step 1",
+    "source_lines": [
+      143,
+      146
+    ],
+    "quote_zh": "[0028] 合成方案包括以下内容： / [0029] 向三口烧瓶加入的2‑氯‑3‑(2,2,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酰氯，1,2‑二氯乙烷，保温15℃搅拌。缓慢加入氯化亚砜。常温反应0.5h，升温至75℃，保温3h。中控检测原料含量≤0.2％，在‑0.098mP下减压蒸出溶剂至85℃，脱去溶剂以及过量的氯化亚砜。  (boundary taken at 重新加入新的, the start of the second charge)",
+    "arithmetic_check": "Nothing to close, and nothing missed. [0029] states not one quantity: no mass, no volume, no mole, no equivalent, no molar ratio, no yield and no purity. The only numbers in the step are conditions (15 C, 0.5 h, 75 C, 3 h, 0.2% in-process limit, -0.098mP as printed, 85 C distillation endpoint), so no mass balance, molar-mass or yield check is possible or is being deferred. scale is not_specified for the same reason. The prompt's rule 29 claim about three non-closing steps is a fact about the previous patent, not this one.",
+    "drawing_evidence": "IMAGE_EXTRACT at line 153, step_id 1: reactant CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F (C11H10ClF3O5S, the FREE ACID), conditions SOCl2 and cyclohexane-1,3-dione drawn as a structure rather than written as a label, product the enol ester. It corroborates the thionyl chloride but contradicts the substrate: the prose charges the acyl chloride and the drawing starts from the acid, and the acyl chloride is drawn nowhere. It also carries no solvent, base, temperature or time, so 1,2-dichloroethane is written here and drawn nowhere. Recorded as drawing_text_conflict and reagent_written_not_drawn on this record. The identical extract appears at line 97 under [0010] in the background, which is the reason attribution is left open on the two Scheme records."
+  },
+  {
+    "reaction_id": "Synthesis Scheme_Step 2",
+    "source_lines": [
+      145,
+      146
+    ],
+    "quote_zh": "重新加入新的1,2‑二氯乙烷和三乙胺，投入1,3环己二酮和丙酮氰醇40℃保温6h。检测反应完全。过滤出三乙胺盐，减压浓缩得红棕色固体。  /  [0032] 所述的2‑氯‑3‑(2,2,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酰氯与环己二酮反应前可加入适当的碱如三乙胺等形成烯醇脂溶液，重排反应结束后经过进一步的蒸馏得到环磺酮产品。 (line 155, [0032], the only place the product is named and the only mention of a distillation)",
+    "arithmetic_check": "Nothing to close. [0029] gives no charge for the dione, the cyanohydrin, the solvent or the base, and no mass, yield or purity for the red-brown solid, so there is no mass balance, no molar-mass pair and no yield to reconcile. The only numbers in the step are 40 C and 6 h. mass_balance_implausible and molar_mass_inconsistent are therefore NOT raised, and their absence here means no quantity exists, not that a check passed.",
+    "drawing_evidence": "IMAGE_EXTRACT at line 153, step_ids 1 and 2 together cover this step: arrow 1 makes the enol ester from the free acid with SOCl2 and the drawn dione, arrow 2 rearranges it to tembotrione with the drawn acetone cyanohydrin. The drawn step 2 product CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F (C17H16ClF3O6S) is what identifies the unnamed red-brown solid as tembotrione, together with [0032], and it matches the tembotrione structure drawn at [0007]. Disagreements: the drawing splits this one pot into two arrows and presents the enol ester as isolated, it starts from the acid rather than the acyl chloride, and it carries no solvent, base, temperature or time. No SMILES from the drawing is written into any field of this record, per rule 8; A1 holds them in aliases."
+  },
+  {
+    "reaction_id": "Synthesis Scheme_Scheme Step 1",
+    "source_lines": [
+      147,
+      153
+    ],
+    "quote_zh": "[0030] 其合成反应式表示如下： (line 147, the sentence that announces the drawing) / [0031] (line 152, the marker the drawing sits under). The arrow itself carries no Chinese text; its labels are the formula SOCl2 and a drawn dione structure.",
+    "arithmetic_check": "No arithmetic exists. An overview drawing carries connectivity and reagents only: no charge, no equivalent, no yield and no time appears on either arrow of [0031], so no mass balance, molar-mass or yield check is possible for either Scheme record. no_conditions is raised for that reason and not because a number was missed.",
+    "drawing_evidence": "IMAGE_EXTRACT at line 153, step_id 1: reactant CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F (C11H10ClF3O5S), conditions SOCl2 and cyclohexane-1,3-dione (the extract itself records that the dione is drawn as a structure and not written as a label), product CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F (C17H16ClF3O6S). This IS the record's source. The identical extract, same two step_ids and same SMILES, appears at line 97 under [0009]/[0010] in 背景技术, where it was read as prior art; that duplication is the whole of the attribution problem and is why route_attribution_unclear is raised. Disagrees with the prose of Step 1 and Step 2 on the substrate (acid versus acyl chloride) and carries none of their solvent, base, temperature or time."
+  },
+  {
+    "reaction_id": "Synthesis Scheme_Scheme Step 2",
+    "source_lines": [
+      147,
+      153
+    ],
+    "quote_zh": "[0030] 其合成反应式表示如下： (line 147) / [0031] (line 152). The arrow carries no Chinese text; its only label is a drawn acetone cyanohydrin structure, which the extract records as drawn and not written.",
+    "arithmetic_check": "No arithmetic exists, for the same reason as Scheme Step 1: the drawing carries no charge, no equivalent, no yield and no time. Absence of mass_balance_implausible on this record means no quantity was available to check, not that a check was run and passed.",
+    "drawing_evidence": "IMAGE_EXTRACT at line 153, step_id 2: reactant CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F (C17H16ClF3O6S), condition acetone cyanohydrin drawn as a structure and not written as a label, product CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F (C17H16ClF3O6S, the same formula as the ester, as an intramolecular rearrangement requires). The product matches the tembotrione structure drawn at [0007] and the molecular formula printed at [0004]. The same extract appears at line 97 in the background, hence route_attribution_unclear. Disagrees with the prose of Step 2 on isolation of the enol ester and carries none of its solvent, base, temperature or time."
+  }
+]

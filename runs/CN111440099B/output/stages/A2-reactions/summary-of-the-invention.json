@@ -1,0 +1,781 @@
+[
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Summary of the Invention_Step 1",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "other",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": 30.0,
+        "max_c": 60.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": "%",
+        "reagent": "water",
+        "text": "aqueous solution of 20% to 40% water content"
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "acetonitrile",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "methanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ethanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "N,N-dimethylformamide",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "tembotrione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": null,
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "1)将环磺酮产品溶解在含水溶液中，升温；",
+    "procedure_summary": "The tembotrione product is dissolved in an aqueous solvent mixture and the solution is warmed. Nothing is isolated at this point; the warm solution is carried into the next step.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": true,
+    "is_complete": false,
+    "validation_flags": [
+      "missing_product"
+    ],
+    "tags": [
+      "mechanism:not_determinable",
+      "scale:not_specified",
+      "solvent_class:aqueous",
+      "catalyst_class:none",
+      "workup_type:none",
+      "purification:none",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "Step 1) of the method of [0013], narrowed by [0017], [0018] and [0019]. non_synthetic true: no bond is made or broken, the operation is a dissolution and a warming. reaction_class other because the closed list has no value for dissolving a solid in a solvent; confidence high on that reading, not on there being a reaction. The transformation tag category is skipped rather than guessed, since there is no transformation. A purification neither consumes nor creates the substance, so the material entering this step and the material leaving it are the same identifier, tembotrione. TWO-ENTRY FORM, AND WHY IT CHANGED: this record represents that with one entry role reactant and is_product false, plus, where the step actually isolates something, a second entry role product with is_product true. These four records were first written with a single dual-flagged entry instead, role reactant with is_product true, on the reasoning that duplicating an identifier in compounds[] looks like an extraction error and that the reference run has no non_synthetic record to follow. They were changed to the two-entry form for consistency with the other nine section files of this run, which annotate the same situation that way, and not because the single-entry reading was found to be wrong. The consequence that decided it: A3 rule 3 derives the pathway KSM from a step's reactants excluding its products, so a single dual-flagged entry left the reactant set empty and the KSM for this pathway resolved to acetonitrile, which is a solvent. The change was made at the coordinator's instruction; recorded here as an overruled reading rather than withdrawn silently. Purity is what distinguishes crude from purified in this document and this section states none, so every quantity block, purity_pct and product_purity_pct stay null on both entries. NOTHING IS ISOLATED HERE, so no product entry is created and no product is invented: the material stays in solution and is carried into the next operation. missing_product is raised on that fact and is_complete is false, which is what Claims Step 1 and Claims Step 2 do for these same two operations. SOLVENT AMBIGUITY LEFT OPEN: [0017] joins 乙腈, 甲醇, 乙醇 and 二甲基甲酰胺 with the Chinese enumeration comma and does not say whether one of the four or all four mixed with water is meant; the EN convenience line reads them as alternatives with 'or', which the Chinese does not state. All four are listed as solvents on this record and the ambiguity is recorded, not resolved. The water content is printed as the range 20% to 40%, which the single concentration.value float cannot hold, so value is null and the range is carried in concentration.text. Temperature is the range 30 to 60 degrees C from [0019]; 升温 names no heating method, so heating_method is null. No stirring, no reactor, no time and no charge are stated anywhere in the section, hence scale not_specified. safety_notes is empty by decision: the only safety-adjacent statement in the section is the Ames-test objective at [0012], which is the purpose of the method and not a statement about this step. The section is a recitation in words of the same three-step purification claim 1 recites. Duplication is not linkage, so precursor_step is never set to a Claims step; links are only within this section. NO DRAWN SCHEME IN THIS SECTION. Checked for one: lines 107 to 136 carry no [IMAGE_EXTRACT] span of any kind, neither a reactions span nor a molecules span, so the whole route here is prose. Prompt rule 5f asserts that in this document Summary of the Invention ends with a drawn multi-arrow scheme and that the prose and the scheme disagree on two steps; that is a description of the previous patent carried over in the shared prompt body, and no scheme records were manufactured from it. For the same reason prompt rule 1's 'each N, <compound name> marker starts a step' does not apply: this section marks its steps 1), 2), 3) with no compound name attached."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Summary of the Invention_Step 2",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "other",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": "isothermal hold",
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": true,
+    "workup": {
+      "steps": [
+        "hold at temperature with the adsorbent",
+        "filter hot to remove the adsorbent"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "hot filtration",
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": "treated with an adsorbent, then filtered hot",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "adsorbent",
+        "role": "additive",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "activated carbon",
+        "role": "additive",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "diatomaceous earth",
+        "role": "additive",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "tembotrione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": null,
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "2)加入吸附剂，进行保温、热过滤；",
+    "procedure_summary": "An adsorbent is added to the warm solution, the temperature is held, and the mixture is filtered hot to remove the adsorbent. The hot filtrate is carried forward and nothing is isolated.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": true,
+    "is_complete": false,
+    "validation_flags": [
+      "missing_product"
+    ],
+    "tags": [
+      "mechanism:not_determinable",
+      "scale:not_specified",
+      "solvent_class:aqueous",
+      "catalyst_class:none",
+      "workup_type:filtration",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Step 2) of the method of [0013], narrowed by [0020] and [0022]. non_synthetic true: an adsorbent treatment and a filtration break no bonds. reaction_class other, since the closed list has no value for adsorbent decolourisation. A purification neither consumes nor creates the substance, so the material entering this step and the material leaving it are the same identifier, tembotrione. TWO-ENTRY FORM, AND WHY IT CHANGED: this record represents that with one entry role reactant and is_product false, plus, where the step actually isolates something, a second entry role product with is_product true. These four records were first written with a single dual-flagged entry instead, role reactant with is_product true, on the reasoning that duplicating an identifier in compounds[] looks like an extraction error and that the reference run has no non_synthetic record to follow. They were changed to the two-entry form for consistency with the other nine section files of this run, which annotate the same situation that way, and not because the single-entry reading was found to be wrong. The consequence that decided it: A3 rule 3 derives the pathway KSM from a step's reactants excluding its products, so a single dual-flagged entry left the reactant set empty and the KSM for this pathway resolved to acetonitrile, which is a solvent. The change was made at the coordinator's instruction; recorded here as an overruled reading rather than withdrawn silently. Purity is what distinguishes crude from purified in this document and this section states none, so every quantity block, purity_pct and product_purity_pct stay null on both entries. NOTHING IS ISOLATED HERE, so no product entry is created and no product is invented: the material stays in solution and is carried into the next operation. missing_product is raised on that fact and is_complete is false, which is what Claims Step 1 and Claims Step 2 do for these same two operations. ADSORBENT: [0015] charges 吸附剂 with no identity and [0022] narrows it to 活性炭 or 硅藻土, joined by 或, so the section does not say which is used. All three A1 identifiers are listed, adsorbent as the generic the step itself charges and the two named alternatives after it; their role is additive because the role enum has no value for an adsorbent, not because the patent calls them additives. CONDITIONS INHERITED, WITH THE OTHER READING RECORDED: 保温 means the temperature is held, which on the reading taken here is a statement that the 30 to 60 degrees C of step 1) is maintained, so conditions_inherited is true with Step 1 as the antecedent and the temperature object left not_specified because 保温 itself gives no number. The other defensible reading is that 保温 names no antecedent at all and the field should be false; that reading is recorded here rather than chosen. The holding time is the range 0.2 h to 1 h at [0020], which the single time_h float cannot hold, so time_h is null and the printed range is recorded here. LINKAGE: confirmed on identifier match, the product of step 1) and the substrate here being the same tembotrione, and on [0013] declaring 1), 2) and 3) steps of one method; [0015] itself carries no back-reference, though [0020] and [0021] both refer to 步骤2). The solvent is the aqueous solution carried from step 1) and is not renamed here, so no solvent is listed on this record. The purification tag category is skipped: the closed list has no value for an adsorbent treatment and purification:none would be false, since this step is a purification. The transformation category is skipped for want of a transformation. The section is a recitation in words of the same three-step purification claim 1 recites. Duplication is not linkage, so precursor_step is never set to a Claims step; links are only within this section."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Summary of the Invention_Step 3",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 3,
+    "step_label": "Step 3",
+    "reaction_class": "recrystallisation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": "acidification before cooling and crystallisation"
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "add hydrochloric acid under temperature control to bring the pH below three",
+        "cool the solution",
+        "crystallise the purified product out of the solution"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": "crystallised out of the acidified aqueous solution on cooling",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "tembotrione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "3)控温调节含水溶液pH至3以下，降温、从溶液中结晶出纯化的环磺酮。",
+    "procedure_summary": "The pH of the aqueous solution is lowered with hydrochloric acid under temperature control, then the solution is cooled and the purified tembotrione crystallises out of it.",
+    "precursor_step": "Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": true,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "mechanism:not_determinable",
+      "scale:not_specified",
+      "solvent_class:aqueous",
+      "catalyst_class:none",
+      "workup_type:crystallisation",
+      "purification:recrystallisation",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Step 3) of the method of [0013], narrowed by [0023], [0024] and [0025]. non_synthetic true: an acidification and a crystallisation, no bond made or broken. reaction_class recrystallisation for the crystallisation that defines the step. A purification neither consumes nor creates the substance, so the material entering this step and the material leaving it are the same identifier, tembotrione. TWO-ENTRY FORM, AND WHY IT CHANGED: this record represents that with one entry role reactant and is_product false, plus, where the step actually isolates something, a second entry role product with is_product true. These four records were first written with a single dual-flagged entry instead, role reactant with is_product true, on the reasoning that duplicating an identifier in compounds[] looks like an extraction error and that the reference run has no non_synthetic record to follow. They were changed to the two-entry form for consistency with the other nine section files of this run, which annotate the same situation that way, and not because the single-entry reading was found to be wrong. The consequence that decided it: A3 rule 3 derives the pathway KSM from a step's reactants excluding its products, so a single dual-flagged entry left the reactant set empty and the KSM for this pathway resolved to acetonitrile, which is a solvent. The change was made at the coordinator's instruction; recorded here as an overruled reading rather than withdrawn silently. Purity is what distinguishes crude from purified in this document and this section states none, so every quantity block, purity_pct and product_purity_pct stay null on both entries. The product is the section product, 纯化的环磺酮, distinguished from the input by adjective only and never by a second name. [0024] REPEATS [0023]: 进一步地，进一步包括，将含水溶液中加入盐酸调节pH至3以下 at [0024] restates the operative clause of [0023] almost word for word and adds nothing to it. ONE record covers both, and the paragraphs are left as printed and not merged in the source; both are cited in provenance. The repeat is the patent's own duplication and is not a second charge of hydrochloric acid. pH IS A BOUND, NOT A VALUE, AND A FIRST READING HERE WAS WITHDRAWN: [0016] reads pH至3以下, pH to below 3, which states an upper bound of 3 with no lower bound and no target, so no pH number is assignable and conditions.ph_value and workup.ph_target are both null. The printed 至3以下 is kept verbatim in procedure_text and in the provenance quote_zh, and ph_target_stage keeps the stage it applies to, which is not a number. The first reading of this record wrote 3.0 into both fields with a note saying 3 was a bound and not a target; that was withdrawn, because a consumer reads the field and not the note, and 3.0 asserts a pH the sentence never states. It also disagreed with Claims Step 3, which annotates the identical wording, 控温调节含水溶液pH至3以下, and leaves both fields null on the same ground, so one artifact was annotating one sentence two ways. No concentration is given for the acid. This section prints pH in lower case, as the claims do; the tables and [0050]/[0053] print PH capitalised, and that casing difference is a document-level observation recorded here once rather than on every record. TEMPERATURE: 控温 says the adjustment is temperature-controlled and 降温 says the solution is then cooled, neither with a number and neither with a method, so temperature stays not_specified and cooling_method stays null rather than being invented. STIRRING: [0025] prints 搅拌速度在150转至200转, a speed in bare 转 (revolutions) with no per-minute base and given as a range, so stirring.rpm cannot be filled from it and stirring.type is not stated either; the phrase is quoted above exactly as printed. NO FILTRATION is stated: [0016] ends at the crystallisation and the summary never says the crystals are filtered off, so workup.filtration is null. LINKAGE: confirmed on identifier match with step 2) and on [0013]. The section is a recitation in words of the same three-step purification claim 1 recites. Duplication is not linkage, so precursor_step is never set to a Claims step; links are only within this section."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Summary of the Invention_Step 4",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 4,
+    "step_label": "Step 4",
+    "reaction_class": "other",
+    "reaction_class_confidence": "low",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "extract with an organic solvent",
+        "distil",
+        "then into an aqueous solution, by an operation the printed text does not name"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": "organic solvent, not specified",
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": "distillation",
+      "ph_target": null
+    },
+    "purification": "organic-solvent extraction followed by distillation",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "organic solvent",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "tembotrione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": null,
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "进一步地，在所述步骤2)之后，还包括：有机溶剂萃取蒸馏、入含水溶液的步骤。",
+    "procedure_summary": "An optional further operation extracts the material with an organic solvent and distils it, after which the printed text has it entering an aqueous solution without naming the operation that does so.",
+    "precursor_step": "Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": true,
+    "non_synthetic": true,
+    "is_complete": false,
+    "validation_flags": [
+      "missing_product",
+      "cross_reference_unresolved",
+      "no_conditions"
+    ],
+    "tags": [
+      "mechanism:not_determinable",
+      "scale:not_specified",
+      "solvent_class:other",
+      "catalyst_class:none",
+      "workup_type:distillation",
+      "purification:distillation",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "[0021] only, and it is an operation none of the three numbered steps contains, which is why A0 estimated four steps rather than three. Emitted as a record because the paragraph states an operation on the material, not a parameter of an existing step: 有机溶剂萃取蒸馏 is an extraction and a distillation, which nothing in 1), 2) or 3) does. It is optional in the patent's own words, 进一步地 ... 还包括 (further, it also comprises), and that is recorded here rather than in a field, since no field holds optionality. DOCUMENT ORDER AND PROCESS ORDER DIFFER HERE: step_index is 4 because [0021] is printed after [0014] to [0016] and step_index is document order, but the paragraph places the operation 在所述步骤2)之后, after step 2), so in the process it falls between Step 2 and Step 3. A consumer ordering the process by step_index will get it wrong on this one record. THE PARAGRAPH IS DEFECTIVE AND IS LEFT AS PRINTED: 进一步地，在所述步骤2)之后，还包括：有机溶剂萃取蒸馏、入含水溶液的步骤。 has no verb before 入含水溶液, so what the material does with respect to the aqueous solution cannot be read with confidence. No verb is supplied and no reading is chosen: it could be a return of the distillation residue into fresh aqueous solution, or the aqueous solution being taken into the extraction, and the text does not decide. cross_reference_unresolved is raised for this, on the parent instruction, and the flag is being used for a defective sentence rather than for a reference to material elsewhere that could not be located, which is what rule 25 describes; the closed flag list has no value for an unreadable clause and no flag was invented. no_conditions is raised on the facts: [0021] states no temperature, no time, no pressure and no charge. 蒸馏 is a workup operation, so it sets workup.concentration_method and not a reaction pressure. reaction_class other with confidence low, because a step whose final operation cannot be read cannot be classified; non_synthetic true because nothing in an extraction or a distillation makes or breaks a bond. The organic solvent is never named, so it stays the unresolved functional reference A1 recorded and solvent_class is tagged other rather than guessed. water is listed because 含水溶液 is named in the paragraph. A purification neither consumes nor creates the substance, so the material entering this step and the material leaving it are the same identifier, tembotrione. TWO-ENTRY FORM, AND WHY IT CHANGED: this record represents that with one entry role reactant and is_product false, plus, where the step actually isolates something, a second entry role product with is_product true. These four records were first written with a single dual-flagged entry instead, role reactant with is_product true, on the reasoning that duplicating an identifier in compounds[] looks like an extraction error and that the reference run has no non_synthetic record to follow. They were changed to the two-entry form for consistency with the other nine section files of this run, which annotate the same situation that way, and not because the single-entry reading was found to be wrong. The consequence that decided it: A3 rule 3 derives the pathway KSM from a step's reactants excluding its products, so a single dual-flagged entry left the reactant set empty and the KSM for this pathway resolved to acetonitrile, which is a solvent. The change was made at the coordinator's instruction; recorded here as an overruled reading rather than withdrawn silently. Purity is what distinguishes crude from purified in this document and this section states none, so every quantity block, purity_pct and product_purity_pct stay null on both entries. NOTHING IS ISOLATED HERE, so no product entry is created and no product is invented: the material stays in solution and is carried into the next operation. missing_product is raised on that fact and is_complete is false, which is what Claims Step 1 and Claims Step 2 do for these same two operations. LINKAGE: explicit, 在所述步骤2)之后 names 步骤2), so precursor_step is Step 2 and linkage_confirmed is true on a textual back-reference. IF THREE RECORDS WERE PREFERRED: emitting only the three numbered steps and folding [0021] into Step 2's notes would also be defensible, since [0021] is optional and reads as a narrowing paragraph like the eight others around it. Four are emitted because a reader looking for the extraction and distillation should find a record for it, and because a silent drop is a recall miss to any scorer. The section is a recitation in words of the same three-step purification claim 1 recites. Duplication is not linkage, so precursor_step is never set to a Claims step; links are only within this section."
+  }
+]
