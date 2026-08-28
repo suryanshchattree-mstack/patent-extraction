@@ -33,11 +33,27 @@ COMPOUNDS (full `compounds.json`):
    chain. A terminal step is one that is not named as any other step's
    `precursor_step`.
 2. `steps` is ordered earliest first, terminal last.
-3. `ksm` is the key starting material: the principal `reactant` of the earliest
-   step in the chain. Where a step has several reactants, the KSM is the one
-   contributing the carbon skeleton that survives to the product, not the reagent.
-   So the substrate whose ring or backbone you can still see in the final product is
-   the KSM, and the reagent that decorates it is not, however much of it is charged.
+3. `ksm` is the key starting material: the reactant of the earliest step in the
+   chain that contributes the carbon skeleton surviving into the product. The
+   substrate whose ring or backbone you can still see in the final product is the
+   KSM; the reagent that decorates it is not, however much of it is charged.
+
+   **When no reactant on that step contributes the skeleton, `ksm` is null.** Say
+   why in the pathway's `notes` and, where the step carries `missing_reactant`,
+   name that flag.
+
+   This case is real and it is not rare. A background section that criticises a
+   prior-art route commonly names only the reagent it objects to and the product,
+   never the substrate: "when preparing X, NBS was used as the brominating agent,
+   yield only 67 percent". A2 records that faithfully as a single reactant plus
+   `missing_reactant`. Taking "the principal reactant of the earliest step" then
+   returns the brominating agent, and the artifact states that a route to
+   tembotrione starts from NBS.
+
+   That is a guard passing on absence: "the source does not say" rendered as an
+   answer. Null is the answer. Do not fall back to the only compound present, and
+   do not infer the substrate from the product or from the rest of the document,
+   however obvious it looks.
 4. `intermediates` is the ordered list of the products of every step except the
    last.
 5. `product` is the product of the terminal step.
@@ -88,7 +104,11 @@ COMPOUNDS (full `compounds.json`):
     `conditions.temperature.type == "room_temperature"`; `pressure` =
     `conditions.pressure.value_kpa`; `concentration` =
     `conditions.concentration.text`.
-12. `components` is the identifiers of that step's reactants plus its product.
+12. `components` is the identifiers of that step's reactants plus its product, and
+    nothing else. Not its reagents, oxidants, bases, catalysts or solvents: those
+    are already on `compounds[]` with their roles, and adding them here makes the
+    field mean something different on every step. Where the step records no
+    skeleton-contributing reactant at all, `components` is just the product.
 13. Leave every enrichment field null (`feasibility_score`, `safety_score`,
     `green_score`, `cost_score`, `yield_score`, `byproduct_score`,
     `confidence_score`, `transformation_reaction_count`,
