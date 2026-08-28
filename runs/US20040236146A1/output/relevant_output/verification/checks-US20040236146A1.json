@@ -1233,7 +1233,7 @@
       "cited_lines": [
         123
       ],
-      "claim_id": "8ddd9cb36cf3e070",
+      "claim_id": "b174575503492eb5",
       "claimed_en": "1 L",
       "claimed_unit": "ml",
       "claimed_value": 1.0,
@@ -1259,7 +1259,7 @@
       ],
       "evidence_width": 1,
       "family": "completeness",
-      "field": "__quantity__[123:1ml]",
+      "field": "__quantity__[123:1000ml]",
       "field_label_en": "A quantity the patent prints that nothing records",
       "highlights": [],
       "load_bearing": true,
@@ -1267,7 +1267,7 @@
       "quantity_verdict": "gap",
       "question_en": "Line 123 prints 1 L. The annotation does not record it anywhere. Should it have?",
       "rec": "cmp:5a7c8c36-88fd-578b-868f-5b3cdaa8652d",
-      "rec_field": "__quantity__.line_123.1ml",
+      "rec_field": "__quantity__.line_123.1000ml",
       "record_id": "US20040236146A1_2-chloro-3-methyl-4-methylsulfonylbenzoic acid",
       "record_kind": "compound",
       "record_label_en": "2-chloro-3-methyl-4-methylsulfonylbenzoic acid",
@@ -1516,7 +1516,7 @@
       "cited_lines": [
         141
       ],
-      "claim_id": "46a3593da94d29a5",
+      "claim_id": "bfdce7c0e8cbc7ed",
       "claimed_en": "0.5 L",
       "claimed_unit": "ml",
       "claimed_value": 0.5,
@@ -1544,7 +1544,7 @@
       ],
       "evidence_width": 1,
       "family": "completeness",
-      "field": "__quantity__[141:0.5ml]",
+      "field": "__quantity__[141:500ml]",
       "field_label_en": "A quantity the patent prints that nothing records",
       "highlights": [],
       "load_bearing": true,
@@ -1552,7 +1552,7 @@
       "quantity_verdict": "gap",
       "question_en": "Line 141 prints 0.5 L. The annotation does not record it anywhere. Should it have?",
       "rec": "cmp:a4f21145-4b06-54ab-afd4-7b2cf185fa73",
-      "rec_field": "__quantity__.line_141.0.5ml",
+      "rec_field": "__quantity__.line_141.500ml",
       "record_id": "US20040236146A1_2-chloro-3-methyl-4-ethylsulfonylbenzoic acid",
       "record_kind": "compound",
       "record_label_en": "2-chloro-3-methyl-4-ethylsulfonylbenzoic acid",
@@ -1626,215 +1626,6 @@
       "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
       "basis": null,
       "cited_lines": [
-        17
-      ],
-      "claim_id": "6202cd501413bacc",
-      "claimed_en": "line 17: METHOD FOR PRODUCING 3-BROMOMETHYLBENZOIC ACIDS",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "METHOD FOR PRODUCING 3-BROMOMETHYLBENZOIC ACIDS",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 17,
-          "names_en": [
-            "3-bromomethylbenzoic acids"
-          ],
-          "pairing": "self",
-          "text_en": "METHOD FOR PRODUCING 3-BROMOMETHYLBENZOIC ACIDS"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 17 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_17",
-      "record_id": "US20040236146A1_line_17",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 17",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Bibliographic",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Bibliographic",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        52
-      ],
-      "claim_id": "787b57219e331f73",
-      "claimed_en": "line 52: METHOD FOR PRODUCING 3-BROMOMETHYLBENZOIC ACIDS",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "METHOD FOR PRODUCING 3-BROMOMETHYLBENZOIC ACIDS",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 52,
-          "names_en": [
-            "3-bromomethylbenzoic acids"
-          ],
-          "pairing": "self",
-          "text_en": "METHOD FOR PRODUCING 3-BROMOMETHYLBENZOIC ACIDS"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 52 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_52",
-      "record_id": "US20040236146A1_line_52",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 52",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Technical Field",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Technical Field",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        54
-      ],
-      "claim_id": "de91ad968512b9ca",
-      "claimed_en": "line 54: The invention relates to a process for preparing 3-bromomethylbenzoic acids by brominating the corresponding 3-methylbenzoic acids. It further relates to certain 3-bromomethylbenzoic acids.",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "The invention relates to a process for preparing 3-bromomethylbenzoic acids by brominating the corresponding 3-methylbenzoic acids. It further relates to certain 3-bromomethylbenzoic acids.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 54,
-          "names_en": [
-            "3-bromomethylbenzoic acids",
-            "3-methylbenzoic acids"
-          ],
-          "pairing": "self",
-          "text_en": "The invention relates to a process for preparing 3-bromomethylbenzoic acids by brominating the corresponding 3-methylbenzoic acids. It further relates to certain 3-bromomethylbenzoic acids."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 54 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_54",
-      "record_id": "US20040236146A1_line_54",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 54",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Technical Field",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Technical Field",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        72
-      ],
-      "claim_id": "faaaaa4e11ec7d85",
-      "claimed_en": "line 72: B) elemental bromine and irradiation with a photolamp,",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "B) elemental bromine and irradiation with a photolamp,",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 72,
-          "names_en": [
-            "bromine"
-          ],
-          "pairing": "self",
-          "text_en": "B) elemental bromine and irradiation with a photolamp,"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 72 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_72",
-      "record_id": "US20040236146A1_line_72",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 72",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Summary of the Invention",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Summary of the Invention",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
         75
       ],
       "claim_id": "294f69a61dcb53c2",
@@ -1887,165 +1678,6 @@
       "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
       "basis": null,
       "cited_lines": [
-        76
-      ],
-      "claim_id": "a02ddd40b54f08ef",
-      "claimed_en": "line 76: R1 is fluorine, chlorine or bromine, and",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "R1 is fluorine, chlorine or bromine, and",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 76,
-          "names_en": [
-            "bromine"
-          ],
-          "pairing": "self",
-          "text_en": "R1 is fluorine, chlorine or bromine, and"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 76 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_76",
-      "record_id": "US20040236146A1_line_76",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 76",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Formula Definitions",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Formula Definitions",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        99
-      ],
-      "claim_id": "48f01e8211287148",
-      "claimed_en": "line 99: A), it is appropriate to initially add sodium bisulfate solution and optionally solvents. The further workup then depends upon the solubility and purity of the product. In the case of process variant ",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "A), it is appropriate to initially add sodium bisulfate solution and optionally solvents. The further workup then depends upon the solubility and purity of the product. In the case of process variant A), the reaction product may generally be directly filtered off with suction after cooling. In both cases, the reaction product is washed and, if necessary, further purified by recrystallization, for example from ethyl acetate or butyl acetate.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 99,
-          "names_en": [
-            "sodium bisulfate",
-            "butyl acetate",
-            "ethyl acetate"
-          ],
-          "pairing": "self",
-          "text_en": "A), it is appropriate to initially add sodium bisulfate solution and optionally solvents. The further workup then depends upon the solubility and purity of the product. In the case of process variant A), the reaction product may generally be directly filtered off with suction after cooling. In both cases, the reaction product is washed and, if necessary, further purified by recrystallization, for example from ethyl acetate or butyl acetate."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 99 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_99",
-      "record_id": "US20040236146A1_line_99",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 99",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Process Conditions",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Process Conditions",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        101
-      ],
-      "claim_id": "9305297653f8bf08",
-      "claimed_en": "line 101: With the exception of the compound 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid which is disclosed by EP-A 0 292 944, compounds of the formula II are novel. The present invention therefore furt",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "With the exception of the compound 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid which is disclosed by EP-A 0 292 944, compounds of the formula II are novel. The present invention therefore further provides compounds of the formula II",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 101,
-          "names_en": [
-            "3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid",
-            "compounds of the formula II"
-          ],
-          "pairing": "self",
-          "text_en": "With the exception of the compound 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid which is disclosed by EP-A 0 292 944, compounds of the formula II are novel. The present invention therefore further provides compounds of the formula II"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 101 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_101",
-      "record_id": "US20040236146A1_line_101",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 101",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Novel Compounds of Formula II",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Novel Compounds of Formula II",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
         106
       ],
       "claim_id": "25397c17bd6240cb",
@@ -2088,162 +1720,6 @@
       "severity": "medium",
       "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
       "stratum": "source_line:Novel Compounds of Formula II",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        107
-      ],
-      "claim_id": "97762877a4db1d40",
-      "claimed_en": "line 107: R1 is fluorine, chlorine or bromine, and",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "R1 is fluorine, chlorine or bromine, and",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 107,
-          "names_en": [
-            "bromine"
-          ],
-          "pairing": "self",
-          "text_en": "R1 is fluorine, chlorine or bromine, and"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 107 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_107",
-      "record_id": "US20040236146A1_line_107",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 107",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Novel Compounds of Formula II",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Novel Compounds of Formula II",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        111
-      ],
-      "claim_id": "51f8d172994dad69",
-      "claimed_en": "line 111: excluding the compound 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid.",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "excluding the compound 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 111,
-          "names_en": [
-            "3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid"
-          ],
-          "pairing": "self",
-          "text_en": "excluding the compound 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 111 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_111",
-      "record_id": "US20040236146A1_line_111",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 111",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Novel Compounds of Formula II",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Novel Compounds of Formula II",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        119
-      ],
-      "claim_id": "b7d0fd7dad033c5c",
-      "claimed_en": "line 119: Preparation of 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic Acid",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "Preparation of 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic Acid",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 119,
-          "names_en": [
-            "3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid"
-          ],
-          "pairing": "self",
-          "text_en": "Preparation of 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic Acid"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 119 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_119",
-      "record_id": "US20040236146A1_line_119",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 119",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Example 1",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Example 1",
       "structure_svg_path": null,
       "tier": 2,
       "work_kind": "judgement"
@@ -2405,56 +1881,6 @@
     {
       "about": "extraction",
       "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries a percentage and a temperature. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        143
-      ],
-      "claim_id": "91bb851616d65953",
-      "claimed_en": "line 143: Purity: 88% (HPLC) Melting point: 103° C.",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "Purity: 88% (HPLC) Melting point: 103° C.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 143,
-          "names_en": [],
-          "pairing": "self",
-          "text_en": "Purity: 88% (HPLC) Melting point: 103° C."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 143 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_143",
-      "record_id": "US20040236146A1_line_143",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 143",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Example 2",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Example 2",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
       "auto_reason_en": "No record in the whole annotation cites this line, and it carries a drawn chemical structure. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
       "basis": null,
       "cited_lines": [
@@ -2555,477 +1981,6 @@
     {
       "about": "extraction",
       "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        151
-      ],
-      "claim_id": "7ad8c4af7d7a8c16",
-      "claimed_en": "line 151: 6. A process for preparing a 3-bromomethylbenzoic acid of formula II",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "6. A process for preparing a 3-bromomethylbenzoic acid of formula II",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 151,
-          "names_en": [
-            "3-bromomethylbenzoic acid of formula II"
-          ],
-          "pairing": "self",
-          "text_en": "6. A process for preparing a 3-bromomethylbenzoic acid of formula II"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 151 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_151",
-      "record_id": "US20040236146A1_line_151",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 151",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        153
-      ],
-      "claim_id": "4ae1c90c8ad47eeb",
-      "claimed_en": "line 153: which comprises brominating a 3-methylbenzoic acid of formula I",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "which comprises brominating a 3-methylbenzoic acid of formula I",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 153,
-          "names_en": [
-            "3-methylbenzoic acid of formula I"
-          ],
-          "pairing": "self",
-          "text_en": "which comprises brominating a 3-methylbenzoic acid of formula I"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 153 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_153",
-      "record_id": "US20040236146A1_line_153",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 153",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        155
-      ],
-      "claim_id": "5834860d281c3c85",
-      "claimed_en": "line 155: with N-bromosuccinimide in the presence of a radical initiator, where, in formulae I and II",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "with N-bromosuccinimide in the presence of a radical initiator, where, in formulae I and II",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 155,
-          "names_en": [
-            "N-bromosuccinimide",
-            "radical initiator"
-          ],
-          "pairing": "self",
-          "text_en": "with N-bromosuccinimide in the presence of a radical initiator, where, in formulae I and II"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 155 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_155",
-      "record_id": "US20040236146A1_line_155",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 155",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        157
-      ],
-      "claim_id": "f881079fe9a7bd8e",
-      "claimed_en": "line 157: R1 is fluorine, chlorine or bromine, and",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "R1 is fluorine, chlorine or bromine, and",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 157,
-          "names_en": [
-            "bromine"
-          ],
-          "pairing": "self",
-          "text_en": "R1 is fluorine, chlorine or bromine, and"
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 157 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_157",
-      "record_id": "US20040236146A1_line_157",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 157",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        161
-      ],
-      "claim_id": "b6f3f9fb75c34a33",
-      "claimed_en": "line 161: 7. The process as claimed in claim 6, wherein the radical initiator is azoisobutyronitrile or dibenzoyl peroxide.",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "7. The process as claimed in claim 6, wherein the radical initiator is azoisobutyronitrile or dibenzoyl peroxide.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 161,
-          "names_en": [
-            "azoisobutyronitrile",
-            "dibenzoyl peroxide",
-            "radical initiator"
-          ],
-          "pairing": "self",
-          "text_en": "7. The process as claimed in claim 6, wherein the radical initiator is azoisobutyronitrile or dibenzoyl peroxide."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 161 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_161",
-      "record_id": "US20040236146A1_line_161",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 161",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        168
-      ],
-      "claim_id": "c6c0e2b8a44a90d2",
-      "claimed_en": "line 168: 9. The process as claimed in claim 8, wherein the solvent is chlorobenzene.",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "9. The process as claimed in claim 8, wherein the solvent is chlorobenzene.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 168,
-          "names_en": [
-            "chlorobenzene"
-          ],
-          "pairing": "self",
-          "text_en": "9. The process as claimed in claim 8, wherein the solvent is chlorobenzene."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 168 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_168",
-      "record_id": "US20040236146A1_line_168",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 168",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        170
-      ],
-      "claim_id": "574d52e9de8a4c35",
-      "claimed_en": "line 170: 10. The process as claimed in claim 8, wherein the solvent is acetonitrile.",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "10. The process as claimed in claim 8, wherein the solvent is acetonitrile.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 170,
-          "names_en": [
-            "acetonitrile"
-          ],
-          "pairing": "self",
-          "text_en": "10. The process as claimed in claim 8, wherein the solvent is acetonitrile."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 170 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_170",
-      "record_id": "US20040236146A1_line_170",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 170",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries a temperature. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        172
-      ],
-      "claim_id": "4cdc362d351a60bd",
-      "claimed_en": "line 172: 11. The process as claimed in claim 6, wherein the brominating is carried out at a temperature of from 70 to 100° C.",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "11. The process as claimed in claim 6, wherein the brominating is carried out at a temperature of from 70 to 100° C.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 172,
-          "names_en": [],
-          "pairing": "self",
-          "text_en": "11. The process as claimed in claim 6, wherein the brominating is carried out at a temperature of from 70 to 100° C."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 172 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_172",
-      "record_id": "US20040236146A1_line_172",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 172",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        176
-      ],
-      "claim_id": "a03077ac4a260abd",
-      "claimed_en": "line 176: 13. A process for preparing a 3-bromomethylbenzoic acid of formula II [drawing, formula (II)] which comprises brominating a 3-methylbenzoic acid of formula I [drawing, formula (I)] with elemental brom",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "13. A process for preparing a 3-bromomethylbenzoic acid of formula II [drawing, formula (II)] which comprises brominating a 3-methylbenzoic acid of formula I [drawing, formula (I)] with elemental bromine and irradiation with a photolamp, where, in formulae I and II R1 is fluorine, chlorine or bromine, and R2 is (C1-C4)alkyl.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 176,
-          "names_en": [
-            "3-bromomethylbenzoic acid of formula II",
-            "3-methylbenzoic acid of formula I",
-            "bromine"
-          ],
-          "pairing": "self",
-          "text_en": "13. A process for preparing a 3-bromomethylbenzoic acid of formula II [drawing, formula (II)] which comprises brominating a 3-methylbenzoic acid of formula I [drawing, formula (I)] with elemental bromine and irradiation with a photolamp, where, in formulae I and II R1 is fluorine, chlorine or bromine, and R2 is (C1-C4)alkyl."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 176 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_176",
-      "record_id": "US20040236146A1_line_176",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 176",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
       "auto_reason_en": "No record in the whole annotation cites this line, and it carries a drawn chemical structure. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
       "basis": null,
       "cited_lines": [
@@ -3111,212 +2066,6 @@
       "record_id": "US20040236146A1_line_179",
       "record_kind": "source_line",
       "record_label_en": "Source line 179",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        184
-      ],
-      "claim_id": "74f08eb4fdbd54c0",
-      "claimed_en": "line 184: 15. The process as claimed in claim 14, wherein the solvent is chlorobenzene.",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "15. The process as claimed in claim 14, wherein the solvent is chlorobenzene.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 184,
-          "names_en": [
-            "chlorobenzene"
-          ],
-          "pairing": "self",
-          "text_en": "15. The process as claimed in claim 14, wherein the solvent is chlorobenzene."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 184 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_184",
-      "record_id": "US20040236146A1_line_184",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 184",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        186
-      ],
-      "claim_id": "b41744c8a126b5cd",
-      "claimed_en": "line 186: 16. The process as claimed in claim 14, wherein the solvent is methylene chloride.",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "16. The process as claimed in claim 14, wherein the solvent is methylene chloride.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 186,
-          "names_en": [
-            "methylene chloride"
-          ],
-          "pairing": "self",
-          "text_en": "16. The process as claimed in claim 14, wherein the solvent is methylene chloride."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 186 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_186",
-      "record_id": "US20040236146A1_line_186",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 186",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries a temperature. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        188
-      ],
-      "claim_id": "eb103cdf3eb184fc",
-      "claimed_en": "line 188: 17. The process as claimed in claim 13, wherein the brominating is carried out at a temperature of from 70 to 100° C.",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "17. The process as claimed in claim 13, wherein the brominating is carried out at a temperature of from 70 to 100° C.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 188,
-          "names_en": [],
-          "pairing": "self",
-          "text_en": "17. The process as claimed in claim 13, wherein the brominating is carried out at a temperature of from 70 to 100° C."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 188 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_188",
-      "record_id": "US20040236146A1_line_188",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 188",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Claims",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Claims",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        192
-      ],
-      "claim_id": "16ea036f685dea9b",
-      "claimed_en": "line 192: 19. A compound of formula II [drawing, formula (II)] wherein R1 is fluorine, chlorine or bromine, and R2 is (C1-C4)alkyl, excluding 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoic acid.",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "19. A compound of formula II [drawing, formula (II)] wherein R1 is fluorine, chlorine or bromine, and R2 is (C1-C4)alkyl, excluding 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoic acid.",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 192,
-          "names_en": [
-            "bromine"
-          ],
-          "pairing": "self",
-          "text_en": "19. A compound of formula II [drawing, formula (II)] wherein R1 is fluorine, chlorine or bromine, and R2 is (C1-C4)alkyl, excluding 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoic acid."
-        }
-      ],
-      "evidence_width": 1,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 192 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:US20040236146A1",
-      "rec_field": "__coverage__.line_192",
-      "record_id": "US20040236146A1_line_192",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 192",
       "risk": 0.3,
       "risk_reasons_en": [
         "An uncited line carrying chemistry is a candidate miss."
@@ -20496,20 +19245,20 @@
     ],
     "by_section": [
       {
-        "claims": 2,
+        "claims": 1,
         "found": 0,
         "lines_total": 34,
-        "not_checkable": 2,
+        "not_checkable": 1,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
-        "records": 2,
+        "records": 1,
         "section_en": "Bibliographic",
         "substance_accounted": 0,
         "substance_none": 32,
         "substance_unaccounted": 0,
         "substance_unread": 0,
-        "uncited_chemistry_lines": 2
+        "uncited_chemistry_lines": 1
       },
       {
         "claims": 2,
@@ -20528,20 +19277,20 @@
         "uncited_chemistry_lines": 0
       },
       {
-        "claims": 7,
+        "claims": 5,
         "found": 2,
         "lines_total": 5,
-        "not_checkable": 5,
+        "not_checkable": 3,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
-        "records": 4,
+        "records": 2,
         "section_en": "Technical Field",
         "substance_accounted": 0,
         "substance_none": 1,
         "substance_unaccounted": 0,
         "substance_unread": 0,
-        "uncited_chemistry_lines": 2
+        "uncited_chemistry_lines": 0
       },
       {
         "claims": 18,
@@ -20560,68 +19309,68 @@
         "uncited_chemistry_lines": 0
       },
       {
-        "claims": 29,
+        "claims": 28,
         "found": 15,
         "lines_total": 14,
-        "not_checkable": 14,
+        "not_checkable": 13,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
-        "records": 12,
+        "records": 11,
         "section_en": "Summary of the Invention",
         "substance_accounted": 4,
         "substance_none": 4,
         "substance_unaccounted": 0,
         "substance_unread": 0,
-        "uncited_chemistry_lines": 1
+        "uncited_chemistry_lines": 0
       },
       {
-        "claims": 2,
+        "claims": 1,
         "found": 0,
         "lines_total": 6,
-        "not_checkable": 2,
+        "not_checkable": 1,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
-        "records": 2,
+        "records": 1,
         "section_en": "Formula Definitions",
         "substance_accounted": 0,
         "substance_none": 6,
         "substance_unaccounted": 0,
         "substance_unread": 0,
-        "uncited_chemistry_lines": 2
+        "uncited_chemistry_lines": 1
       },
       {
-        "claims": 50,
+        "claims": 49,
         "found": 33,
         "lines_total": 19,
-        "not_checkable": 15,
+        "not_checkable": 14,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 2,
-        "records": 22,
+        "records": 21,
         "section_en": "Process Conditions",
         "substance_accounted": 12,
         "substance_none": 1,
         "substance_unaccounted": 0,
         "substance_unread": 0,
-        "uncited_chemistry_lines": 1
+        "uncited_chemistry_lines": 0
       },
       {
-        "claims": 17,
+        "claims": 14,
         "found": 7,
         "lines_total": 11,
-        "not_checkable": 9,
+        "not_checkable": 6,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 1,
-        "records": 6,
+        "records": 3,
         "section_en": "Novel Compounds of Formula II",
         "substance_accounted": 4,
         "substance_none": 7,
         "substance_unaccounted": 0,
         "substance_unread": 0,
-        "uncited_chemistry_lines": 4
+        "uncited_chemistry_lines": 1
       },
       {
         "claims": 0,
@@ -20640,60 +19389,60 @@
         "uncited_chemistry_lines": 0
       },
       {
-        "claims": 29,
+        "claims": 28,
         "found": 18,
         "lines_total": 18,
-        "not_checkable": 11,
+        "not_checkable": 10,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
-        "records": 7,
+        "records": 6,
         "section_en": "Example 1",
         "substance_accounted": 8,
         "substance_none": 10,
         "substance_unaccounted": 0,
         "substance_unread": 0,
-        "uncited_chemistry_lines": 1
+        "uncited_chemistry_lines": 0
       },
       {
-        "claims": 33,
+        "claims": 32,
         "found": 26,
         "lines_total": 14,
-        "not_checkable": 7,
+        "not_checkable": 6,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 0,
-        "records": 10,
+        "records": 9,
         "section_en": "Example 2",
         "substance_accounted": 4,
         "substance_none": 10,
         "substance_unaccounted": 0,
         "substance_unread": 0,
-        "uncited_chemistry_lines": 3
+        "uncited_chemistry_lines": 2
       },
       {
-        "claims": 26,
+        "claims": 13,
         "found": 4,
         "lines_total": 46,
-        "not_checkable": 20,
+        "not_checkable": 7,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 2,
-        "records": 22,
+        "records": 9,
         "section_en": "Claims",
         "substance_accounted": 16,
         "substance_none": 18,
         "substance_unaccounted": 0,
         "substance_unread": 0,
-        "uncited_chemistry_lines": 16
+        "uncited_chemistry_lines": 3
       }
     ],
     "score": {
-      "covered_pct": 50.0,
+      "covered_pct": 80.0,
       "grounded_pct": 95.8,
       "structure_pct": 56.8
     },
-    "verdict_en": "217 claims were put to the source. 113 were found on the lines the annotation itself cites, 5 were only partly found, 0 were NOT found and are the ones to read first, and 99 are judgements no string match can settle. Of the 118 grounding claims a machine can decide, 95.8% are grounded. 32 source lines carry chemistry that no record cites, and each has its own entry in the queue. 8 record checks fail and 31 warn. 25 of 44 compound identifiers resolve to a drawable structure. Nothing here is a verdict: every line is a prompt for a human to agree or overrule."
+    "verdict_en": "193 claims were put to the source. 113 were found on the lines the annotation itself cites, 5 were only partly found, 0 were NOT found and are the ones to read first, and 75 are judgements no string match can settle. Of the 118 grounding claims a machine can decide, 95.8% are grounded. 8 source lines carry chemistry that no record cites, and each has its own entry in the queue. 8 record checks fail and 31 warn. 25 of 44 compound identifiers resolve to a drawable structure. Nothing here is a verdict: every line is a prompt for a human to agree or overrule."
   },
   "engine_version": 1,
   "generated_at": "2026-08-28T11:44:27Z",
@@ -22546,7 +21295,7 @@
           ],
           "detail_en": "It is not asserted by any claim on any record citing line 123. The field that would hold it is quantity.volume_ml. The field that would hold this is empty. The patent prints the number and the annotation records nothing, so either it was missed or it was left out on purpose.",
           "family": "completeness",
-          "id": "completeness.quantity.volume_ml[123:1ml]",
+          "id": "completeness.quantity.volume_ml[123:1000ml]",
           "needs_human": true,
           "status": "fail",
           "title_en": "The quantity 1 L printed on line 123"
@@ -22570,7 +21319,7 @@
       "claim_ids": [
         "63679a8b2a57316c",
         "82ceba71e881ac65",
-        "8ddd9cb36cf3e070",
+        "b174575503492eb5",
         "e178a3fc63036d45"
       ],
       "label_en": "2-chloro-3-methyl-4-methylsulfonylbenzoic acid",
@@ -22799,7 +21548,7 @@
           ],
           "detail_en": "It is not asserted by any claim on any record citing line 141. The field that would hold it is quantity.volume_ml. The field that would hold this is empty. The patent prints the number and the annotation records nothing, so either it was missed or it was left out on purpose.",
           "family": "completeness",
-          "id": "completeness.quantity.volume_ml[141:0.5ml]",
+          "id": "completeness.quantity.volume_ml[141:500ml]",
           "needs_human": true,
           "status": "fail",
           "title_en": "The quantity 0.5 L printed on line 141"
@@ -22813,7 +21562,7 @@
       "claim_ids": [
         "6cc0dcda11d25977",
         "f43fc2d3ddcd26fe",
-        "46a3593da94d29a5"
+        "bfdce7c0e8cbc7ed"
       ],
       "label_en": "2-chloro-3-methyl-4-ethylsulfonylbenzoic acid",
       "rec": "cmp:a4f21145-4b06-54ab-afd4-7b2cf185fa73",
@@ -25995,82 +24744,6 @@
       "annotation_flags_en": [],
       "checks": [],
       "cited_lines": [
-        17
-      ],
-      "claim_ids": [
-        "6202cd501413bacc"
-      ],
-      "label_en": "Source line 17",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_17",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Bibliographic",
-      "stratum": "source_line:Bibliographic",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        52
-      ],
-      "claim_ids": [
-        "787b57219e331f73"
-      ],
-      "label_en": "Source line 52",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_52",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Technical Field",
-      "stratum": "source_line:Technical Field",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        54
-      ],
-      "claim_ids": [
-        "de91ad968512b9ca"
-      ],
-      "label_en": "Source line 54",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_54",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Technical Field",
-      "stratum": "source_line:Technical Field",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        72
-      ],
-      "claim_ids": [
-        "faaaaa4e11ec7d85"
-      ],
-      "label_en": "Source line 72",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_72",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Summary of the Invention",
-      "stratum": "source_line:Summary of the Invention",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
         75
       ],
       "claim_ids": [
@@ -26090,63 +24763,6 @@
       "annotation_flags_en": [],
       "checks": [],
       "cited_lines": [
-        76
-      ],
-      "claim_ids": [
-        "a02ddd40b54f08ef"
-      ],
-      "label_en": "Source line 76",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_76",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Formula Definitions",
-      "stratum": "source_line:Formula Definitions",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        99
-      ],
-      "claim_ids": [
-        "48f01e8211287148"
-      ],
-      "label_en": "Source line 99",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_99",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Process Conditions",
-      "stratum": "source_line:Process Conditions",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        101
-      ],
-      "claim_ids": [
-        "9305297653f8bf08"
-      ],
-      "label_en": "Source line 101",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_101",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Novel Compounds of Formula II",
-      "stratum": "source_line:Novel Compounds of Formula II",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
         106
       ],
       "claim_ids": [
@@ -26160,82 +24776,6 @@
       "risk_band": "medium",
       "section_en": "Novel Compounds of Formula II",
       "stratum": "source_line:Novel Compounds of Formula II",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        107
-      ],
-      "claim_ids": [
-        "97762877a4db1d40"
-      ],
-      "label_en": "Source line 107",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_107",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Novel Compounds of Formula II",
-      "stratum": "source_line:Novel Compounds of Formula II",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        111
-      ],
-      "claim_ids": [
-        "51f8d172994dad69"
-      ],
-      "label_en": "Source line 111",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_111",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Novel Compounds of Formula II",
-      "stratum": "source_line:Novel Compounds of Formula II",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        119
-      ],
-      "claim_ids": [
-        "b7d0fd7dad033c5c"
-      ],
-      "label_en": "Source line 119",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_119",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Example 1",
-      "stratum": "source_line:Example 1",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        143
-      ],
-      "claim_ids": [
-        "91bb851616d65953"
-      ],
-      "label_en": "Source line 143",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_143",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Example 2",
-      "stratum": "source_line:Example 2",
       "uuid": null
     },
     {
@@ -26280,177 +24820,6 @@
       "annotation_flags_en": [],
       "checks": [],
       "cited_lines": [
-        151
-      ],
-      "claim_ids": [
-        "7ad8c4af7d7a8c16"
-      ],
-      "label_en": "Source line 151",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_151",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        153
-      ],
-      "claim_ids": [
-        "4ae1c90c8ad47eeb"
-      ],
-      "label_en": "Source line 153",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_153",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        155
-      ],
-      "claim_ids": [
-        "5834860d281c3c85"
-      ],
-      "label_en": "Source line 155",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_155",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        157
-      ],
-      "claim_ids": [
-        "f881079fe9a7bd8e"
-      ],
-      "label_en": "Source line 157",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_157",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        161
-      ],
-      "claim_ids": [
-        "b6f3f9fb75c34a33"
-      ],
-      "label_en": "Source line 161",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_161",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        168
-      ],
-      "claim_ids": [
-        "c6c0e2b8a44a90d2"
-      ],
-      "label_en": "Source line 168",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_168",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        170
-      ],
-      "claim_ids": [
-        "574d52e9de8a4c35"
-      ],
-      "label_en": "Source line 170",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_170",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        172
-      ],
-      "claim_ids": [
-        "4cdc362d351a60bd"
-      ],
-      "label_en": "Source line 172",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_172",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        176
-      ],
-      "claim_ids": [
-        "a03077ac4a260abd"
-      ],
-      "label_en": "Source line 176",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_176",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
         177
       ],
       "claim_ids": [
@@ -26478,82 +24847,6 @@
       "label_en": "Source line 179",
       "rec": "pt:US20040236146A1",
       "record_id": "US20040236146A1_line_179",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        184
-      ],
-      "claim_ids": [
-        "74f08eb4fdbd54c0"
-      ],
-      "label_en": "Source line 184",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_184",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        186
-      ],
-      "claim_ids": [
-        "b41744c8a126b5cd"
-      ],
-      "label_en": "Source line 186",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_186",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        188
-      ],
-      "claim_ids": [
-        "eb103cdf3eb184fc"
-      ],
-      "label_en": "Source line 188",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_188",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Claims",
-      "stratum": "source_line:Claims",
-      "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        192
-      ],
-      "claim_ids": [
-        "16ea036f685dea9b"
-      ],
-      "label_en": "Source line 192",
-      "rec": "pt:US20040236146A1",
-      "record_id": "US20040236146A1_line_192",
       "record_kind": "source_line",
       "risk": 0.3,
       "risk_band": "medium",
@@ -26661,7 +24954,7 @@
         "n": 7,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "United States"
       },
@@ -26683,7 +24976,7 @@
         "n": 9,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Patent Application Publication"
       },
@@ -26705,7 +24998,7 @@
         "n": 11,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Lehmann"
       },
@@ -26727,7 +25020,7 @@
         "n": 13,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Pub. No.: US 2004/0236146 A1"
       },
@@ -26749,7 +25042,7 @@
         "n": 15,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Pub. Date: Nov. 25, 2004"
       },
@@ -26775,7 +25068,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "named_only",
         "text_en": "METHOD FOR PRODUCING 3-BROMOMETHYLBENZOIC ACIDS"
       },
@@ -26797,7 +25090,7 @@
         "n": 19,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Inventor: Hansjorg Lehmann, Wutoschingen (DE)"
       },
@@ -26819,7 +25112,7 @@
         "n": 21,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Correspondence Address: CONNOLLY BOVE LODGE & HUTZ, LLP, P O BOX 2207, WILMINGTON, DE 19899 (US)"
       },
@@ -26841,7 +25134,7 @@
         "n": 23,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Appl. No.: 10/489,142"
       },
@@ -26863,7 +25156,7 @@
         "n": 25,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "PCT Filed: Aug. 29, 2002"
       },
@@ -26885,7 +25178,7 @@
         "n": 27,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "PCT No.: PCT/EP02/09630"
       },
@@ -26907,7 +25200,7 @@
         "n": 29,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Foreign Application Priority Data"
       },
@@ -26929,7 +25222,7 @@
         "n": 31,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Sep. 11, 2001 (DE) 101444125"
       },
@@ -26951,7 +25244,7 @@
         "n": 33,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Publication Classification"
       },
@@ -26973,7 +25266,7 @@
         "n": 35,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Int. Cl.7 C07C 315/04"
       },
@@ -26995,7 +25288,7 @@
         "n": 37,
         "section_en": "Bibliographic",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "U.S. Cl. 562/429"
       },
@@ -27212,7 +25505,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "named_only",
         "text_en": "METHOD FOR PRODUCING 3-BROMOMETHYLBENZOIC ACIDS"
       },
@@ -27241,7 +25534,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "named_only",
         "text_en": "The invention relates to a process for preparing 3-bromomethylbenzoic acids by brominating the corresponding 3-methylbenzoic acids. It further relates to certain 3-bromomethylbenzoic acids."
       },
@@ -27575,7 +25868,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "B) elemental bromine and irradiation with a photolamp,"
       },
@@ -27597,7 +25890,7 @@
         "n": 74,
         "section_en": "Formula Definitions",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "where, in formulae I and II,"
       },
@@ -27623,7 +25916,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "none",
         "text_en": "R1 is fluorine, chlorine or bromine, and"
       },
@@ -27645,7 +25938,7 @@
         "n": 78,
         "section_en": "Formula Definitions",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "R2 is (C1-C4)alkyl."
       },
@@ -28034,7 +26327,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "A), it is appropriate to initially add sodium bisulfate solution and optionally solvents. The further workup then depends upon the solubility and purity of the product. In the case of process variant A), the reaction product may generally be directly filtered off with suction after cooling. In both cases, the reaction product is washed and, if necessary, further purified by recrystallization, for example from ethyl acetate or butyl acetate."
       },
@@ -28063,7 +26356,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "With the exception of the compound 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid which is disclosed by EP-A 0 292 944, compounds of the formula II are novel. The present invention therefore further provides compounds of the formula II"
       },
@@ -28111,7 +26404,7 @@
         "n": 105,
         "section_en": "Novel Compounds of Formula II",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "where"
       },
@@ -28137,7 +26430,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "none",
         "text_en": "R1 is fluorine, chlorine or bromine, and"
       },
@@ -28159,7 +26452,7 @@
         "n": 109,
         "section_en": "Novel Compounds of Formula II",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "R2 is (C1-C4)alkyl,"
       },
@@ -28187,7 +26480,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "excluding the compound 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid."
       },
@@ -28209,7 +26502,7 @@
         "n": 113,
         "section_en": "Examples Lead-in",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "The inventive examples which follow illustrate the invention:"
       },
@@ -28231,7 +26524,7 @@
         "n": 115,
         "section_en": "Example 1",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "EXAMPLE 1"
       },
@@ -28285,7 +26578,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "Preparation of 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic Acid"
       },
@@ -28525,7 +26818,7 @@
         "n": 133,
         "section_en": "Example 2",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "EXAMPLE 2"
       },
@@ -28706,7 +26999,7 @@
           "yield",
           "temperature"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "none",
         "text_en": "Purity: 88% (HPLC) Melting point: 103° C."
       },
@@ -28776,7 +27069,7 @@
         "n": 149,
         "section_en": "Claims",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "1-5 (Canceled)"
       },
@@ -28806,7 +27099,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "named_only",
         "text_en": "6. A process for preparing a 3-bromomethylbenzoic acid of formula II"
       },
@@ -28836,7 +27129,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "named_only",
         "text_en": "which comprises brominating a 3-methylbenzoic acid of formula I"
       },
@@ -28867,7 +27160,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "with N-bromosuccinimide in the presence of a radical initiator, where, in formulae I and II"
       },
@@ -28896,7 +27189,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "none",
         "text_en": "R1 is fluorine, chlorine or bromine, and"
       },
@@ -28921,7 +27214,7 @@
         "n": 159,
         "section_en": "Claims",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "R2 is (C1-C4)alkyl."
       },
@@ -28953,7 +27246,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "7. The process as claimed in claim 6, wherein the radical initiator is azoisobutyronitrile or dibenzoyl peroxide."
       },
@@ -29011,7 +27304,7 @@
         "n": 166,
         "section_en": "Claims",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "named_only",
         "text_en": "8. The process as claimed in claim 6, wherein a solvent is used."
       },
@@ -29041,7 +27334,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "9. The process as claimed in claim 8, wherein the solvent is chlorobenzene."
       },
@@ -29071,7 +27364,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "10. The process as claimed in claim 8, wherein the solvent is acetonitrile."
       },
@@ -29100,7 +27393,7 @@
         "signals": [
           "temperature"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "none",
         "text_en": "11. The process as claimed in claim 6, wherein the brominating is carried out at a temperature of from 70 to 100° C."
       },
@@ -29125,7 +27418,7 @@
         "n": 174,
         "section_en": "Claims",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "named_only",
         "text_en": "12. The process as claimed in claim 10, wherein the brominating reaction is carried out at the reflux temperature of the solvent."
       },
@@ -29157,7 +27450,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "13. A process for preparing a 3-bromomethylbenzoic acid of formula II [drawing, formula (II)] which comprises brominating a 3-methylbenzoic acid of formula I [drawing, formula (I)] with elemental bromine and irradiation with a photolamp, where, in formulae I and II R1 is fluorine, chlorine or bromine, and R2 is (C1-C4)alkyl."
       },
@@ -29230,7 +27523,7 @@
         "n": 182,
         "section_en": "Claims",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "named_only",
         "text_en": "14. The process as claimed in claim 13, wherein a solvent is used."
       },
@@ -29260,7 +27553,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "15. The process as claimed in claim 14, wherein the solvent is chlorobenzene."
       },
@@ -29290,7 +27583,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "16. The process as claimed in claim 14, wherein the solvent is methylene chloride."
       },
@@ -29319,7 +27612,7 @@
         "signals": [
           "temperature"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "none",
         "text_en": "17. The process as claimed in claim 13, wherein the brominating is carried out at a temperature of from 70 to 100° C."
       },
@@ -29344,7 +27637,7 @@
         "n": 190,
         "section_en": "Claims",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "named_only",
         "text_en": "18. The process as claimed in claim 16, wherein the brominating is carried out at the reflux temperature of the solvent."
       },
@@ -29373,7 +27666,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "19. A compound of formula II [drawing, formula (II)] wherein R1 is fluorine, chlorine or bromine, and R2 is (C1-C4)alkyl, excluding 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoic acid."
       },
@@ -29421,7 +27714,7 @@
         "n": 196,
         "section_en": "Claims",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "20. The compound as claimed in claim 19, wherein R1 is chlorine, and R2 is (C2)alkyl."
       },
@@ -29443,16 +27736,16 @@
         "n": 198,
         "section_en": "Claims",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "*    *    *    *    *"
       }
     ],
     "summary": {
-      "covered": 95,
+      "covered": 149,
       "total": 198,
-      "uncited_plain": 71,
-      "uncited_with_chemistry": 32
+      "uncited_plain": 41,
+      "uncited_with_chemistry": 8
     }
   },
   "summary": {
@@ -29481,15 +27774,15 @@
     },
     "claims": {
       "found": 113,
-      "needs_human": 104,
-      "not_checkable": 99,
+      "needs_human": 80,
+      "not_checkable": 75,
       "not_found": 0,
       "not_reconciled": 0,
       "partial": 5,
-      "total": 217
+      "total": 193
     },
     "claims_by_family": {
-      "completeness": 40,
+      "completeness": 16,
       "consistency": 26,
       "drawing": 0,
       "grounding": 151,
@@ -29503,23 +27796,23 @@
       "critical": 0,
       "high": 0,
       "low": 2,
-      "medium": 71,
+      "medium": 47,
       "none": 144
     },
     "claims_by_subject": {
-      "extraction": 210,
+      "extraction": 186,
       "patent": 5,
       "schema": 2
     },
     "claims_by_tier": {
       "1": 5,
-      "2": 42,
+      "2": 18,
       "3": 113,
       "4": 57
     },
     "claims_by_work_kind": {
       "comparison": 118,
-      "judgement": 99
+      "judgement": 75
     },
     "field_basis": {
       "analytics_value": {
@@ -29600,7 +27893,7 @@
           "verdict": "schema_loss_second"
         },
         {
-          "claim_id": "8ddd9cb36cf3e070",
+          "claim_id": "b174575503492eb5",
           "field": "quantity.volume_ml",
           "line": 123,
           "printed_en": "1 L",
@@ -29663,7 +27956,7 @@
           "verdict": "schema_loss_second"
         },
         {
-          "claim_id": "46a3593da94d29a5",
+          "claim_id": "bfdce7c0e8cbc7ed",
           "field": "quantity.volume_ml",
           "line": 141,
           "printed_en": "0.5 L",
@@ -29683,14 +27976,14 @@
       "patent": 1,
       "pathway": 13,
       "reaction": 13,
-      "source_line": 32,
+      "source_line": 8,
       "total": 71
     },
     "source_coverage": {
-      "covered": 95,
+      "covered": 149,
       "total": 198,
-      "uncited_plain": 71,
-      "uncited_with_chemistry": 32
+      "uncited_plain": 41,
+      "uncited_with_chemistry": 8
     },
     "substance_coverage": {
       "accounted": 65,
@@ -29733,9 +28026,9 @@
       },
       "2": {
         "agrees": true,
-        "claims": 42,
-        "from_en": "32 source lines no record cites, plus 8 quantities on cited lines no claim asserts, plus 2 schema tickets pooled from 3 instances",
-        "population": 42
+        "claims": 18,
+        "from_en": "8 source lines no record cites, plus 8 quantities on cited lines no claim asserts, plus 2 schema tickets pooled from 3 instances",
+        "population": 18
       },
       "3": {
         "agrees": true,
