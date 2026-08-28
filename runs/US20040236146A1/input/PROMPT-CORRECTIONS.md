@@ -255,3 +255,96 @@ merged by identifier, and every access site in `verify.py` reads
 `c.get("quantity") or {}`, so a null and an all-null object are indistinguishable
 downstream. Both shapes are schema-valid and both appear in this run. Recorded rather
 than normalised, because normalising it would change bytes without changing meaning.
+
+## 11. Acting on the A5 audits
+
+The four adversarial audits ran against the finalised artifacts in fresh contexts
+that were told not to open the stage folders, this file, or any notes. They returned
+52 findings: 1 critical, 17 major, 34 minor. What was done with each class is here so
+that a reviewer can see which findings changed the gold and which were recorded and
+left, rather than having to infer it.
+
+### Acted on
+
+- **The critical one is a pipeline bug, not an annotation defect.**
+  `finalise.py`'s `ASSIGNEE_TYPE` had no key for `multinational_corp`, `sme` or
+  `consortium`, three of the six values `biblio.schema.json` now allows, and its
+  lookup defaulted to `sme`. A correct biblio shipped Bayer CropScience AG as a small
+  enterprise. Fixed with the operator's explicit approval by widening the map to
+  identity for production's six, keeping the older biblio words as aliases. The stale
+  comment in `biblio.schema.json` claiming finalise copies the field with no mapping
+  was corrected in the same change.
+- **Molecular formulae and molecular weights in `notes`.** Five records carried
+  `C9H8BrClO4S`, `MW 327.6` and derived masses that the patent never prints. A5 check
+  2 lists formulae and molecular weights among the things this annotation may not
+  contain, and A1 rule 22 forbids numbers in notes that are not in the text. The
+  working moved to the provenance `arithmetic_check` sidecar, which exists for it and
+  never enters an artifact; the notes now say only that the printed yield reproduces
+  once purity is applied.
+- **`dibenzoyl peroxide` `mass_g: 2.8`** was 0.7 times four, a number on no line, and
+  `verify.py` would have read it as the hallucination signal. A1 rule 12 forbids
+  computing a quantity. Now 0.7, the charge the text states, with the four-portion
+  structure in words in `addition_profile` and `notes`, and the schema limitation
+  named. My own instruction to record the total is what produced it.
+- **Process Conditions carried no solvent.** Both its records emitted
+  `solvent_class` tags derived from solvents that appeared in no `compounds[]` entry,
+  while the parallel Claims records carry their equally alternative claimed solvents.
+  [0014] names six and says which are advantageous for each variant. Re-run to hold
+  them.
+
+### Recorded and not changed, with the reason
+
+- **`components` carries reagents** (pathways, 8 of 14 steps). A3 rule 12's prose says
+  reactants and not reagents. The reference run's `pathways.json` does the opposite on
+  all 41 of its steps: `components` is `reactant_names` plus `product_name`, key
+  reagent included. A3 was told to follow the reference, because the artifacts have to
+  be comparable field by field and matching the prose would have made this run the
+  only one shaped differently. The finding is correct about the prose and is kept.
+- **The merged Example 1 product carries `role: other` with Example 1's mass and
+  yield**, and `is_section_product: true` under a `section_label` naming the section
+  that excludes it. This is `finalise.py`'s merge taking the role from the
+  last-sorting section, which is production's behaviour mirrored on purpose and is
+  documented in the A5 prompt's own side-channel note. Not repairable from a stage
+  file without making one section lie about its own reading.
+- **`compounds-equivalence.json` is empty** while three genus terms name one class
+  under a longer and a shorter spelling. The equivalence index is structure-keyed and
+  a Markush genus has no structure, so it cannot see them. A real limitation, and the
+  three pairs are named in `RUN-NOTES.md`.
+- **`identifier_type` differs across sections** on three identifiers of 44:
+  `N-bromosuccinimide` and `bromine` are `trivial_name` in Example 1 and `iupac` in
+  the four other sections that hold them, and `compounds of the formula II` is `other`
+  in the Abstract and `formula` in Novel Compounds. The merge takes one value, so
+  `compounds.json` is self-consistent and only the stage files disagree. Left, because
+  re-running three sections to align one descriptive field buys less than the record
+  of the disagreement does.
+- **`light_source.type` is `other`, `photolamp` and `lamp`** across three records for
+  the one photolamp. `other` is the only one of the three in the schema enum. Left and
+  recorded; the two out-of-enum values are a real vocabulary defect the reviewer
+  should see.
+- **`time_h: 5.0` on Example 2 WAS left, and then the verify gate rejected it.**
+  It summed the printed 1, 1, 1 and 2 hour intervals. The argument for leaving it was
+  that a duration field is a total by nature where a charge field is not, and it was
+  recorded here as arguable. The grounding check then said the number 5 is on none of
+  the nine lines that record cites, which is the same objection the A5 audit had made
+  and is decisive: a computed value in a numeric field is the hallucination signal
+  whatever the field means. It is now **2.0**, the printed further 2 h after the last
+  initiator portion, with the 1, 1, 1, 2 structure in `notes` and in the initiator's
+  `addition_profile`, and the total moved to the provenance `arithmetic_check`. That
+  also makes it agree with `Example 1_Step 2`, which the A5 pathways audit had flagged
+  as keeping a different clock for the same kind of step.
+
+## 12. `light_source.type` is `other`, and the printed word goes in `notes`
+
+`schemas/validate.py` rejected three reaction records: `light_source.type` was
+`lamp` on `Example 1_Step 2` and `photolamp` on `Process Conditions_Step 2` and
+`Summary of the Invention_Step 2`. The reaction schema's enum is
+`LED | UV | mercury_lamp | sunlight | tungsten | fluorescent | other | null`, which
+has no value for a photolamp, and `Claims_Step 2` had already chosen `other`.
+
+So: **`other` on all four**, with the word the patent actually prints kept in `notes`
+on each. `power_w` still carries the 300 W that Example 1 variant B states; that is a
+number the document prints and the schema holds it.
+
+The A5 audit of `reactions.json` raised the three-way split as a minor vocabulary
+finding before validate did, and validate then made it fatal. Worth noting which
+found it first: the audit, on its own reading, one stage earlier.

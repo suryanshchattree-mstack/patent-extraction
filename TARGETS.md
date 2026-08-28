@@ -32,7 +32,7 @@ than silent.
 | 7 | [`WO2024109718A1`](https://patents.google.com/patent/WO2024109718A1/en) |  |  | 91195273 | WO | Exact Molecule | Method for preparing cyclosulfonone, and intermediates |
 | 8 | [`CN106008290A`](https://patents.google.com/patent/CN106008290A/en) |  |  | 57098239 | CN | Intermediate Molecule | Method for preparing tembotrions |
 | 9 | [`CN112645853A`](https://patents.google.com/patent/CN112645853A/en) | **Suryansh** | blocked | 75343429 | CN | Intermediate Molecule | Preparation method of 2-chloro-3-alkoxymethyl-4-methylsulfonylbe <br>**Annotation complete; `selfcheck` cannot reach 0 fail. See the caveat below and `runs/CN112645853A/RUN-NOTES.md`.** |
-| 10 | [`US20040236146A1`](https://patents.google.com/patent/US20040236146A1/en) | **Suryansh** | claimed | 7698422 | US | Intermediate Molecule | Method for producing 3-bromomethylbenzoic acids <br>*same family, do not also annotate:* WO2003022800A1 |
+| 10 | [`US20040236146A1`](https://patents.google.com/patent/US20040236146A1/en) | **Suryansh** | done | 7698422 | US | Intermediate Molecule | Method for producing 3-bromomethylbenzoic acids <br>*same family, do not also annotate:* WO2003022800A1 |
 | 11 | [`CN102627591B`](https://patents.google.com/patent/CN102627591B/en) |  |  | 46586017 | CN | Molecule Class | Preparation method of 2-chloro-4-methylsulfonylbenzoic acid |
 | 12 | [`DE10113137A1`](https://patents.google.com/patent/DE10113137A1/en) |  |  | 7677998 | DE | Molecule Class | Preparation of herbicidal substituted 2-benzoyl-1,3-cyclohexaned <br>*same family, do not also annotate:* DE10113137C2 <br>**German. See the caveat below before starting this one.** |
 | 13 | [`EP0478390B1`](https://patents.google.com/patent/EP0478390B1/en) |  |  | 24360934 | EP | Molecule Class | Improved method for the preparation of 4-methylsulfonyl benzoic  <br>*same family, do not also annotate:* US5079381A |
@@ -72,6 +72,35 @@ without `--patent-id`, disjoint assignee-type enums between the biblio and paten
 schemas that made every company-assigned patent unvalidatable, and an m2-route
 label collision for any target name longer than one line. `RUN-NOTES.md` has the
 detail, along with three more issues left for an owner to decide on.
+
+## One note, on row 10
+
+`US20040236146A1` is `done`: all 18 stages run, both coverage gates and the `visual`
+and `verify` gates pass, the manifest is clean and `selfcheck` reports 37 pass, 1
+warn, 0 fail. The census is 47 claims at 6.8 minutes against the 15.0 budget, so it
+does not hit the wall row 9 hit; it has two worked examples where CN112645853A has
+twenty, which is the whole difference.
+
+It is the pack's **first non-Chinese patent**, and that is worth reading before
+taking another US or EP row. Three things assume Chinese:
+
+- `resolve_translations.py` finds no CJK and reports "all 0 strings resolve". That is
+  the row 12 caveat arriving early. It is not lying and it is not answering a
+  question either.
+- The `> EN:` line under each source line is a **repair of the same language** rather
+  than a translation, because the text layer is OCR of a scan. Two shared-code checks
+  read only the repair and rejected as-printed spans that were the only thing
+  literally on their line. Both are fixed.
+- The A5 prompt's translation check has no subject at all.
+
+**Four latent bugs in shared code were found and fixed here, each with explicit
+approval, and each invisible on the reference run.** The one that mattered most:
+`finalise.py`'s `ASSIGNEE_TYPE` had no key for three of the six values
+`biblio.schema.json` now allows and defaulted them to `sme`, so a correct biblio
+shipped Bayer CropScience AG as a small enterprise. It survived two runs by
+coincidence. The other three are the m2-route diagram overflowing on any long IUPAC
+target name, the substance-span check above, and a drawing caption that told the
+reviewer to look above a drawing printed below. See `runs/US20040236146A1/RUN-NOTES.md`.
 
 ## One caveat, on row 12
 

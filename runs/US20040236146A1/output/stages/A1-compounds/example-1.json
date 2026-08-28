@@ -4,7 +4,8 @@
     "identifier": "3-bromomethyl-2-chloro-4-methylsulfonylbenzoic acid",
     "identifier_type": "iupac",
     "aliases": [
-      "3-bromomethyl-2-chloro4-methylsulfonyl-benzoic acid"
+      "3-bromomethyl-2-chloro4-methylsulfonyl-benzoic acid",
+      "3-bromomethyl-2-chloro-4-methylsulfonylbenzoic"
     ],
     "resolved": true,
     "unresolved_reference": false,
@@ -57,7 +58,7 @@
       "functional_group:halide_bromo",
       "functional_group:halide_chloro"
     ],
-    "notes": "Product of both worked procedures of this example, merged into one record: variant A at [0027] isolates it and variant B at [0031] does not. Mass 121.3 g, yield 88.4%, purity 96% (HPLC) and melting point 207-208 C are variant A only; variant B reports only an HPLC composition of the reaction mixture and isolates nothing, so it has no mass, no yield and no melting point. Printed '3-bromomethyl-2-chloro4-methylsulfonyl-benzoic acid' at line 124, with the hyphen before the 4 locant missing; the corrected identifier is the spelling the example title prints at lines 116-118. Arithmetic checks: 121.3 g at 96% is 116.4 g of C9H8BrClO4S (MW 327.6) against 100 g of C9H9ClO4S (MW 248.7), which gives the 88.4% printed. No structure is drawn for this compound; the only drawings in this patent are Markush generics, so no SMILES alias exists."
+    "notes": "Product of both worked procedures of this example, merged into one record: variant A at [0027] isolates it and variant B at [0031] does not. Mass 121.3 g, yield 88.4%, purity 96% (HPLC) and melting point 207-208 C are variant A only; variant B reports only an HPLC composition of the reaction mixture and isolates nothing, so it has no mass, no yield and no melting point. Printed '3-bromomethyl-2-chloro4-methylsulfonyl-benzoic acid' at line 124, with the hyphen before the 4 locant missing; the corrected identifier is the spelling the example title prints at lines 116 to 118. The centred title is set across three printed lines: line 116 prints Preparation of, line 117 prints 3-bromomethyl-2-chloro-4-methylsulfonylbenzoic on its own, and line 118 prints Acid on its own. The bare stem on line 117 is carried in aliases. It is the first printed line of this compound's own title, broken by the page, and not a second substance, so no separate record is emitted for it. It is recorded here because without it a line-level sweep cannot tell a name the page split from a name the annotation missed. The EN line at 119 rejoins the three into one title, which is a reading of the page and not a form the page prints, so it is not carried as an alias. Arithmetic checks: the printed 88.4% of theory reproduces from the printed 100 g charge, the printed 121.3 g isolated and the printed 96% purity, but only once the purity is applied, so the printed yield appears to be purity-corrected. The working itself, with formulae and weights, is in the arithmetic_check of the A2 provenance sidecar, which is where it belongs; it is not carried here, because notes may hold only numbers the document prints. No structure is drawn for this compound; the only drawings in this patent are Markush generics, so no SMILES alias exists."
   },
   {
     "patent_id": "US20040236146A1",

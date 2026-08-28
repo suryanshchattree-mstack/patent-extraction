@@ -120,7 +120,7 @@
     "commercially_available": true,
     "role": "reagent",
     "quantity": {
-      "mass_g": 2.8,
+      "mass_g": 0.7,
       "volume_ml": null,
       "mmol": null,
       "equivalents": null,
@@ -141,7 +141,7 @@
       "functional_group:peroxide",
       "hazard:peroxide_former"
     ],
-    "notes": "Radical initiator, charged four times at line 140: 0.7 g at room temperature with the N-bromosuccinimide, then 3 further portions of 0.7 g each at 1 h intervals, 2.8 g in total. Merged into one record per rule 4, with the total in mass_g and the addition profile here. Role is reagent, not catalyst: the closed role list has no initiator value, rule 9 defines catalyst as present sub-stoichiometrically and not consumed, and this procedure is itself the evidence that it is consumed, since it has to be replenished three times through one reaction. reagent, transforms the substrate but is not the carbon skeleton source, is the closest value the list holds."
+    "notes": "Radical initiator, charged four times at line 140: 0.7 g at room temperature with the N-bromosuccinimide, then 3 further portions of the same size at 1 h intervals. Merged into one record per rule 4. quantity.mass_g holds 0.7 g, the charge the text states, because rule 12 populates quantity from the text only and never computes, and the patent prints no total. The field therefore holds one charge where the patent makes four, so the amount actually used is not recoverable from mass_g alone; that is a limitation of a schema with one quantity per compound, and it is named here rather than hidden behind a sum the document never prints. Role is reagent, not catalyst: the closed role list has no initiator value, rule 9 defines catalyst as present sub-stoichiometrically and not consumed, and this procedure is itself the evidence that it is consumed, since it has to be replenished three times through one reaction. reagent, transforms the substrate but is not the carbon skeleton source, is the closest value the list holds."
   },
   {
     "patent_id": "US20040236146A1",
@@ -281,7 +281,9 @@
     "patent_id": "US20040236146A1",
     "identifier": "3-bromomethyl-2-chloro-4-ethylsulfonylbenzoic acid",
     "identifier_type": "iupac",
-    "aliases": [],
+    "aliases": [
+      "3-bromomethyl-2-chloro-4-ethylsulfonylbenzoic"
+    ],
     "resolved": true,
     "unresolved_reference": false,
     "section_label": "Example 2",
@@ -326,6 +328,6 @@
       "functional_group:halide_bromo",
       "functional_group:halide_chloro"
     ],
-    "notes": "Isolated product of Process Variant A) and the product of the section, the only procedure Example 2 runs. Printed correctly at line 140 and in the title at lines 136 to 138, so there is no misprint to carry. physical_form is taken from the solid residue that is filtered off and dried; no colour or appearance is stated. Purity 88% (HPLC) and melting point 103 C come from [0034] at line 142. Arithmetic checks: 28.2 g at 88% is 24.8 g of C10H10BrClO4S (MW 341.6) against 20 g of C10H11ClO4S (MW 262.7), giving 95.4% against the 95.6% printed, so nothing is raised. No structure is drawn for this compound: the two IMAGE_EXTRACT spans filed in this section, at lines 144 and 146, are the Markush formulae of claim 6 and carry no molecules, so no SMILES reached this record."
+    "notes": "Isolated product of Process Variant A) and the product of the section, the only procedure Example 2 runs. Printed correctly at line 140, so there is no misprint to carry. The centred title is set across three printed lines: line 136 prints Preparation of, line 137 prints 3-bromomethyl-2-chloro-4-ethylsulfonylbenzoic on its own, and line 138 prints Acid on its own. The bare stem on line 137 is carried in aliases. It is the first line of this compound's own title, broken by the page, and not a second substance, so no separate record is emitted for it. It is recorded here because without it a line-level sweep cannot tell a name the page split from a name the annotation missed. The EN line at 139 rejoins the three into one title, which is a reading of the page and not a form the page prints, so it is not carried as an alias. physical_form is taken from the solid residue that is filtered off and dried; no colour or appearance is stated. Purity 88% (HPLC) and melting point 103 C come from [0034] at line 142. Arithmetic checks: the printed 95.6% of theory reproduces, to within rounding, from the printed 20 g charge, the printed 28.2 g isolated and the printed 88% purity, but only once the purity is applied, so the printed yield appears to be purity-corrected and nothing is raised. The working itself, with formulae and weights, is in the arithmetic_check of the A2 provenance sidecar, which is where it belongs; it is not carried here, because notes may hold only numbers the document prints. No structure is drawn for this compound: the two IMAGE_EXTRACT spans filed in this section, at lines 144 and 146, are the Markush formulae of claim 6 and carry no molecules, so no SMILES reached this record."
   }
 ]
