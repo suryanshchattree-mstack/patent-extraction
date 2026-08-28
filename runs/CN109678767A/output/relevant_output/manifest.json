@@ -6,7 +6,7 @@
     {
       "stage": "prompts",
       "title": "render the annotation prompts for THIS patent, for the agent to follow",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 render_prompts.py --patent-id CN109678767A"
       ],
@@ -159,7 +159,7 @@
     {
       "stage": "enrich",
       "title": "vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 build_enriched.py --patent-id CN109678767A"
       ],
@@ -252,7 +252,7 @@
     {
       "stage": "collect",
       "title": "publish the A0, A3 and A4 stage files under the names finalise.py reads",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "<internal>"
       ],
@@ -295,7 +295,7 @@
     {
       "stage": "merge",
       "title": "concatenate the per-section A1 and A2 stage files into the raw arrays",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 merge_stages.py"
       ],
@@ -558,7 +558,7 @@
     {
       "stage": "finalise",
       "title": "deterministic ids and uuids, rollup, bibliographic merge",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 finalise.py --patent-id CN109678767A"
       ],
@@ -636,7 +636,7 @@
     {
       "stage": "validate",
       "title": "JSON Schema conformance of the finalised artifacts",
-      "status": "not selected",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 schemas/validate.py"
       ],
@@ -708,7 +708,7 @@
     {
       "stage": "publish-gold",
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN109678767A"
       ],
@@ -996,7 +996,7 @@
     {
       "stage": "names",
       "title": "read every compound name a second time, with a parser instead of a model",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_names.py --patent-id CN109678767A"
       ],
@@ -1034,7 +1034,7 @@
     {
       "stage": "mentions",
       "title": "reading B: ChemDataExtractor over the same lines reading A read",
-      "status": "not selected",
+      "status": "ran",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 mentions.py --patent-id CN109678767A"
       ],
@@ -1061,7 +1061,7 @@
     {
       "stage": "structures",
       "title": "identifier -> drawable molecule over six tiers, plus the coverage gate",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_structures.py --patent-id CN109678767A"
       ],
@@ -1339,7 +1339,7 @@
     {
       "stage": "translations",
       "title": "Chinese string -> English for everything that can reach a screen, plus the coverage gate",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_translations.py CN109678767A"
       ],
@@ -1402,7 +1402,7 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN109678767A",
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN109678767A"
@@ -1571,7 +1571,7 @@
     {
       "stage": "rasterise",
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 svg2jpg.py --all"
       ],
@@ -1679,7 +1679,7 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN109678767A"
       ],
@@ -2492,7 +2492,7 @@
     {
       "stage": "export",
       "title": "every reaction joined to the structures of its participants",
-      "status": "not selected",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 export_reactions.py --patent-id CN109678767A"
       ],
@@ -2535,7 +2535,7 @@
     {
       "stage": "visual",
       "title": "the page index, the structure comparisons and the drawing claims the UI shows",
-      "status": "ran",
+      "status": "current",
       "commands": [
         "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_visual_evidence.py --patent-id CN109678767A"
       ],
