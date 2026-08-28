@@ -25,9 +25,9 @@ than silent.
 |--:|---|---|---|---|---|---|---|
 | 1 | [`CN104292137A`](https://patents.google.com/patent/CN104292137A/en) | **Yash** | done, reference run | 52312131 | CN | Exact Molecule | Process for synthesizing triketone herbicide cyclic sulcotrione |
 | 2 | [`CN109678767A`](https://patents.google.com/patent/CN109678767A/en) | **Yash** | done | 66190615 | CN | Exact Molecule | A kind of synthesis technology of herbicide tembotrions |
-| 3 | [`CN111440099B`](https://patents.google.com/patent/CN111440099B/en) |  |  | 71652835 | CN | Exact Molecule | Purification method of tembotrione product |
-| 4 | [`EP2045236A1`](https://patents.google.com/patent/EP2045236A1/en) |  |  | 38984191 | EP | Exact Molecule | Thermodynamically stable crystal modification of 2-({2-chloro-4- <br>*same family, do not also annotate:* US8722582B2, WO2009027004A1 |
-| 5 | [`US20100041557A1`](https://patents.google.com/patent/US20100041557A1/en) |  |  | 39415042 | US | Exact Molecule | Crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifl <br>*same family, do not also annotate:* US8309769B2 |
+| 3 | [`CN111440099B`](https://patents.google.com/patent/CN111440099B/en) | **Sathvik** | done | 71652835 | CN | Exact Molecule | Purification method of tembotrione product |
+| 4 | [`EP2045236A1`](https://patents.google.com/patent/EP2045236A1/en) | **Sathvik** | done | 38984191 | EP | Exact Molecule | Thermodynamically stable crystal modification of 2-({2-chloro-4- <br>*same family, do not also annotate:* US8722582B2, WO2009027004A1 |
+| 5 | [`US20100041557A1`](https://patents.google.com/patent/US20100041557A1/en) | **Sathvik** | claimed | 39415042 | US | Exact Molecule | Crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifl <br>*same family, do not also annotate:* US8309769B2 |
 | 6 | [`WO2000021924A1`](https://patents.google.com/patent/WO2000021924A1/en) |  |  | 7884081 | WO | Exact Molecule | Benzoylcyclohexandiones, method for the production and use there |
 | 7 | [`WO2024109718A1`](https://patents.google.com/patent/WO2024109718A1/en) |  |  | 91195273 | WO | Exact Molecule | Method for preparing cyclosulfonone, and intermediates |
 | 8 | [`CN106008290A`](https://patents.google.com/patent/CN106008290A/en) |  |  | 57098239 | CN | Intermediate Molecule | Method for preparing tembotrions |
@@ -43,6 +43,75 @@ than silent.
 | 18 | [`US4780127A`](https://patents.google.com/patent/US4780127A/en) |  |  | 27408525 | US | Molecule Class | Certain 2-(substituted benzoyl)-1,3-cyclohexanediones and their  |
 | 19 | [`US5728889A`](https://patents.google.com/patent/US5728889A/en) |  |  | 10768536 | US | Molecule Class | Process for the production of 2-(substituted benzoyl)-1,3 cycloh |
 | 20 | [`WO2022024094A1`](https://patents.google.com/patent/WO2022024094A1/en) |  |  | 80036183 | WO | Molecule Class | Process for preparation of mesotrione and its intermediates |
+
+## One note, on row 3
+
+`CN111440099B` is `done`. `run_pipeline.py` reaches the end of all 18 stages and
+`selfcheck` reports **35 pass, 3 warn, 0 fail**, inside the 15 minute reviewer budget at
+13.8 minutes over 95 census claims. `validate.py` is clean. The structures gate passes
+with **zero curated entries**: the drawn SMILES and OPSIN between them cover every
+identifier that carries chemistry, so no SMILES was hand-authored on this patent at all.
+
+`verify`'s grounding gate is red on 19 claims, which is the same state the reference run
+is in and which `AGENT.md` describes as red on purpose. 16 of the 19 are one cause: the
+patent prints its hold times as 保温一小时, one hour in the Chinese numeral, so no digit
+appears on the line the record cites although the value is right. None is a value the
+annotation invented, and all 19 are itemised in `runs/CN111440099B/NOTES.md`.
+
+The most useful finding for anyone choosing what to annotate next: Example 6 charges
+237.9 g of thionyl chloride, which is 2.000 mol, exactly three equivalents against the
+benzoic acid and 3.149 against the benzoyl chloride the paragraph names.
+
+## One note, on row 4
+
+`EP2045236A1` is `done`. `run_pipeline.py` reaches the end of all 18 stages and
+`selfcheck` reports **37 pass, 1 warn, 0 fail**, at 7.5 minutes of the 15 minute budget
+over 52 census claims. `validate.py` is clean on all five artifacts. The structures gate
+passes on **one** curated entry and the translations gate on zero.
+
+**This is the first patent here that is neither Chinese nor a synthesis**, and both facts
+matter to whoever takes row 5 or later. It discloses no chemistry in the usual sense: not
+one bond is formed or broken. It is a polymorph patent, one molecule in three crystal
+forms, and its three worked examples dissolve 2 g of tembotrione and cool it. Every
+reaction record has the same substance on both sides. No yield, product mass or assay
+purity is stated anywhere.
+
+**The finding.** Tabelle 5 and Tabelle 6 print the same 49 two-theta values in the same
+order, though captioned as the powder patterns of modifications I and II, and claim 5
+recites the same list. The patent's own Tabelle 7 rules out a mislabelled caption: I is
+orthorhombic Pna21 at cell volume 1788,91 and II is monoclinic P2(1)/n at 1814,21, and
+two lattices cannot share a pattern. So modification II's powder pattern is disclosed
+nowhere in this document while claim 5 recites one. Which table is the misprint is not
+recoverable and the annotation decides nothing. Alongside it, modification III has a
+melting point and two spectra and nothing else, and modifications I and II melt 0.1 K
+apart on a 10 K/min DSC ramp.
+
+**`verify` is red on 13 of 536 claims and the cause is one thing:** `verify.py`'s
+tokeniser cannot read the German decimal comma, so `124,0°C` parses as 124 with no unit
+plus a temperature of zero, and `1,637 Mg/m3` becomes the three numbers 1, 637 and 3.
+Nine claims about melting points, densities and polymorphic purity cannot match the
+values printed beside them. The honest fix is in `verify.py`, not in the gold.
+
+**Read this before starting row 12, `DE10113137A1`.** The caveat below about
+`resolve_translations.py` being blind to German is now confirmed by measurement rather
+than inference: the gate passed this patent on **zero strings**, having checked nothing,
+and reported it as clean. English was supplied by hand throughout instead. Two further
+defects surfaced only because this patent's data is shaped unlike the reference's, and
+are fixed in `pipeline/`: `verify.py` gave `1 g` and `1 kg` on one line the same claim
+id, so a verdict on one would silently have answered the other; and its coverage sweep
+counted every machine-translation line as uncited source, which on a German patent was 53
+of 108 census claims and put the reviewer budget over the limit on duplicates alone.
+`make_svgs.py` also could not lay out a product name long enough to wrap.
+
+A third needed no code change and is the one that had damaged the deliverable.
+`finalise.py:merge_compound` tests `v not in (None, "", [], {})`, and an all-null
+`quantity` object is not equal to `{}`, so it overwrites a populated one from an earlier
+section. The merged gold held **zero** compound records with a mass, though the patent
+charges 2 g three times. Writing `null` instead, which A1 rule 17 already requires,
+repairs it. **`runs/CN104292137A` and `runs/CN109678767A` may carry the same loss and
+have not been checked.**
+
+Full write-ups in `runs/CN111440099B/NOTES.md` and `runs/EP2045236A1/NOTES.md`.
 
 ## One caveat, on row 12
 

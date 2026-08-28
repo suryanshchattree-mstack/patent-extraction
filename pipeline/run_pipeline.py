@@ -233,7 +233,7 @@ def stages(pid: str) -> list[Stage]:
             name="merge",
             title="concatenate the per-section A1 and A2 stage files into the raw arrays",
             bootstrap=True,          # see collect
-            cmds=[[PY, "merge_stages.py"]],
+            cmds=[[PY, "merge_stages.py", "--patent-id", pid]],
             inputs=["merge_stages.py", "output/stages/A1-compounds/*.json",
                     "output/stages/A2-reactions/*.json"],
             outputs=["output/raw-compounds.json", "output/raw-reactions.json",
@@ -254,7 +254,7 @@ def stages(pid: str) -> list[Stage]:
         Stage(
             name="validate",
             title="JSON Schema conformance of the finalised artifacts",
-            cmds=[[PY, "schemas/validate.py"]],
+            cmds=[[PY, "schemas/validate.py", "--patent-id", pid]],
             inputs=["schemas/validate.py", "schemas/*.schema.json",
                     "output/00-sections.json"] + [f"output/{n}.json" for n in artifacts],
             outputs=[],

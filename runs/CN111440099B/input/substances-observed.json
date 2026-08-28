@@ -1,0 +1,1844 @@
+{
+ "patent_id": "CN111440099B",
+ "reader": "llm",
+ "what_this_is_en": "Every substance named on every line of the enriched markdown, read independently of the extraction and asked only that: not roles, not quantities, not whether it matters. `specific` names one substance you could draw; `generic` refers to a substance without naming one, and is counted apart because an adsorbent is sometimes an anaphor and sometimes the finding. Spans are English because the engine checks them against the English rendering of the line, so a Chinese line and the `> EN:` line paired with it are two keys over one English text, and both carry the same spans. Table rows are lines like any other and are read as such. Excluded on purpose, and listed in the run notes: molecular formulas, CAS numbers, SMILES and InChIKeys, which identify a substance without naming it; class and market descriptors (herbicide, triketone, pesticide, HPPD inhibitor); the HPPD enzyme; role words whose substance is named in the same breath (the catalyst acetone cyanohydrin); and definite anaphors back to a substance named elsewhere in the document rather than on the line (the solvent, the starting material, the white amorphous powder of the properties block). An indefinite reference does count, which is why an adsorbent, an aqueous solution, a suitable base, the enol ester, the cyanide impurity, the red-brown solid and the pale yellow solid are all here as generic. Where the English writes a mixture as one phrase, `20% aqueous methanol`, the span is the component the phrase names, methanol, on the same principle that makes `10% dilute hydrochloric acid` span `hydrochloric acid`; water is filed only where the English says water rather than aqueous.",
+ "verified_en": "Every span below is a literal substring of the ENGLISH rendering of the line it is filed under, which is the text verify.py compares it with: `source.text_en.get(n) or source.lines.get(n)`. That text was produced by verify.py's own Source class rather than reimplemented, so the check and the engine read one definition of what line n says in English. Spans were extracted from that text rather than typed. The check also asserts, line by line, that a span claimed on a Chinese line names something that Chinese line actually says: where the source pairs a paragraph approximately, the engine hands every Chinese line of it the whole paragraph's English, and without that guard a substance from a neighbouring sentence could be filed on a line that never mentioned it. Two substring traps are asserted against by name: methanol contains ethanol, and 1,3-cyclohexanedione contains cyclohexanedione. Where the paragraph English is broader than the line, the span was chosen from the clause that renders that line and nowhere else.",
+ "lines": {
+  "1": [],
+  "4": [],
+  "6": [],
+  "7": [],
+  "8": [],
+  "9": [],
+  "10": [],
+  "11": [],
+  "12": [],
+  "13": [],
+  "14": [],
+  "15": [],
+  "16": [],
+  "17": [],
+  "18": [],
+  "19": [],
+  "20": [],
+  "21": [],
+  "22": [],
+  "23": [],
+  "24": [],
+  "25": [],
+  "26": [],
+  "27": [],
+  "28": [],
+  "29": [],
+  "30": [],
+  "31": [],
+  "32": [],
+  "33": [],
+  "34": [],
+  "35": [],
+  "36": [],
+  "37": [],
+  "38": [],
+  "39": [],
+  "40": [],
+  "41": [],
+  "42": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "43": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "44": [],
+  "45": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   },
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "46": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   },
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "48": [],
+  "50": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "51": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "52": [
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   }
+  ],
+  "53": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "54": [
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "dimethylformamide",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "55": [],
+  "56": [
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   }
+  ],
+  "57": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "58": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "59": [
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   }
+  ],
+  "60": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "61": [
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "dimethylformamide",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "62": [
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "63": [],
+  "64": [
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   }
+  ],
+  "65": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "66": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "67": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "68": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "70": [],
+  "72": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "73": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "74": [],
+  "75": [],
+  "76": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "77": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "78": [],
+  "79": [],
+  "80": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "81": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "82": [],
+  "83": [],
+  "84": [],
+  "85": [],
+  "86": [],
+  "87": [],
+  "88": [
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "dichloromethane",
+    "kind": "specific"
+   },
+   {
+    "span": "toluene",
+    "kind": "specific"
+   }
+  ],
+  "89": [
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "dichloromethane",
+    "kind": "specific"
+   },
+   {
+    "span": "toluene",
+    "kind": "specific"
+   }
+  ],
+  "90": [],
+  "91": [],
+  "92": [],
+  "94": [],
+  "95": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "thionyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclohexanedione",
+    "kind": "specific"
+   },
+   {
+    "span": "enol ester",
+    "kind": "generic"
+   },
+   {
+    "span": "acetone cyanohydrin",
+    "kind": "specific"
+   }
+  ],
+  "96": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "thionyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclohexanedione",
+    "kind": "specific"
+   },
+   {
+    "span": "enol ester",
+    "kind": "generic"
+   },
+   {
+    "span": "acetone cyanohydrin",
+    "kind": "specific"
+   }
+  ],
+  "97": [],
+  "99": [],
+  "100": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "acetone cyanohydrin",
+    "kind": "specific"
+   }
+  ],
+  "101": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "acetone cyanohydrin",
+    "kind": "specific"
+   }
+  ],
+  "103": [],
+  "105": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "106": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "107": [],
+  "108": [],
+  "109": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "110": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "111": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "112": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "113": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "114": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "115": [
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   }
+  ],
+  "116": [
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   }
+  ],
+  "117": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "118": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "119": [
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "dimethylformamide",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "120": [
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "dimethylformamide",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "121": [
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "122": [
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "123": [],
+  "124": [],
+  "125": [],
+  "126": [],
+  "127": [
+   {
+    "span": "organic-solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "128": [
+   {
+    "span": "organic-solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "129": [
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   }
+  ],
+  "130": [
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   }
+  ],
+  "131": [
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "132": [
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "133": [
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "134": [
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "135": [],
+  "136": [],
+  "137": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "138": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "139": [],
+  "140": [],
+  "141": [],
+  "142": [],
+  "143": [],
+  "144": [],
+  "145": [
+   {
+    "span": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "1,2-dichloroethane",
+    "kind": "specific"
+   },
+   {
+    "span": "Thionyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "triethylamine",
+    "kind": "specific"
+   },
+   {
+    "span": "triethylamine salt",
+    "kind": "specific"
+   },
+   {
+    "span": "1,3-cyclohexanedione",
+    "kind": "specific"
+   },
+   {
+    "span": "acetone cyanohydrin",
+    "kind": "specific"
+   },
+   {
+    "span": "red-brown solid",
+    "kind": "generic"
+   }
+  ],
+  "146": [
+   {
+    "span": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "1,2-dichloroethane",
+    "kind": "specific"
+   },
+   {
+    "span": "Thionyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "triethylamine",
+    "kind": "specific"
+   },
+   {
+    "span": "triethylamine salt",
+    "kind": "specific"
+   },
+   {
+    "span": "1,3-cyclohexanedione",
+    "kind": "specific"
+   },
+   {
+    "span": "acetone cyanohydrin",
+    "kind": "specific"
+   },
+   {
+    "span": "red-brown solid",
+    "kind": "generic"
+   }
+  ],
+  "147": [],
+  "148": [],
+  "150": [],
+  "152": [],
+  "153": [],
+  "155": [
+   {
+    "span": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclohexanedione",
+    "kind": "specific"
+   },
+   {
+    "span": "base",
+    "kind": "generic"
+   },
+   {
+    "span": "triethylamine",
+    "kind": "specific"
+   },
+   {
+    "span": "enol ester",
+    "kind": "generic"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "156": [
+   {
+    "span": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclohexanedione",
+    "kind": "specific"
+   },
+   {
+    "span": "base",
+    "kind": "generic"
+   },
+   {
+    "span": "triethylamine",
+    "kind": "specific"
+   },
+   {
+    "span": "enol ester",
+    "kind": "generic"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "157": [],
+  "158": [],
+  "159": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "160": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "161": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "162": [],
+  "163": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "164": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "165": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "166": [],
+  "167": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "168": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "170": [],
+  "172": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "173": [],
+  "174": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "175": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "176": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "177": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "178": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "179": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "180": [],
+  "181": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "182": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "183": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "184": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "185": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "186": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "187": [],
+  "188": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "189": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "190": [],
+  "191": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "192": [],
+  "193": [],
+  "195": [],
+  "197": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "198": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   },
+   {
+    "span": "aqueous solution",
+    "kind": "generic"
+   }
+  ],
+  "199": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "200": [],
+  "201": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "202": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "203": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "204": [],
+  "205": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "206": [],
+  "207": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "208": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "209": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "210": [],
+  "211": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "212": [],
+  "213": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "dimethylformamide",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "214": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "215": [],
+  "216": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "dimethylformamide",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "217": [],
+  "218": [],
+  "219": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "220": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "222": [],
+  "224": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "225": [],
+  "226": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "227": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "228": [],
+  "229": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "230": [],
+  "231": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "232": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "233": [],
+  "234": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "235": [],
+  "236": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "237": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "238": [],
+  "239": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "240": [],
+  "241": [],
+  "242": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   },
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   }
+  ],
+  "243": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   },
+   {
+    "span": "adsorbent",
+    "kind": "generic"
+   }
+  ],
+  "245": [],
+  "247": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "248": [],
+  "249": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "250": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "251": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "252": [],
+  "253": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "254": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "255": [],
+  "256": [],
+  "257": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   },
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "258": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   },
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   }
+  ],
+  "259": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "260": [],
+  "261": [],
+  "262": [],
+  "263": [],
+  "264": [],
+  "265": [
+   {
+    "span": "cyanide",
+    "kind": "generic"
+   }
+  ],
+  "266": [],
+  "267": [],
+  "268": [],
+  "269": [],
+  "270": [],
+  "271": [],
+  "272": [],
+  "273": [
+   {
+    "span": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "1,2-dichloroethane",
+    "kind": "specific"
+   },
+   {
+    "span": "thionyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "triethylamine",
+    "kind": "specific"
+   },
+   {
+    "span": "triethylamine salt",
+    "kind": "specific"
+   },
+   {
+    "span": "1,3-cyclohexanedione",
+    "kind": "specific"
+   },
+   {
+    "span": "acetone cyanohydrin",
+    "kind": "specific"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   }
+  ],
+  "274": [
+   {
+    "span": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "1,2-dichloroethane",
+    "kind": "specific"
+   },
+   {
+    "span": "thionyl chloride",
+    "kind": "specific"
+   },
+   {
+    "span": "triethylamine",
+    "kind": "specific"
+   },
+   {
+    "span": "triethylamine salt",
+    "kind": "specific"
+   },
+   {
+    "span": "1,3-cyclohexanedione",
+    "kind": "specific"
+   },
+   {
+    "span": "acetone cyanohydrin",
+    "kind": "specific"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "activated carbon",
+    "kind": "specific"
+   }
+  ],
+  "276": [],
+  "278": [
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "pale yellow solid",
+    "kind": "generic"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "279": [
+   {
+    "span": "hydrochloric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "pale yellow solid",
+    "kind": "generic"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "280": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "CDCl3",
+    "kind": "specific"
+   }
+  ],
+  "281": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "CDCl3",
+    "kind": "specific"
+   }
+  ],
+  "282": [],
+  "283": [],
+  "284": [],
+  "285": []
+ }
+}

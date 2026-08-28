@@ -1,0 +1,990 @@
+[
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Example 5_Batch 16",
+    "section_label": "Example 5",
+    "section_type": "experimental_example",
+    "step_index": 1,
+    "step_label": "Batch 16",
+    "reaction_class": "recrystallisation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 60.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 1.0,
+      "reactor_type": null,
+      "concentration": {
+        "value": 20.0,
+        "unit": "%",
+        "reagent": "water in ethanol",
+        "text": "20% aqueous ethanol, the dissolution and crystallisation medium"
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": 5.0,
+      "ph_target_stage": "set with 10% dilute hydrochloric acid added dropwise under temperature control after the hot filtration, before the gradual cooling to 15 C and the crystallisation"
+    },
+    "conditions_inherited": true,
+    "workup": {
+      "steps": [
+        "dissolve the product taken after the rearrangement and the solvent distillation in 20% aqueous ethanol",
+        "raise the temperature to 60 C",
+        "add 1 g of diatomaceous earth and hold for one hour",
+        "filter hot to remove the diatomaceous earth",
+        "add 10% dilute hydrochloric acid dropwise under temperature control to the PH stated for this batch",
+        "cool gradually to 15 C",
+        "filter to collect the purified tembotrione"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "hot filtration to remove the diatomaceous earth, then a second filtration after cooling to collect the crystallised purified tembotrione",
+      "concentration_method": null,
+      "ph_target": 5.0
+    },
+    "purification": "dissolved in 20% aqueous ethanol at 60 C, treated with diatomaceous earth for one hour and filtered hot, then acidified with 10% dilute hydrochloric acid added dropwise under temperature control to the PH stated for this batch and cooled gradually to 15 C, so that purified tembotrione crystallises and is filtered off",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 5.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "5 g taken as the crude product left after the rearrangement reaction and the solvent distillation, dissolved in the 20% aqueous ethanol; each of the four batches takes its own 5 g of the same material",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ethanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the organic component of the 20% aqueous ethanol in which the product is dissolved and out of which it is later crystallised; no volume or mass is printed",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the aqueous component of the 20% aqueous ethanol; named in this section only as part of that mixture, with no quantity of its own",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "diatomaceous earth",
+        "role": "additive",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 1.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "1 g added to the hot solution at 60 C and held for one hour, then removed by hot filtration; the adsorbent of this example",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise (滴加) under temperature control as 10% dilute hydrochloric acid, after the hot filtration, until the PH reaches the value stated for this batch; no mass, volume or addition time is printed, only the PH endpoint",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyanide",
+        "role": "by_product",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "not charged: present in the crude product as the impurity this example measures, at 1238 ppm before treatment and 82 ppm after crystallisation in this batch, with a stated reduction of 88%. These are impurity contents of the product, not charges, and not a yield or a purity.",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "crystallised out of the aqueous ethanol on cooling to 15 C and filtered off as 纯化环磺酮; no isolated mass and no yield is printed",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "tembotrione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "不同PH值下对析出的纯化环磺酮的氰化物杂质含量分析，处理方法：重排反应结束后，蒸馏脱溶后取产品5g溶解在20％含水乙醇中，升温至60℃，加入1g硅藻土保温一小时后热过滤，控温滴加10％稀盐酸调节PH分别为2、3、4、5，逐渐降温至15℃，过滤得纯化环磺酮。 | 16 | 5 | 1238 | 82 | 88% |",
+    "procedure_summary": "The crude product left after the rearrangement and the solvent distillation is dissolved in aqueous ethanol, warmed, treated with diatomaceous earth for the stated hold and filtered hot. Dilute hydrochloric acid is then added dropwise under temperature control to the PH stated for this batch, and the solution is cooled gradually so that purified tembotrione crystallises and is filtered off.",
+    "precursor_step": "Synthesis Scheme::Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": true,
+    "is_complete": false,
+    "validation_flags": [
+      "mass_balance_implausible"
+    ],
+    "tags": [
+      "mechanism:not_determinable",
+      "scale:lab",
+      "solvent_class:aqueous",
+      "workup_type:filtration",
+      "workup_type:crystallisation",
+      "purification:recrystallisation",
+      "step_role:final_step",
+      "linkage:cross_section_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "STEP LABEL is the patent's own printed 试验批次 (test batch) number from the table at [0051], which runs continuously across the five examples and does not restart per example, so this section carries Batch 16 to Batch 19 and continues from Example 4. step_index restarts at 1 within the section, per rule 2. A0 estimated four steps and four records are emitted, so there is no A0/A2 disagreement to explain under rule 4. THE FOUR BATCHES ARE PARALLEL, NOT SEQUENTIAL. Each one takes its own 5 g of the same crude material left after the rearrangement and the solvent distillation, so no batch consumes another batch's product. Every record's precursor_step is therefore \"Synthesis Scheme::Step 2\", the rearrangement whose product is the crude tembotrione, and no record names the batch before it. A reader who sees four numbered records in document order will assume a chain; there is none. linkage_confirmed is true because [0050] refers back explicitly (重排反应结束后, after the rearrangement reaction was finished) AND the precursor's product identifier, tembotrione, is this record's reactant identifier; rule 24 asks for one of the two and both hold. Not linked to Background_Step 3, which is the same transformation described as route rather than as the procedure this section continues from. CONDITIONS_INHERITED IS TRUE, and this is rule 10's designed case rather than a defect. [0050] prints the treatment once, in prose, for all four batches, and the table at [0051] then varies only the PH, in a column of its own. So every field except the PH comes from [0050] at line 257: the 5 g charge, the 20% aqueous ethanol, the 60 C, the 1 g of diatomaceous earth, the one-hour hold, the hot filtration, the dropwise 10% dilute hydrochloric acid under temperature control, the gradual cooling to 15 C and the final filtration. Only conditions.ph_value and workup.ph_target come from this record's own table row. conditions_unresolved is NOT raised: the inherited text is present in this section and was located, so the check ran and passed rather than passing on absence. Note that the inheritance here is from a shared prose paragraph and not from a preceding record, which is why precursor_step still points out of the section. THIS IS THE ONLY EXAMPLE WHOSE PROCEDURE IS PROSE. In Examples 1 to 4 the treatment lives in a 处理方法 table cell; here there is no such column, so procedure_text is the [0050] sentence, identical on all four records, with this record's own table row appended verbatim so that the record carries the datum that distinguishes it. The appended row is also why the PH is read from the row and not from the sentence: the [0050] sentence names all four endpoints at once, so it cannot on its own tell you which endpoint is this batch's. PH IS NOT A YIELD AND NEITHER ARE THE PPM FIGURES. The three numeric columns are the cyanide impurity content before treatment, the content after crystallisation, and a stated percentage reduction. None is a yield and none is a purity, so product_yield_pct and product_purity_pct are null on all four records; this patent states no yield anywhere and its only purity is Example 6's content figure, which is not this section's to record. The ppm figures are carried on the cyanide compound entry, matching where A1 put them. REACTION_CLASS is recrystallisation, from the shared class table for this document: the whole batch is one record covering dissolution, adsorbent treatment, hot filtration, acidification, cooling, crystallisation and filtration, and recrystallisation is the only member of the closed list in rule 17 that describes an isolation. non_synthetic is true: no bond in the tembotrione is made or broken anywhere in the treatment. mechanism_type is not_determinable because a crystallisation has no mechanism in the sense the enum means. IS_ONE_POT IS FALSE even though every operation happens in one vessel. Rule 5's test is two or more sequential TRANSFORMATIONS with no workup between them, and there is no transformation here at all, so the test does not apply and one_pot_steps is empty. TEMPERATURE: two numbers are printed, 60 C for the dissolution and the adsorbent hold and 15 C for the end of the cooling. conditions.temperature is exact 60 C, the temperature the treatment is held at; the 15 C endpoint belongs to the crystallisation and is recorded in workup.steps and in purification. It is deliberately not written as a range 15 to 60, which would assert a stated range the document does not print. heating_method and cooling_method are null: 升温 and 逐渐降温 state that the solution is warmed and then gradually cooled but name no means of either, and inventing one would be the invented condition rule 9 forbids. 控温 says the acid is added under temperature control without giving a number, so no second temperature is recorded from it. time_h is 1.0, the 保温一小时 hold on the diatomaceous earth, which is a treatment time and not a dropwise addition time. CONCENTRATION: the block holds one concentration and two are printed. The 20% of the aqueous ethanol is recorded there because it is the medium the whole treatment runs in; the 10% of the dilute hydrochloric acid is recorded in that compound's addition_profile so that neither is lost. The reading of 20％含水乙醇 is not settled by the document: taken literally it is ethanol containing 20% water, which is how the concentration block records it, but a reader could take it as 20% ethanol in water. Both readings are stated here and neither is chosen. A1 emitted ethanol and water as two compounds and left the composition to this record, which is where it now sits. STIRRING is null on both members: [0050] names no stirrer and no speed, unlike the claims, so nothing can be filled. reactor_type is null for the same reason, and pressure is not_specified: no 减压 appears in [0050]. The 蒸馏脱溶 solvent removal named before the 5 g is charged is the precursor step's workup, not this record's, so workup.concentration_method is left null rather than claiming a distillation this record performs. PH IN BOTH FIELDS, deliberately. conditions.ph_value carries the number because the PH is this example's single controlled variable and the condition the crystallisation is run under, and workup.ph_target carries the same number because the dropwise acid addition is a workup operation whose stated endpoint is that PH. There is only one PH in the row, so the two fields are two views of one printed value and not two measurements. ph_target_stage records where in the sequence it is set. FINDING 1, RECORDED AND NOT RESOLVED: [0050] lists the PH endpoints ASCENDING as 2、3、4、5 while the table at [0051] lists them DESCENDING against the batch numbers, 5 for batch 16, 4 for 17, 3 for 18 and 2 for 19. The set and the count match exactly; only the order differs. A reader who paired the prose order with the batch numbers in printed order would give every one of the four batches the wrong PH, and batches 16 and 19 would be swapped outright. This record takes its PH from the table row, because the row is the only place the document attaches a PH to a batch number. The prose order is recorded here, and in the provenance quote, and nothing is reconciled. ARITHMETIC DOES NOT CLOSE, and nothing is repaired. None of the four stated reductions follows from its own before-and-after ppm pair; the printed and computed values are in the provenance arithmetic_check for every record. The flag raised is mass_balance_implausible, and it is being used here for a PERCENTAGE and not for a mass: no mass balance is involved, since the ppm figures are impurity contents of the product and not charges. arithmetic_inconsistent would describe it better but it is not in the closed enum the schema and rule 27 allow, so the nearest permitted flag is used and its misuse is stated here rather than left for a reader to infer. Because the flag is raised, is_complete is false on all four records. molar_mass_inconsistent is not raised: no mass and mole pair is printed in this section, so that check has nothing to run on. scale_discontinuity is likewise NOT raised, and that is not a pass: the precursor Synthesis Scheme::Step 2 states no product mass at all, so this record's 5 g charge cannot be compared with anything and the check could not be run. THIS TABLE IS THE ODD ONE OF THE FIVE, in two ways that are recorded and not corrected. Its fourth column is headed 析晶后 (after crystallisation) where the other four example tables head the same column 处理后 (after treatment), and it alone carries no caption, so its identity as Example 5's data rests on its position immediately after [0050]. NO PROCESS CONTROL AND NO SAFETY NOTE. The ppm figures are an analysis of the isolated product, not in-process monitoring, and no analytical method is named for them anywhere in the section, so process_control is empty and the analytics tag category is skipped. safety_notes is empty and no safety tag is emitted: cyanide is present as the impurity being measured but the section prints no warning about handling it, and rule 26 asks for a category to be skipped rather than guessed. molar_ratio_text is null: 5 g of product to 1 g of diatomaceous earth is a mass ratio the document never words as a stoichiometry. selectivity is null throughout; this document reports no ee, de or dr. THE PROMPT'S PATENT-SPECIFIC SENTENCES DESCRIBE THE PREVIOUS PATENT and were not followed as facts. There is no N、<compound name> marker anywhere in this section, so rule 1's marker test would have found zero steps here; the boundaries come from the table rows instead. There is no [IMAGE_EXTRACT] span in this section at all, so rule 5b's molecule-before-each-step expectation, rules 5a, 5c to 5g on schemes and drawings, and the drawing-related flags have nothing to act on, and drawing_evidence in the provenance is recorded as absent rather than as agreeing. Rule 29's count of at least three steps with arithmetic that does not close was not used to decide how many rows to check; all four were checked and all four fail. The document's 滴加 dropwise additions are real, and the one in this section is captured in the hydrochloric acid entry's addition_profile. reactant_smiles, smiles_source, product_smiles, product_smiles_source and canonical_rxn are null per rule 8, and no enrichment field is emitted. TEMBOTRIONE APPEARS TWICE in compounds[], once as the reactant charged in solution and once as the product filtered off, which is the true shape of a crystallisation and keeps missing_reactant and missing_product honestly clear. A1 keeps one tembotrione record, since this document separates crude from purified by adjective only, so the two entries are two references to one compound. All six identifiers are A1's verbatim, so no a1_missing_compound is raised. diatomaceous earth is role additive because the role enum has no value for an adsorbent or filter aid, which is what it is here. cyanide is role by_product and is not charged: it arrives in the crude product and its addition_profile carries this batch's two ppm figures. TAGS: solvent_class:aqueous is used for the water and ethanol mixture, matching the Claims record; protic is equally defensible and is not emitted only because one value per category is enough. catalyst_class is skipped rather than filled with none, again matching the Claims record, since the hydrochloric acid sets a PH and catalyses nothing. step_role:final_step because this treatment is the last operation the document performs on the material and it delivers 纯化环磺酮; it is not an intermediate step of a chain, since the four batches are parallel. linkage:cross_section_linked because the precursor is in another section. PH CASING, recorded once for the section on this first record rather than on all four: the tables and paragraphs [0050] and [0053] print it as capital PH, the claims print it lower case as pH. The difference is typesetting and not a difference in what is measured, and the capital form is preserved in procedure_text and in the provenance quote."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Example 5_Batch 17",
+    "section_label": "Example 5",
+    "section_type": "experimental_example",
+    "step_index": 2,
+    "step_label": "Batch 17",
+    "reaction_class": "recrystallisation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 60.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 1.0,
+      "reactor_type": null,
+      "concentration": {
+        "value": 20.0,
+        "unit": "%",
+        "reagent": "water in ethanol",
+        "text": "20% aqueous ethanol, the dissolution and crystallisation medium"
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": 4.0,
+      "ph_target_stage": "set with 10% dilute hydrochloric acid added dropwise under temperature control after the hot filtration, before the gradual cooling to 15 C and the crystallisation"
+    },
+    "conditions_inherited": true,
+    "workup": {
+      "steps": [
+        "dissolve the product taken after the rearrangement and the solvent distillation in 20% aqueous ethanol",
+        "raise the temperature to 60 C",
+        "add 1 g of diatomaceous earth and hold for one hour",
+        "filter hot to remove the diatomaceous earth",
+        "add 10% dilute hydrochloric acid dropwise under temperature control to the PH stated for this batch",
+        "cool gradually to 15 C",
+        "filter to collect the purified tembotrione"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "hot filtration to remove the diatomaceous earth, then a second filtration after cooling to collect the crystallised purified tembotrione",
+      "concentration_method": null,
+      "ph_target": 4.0
+    },
+    "purification": "dissolved in 20% aqueous ethanol at 60 C, treated with diatomaceous earth for one hour and filtered hot, then acidified with 10% dilute hydrochloric acid added dropwise under temperature control to the PH stated for this batch and cooled gradually to 15 C, so that purified tembotrione crystallises and is filtered off",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 5.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "5 g taken as the crude product left after the rearrangement reaction and the solvent distillation, dissolved in the 20% aqueous ethanol; each of the four batches takes its own 5 g of the same material",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ethanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the organic component of the 20% aqueous ethanol in which the product is dissolved and out of which it is later crystallised; no volume or mass is printed",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the aqueous component of the 20% aqueous ethanol; named in this section only as part of that mixture, with no quantity of its own",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "diatomaceous earth",
+        "role": "additive",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 1.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "1 g added to the hot solution at 60 C and held for one hour, then removed by hot filtration; the adsorbent of this example",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise (滴加) under temperature control as 10% dilute hydrochloric acid, after the hot filtration, until the PH reaches the value stated for this batch; no mass, volume or addition time is printed, only the PH endpoint",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyanide",
+        "role": "by_product",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "not charged: present in the crude product as the impurity this example measures, at 1238 ppm before treatment and 46 ppm after crystallisation in this batch, with a stated reduction of 98%. These are impurity contents of the product, not charges, and not a yield or a purity.",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "crystallised out of the aqueous ethanol on cooling to 15 C and filtered off as 纯化环磺酮; no isolated mass and no yield is printed",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "tembotrione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "不同PH值下对析出的纯化环磺酮的氰化物杂质含量分析，处理方法：重排反应结束后，蒸馏脱溶后取产品5g溶解在20％含水乙醇中，升温至60℃，加入1g硅藻土保温一小时后热过滤，控温滴加10％稀盐酸调节PH分别为2、3、4、5，逐渐降温至15℃，过滤得纯化环磺酮。 | 17 | 4 | 1238 | 46 | 98% |",
+    "procedure_summary": "The crude product left after the rearrangement and the solvent distillation is dissolved in aqueous ethanol, warmed, treated with diatomaceous earth for the stated hold and filtered hot. Dilute hydrochloric acid is then added dropwise under temperature control to the PH stated for this batch, and the solution is cooled gradually so that purified tembotrione crystallises and is filtered off.",
+    "precursor_step": "Synthesis Scheme::Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": true,
+    "is_complete": false,
+    "validation_flags": [
+      "mass_balance_implausible"
+    ],
+    "tags": [
+      "mechanism:not_determinable",
+      "scale:lab",
+      "solvent_class:aqueous",
+      "workup_type:filtration",
+      "workup_type:crystallisation",
+      "purification:recrystallisation",
+      "step_role:final_step",
+      "linkage:cross_section_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "STEP LABEL is the patent's own printed 试验批次 (test batch) number from the table at [0051], which runs continuously across the five examples and does not restart per example, so this section carries Batch 16 to Batch 19 and continues from Example 4. step_index restarts at 1 within the section, per rule 2. A0 estimated four steps and four records are emitted, so there is no A0/A2 disagreement to explain under rule 4. THE FOUR BATCHES ARE PARALLEL, NOT SEQUENTIAL. Each one takes its own 5 g of the same crude material left after the rearrangement and the solvent distillation, so no batch consumes another batch's product. Every record's precursor_step is therefore \"Synthesis Scheme::Step 2\", the rearrangement whose product is the crude tembotrione, and no record names the batch before it. A reader who sees four numbered records in document order will assume a chain; there is none. linkage_confirmed is true because [0050] refers back explicitly (重排反应结束后, after the rearrangement reaction was finished) AND the precursor's product identifier, tembotrione, is this record's reactant identifier; rule 24 asks for one of the two and both hold. Not linked to Background_Step 3, which is the same transformation described as route rather than as the procedure this section continues from. CONDITIONS_INHERITED IS TRUE, and this is rule 10's designed case rather than a defect. [0050] prints the treatment once, in prose, for all four batches, and the table at [0051] then varies only the PH, in a column of its own. So every field except the PH comes from [0050] at line 257: the 5 g charge, the 20% aqueous ethanol, the 60 C, the 1 g of diatomaceous earth, the one-hour hold, the hot filtration, the dropwise 10% dilute hydrochloric acid under temperature control, the gradual cooling to 15 C and the final filtration. Only conditions.ph_value and workup.ph_target come from this record's own table row. conditions_unresolved is NOT raised: the inherited text is present in this section and was located, so the check ran and passed rather than passing on absence. Note that the inheritance here is from a shared prose paragraph and not from a preceding record, which is why precursor_step still points out of the section. THIS IS THE ONLY EXAMPLE WHOSE PROCEDURE IS PROSE. In Examples 1 to 4 the treatment lives in a 处理方法 table cell; here there is no such column, so procedure_text is the [0050] sentence, identical on all four records, with this record's own table row appended verbatim so that the record carries the datum that distinguishes it. The appended row is also why the PH is read from the row and not from the sentence: the [0050] sentence names all four endpoints at once, so it cannot on its own tell you which endpoint is this batch's. PH IS NOT A YIELD AND NEITHER ARE THE PPM FIGURES. The three numeric columns are the cyanide impurity content before treatment, the content after crystallisation, and a stated percentage reduction. None is a yield and none is a purity, so product_yield_pct and product_purity_pct are null on all four records; this patent states no yield anywhere and its only purity is Example 6's content figure, which is not this section's to record. The ppm figures are carried on the cyanide compound entry, matching where A1 put them. REACTION_CLASS is recrystallisation, from the shared class table for this document: the whole batch is one record covering dissolution, adsorbent treatment, hot filtration, acidification, cooling, crystallisation and filtration, and recrystallisation is the only member of the closed list in rule 17 that describes an isolation. non_synthetic is true: no bond in the tembotrione is made or broken anywhere in the treatment. mechanism_type is not_determinable because a crystallisation has no mechanism in the sense the enum means. IS_ONE_POT IS FALSE even though every operation happens in one vessel. Rule 5's test is two or more sequential TRANSFORMATIONS with no workup between them, and there is no transformation here at all, so the test does not apply and one_pot_steps is empty. TEMPERATURE: two numbers are printed, 60 C for the dissolution and the adsorbent hold and 15 C for the end of the cooling. conditions.temperature is exact 60 C, the temperature the treatment is held at; the 15 C endpoint belongs to the crystallisation and is recorded in workup.steps and in purification. It is deliberately not written as a range 15 to 60, which would assert a stated range the document does not print. heating_method and cooling_method are null: 升温 and 逐渐降温 state that the solution is warmed and then gradually cooled but name no means of either, and inventing one would be the invented condition rule 9 forbids. 控温 says the acid is added under temperature control without giving a number, so no second temperature is recorded from it. time_h is 1.0, the 保温一小时 hold on the diatomaceous earth, which is a treatment time and not a dropwise addition time. CONCENTRATION: the block holds one concentration and two are printed. The 20% of the aqueous ethanol is recorded there because it is the medium the whole treatment runs in; the 10% of the dilute hydrochloric acid is recorded in that compound's addition_profile so that neither is lost. The reading of 20％含水乙醇 is not settled by the document: taken literally it is ethanol containing 20% water, which is how the concentration block records it, but a reader could take it as 20% ethanol in water. Both readings are stated here and neither is chosen. A1 emitted ethanol and water as two compounds and left the composition to this record, which is where it now sits. STIRRING is null on both members: [0050] names no stirrer and no speed, unlike the claims, so nothing can be filled. reactor_type is null for the same reason, and pressure is not_specified: no 减压 appears in [0050]. The 蒸馏脱溶 solvent removal named before the 5 g is charged is the precursor step's workup, not this record's, so workup.concentration_method is left null rather than claiming a distillation this record performs. PH IN BOTH FIELDS, deliberately. conditions.ph_value carries the number because the PH is this example's single controlled variable and the condition the crystallisation is run under, and workup.ph_target carries the same number because the dropwise acid addition is a workup operation whose stated endpoint is that PH. There is only one PH in the row, so the two fields are two views of one printed value and not two measurements. ph_target_stage records where in the sequence it is set. FINDING 1, RECORDED AND NOT RESOLVED: [0050] lists the PH endpoints ASCENDING as 2、3、4、5 while the table at [0051] lists them DESCENDING against the batch numbers, 5 for batch 16, 4 for 17, 3 for 18 and 2 for 19. The set and the count match exactly; only the order differs. A reader who paired the prose order with the batch numbers in printed order would give every one of the four batches the wrong PH, and batches 16 and 19 would be swapped outright. This record takes its PH from the table row, because the row is the only place the document attaches a PH to a batch number. The prose order is recorded here, and in the provenance quote, and nothing is reconciled. ARITHMETIC DOES NOT CLOSE, and nothing is repaired. None of the four stated reductions follows from its own before-and-after ppm pair; the printed and computed values are in the provenance arithmetic_check for every record. The flag raised is mass_balance_implausible, and it is being used here for a PERCENTAGE and not for a mass: no mass balance is involved, since the ppm figures are impurity contents of the product and not charges. arithmetic_inconsistent would describe it better but it is not in the closed enum the schema and rule 27 allow, so the nearest permitted flag is used and its misuse is stated here rather than left for a reader to infer. Because the flag is raised, is_complete is false on all four records. molar_mass_inconsistent is not raised: no mass and mole pair is printed in this section, so that check has nothing to run on. scale_discontinuity is likewise NOT raised, and that is not a pass: the precursor Synthesis Scheme::Step 2 states no product mass at all, so this record's 5 g charge cannot be compared with anything and the check could not be run. THIS TABLE IS THE ODD ONE OF THE FIVE, in two ways that are recorded and not corrected. Its fourth column is headed 析晶后 (after crystallisation) where the other four example tables head the same column 处理后 (after treatment), and it alone carries no caption, so its identity as Example 5's data rests on its position immediately after [0050]. NO PROCESS CONTROL AND NO SAFETY NOTE. The ppm figures are an analysis of the isolated product, not in-process monitoring, and no analytical method is named for them anywhere in the section, so process_control is empty and the analytics tag category is skipped. safety_notes is empty and no safety tag is emitted: cyanide is present as the impurity being measured but the section prints no warning about handling it, and rule 26 asks for a category to be skipped rather than guessed. molar_ratio_text is null: 5 g of product to 1 g of diatomaceous earth is a mass ratio the document never words as a stoichiometry. selectivity is null throughout; this document reports no ee, de or dr. THE PROMPT'S PATENT-SPECIFIC SENTENCES DESCRIBE THE PREVIOUS PATENT and were not followed as facts. There is no N、<compound name> marker anywhere in this section, so rule 1's marker test would have found zero steps here; the boundaries come from the table rows instead. There is no [IMAGE_EXTRACT] span in this section at all, so rule 5b's molecule-before-each-step expectation, rules 5a, 5c to 5g on schemes and drawings, and the drawing-related flags have nothing to act on, and drawing_evidence in the provenance is recorded as absent rather than as agreeing. Rule 29's count of at least three steps with arithmetic that does not close was not used to decide how many rows to check; all four were checked and all four fail. The document's 滴加 dropwise additions are real, and the one in this section is captured in the hydrochloric acid entry's addition_profile. reactant_smiles, smiles_source, product_smiles, product_smiles_source and canonical_rxn are null per rule 8, and no enrichment field is emitted. TEMBOTRIONE APPEARS TWICE in compounds[], once as the reactant charged in solution and once as the product filtered off, which is the true shape of a crystallisation and keeps missing_reactant and missing_product honestly clear. A1 keeps one tembotrione record, since this document separates crude from purified by adjective only, so the two entries are two references to one compound. All six identifiers are A1's verbatim, so no a1_missing_compound is raised. diatomaceous earth is role additive because the role enum has no value for an adsorbent or filter aid, which is what it is here. cyanide is role by_product and is not charged: it arrives in the crude product and its addition_profile carries this batch's two ppm figures. TAGS: solvent_class:aqueous is used for the water and ethanol mixture, matching the Claims record; protic is equally defensible and is not emitted only because one value per category is enough. catalyst_class is skipped rather than filled with none, again matching the Claims record, since the hydrochloric acid sets a PH and catalyses nothing. step_role:final_step because this treatment is the last operation the document performs on the material and it delivers 纯化环磺酮; it is not an intermediate step of a chain, since the four batches are parallel. linkage:cross_section_linked because the precursor is in another section."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Example 5_Batch 18",
+    "section_label": "Example 5",
+    "section_type": "experimental_example",
+    "step_index": 3,
+    "step_label": "Batch 18",
+    "reaction_class": "recrystallisation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 60.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 1.0,
+      "reactor_type": null,
+      "concentration": {
+        "value": 20.0,
+        "unit": "%",
+        "reagent": "water in ethanol",
+        "text": "20% aqueous ethanol, the dissolution and crystallisation medium"
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": 3.0,
+      "ph_target_stage": "set with 10% dilute hydrochloric acid added dropwise under temperature control after the hot filtration, before the gradual cooling to 15 C and the crystallisation"
+    },
+    "conditions_inherited": true,
+    "workup": {
+      "steps": [
+        "dissolve the product taken after the rearrangement and the solvent distillation in 20% aqueous ethanol",
+        "raise the temperature to 60 C",
+        "add 1 g of diatomaceous earth and hold for one hour",
+        "filter hot to remove the diatomaceous earth",
+        "add 10% dilute hydrochloric acid dropwise under temperature control to the PH stated for this batch",
+        "cool gradually to 15 C",
+        "filter to collect the purified tembotrione"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "hot filtration to remove the diatomaceous earth, then a second filtration after cooling to collect the crystallised purified tembotrione",
+      "concentration_method": null,
+      "ph_target": 3.0
+    },
+    "purification": "dissolved in 20% aqueous ethanol at 60 C, treated with diatomaceous earth for one hour and filtered hot, then acidified with 10% dilute hydrochloric acid added dropwise under temperature control to the PH stated for this batch and cooled gradually to 15 C, so that purified tembotrione crystallises and is filtered off",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 5.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "5 g taken as the crude product left after the rearrangement reaction and the solvent distillation, dissolved in the 20% aqueous ethanol; each of the four batches takes its own 5 g of the same material",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ethanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the organic component of the 20% aqueous ethanol in which the product is dissolved and out of which it is later crystallised; no volume or mass is printed",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the aqueous component of the 20% aqueous ethanol; named in this section only as part of that mixture, with no quantity of its own",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "diatomaceous earth",
+        "role": "additive",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 1.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "1 g added to the hot solution at 60 C and held for one hour, then removed by hot filtration; the adsorbent of this example",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise (滴加) under temperature control as 10% dilute hydrochloric acid, after the hot filtration, until the PH reaches the value stated for this batch; no mass, volume or addition time is printed, only the PH endpoint",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyanide",
+        "role": "by_product",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "not charged: present in the crude product as the impurity this example measures, at 1238 ppm before treatment and 25 ppm after crystallisation in this batch, with a stated reduction of 99%. These are impurity contents of the product, not charges, and not a yield or a purity.",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "crystallised out of the aqueous ethanol on cooling to 15 C and filtered off as 纯化环磺酮; no isolated mass and no yield is printed",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "tembotrione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "不同PH值下对析出的纯化环磺酮的氰化物杂质含量分析，处理方法：重排反应结束后，蒸馏脱溶后取产品5g溶解在20％含水乙醇中，升温至60℃，加入1g硅藻土保温一小时后热过滤，控温滴加10％稀盐酸调节PH分别为2、3、4、5，逐渐降温至15℃，过滤得纯化环磺酮。 | 18 | 3 | 1238 | 25 | 99% |",
+    "procedure_summary": "The crude product left after the rearrangement and the solvent distillation is dissolved in aqueous ethanol, warmed, treated with diatomaceous earth for the stated hold and filtered hot. Dilute hydrochloric acid is then added dropwise under temperature control to the PH stated for this batch, and the solution is cooled gradually so that purified tembotrione crystallises and is filtered off.",
+    "precursor_step": "Synthesis Scheme::Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": true,
+    "is_complete": false,
+    "validation_flags": [
+      "mass_balance_implausible"
+    ],
+    "tags": [
+      "mechanism:not_determinable",
+      "scale:lab",
+      "solvent_class:aqueous",
+      "workup_type:filtration",
+      "workup_type:crystallisation",
+      "purification:recrystallisation",
+      "step_role:final_step",
+      "linkage:cross_section_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "STEP LABEL is the patent's own printed 试验批次 (test batch) number from the table at [0051], which runs continuously across the five examples and does not restart per example, so this section carries Batch 16 to Batch 19 and continues from Example 4. step_index restarts at 1 within the section, per rule 2. A0 estimated four steps and four records are emitted, so there is no A0/A2 disagreement to explain under rule 4. THE FOUR BATCHES ARE PARALLEL, NOT SEQUENTIAL. Each one takes its own 5 g of the same crude material left after the rearrangement and the solvent distillation, so no batch consumes another batch's product. Every record's precursor_step is therefore \"Synthesis Scheme::Step 2\", the rearrangement whose product is the crude tembotrione, and no record names the batch before it. A reader who sees four numbered records in document order will assume a chain; there is none. linkage_confirmed is true because [0050] refers back explicitly (重排反应结束后, after the rearrangement reaction was finished) AND the precursor's product identifier, tembotrione, is this record's reactant identifier; rule 24 asks for one of the two and both hold. Not linked to Background_Step 3, which is the same transformation described as route rather than as the procedure this section continues from. CONDITIONS_INHERITED IS TRUE, and this is rule 10's designed case rather than a defect. [0050] prints the treatment once, in prose, for all four batches, and the table at [0051] then varies only the PH, in a column of its own. So every field except the PH comes from [0050] at line 257: the 5 g charge, the 20% aqueous ethanol, the 60 C, the 1 g of diatomaceous earth, the one-hour hold, the hot filtration, the dropwise 10% dilute hydrochloric acid under temperature control, the gradual cooling to 15 C and the final filtration. Only conditions.ph_value and workup.ph_target come from this record's own table row. conditions_unresolved is NOT raised: the inherited text is present in this section and was located, so the check ran and passed rather than passing on absence. Note that the inheritance here is from a shared prose paragraph and not from a preceding record, which is why precursor_step still points out of the section. THIS IS THE ONLY EXAMPLE WHOSE PROCEDURE IS PROSE. In Examples 1 to 4 the treatment lives in a 处理方法 table cell; here there is no such column, so procedure_text is the [0050] sentence, identical on all four records, with this record's own table row appended verbatim so that the record carries the datum that distinguishes it. The appended row is also why the PH is read from the row and not from the sentence: the [0050] sentence names all four endpoints at once, so it cannot on its own tell you which endpoint is this batch's. PH IS NOT A YIELD AND NEITHER ARE THE PPM FIGURES. The three numeric columns are the cyanide impurity content before treatment, the content after crystallisation, and a stated percentage reduction. None is a yield and none is a purity, so product_yield_pct and product_purity_pct are null on all four records; this patent states no yield anywhere and its only purity is Example 6's content figure, which is not this section's to record. The ppm figures are carried on the cyanide compound entry, matching where A1 put them. REACTION_CLASS is recrystallisation, from the shared class table for this document: the whole batch is one record covering dissolution, adsorbent treatment, hot filtration, acidification, cooling, crystallisation and filtration, and recrystallisation is the only member of the closed list in rule 17 that describes an isolation. non_synthetic is true: no bond in the tembotrione is made or broken anywhere in the treatment. mechanism_type is not_determinable because a crystallisation has no mechanism in the sense the enum means. IS_ONE_POT IS FALSE even though every operation happens in one vessel. Rule 5's test is two or more sequential TRANSFORMATIONS with no workup between them, and there is no transformation here at all, so the test does not apply and one_pot_steps is empty. TEMPERATURE: two numbers are printed, 60 C for the dissolution and the adsorbent hold and 15 C for the end of the cooling. conditions.temperature is exact 60 C, the temperature the treatment is held at; the 15 C endpoint belongs to the crystallisation and is recorded in workup.steps and in purification. It is deliberately not written as a range 15 to 60, which would assert a stated range the document does not print. heating_method and cooling_method are null: 升温 and 逐渐降温 state that the solution is warmed and then gradually cooled but name no means of either, and inventing one would be the invented condition rule 9 forbids. 控温 says the acid is added under temperature control without giving a number, so no second temperature is recorded from it. time_h is 1.0, the 保温一小时 hold on the diatomaceous earth, which is a treatment time and not a dropwise addition time. CONCENTRATION: the block holds one concentration and two are printed. The 20% of the aqueous ethanol is recorded there because it is the medium the whole treatment runs in; the 10% of the dilute hydrochloric acid is recorded in that compound's addition_profile so that neither is lost. The reading of 20％含水乙醇 is not settled by the document: taken literally it is ethanol containing 20% water, which is how the concentration block records it, but a reader could take it as 20% ethanol in water. Both readings are stated here and neither is chosen. A1 emitted ethanol and water as two compounds and left the composition to this record, which is where it now sits. STIRRING is null on both members: [0050] names no stirrer and no speed, unlike the claims, so nothing can be filled. reactor_type is null for the same reason, and pressure is not_specified: no 减压 appears in [0050]. The 蒸馏脱溶 solvent removal named before the 5 g is charged is the precursor step's workup, not this record's, so workup.concentration_method is left null rather than claiming a distillation this record performs. PH IN BOTH FIELDS, deliberately. conditions.ph_value carries the number because the PH is this example's single controlled variable and the condition the crystallisation is run under, and workup.ph_target carries the same number because the dropwise acid addition is a workup operation whose stated endpoint is that PH. There is only one PH in the row, so the two fields are two views of one printed value and not two measurements. ph_target_stage records where in the sequence it is set. FINDING 1, RECORDED AND NOT RESOLVED: [0050] lists the PH endpoints ASCENDING as 2、3、4、5 while the table at [0051] lists them DESCENDING against the batch numbers, 5 for batch 16, 4 for 17, 3 for 18 and 2 for 19. The set and the count match exactly; only the order differs. A reader who paired the prose order with the batch numbers in printed order would give every one of the four batches the wrong PH, and batches 16 and 19 would be swapped outright. This record takes its PH from the table row, because the row is the only place the document attaches a PH to a batch number. The prose order is recorded here, and in the provenance quote, and nothing is reconciled. ARITHMETIC DOES NOT CLOSE, and nothing is repaired. None of the four stated reductions follows from its own before-and-after ppm pair; the printed and computed values are in the provenance arithmetic_check for every record. The flag raised is mass_balance_implausible, and it is being used here for a PERCENTAGE and not for a mass: no mass balance is involved, since the ppm figures are impurity contents of the product and not charges. arithmetic_inconsistent would describe it better but it is not in the closed enum the schema and rule 27 allow, so the nearest permitted flag is used and its misuse is stated here rather than left for a reader to infer. Because the flag is raised, is_complete is false on all four records. molar_mass_inconsistent is not raised: no mass and mole pair is printed in this section, so that check has nothing to run on. scale_discontinuity is likewise NOT raised, and that is not a pass: the precursor Synthesis Scheme::Step 2 states no product mass at all, so this record's 5 g charge cannot be compared with anything and the check could not be run. THIS TABLE IS THE ODD ONE OF THE FIVE, in two ways that are recorded and not corrected. Its fourth column is headed 析晶后 (after crystallisation) where the other four example tables head the same column 处理后 (after treatment), and it alone carries no caption, so its identity as Example 5's data rests on its position immediately after [0050]. NO PROCESS CONTROL AND NO SAFETY NOTE. The ppm figures are an analysis of the isolated product, not in-process monitoring, and no analytical method is named for them anywhere in the section, so process_control is empty and the analytics tag category is skipped. safety_notes is empty and no safety tag is emitted: cyanide is present as the impurity being measured but the section prints no warning about handling it, and rule 26 asks for a category to be skipped rather than guessed. molar_ratio_text is null: 5 g of product to 1 g of diatomaceous earth is a mass ratio the document never words as a stoichiometry. selectivity is null throughout; this document reports no ee, de or dr. THE PROMPT'S PATENT-SPECIFIC SENTENCES DESCRIBE THE PREVIOUS PATENT and were not followed as facts. There is no N、<compound name> marker anywhere in this section, so rule 1's marker test would have found zero steps here; the boundaries come from the table rows instead. There is no [IMAGE_EXTRACT] span in this section at all, so rule 5b's molecule-before-each-step expectation, rules 5a, 5c to 5g on schemes and drawings, and the drawing-related flags have nothing to act on, and drawing_evidence in the provenance is recorded as absent rather than as agreeing. Rule 29's count of at least three steps with arithmetic that does not close was not used to decide how many rows to check; all four were checked and all four fail. The document's 滴加 dropwise additions are real, and the one in this section is captured in the hydrochloric acid entry's addition_profile. reactant_smiles, smiles_source, product_smiles, product_smiles_source and canonical_rxn are null per rule 8, and no enrichment field is emitted. TEMBOTRIONE APPEARS TWICE in compounds[], once as the reactant charged in solution and once as the product filtered off, which is the true shape of a crystallisation and keeps missing_reactant and missing_product honestly clear. A1 keeps one tembotrione record, since this document separates crude from purified by adjective only, so the two entries are two references to one compound. All six identifiers are A1's verbatim, so no a1_missing_compound is raised. diatomaceous earth is role additive because the role enum has no value for an adsorbent or filter aid, which is what it is here. cyanide is role by_product and is not charged: it arrives in the crude product and its addition_profile carries this batch's two ppm figures. TAGS: solvent_class:aqueous is used for the water and ethanol mixture, matching the Claims record; protic is equally defensible and is not emitted only because one value per category is enough. catalyst_class is skipped rather than filled with none, again matching the Claims record, since the hydrochloric acid sets a PH and catalyses nothing. step_role:final_step because this treatment is the last operation the document performs on the material and it delivers 纯化环磺酮; it is not an intermediate step of a chain, since the four batches are parallel. linkage:cross_section_linked because the precursor is in another section. OBSERVATION, RECORDED AND NOT RESOLVED, and nothing is concluded from it: batches 18 and 19 print the SAME residual cyanide content, 25 ppm, and the SAME stated reduction, 99%, at PH 3 and at PH 2. On the patent's own data, therefore, taking the PH from 3 down to 2 buys no measurable further reduction. Set against that, [0016] and claim 1 both specify a PH below 3, and Examples 1 to 4 all run their batches at PH 2. Those texts are not in this section and are named here only so the observation can be located. This is stated as an observation about the printed data. It is not a finding that the claim is wrong, no conclusion is drawn about which PH the process should use, and no printed cell is changed."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Example 5_Batch 19",
+    "section_label": "Example 5",
+    "section_type": "experimental_example",
+    "step_index": 4,
+    "step_label": "Batch 19",
+    "reaction_class": "recrystallisation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 60.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 1.0,
+      "reactor_type": null,
+      "concentration": {
+        "value": 20.0,
+        "unit": "%",
+        "reagent": "water in ethanol",
+        "text": "20% aqueous ethanol, the dissolution and crystallisation medium"
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": 2.0,
+      "ph_target_stage": "set with 10% dilute hydrochloric acid added dropwise under temperature control after the hot filtration, before the gradual cooling to 15 C and the crystallisation"
+    },
+    "conditions_inherited": true,
+    "workup": {
+      "steps": [
+        "dissolve the product taken after the rearrangement and the solvent distillation in 20% aqueous ethanol",
+        "raise the temperature to 60 C",
+        "add 1 g of diatomaceous earth and hold for one hour",
+        "filter hot to remove the diatomaceous earth",
+        "add 10% dilute hydrochloric acid dropwise under temperature control to the PH stated for this batch",
+        "cool gradually to 15 C",
+        "filter to collect the purified tembotrione"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "hot filtration to remove the diatomaceous earth, then a second filtration after cooling to collect the crystallised purified tembotrione",
+      "concentration_method": null,
+      "ph_target": 2.0
+    },
+    "purification": "dissolved in 20% aqueous ethanol at 60 C, treated with diatomaceous earth for one hour and filtered hot, then acidified with 10% dilute hydrochloric acid added dropwise under temperature control to the PH stated for this batch and cooled gradually to 15 C, so that purified tembotrione crystallises and is filtered off",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 5.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "5 g taken as the crude product left after the rearrangement reaction and the solvent distillation, dissolved in the 20% aqueous ethanol; each of the four batches takes its own 5 g of the same material",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ethanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the organic component of the 20% aqueous ethanol in which the product is dissolved and out of which it is later crystallised; no volume or mass is printed",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the aqueous component of the 20% aqueous ethanol; named in this section only as part of that mixture, with no quantity of its own",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "diatomaceous earth",
+        "role": "additive",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 1.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "1 g added to the hot solution at 60 C and held for one hour, then removed by hot filtration; the adsorbent of this example",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise (滴加) under temperature control as 10% dilute hydrochloric acid, after the hot filtration, until the PH reaches the value stated for this batch; no mass, volume or addition time is printed, only the PH endpoint",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyanide",
+        "role": "by_product",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "not charged: present in the crude product as the impurity this example measures, at 1238 ppm before treatment and 25 ppm after crystallisation in this batch, with a stated reduction of 99%. These are impurity contents of the product, not charges, and not a yield or a purity.",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "crystallised out of the aqueous ethanol on cooling to 15 C and filtered off as 纯化环磺酮; no isolated mass and no yield is printed",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "tembotrione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "不同PH值下对析出的纯化环磺酮的氰化物杂质含量分析，处理方法：重排反应结束后，蒸馏脱溶后取产品5g溶解在20％含水乙醇中，升温至60℃，加入1g硅藻土保温一小时后热过滤，控温滴加10％稀盐酸调节PH分别为2、3、4、5，逐渐降温至15℃，过滤得纯化环磺酮。 | 19 | 2 | 1238 | 25 | 99% |",
+    "procedure_summary": "The crude product left after the rearrangement and the solvent distillation is dissolved in aqueous ethanol, warmed, treated with diatomaceous earth for the stated hold and filtered hot. Dilute hydrochloric acid is then added dropwise under temperature control to the PH stated for this batch, and the solution is cooled gradually so that purified tembotrione crystallises and is filtered off.",
+    "precursor_step": "Synthesis Scheme::Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": true,
+    "is_complete": false,
+    "validation_flags": [
+      "mass_balance_implausible"
+    ],
+    "tags": [
+      "mechanism:not_determinable",
+      "scale:lab",
+      "solvent_class:aqueous",
+      "workup_type:filtration",
+      "workup_type:crystallisation",
+      "purification:recrystallisation",
+      "step_role:final_step",
+      "linkage:cross_section_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "STEP LABEL is the patent's own printed 试验批次 (test batch) number from the table at [0051], which runs continuously across the five examples and does not restart per example, so this section carries Batch 16 to Batch 19 and continues from Example 4. step_index restarts at 1 within the section, per rule 2. A0 estimated four steps and four records are emitted, so there is no A0/A2 disagreement to explain under rule 4. THE FOUR BATCHES ARE PARALLEL, NOT SEQUENTIAL. Each one takes its own 5 g of the same crude material left after the rearrangement and the solvent distillation, so no batch consumes another batch's product. Every record's precursor_step is therefore \"Synthesis Scheme::Step 2\", the rearrangement whose product is the crude tembotrione, and no record names the batch before it. A reader who sees four numbered records in document order will assume a chain; there is none. linkage_confirmed is true because [0050] refers back explicitly (重排反应结束后, after the rearrangement reaction was finished) AND the precursor's product identifier, tembotrione, is this record's reactant identifier; rule 24 asks for one of the two and both hold. Not linked to Background_Step 3, which is the same transformation described as route rather than as the procedure this section continues from. CONDITIONS_INHERITED IS TRUE, and this is rule 10's designed case rather than a defect. [0050] prints the treatment once, in prose, for all four batches, and the table at [0051] then varies only the PH, in a column of its own. So every field except the PH comes from [0050] at line 257: the 5 g charge, the 20% aqueous ethanol, the 60 C, the 1 g of diatomaceous earth, the one-hour hold, the hot filtration, the dropwise 10% dilute hydrochloric acid under temperature control, the gradual cooling to 15 C and the final filtration. Only conditions.ph_value and workup.ph_target come from this record's own table row. conditions_unresolved is NOT raised: the inherited text is present in this section and was located, so the check ran and passed rather than passing on absence. Note that the inheritance here is from a shared prose paragraph and not from a preceding record, which is why precursor_step still points out of the section. THIS IS THE ONLY EXAMPLE WHOSE PROCEDURE IS PROSE. In Examples 1 to 4 the treatment lives in a 处理方法 table cell; here there is no such column, so procedure_text is the [0050] sentence, identical on all four records, with this record's own table row appended verbatim so that the record carries the datum that distinguishes it. The appended row is also why the PH is read from the row and not from the sentence: the [0050] sentence names all four endpoints at once, so it cannot on its own tell you which endpoint is this batch's. PH IS NOT A YIELD AND NEITHER ARE THE PPM FIGURES. The three numeric columns are the cyanide impurity content before treatment, the content after crystallisation, and a stated percentage reduction. None is a yield and none is a purity, so product_yield_pct and product_purity_pct are null on all four records; this patent states no yield anywhere and its only purity is Example 6's content figure, which is not this section's to record. The ppm figures are carried on the cyanide compound entry, matching where A1 put them. REACTION_CLASS is recrystallisation, from the shared class table for this document: the whole batch is one record covering dissolution, adsorbent treatment, hot filtration, acidification, cooling, crystallisation and filtration, and recrystallisation is the only member of the closed list in rule 17 that describes an isolation. non_synthetic is true: no bond in the tembotrione is made or broken anywhere in the treatment. mechanism_type is not_determinable because a crystallisation has no mechanism in the sense the enum means. IS_ONE_POT IS FALSE even though every operation happens in one vessel. Rule 5's test is two or more sequential TRANSFORMATIONS with no workup between them, and there is no transformation here at all, so the test does not apply and one_pot_steps is empty. TEMPERATURE: two numbers are printed, 60 C for the dissolution and the adsorbent hold and 15 C for the end of the cooling. conditions.temperature is exact 60 C, the temperature the treatment is held at; the 15 C endpoint belongs to the crystallisation and is recorded in workup.steps and in purification. It is deliberately not written as a range 15 to 60, which would assert a stated range the document does not print. heating_method and cooling_method are null: 升温 and 逐渐降温 state that the solution is warmed and then gradually cooled but name no means of either, and inventing one would be the invented condition rule 9 forbids. 控温 says the acid is added under temperature control without giving a number, so no second temperature is recorded from it. time_h is 1.0, the 保温一小时 hold on the diatomaceous earth, which is a treatment time and not a dropwise addition time. CONCENTRATION: the block holds one concentration and two are printed. The 20% of the aqueous ethanol is recorded there because it is the medium the whole treatment runs in; the 10% of the dilute hydrochloric acid is recorded in that compound's addition_profile so that neither is lost. The reading of 20％含水乙醇 is not settled by the document: taken literally it is ethanol containing 20% water, which is how the concentration block records it, but a reader could take it as 20% ethanol in water. Both readings are stated here and neither is chosen. A1 emitted ethanol and water as two compounds and left the composition to this record, which is where it now sits. STIRRING is null on both members: [0050] names no stirrer and no speed, unlike the claims, so nothing can be filled. reactor_type is null for the same reason, and pressure is not_specified: no 减压 appears in [0050]. The 蒸馏脱溶 solvent removal named before the 5 g is charged is the precursor step's workup, not this record's, so workup.concentration_method is left null rather than claiming a distillation this record performs. PH IN BOTH FIELDS, deliberately. conditions.ph_value carries the number because the PH is this example's single controlled variable and the condition the crystallisation is run under, and workup.ph_target carries the same number because the dropwise acid addition is a workup operation whose stated endpoint is that PH. There is only one PH in the row, so the two fields are two views of one printed value and not two measurements. ph_target_stage records where in the sequence it is set. FINDING 1, RECORDED AND NOT RESOLVED: [0050] lists the PH endpoints ASCENDING as 2、3、4、5 while the table at [0051] lists them DESCENDING against the batch numbers, 5 for batch 16, 4 for 17, 3 for 18 and 2 for 19. The set and the count match exactly; only the order differs. A reader who paired the prose order with the batch numbers in printed order would give every one of the four batches the wrong PH, and batches 16 and 19 would be swapped outright. This record takes its PH from the table row, because the row is the only place the document attaches a PH to a batch number. The prose order is recorded here, and in the provenance quote, and nothing is reconciled. ARITHMETIC DOES NOT CLOSE, and nothing is repaired. None of the four stated reductions follows from its own before-and-after ppm pair; the printed and computed values are in the provenance arithmetic_check for every record. The flag raised is mass_balance_implausible, and it is being used here for a PERCENTAGE and not for a mass: no mass balance is involved, since the ppm figures are impurity contents of the product and not charges. arithmetic_inconsistent would describe it better but it is not in the closed enum the schema and rule 27 allow, so the nearest permitted flag is used and its misuse is stated here rather than left for a reader to infer. Because the flag is raised, is_complete is false on all four records. molar_mass_inconsistent is not raised: no mass and mole pair is printed in this section, so that check has nothing to run on. scale_discontinuity is likewise NOT raised, and that is not a pass: the precursor Synthesis Scheme::Step 2 states no product mass at all, so this record's 5 g charge cannot be compared with anything and the check could not be run. THIS TABLE IS THE ODD ONE OF THE FIVE, in two ways that are recorded and not corrected. Its fourth column is headed 析晶后 (after crystallisation) where the other four example tables head the same column 处理后 (after treatment), and it alone carries no caption, so its identity as Example 5's data rests on its position immediately after [0050]. NO PROCESS CONTROL AND NO SAFETY NOTE. The ppm figures are an analysis of the isolated product, not in-process monitoring, and no analytical method is named for them anywhere in the section, so process_control is empty and the analytics tag category is skipped. safety_notes is empty and no safety tag is emitted: cyanide is present as the impurity being measured but the section prints no warning about handling it, and rule 26 asks for a category to be skipped rather than guessed. molar_ratio_text is null: 5 g of product to 1 g of diatomaceous earth is a mass ratio the document never words as a stoichiometry. selectivity is null throughout; this document reports no ee, de or dr. THE PROMPT'S PATENT-SPECIFIC SENTENCES DESCRIBE THE PREVIOUS PATENT and were not followed as facts. There is no N、<compound name> marker anywhere in this section, so rule 1's marker test would have found zero steps here; the boundaries come from the table rows instead. There is no [IMAGE_EXTRACT] span in this section at all, so rule 5b's molecule-before-each-step expectation, rules 5a, 5c to 5g on schemes and drawings, and the drawing-related flags have nothing to act on, and drawing_evidence in the provenance is recorded as absent rather than as agreeing. Rule 29's count of at least three steps with arithmetic that does not close was not used to decide how many rows to check; all four were checked and all four fail. The document's 滴加 dropwise additions are real, and the one in this section is captured in the hydrochloric acid entry's addition_profile. reactant_smiles, smiles_source, product_smiles, product_smiles_source and canonical_rxn are null per rule 8, and no enrichment field is emitted. TEMBOTRIONE APPEARS TWICE in compounds[], once as the reactant charged in solution and once as the product filtered off, which is the true shape of a crystallisation and keeps missing_reactant and missing_product honestly clear. A1 keeps one tembotrione record, since this document separates crude from purified by adjective only, so the two entries are two references to one compound. All six identifiers are A1's verbatim, so no a1_missing_compound is raised. diatomaceous earth is role additive because the role enum has no value for an adsorbent or filter aid, which is what it is here. cyanide is role by_product and is not charged: it arrives in the crude product and its addition_profile carries this batch's two ppm figures. TAGS: solvent_class:aqueous is used for the water and ethanol mixture, matching the Claims record; protic is equally defensible and is not emitted only because one value per category is enough. catalyst_class is skipped rather than filled with none, again matching the Claims record, since the hydrochloric acid sets a PH and catalyses nothing. step_role:final_step because this treatment is the last operation the document performs on the material and it delivers 纯化环磺酮; it is not an intermediate step of a chain, since the four batches are parallel. linkage:cross_section_linked because the precursor is in another section. OBSERVATION, RECORDED AND NOT RESOLVED, and nothing is concluded from it: batches 18 and 19 print the SAME residual cyanide content, 25 ppm, and the SAME stated reduction, 99%, at PH 3 and at PH 2. On the patent's own data, therefore, taking the PH from 3 down to 2 buys no measurable further reduction. Set against that, [0016] and claim 1 both specify a PH below 3, and Examples 1 to 4 all run their batches at PH 2. Those texts are not in this section and are named here only so the observation can be located. This is stated as an observation about the printed data. It is not a finding that the claim is wrong, no conclusion is drawn about which PH the process should use, and no printed cell is changed."
+  }
+]

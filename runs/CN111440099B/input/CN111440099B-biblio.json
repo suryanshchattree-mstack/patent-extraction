@@ -1,0 +1,64 @@
+{
+  "patent_id": "CN111440099B",
+  "family_id": "71652835",
+  "title_en": "Purification method for a tembotrione product",
+  "title_zh": "一种环磺酮产品的纯化方法",
+  "title_en_note": "环磺酮 is tembotrione, and here Google Patents renders it correctly as 'Purification method of tembotrione product'. That is worth stating because the reference run's patent hit the opposite case: CN104292137A's 环磺酮 came back as 'cyclic sulcotrione', a different herbicide. The title was still checked character by character rather than trusted. 环 = cyclo, 磺 = sulfo, 酮 = ketone, and the literal reading 'cyclosulfone/cyclosulfonone' is what several of the twenty targets carry in their machine-translated titles; the compound the patent is about is fixed independently of the title by [0003] CAS 335104-84-2, [0004] C17H16ClF3O6S and [0005] 440.88, all three of which are tembotrione. 一种 is the Chinese indefinite article convention in patent titles and is rendered as 'a', not dropped.",
+  "application_number": "CN:202010273665.5",
+  "publication_number": "CN111440099B",
+  "publication_date": "2022-01-04",
+  "priority_date": "2020-04-09",
+  "filing_date": "2020-04-09",
+  "grant_date": "2022-01-04",
+  "grant_publication": "CN111440099B",
+  "jurisdiction": "cn",
+  "language": "zh",
+  "assignees": [
+    {
+      "name": "Limin Chemical Co Ltd",
+      "country": "CN",
+      "type": "company",
+      "name_note": "Printed as 利民化学有限责任公司, literally 'Limin Chemical Limited Liability Company'. Google Patents normalises it to 'Limin Chemical Co ltd'. Written here without commas or full stops on purpose: finalise.py builds the assignee tag as name.lower().replace(' ', '_'), and any punctuation that survives that lands in a tag value, which patent.schema.json constrains to ^[a-z_]+:[a-z0-9_/.+-]+$. A comma in the name fails that pattern several stages later, with a message that points at the tag rather than at this file."
+    }
+  ],
+  "inventors": [
+    "Li Linhu",
+    "Xu Hui",
+    "Shi Wei",
+    "Li Xinsheng",
+    "Sun Jingquan",
+    "Xu Yiwei",
+    "Sun Limei",
+    "Bai Guang",
+    "Qian Min"
+  ],
+  "legal_status": "Active",
+  "abstract_zh": "一种环磺酮产品的纯化方法，方法包括以下步骤：1）将环磺酮产品溶解在含水溶液中，升温；2）加入吸附剂，进行保温、热过滤；3）控温调节含水溶液pH至3以下，降温、从溶液中结晶出纯化的环磺酮。本发明的磺酮产品的纯化方法，可大大降低磺酮产品中氰化物杂质的含量，提高了产品的纯度，通过将纯化前的环磺酮产品与纯化后的产品进行Ames检测，原本氰化物杂质含量由1327ppm降至100ppm以下。",
+  "abstract_note": "Transcribed from the front page verbatim, including the two places where it prints 磺酮 (sulcotrione/sulfoketone) where the rest of the document prints 环磺酮 (tembotrione). That is the patent's own slip, not a transcription error, and it is left as printed. The same slip recurs at [0026].",
+  "ipc_codes": [
+    "C07C 317/24",
+    "C07C 315/06"
+  ],
+  "source": "https://patents.google.com/patent/CN111440099B/en",
+  "retrieved": "2026-08-27",
+  "text_provenance": {
+    "pdf": "input/pdf/CN111440099B.pdf, 10 pages, fetched from patentimages.storage.googleapis.com/f5/4a/0d/ecaa7515606fb2/CN111440099B.pdf",
+    "text_layer_chars_per_page": [
+      632,
+      382,
+      657,
+      1182,
+      192,
+      57,
+      136,
+      96,
+      512,
+      418
+    ],
+    "total_text_layer_chars": 4262,
+    "prose_source": "The text layer. Every page carries one, so the Chinese prose in input/vision/*.json is transcribed from extracted text rather than read off pixels, and the paragraph markers, the full-width punctuation and the spaced numerals such as '231 .9g' and '2 ,2 ,2' are preserved exactly as the layer emits them.",
+    "what_the_text_layer_does_not_contain": "The content that decides this patent. Five data tables (表一 to 表四 plus the Example 5 pH table, at [0035]/[0037], [0040], [0044], [0048] and [0051]) and three drawings (the tembotrione structure at [0008], the prior-art route at [0010] and the invention scheme at [0031]) are images with no text layer behind them at all. Every cyanide-impurity number this patent exists to report has to come from the vision pass. On the previous patent the vision pass was insurance on drawn structures; here it is the primary source for the results.",
+    "why_the_page_count_looks_wrong": "`file` reports '1 pages' for this PDF. That is a header artifact; pymupdf opens 10 pages and the printed footers run 1/8 to 8/8 of 说明书 plus 1/1 of 权利要求书 plus the front page."
+  },
+  "ipc_note": "Printed on the front page as C07C 317/24(2006.01) and C07C 315/06(2006.01), with no space before the bracket. The classification edition is dropped and a space inserted before the subgroup, which is the form both existing runs use: CN104292137A carries C07C 317/24 and C07C 315/04, CN109678767A four codes in the same shape. Kept consistent so the three runs' ipc_codes arrays are comparable."
+}

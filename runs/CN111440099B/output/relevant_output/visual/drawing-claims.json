@@ -1,0 +1,2774 @@
+{
+  "patent_id": "CN111440099B",
+  "engine_version": 1,
+  "what_this_is_en": "Review items that come from the PICTURES in the patent rather than from its words. Two kinds. First, every place the patent's own drawing and the patent's own text disagree - these are defects in the patent, and the question put to the reviewer is whether we recorded the contradiction faithfully instead of tidying it away. Second, every place the structure we recorded and the structure the patent drew are not the same molecule - these are defects in the extraction.",
+  "summary": {
+    "claims_total": 30,
+    "patent_self_contradictions": 26,
+    "structure_cross_checks_run": 1,
+    "structure_cross_checks_note_en": "A cross-check runs only where our record was chosen by the compound name in the patent's text rather than by the drawing, because only then can the two readings genuinely disagree.",
+    "drawing_comparisons_to_review": 3,
+    "structure_disagreements": 1,
+    "drawn_but_not_recorded": 0,
+    "drawings_total": 3,
+    "comparisons_written": 3,
+    "comparisons_with_detected_region": 2,
+    "comparisons_falling_back_to_whole_page": 1,
+    "comparisons_paired_by_name": 1,
+    "comparisons_paired_by_structure": 2
+  },
+  "comparisons": [
+    {
+      "record_id": "CN111440099B_p03_d1",
+      "drawing_number": 1,
+      "page": "p03",
+      "page_number": 3,
+      "between_markers_en": [
+        "[0007]",
+        "[0009]"
+      ],
+      "kind_en": "structure",
+      "presented_as_en": "intermediate_structure",
+      "structure_count": 1,
+      "comparison_image": "comparisons/CN111440099B_p03_d1.png",
+      "patent_crop_image": "comparisons/CN111440099B_p03_d1-patent.png",
+      "patent_drawing_image": "crops/CN111440099B_p03_d1.png",
+      "crop_box_uncut": {
+        "x_left": 115,
+        "y_top": 1089,
+        "x_right": 1570,
+        "y_bot": 1287
+      },
+      "crop_box_shown": {
+        "x_left": 127,
+        "y_top": 1089,
+        "x_right": 756,
+        "y_bot": 1287
+      },
+      "sides_cut_in_to_drawing": true,
+      "crop_confidence": "region_detected",
+      "crop_confidence_en": "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no text layer, so a machine measured the ink on page 3 and cut out the 1st block that is a drawing rather than lines of text. This page holds 2 such blocks, and reading the page found 2 drawings, so the two agree. The cut is deliberately loose. If it has sliced a molecule in half, or shows a different molecule from the one named above, this comparison is broken and should be reported as broken rather than answered.",
+      "pairing": "name",
+      "pairing_en": "HOW THE TWO HALVES WERE PAIRED: by the compound name printed in the patent's text at [0006], not by the drawing. This is the strong pairing.",
+      "anchor_marker": "[0006]",
+      "panels": [
+        {
+          "position_en": "1st, the only structure in the drawing, left of centre",
+          "drawn_name_en": "2-[2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoyl]cyclohexane-1,3-dione (tembotrione)",
+          "drawn_smiles": "O=C1CCCC(=O)C1C(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+          "drawn_canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+          "gold_identifier": "dichloromethane",
+          "gold_smiles": "ClCCl",
+          "gold_canonical": "ClCCl",
+          "linked_by": "name",
+          "oriented_to_patent_layout": null,
+          "structure_svg_path": "output/relevant_output/structures/dichloromethane.svg"
+        }
+      ]
+    },
+    {
+      "record_id": "CN111440099B_p03_d2",
+      "drawing_number": 2,
+      "page": "p03",
+      "page_number": 3,
+      "between_markers_en": [
+        "[0009]",
+        "[0011]"
+      ],
+      "kind_en": "scheme",
+      "presented_as_en": "prior_art",
+      "structure_count": 5,
+      "comparison_image": "comparisons/CN111440099B_p03_d2.png",
+      "patent_crop_image": "comparisons/CN111440099B_p03_d2-patent.png",
+      "patent_drawing_image": "crops/CN111440099B_p03_d2.png",
+      "crop_box_uncut": {
+        "x_left": 115,
+        "y_top": 1547,
+        "x_right": 1570,
+        "y_bot": 2041
+      },
+      "crop_box_shown": {
+        "x_left": 127,
+        "y_top": 1547,
+        "x_right": 1457,
+        "y_bot": 2041
+      },
+      "sides_cut_in_to_drawing": true,
+      "crop_confidence": "region_detected",
+      "crop_confidence_en": "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no text layer, so a machine measured the ink on page 3 and cut out the 2nd block that is a drawing rather than lines of text. This page holds 2 such blocks, and reading the page found 2 drawings, so the two agree. The cut is deliberately loose. If it has sliced a molecule in half, or shows a different molecule from the one named above, this comparison is broken and should be reported as broken rather than answered.",
+      "pairing": "structure",
+      "pairing_en": "HOW THE HALVES WERE PAIRED: WEAK. This drawing is a whole route and the patent's words near it name no single compound, so each of our records was found by looking for one whose structure matches the drawn one. They will therefore tend to agree. What this picture does show is whether we hold every molecule the route draws, and in the right order.",
+      "anchor_marker": null,
+      "panels": [
+        {
+          "position_en": "1st, row 1 far left (starting material)",
+          "drawn_name_en": "2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoic acid",
+          "drawn_smiles": "OC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+          "drawn_canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+          "gold_identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+          "gold_smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+          "gold_canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+          "linked_by": "structure",
+          "oriented_to_patent_layout": "four_substituent_benzene",
+          "structure_svg_path": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg"
+        },
+        {
+          "position_en": "2nd, row 1 below the first arrow (co-reagent drawn as a structure, not as a label)",
+          "drawn_name_en": "cyclohexane-1,3-dione",
+          "drawn_smiles": "O=C1CCCC(=O)C1",
+          "drawn_canonical": "O=C1CCCC(=O)C1",
+          "gold_identifier": "cyclohexane-1,3-dione",
+          "gold_smiles": "C1(CC(CCC1)=O)=O",
+          "gold_canonical": "O=C1CCCC(=O)C1",
+          "linked_by": "structure",
+          "oriented_to_patent_layout": null,
+          "structure_svg_path": "output/relevant_output/structures/cyclohexane-1-3-dione.svg"
+        },
+        {
+          "position_en": "3rd, row 1 right of the first arrow (product of the first arrow, substrate of the second)",
+          "drawn_name_en": "3-oxocyclohex-1-en-1-yl 2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoate",
+          "drawn_smiles": "O=C1CCCC(OC(=O)c2ccc(S(C)(=O)=O)c(COCC(F)(F)F)c2Cl)=C1",
+          "drawn_canonical": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+          "gold_identifier": "enol ester",
+          "gold_smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+          "gold_canonical": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+          "linked_by": "structure",
+          "oriented_to_patent_layout": "four_substituent_benzene",
+          "structure_svg_path": "output/relevant_output/structures/enol-ester.svg"
+        },
+        {
+          "position_en": "4th, row 1 above the second arrow (reagent drawn as a structure, not as a label)",
+          "drawn_name_en": "2-hydroxy-2-methylpropanenitrile (acetone cyanohydrin)",
+          "drawn_smiles": "CC(C)(O)C#N",
+          "drawn_canonical": "CC(C)(O)C#N",
+          "gold_identifier": "acetone cyanohydrin",
+          "gold_smiles": "CC(C#N)(O)C",
+          "gold_canonical": "CC(C)(O)C#N",
+          "linked_by": "structure",
+          "oriented_to_patent_layout": null,
+          "structure_svg_path": "output/relevant_output/structures/acetone-cyanohydrin.svg"
+        },
+        {
+          "position_en": "5th, row 2 left (final product, the continuation of the second arrow after the line wrap)",
+          "drawn_name_en": "2-[2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoyl]cyclohexane-1,3-dione (tembotrione)",
+          "drawn_smiles": "O=C1CCCC(=O)C1C(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+          "drawn_canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+          "gold_identifier": "tembotrione",
+          "gold_smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+          "gold_canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+          "linked_by": "structure",
+          "oriented_to_patent_layout": "four_substituent_benzene",
+          "structure_svg_path": "output/relevant_output/structures/tembotrione.svg"
+        }
+      ]
+    },
+    {
+      "record_id": "CN111440099B_p05_d1",
+      "drawing_number": 3,
+      "page": "p05",
+      "page_number": 5,
+      "between_markers_en": [
+        "[0031]",
+        "[0032]"
+      ],
+      "kind_en": "scheme",
+      "presented_as_en": "invention_route",
+      "structure_count": 5,
+      "comparison_image": "comparisons/CN111440099B_p05_d1.png",
+      "patent_crop_image": "comparisons/CN111440099B_p05_d1-patent.png",
+      "patent_drawing_image": "crops/CN111440099B_p05_d1.png",
+      "crop_box_uncut": {
+        "x_left": 0,
+        "y_top": 0,
+        "x_right": 1653,
+        "y_bot": 2339
+      },
+      "crop_box_shown": {
+        "x_left": 0,
+        "y_top": 0,
+        "x_right": 1653,
+        "y_bot": 2339
+      },
+      "sides_cut_in_to_drawing": false,
+      "crop_confidence": "whole_page_fallback",
+      "crop_confidence_en": "HOW THE PICTURE ABOVE WAS FOUND: it was NOT found. The machine counted 2 drawing-shaped blocks on page 5 but the reading of the page found 1 drawings, so no block can be trusted to be this one. The WHOLE PAGE is shown instead. Find the drawing yourself before answering.",
+      "pairing": "structure",
+      "pairing_en": "HOW THE HALVES WERE PAIRED: WEAK. This drawing is a whole route and the patent's words near it name no single compound, so each of our records was found by looking for one whose structure matches the drawn one. They will therefore tend to agree. What this picture does show is whether we hold every molecule the route draws, and in the right order.",
+      "anchor_marker": null,
+      "panels": [
+        {
+          "position_en": "1st, top-left, before the first arrow",
+          "drawn_name_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+          "drawn_smiles": "OC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+          "drawn_canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+          "gold_identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+          "gold_smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+          "gold_canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+          "linked_by": "structure",
+          "oriented_to_patent_layout": "four_substituent_benzene",
+          "structure_svg_path": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg"
+        },
+        {
+          "position_en": "2nd, top row, drawn below the first arrow as a reagent",
+          "drawn_name_en": "cyclohexane-1,3-dione",
+          "drawn_smiles": "O=C1CC(=O)CCC1",
+          "drawn_canonical": "O=C1CCCC(=O)C1",
+          "gold_identifier": "cyclohexane-1,3-dione",
+          "gold_smiles": "C1(CC(CCC1)=O)=O",
+          "gold_canonical": "O=C1CCCC(=O)C1",
+          "linked_by": "structure",
+          "oriented_to_patent_layout": null,
+          "structure_svg_path": "output/relevant_output/structures/cyclohexane-1-3-dione.svg"
+        },
+        {
+          "position_en": "3rd, top-right, after the first arrow and before the second",
+          "drawn_name_en": "3-oxocyclohex-1-en-1-yl 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoate",
+          "drawn_smiles": "O=C1CCCC(=C1)OC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+          "drawn_canonical": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+          "gold_identifier": "enol ester",
+          "gold_smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+          "gold_canonical": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+          "linked_by": "structure",
+          "oriented_to_patent_layout": "four_substituent_benzene",
+          "structure_svg_path": "output/relevant_output/structures/enol-ester.svg"
+        },
+        {
+          "position_en": "4th, top-right, drawn above the second arrow as a reagent, unlabelled",
+          "drawn_name_en": "2-hydroxy-2-methylpropanenitrile (acetone cyanohydrin)",
+          "drawn_smiles": "CC(C)(O)C#N",
+          "drawn_canonical": "CC(C)(O)C#N",
+          "gold_identifier": "acetone cyanohydrin",
+          "gold_smiles": "CC(C#N)(O)C",
+          "gold_canonical": "CC(C)(O)C#N",
+          "linked_by": "structure",
+          "oriented_to_patent_layout": null,
+          "structure_svg_path": "output/relevant_output/structures/acetone-cyanohydrin.svg"
+        },
+        {
+          "position_en": "5th, second row, left; the product the second arrow leads to",
+          "drawn_name_en": "2-{2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl}cyclohexane-1,3-dione",
+          "drawn_smiles": "O=C1CCCC(=O)C1C(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl",
+          "drawn_canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+          "gold_identifier": "tembotrione",
+          "gold_smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+          "gold_canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+          "linked_by": "structure",
+          "oriented_to_patent_layout": "four_substituent_benzene",
+          "structure_svg_path": "output/relevant_output/structures/tembotrione.svg"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "f264a6dd64a34c46",
+      "record_id": "CN111440099B_p03_d1_s1",
+      "record_kind": "compound",
+      "record_label_en": "dichloromethane",
+      "field": "structure.drawn_vs_recorded",
+      "field_label_en": "Structure we recorded against structure the patent drew",
+      "question_en": "The patent's words name dichloromethane, and we recorded a structure for that name. The patent also DRAWS a structure at this point, and a separate reading of that drawing gives a different molecule. Open the picture and say which of the two the drawing shows.",
+      "claimed_en": "ClCCl",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        88
+      ],
+      "evidence_en": "We recorded: ClCCl. The drawing reads as: CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F. These are different molecules.",
+      "evidence_lines": [
+        {
+          "n": 88,
+          "text_en": "We recorded: ClCCl. The drawing reads as: CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F. These are different molecules.",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_found",
+      "auto_reason_en": "The two SMILES do not match after both were reduced to a single canonical form, so this is a real disagreement and not a difference in spelling.",
+      "needs_human": true,
+      "risk": 0.95,
+      "risk_reasons_en": [
+        "The structure we hold and the structure the patent drew are not the same molecule.",
+        "The pairing here is by the compound name in the patent's own text, so this is not an artefact of how the two were matched."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "compound:drawing on page 3",
+      "about": "extraction",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "comparison_image": "comparisons/CN111440099B_p03_d1.png",
+        "patent_crop_image": "comparisons/CN111440099B_p03_d1-patent.png",
+        "page_image_path": "input/pages/p03.png"
+      }
+    },
+    {
+      "claim_id": "1922d9677f600ad3",
+      "record_id": "CN111440099B_p05_d1",
+      "record_kind": "drawing",
+      "record_label_en": "Drawing 3 of 3, page 5",
+      "field": "drawing.same_molecule",
+      "field_label_en": "Our structure against the structure the patent drew",
+      "question_en": "Do these two pictures show the same 5 molecules, in the same order? Ours are numbered in the order the patent prints them, left to right and top to bottom.",
+      "claimed_en": "1. 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid; 2. cyclohexane-1,3-dione; 3. enol ester; 4. acetone cyanohydrin; 5. tembotrione",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "The patent prints this drawing on page 5 between [0031] and [0032]. The right-hand picture is that region of the scanned page and the left-hand one is drawn from the structure we recorded.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "Whether a drawing shows the molecule we wrote down cannot be settled by matching strings. The machine has put the two side by side so a person can settle it by looking.",
+      "needs_human": true,
+      "risk": 0.9,
+      "risk_reasons_en": [
+        "Reading a structure off a drawing is the one step in this pipeline with no words to check it against.",
+        "The crop of the patent's own drawing is approximate. Judge against the full page if the two pictures disagree.",
+        "The two halves were paired by structure rather than by the name printed in the patent's text, so they will tend to agree and a machine match here is weak evidence.",
+        "One picture carrying 5 structures is a longer look than a single comparison."
+      ],
+      "structure_svg_path": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+      "tier": 1,
+      "stratum": "drawing:page 5",
+      "about": "drawing",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "comparison_image": "comparisons/CN111440099B_p05_d1.png",
+        "patent_crop_image": "comparisons/CN111440099B_p05_d1-patent.png",
+        "page_image_path": "input/pages/p05.png"
+      },
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+              "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "1st, top-left, before the first arrow"
+            },
+            {
+              "label_en": "cyclohexane-1,3-dione",
+              "src": "output/relevant_output/structures/cyclohexane-1-3-dione.svg",
+              "smiles": "C1(CC(CCC1)=O)=O",
+              "in_gold": true,
+              "position_en": "2nd, top row, drawn below the first arrow as a reagent"
+            },
+            {
+              "label_en": "enol ester",
+              "src": "output/relevant_output/structures/enol-ester.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "3rd, top-right, after the first arrow and before the second"
+            },
+            {
+              "label_en": "acetone cyanohydrin",
+              "src": "output/relevant_output/structures/acetone-cyanohydrin.svg",
+              "smiles": "CC(C#N)(O)C",
+              "in_gold": true,
+              "position_en": "4th, top-right, drawn above the second arrow as a reagent, unlabelled"
+            },
+            {
+              "label_en": "tembotrione",
+              "src": "output/relevant_output/structures/tembotrione.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "5th, second row, left; the product the second arrow leads to"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p05_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "coarse",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: it was NOT found. The machine counted 2 drawing-shaped blocks on page 5 but the reading of the page found 1 drawings, so no block can be trusted to be this one. The WHOLE PAGE is shown instead. Find the drawing yourself before answering.",
+          "page": "p05",
+          "page_image_path": "input/pages/p05.png",
+          "marker": null,
+          "box": {
+            "x_left": 0,
+            "y_top": 0,
+            "x_right": 1653,
+            "y_bot": 2339
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1.png"
+      }
+    },
+    {
+      "claim_id": "02ff313a2d4e2cc7",
+      "record_id": "CN111440099B_p03_d2",
+      "record_kind": "drawing",
+      "record_label_en": "Drawing 2 of 3, page 3",
+      "field": "drawing.same_molecule",
+      "field_label_en": "Our structure against the structure the patent drew",
+      "question_en": "Do these two pictures show the same 5 molecules, in the same order? Ours are numbered in the order the patent prints them, left to right and top to bottom.",
+      "claimed_en": "1. 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid; 2. cyclohexane-1,3-dione; 3. enol ester; 4. acetone cyanohydrin; 5. tembotrione",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "The patent prints this drawing on page 3 between [0009] and [0011]. The right-hand picture is that region of the scanned page and the left-hand one is drawn from the structure we recorded.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "Whether a drawing shows the molecule we wrote down cannot be settled by matching strings. The machine has put the two side by side so a person can settle it by looking.",
+      "needs_human": true,
+      "risk": 0.8,
+      "risk_reasons_en": [
+        "Reading a structure off a drawing is the one step in this pipeline with no words to check it against.",
+        "The two halves were paired by structure rather than by the name printed in the patent's text, so they will tend to agree and a machine match here is weak evidence.",
+        "One picture carrying 5 structures is a longer look than a single comparison."
+      ],
+      "structure_svg_path": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+      "tier": 1,
+      "stratum": "drawing:page 3",
+      "about": "drawing",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "comparison_image": "comparisons/CN111440099B_p03_d2.png",
+        "patent_crop_image": "comparisons/CN111440099B_p03_d2-patent.png",
+        "page_image_path": "input/pages/p03.png"
+      },
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+              "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "1st, row 1 far left (starting material)"
+            },
+            {
+              "label_en": "cyclohexane-1,3-dione",
+              "src": "output/relevant_output/structures/cyclohexane-1-3-dione.svg",
+              "smiles": "C1(CC(CCC1)=O)=O",
+              "in_gold": true,
+              "position_en": "2nd, row 1 below the first arrow (co-reagent drawn as a structure, not as a label)"
+            },
+            {
+              "label_en": "enol ester",
+              "src": "output/relevant_output/structures/enol-ester.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "3rd, row 1 right of the first arrow (product of the first arrow, substrate of the second)"
+            },
+            {
+              "label_en": "acetone cyanohydrin",
+              "src": "output/relevant_output/structures/acetone-cyanohydrin.svg",
+              "smiles": "CC(C#N)(O)C",
+              "in_gold": true,
+              "position_en": "4th, row 1 above the second arrow (reagent drawn as a structure, not as a label)"
+            },
+            {
+              "label_en": "tembotrione",
+              "src": "output/relevant_output/structures/tembotrione.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "5th, row 2 left (final product, the continuation of the second arrow after the line wrap)"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p03_d2.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d2-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "exact",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no text layer, so a machine measured the ink on page 3 and cut out the 2nd block that is a drawing rather than lines of text. This page holds 2 such blocks, and reading the page found 2 drawings, so the two agree. The cut is deliberately loose. If it has sliced a molecule in half, or shows a different molecule from the one named above, this comparison is broken and should be reported as broken rather than answered.",
+          "page": "p03",
+          "page_image_path": "input/pages/p03.png",
+          "marker": null,
+          "box": {
+            "x_left": 115,
+            "y_top": 1547,
+            "x_right": 1570,
+            "y_bot": 2041
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d2.png"
+      }
+    },
+    {
+      "claim_id": "244d1d687cbf870e",
+      "record_id": "CN111440099B_p01_x1",
+      "record_kind": "patent",
+      "record_label_en": "Page 1, conflict 1",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 1 the patent does not agree with itself. The substance is tembotrione throughout, but the printed abstract names it two different ways: twice it drops the leading character of the three-character Chinese name and prints a two-character short form instead. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The substance is tembotrione throughout, but the printed abstract names it two different ways: twice it drops the leading character of the three-character Chinese name and prints a two-character short form instead.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        90
+      ],
+      "evidence_en": "THE DRAWING SAYS: (no drawings on this page - this is a text-internal inconsistency, recorded here so it is not lost)  THE TEXT SAYS: The (54) title and the first half of the (57) abstract print the full three-character name; the clause beginning 'the purification method of the present invention' then prints the short form twice, with the leading character missing. Both name tembotrione, identified from CAS 335104-84-2, C17H16ClF3O6S, 440.88 and the structure drawn at [0007]/[0008] on description page p03. The short form is the patent's own slip and it recurs at [0026]; it is not a second substance and it is not sulcotrione or mesotrione.",
+      "evidence_lines": [
+        {
+          "n": 90,
+          "text_en": "THE DRAWING SAYS: (no drawings on this page - this is a text-internal inconsistency, recorded here so it is not lost)  THE TEXT SAYS: The (54) title and the first half of the (57) abstract print the full three-character name; the clause beginning 'the purification method of the present invention' then prints the short form twice, with the leading character missing. Both name tembotrione, identified from CAS 335104-84-2, C17H16ClF3O6S, 440.88 and the structure drawn at [0007]/[0008] on description page p03. The short form is the patent's own slip and it recurs at [0026]; it is not a second substance and it is not sulcotrione or mesotrione.",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 1",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p01.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "(no drawings on this page - this is a text-internal inconsistency, recorded here so it is not lost)",
+      "text_says_en": "The (54) title and the first half of the (57) abstract print the full three-character name; the clause beginning 'the purification method of the present invention' then prints the short form twice, with the leading character missing. Both name tembotrione, identified from CAS 335104-84-2, C17H16ClF3O6S, 440.88 and the structure drawn at [0007]/[0008] on description page p03. The short form is the patent's own slip and it recurs at [0026]; it is not a second substance and it is not sulcotrione or mesotrione.",
+      "disagreement": {
+        "drawing_says_en": "(no drawings on this page - this is a text-internal inconsistency, recorded here so it is not lost)",
+        "text_says_en": "The (54) title and the first half of the (57) abstract print the full three-character name; the clause beginning 'the purification method of the present invention' then prints the short form twice, with the leading character missing. Both name tembotrione, identified from CAS 335104-84-2, C17H16ClF3O6S, 440.88 and the structure drawn at [0007]/[0008] on description page p03. The short form is the patent's own slip and it recurs at [0026]; it is not a second substance and it is not sulcotrione or mesotrione.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p01",
+      "page_number": 1,
+      "markers_mentioned": [
+        "[0007]",
+        "[0008]",
+        "[0026]"
+      ],
+      "related_records": [],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "e31ae96fb67da33b",
+      "record_id": "CN111440099B_p01_x2",
+      "record_kind": "patent",
+      "record_label_en": "Page 1, conflict 2",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 1 the patent does not agree with itself. The abstract credits an Ames test with producing a cyanide impurity figure in ppm, which is not what an Ames test measures. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The abstract credits an Ames test with producing a cyanide impurity figure in ppm, which is not what an Ames test measures.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "THE DRAWING SAYS: (no drawings on this page - this is a text-internal inconsistency, recorded here so it is not lost)  THE TEXT SAYS: The closing sentence of the (57) abstract says that by subjecting the product before and after purification to an Ames test, the cyanide impurity content originally at 1327ppm was reduced to below 100ppm. The analytical method behind those two numbers is not named on this page.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 1",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p01.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "(no drawings on this page - this is a text-internal inconsistency, recorded here so it is not lost)",
+      "text_says_en": "The closing sentence of the (57) abstract says that by subjecting the product before and after purification to an Ames test, the cyanide impurity content originally at 1327ppm was reduced to below 100ppm. The analytical method behind those two numbers is not named on this page.",
+      "disagreement": {
+        "drawing_says_en": "(no drawings on this page - this is a text-internal inconsistency, recorded here so it is not lost)",
+        "text_says_en": "The closing sentence of the (57) abstract says that by subjecting the product before and after purification to an Ames test, the cyanide impurity content originally at 1327ppm was reduced to below 100ppm. The analytical method behind those two numbers is not named on this page.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p01",
+      "page_number": 1,
+      "markers_mentioned": [],
+      "related_records": [],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "b2033ccfe482d6b0",
+      "record_id": "CN111440099B_p03_x1",
+      "record_kind": "patent",
+      "record_label_en": "Page 3, conflict 1",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 3 the patent does not agree with itself. The prose in [0009] names an acyl chloride intermediate that the drawn scheme never draws: the drawing collapses two of the three prose stages onto a single arrow, putting SOCl2 above that arrow and cyclohexane-1,3-dione below it. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The prose in [0009] names an acyl chloride intermediate that the drawn scheme never draws: the drawing collapses two of the three prose stages onto a single arrow, putting SOCl2 above that arrow and cyclohexane-1,3-dione below it.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        95
+      ],
+      "evidence_en": "THE DRAWING SAYS: one arrow running from 2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoic acid straight to the enol ester, with reagents SOCl2 above and cyclohexane-1,3-dione below; no acyl chloride structure appears anywhere in the drawing  THE TEXT SAYS: [0009] names three stages, with 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride as a discrete named product of the thionyl chloride step, then reacted with cyclohexanedione to give the enol ester",
+      "evidence_lines": [
+        {
+          "n": 95,
+          "text_en": "THE DRAWING SAYS: one arrow running from 2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoic acid straight to the enol ester, with reagents SOCl2 above and cyclohexane-1,3-dione below; no acyl chloride structure appears anywhere in the drawing  THE TEXT SAYS: [0009] names three stages, with 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride as a discrete named product of the thionyl chloride step, then reacted with cyclohexanedione to give the enol ester",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 3",
+      "about": "patent",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "page_image_path": "input/pages/p03.png",
+        "comparison_image": "comparisons/CN111440099B_p03_d1.png",
+        "patent_crop_image": "comparisons/CN111440099B_p03_d1-patent.png"
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "one arrow running from 2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoic acid straight to the enol ester, with reagents SOCl2 above and cyclohexane-1,3-dione below; no acyl chloride structure appears anywhere in the drawing",
+      "text_says_en": "[0009] names three stages, with 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride as a discrete named product of the thionyl chloride step, then reacted with cyclohexanedione to give the enol ester",
+      "disagreement": {
+        "drawing_says_en": "one arrow running from 2-chloro-4-(methylsulfonyl)-3-[(2,2,2-trifluoroethoxy)methyl]benzoic acid straight to the enol ester, with reagents SOCl2 above and cyclohexane-1,3-dione below; no acyl chloride structure appears anywhere in the drawing",
+        "text_says_en": "[0009] names three stages, with 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride as a discrete named product of the thionyl chloride step, then reacted with cyclohexanedione to give the enol ester",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p03",
+      "page_number": 3,
+      "markers_mentioned": [
+        "[0009]"
+      ],
+      "related_records": [
+        {
+          "identifier_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+          "what_we_recorded_smiles": "ClC1=C(C(=O)Cl)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+          "we_hold_a_structure": true,
+          "formula": "C11H9Cl2F3O4S",
+          "structure_svg_path": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg"
+        },
+        {
+          "identifier_en": "cyclohexane-1,3-dione",
+          "what_we_recorded_smiles": "C1(CC(CCC1)=O)=O",
+          "we_hold_a_structure": true,
+          "formula": "C6H8O2",
+          "structure_svg_path": "output/relevant_output/structures/cyclohexane-1-3-dione.svg"
+        },
+        {
+          "identifier_en": "thionyl chloride",
+          "what_we_recorded_smiles": "S(=O)(Cl)Cl",
+          "we_hold_a_structure": true,
+          "formula": "Cl2OS",
+          "structure_svg_path": "output/relevant_output/structures/thionyl-chloride.svg"
+        }
+      ],
+      "drawings_on_this_page": [
+        "CN111440099B_p03_d1",
+        "CN111440099B_p03_d2"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/dichloromethane.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "dichloromethane",
+              "src": "output/relevant_output/structures/dichloromethane.svg",
+              "smiles": "ClCCl",
+              "in_gold": true,
+              "position_en": "1st, the only structure in the drawing, left of centre"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p03_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "exact",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no text layer, so a machine measured the ink on page 3 and cut out the 1st block that is a drawing rather than lines of text. This page holds 2 such blocks, and reading the page found 2 drawings, so the two agree. The cut is deliberately loose. If it has sliced a molecule in half, or shows a different molecule from the one named above, this comparison is broken and should be reported as broken rather than answered.",
+          "page": "p03",
+          "page_image_path": "input/pages/p03.png",
+          "marker": "[0006]",
+          "box": {
+            "x_left": 115,
+            "y_top": 1089,
+            "x_right": 1570,
+            "y_bot": 1287
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1.png"
+      }
+    },
+    {
+      "claim_id": "9cc8b72958ed1b09",
+      "record_id": "CN111440099B_p03_x2",
+      "record_kind": "patent",
+      "record_label_en": "Page 3, conflict 2",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 3 the patent does not agree with itself. The prose names the dione without a locant while the drawing fixes it. This is the prose being less specific than the drawing, not a contradiction. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The prose names the dione without a locant while the drawing fixes it. This is the prose being less specific than the drawing, not a contradiction.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        95
+      ],
+      "evidence_en": "THE DRAWING SAYS: the co-reagent below the first arrow is drawn with its two ring ketones separated by one CH2, i.e. unambiguously cyclohexane-1,3-dione  THE TEXT SAYS: [0009] writes the reagent as plain cyclohexanedione with no locant, which on its own would also admit the 1,2- and 1,4-diones",
+      "evidence_lines": [
+        {
+          "n": 95,
+          "text_en": "THE DRAWING SAYS: the co-reagent below the first arrow is drawn with its two ring ketones separated by one CH2, i.e. unambiguously cyclohexane-1,3-dione  THE TEXT SAYS: [0009] writes the reagent as plain cyclohexanedione with no locant, which on its own would also admit the 1,2- and 1,4-diones",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 3",
+      "about": "patent",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "page_image_path": "input/pages/p03.png",
+        "comparison_image": "comparisons/CN111440099B_p03_d1.png",
+        "patent_crop_image": "comparisons/CN111440099B_p03_d1-patent.png"
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "the co-reagent below the first arrow is drawn with its two ring ketones separated by one CH2, i.e. unambiguously cyclohexane-1,3-dione",
+      "text_says_en": "[0009] writes the reagent as plain cyclohexanedione with no locant, which on its own would also admit the 1,2- and 1,4-diones",
+      "disagreement": {
+        "drawing_says_en": "the co-reagent below the first arrow is drawn with its two ring ketones separated by one CH2, i.e. unambiguously cyclohexane-1,3-dione",
+        "text_says_en": "[0009] writes the reagent as plain cyclohexanedione with no locant, which on its own would also admit the 1,2- and 1,4-diones",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p03",
+      "page_number": 3,
+      "markers_mentioned": [
+        "[0009]"
+      ],
+      "related_records": [
+        {
+          "identifier_en": "cyclohexane-1,3-dione",
+          "what_we_recorded_smiles": "C1(CC(CCC1)=O)=O",
+          "we_hold_a_structure": true,
+          "formula": "C6H8O2",
+          "structure_svg_path": "output/relevant_output/structures/cyclohexane-1-3-dione.svg"
+        }
+      ],
+      "drawings_on_this_page": [
+        "CN111440099B_p03_d1",
+        "CN111440099B_p03_d2"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/dichloromethane.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "dichloromethane",
+              "src": "output/relevant_output/structures/dichloromethane.svg",
+              "smiles": "ClCCl",
+              "in_gold": true,
+              "position_en": "1st, the only structure in the drawing, left of centre"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p03_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "exact",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no text layer, so a machine measured the ink on page 3 and cut out the 1st block that is a drawing rather than lines of text. This page holds 2 such blocks, and reading the page found 2 drawings, so the two agree. The cut is deliberately loose. If it has sliced a molecule in half, or shows a different molecule from the one named above, this comparison is broken and should be reported as broken rather than answered.",
+          "page": "p03",
+          "page_image_path": "input/pages/p03.png",
+          "marker": "[0006]",
+          "box": {
+            "x_left": 115,
+            "y_top": 1089,
+            "x_right": 1570,
+            "y_bot": 1287
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1.png"
+      }
+    },
+    {
+      "claim_id": "42b8afe8fad521a6",
+      "record_id": "CN111440099B_p03_x3",
+      "record_kind": "patent",
+      "record_label_en": "Page 3, conflict 3",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 3 the patent does not agree with itself. The molecular weight printed in [0005] does not match the molecular formula printed in [0004] or the structure drawn at [0008]. Recorded, not corrected. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The molecular weight printed in [0005] does not match the molecular formula printed in [0004] or the structure drawn at [0008]. Recorded, not corrected.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        84
+      ],
+      "evidence_en": "THE DRAWING SAYS: the structure drawn at [0008] is exactly C17H16ClF3O6S, counted off the drawing as 17 C, 16 H, 1 Cl, 3 F, 6 O, 1 S, whose formula weight is 440.81 on standard atomic weights  THE TEXT SAYS: [0005] gives the molecular weight as 440.88, which is 0.07 higher than the formula in [0004] and the drawn structure give",
+      "evidence_lines": [
+        {
+          "n": 84,
+          "text_en": "THE DRAWING SAYS: the structure drawn at [0008] is exactly C17H16ClF3O6S, counted off the drawing as 17 C, 16 H, 1 Cl, 3 F, 6 O, 1 S, whose formula weight is 440.81 on standard atomic weights  THE TEXT SAYS: [0005] gives the molecular weight as 440.88, which is 0.07 higher than the formula in [0004] and the drawn structure give",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 3",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p03.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "the structure drawn at [0008] is exactly C17H16ClF3O6S, counted off the drawing as 17 C, 16 H, 1 Cl, 3 F, 6 O, 1 S, whose formula weight is 440.81 on standard atomic weights",
+      "text_says_en": "[0005] gives the molecular weight as 440.88, which is 0.07 higher than the formula in [0004] and the drawn structure give",
+      "disagreement": {
+        "drawing_says_en": "the structure drawn at [0008] is exactly C17H16ClF3O6S, counted off the drawing as 17 C, 16 H, 1 Cl, 3 F, 6 O, 1 S, whose formula weight is 440.81 on standard atomic weights",
+        "text_says_en": "[0005] gives the molecular weight as 440.88, which is 0.07 higher than the formula in [0004] and the drawn structure give",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p03",
+      "page_number": 3,
+      "markers_mentioned": [
+        "[0004]",
+        "[0005]",
+        "[0008]"
+      ],
+      "related_records": [],
+      "drawings_on_this_page": [
+        "CN111440099B_p03_d1",
+        "CN111440099B_p03_d2"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/dichloromethane.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "dichloromethane",
+              "src": "output/relevant_output/structures/dichloromethane.svg",
+              "smiles": "ClCCl",
+              "in_gold": true,
+              "position_en": "1st, the only structure in the drawing, left of centre"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p03_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "exact",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no text layer, so a machine measured the ink on page 3 and cut out the 1st block that is a drawing rather than lines of text. This page holds 2 such blocks, and reading the page found 2 drawings, so the two agree. The cut is deliberately loose. If it has sliced a molecule in half, or shows a different molecule from the one named above, this comparison is broken and should be reported as broken rather than answered.",
+          "page": "p03",
+          "page_image_path": "input/pages/p03.png",
+          "marker": "[0006]",
+          "box": {
+            "x_left": 115,
+            "y_top": 1089,
+            "x_right": 1570,
+            "y_bot": 1287
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1.png"
+      }
+    },
+    {
+      "claim_id": "03138aedd71d6a29",
+      "record_id": "CN111440099B_p03_x4",
+      "record_kind": "patent",
+      "record_label_en": "Page 3, conflict 4",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 3 the patent does not agree with itself. NO DISAGREEMENT, cross-check run and passed: the molecular formula in [0004] and the CAS number in [0003] both agree with the structure drawn at [0008]. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "NO DISAGREEMENT, cross-check run and passed: the molecular formula in [0004] and the CAS number in [0003] both agree with the structure drawn at [0008].",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        82
+      ],
+      "evidence_en": "THE DRAWING SAYS: atom count off the drawing at [0008] is C17 H16 Cl1 F3 O6 S1, and the connectivity drawn is that of tembotrione, CAS 335104-84-2  THE TEXT SAYS: [0004] gives the molecular formula as C17H16ClF3O6S and [0003] gives the CAS number as 335104-84-2",
+      "evidence_lines": [
+        {
+          "n": 82,
+          "text_en": "THE DRAWING SAYS: atom count off the drawing at [0008] is C17 H16 Cl1 F3 O6 S1, and the connectivity drawn is that of tembotrione, CAS 335104-84-2  THE TEXT SAYS: [0004] gives the molecular formula as C17H16ClF3O6S and [0003] gives the CAS number as 335104-84-2",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 3",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p03.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "atom count off the drawing at [0008] is C17 H16 Cl1 F3 O6 S1, and the connectivity drawn is that of tembotrione, CAS 335104-84-2",
+      "text_says_en": "[0004] gives the molecular formula as C17H16ClF3O6S and [0003] gives the CAS number as 335104-84-2",
+      "disagreement": {
+        "drawing_says_en": "atom count off the drawing at [0008] is C17 H16 Cl1 F3 O6 S1, and the connectivity drawn is that of tembotrione, CAS 335104-84-2",
+        "text_says_en": "[0004] gives the molecular formula as C17H16ClF3O6S and [0003] gives the CAS number as 335104-84-2",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p03",
+      "page_number": 3,
+      "markers_mentioned": [
+        "[0003]",
+        "[0004]",
+        "[0008]"
+      ],
+      "related_records": [],
+      "drawings_on_this_page": [
+        "CN111440099B_p03_d1",
+        "CN111440099B_p03_d2"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/dichloromethane.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "dichloromethane",
+              "src": "output/relevant_output/structures/dichloromethane.svg",
+              "smiles": "ClCCl",
+              "in_gold": true,
+              "position_en": "1st, the only structure in the drawing, left of centre"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p03_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "exact",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no text layer, so a machine measured the ink on page 3 and cut out the 1st block that is a drawing rather than lines of text. This page holds 2 such blocks, and reading the page found 2 drawings, so the two agree. The cut is deliberately loose. If it has sliced a molecule in half, or shows a different molecule from the one named above, this comparison is broken and should be reported as broken rather than answered.",
+          "page": "p03",
+          "page_image_path": "input/pages/p03.png",
+          "marker": "[0006]",
+          "box": {
+            "x_left": 115,
+            "y_top": 1089,
+            "x_right": 1570,
+            "y_bot": 1287
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1.png"
+      }
+    },
+    {
+      "claim_id": "c49c17d2da8d7d8a",
+      "record_id": "CN111440099B_p03_x5",
+      "record_kind": "patent",
+      "record_label_en": "Page 3, conflict 5",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 3 the patent does not agree with itself. NO DISAGREEMENT, cross-check run and passed: every reagent drawn on the scheme is also written in the prose, and every reagent written in the prose is also drawn. The only reagent-level gap between the two is the missing acyl chloride intermediate reported above, which is a structure rather than a reagent. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "NO DISAGREEMENT, cross-check run and passed: every reagent drawn on the scheme is also written in the prose, and every reagent written in the prose is also drawn. The only reagent-level gap between the two is the missing acyl chloride intermediate reported above, which is a structure rather than a reagent.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        95
+      ],
+      "evidence_en": "THE DRAWING SAYS: reagents drawn: SOCl2 above arrow 1, cyclohexane-1,3-dione below arrow 1, acetone cyanohydrin above arrow 2; nothing else is drawn on either arrow  THE TEXT SAYS: [0009] names thionyl chloride, cyclohexanedione and acetone cyanohydrin, and names no other reagent, no base, no solvent and no temperature",
+      "evidence_lines": [
+        {
+          "n": 95,
+          "text_en": "THE DRAWING SAYS: reagents drawn: SOCl2 above arrow 1, cyclohexane-1,3-dione below arrow 1, acetone cyanohydrin above arrow 2; nothing else is drawn on either arrow  THE TEXT SAYS: [0009] names thionyl chloride, cyclohexanedione and acetone cyanohydrin, and names no other reagent, no base, no solvent and no temperature",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 3",
+      "about": "patent",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "page_image_path": "input/pages/p03.png",
+        "comparison_image": "comparisons/CN111440099B_p03_d1.png",
+        "patent_crop_image": "comparisons/CN111440099B_p03_d1-patent.png"
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "reagents drawn: SOCl2 above arrow 1, cyclohexane-1,3-dione below arrow 1, acetone cyanohydrin above arrow 2; nothing else is drawn on either arrow",
+      "text_says_en": "[0009] names thionyl chloride, cyclohexanedione and acetone cyanohydrin, and names no other reagent, no base, no solvent and no temperature",
+      "disagreement": {
+        "drawing_says_en": "reagents drawn: SOCl2 above arrow 1, cyclohexane-1,3-dione below arrow 1, acetone cyanohydrin above arrow 2; nothing else is drawn on either arrow",
+        "text_says_en": "[0009] names thionyl chloride, cyclohexanedione and acetone cyanohydrin, and names no other reagent, no base, no solvent and no temperature",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p03",
+      "page_number": 3,
+      "markers_mentioned": [
+        "[0009]"
+      ],
+      "related_records": [
+        {
+          "identifier_en": "cyclohexane-1,3-dione",
+          "what_we_recorded_smiles": "C1(CC(CCC1)=O)=O",
+          "we_hold_a_structure": true,
+          "formula": "C6H8O2",
+          "structure_svg_path": "output/relevant_output/structures/cyclohexane-1-3-dione.svg"
+        },
+        {
+          "identifier_en": "acetone cyanohydrin",
+          "what_we_recorded_smiles": "CC(C#N)(O)C",
+          "we_hold_a_structure": true,
+          "formula": "C4H7NO",
+          "structure_svg_path": "output/relevant_output/structures/acetone-cyanohydrin.svg"
+        },
+        {
+          "identifier_en": "thionyl chloride",
+          "what_we_recorded_smiles": "S(=O)(Cl)Cl",
+          "we_hold_a_structure": true,
+          "formula": "Cl2OS",
+          "structure_svg_path": "output/relevant_output/structures/thionyl-chloride.svg"
+        }
+      ],
+      "drawings_on_this_page": [
+        "CN111440099B_p03_d1",
+        "CN111440099B_p03_d2"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/dichloromethane.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "dichloromethane",
+              "src": "output/relevant_output/structures/dichloromethane.svg",
+              "smiles": "ClCCl",
+              "in_gold": true,
+              "position_en": "1st, the only structure in the drawing, left of centre"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p03_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "exact",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no text layer, so a machine measured the ink on page 3 and cut out the 1st block that is a drawing rather than lines of text. This page holds 2 such blocks, and reading the page found 2 drawings, so the two agree. The cut is deliberately loose. If it has sliced a molecule in half, or shows a different molecule from the one named above, this comparison is broken and should be reported as broken rather than answered.",
+          "page": "p03",
+          "page_image_path": "input/pages/p03.png",
+          "marker": "[0006]",
+          "box": {
+            "x_left": 115,
+            "y_top": 1089,
+            "x_right": 1570,
+            "y_bot": 1287
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1.png"
+      }
+    },
+    {
+      "claim_id": "6c2b0a33be1e9a9b",
+      "record_id": "CN111440099B_p03_x6",
+      "record_kind": "patent",
+      "record_label_en": "Page 3, conflict 6",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 3 the patent does not agree with itself. The structure drawn at [0008] and the final structure of the scheme at [0010] are drawn identically. This is consistent, and is recorded so that a downstream pass does not read them as two different compounds. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The structure drawn at [0008] and the final structure of the scheme at [0010] are drawn identically. This is consistent, and is recorded so that a downstream pass does not read them as two different compounds.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        90
+      ],
+      "evidence_en": "THE DRAWING SAYS: Formula 1 and the row-2 product of Formula 2 have identical cores, identical substituent positions and identical condensed labels  THE TEXT SAYS: [0007] introduces Formula 1 as the structural formula of tembotrione; [0009] says the route of Formula 2 finally gives tembotrione",
+      "evidence_lines": [
+        {
+          "n": 90,
+          "text_en": "THE DRAWING SAYS: Formula 1 and the row-2 product of Formula 2 have identical cores, identical substituent positions and identical condensed labels  THE TEXT SAYS: [0007] introduces Formula 1 as the structural formula of tembotrione; [0009] says the route of Formula 2 finally gives tembotrione",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 3",
+      "about": "patent",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "page_image_path": "input/pages/p03.png",
+        "comparison_image": "comparisons/CN111440099B_p03_d1.png",
+        "patent_crop_image": "comparisons/CN111440099B_p03_d1-patent.png"
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "Formula 1 and the row-2 product of Formula 2 have identical cores, identical substituent positions and identical condensed labels",
+      "text_says_en": "[0007] introduces Formula 1 as the structural formula of tembotrione; [0009] says the route of Formula 2 finally gives tembotrione",
+      "disagreement": {
+        "drawing_says_en": "Formula 1 and the row-2 product of Formula 2 have identical cores, identical substituent positions and identical condensed labels",
+        "text_says_en": "[0007] introduces Formula 1 as the structural formula of tembotrione; [0009] says the route of Formula 2 finally gives tembotrione",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p03",
+      "page_number": 3,
+      "markers_mentioned": [
+        "[0007]",
+        "[0008]",
+        "[0009]",
+        "[0010]"
+      ],
+      "related_records": [],
+      "drawings_on_this_page": [
+        "CN111440099B_p03_d1",
+        "CN111440099B_p03_d2"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/dichloromethane.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "dichloromethane",
+              "src": "output/relevant_output/structures/dichloromethane.svg",
+              "smiles": "ClCCl",
+              "in_gold": true,
+              "position_en": "1st, the only structure in the drawing, left of centre"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p03_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "exact",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no text layer, so a machine measured the ink on page 3 and cut out the 1st block that is a drawing rather than lines of text. This page holds 2 such blocks, and reading the page found 2 drawings, so the two agree. The cut is deliberately loose. If it has sliced a molecule in half, or shows a different molecule from the one named above, this comparison is broken and should be reported as broken rather than answered.",
+          "page": "p03",
+          "page_image_path": "input/pages/p03.png",
+          "marker": "[0006]",
+          "box": {
+            "x_left": 115,
+            "y_top": 1089,
+            "x_right": 1570,
+            "y_bot": 1287
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1.png"
+      }
+    },
+    {
+      "claim_id": "32fa2e2af3e5963f",
+      "record_id": "CN111440099B_p05_x1",
+      "record_kind": "patent",
+      "record_label_en": "Page 5, conflict 1",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 5 the patent does not agree with itself. The text names the starting material as the acyl chloride, but the drawing starts from the free carboxylic acid. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The text names the starting material as the acyl chloride, but the drawing starts from the free carboxylic acid.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        145
+      ],
+      "evidence_en": "THE DRAWING SAYS: The first structure is drawn with HO-C(=O) on the ring, i.e. 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid, and SOCl2 is written above the first arrow.  THE TEXT SAYS: [0029] on p04 charges the flask with 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoyl chloride and only then adds thionyl chloride; [0032] on this page likewise calls the species that reacts with the dione the benzoyl chloride.",
+      "evidence_lines": [
+        {
+          "n": 145,
+          "text_en": "THE DRAWING SAYS: The first structure is drawn with HO-C(=O) on the ring, i.e. 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid, and SOCl2 is written above the first arrow.  THE TEXT SAYS: [0029] on p04 charges the flask with 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoyl chloride and only then adds thionyl chloride; [0032] on this page likewise calls the species that reacts with the dione the benzoyl chloride.",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 5",
+      "about": "patent",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "page_image_path": "input/pages/p05.png",
+        "comparison_image": "comparisons/CN111440099B_p05_d1.png",
+        "patent_crop_image": "comparisons/CN111440099B_p05_d1-patent.png"
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "The first structure is drawn with HO-C(=O) on the ring, i.e. 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid, and SOCl2 is written above the first arrow.",
+      "text_says_en": "[0029] on p04 charges the flask with 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoyl chloride and only then adds thionyl chloride; [0032] on this page likewise calls the species that reacts with the dione the benzoyl chloride.",
+      "disagreement": {
+        "drawing_says_en": "The first structure is drawn with HO-C(=O) on the ring, i.e. 2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid, and SOCl2 is written above the first arrow.",
+        "text_says_en": "[0029] on p04 charges the flask with 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoyl chloride and only then adds thionyl chloride; [0032] on this page likewise calls the species that reacts with the dione the benzoyl chloride.",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p05",
+      "page_number": 5,
+      "markers_mentioned": [
+        "[0029]",
+        "[0032]"
+      ],
+      "related_records": [
+        {
+          "identifier_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+          "what_we_recorded_smiles": "ClC1=C(C(=O)Cl)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+          "we_hold_a_structure": true,
+          "formula": "C11H9Cl2F3O4S",
+          "structure_svg_path": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg"
+        },
+        {
+          "identifier_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+          "what_we_recorded_smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+          "we_hold_a_structure": true,
+          "formula": "C11H10ClF3O5S",
+          "structure_svg_path": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg"
+        },
+        {
+          "identifier_en": "thionyl chloride",
+          "what_we_recorded_smiles": "S(=O)(Cl)Cl",
+          "we_hold_a_structure": true,
+          "formula": "Cl2OS",
+          "structure_svg_path": "output/relevant_output/structures/thionyl-chloride.svg"
+        }
+      ],
+      "drawings_on_this_page": [
+        "CN111440099B_p05_d1"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+              "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "1st, top-left, before the first arrow"
+            },
+            {
+              "label_en": "cyclohexane-1,3-dione",
+              "src": "output/relevant_output/structures/cyclohexane-1-3-dione.svg",
+              "smiles": "C1(CC(CCC1)=O)=O",
+              "in_gold": true,
+              "position_en": "2nd, top row, drawn below the first arrow as a reagent"
+            },
+            {
+              "label_en": "enol ester",
+              "src": "output/relevant_output/structures/enol-ester.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "3rd, top-right, after the first arrow and before the second"
+            },
+            {
+              "label_en": "acetone cyanohydrin",
+              "src": "output/relevant_output/structures/acetone-cyanohydrin.svg",
+              "smiles": "CC(C#N)(O)C",
+              "in_gold": true,
+              "position_en": "4th, top-right, drawn above the second arrow as a reagent, unlabelled"
+            },
+            {
+              "label_en": "tembotrione",
+              "src": "output/relevant_output/structures/tembotrione.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "5th, second row, left; the product the second arrow leads to"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p05_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "coarse",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: it was NOT found. The machine counted 2 drawing-shaped blocks on page 5 but the reading of the page found 1 drawings, so no block can be trusted to be this one. The WHOLE PAGE is shown instead. Find the drawing yourself before answering.",
+          "page": "p05",
+          "page_image_path": "input/pages/p05.png",
+          "marker": null,
+          "box": {
+            "x_left": 0,
+            "y_top": 0,
+            "x_right": 1653,
+            "y_bot": 2339
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1.png"
+      }
+    },
+    {
+      "claim_id": "202bd4bf9ab604d8",
+      "record_id": "CN111440099B_p05_x2",
+      "record_kind": "patent",
+      "record_label_en": "Page 5, conflict 2",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 5 the patent does not agree with itself. The acid chloride intermediate the prose describes as isolated is drawn nowhere: one arrow collapses two written stages. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The acid chloride intermediate the prose describes as isolated is drawn nowhere: one arrow collapses two written stages.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        145
+      ],
+      "evidence_en": "THE DRAWING SAYS: A single arrow carries the benzoic acid straight to the enol ester, with SOCl2 above it and cyclohexane-1,3-dione below it, so no acid chloride structure appears on the page.  THE TEXT SAYS: [0029] on p04 describes two separate stages: reaction with thionyl chloride at 15℃ then 75℃ for 3h, distillation of the solvent and the excess thionyl chloride off at 85℃ under reduced pressure, and only then a fresh charge of solvent, base and the dione.",
+      "evidence_lines": [
+        {
+          "n": 145,
+          "text_en": "THE DRAWING SAYS: A single arrow carries the benzoic acid straight to the enol ester, with SOCl2 above it and cyclohexane-1,3-dione below it, so no acid chloride structure appears on the page.  THE TEXT SAYS: [0029] on p04 describes two separate stages: reaction with thionyl chloride at 15℃ then 75℃ for 3h, distillation of the solvent and the excess thionyl chloride off at 85℃ under reduced pressure, and only then a fresh charge of solvent, base and the dione.",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 5",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p05.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "A single arrow carries the benzoic acid straight to the enol ester, with SOCl2 above it and cyclohexane-1,3-dione below it, so no acid chloride structure appears on the page.",
+      "text_says_en": "[0029] on p04 describes two separate stages: reaction with thionyl chloride at 15℃ then 75℃ for 3h, distillation of the solvent and the excess thionyl chloride off at 85℃ under reduced pressure, and only then a fresh charge of solvent, base and the dione.",
+      "disagreement": {
+        "drawing_says_en": "A single arrow carries the benzoic acid straight to the enol ester, with SOCl2 above it and cyclohexane-1,3-dione below it, so no acid chloride structure appears on the page.",
+        "text_says_en": "[0029] on p04 describes two separate stages: reaction with thionyl chloride at 15℃ then 75℃ for 3h, distillation of the solvent and the excess thionyl chloride off at 85℃ under reduced pressure, and only then a fresh charge of solvent, base and the dione.",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p05",
+      "page_number": 5,
+      "markers_mentioned": [
+        "[0029]"
+      ],
+      "related_records": [
+        {
+          "identifier_en": "cyclohexane-1,3-dione",
+          "what_we_recorded_smiles": "C1(CC(CCC1)=O)=O",
+          "we_hold_a_structure": true,
+          "formula": "C6H8O2",
+          "structure_svg_path": "output/relevant_output/structures/cyclohexane-1-3-dione.svg"
+        },
+        {
+          "identifier_en": "thionyl chloride",
+          "what_we_recorded_smiles": "S(=O)(Cl)Cl",
+          "we_hold_a_structure": true,
+          "formula": "Cl2OS",
+          "structure_svg_path": "output/relevant_output/structures/thionyl-chloride.svg"
+        }
+      ],
+      "drawings_on_this_page": [
+        "CN111440099B_p05_d1"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+              "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "1st, top-left, before the first arrow"
+            },
+            {
+              "label_en": "cyclohexane-1,3-dione",
+              "src": "output/relevant_output/structures/cyclohexane-1-3-dione.svg",
+              "smiles": "C1(CC(CCC1)=O)=O",
+              "in_gold": true,
+              "position_en": "2nd, top row, drawn below the first arrow as a reagent"
+            },
+            {
+              "label_en": "enol ester",
+              "src": "output/relevant_output/structures/enol-ester.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "3rd, top-right, after the first arrow and before the second"
+            },
+            {
+              "label_en": "acetone cyanohydrin",
+              "src": "output/relevant_output/structures/acetone-cyanohydrin.svg",
+              "smiles": "CC(C#N)(O)C",
+              "in_gold": true,
+              "position_en": "4th, top-right, drawn above the second arrow as a reagent, unlabelled"
+            },
+            {
+              "label_en": "tembotrione",
+              "src": "output/relevant_output/structures/tembotrione.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "5th, second row, left; the product the second arrow leads to"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p05_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "coarse",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: it was NOT found. The machine counted 2 drawing-shaped blocks on page 5 but the reading of the page found 1 drawings, so no block can be trusted to be this one. The WHOLE PAGE is shown instead. Find the drawing yourself before answering.",
+          "page": "p05",
+          "page_image_path": "input/pages/p05.png",
+          "marker": null,
+          "box": {
+            "x_left": 0,
+            "y_top": 0,
+            "x_right": 1653,
+            "y_bot": 2339
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1.png"
+      }
+    },
+    {
+      "claim_id": "1c1c1eeb65fef026",
+      "record_id": "CN111440099B_p05_x3",
+      "record_kind": "patent",
+      "record_label_en": "Page 5, conflict 3",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 5 the patent does not agree with itself. Every solvent, base and condition written in the prose is absent from the drawing. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "Every solvent, base and condition written in the prose is absent from the drawing.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        145
+      ],
+      "evidence_en": "THE DRAWING SAYS: Nothing appears above or below either arrow except SOCl2 and the two drawn reagent molecules: no solvent, no base, no temperature, no time.  THE TEXT SAYS: [0029] on p04 specifies 1,2-dichloroethane, triethylamine, 15℃, 0.5h at room temperature, 75℃ for 3h, -0.098mP, 85℃ and 40℃ for 6h; [0032] on this page adds that a suitable base such as triethylamine may be added before the dione reaction to form the enol ester solution.",
+      "evidence_lines": [
+        {
+          "n": 145,
+          "text_en": "THE DRAWING SAYS: Nothing appears above or below either arrow except SOCl2 and the two drawn reagent molecules: no solvent, no base, no temperature, no time.  THE TEXT SAYS: [0029] on p04 specifies 1,2-dichloroethane, triethylamine, 15℃, 0.5h at room temperature, 75℃ for 3h, -0.098mP, 85℃ and 40℃ for 6h; [0032] on this page adds that a suitable base such as triethylamine may be added before the dione reaction to form the enol ester solution.",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 5",
+      "about": "patent",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "page_image_path": "input/pages/p05.png",
+        "comparison_image": "comparisons/CN111440099B_p05_d1.png",
+        "patent_crop_image": "comparisons/CN111440099B_p05_d1-patent.png"
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "Nothing appears above or below either arrow except SOCl2 and the two drawn reagent molecules: no solvent, no base, no temperature, no time.",
+      "text_says_en": "[0029] on p04 specifies 1,2-dichloroethane, triethylamine, 15℃, 0.5h at room temperature, 75℃ for 3h, -0.098mP, 85℃ and 40℃ for 6h; [0032] on this page adds that a suitable base such as triethylamine may be added before the dione reaction to form the enol ester solution.",
+      "disagreement": {
+        "drawing_says_en": "Nothing appears above or below either arrow except SOCl2 and the two drawn reagent molecules: no solvent, no base, no temperature, no time.",
+        "text_says_en": "[0029] on p04 specifies 1,2-dichloroethane, triethylamine, 15℃, 0.5h at room temperature, 75℃ for 3h, -0.098mP, 85℃ and 40℃ for 6h; [0032] on this page adds that a suitable base such as triethylamine may be added before the dione reaction to form the enol ester solution.",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p05",
+      "page_number": 5,
+      "markers_mentioned": [
+        "[0029]",
+        "[0032]"
+      ],
+      "related_records": [
+        {
+          "identifier_en": "1,2-dichloroethane",
+          "what_we_recorded_smiles": "ClCCCl",
+          "we_hold_a_structure": true,
+          "formula": "C2H4Cl2",
+          "structure_svg_path": "output/relevant_output/structures/1-2-dichloroethane.svg"
+        }
+      ],
+      "drawings_on_this_page": [
+        "CN111440099B_p05_d1"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+              "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "1st, top-left, before the first arrow"
+            },
+            {
+              "label_en": "cyclohexane-1,3-dione",
+              "src": "output/relevant_output/structures/cyclohexane-1-3-dione.svg",
+              "smiles": "C1(CC(CCC1)=O)=O",
+              "in_gold": true,
+              "position_en": "2nd, top row, drawn below the first arrow as a reagent"
+            },
+            {
+              "label_en": "enol ester",
+              "src": "output/relevant_output/structures/enol-ester.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "3rd, top-right, after the first arrow and before the second"
+            },
+            {
+              "label_en": "acetone cyanohydrin",
+              "src": "output/relevant_output/structures/acetone-cyanohydrin.svg",
+              "smiles": "CC(C#N)(O)C",
+              "in_gold": true,
+              "position_en": "4th, top-right, drawn above the second arrow as a reagent, unlabelled"
+            },
+            {
+              "label_en": "tembotrione",
+              "src": "output/relevant_output/structures/tembotrione.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "5th, second row, left; the product the second arrow leads to"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p05_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "coarse",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: it was NOT found. The machine counted 2 drawing-shaped blocks on page 5 but the reading of the page found 1 drawings, so no block can be trusted to be this one. The WHOLE PAGE is shown instead. Find the drawing yourself before answering.",
+          "page": "p05",
+          "page_image_path": "input/pages/p05.png",
+          "marker": null,
+          "box": {
+            "x_left": 0,
+            "y_top": 0,
+            "x_right": 1653,
+            "y_bot": 2339
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1.png"
+      }
+    },
+    {
+      "claim_id": "8c74156dc1c1d37d",
+      "record_id": "CN111440099B_p05_x4",
+      "record_kind": "patent",
+      "record_label_en": "Page 5, conflict 4",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 5 the patent does not agree with itself. The dione is written without a locant on this page while the drawing fixes the isomer. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The dione is written without a locant on this page while the drawing fixes the isomer.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        145
+      ],
+      "evidence_en": "THE DRAWING SAYS: The reagent below the first arrow is drawn as cyclohexane-1,3-dione, its two carbonyls one carbon apart.  THE TEXT SAYS: [0032] on this page writes only cyclohexanedione, with no isomer locant; [0029] on p04 does write the 1,3-isomer, so the drawing agrees with p04 and is merely more specific than [0032].",
+      "evidence_lines": [
+        {
+          "n": 145,
+          "text_en": "THE DRAWING SAYS: The reagent below the first arrow is drawn as cyclohexane-1,3-dione, its two carbonyls one carbon apart.  THE TEXT SAYS: [0032] on this page writes only cyclohexanedione, with no isomer locant; [0029] on p04 does write the 1,3-isomer, so the drawing agrees with p04 and is merely more specific than [0032].",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 5",
+      "about": "patent",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "page_image_path": "input/pages/p05.png",
+        "comparison_image": "comparisons/CN111440099B_p05_d1.png",
+        "patent_crop_image": "comparisons/CN111440099B_p05_d1-patent.png"
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "The reagent below the first arrow is drawn as cyclohexane-1,3-dione, its two carbonyls one carbon apart.",
+      "text_says_en": "[0032] on this page writes only cyclohexanedione, with no isomer locant; [0029] on p04 does write the 1,3-isomer, so the drawing agrees with p04 and is merely more specific than [0032].",
+      "disagreement": {
+        "drawing_says_en": "The reagent below the first arrow is drawn as cyclohexane-1,3-dione, its two carbonyls one carbon apart.",
+        "text_says_en": "[0032] on this page writes only cyclohexanedione, with no isomer locant; [0029] on p04 does write the 1,3-isomer, so the drawing agrees with p04 and is merely more specific than [0032].",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p05",
+      "page_number": 5,
+      "markers_mentioned": [
+        "[0029]",
+        "[0032]"
+      ],
+      "related_records": [
+        {
+          "identifier_en": "cyclohexane-1,3-dione",
+          "what_we_recorded_smiles": "C1(CC(CCC1)=O)=O",
+          "we_hold_a_structure": true,
+          "formula": "C6H8O2",
+          "structure_svg_path": "output/relevant_output/structures/cyclohexane-1-3-dione.svg"
+        }
+      ],
+      "drawings_on_this_page": [
+        "CN111440099B_p05_d1"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+              "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "1st, top-left, before the first arrow"
+            },
+            {
+              "label_en": "cyclohexane-1,3-dione",
+              "src": "output/relevant_output/structures/cyclohexane-1-3-dione.svg",
+              "smiles": "C1(CC(CCC1)=O)=O",
+              "in_gold": true,
+              "position_en": "2nd, top row, drawn below the first arrow as a reagent"
+            },
+            {
+              "label_en": "enol ester",
+              "src": "output/relevant_output/structures/enol-ester.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "3rd, top-right, after the first arrow and before the second"
+            },
+            {
+              "label_en": "acetone cyanohydrin",
+              "src": "output/relevant_output/structures/acetone-cyanohydrin.svg",
+              "smiles": "CC(C#N)(O)C",
+              "in_gold": true,
+              "position_en": "4th, top-right, drawn above the second arrow as a reagent, unlabelled"
+            },
+            {
+              "label_en": "tembotrione",
+              "src": "output/relevant_output/structures/tembotrione.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "5th, second row, left; the product the second arrow leads to"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p05_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "coarse",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: it was NOT found. The machine counted 2 drawing-shaped blocks on page 5 but the reading of the page found 1 drawings, so no block can be trusted to be this one. The WHOLE PAGE is shown instead. Find the drawing yourself before answering.",
+          "page": "p05",
+          "page_image_path": "input/pages/p05.png",
+          "marker": null,
+          "box": {
+            "x_left": 0,
+            "y_top": 0,
+            "x_right": 1653,
+            "y_bot": 2339
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1.png"
+      }
+    },
+    {
+      "claim_id": "c6e8bcdd1d230548",
+      "record_id": "CN111440099B_p05_x5",
+      "record_kind": "patent",
+      "record_label_en": "Page 5, conflict 5",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 5 the patent does not agree with itself. Acetone cyanohydrin is drawn but never written on this page, and its place in the sequence differs between drawing and prose. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "Acetone cyanohydrin is drawn but never written on this page, and its place in the sequence differs between drawing and prose.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        145
+      ],
+      "evidence_en": "THE DRAWING SAYS: An unlabelled (CH3)2C(OH)CN structure sits above the second arrow, i.e. as the reagent that converts the enol ester into the product, in a step of its own.  THE TEXT SAYS: [0029] on p04 names acetone cyanohydrin but charges it together with 1,3-cyclohexanedione into a single 40℃ 6h step; nothing on this page names it at all.",
+      "evidence_lines": [
+        {
+          "n": 145,
+          "text_en": "THE DRAWING SAYS: An unlabelled (CH3)2C(OH)CN structure sits above the second arrow, i.e. as the reagent that converts the enol ester into the product, in a step of its own.  THE TEXT SAYS: [0029] on p04 names acetone cyanohydrin but charges it together with 1,3-cyclohexanedione into a single 40℃ 6h step; nothing on this page names it at all.",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 5",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p05.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "An unlabelled (CH3)2C(OH)CN structure sits above the second arrow, i.e. as the reagent that converts the enol ester into the product, in a step of its own.",
+      "text_says_en": "[0029] on p04 names acetone cyanohydrin but charges it together with 1,3-cyclohexanedione into a single 40℃ 6h step; nothing on this page names it at all.",
+      "disagreement": {
+        "drawing_says_en": "An unlabelled (CH3)2C(OH)CN structure sits above the second arrow, i.e. as the reagent that converts the enol ester into the product, in a step of its own.",
+        "text_says_en": "[0029] on p04 names acetone cyanohydrin but charges it together with 1,3-cyclohexanedione into a single 40℃ 6h step; nothing on this page names it at all.",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p05",
+      "page_number": 5,
+      "markers_mentioned": [
+        "[0029]"
+      ],
+      "related_records": [
+        {
+          "identifier_en": "acetone cyanohydrin",
+          "what_we_recorded_smiles": "CC(C#N)(O)C",
+          "we_hold_a_structure": true,
+          "formula": "C4H7NO",
+          "structure_svg_path": "output/relevant_output/structures/acetone-cyanohydrin.svg"
+        }
+      ],
+      "drawings_on_this_page": [
+        "CN111440099B_p05_d1"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+              "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "1st, top-left, before the first arrow"
+            },
+            {
+              "label_en": "cyclohexane-1,3-dione",
+              "src": "output/relevant_output/structures/cyclohexane-1-3-dione.svg",
+              "smiles": "C1(CC(CCC1)=O)=O",
+              "in_gold": true,
+              "position_en": "2nd, top row, drawn below the first arrow as a reagent"
+            },
+            {
+              "label_en": "enol ester",
+              "src": "output/relevant_output/structures/enol-ester.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "3rd, top-right, after the first arrow and before the second"
+            },
+            {
+              "label_en": "acetone cyanohydrin",
+              "src": "output/relevant_output/structures/acetone-cyanohydrin.svg",
+              "smiles": "CC(C#N)(O)C",
+              "in_gold": true,
+              "position_en": "4th, top-right, drawn above the second arrow as a reagent, unlabelled"
+            },
+            {
+              "label_en": "tembotrione",
+              "src": "output/relevant_output/structures/tembotrione.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "5th, second row, left; the product the second arrow leads to"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p05_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "coarse",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: it was NOT found. The machine counted 2 drawing-shaped blocks on page 5 but the reading of the page found 1 drawings, so no block can be trusted to be this one. The WHOLE PAGE is shown instead. Find the drawing yourself before answering.",
+          "page": "p05",
+          "page_image_path": "input/pages/p05.png",
+          "marker": null,
+          "box": {
+            "x_left": 0,
+            "y_top": 0,
+            "x_right": 1653,
+            "y_bot": 2339
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1.png"
+      }
+    },
+    {
+      "claim_id": "5aae5bac984193c2",
+      "record_id": "CN111440099B_p05_x6",
+      "record_kind": "patent",
+      "record_label_en": "Page 5, conflict 6",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 5 the patent does not agree with itself. The final drawn structure is never named in the prose, so the drawing is the only record of the product's connectivity. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The final drawn structure is never named in the prose, so the drawing is the only record of the product's connectivity.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        145
+      ],
+      "evidence_en": "THE DRAWING SAYS: The product is drawn as 2-{2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl}cyclohexane-1,3-dione.  THE TEXT SAYS: [0029] on p04 calls the product only a red-brown solid; [0032] on this page calls it the tembotrione product. Neither gives a systematic name for the drawing to be checked against.",
+      "evidence_lines": [
+        {
+          "n": 145,
+          "text_en": "THE DRAWING SAYS: The product is drawn as 2-{2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl}cyclohexane-1,3-dione.  THE TEXT SAYS: [0029] on p04 calls the product only a red-brown solid; [0032] on this page calls it the tembotrione product. Neither gives a systematic name for the drawing to be checked against.",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 5",
+      "about": "patent",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "page_image_path": "input/pages/p05.png",
+        "comparison_image": "comparisons/CN111440099B_p05_d1.png",
+        "patent_crop_image": "comparisons/CN111440099B_p05_d1-patent.png"
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "The product is drawn as 2-{2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl}cyclohexane-1,3-dione.",
+      "text_says_en": "[0029] on p04 calls the product only a red-brown solid; [0032] on this page calls it the tembotrione product. Neither gives a systematic name for the drawing to be checked against.",
+      "disagreement": {
+        "drawing_says_en": "The product is drawn as 2-{2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl}cyclohexane-1,3-dione.",
+        "text_says_en": "[0029] on p04 calls the product only a red-brown solid; [0032] on this page calls it the tembotrione product. Neither gives a systematic name for the drawing to be checked against.",
+        "we_followed": "drawing",
+        "we_followed_note_en": "Every structure drawn on this page resolved into a record we hold, so on the structural question our annotation follows the drawing. Whether that was the right call for THIS conflict is what is being asked."
+      },
+      "page": "p05",
+      "page_number": 5,
+      "markers_mentioned": [
+        "[0029]",
+        "[0032]"
+      ],
+      "related_records": [
+        {
+          "identifier_en": "cyclohexane-1,3-dione",
+          "what_we_recorded_smiles": "C1(CC(CCC1)=O)=O",
+          "we_hold_a_structure": true,
+          "formula": "C6H8O2",
+          "structure_svg_path": "output/relevant_output/structures/cyclohexane-1-3-dione.svg"
+        }
+      ],
+      "drawings_on_this_page": [
+        "CN111440099B_p05_d1"
+      ],
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+              "src": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "1st, top-left, before the first arrow"
+            },
+            {
+              "label_en": "cyclohexane-1,3-dione",
+              "src": "output/relevant_output/structures/cyclohexane-1-3-dione.svg",
+              "smiles": "C1(CC(CCC1)=O)=O",
+              "in_gold": true,
+              "position_en": "2nd, top row, drawn below the first arrow as a reagent"
+            },
+            {
+              "label_en": "enol ester",
+              "src": "output/relevant_output/structures/enol-ester.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "3rd, top-right, after the first arrow and before the second"
+            },
+            {
+              "label_en": "acetone cyanohydrin",
+              "src": "output/relevant_output/structures/acetone-cyanohydrin.svg",
+              "smiles": "CC(C#N)(O)C",
+              "in_gold": true,
+              "position_en": "4th, top-right, drawn above the second arrow as a reagent, unlabelled"
+            },
+            {
+              "label_en": "tembotrione",
+              "src": "output/relevant_output/structures/tembotrione.svg",
+              "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+              "in_gold": true,
+              "position_en": "5th, second row, left; the product the second arrow leads to"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p05_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "coarse",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: it was NOT found. The machine counted 2 drawing-shaped blocks on page 5 but the reading of the page found 1 drawings, so no block can be trusted to be this one. The WHOLE PAGE is shown instead. Find the drawing yourself before answering.",
+          "page": "p05",
+          "page_image_path": "input/pages/p05.png",
+          "marker": null,
+          "box": {
+            "x_left": 0,
+            "y_top": 0,
+            "x_right": 1653,
+            "y_bot": 2339
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p05_d1.png"
+      }
+    },
+    {
+      "claim_id": "086a9870d5af5fef",
+      "record_id": "CN111440099B_p06_x1",
+      "record_kind": "patent",
+      "record_label_en": "Page 6, conflict 1",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 6 the patent does not agree with itself. The stated percentage reduction in column 5 does not follow from the two ppm columns beside it in any row on this page, and it is not monotonic against the residual it is supposedly computed from. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The stated percentage reduction in column 5 does not follow from the two ppm columns beside it in any row on this page, and it is not monotonic against the residual it is supposedly computed from.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "THE DRAWING SAYS: As printed on this page: batch 3 reads 1327, 92, 74%; batch 4 reads 1327, 88, 89%; batch 5 reads 1327, 72, 91%; batch 6 reads 1327, 45, 98%. Computed from the two printed ppm columns, the reduction would be 93.07% for batch 3, 93.37% for batch 4, 94.57% for batch 5 and 96.61% for batch 6. The 93.07 / 93.37 / 94.57 / 96.61 figures are computed here for comparison only and appear nowhere on the page. Worse than the size of the gap is its direction: batch 3 has MORE residual cyanide than batch 4, 92 ppm against 88 ppm, yet prints a much lower reduction, 74% against 89%, so the printed column cannot be a reduction computed from the printed residuals.  THE TEXT SAYS: Nothing on this page. The header row and the Table 1 caption are printed on p05; per that header, supplied by the coordinator, column 3 is the original cyanide impurity content in ppm, column 4 is the cyanide impurity content after treatment in ppm, and column 5 is the percentage reduction in cyanide impurity content. Recorded, not resolved: no printed cell was altered, and no cell was filled with a computed value.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 6",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p06.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "As printed on this page: batch 3 reads 1327, 92, 74%; batch 4 reads 1327, 88, 89%; batch 5 reads 1327, 72, 91%; batch 6 reads 1327, 45, 98%. Computed from the two printed ppm columns, the reduction would be 93.07% for batch 3, 93.37% for batch 4, 94.57% for batch 5 and 96.61% for batch 6. The 93.07 / 93.37 / 94.57 / 96.61 figures are computed here for comparison only and appear nowhere on the page. Worse than the size of the gap is its direction: batch 3 has MORE residual cyanide than batch 4, 92 ppm against 88 ppm, yet prints a much lower reduction, 74% against 89%, so the printed column cannot be a reduction computed from the printed residuals.",
+      "text_says_en": "Nothing on this page. The header row and the Table 1 caption are printed on p05; per that header, supplied by the coordinator, column 3 is the original cyanide impurity content in ppm, column 4 is the cyanide impurity content after treatment in ppm, and column 5 is the percentage reduction in cyanide impurity content. Recorded, not resolved: no printed cell was altered, and no cell was filled with a computed value.",
+      "disagreement": {
+        "drawing_says_en": "As printed on this page: batch 3 reads 1327, 92, 74%; batch 4 reads 1327, 88, 89%; batch 5 reads 1327, 72, 91%; batch 6 reads 1327, 45, 98%. Computed from the two printed ppm columns, the reduction would be 93.07% for batch 3, 93.37% for batch 4, 94.57% for batch 5 and 96.61% for batch 6. The 93.07 / 93.37 / 94.57 / 96.61 figures are computed here for comparison only and appear nowhere on the page. Worse than the size of the gap is its direction: batch 3 has MORE residual cyanide than batch 4, 92 ppm against 88 ppm, yet prints a much lower reduction, 74% against 89%, so the printed column cannot be a reduction computed from the printed residuals.",
+        "text_says_en": "Nothing on this page. The header row and the Table 1 caption are printed on p05; per that header, supplied by the coordinator, column 3 is the original cyanide impurity content in ppm, column 4 is the cyanide impurity content after treatment in ppm, and column 5 is the percentage reduction in cyanide impurity content. Recorded, not resolved: no printed cell was altered, and no cell was filled with a computed value.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p06",
+      "page_number": 6,
+      "markers_mentioned": [],
+      "related_records": [],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "1d4e76c0b242fa73",
+      "record_id": "CN111440099B_p07_x1",
+      "record_kind": "patent",
+      "record_label_en": "Page 7, conflict 1",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 7 the patent does not agree with itself. The fifth column of Table 2 is the percentage reduction in cyanide impurity content, so it should follow arithmetically from the two ppm columns printed beside it. On three of this page's four batches it does not. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The fifth column of Table 2 is the percentage reduction in cyanide impurity content, so it should follow arithmetically from the two ppm columns printed beside it. On three of this page's four batches it does not.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "THE DRAWING SAYS: Printed on this page, then the value that follows from the same row's two ppm cells. Batch 7: printed 1125 and 32, printed reduction 97, computed 97.16%, agrees. Batch 8: printed 1125 and 67, printed reduction 91%, computed 94.04%. Batch 9: printed 1125 and 81, printed reduction 88%, computed 92.80%. Batch 10: printed 1125 and 94, printed reduction 81%, computed 91.65%. The computed figures are computed here for this comparison only and appear nowhere on the page; every printed cell in the transcription above is left exactly as printed and none was recomputed, rounded or replaced.  THE TEXT SAYS: No prose on this page states any reduction percentage, so nothing in the text either confirms or contradicts the printed column; the disagreement is internal to the patent's results. The coordinating pass reports the same pattern in the other four tables of this patent, which makes it a defect running through the whole results set rather than one bad cell.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 7",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p07.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "Printed on this page, then the value that follows from the same row's two ppm cells. Batch 7: printed 1125 and 32, printed reduction 97, computed 97.16%, agrees. Batch 8: printed 1125 and 67, printed reduction 91%, computed 94.04%. Batch 9: printed 1125 and 81, printed reduction 88%, computed 92.80%. Batch 10: printed 1125 and 94, printed reduction 81%, computed 91.65%. The computed figures are computed here for this comparison only and appear nowhere on the page; every printed cell in the transcription above is left exactly as printed and none was recomputed, rounded or replaced.",
+      "text_says_en": "No prose on this page states any reduction percentage, so nothing in the text either confirms or contradicts the printed column; the disagreement is internal to the patent's results. The coordinating pass reports the same pattern in the other four tables of this patent, which makes it a defect running through the whole results set rather than one bad cell.",
+      "disagreement": {
+        "drawing_says_en": "Printed on this page, then the value that follows from the same row's two ppm cells. Batch 7: printed 1125 and 32, printed reduction 97, computed 97.16%, agrees. Batch 8: printed 1125 and 67, printed reduction 91%, computed 94.04%. Batch 9: printed 1125 and 81, printed reduction 88%, computed 92.80%. Batch 10: printed 1125 and 94, printed reduction 81%, computed 91.65%. The computed figures are computed here for this comparison only and appear nowhere on the page; every printed cell in the transcription above is left exactly as printed and none was recomputed, rounded or replaced.",
+        "text_says_en": "No prose on this page states any reduction percentage, so nothing in the text either confirms or contradicts the printed column; the disagreement is internal to the patent's results. The coordinating pass reports the same pattern in the other four tables of this patent, which makes it a defect running through the whole results set rather than one bad cell.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p07",
+      "page_number": 7,
+      "markers_mentioned": [],
+      "related_records": [],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "832cf601a4d61a46",
+      "record_id": "CN111440099B_p07_x2",
+      "record_kind": "patent",
+      "record_label_en": "Page 7, conflict 2",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 7 the patent does not agree with itself. The reduction column is punctuated inconsistently inside the table image: batch 7's cell prints a bare number with no percent sign while batches 8, 9 and 10 all print one. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The reduction column is punctuated inconsistently inside the table image: batch 7's cell prints a bare number with no percent sign while batches 8, 9 and 10 all print one.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "THE DRAWING SAYS: 97 for batch 7, against 91%, 88% and 81% for batches 8, 9 and 10.  THE TEXT SAYS: The column header itself translates as \"Reduction in cyanide impurity content %\", so the header carries the percent sign for every row. Cells are kept exactly as printed rather than normalised.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 7",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p07.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "97 for batch 7, against 91%, 88% and 81% for batches 8, 9 and 10.",
+      "text_says_en": "The column header itself translates as \"Reduction in cyanide impurity content %\", so the header carries the percent sign for every row. Cells are kept exactly as printed rather than normalised.",
+      "disagreement": {
+        "drawing_says_en": "97 for batch 7, against 91%, 88% and 81% for batches 8, 9 and 10.",
+        "text_says_en": "The column header itself translates as \"Reduction in cyanide impurity content %\", so the header carries the percent sign for every row. Cells are kept exactly as printed rather than normalised.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p07",
+      "page_number": 7,
+      "markers_mentioned": [],
+      "related_records": [],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "1a4d560e2746978f",
+      "record_id": "CN111440099B_p08_x1",
+      "record_kind": "patent",
+      "record_label_en": "Page 8, conflict 1",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 8 the patent does not agree with itself. The printed reduction column of this table disagrees with the two cyanide-content columns printed beside it, in all three batches on this page. The disagreement is arithmetic and internal to the table image; it is not a disagreement with any prose on this page. Confirmed by the coordinator to run through all five tables in this patent, not only this one. Every printed cell is left exactly as printed. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The printed reduction column of this table disagrees with the two cyanide-content columns printed beside it, in all three batches on this page. The disagreement is arithmetic and internal to the table image; it is not a disagreement with any prose on this page. Confirmed by the coordinator to run through all five tables in this patent, not only this one. Every printed cell is left exactly as printed.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "THE DRAWING SAYS: Printed cells, batch 11: original 1257 ppm, after treatment 31 ppm, reduction 96%. Batch 12: 1257 ppm, 37 ppm, 95%. Batch 13: 1257 ppm, 12 ppm, 98%.  THE TEXT SAYS: Computed from the two printed content columns, not printed anywhere on the page: batch 11 is a 97.53% reduction against the printed 96%, batch 12 is 97.06% against the printed 95%, and batch 13 is 99.05% against the printed 98%. These three percentages are computed values, supplied here only to state the size of the disagreement, and no printed cell was changed to match them. No prose on this page states a reduction percentage.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 8",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p08.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "Printed cells, batch 11: original 1257 ppm, after treatment 31 ppm, reduction 96%. Batch 12: 1257 ppm, 37 ppm, 95%. Batch 13: 1257 ppm, 12 ppm, 98%.",
+      "text_says_en": "Computed from the two printed content columns, not printed anywhere on the page: batch 11 is a 97.53% reduction against the printed 96%, batch 12 is 97.06% against the printed 95%, and batch 13 is 99.05% against the printed 98%. These three percentages are computed values, supplied here only to state the size of the disagreement, and no printed cell was changed to match them. No prose on this page states a reduction percentage.",
+      "disagreement": {
+        "drawing_says_en": "Printed cells, batch 11: original 1257 ppm, after treatment 31 ppm, reduction 96%. Batch 12: 1257 ppm, 37 ppm, 95%. Batch 13: 1257 ppm, 12 ppm, 98%.",
+        "text_says_en": "Computed from the two printed content columns, not printed anywhere on the page: batch 11 is a 97.53% reduction against the printed 96%, batch 12 is 97.06% against the printed 95%, and batch 13 is 99.05% against the printed 98%. These three percentages are computed values, supplied here only to state the size of the disagreement, and no printed cell was changed to match them. No prose on this page states a reduction percentage.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p08",
+      "page_number": 8,
+      "markers_mentioned": [],
+      "related_records": [],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "19a40246f80ceda2",
+      "record_id": "CN111440099B_p08_x2",
+      "record_kind": "patent",
+      "record_label_en": "Page 8, conflict 2",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 8 the patent does not agree with itself. Reading disagreement on the first character of the first column header, recorded rather than resolved. The coordinator reads that character, from the copy of this header printed on p05, as the one meaning actual or experiment, giving 'experiment batch'. On p08 it is the character meaning test or trial: checked twice at 7x zoom, the glyph carries the three-stroke speech radical on the left and the phonetic for 'style' on the right, with no roof radical above, so on this page the header reads 'test batch'. The zh cell is left as printed on this page. Whether p05 genuinely prints a different character or the two readings simply differ is not decidable from p08 alone, and is left open. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "Reading disagreement on the first character of the first column header, recorded rather than resolved. The coordinator reads that character, from the copy of this header printed on p05, as the one meaning actual or experiment, giving 'experiment batch'. On p08 it is the character meaning test or trial: checked twice at 7x zoom, the glyph carries the three-stroke speech radical on the left and the phonetic for 'style' on the right, with no roof radical above, so on this page the header reads 'test batch'. The zh cell is left as printed on this page. Whether p05 genuinely prints a different character or the two readings simply differ is not decidable from p08 alone, and is left open.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "THE DRAWING SAYS: p08 header row, first column: the character for test or trial plus batch, that is 'test batch'.  THE TEXT SAYS: Coordinator reading of the same header printed on p05: the character for actual or experiment plus batch, that is 'experiment batch'.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 8",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p08.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "p08 header row, first column: the character for test or trial plus batch, that is 'test batch'.",
+      "text_says_en": "Coordinator reading of the same header printed on p05: the character for actual or experiment plus batch, that is 'experiment batch'.",
+      "disagreement": {
+        "drawing_says_en": "p08 header row, first column: the character for test or trial plus batch, that is 'test batch'.",
+        "text_says_en": "Coordinator reading of the same header printed on p05: the character for actual or experiment plus batch, that is 'experiment batch'.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p08",
+      "page_number": 8,
+      "markers_mentioned": [],
+      "related_records": [],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "99ce398656d3d6e1",
+      "record_id": "CN111440099B_p09_x1",
+      "record_kind": "patent",
+      "record_label_en": "Page 9, conflict 1",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 9 the patent does not agree with itself. The fifth column of both tables on this page is the percentage reduction in cyanide impurity content, so it should follow from the two ppm columns printed in the same row. In every row on this page it does not. The printed cells are recorded unchanged; the percentages below marked computed were derived here from the printed ppm pairs purely to state the size of the disagreement, and no printed cell was recomputed, corrected or replaced. The column header is not on this page for the first table in the series; it was supplied by the coordinating read of p05, where the first table of the series prints it. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The fifth column of both tables on this page is the percentage reduction in cyanide impurity content, so it should follow from the two ppm columns printed in the same row. In every row on this page it does not. The printed cells are recorded unchanged; the percentages below marked computed were derived here from the printed ppm pairs purely to state the size of the disagreement, and no printed cell was recomputed, corrected or replaced. The column header is not on this page for the first table in the series; it was supplied by the coordinating read of p05, where the first table of the series prints it.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "THE DRAWING SAYS: Table Four at paragraph 0048: row 14 goes from 1029 ppm to 38 ppm, which is 96.31 percent computed against 97 printed with no percent sign; row 15 goes from 1029 ppm to 46 ppm, which is 95.53 percent computed against 94 percent printed. The table at paragraph 0051: batch 16 goes from 1238 ppm to 82 ppm, which is 93.38 percent computed against 88 percent printed; batch 17 goes from 1238 ppm to 46 ppm, which is 96.28 percent computed against 98 percent printed; batches 18 and 19 both go from 1238 ppm to 25 ppm, which is 97.98 percent computed against 99 percent printed, in both rows. Four of the six printed figures are low against the computation and two are high, so the disagreement is not a single consistent rounding rule or a single consistent offset.  THE TEXT SAYS: The prose on this page, paragraphs 0050 and 0053, states no reduction percentage at all, so nothing on this page settles which figure is intended. The fifth column header, printed on both tables on this page and also on the first table of the series on p05, reads cyanide impurity content reduction percent, and gives no derivation, no basis and no rounding rule.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 9",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p09.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "Table Four at paragraph 0048: row 14 goes from 1029 ppm to 38 ppm, which is 96.31 percent computed against 97 printed with no percent sign; row 15 goes from 1029 ppm to 46 ppm, which is 95.53 percent computed against 94 percent printed. The table at paragraph 0051: batch 16 goes from 1238 ppm to 82 ppm, which is 93.38 percent computed against 88 percent printed; batch 17 goes from 1238 ppm to 46 ppm, which is 96.28 percent computed against 98 percent printed; batches 18 and 19 both go from 1238 ppm to 25 ppm, which is 97.98 percent computed against 99 percent printed, in both rows. Four of the six printed figures are low against the computation and two are high, so the disagreement is not a single consistent rounding rule or a single consistent offset.",
+      "text_says_en": "The prose on this page, paragraphs 0050 and 0053, states no reduction percentage at all, so nothing on this page settles which figure is intended. The fifth column header, printed on both tables on this page and also on the first table of the series on p05, reads cyanide impurity content reduction percent, and gives no derivation, no basis and no rounding rule.",
+      "disagreement": {
+        "drawing_says_en": "Table Four at paragraph 0048: row 14 goes from 1029 ppm to 38 ppm, which is 96.31 percent computed against 97 printed with no percent sign; row 15 goes from 1029 ppm to 46 ppm, which is 95.53 percent computed against 94 percent printed. The table at paragraph 0051: batch 16 goes from 1238 ppm to 82 ppm, which is 93.38 percent computed against 88 percent printed; batch 17 goes from 1238 ppm to 46 ppm, which is 96.28 percent computed against 98 percent printed; batches 18 and 19 both go from 1238 ppm to 25 ppm, which is 97.98 percent computed against 99 percent printed, in both rows. Four of the six printed figures are low against the computation and two are high, so the disagreement is not a single consistent rounding rule or a single consistent offset.",
+        "text_says_en": "The prose on this page, paragraphs 0050 and 0053, states no reduction percentage at all, so nothing on this page settles which figure is intended. The fifth column header, printed on both tables on this page and also on the first table of the series on p05, reads cyanide impurity content reduction percent, and gives no derivation, no basis and no rounding rule.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p09",
+      "page_number": 9,
+      "markers_mentioned": [],
+      "related_records": [],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "0e46ba9193185440",
+      "record_id": "CN111440099B_p09_x2",
+      "record_kind": "patent",
+      "record_label_en": "Page 9, conflict 2",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 9 the patent does not agree with itself. The last cell of row 14 of Table Four is printed as a bare number with no percent sign, while every other cell in that column on this page carries one. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The last cell of row 14 of Table Four is printed as a bare number with no percent sign, while every other cell in that column on this page carries one.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "THE DRAWING SAYS: Row 14 of the table at paragraph 0048 prints 97; row 15 of the same table prints 94 percent.  THE TEXT SAYS: The column header of that table reads cyanide impurity content reduction percent, so a percentage is what the column holds; the prose says nothing about it.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 9",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p09.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "Row 14 of the table at paragraph 0048 prints 97; row 15 of the same table prints 94 percent.",
+      "text_says_en": "The column header of that table reads cyanide impurity content reduction percent, so a percentage is what the column holds; the prose says nothing about it.",
+      "disagreement": {
+        "drawing_says_en": "Row 14 of the table at paragraph 0048 prints 97; row 15 of the same table prints 94 percent.",
+        "text_says_en": "The column header of that table reads cyanide impurity content reduction percent, so a percentage is what the column holds; the prose says nothing about it.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p09",
+      "page_number": 9,
+      "markers_mentioned": [],
+      "related_records": [],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "5e253695eb8f4871",
+      "record_id": "CN111440099B_p09_x3",
+      "record_kind": "patent",
+      "record_label_en": "Page 9, conflict 3",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 9 the patent does not agree with itself. The prose of Example 5 and the table of Example 5 results list the four PH values in opposite order. The number of data rows does match the number of PH values named in the prose, four; only the order differs. Recorded, not reconciled. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The prose of Example 5 and the table of Example 5 results list the four PH values in opposite order. The number of data rows does match the number of PH values named in the prose, four; only the order differs. Recorded, not reconciled.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "THE DRAWING SAYS: The table at paragraph 0051 lists PH 5 for batch 16, then 4 for batch 17, then 3 for batch 18, then 2 for batch 19, descending.  THE TEXT SAYS: Paragraph 0050 states that the dilute hydrochloric acid was added to adjust the PH to 2, 3, 4 and 5 respectively, ascending.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 9",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p09.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "The table at paragraph 0051 lists PH 5 for batch 16, then 4 for batch 17, then 3 for batch 18, then 2 for batch 19, descending.",
+      "text_says_en": "Paragraph 0050 states that the dilute hydrochloric acid was added to adjust the PH to 2, 3, 4 and 5 respectively, ascending.",
+      "disagreement": {
+        "drawing_says_en": "The table at paragraph 0051 lists PH 5 for batch 16, then 4 for batch 17, then 3 for batch 18, then 2 for batch 19, descending.",
+        "text_says_en": "Paragraph 0050 states that the dilute hydrochloric acid was added to adjust the PH to 2, 3, 4 and 5 respectively, ascending.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p09",
+      "page_number": 9,
+      "markers_mentioned": [],
+      "related_records": [
+        {
+          "identifier_en": "hydrochloric acid",
+          "what_we_recorded_smiles": "Cl",
+          "we_hold_a_structure": true,
+          "formula": "HCl",
+          "structure_svg_path": "output/relevant_output/structures/hydrochloric-acid.svg"
+        }
+      ],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "a0fea4669d582034",
+      "record_id": "CN111440099B_p09_x4",
+      "record_kind": "patent",
+      "record_label_en": "Page 9, conflict 4",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 9 the patent does not agree with itself. The table at paragraph 0051 carries no printed caption, unlike the other tables in this document, so its identity rests on its position immediately after the prose of Example 5 rather than on any table number. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The table at paragraph 0051 carries no printed caption, unlike the other tables in this document, so its identity rests on its position immediately after the prose of Example 5 rather than on any table number.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "THE DRAWING SAYS: The table image printed at paragraph 0051 has no caption above, below or beside it.  THE TEXT SAYS: Paragraph 0050 ends by announcing that the following data were obtained, which introduces a table but does not number or name it.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 9",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p09.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "The table image printed at paragraph 0051 has no caption above, below or beside it.",
+      "text_says_en": "Paragraph 0050 ends by announcing that the following data were obtained, which introduces a table but does not number or name it.",
+      "disagreement": {
+        "drawing_says_en": "The table image printed at paragraph 0051 has no caption above, below or beside it.",
+        "text_says_en": "Paragraph 0050 ends by announcing that the following data were obtained, which introduces a table but does not number or name it.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p09",
+      "page_number": 9,
+      "markers_mentioned": [],
+      "related_records": [],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "f4456b5b34a72c13",
+      "record_id": "CN111440099B_p09_x5",
+      "record_kind": "patent",
+      "record_label_en": "Page 9, conflict 5",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 9 the patent does not agree with itself. Example 6 charges thionyl chloride onto a material named as an acid chloride, and strips excess thionyl chloride afterwards, which is the operation one performs on the corresponding acid. Recorded, not corrected, because the same wording appears in Example 1 on p04 and so is the patent's own. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "Example 6 charges thionyl chloride onto a material named as an acid chloride, and strips excess thionyl chloride afterwards, which is the operation one performs on the corresponding acid. Recorded, not corrected, because the same wording appears in Example 1 on p04 and so is the patent's own.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [],
+      "evidence_en": "THE DRAWING SAYS: There is no drawing on this page; the comparison is between the prose of paragraph 0053 on this page and the route as described in the body text on p03.  THE TEXT SAYS: Paragraph 0053 charges 231.9 g of the 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride and then adds 237.9 g of thionyl chloride, while p03 describes the preparation as the corresponding benzoic acid reacting with thionyl chloride to give that benzoyl chloride.",
+      "evidence_lines": [],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's drawing and the patent's words disagree here.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 9",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p09.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "There is no drawing on this page; the comparison is between the prose of paragraph 0053 on this page and the route as described in the body text on p03.",
+      "text_says_en": "Paragraph 0053 charges 231.9 g of the 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride and then adds 237.9 g of thionyl chloride, while p03 describes the preparation as the corresponding benzoic acid reacting with thionyl chloride to give that benzoyl chloride.",
+      "disagreement": {
+        "drawing_says_en": "There is no drawing on this page; the comparison is between the prose of paragraph 0053 on this page and the route as described in the body text on p03.",
+        "text_says_en": "Paragraph 0053 charges 231.9 g of the 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoyl chloride and then adds 237.9 g of thionyl chloride, while p03 describes the preparation as the corresponding benzoic acid reacting with thionyl chloride to give that benzoyl chloride.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p09",
+      "page_number": 9,
+      "markers_mentioned": [],
+      "related_records": [
+        {
+          "identifier_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+          "what_we_recorded_smiles": "ClC1=C(C(=O)Cl)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+          "we_hold_a_structure": true,
+          "formula": "C11H9Cl2F3O4S",
+          "structure_svg_path": "output/relevant_output/structures/2-chloro-3-2-2-2-trifluoroethoxy-methyl-4-methanesulfonyl-be.svg"
+        },
+        {
+          "identifier_en": "thionyl chloride",
+          "what_we_recorded_smiles": "S(=O)(Cl)Cl",
+          "we_hold_a_structure": true,
+          "formula": "Cl2OS",
+          "structure_svg_path": "output/relevant_output/structures/thionyl-chloride.svg"
+        }
+      ],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "c801b812a7ca3b67",
+      "record_id": "CN111440099B_p10_x1",
+      "record_kind": "patent",
+      "record_label_en": "Page 10, conflict 1",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 10 the patent does not agree with itself. FIRST READING WITHDRAWN / SECOND READING ADOPTED. First reading: the 1H NMR list at [0054] and [0055] appeared inconsistent with the product as named, because its peaks sum to 16 protons, only two aromatic doublets are printed, and it carries a 2H quartet at 4.01 and a 2H singlet at 5.21. That reading rested entirely on taking the product name to mean sulcotrione (C14H13ClO5S, MW 328.77, 13 hydrogens, three aromatic protons, no OCH2CF3), which is the wrong compound: sulcotrione is a different herbicide with a different Chinese name. Second reading: the product is tembotrione, C17H16ClF3O6S, which has exactly 16 hydrogens, and every feature called impossible under the first reading is a feature tembotrione has - 4.01 (q, 2H) the OCH2CF3 methylene with its three-bond H-F coupling, 5.21 (s, 2H) the benzylic ArCH2O methylene, and only two aromatic protons because the ring already bears Cl, SO2CH3 and CH2OCH2CF3. The pattern identified in the first reading as 'a trifluoroethoxymethyl analogue' is the compound this patent is about. Outcome: the peak list IS consistent with the named product and there is no discrepancy here. Entry kept, not deleted, so the misreading and its correction stay on the record. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "FIRST READING WITHDRAWN / SECOND READING ADOPTED. First reading: the 1H NMR list at [0054] and [0055] appeared inconsistent with the product as named, because its peaks sum to 16 protons, only two aromatic doublets are printed, and it carries a 2H quartet at 4.01 and a 2H singlet at 5.21. That reading rested entirely on taking the product name to mean sulcotrione (C14H13ClO5S, MW 328.77, 13 hydrogens, three aromatic protons, no OCH2CF3), which is the wrong compound: sulcotrione is a different herbicide with a different Chinese name. Second reading: the product is tembotrione, C17H16ClF3O6S, which has exactly 16 hydrogens, and every feature called impossible under the first reading is a feature tembotrione has - 4.01 (q, 2H) the OCH2CF3 methylene with its three-bond H-F coupling, 5.21 (s, 2H) the benzylic ArCH2O methylene, and only two aromatic protons because the ring already bears Cl, SO2CH3 and CH2OCH2CF3. The pattern identified in the first reading as 'a trifluoroethoxymethyl analogue' is the compound this patent is about. Outcome: the peak list IS consistent with the named product and there is no discrepancy here. Entry kept, not deleted, so the misreading and its correction stay on the record.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        82
+      ],
+      "evidence_en": "THE DRAWING SAYS: No drawing on this page, and no structural formula anywhere on p10, so p10 alone cannot fix the identity of the product. The identifiers that do fix it are printed on p03, which this pass could not see: [0003] CAS 335104-84-2, [0004] molecular formula C17H16ClF3O6S, [0005] molecular weight 440.88, and the structure drawn at [0007] and [0008], namely 2-chloro-3-(2,2,2-trifluoroethoxymethyl)-4-methylsulfonylbenzoyl cyclohexane-1,3-dione. All four are tembotrione. That the correction needed a page outside this one is the reason the first reading is recorded rather than quietly dropped: a per-page pass can misidentify a product named only by its Chinese common name.  THE TEXT SAYS: The prose names the target product by its Chinese common name, in the yield line of [0053] and again in [0054], and gives 1H NMR (CDCl3): 2.12 (m, 2H), 2.47 (t, 2H), 2.81 (t, 2H), 3.25 (S, 3H), 4.01 (q, 2H), 5.21 (s, 2H), 7.33 (d, H), 8.12 (d, H), 15.37 (s, H). Rendered into English that name is tembotrione, not sulcotrione (a different herbicide) and not mesotrione (a third).",
+      "evidence_lines": [
+        {
+          "n": 82,
+          "text_en": "THE DRAWING SAYS: No drawing on this page, and no structural formula anywhere on p10, so p10 alone cannot fix the identity of the product. The identifiers that do fix it are printed on p03, which this pass could not see: [0003] CAS 335104-84-2, [0004] molecular formula C17H16ClF3O6S, [0005] molecular weight 440.88, and the structure drawn at [0007] and [0008], namely 2-chloro-3-(2,2,2-trifluoroethoxymethyl)-4-methylsulfonylbenzoyl cyclohexane-1,3-dione. All four are tembotrione. That the correction needed a page outside this one is the reason the first reading is recorded rather than quietly dropped: a per-page pass can misidentify a product named only by its Chinese common name.  THE TEXT SAYS: The prose names the target product by its Chinese common name, in the yield line of [0053] and again in [0054], and gives 1H NMR (CDCl3): 2.12 (m, 2H), 2.47 (t, 2H), 2.81 (t, 2H), 3.25 (S, 3H), 4.01 (q, 2H), 5.21 (s, 2H), 7.33 (d, H), 8.12 (d, H), 15.37 (s, H). Rendered into English that name is tembotrione, not sulcotrione (a different herbicide) and not mesotrione (a third).",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's own words disagree with each other here. No drawing is involved.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 10",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p10.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "No drawing on this page, and no structural formula anywhere on p10, so p10 alone cannot fix the identity of the product. The identifiers that do fix it are printed on p03, which this pass could not see: [0003] CAS 335104-84-2, [0004] molecular formula C17H16ClF3O6S, [0005] molecular weight 440.88, and the structure drawn at [0007] and [0008], namely 2-chloro-3-(2,2,2-trifluoroethoxymethyl)-4-methylsulfonylbenzoyl cyclohexane-1,3-dione. All four are tembotrione. That the correction needed a page outside this one is the reason the first reading is recorded rather than quietly dropped: a per-page pass can misidentify a product named only by its Chinese common name.",
+      "text_says_en": "The prose names the target product by its Chinese common name, in the yield line of [0053] and again in [0054], and gives 1H NMR (CDCl3): 2.12 (m, 2H), 2.47 (t, 2H), 2.81 (t, 2H), 3.25 (S, 3H), 4.01 (q, 2H), 5.21 (s, 2H), 7.33 (d, H), 8.12 (d, H), 15.37 (s, H). Rendered into English that name is tembotrione, not sulcotrione (a different herbicide) and not mesotrione (a third).",
+      "disagreement": {
+        "drawing_says_en": "No drawing on this page, and no structural formula anywhere on p10, so p10 alone cannot fix the identity of the product. The identifiers that do fix it are printed on p03, which this pass could not see: [0003] CAS 335104-84-2, [0004] molecular formula C17H16ClF3O6S, [0005] molecular weight 440.88, and the structure drawn at [0007] and [0008], namely 2-chloro-3-(2,2,2-trifluoroethoxymethyl)-4-methylsulfonylbenzoyl cyclohexane-1,3-dione. All four are tembotrione. That the correction needed a page outside this one is the reason the first reading is recorded rather than quietly dropped: a per-page pass can misidentify a product named only by its Chinese common name.",
+        "text_says_en": "The prose names the target product by its Chinese common name, in the yield line of [0053] and again in [0054], and gives 1H NMR (CDCl3): 2.12 (m, 2H), 2.47 (t, 2H), 2.81 (t, 2H), 3.25 (S, 3H), 4.01 (q, 2H), 5.21 (s, 2H), 7.33 (d, H), 8.12 (d, H), 15.37 (s, H). Rendered into English that name is tembotrione, not sulcotrione (a different herbicide) and not mesotrione (a third).",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p10",
+      "page_number": 10,
+      "markers_mentioned": [
+        "[0003]",
+        "[0004]",
+        "[0005]",
+        "[0007]",
+        "[0008]",
+        "[0053]",
+        "[0054]",
+        "[0055]"
+      ],
+      "related_records": [
+        {
+          "identifier_en": "cyclohexane-1,3-dione",
+          "what_we_recorded_smiles": "C1(CC(CCC1)=O)=O",
+          "we_hold_a_structure": true,
+          "formula": "C6H8O2",
+          "structure_svg_path": "output/relevant_output/structures/cyclohexane-1-3-dione.svg"
+        }
+      ],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "540dbec0115082c7",
+      "record_id": "CN111440099B_p10_x2",
+      "record_kind": "patent",
+      "record_label_en": "Page 10, conflict 2",
+      "field": "__patent_self_contradiction__",
+      "field_label_en": "A place the patent contradicts itself",
+      "question_en": "On page 10 the patent does not agree with itself. The pH of the acid adjustment is printed with capital letters as PH in the tail of [0053] on this page, while the claims print it lower case as pH. Did we record what the patent actually prints, rather than a tidied-up version of it?",
+      "claimed_en": "The pH of the acid adjustment is printed with capital letters as PH in the tail of [0053] on this page, while the claims print it lower case as pH.",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        273
+      ],
+      "evidence_en": "THE DRAWING SAYS: No drawing on this page.  THE TEXT SAYS: The [0053] tail reads 'adjust the PH to 2' with capital P capital H, in the clause about dropwise addition of 10% aqueous hydrochloric acid under temperature control.",
+      "evidence_lines": [
+        {
+          "n": 273,
+          "text_en": "THE DRAWING SAYS: No drawing on this page.  THE TEXT SAYS: The [0053] tail reads 'adjust the PH to 2' with capital P capital H, in the clause about dropwise addition of 10% aqueous hydrochloric acid under temperature control.",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "This is a conflict inside the patent itself, found by reading the page. No string match can settle it. A human has to look at the page and say which of the two the patent prints.",
+      "needs_human": true,
+      "risk": 0.6,
+      "risk_reasons_en": [
+        "The patent's own words disagree with each other here. No drawing is involved.",
+        "Where a source contradicts itself, an extraction has to pick one, and the pick is exactly what needs checking."
+      ],
+      "structure_svg_path": null,
+      "tier": 1,
+      "stratum": "patent:page 10",
+      "about": "patent",
+      "evidence_kind": "page_scan",
+      "evidence_note_en": "The evidence for this item is the patent's own words, and the scan of the page they are printed on is listed under 'images'. No drawing is involved.",
+      "images": {
+        "page_image_path": "input/pages/p10.png",
+        "comparison_image": null,
+        "patent_crop_image": null
+      },
+      "about_en": "THIS IS A DEFECT IN THE PATENT, NOT IN OUR ANNOTATION. The question is not whether we got it wrong. It is whether we wrote down what the patent really prints, contradiction and all, instead of quietly correcting it.",
+      "drawing_says_en": "No drawing on this page.",
+      "text_says_en": "The [0053] tail reads 'adjust the PH to 2' with capital P capital H, in the clause about dropwise addition of 10% aqueous hydrochloric acid under temperature control.",
+      "disagreement": {
+        "drawing_says_en": "No drawing on this page.",
+        "text_says_en": "The [0053] tail reads 'adjust the PH to 2' with capital P capital H, in the clause about dropwise addition of 10% aqueous hydrochloric acid under temperature control.",
+        "we_followed": "text",
+        "we_followed_note_en": "No drawing is involved: both sides of this conflict are printed words, and our annotation was read from the words."
+      },
+      "page": "p10",
+      "page_number": 10,
+      "markers_mentioned": [
+        "[0053]"
+      ],
+      "related_records": [
+        {
+          "identifier_en": "hydrochloric acid",
+          "what_we_recorded_smiles": "Cl",
+          "we_hold_a_structure": true,
+          "formula": "HCl",
+          "structure_svg_path": "output/relevant_output/structures/hydrochloric-acid.svg"
+        }
+      ],
+      "drawings_on_this_page": [],
+      "comparison": null
+    },
+    {
+      "claim_id": "3f16769cc9c93aae",
+      "record_id": "CN111440099B_p03_d1",
+      "record_kind": "drawing",
+      "record_label_en": "Drawing 1 of 3, page 3",
+      "field": "drawing.same_molecule",
+      "field_label_en": "Our structure against the structure the patent drew",
+      "question_en": "Do these two pictures show the same molecule?",
+      "claimed_en": "1. dichloromethane",
+      "claimed_value": null,
+      "claimed_unit": null,
+      "cited_lines": [
+        88
+      ],
+      "evidence_en": "The patent prints this drawing on page 3 between [0007] and [0009]. The right-hand picture is that region of the scanned page and the left-hand one is drawn from the structure we recorded.",
+      "evidence_lines": [
+        {
+          "n": 88,
+          "text_en": "The patent prints this drawing on page 3 between [0007] and [0009]. The right-hand picture is that region of the scanned page and the left-hand one is drawn from the structure we recorded.",
+          "is_translation": true
+        }
+      ],
+      "highlights": [],
+      "auto": "not_checkable",
+      "auto_reason_en": "Whether a drawing shows the molecule we wrote down cannot be settled by matching strings. The machine has put the two side by side so a person can settle it by looking.",
+      "needs_human": true,
+      "risk": 0.55,
+      "risk_reasons_en": [
+        "Reading a structure off a drawing is the one step in this pipeline with no words to check it against."
+      ],
+      "structure_svg_path": "output/relevant_output/structures/dichloromethane.svg",
+      "tier": 1,
+      "stratum": "drawing:page 3",
+      "about": "drawing",
+      "evidence_kind": "comparison_image",
+      "evidence_note_en": "The evidence for this item is a picture. Open the comparison image listed under 'images', and the page scan behind it if the comparison looks wrong.",
+      "images": {
+        "comparison_image": "comparisons/CN111440099B_p03_d1.png",
+        "patent_crop_image": "comparisons/CN111440099B_p03_d1-patent.png",
+        "page_image_path": "input/pages/p03.png"
+      },
+      "comparison": {
+        "ours": {
+          "src": "output/relevant_output/structures/dichloromethane.svg",
+          "label_en": "What we extracted",
+          "structures": [
+            {
+              "label_en": "dichloromethane",
+              "src": "output/relevant_output/structures/dichloromethane.svg",
+              "smiles": "ClCCl",
+              "in_gold": true,
+              "position_en": "1st, the only structure in the drawing, left of centre"
+            }
+          ]
+        },
+        "theirs": {
+          "src": "output/relevant_output/visual/crops/CN111440099B_p03_d1.png",
+          "uncut_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1-patent.png",
+          "label_en": "What the patent draws",
+          "confidence": "exact",
+          "confidence_note_en": "HOW THE PICTURE ABOVE WAS FOUND: automatically. The scan has no text layer, so a machine measured the ink on page 3 and cut out the 1st block that is a drawing rather than lines of text. This page holds 2 such blocks, and reading the page found 2 drawings, so the two agree. The cut is deliberately loose. If it has sliced a molecule in half, or shows a different molecule from the one named above, this comparison is broken and should be reported as broken rather than answered.",
+          "page": "p03",
+          "page_image_path": "input/pages/p03.png",
+          "marker": "[0006]",
+          "box": {
+            "x_left": 115,
+            "y_top": 1089,
+            "x_right": 1570,
+            "y_bot": 1287
+          }
+        },
+        "composite_src": "output/relevant_output/visual/comparisons/CN111440099B_p03_d1.png"
+      }
+    }
+  ]
+}

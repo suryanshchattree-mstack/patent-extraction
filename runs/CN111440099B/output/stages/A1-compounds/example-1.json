@@ -1,0 +1,286 @@
+[
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "tembotrione",
+    "identifier_type": "trivial_name",
+    "aliases": [
+      "未纯化的环磺酮产品",
+      "环磺酮产品",
+      "纯化环磺酮"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 1",
+    "section_type": "experimental_example",
+    "is_section_product": true,
+    "commercially_available": false,
+    "role": "product",
+    "quantity": {
+      "mass_g": 5.0,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:active_ingredient"
+    ],
+    "notes": "Merged from all six batches of the one table, per rule 4. [0034] at line 159 prints 未纯化的环磺酮产品 (the unpurified tembotrione product) and each 处理方法 cell prints 环磺酮产品 as the charge and 纯化环磺酮 as what filtration gives, so crude and purified are distinguished by adjective only and one record covers both; purity_pct is null because the section states no purity for either. The bare word 环磺酮 occurs in this section only inside those three longer words, so it is not listed as a separate alias. Every batch charges the same 5g, so mass_g 5.0 is what this section says; no volume, no mmol, no equivalents and no yield are stated anywhere in the section. That value is not settled in the merged artifact either: Example 6 at [0053] isolates 262.1g of 环磺酮 at 95% content, the schema holds one mass and one purity per compound, and example-6.json sorts after example-1.json, so the finished deliverable publishes 262.1g and 95% while this section's 5g charge survives only in this note. Decided by filename order, not by which figure is representative. The three numeric columns measure the cyanide impurity content of this product and are recorded on the cyanide record as analytics, not here and not as a quantity of this compound. This section prints no prose procedure: [0034] is a one-line lead-in and all six treatments live in the 处理方法 cell of a table that is a page image with no text layer, so the 5g charge is table-only and a reader of the prose alone would see the name without any quantity. The table is printed as three fragments at [0035], [0036] and [0037] because the p05/p06 page break cuts the batch 2 cell and the batch 6 cell mid-sentence; it is one table with six batches numbered 1 to 6. role product, commercially_available false and resolved true are taken from the shared canonical identifier table for this patent; commercially_available false is rule 11 applied to the document as a whole, because the synthesis scheme and Example 6 prepare the compound, whereas this section alone says nothing about its source, since it starts from a product already in hand after a rearrangement and a solvent strip. is_section_product is true because the section is about purifying it and every batch ends by isolating it. No structure is drawn in this section and no class term is printed for the compound, so no chemical_family or functional_group tag is emitted. Seen and deliberately not emitted as compounds: 重排反应 (the rearrangement reaction) and 蒸馏脱溶 (distilling off the solvent), neither of which names a substance, PH 为 2, which is a condition, and the column headers themselves."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "methanol",
+    "identifier_type": "iupac",
+    "aliases": [
+      "20%含水甲醇"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 1",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "solvent",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:solvent",
+      "chemical_family:alcohol",
+      "functional_group:alcohol"
+    ],
+    "notes": "Printed only inside the mixture name 20%含水甲醇 (20% aqueous methanol), the dissolution medium of all six batches. Per the shared canonical identifier table a mixture is not a compound: methanol and water are extracted separately and the 20% composition belongs in the reaction record rather than in the identifier. quantity is null, and deliberately so. Batch 3 alone, at line 175, charges 补入 10g 20%含水甲醇 (a further 10g of 20% aqueous methanol added) after the hot filtration; that figure is the mass of the MIXTURE as printed. The patent never states how it splits between methanol and water, rule 12 forbids converting or computing one field from another, and CompoundRecord has no field for the mass of a mixture, so no mass is assigned to either component: putting 10 on this record would assert a charge of 10g of methanol that the document does not state. The 10g belongs on the reaction record for batch 3, which A2 owns. The dissolution charge of the other five batches states no amount at all, so the merge across batches 1 to 6 contributes no quantity from any row. Table-only: the medium is named nowhere in the prose of this section, only inside the 处理方法 cells of the page-image table. role solvent, commercially_available true and resolved true follow the shared canonical table and agree with this section's own reading."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "water",
+    "identifier_type": "trivial_name",
+    "aliases": [
+      "20%含水甲醇"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 1",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "solvent",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:solvent"
+    ],
+    "notes": "水 is never printed on its own in this section. It appears only as the 含水 (water-containing) element of 20%含水甲醇, and the shared canonical identifier table directs that this mixture be extracted as methanol plus water with the composition left to the reaction record, so the record exists on the strength of the mixture name and of that instruction. quantity is null on purpose: the only mass the section gives for the medium is the 10g of mixture that batch 3 adds after the hot filtration, that 10g is the mass of the mixture and not of either component, the patent never states the split, and dividing it would be a computation the section does not support. No mass is therefore assigned to water or to methanol; the 10g belongs on the batch 3 reaction record, which A2 owns. The water implied by 10%稀盐酸 (10% dilute hydrochloric acid) is not counted here either; that strength is recorded on the hydrochloric acid record. role solvent, commercially_available true and resolved true follow the shared canonical table. Table-only, like every other compound in this section."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "activated carbon",
+    "identifier_type": "other",
+    "aliases": [
+      "活性炭"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 1",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "additive",
+    "quantity": {
+      "mass_g": 1.0,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:workup_agent"
+    ],
+    "notes": "活性炭, 1g added to each of the six batches once the solution is at temperature, held there and then removed by hot filtration, so it is the adsorbent this example tests. All six batches of this section state the same 1g, so mass_g 1.0 is what this section says. It is NOT settled in the merged artifact, and this note previously claimed it was: batches 1 to 14, across Examples 1 to 4, each charge 1g of activated carbon at the 5g substrate scale, batch 15 in Example 4 substitutes 1g of 硅藻土 (diatomaceous earth) and so is not an activated carbon charge at all, and Example 6 at [0053] charges 5g of activated carbon into the product of a run started from 231.9g of the benzoyl chloride. The schema holds one mass per compound and the section files merge in filename order, so example-6.json sorts after example-1.json and the finished deliverable publishes the Example 6 charge of 5g rather than this section's 1g. The merged value is decided by filename order, not by which charge is representative of the document. The batches differ only in the hold time, 一小时 (one hour) for batches 1, 3, 4 and 5, 0.2小时 for batch 2 and 2小时 for batch 6, and in the dissolution temperature; those are conditions and belong to the reaction records, not here. role additive comes from the shared canonical identifier table, which uses it because the role enum has no value for an adsorbent, and this section's own reading is the same. compound_class:workup_agent for the same reason: the carbon is added during a purification and filtered out again, and the tag list has no adsorbent value. Table-only: named only inside the 处理方法 cells of the page-image table, so a text-only extractor loses both the compound and its 1g charge."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "hydrochloric acid",
+    "identifier_type": "trivial_name",
+    "aliases": [
+      "10%稀盐酸",
+      "稀盐酸"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 1",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "acid",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:acid"
+    ],
+    "notes": "Printed as 10%稀盐酸 in all six batches, added dropwise under temperature control after the hot filtration to adjust the PH to 2 before cooling to 15℃. Merged across the six batches per rule 4; the wording is identical in each. quantity is null because no mass, volume or count of drops is stated in any batch. The 10% is a solution strength and belongs in the reaction record's concentration per the shared canonical identifier table, so it is neither part of the identifier nor recorded as purity_pct. 稀盐酸 is kept as a second alias because the printed string carries the 稀 (dilute) qualifier that the canonical identifier drops. role acid, commercially_available true and resolved true follow that table. No hazard tag is emitted: this section carries no warning about the acid, and its only hazard subject is the cyanide impurity. Table-only: named only inside the 处理方法 cells of the page-image table."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "cyanide",
+    "identifier_type": "other",
+    "aliases": [
+      "氰化物杂质"
+    ],
+    "resolved": false,
+    "unresolved_reference": false,
+    "section_label": "Example 1",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "by_product",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [
+      {
+        "method": "other",
+        "value": 1327.0,
+        "unit": "ppm",
+        "conditions": "cyanide impurity content of the unpurified tembotrione product before treatment; the same 1327 is printed in all six rows, batches 1 to 6",
+        "raw_text": "原始氰化物杂质含量（ppm） | 1327"
+      },
+      {
+        "method": "other",
+        "value": 47.0,
+        "unit": "ppm",
+        "conditions": "cyanide impurity content after treatment, batch 1: 5g of the tembotrione product dissolved in 20% aqueous methanol, warmed to 60℃, 1g activated carbon held at temperature one hour, hot filtration, 10% dilute hydrochloric acid dropwise to PH 2, cooled to 15℃",
+        "raw_text": "实验批次 1 | 处理后氰化物杂质含量（ppm） | 47"
+      },
+      {
+        "method": "other",
+        "value": 86.0,
+        "unit": "ppm",
+        "conditions": "cyanide impurity content after treatment, batch 2: as batch 1 but the activated carbon is held at temperature 0.2 hour",
+        "raw_text": "实验批次 2 | 处理后氰化物杂质含量（ppm） | 86"
+      },
+      {
+        "method": "other",
+        "value": 92.0,
+        "unit": "ppm",
+        "conditions": "cyanide impurity content after treatment, batch 3: as batch 1 but a further 10g of 20% aqueous methanol is added after the hot filtration",
+        "raw_text": "实验批次 3 | 处理后氰化物杂质含量（ppm） | 92"
+      },
+      {
+        "method": "other",
+        "value": 88.0,
+        "unit": "ppm",
+        "conditions": "cyanide impurity content after treatment, batch 4: as batch 1 but the dissolution temperature is 50℃",
+        "raw_text": "实验批次 4 | 处理后氰化物杂质含量（ppm） | 88"
+      },
+      {
+        "method": "other",
+        "value": 72.0,
+        "unit": "ppm",
+        "conditions": "cyanide impurity content after treatment, batch 5: as batch 1 but the dissolution temperature is 55℃",
+        "raw_text": "实验批次 5 | 处理后氰化物杂质含量（ppm） | 72"
+      },
+      {
+        "method": "other",
+        "value": 45.0,
+        "unit": "ppm",
+        "conditions": "cyanide impurity content after treatment, batch 6: as batch 1 but the activated carbon is held at temperature 2 hours",
+        "raw_text": "实验批次 6 | 处理后氰化物杂质含量（ppm） | 45"
+      },
+      {
+        "method": "other",
+        "value": 98.0,
+        "unit": "%",
+        "conditions": "reduction in cyanide impurity content as printed for batch 1: 5g of the tembotrione product dissolved in 20% aqueous methanol, warmed to 60℃, 1g activated carbon held at temperature one hour, hot filtration, 10% dilute hydrochloric acid dropwise to PH 2, cooled to 15℃; the printed figure does not follow arithmetically from the 1327 ppm and 47 ppm in the same row, and no cell has been recomputed",
+        "raw_text": "实验批次 1 | 氰化物杂质含量降低% | 98%"
+      },
+      {
+        "method": "other",
+        "value": 89.0,
+        "unit": "%",
+        "conditions": "reduction in cyanide impurity content as printed for batch 2: as batch 1 but the activated carbon is held at temperature 0.2 hour; the printed figure does not follow arithmetically from the 1327 ppm and 86 ppm in the same row, and no cell has been recomputed",
+        "raw_text": "实验批次 2 | 氰化物杂质含量降低% | 89%"
+      },
+      {
+        "method": "other",
+        "value": 74.0,
+        "unit": "%",
+        "conditions": "reduction in cyanide impurity content as printed for batch 3: as batch 1 but a further 10g of 20% aqueous methanol is added after the hot filtration; the printed figure does not follow arithmetically from the 1327 ppm and 92 ppm in the same row, and no cell has been recomputed",
+        "raw_text": "实验批次 3 | 氰化物杂质含量降低% | 74%"
+      },
+      {
+        "method": "other",
+        "value": 89.0,
+        "unit": "%",
+        "conditions": "reduction in cyanide impurity content as printed for batch 4: as batch 1 but the dissolution temperature is 50℃; the printed figure does not follow arithmetically from the 1327 ppm and 88 ppm in the same row, and no cell has been recomputed",
+        "raw_text": "实验批次 4 | 氰化物杂质含量降低% | 89%"
+      },
+      {
+        "method": "other",
+        "value": 91.0,
+        "unit": "%",
+        "conditions": "reduction in cyanide impurity content as printed for batch 5: as batch 1 but the dissolution temperature is 55℃; the printed figure does not follow arithmetically from the 1327 ppm and 72 ppm in the same row, and no cell has been recomputed",
+        "raw_text": "实验批次 5 | 氰化物杂质含量降低% | 91%"
+      },
+      {
+        "method": "other",
+        "value": 98.0,
+        "unit": "%",
+        "conditions": "reduction in cyanide impurity content as printed for batch 6: as batch 1 but the activated carbon is held at temperature 2 hours; the printed figure does not follow arithmetically from the 1327 ppm and 45 ppm in the same row, and no cell has been recomputed",
+        "raw_text": "实验批次 6 | 氰化物杂质含量降低% | 98%"
+      }
+    ],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:impurity",
+      "hazard:cyanide_handling"
+    ],
+    "notes": "氰化物杂质 (cyanide impurity), the substance this whole example measures. resolved false per the shared canonical identifier table, because 氰化物 names a class and the patent never says which cyanide species; unresolved_reference is left false because the phrase is a class term and not a pointer to a compound named elsewhere in the document. role by_product and commercially_available false follow that table. The section's three numeric columns are recorded here as analytics and nowhere else: 原始氰化物杂质含量 1327 ppm, printed identically for all six batches, 处理后氰化物杂质含量 of 47, 86, 92, 88, 72 and 45 ppm for batches 1 to 6, and the stated 氰化物杂质含量降低% of 98%, 89%, 74%, 89%, 91% and 98%. No measurement method is stated for any of them, so method is other and not hplc. DISAGREEMENT, recorded and not resolved: the stated reduction column does not follow arithmetically from the two ppm columns beside it in any of the six rows, and batch 3 states a lower reduction than batch 4 while carrying more residual cyanide, 92 ppm against 88 ppm. Every printed value is recorded as printed and no cell has been recomputed. These figures are the impurity content of the tembotrione product, not an amount of anything charged, so quantity is null here and no analytics entry is placed on the tembotrione record. hazard:cyanide_handling is emitted because the chemistry plainly requires it: the example exists to lower a cyanide level. The name is the one compound word in this section that is not table-only, since 氰化物杂质含量 appears in the [0034] lead-in at line 159; all six of its measured values are table-only."
+  }
+]

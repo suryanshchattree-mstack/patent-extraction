@@ -1,0 +1,672 @@
+[
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Example 6_Step 1",
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "pilot",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 75.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 3.0,
+      "reactor_type": "three-necked flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "in-process check that the residual starting-material content is not more than the stated bound",
+        "distil the solvent off under reduced pressure, taking the batch temperature up",
+        "remove the excess thionyl chloride together with the solvent"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": "distillation under reduced pressure, printed as -0.098mP, carried up to 85 C",
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+      "threshold_pct": 0.2,
+      "criterion": "residual starting-material content not more than 0.2% before the solvent strip"
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 231.9,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the 2 L three-necked flask with the solvent, then stirred at 15 C",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "thionyl chloride",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 237.9,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added slowly at 15 C; no addition time is given",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "1,2-dichloroethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 1000.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged with the benzoyl chloride at the start, then stripped off at the end of the step",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "向2L三口烧瓶加入的2‑氯‑3‑(2 ,2 ,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酰氯231 .9g，1 ,2‑二氯乙烷1L，15℃搅拌。缓慢加入氯化亚砜237 .9g。常温反应0.5h，升温至75℃，保温3h。中控检测原料含量≤0.2％，在‑0.098mP下减压脱溶至85℃，脱去溶剂以及过量的氯化亚砜。",
+    "procedure_summary": "The benzoyl chloride and 1,2-dichloroethane are charged into a three-necked flask and stirred cold, thionyl chloride is added slowly, the mixture is held at room temperature and then warmed and held until an in-process check on residual starting material passes, and the solvent and the excess thionyl chloride are distilled off under reduced pressure.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "mass_balance_implausible"
+    ],
+    "tags": [
+      "transformation:chlorination",
+      "mechanism:ionic",
+      "scale:pilot",
+      "solvent_class:halogenated",
+      "catalyst_class:none",
+      "workup_type:distillation",
+      "purification:none",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "Chinese step marker: none. The step is the opening of [0053], up to and including the strip of the solvent and the excess thionyl chloride. Reactor: a 2 L three-necked flask; the volume is here because no numeric field holds it. \n\nCONTRADICTION 1, recorded and not resolved, and the reason this record carries a flag. The paragraph names the charged material as the benzoyl chloride and then adds thionyl chloride to it, holds it hot, checks residual starting material and strips the excess, which is the operation one performs on the benzoic acid. Reading A: the charged material is really the benzoic acid, misnamed by one Chinese character, and this step is the acid-to-acid-chloride conversion. Reading B: the charged material is the acyl chloride as printed and the whole thionyl chloride stage is redundant. The document does not choose and neither does this record: per prompt rule 5c the structured fields keep what the prose of this step says, so the reactant identifier is the acyl chloride as named, and the same identifier appears once as reactant and once as product because under BOTH readings the product of the step is that acyl chloride. That duplication is the finding, not an error. The same contradiction is carried by Synthesis Scheme_Step 1 for the unquantified version of this procedure, so it recurs in the document and is the patent's own, not a transcription slip in either section. The arithmetic bears on it and is in the provenance arithmetic_check: the printed thionyl chloride mass is a routine threefold excess against the acid and a wholly redundant charge against the acyl chloride. That is evidence, and it is deliberately not used here to decide which reading is right. \n\nFLAG CHOICE. The closed validation-flag list has no value for a stoichiometric charge that its own substrate cannot consume, and none for a contradiction internal to the prose. mass_balance_implausible is used for it, and this note says so explicitly: it is NOT being raised because a product mass exceeds theory, since this step states no product mass at all and the section's product-mass check does close. molar_mass_inconsistent was considered and rejected, because the section states no mass/mole pair at all. drawing_text_conflict was considered and rejected, because this section contains no drawing to conflict with. \n\nFLAG 2, the pressure unit, recorded and not fixed. The reduced pressure of the strip is printed -0.098mP, which is not a pressure unit; MPa is plainly meant. It is recorded exactly as printed, and only in workup.concentration_method, because distilling off under reduced pressure is a workup operation and sets concentration_method rather than reaction pressure (prompt rule 9). conditions.pressure is therefore not_specified. The 85 C is the endpoint of the distillation and not a reaction temperature. \n\nConditions, as printed and not summed. Charged and stirred at 15 C, reacted 0.5 h at room temperature, warmed to 75 C, held 3 h. temperature carries the 75 C hold and time_h the 3 h hold, since one record holds one temperature and one time; the 15 C charge hold and the 0.5 h room-temperature stage are recorded here rather than added into a total the patent does not print. A stirrer is used but no type and no speed are given for this step, so conditions.stirring is left null. The in-process check names no analytical technique, so process_control.method stays null; which material the word for starting material denotes is subject to contradiction 1 above, and process_control.target_compound names the compound the prose names. \n\nClassification. nucleophilic_substitution because chloride replaces hydroxyl at the carboxyl carbon. acylation and halogenation are both defensible for the same transformation, which is why reaction_class_confidence is medium; the value follows this run's shared class table, and the reference run CN104292137A never annotates this step alone, so there is no precedent to follow. The transformation tag is chlorination, matching Synthesis Scheme_Step 1. \n\nTHIONYL CHLORIDE IS DELIBERATELY NOT IN reactant_names, and this is the judgement call on this record. It is a genuine chemical participant, not a spectator: it is consumed and it is the source of the chlorine that ends up in the product, so an argument for listing it exists and is stronger than for any solvent. It is left out because the shared canonical identifier table fixes its role as reagent, and the flattened list is defined here by the role field, so listing it would make reactant_names disagree with the compounds[] entry it is supposed to summarise. Its full charge, its role and its addition profile are all still on the record. The same test removes 1,2-dichloroethane, which is only the solvent. \n\nLinkage. precursor_step is null: this section charges its own starting material and does not take it from another section, so no cross-section precursor is set even though Synthesis Scheme_Step 1 is the same transformation. Step boundaries. [0053] is one continuous paragraph with no numbered markers and no headings, so the three boundaries are taken at the operations themselves: the thionyl chloride stage, then the fresh solvent and base charge that starts the dione stage, then the charge of aqueous methanol onto the isolated crude that starts the purification. Three records, which agrees with A0's estimate of three. It is three and not four because the dione and the acetone cyanohydrin are charged together with no workup between them, which prompt rule 5 makes one one-pot record. The paragraph runs across a page break in the middle of a word: the text layer prints the first part ending in the first two characters of the stirring-speed phrase and the continuation beginning with its third, and the two halves are joined here with nothing inserted, because the patent prints no separator there. The text layer also prints spaces inside several printed numbers and inside the locants of the trifluoroethoxy group and of the dichloroethane. The printed strings are kept verbatim in procedure_text and in the provenance quote and were not normalised; the structured fields carry the values. PH CASING, recorded once here and not repeated on every record: the document prints the pH of this example and of the tables in capitals and prints it lower case in the claims. Neither casing was normalised and conditions.ph_value carries the number. NO COMPUTED NUMBER IS IN THIS FIELD OR IN ANY QUANTITY FIELD. Prompt rule 32 forbids introducing a number the text does not print, so quantity.mmol and quantity.equivalents are null on every compound of this section even though every mass needed to compute them is printed. The molar amounts, the equivalents and the theoretical-yield reconciliation are in the provenance arithmetic_check, which is what A5 reads. MODEL PROVENANCE: this section contains no IMAGE_EXTRACT span and therefore no vision-pass content; the whole reading is the extraction pass, produced by Claude, so there is no second witness to it here. THE PROMPT'S PATENT-SPECIFIC PARAGRAPHS DESCRIBE THE PREVIOUS PATENT and were not followed as facts: this section prints no N-comma compound markers (rule 1), has no structure drawn before each step (rule 5b), has no scheme at all so the eight-prose-versus-nine-drawn count (rule 5f) is inapplicable, and rule 29's assertion about which steps fail to close was not used to decide anything - every check was recomputed from the printed masses. QUANTITY IS AN OBJECT OF NULLS HERE, NEVER A LITERAL NULL, AND THAT IS THE OPPOSITE OF THE A1 RULE. Four entries of this section carried a literal null until an independent audit of this artifact found them: they were the only four in the run, against none in either existing run, so a consumer reading the mass member unguarded would have thrown on this section alone. The difference between the two passes is real and not an inconsistency in the pack. On a CompoundRecord the literal null is required, because finalise.py merges records that share an identifier and treats a dict as a container, so an object of nulls there would overwrite a populated quantity coming from another section. Reaction records are never merged by identifier, so nothing here can be clobbered and the object is safe. Do not change it back. FLATTENED REACTANT LIST, CORRECTED AFTER AN INDEPENDENT AUDIT OF THIS ARTIFACT. reactant_names carries only the identifiers whose compounds[] entry has role reactant, not everything charged. The first version of these three records listed the solvent, the base, the catalyst and the adsorbent there as well; that is now restricted, so the flattened list and the role field agree and this section joins the nineteen batch records of Examples 1 to 5, which annotate the same purification and list tembotrione alone. Nothing was removed from the record: every charge is still in compounds[] with its own role and its own mass. NOTE A DISAGREEMENT THIS CREATES ACROSS THE ARTIFACT, recorded rather than resolved: Background_Step 1 and Synthesis Scheme_Step 1 describe the same transformations as Steps 1 and 2 here and do list the reagent and the solvent in reactant_names, so the document's reactions artifact is not internally consistent on this field. This section follows the role test because it is checkable against compounds[]; the other sections were not re-run by this pass. REGISTRY CAVEAT: the registry supplied to this pass ends with an instruction that every record's precursor_step is Synthesis Scheme::Step 2 because each batch opens by taking material from the completed rearrangement. That paragraph is about the batch tables of Examples 1 to 5 and does not apply here. This section charges its own starting material and then runs the rearrangement itself, so the chain is internal and no cross-section precursor is set. Synthesis Scheme_Step 1 and Synthesis Scheme_Step 2 describe the same two transformations as Step 1 and Step 2 here, unquantified; this section is their scale-up with the purification of Examples 1 to 5 appended, and it is the only place in the document where the synthesis and the purification appear as one continuous operation."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Example 6_Step 2",
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "pilot",
+    "is_one_pot": true,
+    "one_pot_steps": [
+      "ester formation: the benzoyl chloride and cyclohexane-1,3-dione give the enol ester, with triethylamine as the acid acceptor",
+      "acylation: the enol ester rearranges to the C-acylated 2-aroylcyclohexane-1,3-dione, tembotrione, in the presence of acetone cyanohydrin"
+    ],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 40.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 6.0,
+      "reactor_type": "three-necked flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "filter off the triethylamine salt",
+        "concentrate the filtrate under reduced pressure to the crude product as a red-brown solid"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "the triethylamine salt filtered off",
+      "concentration_method": "concentration under reduced pressure",
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": "reaction checked and found to be complete"
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "present as the residue of Step 1, taken on without isolation; this step restates no mass for it",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "1,2-dichloroethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 500.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "a fresh charge, made after the first solvent charge and the excess thionyl chloride had been stripped",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "triethylamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 200.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged together with the fresh solvent, before the dione and the acetone cyanohydrin",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyclohexane-1,3-dione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 92.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged together with the acetone cyanohydrin, with no workup between the two charges",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "acetone cyanohydrin",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 0.5,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged together with the dione, sub-stoichiometric",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "triethylamine salt",
+        "role": "by_product",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "isolated crude as a red-brown solid; no mass is stated for it at this point",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+      "cyclohexane-1,3-dione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "重新加入新的1,2‑二氯乙烷500ml和三乙胺200g，投入1,3环己二酮92g和丙酮氰醇0.5g，40℃保温6h。检测反应完全。过滤出三乙胺盐，减压浓缩得红棕色固体环磺酮产品，",
+    "procedure_summary": "Fresh 1,2-dichloroethane and triethylamine are charged onto the residue, then cyclohexane-1,3-dione and acetone cyanohydrin are charged together and the mixture is held warm until an in-process check finds the reaction complete. The triethylamine salt is filtered off and the filtrate concentrated under reduced pressure to the crude product as a red-brown solid, which is carried on without purification.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "transformation:esterification",
+      "transformation:rearrangement",
+      "transformation:acylation",
+      "mechanism:ionic",
+      "scale:pilot",
+      "solvent_class:halogenated",
+      "catalyst_class:base",
+      "workup_type:filtration",
+      "purification:none",
+      "safety:cyanide_handling",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:true"
+    ],
+    "notes": "Chinese step marker: none. The step runs from the fresh solvent and base charge to the concentration that gives the crude red-brown solid. \n\nONE POT, and this is why the section has three records and not four. The dione and the acetone cyanohydrin are charged together in one sentence, held at one temperature for one period, and there is no workup between the enol ester formation and the rearrangement: the first workup in the paragraph is the filtration of the triethylamine salt, which comes after both. Per prompt rule 5 that is ONE record with is_one_pot true, one_pot_steps listing the two transformations in document order, and reaction_class taken from the FINAL transformation, the rearrangement. No enol ester compound entry is emitted on this record: the intermediate is never isolated and never named in this section, and A1 recorded no enol ester for Example 6, so emitting one here would assert an intermediate this section does not print. It is named in one_pot_steps instead, which is where the prompt puts the transformation rather than the compound. \n\nClassification. acylation because the transformation converts an O-acyl enol ester into a C-acyl 2-aroyl-1,3-dione. The value follows this run's shared class table. It is not settled in the reference run, which calls the same transformation acylation twice and other once, and ester_formation would be the right class for the FIRST half of this one-pot rather than for the record; reaction_class_confidence is medium for that reason. Both halves are carried in the transformation tags, together with rearrangement, so the esterification is not lost by the class being taken from the second half. \n\nRoles. triethylamine is base and acetone cyanohydrin is catalyst, both from the shared canonical identifier table. This section on its own would have called the acetone cyanohydrin a reagent, because it states no role for it; the sub-stoichiometric charge against the dione is consistent with the table's catalyst, and the equivalents are in the provenance arithmetic_check rather than here. The triethylamine salt is emitted as a by_product and not as a product: it is filtered off and discarded, not recovered or reused, so byproduct_recovery is empty. Its counter-ion is never stated anywhere in the document and is not read as the hydrochloride. safety:cyanide_handling is tagged because this charge is what introduces the cyanide impurity the whole patent exists to remove; safety_notes is empty because the text makes no safety statement, and prompt rule 15 forbids adding one. \n\nConditions. 40 C for 6 h, as printed. reactor_type is the same three-necked flask: the text says fresh solvent was added again, which is a charge to the vessel already in use, and no second vessel appears in the paragraph. That is the one condition carried across a boundary in this section and it is carried because the text implies it; nothing else is inherited and conditions_inherited is false. The in-process check names no analytical technique, so process_control.method is null and only the criterion is recorded. purification is null because the crude solid is carried straight into Step 3. \n\nMass. This record leaves the benzoyl chloride's mass null rather than repeating Step 1's charge. The substrate here is Step 1's stripped residue, for which the patent states no mass; writing 231.9 g on both records would double count the section's only input mass for any consumer that sums the artifact. The charge is on Step 1, where the patent prints it. \n\nNo flag. Every enumerated check passes on this record: it has a reactant and a product, it has conditions, it has a summary, its identifiers all come from A1, and its arithmetic closes. The dione is charged in excess of the acyl chloride, which is normal practice and not a defect, and the numbers are in the provenance arithmetic_check. \n\nreactant_names ON THIS RECORD keeps the benzoyl chloride and the dione, the two compounds whose compounds[] role is reactant and the two whose carbon skeletons are joined in the product. Triethylamine (base), acetone cyanohydrin (catalyst), 1,2-dichloroethane (solvent) and the triethylamine salt (by-product) are all out of the flattened list and all still on the record with their roles and masses. \n\nLinkage. precursor_step is Step 1 and linkage_confirmed is true: Step 1's product identifier is this step's reactant identifier, and the text takes the material on in the same vessel with no isolation. Step boundaries. [0053] is one continuous paragraph with no numbered markers and no headings, so the three boundaries are taken at the operations themselves: the thionyl chloride stage, then the fresh solvent and base charge that starts the dione stage, then the charge of aqueous methanol onto the isolated crude that starts the purification. Three records, which agrees with A0's estimate of three. It is three and not four because the dione and the acetone cyanohydrin are charged together with no workup between them, which prompt rule 5 makes one one-pot record. The paragraph runs across a page break in the middle of a word: the text layer prints the first part ending in the first two characters of the stirring-speed phrase and the continuation beginning with its third, and the two halves are joined here with nothing inserted, because the patent prints no separator there. The text layer also prints spaces inside several printed numbers and inside the locants of the trifluoroethoxy group and of the dichloroethane. The printed strings are kept verbatim in procedure_text and in the provenance quote and were not normalised; the structured fields carry the values. PH CASING, recorded once here and not repeated on every record: the document prints the pH of this example and of the tables in capitals and prints it lower case in the claims. Neither casing was normalised and conditions.ph_value carries the number. NO COMPUTED NUMBER IS IN THIS FIELD OR IN ANY QUANTITY FIELD. Prompt rule 32 forbids introducing a number the text does not print, so quantity.mmol and quantity.equivalents are null on every compound of this section even though every mass needed to compute them is printed. The molar amounts, the equivalents and the theoretical-yield reconciliation are in the provenance arithmetic_check, which is what A5 reads. MODEL PROVENANCE: this section contains no IMAGE_EXTRACT span and therefore no vision-pass content; the whole reading is the extraction pass, produced by Claude, so there is no second witness to it here. THE PROMPT'S PATENT-SPECIFIC PARAGRAPHS DESCRIBE THE PREVIOUS PATENT and were not followed as facts: this section prints no N-comma compound markers (rule 1), has no structure drawn before each step (rule 5b), has no scheme at all so the eight-prose-versus-nine-drawn count (rule 5f) is inapplicable, and rule 29's assertion about which steps fail to close was not used to decide anything - every check was recomputed from the printed masses. QUANTITY IS AN OBJECT OF NULLS HERE, NEVER A LITERAL NULL, AND THAT IS THE OPPOSITE OF THE A1 RULE. Four entries of this section carried a literal null until an independent audit of this artifact found them: they were the only four in the run, against none in either existing run, so a consumer reading the mass member unguarded would have thrown on this section alone. The difference between the two passes is real and not an inconsistency in the pack. On a CompoundRecord the literal null is required, because finalise.py merges records that share an identifier and treats a dict as a container, so an object of nulls there would overwrite a populated quantity coming from another section. Reaction records are never merged by identifier, so nothing here can be clobbered and the object is safe. Do not change it back. FLATTENED REACTANT LIST, CORRECTED AFTER AN INDEPENDENT AUDIT OF THIS ARTIFACT. reactant_names carries only the identifiers whose compounds[] entry has role reactant, not everything charged. The first version of these three records listed the solvent, the base, the catalyst and the adsorbent there as well; that is now restricted, so the flattened list and the role field agree and this section joins the nineteen batch records of Examples 1 to 5, which annotate the same purification and list tembotrione alone. Nothing was removed from the record: every charge is still in compounds[] with its own role and its own mass. NOTE A DISAGREEMENT THIS CREATES ACROSS THE ARTIFACT, recorded rather than resolved: Background_Step 1 and Synthesis Scheme_Step 1 describe the same transformations as Steps 1 and 2 here and do list the reagent and the solvent in reactant_names, so the document's reactions artifact is not internally consistent on this field. This section follows the role test because it is checkable against compounds[]; the other sections were not re-run by this pass. REGISTRY CAVEAT: the registry supplied to this pass ends with an instruction that every record's precursor_step is Synthesis Scheme::Step 2 because each batch opens by taking material from the completed rearrangement. That paragraph is about the batch tables of Examples 1 to 5 and does not apply here. This section charges its own starting material and then runs the rearrangement itself, so the chain is internal and no cross-section precursor is set. Synthesis Scheme_Step 1 and Synthesis Scheme_Step 2 describe the same two transformations as Step 1 and Step 2 here, unquantified; this section is their scale-up with the purification of Examples 1 to 5 appended, and it is the only place in the document where the synthesis and the purification appear as one continuous operation."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Example 6_Step 3",
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "step_index": 3,
+    "step_label": "Step 3",
+    "reaction_class": "recrystallisation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "pilot",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 60.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 1.0,
+      "reactor_type": null,
+      "concentration": {
+        "value": 40.0,
+        "unit": "%",
+        "reagent": "water",
+        "text": "40% aqueous methanol, that is methanol containing 40% water, printed 40％含水甲醇, as the dissolution medium"
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": 2.0,
+      "ph_target_stage": "on the hot filtrate under temperature control, by dropwise addition of the aqueous hydrochloric acid, before cooling and crystallisation"
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "dissolve the crude product in the aqueous methanol and warm it",
+        "hold with activated carbon, then filter hot",
+        "adjust the stirring speed",
+        "add the aqueous hydrochloric acid dropwise under temperature control to the target pH",
+        "cool the acidified solution so that the solid crystallises out",
+        "dry the pale yellow solid"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "hot filtration to remove the activated carbon",
+      "concentration_method": null,
+      "ph_target": 2.0
+    },
+    "purification": "dissolved in 40% aqueous methanol and warmed to 60 C, held 1 h with 5 g of activated carbon and filtered hot, then acidified to pH 2 with 10% aqueous hydrochloric acid added dropwise under temperature control, recrystallised and cooled to crystallise out a pale yellow solid, which was dried",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the crude red-brown solid from Step 2, charged as it stands; no mass is stated for it",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "methanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged onto the crude product as 40% aqueous methanol; no amount of the mixture is stated",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the water of the 40% aqueous methanol and of the 10% aqueous hydrochloric acid; never charged as a named amount",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "activated carbon",
+        "role": "additive",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 5.0,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added after the solution reached 60 C and held 1 h, then removed by hot filtration",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise under temperature control as a 10% aqueous solution until the pH reached 2; no amount is stated",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": 262.1,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "crystallised out as a pale yellow solid and dried",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 95.0,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "tembotrione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 95.0,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "环磺酮产品中加入40％含水甲醇，升温至60℃后加入5g活性炭保温1h，热过滤，搅拌转速调整为280转/h，控温滴加10％盐酸水溶液调节PH为2重结晶后降温析晶得淡黄色固体，烘干得262.1g环磺酮，含量95％。",
+    "procedure_summary": "The crude product is dissolved in aqueous methanol and warmed, held with activated carbon and filtered hot. The stirring speed is adjusted, aqueous hydrochloric acid is added dropwise under temperature control to the target pH, and the solution is cooled so that the purified product crystallises out as a pale yellow solid, which is dried.",
+    "precursor_step": "Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": true,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "mechanism:not_determinable",
+      "scale:pilot",
+      "solvent_class:aqueous",
+      "catalyst_class:none",
+      "workup_type:filtration",
+      "workup_type:crystallisation",
+      "purification:recrystallisation",
+      "analytics:nmr",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Chinese step marker: none. The step runs from the charge of aqueous methanol onto the crude product to the drying of the pale yellow solid, and it is the invention: it is the purification the claims and the summary describe generically and the batch tables of Examples 1 to 5 run on small samples, appended here to the synthesis at full scale. \n\nNON-SYNTHETIC. non_synthetic is true on this record and on neither of the other two: dissolving, treating with carbon, filtering, acidifying, cooling and crystallising break and make no bond in the tembotrione. reaction_class is recrystallisation, which is the one class in the closed list that describes an isolation rather than a transformation, and it is taken from this run's shared class table for a whole purification operation annotated as one record. mechanism_type is not_determinable because a crystallisation has no mechanism in the sense the enum means. The carbon treatment and the hot filtration are not split out as their own records: they have no charge of their own and no workup of their own, and the shared table annotates the whole dissolve-carbon-filter-acidify-cool-filter sequence as one recrystallisation. \n\nFLAG 3, the stirring speed against the patent's own claim, recorded and not fixed, and the reason this record's notes must be read even though its validation_flags are empty. The speed here is printed as 280 revolutions per hour. Claim 3, and [0025] with it, require the stirring speed of this step to be 150 to 200 revolutions, printed with no per-time base at all. So the document's only worked example of the invention falls outside the range its own dependent claim recites, and the two figures are not even in the same unit. Neither was adjusted, neither was converted, and conditions.stirring.rpm is left null on both grounds: the printed figure is per hour where the field expects per minute, and the claim's figure has no base. The printed phrase is here, which is the only place the schema allows it. \n\nWHY validation_flags IS EMPTY, said plainly so that empty is not read as clean. The closed list has no value for an example that falls outside its own claim, and no value for a unit that is not a unit. Both findings are recorded here and in the provenance arithmetic_check instead, and is_complete true on this record means only that the fifteen enumerated checks pass, not that the step is free of defects. The enumerated checks do pass: the record has a reactant and a product, it has conditions, its identifiers are A1's, and its arithmetic closes. \n\nCONCENTRATION, CORRECTED AFTER AN INDEPENDENT AUDIT, AND THE READING IT REPLACES. The printed phrase is 40% water-containing methanol, and the 40% is the WATER content, not the methanol content: [0018] states that the water content of the aqueous solution is 20 to 40 per cent, and claim 1 repeats it. concentration.reagent is therefore water, with the value and unit unchanged and the printed phrase carried in text. THE FIRST VERSION OF THIS RECORD HAD IT THE OTHER WAY ROUND, naming methanol as the reagent, which would have described a medium that is 40% methanol and 60% water, the inverse of what the patent specifies and outside the claimed range. The thirteen batch records of Examples 2 to 5 assign the same phrase to water, so this now agrees with them. The 10% aqueous hydrochloric acid is the other stated concentration in this step and the schema has a single concentration object, so it is recorded on the hydrochloric acid's addition_profile, in purification and here, rather than displacing the methanol figure. \n\nConditions. Warmed to 60 C and held 1 h with the carbon; temperature and time_h carry that hold, because it is the only temperature and the only period this step states. The cooling that crystallises the product is stated with no temperature and no method, so cooling_method is null and the operation is in workup.steps instead; nothing was invented for it. The acid is added dropwise, which is captured in its addition_profile and not in time_h. ph_value is 2.0 and workup.ph_target is 2.0: this example prints the pH as a value reached, not as the one-sided bound the claims print, which is why a number appears here where Claims_Step 3 leaves it null. reactor_type is null: the paragraph names no vessel for the purification and the flask of Steps 1 and 2 is not restated. \n\nPRODUCT PURITY AND THE ABSENT YIELD. product_purity_pct is 95.0, the content stated for the isolated 262.1 g, and product_purity_method is null because the patent does not say how the content was measured. product_yield_pct is null here and on all three records: the patent states no yield percentage anywhere in the document, and none was computed from the charges. What the printed masses do imply is in the provenance arithmetic_check, where a computed number is allowed to live. \n\nCHARACTERISATION. The 1H NMR in CDCl3 at [0054] and [0055] is ONE datum split by a paragraph marker, with no separator printed at the break, and it belongs to the product of this step. The reaction schema has no NMR field, so nothing is written into product_ms_mz or product_ms_type, which are for mass spectrometry; the datum is carried verbatim on the A1 tembotrione compound record and both paragraphs are quoted and cited in this record's provenance. analytics:nmr is tagged here so that a consumer reading only the reactions artifact can see that the step's product was characterised. \n\nLinkage. precursor_step is Step 2 and linkage_confirmed is true: the crude tembotrione product of Step 2 is named as the material this step charges, and the identifiers match. One identifier appears twice on this record, once as the crude reactant and once as the purified product, because the document distinguishes crude from purified by adjective only and never by name; the distinction lives in purity_pct, per the shared canonical identifier table. Step boundaries. [0053] is one continuous paragraph with no numbered markers and no headings, so the three boundaries are taken at the operations themselves: the thionyl chloride stage, then the fresh solvent and base charge that starts the dione stage, then the charge of aqueous methanol onto the isolated crude that starts the purification. Three records, which agrees with A0's estimate of three. It is three and not four because the dione and the acetone cyanohydrin are charged together with no workup between them, which prompt rule 5 makes one one-pot record. The paragraph runs across a page break in the middle of a word: the text layer prints the first part ending in the first two characters of the stirring-speed phrase and the continuation beginning with its third, and the two halves are joined here with nothing inserted, because the patent prints no separator there. The text layer also prints spaces inside several printed numbers and inside the locants of the trifluoroethoxy group and of the dichloroethane. The printed strings are kept verbatim in procedure_text and in the provenance quote and were not normalised; the structured fields carry the values. PH CASING, recorded once here and not repeated on every record: the document prints the pH of this example and of the tables in capitals and prints it lower case in the claims. Neither casing was normalised and conditions.ph_value carries the number. NO COMPUTED NUMBER IS IN THIS FIELD OR IN ANY QUANTITY FIELD. Prompt rule 32 forbids introducing a number the text does not print, so quantity.mmol and quantity.equivalents are null on every compound of this section even though every mass needed to compute them is printed. The molar amounts, the equivalents and the theoretical-yield reconciliation are in the provenance arithmetic_check, which is what A5 reads. MODEL PROVENANCE: this section contains no IMAGE_EXTRACT span and therefore no vision-pass content; the whole reading is the extraction pass, produced by Claude, so there is no second witness to it here. THE PROMPT'S PATENT-SPECIFIC PARAGRAPHS DESCRIBE THE PREVIOUS PATENT and were not followed as facts: this section prints no N-comma compound markers (rule 1), has no structure drawn before each step (rule 5b), has no scheme at all so the eight-prose-versus-nine-drawn count (rule 5f) is inapplicable, and rule 29's assertion about which steps fail to close was not used to decide anything - every check was recomputed from the printed masses. QUANTITY IS AN OBJECT OF NULLS HERE, NEVER A LITERAL NULL, AND THAT IS THE OPPOSITE OF THE A1 RULE. Four entries of this section carried a literal null until an independent audit of this artifact found them: they were the only four in the run, against none in either existing run, so a consumer reading the mass member unguarded would have thrown on this section alone. The difference between the two passes is real and not an inconsistency in the pack. On a CompoundRecord the literal null is required, because finalise.py merges records that share an identifier and treats a dict as a container, so an object of nulls there would overwrite a populated quantity coming from another section. Reaction records are never merged by identifier, so nothing here can be clobbered and the object is safe. Do not change it back. FLATTENED REACTANT LIST, CORRECTED AFTER AN INDEPENDENT AUDIT OF THIS ARTIFACT. reactant_names carries only the identifiers whose compounds[] entry has role reactant, not everything charged. The first version of these three records listed the solvent, the base, the catalyst and the adsorbent there as well; that is now restricted, so the flattened list and the role field agree and this section joins the nineteen batch records of Examples 1 to 5, which annotate the same purification and list tembotrione alone. Nothing was removed from the record: every charge is still in compounds[] with its own role and its own mass. NOTE A DISAGREEMENT THIS CREATES ACROSS THE ARTIFACT, recorded rather than resolved: Background_Step 1 and Synthesis Scheme_Step 1 describe the same transformations as Steps 1 and 2 here and do list the reagent and the solvent in reactant_names, so the document's reactions artifact is not internally consistent on this field. This section follows the role test because it is checkable against compounds[]; the other sections were not re-run by this pass. REGISTRY CAVEAT: the registry supplied to this pass ends with an instruction that every record's precursor_step is Synthesis Scheme::Step 2 because each batch opens by taking material from the completed rearrangement. That paragraph is about the batch tables of Examples 1 to 5 and does not apply here. This section charges its own starting material and then runs the rearrangement itself, so the chain is internal and no cross-section precursor is set. Synthesis Scheme_Step 1 and Synthesis Scheme_Step 2 describe the same two transformations as Step 1 and Step 2 here, unquantified; this section is their scale-up with the purification of Examples 1 to 5 appended, and it is the only place in the document where the synthesis and the purification appear as one continuous operation."
+  }
+]

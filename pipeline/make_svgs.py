@@ -96,6 +96,20 @@ class Canvas:
         self.parts.append(f'<polygon points="{p}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>')
 
     # ---- helpers ----------------------------------------------------
+    def wrapped(self, s, width_chars):
+        """The lines wrap() would draw. Callers need the count to size a box."""
+        words, line, lines = s.split(), "", []
+        for w in words:
+            t = (line + " " + w).strip()
+            if len(t) > width_chars and line:
+                lines.append(line)
+                line = w
+            else:
+                line = t
+        if line:
+            lines.append(line)
+        return lines
+
     def wrap(self, x, y, s, width_chars, size=12, fill=INK, anchor="middle", lh=15,
              weight="normal", mono=False):
         words, line, lines = s.split(), "", []
@@ -384,12 +398,27 @@ def m2():
                f"L {xb + bw / 2} {ya + bh + 28} L {xb + bw / 2} {yb - 6}", sw=1.8)
 
     xE, yE = positions[-1]
-    c.rect(xE - 6, yE + bh + 26, bw + 12, 46, fill="#efe6f1", stroke=PURPLE, sw=2)
-    c.wrap(xE + bw / 2, yE + bh + 48, product, 26, size=14, weight="700", lh=15)
-    c.text(xE + bw / 2, yE + bh + 64, "the target", size=10.5, fill=MUTE)
+    # The box was a fixed 46 high, which fits a product name of one line. A
+    # polymorph patent names its product "tembotrione crystal modification I",
+    # 33 characters, which wraps to two and drove the second line through the
+    # caption under it. Grow the box and push the caption down by however many
+    # lines the name actually takes, so the layout follows the name rather than
+    # assuming one.
+    # lh must clear the tracked box, which text() makes 1.08 * size tall. At
+    # size 14 that is 15.12, so the old lh of 15 overlapped its own next line
+    # by a tenth of a pixel and the collision check called it a clash. 17 clears
+    # it. This only ever bit a label long enough to wrap, which no previous
+    # patent had here.
+    PLH = 17
+    plines = len(c.wrapped(product, 26))
+    pbox = 46 + (plines - 1) * PLH
+    c.rect(xE - 6, yE + bh + 26, bw + 12, pbox, fill="#efe6f1", stroke=PURPLE, sw=2)
+    c.wrap(xE + bw / 2, yE + bh + 48, product, 26, size=14, weight="700", lh=PLH)
+    c.text(xE + bw / 2, yE + bh + 64 + (plines - 1) * PLH, "the target",
+           size=10.5, fill=MUTE)
     c.line(xE + bw / 2, yE + bh + 4, xE + bw / 2, yE + bh + 22, sw=1.8)
 
-    ytext = yE + bh + 26 + 46 + 12
+    ytext = yE + bh + 26 + pbox + 12
     known = [st[4] for st in steps if st[4].endswith("%")]
     c.text(60, ytext, f"cumulative yield across all {word(n)} steps, as printed:",
            size=12, anchor="start", fill=MUTE)

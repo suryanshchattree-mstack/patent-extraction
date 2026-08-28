@@ -3907,7 +3907,13 @@ class Run(Engine):
         self.quantity_tally["schema_loss" if family == "schema_loss"
                             else ("gap" if kind == "gap" else "unmapped")] += 1
 
-        tag = f"{line}:{fmt_value(low.value)}{low.unit}"
+        # The magnitude here has to be the canonical one, not the printed one.
+        # low.unit is already canonical (kg folds to g), so pairing it with the
+        # raw value gave "1 g" and "1 kg" on one line the same tag, and so the
+        # same claim id: a reviewer answering one would have silently answered
+        # the other. quantity_key above already dedupes on canonical(), so using
+        # it here cannot group differently from the sweep that found these.
+        tag = f"{line}:{fmt_value(low.canonical())}{low.unit}"
         if kind.startswith("schema_loss"):
             # The CHECK stays on the record, because the loss really did happen
             # there. Only the QUESTION is pooled, because it is one question.
@@ -3956,7 +3962,7 @@ class Run(Engine):
             ["A quantity the patent prints that nothing in the annotation holds."],
             "value", {line}, about="schema" if family == "schema_loss"
             else "extraction", load_bearing=True,
-            rec_field=f"__quantity__.line_{line}.{fmt_value(low.value)}{low.unit}")
+            rec_field=f"__quantity__.line_{line}.{fmt_value(low.canonical())}{low.unit}")
         claim["quantity_verdict"] = kind
         # Ordered within tier 2 by what a fix would take: an empty field is a
         # re-extraction, a schema loss is a schema change, and a number with nowhere
@@ -4031,6 +4037,15 @@ class Run(Engine):
             else:
                 sigs = self.signals(n, reagent_names)
                 if citers:
+                    status = "covered"
+                elif kind == "translation":
+                    # A translation line is not source. build_enriched.py writes
+                    # one under each paragraph, and a record cites the original,
+                    # not its rendering. Counting it as uncited chemistry asks a
+                    # reviewer the same question twice: once about the line the
+                    # patent prints and once about the machine's English for it.
+                    # On a German patent that is most of the census, because
+                    # every paragraph has such a partner.
                     status = "covered"
                 elif sigs:
                     status = "uncited_with_chemistry"
