@@ -50,21 +50,23 @@ TEXT:
 4. A section begins where the subject matter changes, judged from content, not from
    heading depth. Markdown heading levels in this text are unreliable.
 5. This is a CNIPA (Chinese) patent. Its experimental content sits under a single
-   lead-in sentence and then uses **numbered inline markers** of the form
+   lead-in sentence per example and then uses **numbered inline markers** of the form
    `1、<compound name>`, `2、<compound name>`, ... rather than `## Example N`
    headings. Each such numbered marker starts a new experimental step, but they are
-   all steps of **one** `Example 1`.
-6. Therefore: do **not** split `Example 1` into eight sections. `Example 1` is ONE
-   section of type `experimental_example` spanning all eight numbered steps.
-   Splitting a single Example across sections is forbidden. Pass A2 is what
-   decomposes it into steps.
+   all steps of **one** example.
+6. Therefore: do **not** split an example into one section per numbered step. Each
+   `实施例 N` is ONE section of type `experimental_example` spanning all of its
+   numbered steps, however many there are. A `对比实施例` is likewise one section, of
+   type `comparative_example`. Splitting a single example across sections is
+   forbidden. Pass A2 is what decomposes it into steps.
 7. A `[IMAGE_EXTRACT: {...}]` span belongs to the section whose text surrounds it.
-   Never open a section at one, and never leave one stranded between sections. In
-   this document the largest drawing sits inside the summary/beneficial-effects
-   region and a further drawing precedes each experimental step.
-8. Page header and footer lines (`CN 104292137 A`, `说明书 3/6页`, a bare page
-   number) belong to whichever section surrounds them. Do not create sections for
-   them.
+   Never open a section at one, and never leave one stranded between sections. On a
+   synthesis patent the largest drawing commonly sits in the summary region, where
+   the whole route is drawn at once, and a further drawing precedes each experimental
+   step.
+8. Page header and footer lines (a running head such as `{PATENT_ID}`, a page label
+   such as `说明书 N/M页`, a bare page number) belong to whichever section surrounds
+   them. Do not create sections for them.
 
 ### Classification
 9. Assign each section exactly one `section_type` from this closed list. Choose the
