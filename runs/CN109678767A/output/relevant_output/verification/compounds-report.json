@@ -1,0 +1,411 @@
+{
+  "artifact": "compounds.json",
+  "records_audited": 66,
+  "findings": [
+    {
+      "check": "precision",
+      "severity": "critical",
+      "record": "hydrobromic acid",
+      "field": "section_label",
+      "problem": "Seventeen of the twenty-four records that carry a quantity are labelled section 'Summary of the Invention', a section (lines 109-155) that prints no absolute charge anywhere and gives only molar ratio ranges; the quantity on each of those records was in fact printed in Example 3 or Example 4, so any section-level scoring reads the wrong section and any consumer that trusts section_label reads a charge into a section that has none.",
+      "source_line": 129,
+      "quote": "[0019] 优选的，步骤1)中，2-氯-3-甲基-4-甲磺酰基苯甲酸甲酯、催化剂、氢溴酸、双氧水的摩尔比为1:0.01～0.1:1～2:1～2。",
+      "artifact_says": "hydrobromic acid: section_label 'Summary of the Invention', mass_g 33.75, mmol 200.0, purity_pct 48.0. The same pattern on hydrogen peroxide (22.7 g), 2,2,2-trifluoroethanol (1.13 g), thionyl chloride (24.0 g), triethylamine (30.6 g), acetone cyanohydrin (0.89 g), sodium hydroxide (8.1 g), potassium carbonate (27.88 g), triethylenediamine (2.26 g), azobisisobutyronitrile (1.66 g), water (200 ml), dichloromethane (100 ml), chloroform (200 ml), acetone (200 ml), tetrahydrofuran (200 ml), DMF (0.074 g) and m-chloroperoxybenzoic acid (0.174 g).",
+      "should_be": "Set section_label on each merged record to the section that actually contains the surviving quantity (Example 4 for fifteen of the seventeen, Example 3 for DMF and m-chloroperoxybenzoic acid), or leave section_label null on a cross-section merged record rather than naming a section that does not carry the value.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "methyl 2-chloro-3-(bromomethyl)-4-(methylsulfonyl)benzoate",
+      "field": "quantity",
+      "problem": "The document contains four worked examples and a comparative example, and the artifact retains exactly one charge, one isolated mass and one yield per compound; every surviving mass and yield comes from Example 3 or Example 4, the only quantity uniquely traceable to Example 1 is the 200 ml of tetrahydrofuran, and nothing is uniquely traceable to Example 2. Fifteen of the seventeen product masses and yields printed in the document are absent.",
+      "source_line": 181,
+      "quote": "异丙醇进行重结晶、过滤、烘干得46.67g白色粉末，纯度99.0％，收率89％。",
+      "artifact_says": "The bromo ester record carries mass_g 30.66, yield_pct 88.7, purity_pct 98.8 (Example 4, line 272) and nothing else, although its own provenance entry lists the Comparative Example and Examples 1 to 4. Lost: 46.67 g / 89% (Ex1, line 181), 46 g / 88.5% (Ex2, line 211), 31.33 g / 90% (Ex3, line 239), 15 g / 88% (Comparative, line 298).",
+      "should_be": "Either emit one record per (compound, section) so each example keeps its own charges, or carry a per-section quantity list on the merged record. A single scalar quantity cannot represent five experiments.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "azobisisobutyronitrile",
+      "field": "quantity",
+      "problem": "Read as one set, the artifact describes an experiment that was never run: it gives charges for azobisisobutyronitrile (1.66 g, Example 4) and for m-chloroperoxybenzoic acid (0.174 g, Example 3) at the same time, although claim 3 makes them alternatives for the same step 1 catalyst, and it gives volumes for tetrahydrofuran (200 ml, Example 1), acetone (200 ml, Example 3) and DMF (200 ml, Example 2 or 4) at the same time, although claim 7 makes them alternatives for the same step 2 solvent.",
+      "source_line": 131,
+      "quote": "[0020] 进一步的，步骤1)中，所述催化剂为偶氮二异丁腈或间氯过氧苯甲酸；双氧水的滴加温度为45～80℃。",
+      "artifact_says": "azobisisobutyronitrile mass_g 1.66 / mmol 10.0 and m-chloroperoxybenzoic acid mass_g 0.174 / mmol 1.0 both present; tetrahydrofuran, acetone and DMF all carry volume_ml 200.0.",
+      "should_be": "Keep the charges of mutually exclusive alternatives on separate per-example records so they are never asserted together.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "tembotrione",
+      "field": "quantity",
+      "problem": "The final product of the whole route carries no mass and no yield although five sections print both, yet purity_pct 98.7 did survive the merge, so the record is not simply quantity-free: it asserts one example's purity next to an empty quantity.",
+      "source_line": 286,
+      "quote": "加乙醇进行重结晶，过滤，烘干得38.1g米黄色结晶粉末，纯度98.7％，收率85.4％。",
+      "artifact_says": "tembotrione: quantity.mass_g null, quantity.yield_pct null, purity_pct 98.7, section_label 'Technical Field'.",
+      "should_be": "Populate mass_g and yield_pct from the same passage the surviving purity came from (38.1 g and 85.4% at line 286, or 37.94 g and 85% at line 256), or null the purity too so the record does not mix a populated field from one example with empty fields that the same example fills.",
+      "confidence": "high"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
+      "field": "quantity.mass_g",
+      "problem": "Step-to-step continuity fails in Examples 3 and 4 and nothing in the artifact flags it, because the charged mass of each isolated intermediate is not recorded at all: only the isolated mass survives, so the discrepancy is invisible. Example 4 step 1 makes 30.66 g of the bromo ester and step 2 charges 34.2 g of it; step 2 makes 31.1 g of the acid and step 3 charges 34.72 g of it. Example 3 shows the same pattern (31.33 g made, 34.5 g charged; 31.58 g made, 34.75 g charged).",
+      "source_line": 279,
+      "quote": "[0076] 将34.2g  2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(99.8％、0.1mol)，27.88g碳酸钾(99％、0.2mol)",
+      "artifact_says": "The acid record carries mass_g 31.1 (the mass it was isolated at) and no note about the 34.72 g charged into step 3; the bromo ester record carries mass_g 30.66 and no note about the 34.2 g charged into step 2.",
+      "should_be": "Add a note on both intermediate records recording that the mass charged into the next step exceeds the mass the previous step isolated, with both figures, and do not correct either.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "bromine",
+      "field": "quantity",
+      "problem": "Bromine is charged once in the whole document, at 8.8 g (0.055 mol), and the record carries no quantity at all; the merge kept the quantity-free mention from the closing comparison instead.",
+      "source_line": 298,
+      "quote": "升温回流，滴加8.8g(0.055mol)溴素，保温反应4h",
+      "artifact_says": "bromine: quantity.mass_g null, quantity.mmol null, section_label 'Concluding Comparison'.",
+      "should_be": "Set mass_g 8.8 and mmol 55.0 from line 298 and section_label 'Comparative Example'.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "sodium methoxide",
+      "field": "quantity",
+      "problem": "Sodium methoxide is charged once in the whole document, at 5.4 g (0.1 mol), and the record carries no quantity; as with bromine the merge kept the quantity-free closing-comparison mention.",
+      "source_line": 305,
+      "quote": "[0086] 将5.4g(0.1mol)甲醇钠称于120mLDMF中，加入四口烧瓶中，冷却至15℃",
+      "artifact_says": "sodium methoxide: quantity.mass_g null, quantity.mmol null, section_label 'Concluding Comparison'.",
+      "should_be": "Set mass_g 5.4 and mmol 100.0 from line 305 and section_label 'Comparative Example'.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "1,3-cyclohexanedione / cyclohexane-1,3-dione",
+      "field": "identifier",
+      "problem": "Three substances are split across two records each because two English renderings of the same Chinese name were used in different sections, and unlike the three benzene-ring intermediates these three have no entry in compounds-equivalence.json, so nothing downstream can collapse them: 1,3-环己二酮 is 1,3-cyclohexanedione in the abstract and summary but cyclohexane-1,3-dione in the claims and every example; DMF is DMF in the summary, beneficial effects and Example 3 but N,N-dimethylformamide in the claims, Examples 1, 2 and 4 and the comparative example; 间氯过氧苯甲酸 is 3-chloroperoxybenzoic acid in the claims but m-chloroperoxybenzoic acid in the summary and Example 3. Each member lists the other's identifier in its own aliases, so the artifact itself asserts the identity it then splits.",
+      "source_line": 59,
+      "quote": "将1,3-环己二酮、溶剂加入反应瓶，在30℃以下滴加三乙胺",
+      "artifact_says": "Six records and six distinct id values for three substances: CN109678767A_1,3-cyclohexanedione and CN109678767A_cyclohexane-1,3-dione; CN109678767A_DMF and CN109678767A_N,N-dimethylformamide; CN109678767A_3-chloroperoxybenzoic acid and CN109678767A_m-chloroperoxybenzoic acid. compounds-equivalence.json has three groups and covers none of these.",
+      "should_be": "Render each Chinese name one way throughout so finalise collapses each substance to a single record, or add the three groups to compounds-equivalence.json. Reported as one finding because it is one root cause applied three times.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "水",
+      "field": "identifier",
+      "problem": "Water exists twice because one section kept the Chinese 水 as the identifier instead of resolving it, which A1 rule 6 requires for an unambiguous Chinese chemical name; the two records disagree on identifier_type and on role, and each carries the other's identifier as an alias.",
+      "source_line": 40,
+      "quote": "反应后水洗、浓缩、重结晶",
+      "artifact_says": "Record 'water' (identifier_type trivial_name, role other, section 'Summary of the Invention', volume_ml 200.0) and record '水' (identifier_type iupac, role solvent, section 'Abstract', quantity all null). ids CN109678767A_water and CN109678767A_水.",
+      "should_be": "Resolve 水 to water in the abstract record and keep 水 as an alias, so the two collapse to one record.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "tembotrione",
+      "field": "physical_form",
+      "problem": "The tembotrione record combines a physical form taken from the abstract and claims with a purity taken from an example, and no passage states that combination: the abstract and claims print 米黄色固体 (beige solid) with no purity, while Examples 3 and 4, which print 98.7%, both isolate 米黄色结晶粉末 (beige crystalline powder). Five of the record's own note segments say the form is powder.",
+      "source_line": 256,
+      "quote": "加甲醇进行重结晶，过滤，烘干得37.94g米黄色结晶粉末，纯度98.7％，收率85％。",
+      "artifact_says": "physical_form 'solid', appearance '米黄色固体', color 'beige', purity_pct 98.7.",
+      "should_be": "Take physical_form, appearance and purity_pct from the same passage: either physical_form 'powder' with appearance '米黄色结晶粉末' and purity 98.7, or keep the abstract's 米黄色固体 and null the purity.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "hydrobromic acid",
+      "field": "role",
+      "problem": "The record's role contradicts its own notes: role is 'reagent' while four of the merged note segments state the compound was recorded as reactant. The merge kept the abstract, claims and summary reading and the example notes, so the artifact now asserts two different roles for one compound.",
+      "source_line": 272,
+      "quote": "33.75g氢溴酸(48％、0.2mol)加入500ml反应瓶中",
+      "artifact_says": "role 'reagent'; notes contain 'Supplies the bromine of the step 1 product, so recorded as reactant rather than acid' and 'so recorded as reactant rather than reagent'.",
+      "should_be": "Pick one role for the merged record and drop the note segments that assert the other, or keep per-section records so each role stays attached to the section that supports it.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "N,N-dimethylformamide",
+      "field": "role",
+      "problem": "The record contradicts its own notes and loses the only quantities DMF has as a catalyst. Its notes say the step 3 catalyst charge is the more completely stated of the two and is kept, so role and quantity follow it, yet the record has role 'solvent' and quantity volume_ml 200.0, which is the step 2 solvent charge. The DMF catalyst charges of 0.2 g (Ex1), 0.3 g (Ex2) and 0.74 g (Ex4) appear on neither DMF record; only Example 3's 0.074 g survives, on the separate 'DMF' record.",
+      "source_line": 286,
+      "quote": "0.74g  DMF(99％、0.01mol)，24g氯化亚砜(99％、0.2mol)",
+      "artifact_says": "N,N-dimethylformamide: role 'solvent', volume_ml 200.0, purity_pct 99.0, notes 'The step 3 charge is the more completely stated of the two and is kept here, so role and qua...'.",
+      "should_be": "Make role and quantity agree with each other and with the note that explains them, and record the step 3 catalyst charge somewhere.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "major",
+      "record": "tembotrione",
+      "field": "is_section_product",
+      "problem": "Exactly one record in the artifact has is_section_product true and it sits on 'Technical Field', a section that only repeats the invention title. The abstract, the claims, each of the four examples and the comparative example each end with an isolated or named final product, and none of them has a record flagged as the product of that section, so a consumer cannot tell what any example produced.",
+      "source_line": 200,
+      "quote": "加甲醇进行重结晶，过滤，烘干得30.3g米黄色结晶粉末，纯度98.6％，收率86％。",
+      "artifact_says": "is_section_product true on tembotrione (section 'Technical Field'); false on all 65 other records, including the Example 4 bromo ester and acid.",
+      "should_be": "is_section_product is not well defined on a cross-section merged record. Either keep per-section records so the flag survives on each example's product, or move the flag to the record that carries an example's isolated mass.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "water",
+      "field": "quantity.volume_ml",
+      "problem": "Merged solvent records keep one stated volume and drop the rest, so several charges survive only in the prose notes where nothing can read them: water is charged at 200 ml in every example and at 150 ml in the comparative example and only 200 ml is recorded; ethanol (100 mL, line 305), acetonitrile (150 ml, line 312), DMF (120 mL, line 305), dichloromethane (200 ml, line 312) and the 40 mL of 10% NaOH solution (line 305) have no volume at all.",
+      "source_line": 312,
+      "quote": "过滤，滤液浓缩，加入150ml水，用2mol/L盐酸调至PH＝2后",
+      "artifact_says": "water volume_ml 200.0; ethanol, acetonitrile volume_ml null; N,N-dimethylformamide volume_ml 200.0; sodium hydroxide volume_ml null.",
+      "should_be": "Record the most complete quantity per section rather than one volume per substance, or list each stated volume with its line.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "water",
+      "field": "tags",
+      "problem": "Seven records carry more than one compound_class tag where A1 rule 18 requires exactly one: water (other, workup_agent, solvent), sodium methoxide (reagent, starting_material, base), 2,2,2-trifluoroethanol (starting_material, reagent), acetone cyanohydrin (reagent, catalyst), methanol (by_product, solvent), sodium hydroxide (by_product, base) and N,N-dimethylformamide (catalyst, solvent). On methanol and sodium hydroxide the by_product tag comes from the background paragraph about sodium methoxide decomposition and contradicts the record's own role.",
+      "source_line": 107,
+      "quote": "甲醇钠易燃、易爆、对空气与湿气敏感，遇水迅速分解成甲醇和氢氧化钠",
+      "artifact_says": "tags on water: ['compound_class:other', 'compound_class:workup_agent', 'compound_class:solvent'].",
+      "should_be": "Reduce each record to exactly one compound_class tag at merge time, chosen by the same rule that chooses role.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "carbon tetrachloride",
+      "field": "quantity",
+      "problem": "Two record shapes coexist in one artifact: 62 records encode quantity as the five-field object with null members, while four encode it as scalar null. A field-by-field comparator reads these as different.",
+      "source_line": 296,
+      "quote": "[IMAGE_EXTRACT: {\"molecules\": [{\"smiles\": \"COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl\"",
+      "artifact_says": "quantity is scalar null on COC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl, CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F, 碱 and 酸; it is the five-field object everywhere else.",
+      "should_be": "Emit the five-field object with null members on all 66 records.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "carbon tetrachloride",
+      "field": "analytics",
+      "problem": "The same inconsistency in analytics: 61 records carry an empty array and five carry scalar null. carbon tetrachloride, the two SMILES-identified drawn intermediates, 碱 and 酸 are the five.",
+      "source_line": 298,
+      "quote": "加入180mL四氯化碳，升温回流",
+      "artifact_says": "analytics null on carbon tetrachloride, COC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl, CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F, 碱 and 酸; [] on the other 61.",
+      "should_be": "Emit [] on all 66 records.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "碱",
+      "field": "smiles",
+      "problem": "A `smiles` key appears on 4 of the 66 records and is absent from the other 62; the A1 output template defines no such field. Its value is null on every record that has it, so rule 4c is satisfied, but the inconsistent key set is a schema defect in its own right, and the four records that carry it are exactly the four that also carry the scalar-null quantity.",
+      "source_line": 152,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1,",
+      "artifact_says": "'smiles': null present on COC(=O)c1ccc(S(C)(=O)=O)c(COCC(F)(F)F)c1Cl, CS(=O)(=O)c1ccc(C(=O)Cl)c(Cl)c1COCC(F)(F)F, 碱 and 酸; key absent on the other 62.",
+      "should_be": "Emit the same key set on every record: either drop `smiles` everywhere or add it as null everywhere.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "2,2,2-trifluoroethanol",
+      "field": "tags",
+      "problem": "The record carries functional_group:alcohol while one of its own note segments states that no alcohol tag was emitted because the allowed functional_group vocabulary contains no alcohol value. Six records carry functional_group:alcohol, so either the note or the tag policy is wrong, and the artifact currently holds both.",
+      "source_line": 188,
+      "quote": "10.5g  2,2,2-三氟乙醇(99％、0.1039mol)",
+      "artifact_says": "tags include 'functional_group:alcohol'; notes include 'no tag is emitted for the hydroxyl because the allowed functional_group vocabulary given in the rules contains no alcohol value'.",
+      "should_be": "Decide whether functional_group:alcohol is in vocabulary and make the tag and the note agree. A1 rule 18 gives the functional_group values as examples rather than a closed list, so keeping the tag and dropping the note segment is the smaller change.",
+      "confidence": "medium"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": "碱",
+      "field": null,
+      "problem": "In row 2 of the p05 scheme, 碱 is drawn as a co-reactant on the reactant line, between HOCH2CF3 and the arrow, with the arrow itself bare. The vision read of that step lists only the bromo ester and the trifluoroethanol as reactants and gives conditions as an empty array, so the drawn base is dropped from step 2 entirely. The 碱 record in the artifact derives only from the 碱/酸 label above the row 3 arrow. The comparison that fixes this as an omission rather than a policy is row 5, where 氯化亚砜 is drawn in exactly the same on-the-line position and was read into that step's reactants.",
+      "source_line": 152,
+      "quote": "\"step_id\": 2, \"reactants\": [{\"smiles\": \"COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl\", ... {\"smiles\": \"OCC(F)(F)F\", ... \"conditions\": []",
+      "artifact_says": "compounds-provenance.json anchors 碱 to line 152 with quote 'line 152 step 3 conditions: {\"text\": \"碱/酸\"}' only.",
+      "should_be": "Add the row 2 base to the provenance of the 碱 record. I verified the drawing by cropping and enlarging the row 2 band of p05; the character is 碱 and it sits on the reactant line.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "缩合剂",
+      "field": "identifier",
+      "problem": "Inclusion criteria are applied asymmetrically to unidentified functional references. 溶剂, 催化剂, 碱1, 碱2, 碱 and 酸 are all extracted as records although each names a function rather than a substance, while 缩合剂 (condensing agent) at line 102 is not, and the tembotrione record's own notes give the reason for excluding it in terms that apply equally to 碱1: 'names a function rather than a substance and is never identified'. 碱1 is likewise never identified in the section it was extracted from.",
+      "source_line": 102,
+      "quote": "在制备环磺酮的时候，用到了昂贵的缩合剂，且用量较大，合成成本偏高。",
+      "artifact_says": "Records exist for 溶剂, 催化剂, 碱1, 碱2, 碱 and 酸; no record exists for 缩合剂.",
+      "should_be": "Either add a 缩合剂 record with resolved false and unresolved_reference true, or state the criterion that excludes it and applies to 碱1 and 碱2 as well. Either choice is arguable; the inconsistency is not.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": null,
+      "field": null,
+      "problem": "The provenance sidecar holds 234 entries against 66 artifact records and is no longer one entry per record in the same order, which is what the A1 spec requires. Identifiers that were merged across sections appear up to thirteen times (tembotrione) and the mapping from entry to record is by identifier rather than by position.",
+      "source_line": 40,
+      "quote": "本发明公开一种除草剂环磺酮的合成工艺",
+      "artifact_says": "compounds-provenance.json: 234 entries, 66 distinct identifiers, all 66 artifact identifiers covered and no extras.",
+      "should_be": "Collapse the sidecar to one entry per record at the same time the records are merged, with the union of source_lines and the quotes joined, so position-wise pairing holds.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "triethylenediamine",
+      "field": "tags",
+      "problem": "Merged records accumulate synonymous chemical_family tags, so one scaffold is named twice or three times: triethylenediamine carries diazabicycloalkane, diamine and diazabicyclooctane; sodium methoxide carries alkoxide and metal_alkoxide; 2,2,2-trifluoroethanol carries fluorinated_alcohol and alcohol. A1 rule 18 describes chemical_family as the broad scaffold, in the singular.",
+      "source_line": 137,
+      "quote": "所述催化剂为三乙烯二胺或2-甲基三乙烯二胺",
+      "artifact_says": "tags on triethylenediamine: ['compound_class:catalyst', 'functional_group:amine', 'chemical_family:diazabicycloalkane', 'chemical_family:diamine', 'chemical_family:diazabicyclooctane'].",
+      "should_be": "Keep one chemical_family per record at merge time.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "tembotrione",
+      "field": "analytics",
+      "problem": "The analytics array accumulates near-duplicate entries that differ only in a paraphrased `conditions` string, none of which is text from the patent. tembotrione carries eight hplc entries and the Example 4 acid carries five, all with the same raw_text 'LC跟踪至反应完全', where the document prints one such check per reaction stage.",
+      "source_line": 200,
+      "quote": "LC跟踪至反应完全",
+      "artifact_says": "tembotrione analytics: 8 entries, conditions strings such as 'in-process monitoring of both the step 3 acylation and the subsequent rearrangement to completion' and 'step 3), after the 三乙胺 addition'.",
+      "should_be": "Deduplicate analytics on (method, raw_text) at merge time, or keep conditions verbatim so duplicates collapse.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "hydrobromic acid",
+      "field": "purity_pct",
+      "problem": "Aqueous solution strengths are put in purity_pct on some records and deliberately withheld on others, so purity_pct mixes two different quantities. hydrobromic acid carries purity_pct 48.0 and hydrogen peroxide 30.0, both solution strengths; the sodium hydroxide record's own note states that the comparative example's 10% is a solution strength rather than a purity and was therefore left null. The same reasoning produced opposite outcomes.",
+      "source_line": 305,
+      "quote": "滴加10％NaOH溶液40mL，滴毕后回流1h",
+      "artifact_says": "hydrobromic acid purity_pct 48.0, hydrogen peroxide purity_pct 30.0; sodium hydroxide note: 'The stated 10％ is a solution strength rather than a purity, so purity_pct is l...'.",
+      "should_be": "Apply one rule to all three. Since the schema has no concentration field, recording the strength in purity_pct with a note is defensible, but it has to be done for the 10% NaOH too.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "sodium methoxide",
+      "field": "role",
+      "problem": "role 'base' contradicts the record's own note for the beneficial-effects section, which says role is reactant because the text calls it 原料 (raw material); the merge kept the comparative-example reading. Three compound_class tags (reagent, starting_material, base) record the same disagreement.",
+      "source_line": 166,
+      "quote": "[0034] 4.不使用易燃、易爆、易潮解的甲醇钠为原料，降低了生产安全风险，更易于工业化生产。",
+      "artifact_says": "role 'base'; notes include 'role is reactant because the text [calls it 原料]' and 'so recorded as the base that generates the alkoxide rather than as a reactant'.",
+      "should_be": "Pick one role and drop the contradicting note segment, or keep per-section records.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "水",
+      "field": "identifier_type",
+      "problem": "identifier_type 'iupac' on a record whose identifier is the Chinese character 水. The value is inside the closed list, so this is a semantic rather than a vocabulary-list violation, but it is inconsistent with the other water record, which types the same substance as trivial_name, and with 异戊二烯基醌, which is typed 'other'.",
+      "source_line": 40,
+      "quote": "反应后水洗、浓缩、重结晶",
+      "artifact_says": "水: identifier_type 'iupac'. water: identifier_type 'trivial_name'.",
+      "should_be": "Type both records the same way once they are merged; trivial_name matches how the reference run types water.",
+      "confidence": "medium"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "precision - fabrication",
+      "what_was_verified": "Every one of the 66 records anchors to a source line through compounds-provenance.json, which covers 102 distinct lines and contains no identifier absent from the artifact and no artifact identifier absent from it. I checked the anchors individually for every record whose existence is least obvious: the two drawing-only intermediates (both line 152), 碱 and 酸 (line 152), 异戊二烯基醌 (line 90), NBS (96), 3-chloro-2-methylaniline (98), the 3-oxo-1-cyclohexenyl ester (100), isoxadifen and thiencarbazone (94), benzobicyclon and sulcotrione (92), 2-methyltriethylenediamine (137), potassium hydroxide and lithium hydroxide (137), n-butanol (133), carbon tetrachloride (298) and sodium methoxide (305). No record is unanchored and no numeric value in the artifact is absent from the text."
+    },
+    {
+      "check": "fidelity - every printed mass and mole pair",
+      "what_was_verified": "I recomputed every mass/mole pair the patent prints, at the stated purity, against the molecular weight: methyl 2-chloro-3-methyl-4-methylsulfonylbenzoate 262.71 (40 g/0.152 mol, 26.46/0.1, 26.43/0.1, 13.1/0.05), the bromo ester 341.60 (30/0.0869, 35/0.102, 34.5/0.1, 34.2/0.1), the acid 346.70 (27.4/0.0788, 30/0.086, 34.75/0.1, 34.72/0.1, 34.6/0.1), HBr 80.91 at 48% (46/0.273, 34/0.202, 16.88/0.1, 33.75/0.2), H2O2 34.01 at 30% (20.6/0.182, 25/0.22, 11.33/0.1, 22.7/0.2), AIBN 164.21 (1/0.006, 0.5/0.003, 1.66/0.01), mCPBA 172.57 (0.174/0.001), K2CO3 138.21 (18/0.1289, 21.41/0.153, 13.94/0.1, 27.88/0.2), NaOH 40.00 (6/0.1485, 4.53/0.112, 4.04/0.1, 8.1/0.2), TFE 100.04 (10.5/0.1039, 15.46/0.153, 10.1/0.1), SOCl2 118.97 (12.3/0.102, 12.4/0.103, 12/0.1, 24/0.2, 60/0.5), DMF 73.09 (0.2/0.0027, 0.3/0.004, 0.074/0.001, 0.74/0.01), cyclohexane-1,3-dione 112.13 (9.5/0.084, 14.6/0.129, 11.3/0.1, 22.6/0.2, 13.44/0.12), triethylamine 101.19 (18.5/0.18, 21.97/0.215, 20.4/0.2, 30.6/0.3), acetone cyanohydrin 85.10 (1/0.011, 0.09/0.001, 0.89/0.01), DABCO 112.17 (0.9/0.0079, 1/0.008) and bromine 159.81 (8.8/0.055). Every pair closes to the printed rounding except the two reported under the next check."
+    },
+    {
+      "check": "arithmetic - the two internal inconsistencies are flagged",
+      "what_was_verified": "The patent prints exactly two mass/mole pairs that cannot both be right, and the annotation flags both rather than correcting either. Example 4 prints 1.13g2,2,2-三氟乙醇(99％、0.2mol) at line 279, where 0.2 mol is 20.0 g, and the record's notes say 'SOURCE CONFLICT ... the mass falls short of the mole count by more than an order of magnitude ... Both figures are recorded exactly as printed and neither is corrected'. Examples 3 and 4 print 0.226g三乙烯二胺(99％、0.001mol) and 2.26g三乙烯二胺(99％、0.01mol), both of which give twice the stated moles at MW 112.17, and the record's notes say 'INTERNAL INCONSISTENCY ... Recorded exactly as printed and not corrected' and 'the printed mass is about double what the printed mole count gives'. Examples 1 and 2 print DABCO pairs that do close, which isolates the two that do not. This is the correct outcome under check 4 and the flags are present."
+    },
+    {
+      "check": "arithmetic - yields close",
+      "what_was_verified": "I recomputed all fifteen step yields from the stated input moles, the product molecular weight and the stated product purity. Step 1 (MW 341.60): Ex1 46.67 g at 99.0% from 0.152 mol is 89.0% against a printed 89%; Ex2 46 g at 99.8% is 88.4% against 88.5%; Ex3 31.33 g at 98.0% from 0.1 mol is 89.9% against 90%; Ex4 30.66 g at 98.8% is 88.7% against 88.7%; comparative 15 g from 0.05 mol is 87.8% against 88%. Step 2 (MW 346.70): 91.3/91.3, 89.6/89.6, 90.5/90.5, 89.3/89.3. Step 3 (MW 440.82): 86.0/86, 84.1/84.1, 85.0/85, 85.4/85.4, and comparative 79.5% against 80%. Every printed yield closes. Unlike the reference patent, this document contains no yield that fails to close, so the absence of an arithmetic validation flag on a yield is correct here."
+    },
+    {
+      "check": "fidelity - unit handling",
+      "what_was_verified": "No unit error found. Every mol figure is converted to mmol only and never re-derived: 0.2 mol -> 200.0 on hydrobromic acid, hydrogen peroxide, trifluoroethanol, thionyl chloride, potassium carbonate, sodium hydroxide and cyclohexane-1,3-dione; 0.3 -> 300.0 on triethylamine; 0.01 -> 10.0 on acetone cyanohydrin, azobisisobutyronitrile and triethylenediamine; 0.001 -> 1.0 on DMF and m-chloroperoxybenzoic acid; 0.1 -> 100.0 on the methyl ester. Every ml figure lands in volume_ml and every g figure in mass_g. equivalents is null on all 66 records, correctly, since the patent states only molar ratio ranges and rule 14 forbids deriving equivalents from mmol. compounds.json carries no temperature field, so reflux cannot have been recorded as a temperature."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "I compared the Chinese against the EN line for every compound and every reagent and found no case where the artifact followed the English over the Chinese. The trap A1 rule 20 names explicitly is handled correctly: 丙酮氰醇 is acetone cyanohydrin (record, lines 59/200/228/256/286) and 氰基丙酮 is cyanoacetone (separate record, line 100), the two are not transposed. 三乙烯二胺 is read as the bicyclic DABCO rather than the linear triethylenetetramine, with the reasoning in the notes. 硝磺酮 with its parenthetical gloss 硝磺草酮、甲基磺草酮 is one record, mesotrione, while 磺草酮 at line 92 is a separate record, sulcotrione, which is the discrimination the EN line at 91 invites you to get wrong by rendering 甲基磺草酮 as 'methyl sulcotrione'. 双环磺草酮 is benzobicyclon, 双苯噁唑酸 is isoxadifen and 噻酮磺隆 is thiencarbazone, all three glossed by the patent itself. 二氯乙烷 as printed in the examples is kept unresolved with resolved false rather than silently read as the 1,2-二氯乙烷 of the claims, which is the correct handling of the ambiguity."
+    },
+    {
+      "check": "drawings - structure fidelity",
+      "what_was_verified": "I opened all eleven page images. Pages p01 to p04 carry no drawn structure, which matches the enriched markdown, so nothing was missed there. The sixteen IMAGE_EXTRACT spans are all on p05 to p11 and I checked each against the page. Every structure is correct on ring system, on every substituent and on every substituent position: the methyl ester (1-CO2CH3, 2-Cl, 3-CH3, 4-SO2CH3), the benzylic bromide (3-CH2Br), the trifluoroethoxymethyl methyl ester (3-CH2OCH2CF3), the acid (1-COOH), the acyl chloride (1-COCl), cyclohexane-1,3-dione and tembotrione (the aroyl on C2 of the 1,3-dione). The lone product structures on p06 (lines 178, 185), p07 (197, 208, 215), p08 (225, 236), p09 (247, 254, 265), p10 (276, 283) and p11 (296, 303, 310) each match the SMILES recorded for them. No structure looks inferred from chemical knowledge rather than read off the page."
+    },
+    {
+      "check": "drawings - above and below the arrow",
+      "what_was_verified": "No arrow in this document carries text on both sides. The p05 scheme has five arrows: row 1 carries cat above and nothing below, row 2 carries nothing at all, row 3 carries 碱/酸 above, row 4 carries 三乙胺/丙酮氰醇 above, row 5 carries nothing. The vision read places cat, 碱/酸 and 三乙胺/丙酮氰醇 in conditions and puts the on-the-line addends HBr, H2O2, HOCH2CF3, cyclohexane-1,3-dione and 氯化亚砜 in reactants, so above-arrow and below-arrow content was not merged. The one on-the-line addend it dropped, 碱 in row 2, is reported as a finding."
+    },
+    {
+      "check": "drawings - background scheme not passed off as the invention",
+      "what_was_verified": "[0028] introduces the p05 scheme as 本发明所涉及的反应方程式 and the drawn route really is the invention's route: HBr plus H2O2 with a catalyst, then trifluoroethanol with base, then base/acid hydrolysis, then thionyl chloride, then the cyclohexane-1,3-dione coupling under triethylamine and acetone cyanohydrin. That matches claim 1 step for step. The five prior-art routes described in [0005] to [0009] are not drawn anywhere, so there was no background scheme available to mistake for the invention's, and none of the background compounds (2,6-dichlorotoluene, NBS, 3-chloro-2-methylaniline, 2-chlorotoluene, sodium 2,2,2-trifluoroethoxide, cyanoacetone, the 3-oxo-1-cyclohexenyl ester) carries a SMILES alias or a line 152 anchor."
+    },
+    {
+      "check": "schema - id and compound_uuid",
+      "what_was_verified": "id and compound_uuid are present on all 66 records and all 66 ids are unique. This is correct rather than a defect: A1 says both are computed downstream by finalise.py from (patent_id, identifier), and what rule forbids is their appearance in the per-section stage files, which are not part of this audit. No enrichment or vector field was found on any record."
+    },
+    {
+      "check": "schema - required fields and smiles values",
+      "what_was_verified": "All 66 records carry every field the A1 output template defines: patent_id, identifier, identifier_type, aliases, resolved, unresolved_reference, section_label, section_type, is_section_product, commercially_available, role, quantity, ms_mz, nmr, melting_point, appearance, color, physical_form, analytics, purity_pct, purity_method, tags, notes. No required field is missing anywhere. The smiles field is null on all four records that carry the key and no SMILES string appears in it; structure information appears only in aliases[], as rule 4b requires, on eleven records. The inconsistent key presence is reported separately."
+    },
+    {
+      "check": "vocabulary - closed lists",
+      "what_was_verified": "Checked programmatically across all 66 records. Every identifier_type is in the eight-value list (iupac 40, trivial_name 15, functional_ref 4, local_label 2, abbreviation 2, smiles 2, other 1). Every role is in the fourteen-value list (solvent 15, reactant 10, product 10, base 9, catalyst 7, other 7, reagent 5, acid 2, oxidant 1). Every physical_form is powder, solid or null. purity_method is null on all 66, correctly, since the patent states a purity figure with no method anywhere. Every analytics[].method is hplc, which is in the list. Every tag matches category:value with a lowercase snake_case ASCII value on both sides, with no malformed tag anywhere, and every category is compound_class, chemical_family, functional_group or hazard. Every section_label and section_type pair matches a row of 00-sections.json exactly, including the Concluding Comparison being typed beneficial_effects, which is A0's own assignment and not an artifact error."
+    },
+    {
+      "check": "vocabulary - hazard tags against rule 18",
+      "what_was_verified": "The four hazard assignments rule 18 names explicitly are all present and correct: bromine carries corrosive and toxic, both peroxybenzoic acid records carry peroxide_former, thionyl chloride carries corrosive, carbon tetrachloride carries toxic. Beyond those, hazard tags track what the patent itself warns about: sodium methoxide carries flammable and explosive from 易燃、易爆 at line 107, acetonitrile carries toxic from 中等毒性化学品 at the same line, acetone cyanohydrin carries cyanide_handling and toxic. DMF carries no hazard tag, consistent with the patent presenting it as the 低毒 replacement for acetonitrile, and hydrobromic acid carries corrosive although the patent presents it as the safer option, which is the chemistry rather than the text and is allowed by rule 18."
+    },
+    {
+      "check": "recall - compounds",
+      "what_was_verified": "I went through the document section by section and every substance it names has a record. Background prior art: mesotrione, sulcotrione, benzobicyclon, isoxadifen, thiencarbazone, 异戊二烯基醌, 2,6-dichlorotoluene, NBS, 3-chloro-2-methylaniline, 2-chlorotoluene, bromine, sodium 2,2,2-trifluoroethoxide, cyanoacetone, the 3-oxo-1-cyclohexenyl ester, sodium methoxide, methanol, sodium hydroxide, acetonitrile. Claims and summary alternatives, each split into its own record: dichloromethane, 1,2-dichloroethane, chloroform, methanol, ethanol, isopropanol, n-butanol, potassium carbonate, triethylenediamine, 2-methyltriethylenediamine, sodium hydroxide, potassium hydroxide, lithium hydroxide, acetonitrile, DMF, acetone, tetrahydrofuran, azobisisobutyronitrile, 3-chloroperoxybenzoic acid. Experimental: dichloroethane, hydrochloric acid, water, thionyl chloride, cyclohexane-1,3-dione, triethylamine, acetone cyanohydrin, carbon tetrachloride. Solvents, washes and drying agents were checked explicitly rather than by skimming: every 水洗 wash, every recrystallisation solvent and every reaction solvent has a record. The document names no drying agent and no brine."
+    },
+    {
+      "check": "recall - drawing-only species",
+      "what_was_verified": "The p05 scheme draws two intermediates the prose never names as isolated compounds, the trifluoroethoxymethyl methyl ester and the benzoyl chloride, and both have records with identifier_type smiles, the resolved English name in aliases and the InChIKey in aliases. It also draws 碱 and 酸 as the row 3 arrow label and both are records. Nothing drawn in the scheme is missing from the artifact."
+    },
+    {
+      "check": "recall - characterisation",
+      "what_was_verified": "The document reports no NMR, no mass spectrum, no melting point, no IR and no elemental analysis anywhere; a search of the source for 熔点, NMR, 核磁, 质谱, IR, delta and ppm returns nothing. Accordingly nmr, ms_mz and melting_point are null on all 66 records, which is correct and not a recall gap. The only characterisation the document gives is purity by an unstated method, colour and physical form, and the in-process LC checks, all of which are carried."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "Not applicable to this artifact. compounds.json has no precursor_step, no linkage_confirmed and no cross-record reference field of any kind; step connectivity is owned by reactions.json and pathways.json."
+    },
+    {
+      "check": "precision - defaults not invented",
+      "what_was_verified": "No condition that reads like a default was invented. compounds.json carries no atmosphere, temperature, pressure or time field, and the fields that could have been guessed are not: commercially_available is false on the four route compounds this patent prepares and on the specialty methyl ester starting material even though a reader might assume it is bought, resolved is false on 溶剂, 催化剂, 碱1, 碱2, 碱, 酸, 异戊二烯基醌 and the ambiguous 二氯乙烷 rather than being forced true, and equivalents is null throughout rather than derived from the claims' molar ratio ranges."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 58,
+    "present_in_artifact": 57,
+    "missing": [
+      "缩合剂 (condensing agent) at line 102 - an unidentified functional reference of the same kind as 碱1 and 碱2, which do have records. The exclusion is arguable, which is why it is the only entry here; every substance proper that the document names has a record."
+    ]
+  }
+}

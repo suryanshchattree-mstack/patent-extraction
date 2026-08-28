@@ -1,66 +1,157 @@
 {
   "_readme": [
-    "Hand-authored English for the Chinese strings of one patent that",
-    "resolve_translations.py cannot get any other way. One entry per exact Chinese",
-    "string, keyed by the string as the gold spells it, byte for byte.",
+    "Hand-authored English for every Chinese string that can reach a screen and that",
+    "no other tier resolves. One entry per exact string as it appears.",
     "",
-    "WHY THIS FILE EXISTS: the gold keeps the patent's Chinese, because the Chinese",
-    "is the authoritative text and at least one finding in FINDINGS.md was only",
-    "catchable by reading it. The consuming team cannot read Chinese. Almost all of",
-    "the gap closes from data already in the pipeline: the enriched source carries a",
-    "machine translation of nearly every line, and most Chinese aliases sit on a",
-    "record that already names the same molecule in English. What is left is the",
-    "handful of class terms and misprints that neither can reach.",
+    "Two kinds of entry. Most are coverage: a string with no English anywhere, which",
+    "leaves Chinese on a reviewer's screen. The rest carry override:true and REPLACE",
+    "an English form another tier already produced, because that form is wrong in a",
+    "way the gate can see: a name that loses a qualifier, or a phrase answered with",
+    "the whole paragraph around it.",
     "",
-    "TRANSLATE THESE AS CHEMISTRY, NOT AS TEXT. Check every name against the",
-    "structure or against the context in the patent rather than word by word. There",
-    "is no OPSIN and no network here, so nothing verifies a hand-authored name",
-    "except a human doing it, and a wrong chemical translation reads exactly as",
-    "convincingly as a right one. A wrong translation is worse than an admitted gap:",
-    "the gap is visible in the report, the wrong name is not.",
-    "",
-    "PRESERVE THE PATENT'S ERRORS. Where the Chinese itself is wrong, translate the",
-    "error faithfully and explain it in 'note'. Silently correcting it would make the",
-    "gold agree with chemistry instead of agreeing with the document, which is the",
-    "one thing a reference annotation may never do.",
-    "",
-    "WHAT NOT TO PUT HERE: anything the pipeline already resolves. A quotation whose",
-    "source line carries a '> EN:' line resolves with origin 'source_mt'. A Chinese",
-    "alias of a compound the gold also names in English resolves with origin",
-    "'gold_alias'. Both are stronger provenance claims than 'curated', because both",
-    "are the document's or the annotation's own words rather than ours. An entry here",
-    "for one of those is harmless, and is reported as overridden, but it is work you",
-    "did not need to do.",
-    "",
-    "OVERRIDE, and when it is honest to use it. An entry may carry",
-    "'override': true, which makes it beat the source and the gold instead of",
-    "losing to them. That is normally exactly backwards, because both are",
-    "better provenance than we are. The one shape that earns it is a SHORT",
-    "PHRASE whose source-line answer is the translation of the WHOLE PARAGRAPH",
-    "it was quoted out of. A consumer substitutes the index into the",
-    "annotator's English commentary, and a 695-character paragraph spliced into",
-    "the middle of a sentence is not a translation of a 14-character phrase, it",
-    "is a different and much worse answer. 'override' requires both an 'en' and",
-    "a 'note', so the reasoning is attached to the decision in the artifact.",
-    "",
-    "FIELDS: 'en' is the English form and must contain no Chinese. 'note' is free",
-    "text and is appended to the entry's note whichever tier ends up supplying the",
-    "English, so it is the right place for anything a reader has to know about the",
-    "string. Set 'en' to null, with a note, to record a gap deliberately left open:",
-    "the coverage gate still reports it, and the reasoning travels with it instead",
-    "of being lost.",
-    "",
-    "NOT EVERY ENTRY IS A MOLECULE. [0002] ends with a list of the weeds the",
-    "target herbicide controls, and the source's machine translation keeps the",
-    "Chinese plant names beside their English glosses, so those runs reach a",
-    "screen too and are indexed here. They are translated as botany on the same",
-    "terms the compounds are translated as chemistry: against what the name",
-    "denotes, with the genus-versus-species distinction the Chinese makes",
-    "preserved rather than flattened.",
-    "",
-    "Each name below was worked out from the patent's own context, and the",
-    "confidence in each is stated in its note."
+    "Several entries are single characters or spliced fragments. They are not words",
+    "and their English is not a translation anybody would write on purpose. They are",
+    "here because the string reaches a screen and a reviewer must not be shown",
+    "Chinese; each note says what the fragment was split out of."
   ],
   "patent_id": "CN109678767A",
-  "entries": {}
+  "entries": {
+    "10％NaOH溶液": {
+      "en": "10% sodium hydroxide solution",
+      "override": true,
+      "note": "OVERRIDES gold_alias, which returns 'sodium hydroxide' and drops 10％. The strength is what was charged in the comparative example's step 2 and is the only concentration that step states, so losing it loses the charge."
+    },
+    "遇水迅速分解成甲醇和氢氧化钠": {
+      "en": "decomposes rapidly on contact with water into methanol and sodium hydroxide",
+      "override": true,
+      "note": "OVERRIDES source_mt, which returned the whole of [0009] at 62.8x this phrase's length. The patent's stated reason for avoiding sodium methoxide."
+    },
+    "1g三乙烯二胺(99％、0.008mol)": {
+      "en": "1 g of triethylenediamine (99%, 0.008 mol)",
+      "override": true,
+      "note": "OVERRIDES source_mt, which returned the whole Example 2 step 2 charge list at 40.4x. This is the charge whose printed mass and mole count disagree, so it is quoted on its own as the evidence for that finding and must read as the phrase it is."
+    },
+    "0.226g三乙烯二胺(99％、0.001mol)": {
+      "en": "0.226 g of triethylenediamine (99%, 0.001 mol)",
+      "override": true,
+      "note": "OVERRIDES source_mt, which returned the whole Example 3 step 2 charge list at 33.1x. Same finding as the Example 2 charge."
+    },
+    "2.26g三乙烯二胺(99％、0.01mol)": {
+      "en": "2.26 g of triethylenediamine (99%, 0.01 mol)",
+      "override": true,
+      "note": "OVERRIDES source_mt, which returned the whole Example 4 step 2 charge list at 35.2x. Same finding again."
+    },
+    "异戊二烯基醌": {
+      "en": "prenylquinones",
+      "note": "[0002], the biosynthesis an HPPD inhibitor blocks. Named as a class, so plural and unresolved to any one compound."
+    },
+    "反应溶剂": {
+      "en": "reaction solvent",
+      "note": "Claim 4 and [0021], the generic the claim enumerates rather than names."
+    },
+    "结晶溶剂": {
+      "en": "crystallisation solvent",
+      "note": "Claims 4 and 10, distinguished from 反应溶剂 in the same sentence, so the two are kept apart."
+    },
+    "整出": {
+      "en": "distilled off",
+      "note": "[0089] prints 整出, which is not a verb used with 溶剂. 蒸出, distilled off, is evidently meant. Translated to what the step does and the misprint recorded here rather than corrected in the gold."
+    },
+    "蒸出": {
+      "en": "distilled off",
+      "note": "The correctly printed form, [0086]. Kept as its own entry so the misprint at [0089] can be seen beside it."
+    },
+    "只有": {
+      "en": "only",
+      "note": "Background, introducing each prior-art yield the patent objects to."
+    },
+    "制备": {
+      "en": "preparation",
+      "note": "Used in 在制备X的时候 throughout the background and the beneficial effects."
+    },
+    "的时候": {
+      "en": "when",
+      "note": "The second half of 在制备X的时候."
+    },
+    "合成": {
+      "en": "synthesis",
+      "note": "The step headings and the title."
+    },
+    "用量较大": {
+      "en": "used in a comparatively large amount",
+      "note": "[0008], the objection to the condensing agent of CN106008290A."
+    },
+    "以下": {
+      "en": "or below",
+      "note": "Claim 1 and [0014] to [0018]: 在80℃以下, at or below 80 C. A bound, not a value."
+    },
+    "解": {
+      "en": "decomposition",
+      "note": "The bare character, split out of 碱解. In 碱解 it is alkaline hydrolysis of the methyl ester; alone it carries only the general sense."
+    },
+    "反应温度为": {
+      "en": "the reaction temperature is",
+      "note": "Claim 7 and [0024]."
+    },
+    "步骤": {
+      "en": "step",
+      "note": "Every dependent claim opens 步骤N)中."
+    },
+    "在": {
+      "en": "at",
+      "note": "The bare preposition, split out of 在X℃ constructions."
+    },
+    "剩余物": {
+      "en": "the residue",
+      "note": "[0016] and the examples: what remains after the etherification filtrate is concentrated, before the base is added."
+    },
+    "往剩余物里加": {
+      "en": "to the residue was added",
+      "note": "The one-pot join in step 2, where the alkaline hydrolysis begins without isolating the ester."
+    },
+    "米黄色固体": {
+      "en": "beige solid",
+      "note": "The abstract's description of the product. The examples print 米黄色结晶粉末, beige crystalline powder, which is a different and more specific form."
+    },
+    "反应完全后加入进行洗": {
+      "en": "after the reaction was complete, added and washed",
+      "note": "A spliced fragment: the source reads 反应完全后加入水进行水洗, with 水 in two places. Translated as the fragment stands rather than repaired."
+    },
+    "滴": {
+      "en": "drop",
+      "note": "The counter in 4滴丙酮氰醇 in the comparative example, which is why that charge has no mass and no mole count."
+    },
+    "的合成": {
+      "en": "synthesis of",
+      "note": "The step heading form, N、X的合成."
+    },
+    "滴加": {
+      "en": "added dropwise",
+      "note": "The addition verb this document uses throughout, and the reason several steps state a temperature only on an addition."
+    },
+    "升温回流反应": {
+      "en": "heated to reflux and reacted",
+      "note": "Step 3's acid chloride formation. A heating method, not a temperature."
+    },
+    "优选的": {
+      "en": "preferably",
+      "note": "Opens the preferred molar ratios at [0019], [0022] and [0025]."
+    },
+    "化": {
+      "en": "-ification",
+      "note": "The bare suffix, split out of 醚化 and 酸化. Not a word on its own."
+    },
+    "氰": {
+      "en": "cyano",
+      "note": "The bare character, split out of 丙酮氰醇, acetone cyanohydrin."
+    },
+    "气": {
+      "en": "gas",
+      "note": "The bare character, split out of 湿气, moisture, in the sodium methoxide hazard sentence."
+    },
+    "line 152 step 3 conditions: {\"text\": \"碱/酸\"}": {
+      "en": "line 152 step 3 conditions: {\"text\": \"base then acid\"}",
+      "note": "The provenance row for arrow 3 of the drawn scheme at [0029], where the methyl ester is hydrolysed with base and the product is then liberated by acidification. Two reagents in sequence, not a choice between them, which the solidus alone does not say. Only the Chinese inside the quote is translated; the rest of the row is the pipeline's own English and is left as it is."
+    }
+  }
 }
