@@ -972,10 +972,23 @@ def source_date_epoch() -> int:
 def run_stage(st: Stage, pid: str, ctx: dict) -> int:
     if st.fn is not None:
         return st.fn(pid, ctx)
-    env = None
+
+    # EVERY subprocess is told which patent, whether or not its command line says so.
+    #
+    # Three stages are invoked with no id: merge_stages.py, schemas/validate.py and
+    # svg2jpg.py --all. That was fine while runs/ held exactly one directory, because
+    # discover_patent_id() found it. The moment a second patent exists - which is the
+    # entire point of this pack - those three exit 2 with "no patent id given", and
+    # the pipeline stops in the middle having built half the artifacts.
+    #
+    # Passing --patent-id in each of their cmds would work too, and would have to be
+    # remembered by whoever adds the fourth. The env var is the documented resolution
+    # tier below the flag, so setting it here covers every stage script that exists
+    # and every one that does not yet.
+    env = {**os.environ, "ANNOTATION_PATENT_ID": pid}
     if st.pin_source_date:
         epoch = source_date_epoch()
-        env = {**os.environ, "SOURCE_DATE_EPOCH": str(epoch)}
+        env["SOURCE_DATE_EPOCH"] = str(epoch)
         print(f"  SOURCE_DATE_EPOCH={epoch}  (newest hand-authored input, so two "
               f"rebuilds diff to nothing)")
     code = 0
