@@ -171,6 +171,21 @@ cross-section linkage):
      `回流` / "reflux" is NOT a temperature - it is a heating method. Put
      `heating_method: "reflux"` and leave temperature `not_specified` unless a
      number is given.
+
+     **An addition temperature is still the step's temperature when it is the only
+     one printed.** `在75～80℃滴加双氧水` gives
+     `{"type":"range","min_c":75.0,"max_c":80.0}` AND the phrase in that reagent's
+     `addition_profile`. The two are not alternatives. Recording it only in
+     `addition_profile` leaves `not_specified` on a step whose temperature the
+     patent states, and where four worked examples repeat one procedure it makes
+     them incomparable: three carry a range and the fourth reads as though the
+     temperature were never given.
+
+     **A one-pot step takes its temperature from the FINAL transformation**, the
+     same one rule 5 takes `reaction_class` from, and names the others in `notes`.
+     A step that etherifies at 0 to 5 C and then hydrolyses at 70 to 75 C records
+     70 to 75. Choosing per step is how two examples of one procedure end up
+     disagreeing about which number describes them.
    - `time_h` in hours. `10h` -> 10.0. `50min` -> 0.83 only when the 50 min is the
      reaction time; a dropwise addition time belongs in that compound's
      `addition_profile`, not in `time_h`.
