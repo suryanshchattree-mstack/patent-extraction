@@ -341,7 +341,35 @@ def m2():
     n_flag = sum(1 for st in steps if st[6])
     cols = min(4, n)
     rows = (n + 3) // 4
-    x0, bw, bh, gap = 34, 224, 96, 18
+    bw, bh, gap = 224, 96, 18
+
+    # THE TARGET BOX IS SIZED FROM THE NAME IN WIDTH AS WELL AS IN HEIGHT, AND THE
+    # LEFT MARGIN WITH IT.
+    #
+    # wrap_lines will not break a token that has no space in it, deliberately: see
+    # its docstring, hyphenating an IUPAC name at an arbitrary character invents a
+    # locant break that reads as part of the name. So a long target name renders as
+    # one wide line and the geometry has to make room for it rather than the name
+    # giving way.
+    #
+    # The target box hangs centred under the LAST step, so a box wider than a step
+    # overhangs that step by half the difference on each side. When the last step is
+    # also the first, which is every single-step route, that overhang goes off the
+    # left edge of the canvas. US20040236146A1 makes
+    # 3-bromomethyl-2-chloro-4-ethylsulfonylbenzoic acid in one step: 45 characters
+    # before the first space, 346px at size 14, centred at 146, so it started 27px
+    # to the left of the canvas and the overflow check failed the stage.
+    #
+    # x0 was a constant 34. It is now whatever keeps that overhang on the page. The
+    # reference run is unaffected: tembotrione is 11 characters, its box stays at the
+    # 236px minimum, and x0 stays 34.
+    pl = wrap_lines(product, 26)
+    plh = 17                      # must exceed size*1.08, or adjacent lines overlap
+    box_h = 30 + len(pl) * plh
+    target_wpx = max(len(l) for l in pl) * 14 * CHARW
+    box_w = max(bw + 12, target_wpx + 24)
+    x0 = max(34, box_w / 2 - bw / 2 + 8)
+
     W = max(1000, x0 + cols * bw + (cols - 1) * gap + 16)
     H = max(700, 96 + rows * 190 + 210)
 
@@ -398,20 +426,18 @@ def m2():
                f"L {xb + bw / 2} {ya + bh + 28} L {xb + bw / 2} {yb - 6}", sw=1.8)
 
     xE, yE = positions[-1]
-    # THE TARGET BOX IS SIZED FROM THE NAME, NOT FIXED AT ONE LINE.
-    #
-    # It used to be a 46px box with the name wrapped at lh=15 and the caption pinned
-    # 16px under the name's first line. That fits exactly one line, which is what the
-    # reference patent needs because its target is called tembotrione. Every other
-    # patent on the list names its target as an IUPAC string of 57 characters or more,
-    # and two things then went wrong at once: the caption sat under the second line,
-    # and the second line sat on the first, because Canvas.text reserves size*1.08 of
-    # height (15.12px at size 14) while lh was 15. Any two-line name collided with
-    # itself by 0.12px. Both are now functions of the line count.
-    pl = wrap_lines(product, 26)
-    plh = 17                      # must exceed size*1.08, or adjacent lines overlap
-    box_h = 30 + len(pl) * plh
-    c.rect(xE - 6, yE + bh + 26, bw + 12, box_h, fill="#efe6f1", stroke=PURPLE, sw=2)
+    # The box height is a function of the line count, and the width a function of the
+    # longest line; both are computed above, before the canvas is sized, because the
+    # canvas and the left margin depend on them. It used to be a fixed 46px tall and
+    # bw+12 wide, which fits exactly one short line, which is what the reference
+    # patent needs because its target is called tembotrione. Canvas.text reserves
+    # size*1.08 of height, so at size 14 the old lh of 15 made any two-line name
+    # collide with itself by 0.12px, and the caption then sat under the wrong line.
+    # int where it lands on one, so a short target still emits the exact bytes it did
+    # before this became an expression. That is how the reference run stays a control.
+    box_x = xE + (bw - box_w) / 2
+    box_x = int(box_x) if float(box_x).is_integer() else box_x
+    c.rect(box_x, yE + bh + 26, box_w, box_h, fill="#efe6f1", stroke=PURPLE, sw=2)
     c.wrap(xE + bw / 2, yE + bh + 44, product, 26, size=14, weight="700", lh=plh)
     c.text(xE + bw / 2, yE + bh + 44 + len(pl) * plh + 2, "the target", size=10.5, fill=MUTE)
     c.line(xE + bw / 2, yE + bh + 4, xE + bw / 2, yE + bh + 22, sw=1.8)
