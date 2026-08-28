@@ -96,9 +96,23 @@ class Canvas:
         self.parts.append(f'<polygon points="{p}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>')
 
     # ---- helpers ----------------------------------------------------
-    def wrap(self, x, y, s, width_chars, size=12, fill=INK, anchor="middle", lh=15,
-             weight="normal", mono=False):
-        words, line, lines = s.split(), "", []
+    @staticmethod
+    def wrap_lines(s, width_chars):
+        """The lines wrap() would draw, so a caller can size a box before drawing it.
+
+        A systematic chemical name is one unbroken token: this patent's target is 83
+        characters with no space in it. Splitting on whitespace alone leaves such a
+        token on one line at whatever width it likes, off the side of the canvas, and
+        the overflow check then fails the whole stage. Break the over-long token
+        instead. The reference run never needed this because its target is spelled
+        "tembotrione".
+        """
+        words, line, lines = [], "", []
+        for w in s.split():
+            while len(w) > width_chars:
+                words.append(w[:width_chars])
+                w = w[width_chars:]
+            words.append(w)
         for w in words:
             t = (line + " " + w).strip()
             if len(t) > width_chars and line:
@@ -108,6 +122,11 @@ class Canvas:
                 line = t
         if line:
             lines.append(line)
+        return lines
+
+    def wrap(self, x, y, s, width_chars, size=12, fill=INK, anchor="middle", lh=15,
+             weight="normal", mono=False):
+        lines = self.wrap_lines(s, width_chars)
         for i, ln in enumerate(lines):
             self.text(x, y + i * lh, ln, size=size, fill=fill, anchor=anchor,
                       weight=weight, mono=mono)
@@ -338,12 +357,17 @@ def m2():
                "Steps flagged as one-pot are marked with a double outline and the word one-pot. "
                "Steps whose stated arithmetic does not close are marked with a warning triangle "
                "and the word check.")
-    c.text(mid, 30, f"{PATENT}, {source}: {word(n)} steps to {product}", size=17, weight="600")
+    # Wrapped, not a single centred line: the title carries the product name, and a
+    # systematic one runs several times the width of the canvas.
+    title = f"{PATENT}, {source}: {word(n)} steps to {product}"
+    n_title = c.wrap(mid, 30, title, int(W / (17 * CHARW)) - 2, size=17, weight="600", lh=20)
     flag_sentence = ("No step carries arithmetic that does not close."
                      if not n_flag else
                      f"{word(n_flag).capitalize()} step{'s' if n_flag != 1 else ''} "
                      f"carr{'y' if n_flag != 1 else 'ies'} arithmetic that does not close.")
-    c.text(mid, 51, f"Yields as printed in the patent. {flag_sentence}",
+    # follows the title rather than sitting at a fixed offset, because the title
+    # wraps when the product name is a systematic one
+    c.text(mid, 51 + (n_title - 1) * 20, f"Yields as printed in the patent. {flag_sentence}",
            size=12.5, fill=MUTE)
 
     positions = []
@@ -384,12 +408,17 @@ def m2():
                f"L {xb + bw / 2} {ya + bh + 28} L {xb + bw / 2} {yb - 6}", sw=1.8)
 
     xE, yE = positions[-1]
-    c.rect(xE - 6, yE + bh + 26, bw + 12, 46, fill="#efe6f1", stroke=PURPLE, sw=2)
-    c.wrap(xE + bw / 2, yE + bh + 48, product, 26, size=14, weight="700", lh=15)
-    c.text(xE + bw / 2, yE + bh + 64, "the target", size=10.5, fill=MUTE)
+    # the box grows with the name: a systematic product wraps to several lines and a
+    # fixed 46px box would sit under its own caption
+    p_lines = len(Canvas.wrap_lines(product, 26))
+    P_LH = 17          # must exceed size * 1.08 or consecutive lines overlap
+    box_h = max(46, 22 + p_lines * P_LH + 14)
+    c.rect(xE - 6, yE + bh + 26, bw + 12, box_h, fill="#efe6f1", stroke=PURPLE, sw=2)
+    c.wrap(xE + bw / 2, yE + bh + 48, product, 26, size=14, weight="700", lh=P_LH)
+    c.text(xE + bw / 2, yE + bh + 40 + p_lines * P_LH + 8, "the target", size=10.5, fill=MUTE)
     c.line(xE + bw / 2, yE + bh + 4, xE + bw / 2, yE + bh + 22, sw=1.8)
 
-    ytext = yE + bh + 26 + 46 + 12
+    ytext = yE + bh + 26 + box_h + 12
     known = [st[4] for st in steps if st[4].endswith("%")]
     c.text(60, ytext, f"cumulative yield across all {word(n)} steps, as printed:",
            size=12, anchor="start", fill=MUTE)
