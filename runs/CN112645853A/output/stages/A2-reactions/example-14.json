@@ -1,0 +1,407 @@
+[
+  {
+    "patent_id": "CN112645853A",
+    "reaction_id": "Example 14_Step 1",
+    "section_label": "Example 14",
+    "section_type": "experimental_example",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "hydrolysis",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": true,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 98.2,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 98.2,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "procedure_summary": "The methyl benzoate ester is cleaved with base to the sodium benzoate salt by the same procedure as an earlier worked example, leaving the benzylic bromide intact. The salt is obtained with its content stated but with no reagents, charges or conditions repeated here.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": true,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "cross_reference_unresolved",
+      "conditions_unresolved"
+    ],
+    "tags": [
+      "transformation:hydrolysis",
+      "mechanism:ionic",
+      "catalyst_class:base",
+      "step_role:first_step",
+      "linkage:cross_section_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "The entire step is the single cross-reference sentence (1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；, which is at once the heading and the procedure; unlike Example 13 it is printed whole on one line with no page break, so no continuation artifact had to be removed. NO PROCEDURE IS PRINTED IN THIS SECTION for this step: no base, no solvent, no charge, no temperature, no time, no isolated mass and no yield. Everything except the product identity and its stated content lives in Example 1, so conditions_inherited is true and both cross_reference_unresolved and conditions_unresolved are raised; the Example 1 record was not available to this call, so the inheritance could not be resolved rather than confirmed. reaction_class: the document establishes this transformation as removal of the methyl ester from methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate to give the alkali metal benzoate with the benzylic bromide untouched. hydrolysis is the closest class in the allowed list; ester_formation is the wrong direction, and salt_formation alone would describe only the counter-ion and lose the C-O bond cleavage. The product is nonetheless a salt. methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate is emitted as the reactant on the strength of the route the document establishes and of the yield basis printed at the end of step (2), 以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率89.8％; it is in A1 for this section with no quantity, so no a1_missing_compound is raised. precursor_step is null: nothing in the registry produces the methyl ester, and the reference to Example 1 is a reference to a PROCEDURE, not a statement that Example 1's product was charged here, so writing Example 1::Step 1 as a precursor would assert a material link the text does not make. The linkage:cross_section_linked tag records the procedural reference. No scheme is drawn for step (1) in this section; the only drawing, at line 517, belongs to step (2). This is why Examples 13 to 20 carry one drawing where Examples 1 to 12 carry two. Step boundaries were taken from the document's own (1) and (2) markers, not from the N-comma markers the rendered pass prompt describes, which this patent does not use."
+  },
+  {
+    "patent_id": "CN112645853A",
+    "reaction_id": "Example 14_Step 2",
+    "section_label": "Example 14",
+    "section_type": "experimental_example",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "high",
+    "named_reaction": "Williamson ether synthesis",
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 5.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 5.0,
+      "reactor_type": "reaction kettle",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": 3.0,
+      "ph_target_stage": "workup acidification, after solvent stripping and dissolution of the residue in water"
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "strip the solvent under negative pressure",
+        "add water to the kettle residue and stir to dissolve",
+        "add concentrated hydrochloric acid dropwise to acidify the system to pH 3",
+        "filter",
+        "rinse with water",
+        "dry"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": [
+        "water rinse of the filtered solid"
+      ],
+      "drying_agent": null,
+      "filtration": "filtered, then the solid rinsed with water and dried",
+      "concentration_method": "solvent stripped under negative pressure",
+      "ph_target": 3.0
+    },
+    "purification": "product precipitated by acidification to pH 3, then filtered, rinsed with water and dried",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": 100.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the reaction flask in eight portions, total feeding time 3h, kettle temperature held at 5℃",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 98.2,
+        "purity_method": null
+      },
+      {
+        "identifier": "tetrahydrofurfuryl alcohol",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 11.8,
+          "volume_ml": null,
+          "mmol": 115.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged to the kettle with the solvent and the base before stirring was started",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "potassium hydroxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 8.6,
+          "volume_ml": null,
+          "mmol": 130.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged to the kettle with the solvent and the alcohol before stirring was started",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 85.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "N,N-dimethylformamide",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 200.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged to the kettle first",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 120.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the kettle residue after solvent stripping and stirred to dissolve; water also used to rinse the filtered solid, volume not printed",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "concentrated acid added dropwise to the dissolved residue until pH 3",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": 32.6,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 89.8
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 95.9,
+        "purity_method": "hplc"
+      }
+    ],
+    "reactant_names": [
+      "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+      "tetrahydrofurfuryl alcohol"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 89.8,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 95.9,
+    "product_purity_method": "hplc",
+    "canonical_rxn": null,
+    "procedure_text": "向反应釜中加入200mLDMF、11.8g 2-四氢呋喃甲醇(99％，0.115mol)和8.6g氢氧化钾(85％，0.13mol)，开动搅拌，控制釜温在5℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应5h。反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至3，之后经过滤、水淋洗、烘干得到产物32.6g，HPLC定量得目标化合物2-氯-3-[(RS)-四氢呋喃-2-基甲氧基甲基]-4-甲磺酰基苯甲酸含量为95.9％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率89.8％。",
+    "procedure_summary": "The benzoate salt from the preceding step is fed in portions into a cold solution of tetrahydrofurfuryl alcohol and potassium hydroxide in dimethylformamide, where the alkoxide generated in situ displaces the benzylic bromide to give the ether. The solvent is stripped under negative pressure, the residue is dissolved in water and acidified with concentrated hydrochloric acid, and the precipitated free acid is filtered, rinsed with water, dried and assayed by liquid chromatography.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": true,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "cross_reference_unresolved"
+    ],
+    "tags": [
+      "transformation:etherification",
+      "mechanism:ionic",
+      "named_rxn:williamson_ether_synthesis",
+      "analytics:hplc",
+      "scale:lab",
+      "solvent_class:aprotic_polar",
+      "catalyst_class:base",
+      "workup_type:distillation",
+      "workup_type:precipitation",
+      "workup_type:filtration",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Chinese heading (line 515): (2)2-氯-3-[(RS)-四氢呋喃-2-基甲氧基甲基]-4-甲磺酰基苯甲酸的制备，主要反应过程可以以如下反应方程式表示： (preparation of the target acid; the main reaction process can be represented by the following reaction equation). The heading is kept here per rule 2 and procedure_text carries the procedure paragraph of line 520 only, with the IMAGE_EXTRACT span of line 517 stripped per rule 5h. ALKALI METALS: the base is potassium hydroxide, 0.115mol)和8.6g氢氧化钾(85％, while the substrate carried over from step (1) is the SODIUM benzoate salt, 将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％. Two different alkali metals in one charge is what the patent prints, and the drawing agrees with it, so nothing is reconciled and no flag is raised; it is recorded here because the mixed metals are the section's most easily mistranscribed detail. REACTOR: the charge goes 向反应釜中加入200mLDMF、11.8g 2-四氢呋喃甲醇(99％, into the reaction kettle, and 控制釜温在5℃ controls the kettle temperature, but the benzoate salt is added 0.1mol)分八次加入反应瓶中, into the reaction flask. reactor_type is recorded as the kettle, which both the temperature control and the negative-pressure stripping refer to; the single appearance of the flask is recorded as printed and not reconciled. No kettle volume is printed. The solvent volume and its abbreviation are printed with no space between them in this section, as 200mLDMF. STIRRING: 开动搅拌 says stirring was started without naming the type, so stirring.type is left null. TEMPERATURE AND TIME: 控制釜温在5℃ is the controlled reaction temperature; 总加料时间为3h is the total feeding time of the benzoate salt and belongs to that compound's addition_profile, so time_h is the hold after feeding, 加毕保温反应5h. No cooling method is named for holding that temperature. ONE POT: the alcohol and the potassium hydroxide are charged together and the alkoxide is generated in situ and never isolated, so the deprotonation gets no record of its own and is_one_pot is false. This section performs no separate alkoxide preparation, which is why it has two steps and not three, matching A0's estimate. ACIDIFICATION: the concentrated hydrochloric acid of 搅拌溶解后滴加浓盐酸将体系pH值酸化至3 is a workup acidification of the carboxylate to the free acid, not a reagent of the substitution; it is recorded in workup with ph_target, and conditions.ph_value carries the same value with ph_target_stage naming the workup. The acid is also drawn under the arrow at line 517. DRAWING: the scheme at line 517 draws exactly one arrow, from the sodium benzoate salt to the target acid, with THFA, KOH and HCl on the arrow. The drawn reactant is the sodium salt and the drawn base is potassium hydroxide, both exactly as the prose has them, so drawing_text_conflict is NOT raised for this section. The arrow omits the DMF solvent and the workup water that the prose charges; that is ordinary scheme abbreviation of a solvent rather than a disagreement about what was charged, so reagent_written_not_drawn is not raised and is recorded here instead. ARITHMETIC: every printed mass, content and mole triple in this step closes within the precision of the printed figures. The alcohol at 11.8 g and 99 percent is 11.68 g, which at 102.13 gives 0.1144 mol against 0.115 mol printed. The potassium hydroxide at 8.6 g and 85 percent is 7.31 g, which at 56.11 gives 0.1303 mol against 0.13 mol printed, so the mass and strength do give the molecular weight of potassium hydroxide and no molar_mass_inconsistent is raised. The product at 32.6 g and 95.9 percent content is 31.26 g, which at 348.80 gives 0.0896 mol, or 89.6 percent of the 0.1 mol of benzoate salt charged, against the 89.8 percent printed; carrying the printed mass and content at the top of their own rounding, 32.649 g at 95.94 percent, reproduces 89.8 percent exactly, so the residual is rounding and not a failure to close. The theoretical maximum on 0.1 mol is 34.88 g, above the 32.6 g printed. So neither mass_balance_implausible nor molar_mass_inconsistent is raised. THE ONE DISCREPANCY: the yield the arithmetic reproduces as a single-step yield on the salt charged here is printed as a two-step yield calculated on the methyl ester of step (1), 以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率89.8％. Both readings can only be true together if step (1) were quantitative at exactly 0.1 mol of methyl ester, and step (1) prints no charge in this section, so the stated basis cannot be checked here. That is why cross_reference_unresolved is true on this step even though the material link to step (1) is confirmed: the material reference 将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.2％ resolves, the yield basis does not. The number is recorded as printed in product_yield_pct. CONTINUITY: step (1) prints no isolated mass or mole figure at all, so this step's input charge cannot be compared with step (1)'s output; scale_discontinuity is neither confirmed nor excluded and is not raised, because no discontinuity was observed. SCALE: no mass is printed for the benzoate salt, only its mole charge, and the alcohol at 11.8 g and the product at 32.6 g both put the step in the lab range. (RS) is kept from the prose; the drawn product at line 517 carries no stereo bond and none was added. process_control is left null: 反应完毕 names no monitoring method, and the HPLC of HPLC定量得目标化合物2-氯-3-[(RS)-四氢呋喃-2-基甲氧基甲基]-4-甲磺酰基苯甲酸含量为95.9％ is a post-isolation assay of the isolated product, recorded as product_purity_method."
+  }
+]

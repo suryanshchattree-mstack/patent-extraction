@@ -1,0 +1,22 @@
+[
+  {
+    "reaction_id": "Example 3_Step 1",
+    "source_lines": [
+      321,
+      326
+    ],
+    "quote_zh": "向反应瓶中加入叔丁醇70mL，开动搅拌，室温下将14g氢氧化钠(30％，0.105mol)滴入其中，待氢氧化钠分散均匀后，控制釜温在30℃，将34.8g  2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应，反应过程微微放热，控制釜温为30℃，反应12h。反应结束，液相色谱中控2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐归一含量为92.5％，负压脱尽溶剂直接用于后续醚化反应。",
+    "arithmetic_check": "Charges: sodium hydroxide 14 g of a 30% solution is 4.2 g of NaOH, which at 40.00 g/mol is 0.105 mol, exactly the printed figure. Substrate 34.8 g at 98% is 34.10 g, which at 341.60 g/mol for methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate (C10H10BrClO4S) is 0.0998 mol against the printed 0.1 mol. Both pairs close, so neither molar_mass_inconsistent nor mass_balance_implausible is raised. Product closure cannot be tested for this step and needs no flag: the salt is not isolated, no mass, mole figure or step yield is printed for it, and the only number given is the in-process HPLC content of 92.5%. Ratio, for the record, is 1.05 mol of base per mol of ester. Numbers recorded exactly as printed.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 323, one arrow: reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl (C10H10BrClO4S), arrow condition NaOH, product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] (C9H7BrClNaO4S). The single arrow corroborates the single prose transformation. Reagent and metal both agree with the prose, and the drawn product reads as the sodium salt of the acid the heading names, so there is no drawing_text_conflict here despite the SMILES_MISMATCH marker A1 left on that compound. Only tert-butanol, the solvent, is absent from the arrow."
+  },
+  {
+    "reaction_id": "Example 3_Step 2",
+    "source_lines": [
+      327,
+      332
+    ],
+    "quote_zh": "向反应釜中加入160mLDMF、11.6g三氟乙醇(99％，0.115mol)和17.3g氢氧化钠溶液(30％，0.13mol)，开动搅拌，控制釜温在5℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(92.5％，0.1mol)分八次加入反应瓶中，总加料时间为2h，加毕保温反应4h。反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至3，之后经过滤、水淋洗、烘干得到产物30.7g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为95.8％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率84.4％。",
+    "arithmetic_check": "Charges: trifluoroethanol 11.6 g at 99% is 11.48 g, which at 100.04 g/mol (C2H3F3O) is 0.1148 mol against the printed 0.115 mol. Sodium hydroxide 17.3 g of a 30% solution is 5.19 g, which at 40.00 g/mol is 0.1298 mol against the printed 0.13 mol. The benzoate salt is charged as 0.1 mol at 92.5%, matching what step (1) produced, so there is no scale_discontinuity. Product closure: input 0.0998 mol of the methyl ester through step (1); product 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid is C11H10ClF3O5S, 346.70 g/mol; the printed 30.7 g at the printed 95.8% assay is 29.41 g of pure acid, which is 0.0848 mol, i.e. 85.0% of the 0.0998 mol charged, or 84.8% against a nominal 0.1 mol. The printed two-step yield is 84.4%. The gap is 0.4 to 0.6 of a percentage point, which is rounding and a slightly different molecular weight, so this CLOSES and no mass_balance_implausible or molar_mass_inconsistent is raised. Recorded here so A5 can re-derive it. Numbers recorded exactly as printed.",
+    "drawing_evidence": "[IMAGE_EXTRACT: {\"reactions\": [...]}] at line 329, one arrow: reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+] (C9H7BrClKO4S), arrow conditions CF3CH2OH, NaOH and HCl, product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F (C11H10ClF3O5S). The arrow corroborates the single prose transformation and the drawn product matches the named target compound. It DISAGREES with the prose on the alkali metal of the reactant: the drawing shows the potassium salt, the prose of both steps says sodium, and the arrow in this same section at line 323 draws the sodium salt as the product of step (1). Prose kept, drawing_text_conflict raised. All three drawn reagents are written in the prose; the drawn HCl is the workup acidification, not a reagent of the substitution, and DMF, the solvent, is absent from the arrow."
+  }
+]

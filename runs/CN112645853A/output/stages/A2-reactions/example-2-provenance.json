@@ -1,0 +1,34 @@
+[
+  {
+    "reaction_id": "Example 2_Step 1",
+    "source_lines": [
+      298,
+      301,
+      303
+    ],
+    "quote_zh": "将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应",
+    "arithmetic_check": "Stated inputs 34.8 g methyl ester at 98 percent printed as 0.1 mol, and 8.8 g sodium hydroxide at 48 percent printed as 0.105 mol. 34.8 x 0.98 = 34.10 g; C10H10BrClO4S is 341.6 g/mol, giving 0.0998 mol against the printed 0.1 mol, closes to 0.2 percent. 8.8 x 0.48 = 4.22 g; NaOH is 40.0 g/mol, giving 0.1056 mol against the printed 0.105 mol, closes to 0.6 percent. No product mass and no yield are printed for this step, since the salt is not isolated; the only product figure is the 97.8 percent in-process normalised content. Nothing to reconcile beyond the two input pairs, and both close.",
+    "drawing_evidence": "The reaction-scheme span at line 301 (step_id 1). Reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl matches methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate, the arrow condition reads NaOH, and the product CS(=O)(=O)c1ccc(C(=O)[O][Na])c(Cl)c1CBr is the sodium salt with the benzylic bromide intact. Agrees with the prose on substrate, base, alkali metal and product. Solvent and temperature are not drawn."
+  },
+  {
+    "reaction_id": "Example 2_Alkoxide Preparation",
+    "source_lines": [
+      310
+    ],
+    "quote_zh": "室温下投入2.8g金属钠(99％，0.12mol)，搅拌至溶解完全，经脱溶后得到三氟乙醇醇钠固体，密封备用",
+    "arithmetic_check": "Stated input 2.8 g sodium metal at 99 percent printed as 0.12 mol. 2.8 x 0.99 = 2.77 g; sodium is 22.99 g/mol, giving 0.1206 mol against the printed 0.12 mol, closes to 0.5 percent. Trifluoroethanol is charged by volume only, 50 mL, and is in large excess over the sodium. No mass, no purity and no yield are printed for the alkoxide product, so there is no product-side arithmetic to check.",
+    "drawing_evidence": "No scheme is drawn for this transformation. The only drawing support is indirect: the step (2) scheme span at line 308 names CF3CH2ONa as an arrow condition, which corroborates the identity of the alkoxide made here and its sodium counter-ion, and agrees with the prose 三氟乙醇醇钠. The absence of a drawn arrow is consistent with the patent printing this preparation inside step (2) rather than as a step of its own."
+  },
+  {
+    "reaction_id": "Example 2_Step 2",
+    "source_lines": [
+      305,
+      308,
+      312,
+      317
+    ],
+    "quote_zh": "向三氟乙醇醇钠中加入70mL DMSO，搅拌溶解后控制釜温在-5℃",
+    "arithmetic_check": "Stated input 0.1 mol of sodium 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate at 97.8 percent, no mass printed. Stated product 33.3 g at 96.7 percent by HPLC, stated yield 92.4 percent as a two-step yield on the methyl ester. DOES NOT CLOSE: 33.3 x 0.967 = 32.20 g of the acid; C11H10ClF3O5S is 346.7 g/mol, giving 0.0929 mol, which on 0.1 mol of methyl ester is 92.9 percent, and on the 0.0998 mol the methyl ester charge actually contains is 93.0 percent. Neither is the printed 92.4 percent. Recovering 92.4 percent from 32.20 g requires a molecular weight near 348.5 g/mol, about 1.8 higher than the named compound. Uncorrected mass gives 33.3 / 34.67 = 96.0 percent and the purity-corrected mass on the salt basis gives 95.0 percent, so no combination of the printed numbers reproduces 92.4 percent. The gap is about half a percentage point and the printed yield is the lower figure, and 33.3 g gross is below the 34.67 g theoretical, so nothing is impossible; mass_balance_implausible is raised for the mass-versus-yield disagreement under rule 27 and the numbers are left as printed. Separately, step (1) can deliver at most 0.0998 mol whereas this step charges 0.1 mol of the salt; treated as rounding of the nominal carry-forward, not flagged as scale_discontinuity.",
+    "drawing_evidence": "The reaction-scheme span at line 308 (step_id 1). Reactant CS(=O)(=O)c1ccc(C(=O)[O][Na])c(Cl)c1CBr is the step (1) sodium salt, arrow conditions read CF3CH2ONa and HCl, and the product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F is the free trifluoroethyl ether acid. Agrees with the prose on substrate, nucleophile, alkali metal and product, and its reactant SMILES is byte-identical to the product SMILES of the line 301 scheme, which independently corroborates the Step 1 to Step 2 linkage. The only divergence is placement rather than content: HCl is drawn on the arrow while the prose uses it after solvent removal to acidify the aqueous residue to pH 2, so it is recorded in workup and not as a reagent, and no drawing_text_conflict is raised. Solvent (DMSO), temperature and the portionwise addition are not drawn."
+  }
+]

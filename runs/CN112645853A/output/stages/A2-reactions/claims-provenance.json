@@ -1,0 +1,54 @@
+[
+  {
+    "reaction_id": "Claims_Step 1",
+    "source_lines": [
+      43,
+      45,
+      49,
+      51,
+      53,
+      55,
+      57,
+      59,
+      61,
+      63,
+      108,
+      110
+    ],
+    "quote_zh": "(1)原料2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯在碱性物质存在下于三级醇溶剂中发生酯解反应得到2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐；",
+    "arithmetic_check": "Nothing to close, and nothing wrong. Claim 1 and claim 10 state no charge, no mass, no volume and no yield for this step, only ratios and ranges: the ester to basic substance molar ratio 1:(1 to 1.1) (claim 3), the tertiary alcohol at 700 to 3500 mL per mol of the ester (claim 2), 25 to 40 degrees C and 5 to 12 h (claim 4, restated in claim 10). With no absolute quantity anywhere, no mass balance and no molar mass check can be computed, so neither mass_balance_implausible nor molar_mass_inconsistent is raised. Open point for A5: the time range 5 to 12 h and the base ratio range are not representable in the single-float time_h and equivalents fields and are carried in molar_ratio_text and notes instead.",
+    "drawing_evidence": "None. This section contains no [IMAGE_EXTRACT] spans at all, so there is no drawn scheme to corroborate or contradict the prose, and no drawing_text_conflict, reagent_drawn_not_written or route_attribution_unclear is possible here. The step boundary comes from the claim's own (1) and (2) markers in claim 1 and claim 10."
+  },
+  {
+    "reaction_id": "Claims_Step 2",
+    "source_lines": [
+      43,
+      47,
+      65,
+      67,
+      69,
+      71,
+      73,
+      75,
+      77,
+      79,
+      81,
+      83,
+      85,
+      90,
+      92,
+      94,
+      96,
+      98,
+      100,
+      102,
+      104,
+      106,
+      108,
+      112
+    ],
+    "quote_zh": "(2)2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐在碱性物质存在下与醇反应或者将2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐反应，得到所述2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸。",
+    "arithmetic_check": "Nothing to close, and nothing wrong. Every stoichiometry is a ratio range against the benzoate salt: salt to alcohol 1:(1.05 to 1.35) (claim 5), salt to basic substance 1:(1.2 to 1.5) (claim 6), salt to alkali metal alkoxide 1:(1.2 to 1.5) (claim 7, restated in claim 10), solvent 700 to 3500 mL per mol of salt (claim 8). Conditions are -5 to 15 degrees C, a reaction time of 3 to 6 h, a salt addition time of 1 to 3 h and a post-acidification pH of 2 to 3. No absolute charge, mass or yield is stated, so no mass balance and no molar mass check can be computed and neither arithmetic flag is raised. Two open points for A5, both recorded in notes rather than flagged because no listed flag fits: claim 1 has step (2) give the free acid directly while claim 8 and claim 10 make the acidification the operation that gives it, and claim 7's alcohol plus alkali metal alkoxide preparation is a third transformation that the claims recite without any charge or isolation and that claim 10 omits, so it was not given a record of its own.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT] spans in this section, so nothing is drawn for this step and no drawing based flag applies. Note for A5 that the sodium versus potassium disagreement between drawing and prose seen elsewhere in this patent cannot arise in the claims, which never fix the counter-ion: the salt is printed as the generic 2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐 throughout."
+  }
+]

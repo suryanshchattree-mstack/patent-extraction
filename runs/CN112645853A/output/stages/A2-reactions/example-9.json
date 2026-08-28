@@ -1,0 +1,447 @@
+[
+  {
+    "patent_id": "CN112645853A",
+    "reaction_id": "Example 9_Step 1",
+    "section_label": "Example 9",
+    "section_type": "experimental_example",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "hydrolysis",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 25.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 6.0,
+      "reactor_type": "reaction flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "solvent stripped off completely under negative pressure",
+        "residue used directly in the subsequent etherification without isolation"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": "distillation under negative pressure",
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": "hplc",
+      "target_compound": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+      "threshold_pct": null,
+      "criterion": "in-process normalised content of the product measured at the end of the reaction"
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [
+      "The reaction is described as slightly exothermic and the kettle temperature is held under control while it runs."
+    ],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-methyl-2-pentanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 200.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged to the reaction flask first, as the tertiary alcohol reaction medium",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium hydride",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 4.2,
+          "volume_ml": null,
+          "mmol": 105.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise into the tertiary alcohol at room temperature and allowed to dissolve completely before the ester was charged",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 60.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 34.8,
+          "volume_ml": null,
+          "mmol": 100.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "poured into the kettle once the hydride had dissolved, with the kettle temperature controlled at 25 C",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 98.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 97.8,
+        "purity_method": "hplc"
+      }
+    ],
+    "reactant_names": [
+      "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 97.8,
+    "product_purity_method": "hplc",
+    "canonical_rxn": null,
+    "procedure_text": "向反应瓶中加入2-甲基-2-戊醇200mL，开动搅拌，室温下将4.2g氢化钠(60％，0.105mol)滴入其中，待氢化钠溶解完全后，控制釜温在25℃，将34.8g2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应，反应过程微微放热，控制釜温为25℃，反应6h。反应结束，液相色谱中控2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐归一含量为97.8％，负压脱尽溶剂直接用于后续醚化反应。",
+    "procedure_summary": "Sodium hydride is added dropwise to a tertiary alcohol solvent and allowed to dissolve, then the methyl benzoate ester bearing the bromomethyl and methanesulfonyl groups is charged and the mixture held under temperature control while the base cleaves the methyl ester to the sodium carboxylate. In-process liquid chromatography gives the content of the salt, the solvent is stripped off under negative pressure, and the residue is taken into the etherification without isolation.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "transformation:hydrolysis",
+      "mechanism:ionic",
+      "analytics:hplc",
+      "scale:lab",
+      "solvent_class:protic",
+      "catalyst_class:base",
+      "workup_type:distillation",
+      "purification:none",
+      "safety:exothermic",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "Chinese heading of the step: (1)2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐的制备，主要反应过程可以以如下反应方程式表示： (preparation of the 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate salt). The document marks its two steps (1) and (2), not with the N-ideographic-comma form the pass prompt describes, so step_label is written Step 1 for the marker (1). CLASS: the patent calls this 碱解反应, alkaline cleavage, and it removes the methyl ester without touching the benzylic bromide, giving the sodium carboxylate. hydrolysis is the closest available reaction_class and is used with medium confidence: no water is present, the medium is an anhydrous tertiary alcohol and the true cleaving species is very likely the sodium alkoxide formed in situ, so the label is an approximation. salt_formation alone would misdescribe the bond that breaks and ester_formation is the reverse reaction. IN-SITU ALKOXIDE: the text has the hydride added dropwise into the tertiary alcohol at room temperature and then dissolving completely before the ester is charged. Dropwise addition is consistent with the stated 60 percent hydride being an oil dispersion, and the dissolution is what an alkali metal hydride does to a tertiary alcohol, namely form the alkoxide with loss of hydrogen. The patent prints this as dissolution and not as a reaction, isolates nothing, and gives it no charge of its own, so it is NOT given the separate alkoxide-preparation record the shared conventions reserve for sections that actually prepare and seal an alkoxide, and is_one_pot is left false. Recorded here because the reading is a judgement call. REACTOR: the text says 反应瓶, reaction flask, for the charge and then 釜温 and 倒入釜中, kettle, for the temperature control and the ester addition. Both wordings are in the same paragraph; reactor_type keeps the flask the charge went into and the mixed wording is recorded here. No reactor volume is given. STIRRING: 开动搅拌 starts a stirrer without naming its type, so stirring.type is null. TEMPERATURE: the hydride is added at 室温, room temperature, and the controlled reaction temperature is 25 C, which is what the structured field carries; the room-temperature addition is in the hydride's addition_profile. ARITHMETIC: every printed mass, strength and mole triple in this step implies the molecular weight of the compound named, so neither molar_mass_inconsistent nor mass_balance_implausible is raised. No mass is printed for the product, which is carried forward in solution, so there is no product closure to test. The figures are set out in the provenance sidecar. CARRY-FORWARD: step (2) charges the same molar amount of this product as was charged of the ester here, so the patent implies a quantitative carry-through with no losses. Nothing states an output quantity for this step, so there is no mismatch to flag and no scale_discontinuity is raised. DRAWING: the scheme at line 431 draws the methyl ester going to the sodium salt with the hydride on the arrow, which is what the prose says, so no drawing_text_conflict and no counter-ion conflict in this section. The scheme carries no solvent; a solvent is not a reagent, so reagent_written_not_drawn is not raised for the tertiary alcohol. HEADING NAME: A1 also holds the generic heading name 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt, which has no counter-ion. It is the same material as this step's product under a less specific name, so only the sodium salt is emitted in compounds[] here; emitting both would double count the product."
+  },
+  {
+    "patent_id": "CN112645853A",
+    "reaction_id": "Example 9_Step 2",
+    "section_label": "Example 9",
+    "section_type": "experimental_example",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "high",
+    "named_reaction": "Williamson ether synthesis",
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "exact",
+        "value_c": 5.0,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 6.0,
+      "reactor_type": "reaction kettle",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "solvent removed under negative pressure",
+        "water added to the kettle residue",
+        "stirred to dissolve the residue",
+        "concentrated hydrochloric acid added dropwise to acidify the system to pH 3",
+        "precipitated solid filtered off",
+        "filter cake rinsed with water",
+        "product dried"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": [
+        "water rinse of the filtered solid"
+      ],
+      "drying_agent": null,
+      "filtration": "product collected by filtration after acidification",
+      "concentration_method": "distillation under negative pressure",
+      "ph_target": 3.0
+    },
+    "purification": "acidified to pH 3, collected by filtration, rinsed with water and dried",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "N,N-dimethylformamide",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 200.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged to the kettle at the start as the reaction medium",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2,2,2-trifluoroethanol",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 11.6,
+          "volume_ml": null,
+          "mmol": 115.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start together with the solvent and the sodium hydroxide",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 99.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium hydroxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 5.4,
+          "volume_ml": null,
+          "mmol": 130.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged at the start together with the solvent and the trifluoroethanol",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 96.0,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": 100.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the solvent-stripped product of step (1), added in eight portions with a total addition time of 3 h, the kettle temperature held at 5 C",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 97.8,
+        "purity_method": "hplc"
+      },
+      {
+        "identifier": "hydrochloric acid",
+        "role": "acid",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added dropwise to the aqueous kettle residue during workup, as the concentrated acid, until the system reached pH 3",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 120.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the kettle residue after desolvation to dissolve it, and used again to rinse the filtered product",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": 32.4,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 89.7
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 96.5,
+        "purity_method": "hplc"
+      }
+    ],
+    "reactant_names": [
+      "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+      "2,2,2-trifluoroethanol"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 89.7,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 96.5,
+    "product_purity_method": "hplc",
+    "canonical_rxn": null,
+    "procedure_text": "向反应釜中加入200mL DMF、11.6g三氟乙醇(99％，0.115mol)和5.4g氢氧化钠(96％，0.13mol)，开动搅拌，控制釜温在5℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(97.8％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应6h。反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至3，之后经过滤、水淋洗、烘干得到产物32.4g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为96.5％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率89.7％。",
+    "procedure_summary": "The sodium benzoate salt from the preceding step is added in portions to trifluoroethanol and sodium hydroxide in dimethylformamide under cooling, displacing the benzylic bromide to give the trifluoroethyl ether. The solvent is removed under negative pressure, the residue dissolved in water and acidified with concentrated hydrochloric acid, and the precipitated benzoic acid is filtered off, rinsed with water, dried and assayed by quantitative liquid chromatography.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": true,
+    "validation_flags": [],
+    "tags": [
+      "transformation:etherification",
+      "mechanism:ionic",
+      "named_rxn:williamson_ether_synthesis",
+      "analytics:hplc",
+      "scale:lab",
+      "solvent_class:aprotic_polar",
+      "catalyst_class:base",
+      "workup_type:precipitation",
+      "workup_type:filtration",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Chinese heading of the step: (2)2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸的制备，主要反应过程可以以如下反应方程式表示： (preparation of 2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid). The document marks this step (2). CLASS: the benzylic bromide is displaced by trifluoroethoxide generated in situ from trifluoroethanol and sodium hydroxide, so nucleophilic_substitution with the Williamson ether synthesis as the named reaction. The alcohol and the base are charged together, so this section takes the route in which no alkoxide is pre-formed and there is no separate alkoxide-preparation record to emit. ACIDIFICATION: the concentrated hydrochloric acid converts the sodium carboxylate to the free acid, which is a chemical change, but the patent introduces it after desolvation as part of the isolation, so it is recorded in workup with ph_target and is_one_pot is left false rather than treating the acidification as a second transformation of a one-pot step. The acid is also drawn under the arrow of the scheme at line 437, noted here because the drawing presents it as a reagent of the transformation and the prose does not. REACTOR: the text says 反应釜, reaction kettle, for the charge and then 加入反应瓶中, reaction flask, for the portionwise addition of the salt, in the same paragraph; reactor_type keeps the kettle the charge went into and the mixed wording is recorded here. No reactor volume is given. STIRRING: 开动搅拌 names no stirrer type, so stirring.type is null. TIME: time_h is the hold after the addition was complete; the total addition time is in the salt's addition_profile, per the rule that an addition time is not a reaction time. YIELD: the stated 89.7 percent is explicitly a two-step yield calculated on the methyl ester, 以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率, not a yield for this step alone. It is carried in product_yield_pct to join with the A1 record, which holds the same figure, and the basis is stated here so it is not read as a single-step yield. ANALYSIS: the HPLC figure is a quantitative content determination on the isolated, dried product, not in-process monitoring, so it is recorded as product_purity_pct and process_control is left empty. ARITHMETIC: the printed mass, strength and mole triples for the trifluoroethanol and the sodium hydroxide each imply the molecular weight of the compound named, and the printed product mass, the printed content and the printed two-step yield close against the named product to within about half a percentage point, which is inside the rounding of the printed figures. No mass is printed for the benzoate salt charge, only its strength and moles. So no arithmetic flag is raised; the figures are set out in the provenance sidecar. DRAWING: the scheme at line 437 draws the sodium salt going to the free acid with the trifluoroethanol, the sodium hydroxide and the hydrochloric acid on the arrow. Every one of those is in the prose, the counter-ion drawn is sodium as the prose says, and no drawing_text_conflict arises in this section. The scheme carries no solvent, and a solvent is not a reagent, so reagent_written_not_drawn is not raised for the dimethylformamide. LINKAGE: the step names its substrate as 步骤(1)制备得到的, prepared in step (1), and the identifier is the identifier of step 1's product, so rule 24 is met and linkage_confirmed is true."
+  }
+]

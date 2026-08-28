@@ -1,0 +1,22 @@
+[
+  {
+    "reaction_id": "Example 14_Step 1",
+    "source_lines": [
+      513
+    ],
+    "quote_zh": "(1)与实施例1所述步骤相同，得到含量为98.2％的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐；",
+    "arithmetic_check": "Nothing to close. This step prints no charge, no mass, no mole figure and no yield; the only number is the 98.2 percent content of the isolated sodium salt, and no assay method is given for it. No mass balance and no molar-mass check can be computed. The step's quantities live in Example 1, which was not available to this call, so the inheritance is flagged conditions_unresolved rather than checked. Open point for A5: whether Example 1 charges 0.1 mol of the methyl ester and reports a quantitative step (1), which is what step (2)'s stated two-step yield of 89.8 percent would require.",
+    "drawing_evidence": "None. No scheme is drawn for step (1) in this section; the only IMAGE_EXTRACT span in Example 14 is at line 517 and belongs to step (2). Examples 13 to 20 carry one drawing each for this reason, against two in Examples 1 to 12. The step boundary was taken from the document's own (1) and (2) markers."
+  },
+  {
+    "reaction_id": "Example 14_Step 2",
+    "source_lines": [
+      515,
+      517,
+      520
+    ],
+    "quote_zh": "向反应釜中加入200mLDMF、11.8g 2-四氢呋喃甲醇(99％，0.115mol)和8.6g氢氧化钾(85％，0.13mol)，开动搅拌，控制釜温在5℃",
+    "arithmetic_check": "Closes within the precision of the printed figures. Stated inputs: 200 mL DMF; 11.8 g 2-tetrahydrofuran methanol at 99 percent, 0.115 mol; 8.6 g potassium hydroxide at 85 percent, 0.13 mol; benzoate salt at 98.2 percent, 0.1 mol, no mass printed. Stated output: 32.6 g of product at 95.9 percent HPLC content, two-step yield 89.8 percent on the methyl ester. Checks: 11.8 x 0.99 = 11.68 g at 102.13 gives 0.1144 mol against 0.115 mol printed, within 0.6 percent. 8.6 x 0.85 = 7.31 g at 56.11 gives 0.1303 mol against 0.13 mol printed, within 0.3 percent, so the potassium hydroxide mass and strength do imply its own molecular weight. Product 32.6 x 0.959 = 31.26 g at 348.80 gives 0.0896 mol, which is 89.6 percent of the 0.1 mol of salt charged, against 89.8 percent printed; taking the printed mass and content at the top of their rounding, 32.649 x 0.9594 = 31.32 g, gives 0.0898 mol and reproduces 89.8 percent exactly, so the 0.2 point residual is rounding. Theoretical maximum on 0.1 mol is 34.88 g, above the 32.6 g printed. So no mass_balance_implausible and no molar_mass_inconsistent. THE ONE DISCREPANCY: the 89.8 percent that the arithmetic reproduces as a single-step yield on the 0.1 mol charged here is printed as a two-step yield calculated on the methyl ester of step (1). Both readings can only be true together if step (1) were quantitative at exactly 0.1 mol of methyl ester, and step (1) prints no charge in this section, so the stated basis is unverifiable here. Recorded as printed, flagged cross_reference_unresolved, not corrected. For the same reason step (1)'s output charge is absent and scale_discontinuity could not be tested either way.",
+    "drawing_evidence": "The single IMAGE_EXTRACT reaction span at line 517 supports this step and agrees with the prose. One arrow, step_id 1: reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] (C9H7BrClNaO4S), the SODIUM benzoate salt as the prose says; conditions THFA, KOH and HCl, all three written in the procedure, the KOH matching the potassium hydroxide of the prose, so there is no alkali metal conflict in either direction and no reagent_drawn_not_written; product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1 (C14H17ClO6S), the free acid named in the heading on line 515 and again in the assay sentence on line 520, carrying no stereo bond where the prose prints (RS). The arrow omits the DMF solvent and the workup water that the prose charges; treated as scheme abbreviation of a solvent, not as a disagreement, so reagent_written_not_drawn is not raised. The span is stripped from procedure_text per rule 5h."
+  }
+]

@@ -1,0 +1,754 @@
+[
+  {
+    "patent_id": "CN112645853A",
+    "reaction_id": "Summary of the Invention_Step 1",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "hydrolysis",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": 25.0,
+        "max_c": 40.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": "%",
+        "reagent": "sodium hydroxide",
+        "text": "aqueous sodium hydroxide solution, mass concentration 30 to 96 percent"
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": "作为本发明优选的技术方案，步骤(1)中所述原料与碱性物质的摩尔比为1:(1～1.1)，例如可以是1:1、1:1.02、1:1.05、1:1.08或1:1.1。\n优选地，步骤(1)中相对于1mol的2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯，所述三级醇溶剂的用量为700～3500mL，例如可以是700mL、1000mL、1500mL，2000mL、2500mL、3000mL或3500mL。",
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium hydroxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged as an aqueous solution of 30 to 96 percent mass concentration",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "potassium hydroxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged as an aqueous solution of 30 to 96 percent mass concentration; the paragraph prints that solution as an aqueous sodium hydroxide solution",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium tert-butoxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "potassium tert-butoxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium hydride",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "potassium hydride",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium metal",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "potassium metal",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tert-butanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tert-amyl alcohol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-methyl-2-pentanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "present only as the medium of the aqueous hydroxide solutions",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+      "sodium hydroxide",
+      "potassium hydroxide",
+      "sodium tert-butoxide",
+      "potassium tert-butoxide",
+      "sodium hydride",
+      "potassium hydride",
+      "sodium metal",
+      "potassium metal"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "(1)原料2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯在碱性物质存在下于三级醇溶剂中发生酯解反应得到2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐；\n作为本发明优选的技术方案，步骤(1)中所述三级醇为叔丁醇、叔戊醇或2-甲基-2-戊醇中的任意一种或至少两种的组合，优选为叔丁醇。\n优选地，步骤(1)中相对于1mol的2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯，所述三级醇溶剂的用量为700～3500mL，例如可以是700mL、1000mL、1500mL，2000mL、2500mL、3000mL或3500mL。\n作为本发明优选的技术方案，步骤(1)中所述原料与碱性物质的摩尔比为1:(1～1.1)，例如可以是1:1、1:1.02、1:1.05、1:1.08或1:1.1。\n优选地，步骤(1)中所述碱性物质为氢氧化钠、氢氧化钾、叔丁醇钠、叔丁醇钾、氢化钠、氢化钾、金属钠或金属钾中的任意一种，优选为氢氧化钠。\n优选地，所述氢氧化钠使用时先制成氢氧化钠水溶液，氢氧化钠的质量浓度为30～96％，例如可以是30％、40％、50％、60％、70％、85％或96％。\n优选地，所述氢氧化钾使用时先制成氢氧化钠水溶液，氢氧化钾的质量浓度为30～96％，例如可以是30％、40％、50％、60％、70％、85％或96％。\n作为本发明优选的技术方案，步骤(1)中所述酯解反应的温度为25～40℃，例如可以是25℃、30℃、35℃或40℃。\n优选地，步骤(1)中所述酯解反应的时间为5～12h，例如可以是5h、8h、10h或12h。\n(1)原料2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯在碱性物质存在下于三级醇溶剂中发生酯解反应，25～40℃反应5～12h，得到2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐，相对于1mol所述原料，所述三级醇溶剂的用量为700～3500mL，所述原料与碱性物质的摩尔比为1:(1～1.1)；",
+    "procedure_summary": "The starting benzoate ester is treated with a basic substance in a tertiary alcohol solvent, which cleaves the methyl ester and gives the alkali metal benzoate salt while leaving the benzylic bromide intact. The tertiary alcohol medium is chosen because it lowers the reactivity of that bromide.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:hydrolysis",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "solvent_class:protic",
+      "catalyst_class:base",
+      "workup_type:none",
+      "purification:none",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "PROSE step (1) of the technical scheme in 发明内容, recited at [0015] and again, with its parameters gathered together, at [0056]. Not a worked example: every quantity in this section is a claimed RANGE, so there is no charge, no yield and no isolated mass, and that absence is not flagged. CONVENTIONS used across both records of this section, following the reference run: (a) compounds[] carries the species charged into the reaction, that is reactants, reagents, bases and solvents, while acidification, quench and dilution agents live in workup instead; (b) reactant_names lists every compounds[] entry that is not the product and not a solvent; (c) where the section permits several alternatives for one component, every permitted alternative is listed in compounds[] even though only one would be used in any single run, and the preference the text states is recorded here. ALTERNATIVES: [0030] permits any one of sodium hydroxide, potassium hydroxide, sodium tert-butoxide, potassium tert-butoxide, sodium hydride, potassium hydride, sodium metal or potassium metal, preferring sodium hydroxide; [0027] permits tert-butanol, tert-amyl alcohol or 2-methyl-2-pentanol, or a combination of at least two of them, preferring tert-butanol. Water is recorded as a solvent because [0031] and [0032] make the hydroxides up as aqueous solutions; it is not otherwise a component of the step. GENERIC CLASSES: 碱性物质 (basic substance) and 三级醇 (tertiary alcohol) are not emitted as compound records, matching A1 and the reference run; their claimed ranges are carried in molar_ratio_text and in conditions instead, so no a1_missing_compound arises from them. CLASSIFICATION: the patent calls the transformation 酯解反应 at [0015] and 酯的碱解 at [0024], and [0023] says the ester bond of the raw material is broken under the action of a base, removing the methoxy group. reaction_class is hydrolysis as the closest available value, with confidence medium rather than high: the cleavage is base promoted and the isolated product is an alkali metal carboxylate, so salt_formation describes the product but not the bond that breaks, and ester_formation is the reverse reaction. Note that four of the eight permitted bases, the two hydrides and the two free metals, need no water present at all, which is the reason the confidence is not high. named_reaction is left null: saponification is the usual name for alkaline ester cleavage, but it is not a fair fit for tert-butoxide, hydride or free metal in a tertiary alcohol, and rule 19 says not to stretch for a name. PRODUCT: the identifier is the generic salt A1 recorded, because the counter-ion is never named here; [0018] states only that M represents an alkali metal. TIME: [0034] gives the reaction time as the range 5～12h and no schema field holds a time range, so time_h is null and the printed range is recorded here. The temperature range 25～40℃ of [0033] does fit the temperature object. CONCENTRATION: the object holds the 30～96％ mass concentration of the aqueous sodium hydroxide of [0031]; [0032] prints the same range for potassium hydroxide, and only one concentration object exists. PRINTED INCONSISTENCY, recorded and not fixed: [0032] reads 所述氢氧化钾使用时先制成氢氧化钠水溶液, that is potassium hydroxide is first made up as an aqueous SODIUM hydroxide solution. The Chinese itself says it, so this is not a translation conflict and no drawing is involved; both compounds are recorded and the wording is left exactly as printed. The same sentence recurs for step (2) at [0039]. WORKUP: the section states none for step (1). The salt goes on into step (2), so purification is null. DISCUSSION PARAGRAPHS not included in procedure_text because they are rationale rather than procedure: [0023] on the removal of the methoxy group before etherification, [0024] on the benzyl bromide being sensitive to base and on conventional hydrolysis giving large amounts of 苄醇 and 二苄醚类化合物, and [0026] on the tertiary alcohol solvent lowering the reactivity of the benzyl bromide. Those two by-products are the outcome of the route the invention rejects, not of this step, so they are not in compounds[]. DRAWING: the scheme at line 164 draws one arrow whose reactant SMILES is the named methyl ester and whose only condition is 碱 (base); its products list is empty because M is a placeholder. It corroborates the reactant and the base and contradicts nothing, so no drawing_text_conflict. reagent_written_not_drawn is raised because the tertiary alcohol solvent and the eight named bases are in the prose while the arrow carries only the generic 碱. ARITHMETIC: no mass, no mole count and no yield appears anywhere in this section, so there is nothing to close and neither mass_balance_implausible nor molar_mass_inconsistent is raisable here. scale_discontinuity is likewise not checkable, since no charge is stated. ALKOXIDE PREPARATION: see the notes on step (2)."
+  },
+  {
+    "patent_id": "CN112645853A",
+    "reaction_id": "Summary of the Invention_Step 2",
+    "section_label": "Summary of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "high",
+    "named_reaction": "Williamson ether synthesis",
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": -5.0,
+        "max_c": 15.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": "%",
+        "reagent": "sodium hydroxide",
+        "text": "aqueous sodium hydroxide solution, mass concentration 30 to 96 percent"
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": "after the reaction is complete the mixture is acidified with hydrochloric acid to pH 2 to 3"
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "desolventised",
+        "diluted with water",
+        "acidified with hydrochloric acid to pH 2 to 3",
+        "filtered",
+        "dried"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "filtered",
+      "concentration_method": "desolventisation",
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": "优选地，步骤(2)中2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与与醇的摩尔比为1:(1.05～1.35)，例如可以是1:1.05、1:1.15、1:1.25或1:1.35。\n优选地，步骤(2)中所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱性物质的摩尔比为1:(1.2～1.5)，例如可以是1:1.2、1:1.3、1:1.4或1:1.5。\n作为本发明优选的技术方案，步骤(2)中所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐的摩尔比为1:(1.2～1.5)，例如可以是1:1.2、1:1.3、1:1.4或1:1.5。\n优选地，步骤(2)中相对于1mol的2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐，所述溶剂的用量为700～3500mL，例如可以是700mL、1000mL、1500mL、2000mL、2500mL、3000mL或3500mL。",
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the reaction system last and in batches, total addition time 1 to 3 h; the order may not be reversed",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2,2,2-trifluoroethanol",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "in the alcohol plus base route, charged into the reaction solvent together with the basic substance before the benzoate salt",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tetrahydrofurfuryl alcohol",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "in the alcohol plus base route, charged into the reaction solvent together with the basic substance before the benzoate salt",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium hydroxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged as an aqueous solution of 30 to 96 percent mass concentration; charged into the reaction solvent before the benzoate salt",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "potassium hydroxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged as an aqueous solution of 30 to 96 percent mass concentration; the paragraph prints that solution as an aqueous sodium hydroxide solution; charged into the reaction solvent before the benzoate salt",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium tert-butoxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction solvent before the benzoate salt",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "potassium tert-butoxide",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction solvent before the benzoate salt",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium hydride",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction solvent before the benzoate salt",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "potassium hydride",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged into the reaction solvent before the benzoate salt",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "acetonitrile",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "N,N-dimethylformamide",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dimethyl sulfoxide",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tetrahydrofuran",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "present as the medium of the aqueous hydroxide solutions, and as the dilution water of the workup",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-(alkoxymethyl)-4-(methanesulfonyl)benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt",
+      "2,2,2-trifluoroethanol",
+      "tetrahydrofurfuryl alcohol",
+      "sodium hydroxide",
+      "potassium hydroxide",
+      "sodium tert-butoxide",
+      "potassium tert-butoxide",
+      "sodium hydride",
+      "potassium hydride"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-(alkoxymethyl)-4-(methanesulfonyl)benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "(2)2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐在碱性物质存在下与醇反应或者将2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐反应，得到所述2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸。\n作为本发明优选的技术方案，步骤(2)中所述醇为2,2,2-三氟乙醇或2-四氢呋喃甲醇。\n优选地，步骤(2)中2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与与醇的摩尔比为1:(1.05～1.35)，例如可以是1:1.05、1:1.15、1:1.25或1:1.35。\n作为本发明优选的技术方案，步骤(2)中所述碱性物质为氢氧化钠、氢氧化钾、叔丁醇钠、叔丁醇钾、氢化钠、氢化钾中的任意一种。\n优选地，所述氢氧化钠使用时先制成氢氧化钠水溶液，氢氧化钠的质量浓度为30～96％，例如可以是30％、40％、50％、60％、70％、85％或96％。\n优选地，所述氢氧化钾使用时先制成氢氧化钠水溶液，氢氧化钾的质量浓度为30～96％，例如可以是30％、40％、50％、60％、70％、85％或96％。\n优选地，步骤(2)中所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱性物质的摩尔比为1:(1.2～1.5)，例如可以是1:1.2、1:1.3、1:1.4或1:1.5。\n作为本发明优选的技术方案，步骤(2)中所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐的摩尔比为1:(1.2～1.5)，例如可以是1:1.2、1:1.3、1:1.4或1:1.5。\n优选地，步骤(2)中所述碱金属醇盐为醇和碱金属反应得到。\n优选地，所述碱金属为金属钠或金属钾。\n在本发明中，步骤(2)中所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐在碱性物质存在下与醇反应时，加料顺序为先将碱性物质与醇加入反应溶剂中，而后加入所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐。\n在本发明中，步骤(2)中所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐反应时的加料顺序为先将碱金属醇盐放入溶剂中，再加入所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐。\n本发明中，步骤(2)中加料顺序是不可改变的，若将2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐先放入溶剂中，滴加碱性物质与醇的混合液或者滴加醇钠或醇钾进行反应，则苄醇杂质以及双接杂质会大幅增加。\n作为本发明优选的技术方案，步骤(2)中使用的溶剂为乙腈、DMF、DMSO或THF中的任意一种或至少两种的组合。\n优选地，步骤(2)中相对于1mol的2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐，所述溶剂的用量为700～3500mL，例如可以是700mL、1000mL、1500mL、2000mL、2500mL、3000mL或3500mL。\n作为本发明优选的技术方案，步骤(2)中所述反应的温度为-5～15℃，例如可以是-5℃、0℃、5℃、10℃或15℃。\n优选地，步骤(2)中所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐分批加入步骤(2)的反应体系中，所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐的总加料时间为1～3h，例如可以是1h、1.5h、2h、2.5h或3h；\n优选地，步骤(2)中所述反应时间为3～6h，例如可以是3h、4h、5h或6h。\n优选地，步骤(2)中所述反应完成后经过酸化得到所述2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸。\n优选地，所述酸化使用的酸为盐酸。\n优选地，所述酸化后反应体系的pH值为2～3，例如可以是2、2.1、2.3、2.4、2.5、2.7或3。\n(2)2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐在碱性物质存在下与醇反应，所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与醇的摩尔比为1:(1.05～1.35)，与碱性物质的摩尔比为1:(1.2～1.5)，或者将2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐反应，所述2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐的摩尔比为1:(1.2～1.5)，反应时间3～6h，反应温度为-5～15℃，经脱溶、水稀释、酸化、过滤和烘干后得到所述2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸。",
+    "procedure_summary": "The benzoate salt is reacted either with an alcohol in the presence of a basic substance or with a preformed alkali metal alkoxide, which displaces the benzylic bromide and forms the ether. The base and the alcohol, or the alkoxide, go into the solvent first and the salt is added afterwards in batches, and acidification, dilution, filtration and drying then give the alkoxymethyl benzoic acid.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:etherification",
+      "mechanism:ionic",
+      "named_rxn:williamson_ether_synthesis",
+      "scale:not_specified",
+      "solvent_class:aprotic_polar",
+      "catalyst_class:base",
+      "workup_type:filtration",
+      "purification:none",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "PROSE step (2) of the technical scheme in 发明内容, recited at [0019] and again, with its parameters gathered together, at [0057]. The conventions listed in the notes of step (1) apply here too. TWO ROUTES IN ONE STEP, not a one-pot sequence: [0019] offers the benzoate salt either with an alcohol in the presence of a basic substance, or with an alkali metal alkoxide. These are alternatives for the same transformation, not two transformations in series, so is_one_pot stays false and one_pot_steps is empty. compounds[] therefore holds the components of both routes; the two alcohols of [0035] are alternatives to each other as well, [0022] pairing R with 2,2,2-trifluoroethyl or 2-tetrahydrofurylmethyl. ALKALI METAL ALKOXIDE: 碱金属醇盐 is a generic class and, matching A1 and the reference run, is not emitted as a compound record, so no a1_missing_compound arises from it; its claimed ratio is carried in molar_ratio_text. [0042] and [0043] add that the alkoxide is obtained by reacting an alcohol with an alkali metal, sodium metal or potassium metal. That is a third transformation of the process, and in the Examples that actually perform it, where it has its own charge and its own isolated solid, it is annotated as its own step. Here it is not: this section states only where the alkoxide comes from, with no charge, no solvent, no temperature, no time and no isolation, and A0 counted two steps for this section. The judgement is recorded here rather than resolved silently, and sodium metal and potassium metal are consequently not in compounds[] for this step, because they are not charged into it. ADDITION ORDER, which the section makes load bearing: [0044] puts the basic substance and the alcohol into the solvent first and the benzoate salt after; [0045] puts the alkoxide in first and the benzoate salt after; [0050] adds the salt in batches over a total of 1～3h; and [0046] states the order cannot be changed, because putting the salt in first and adding the base and alcohol mixture, or the sodium or potassium alkoxide, dropwise makes the 苄醇 impurity and the 双接杂质 double-attachment impurity increase greatly. Those two impurities belong to the reversed order the section forbids, not to the disclosed procedure, so they are not recorded in compounds[]. CLASSIFICATION: the benzylic bromide is displaced by an alkoxide, so reaction_class is nucleophilic_substitution with high confidence and named_reaction is Williamson ether synthesis. [0023] calls it a 缩合反应, a condensation, which is the patent's own looser wording. TIME: [0051] gives 3～6h, a range no schema field holds, so time_h is null and the range is recorded here. The temperature range -5～15℃ of [0049] fits the temperature object; no cooling method is named, so cooling_method is null. ACIDIFICATION IS WORKUP, not a reagent of the substitution: [0052] acidifies after the reaction is complete, [0053] names hydrochloric acid and [0054] gives pH 2～3. ph_value and workup.ph_target both hold a single number and the text gives a range, so both are null and the range is carried in ph_target_stage and in the workup narrative. Hydrochloric acid is in workup rather than compounds[] under convention (a). It is drawn under no arrow in this section. PRINTED INCONSISTENCY, recorded and not fixed: [0039] reads 所述氢氧化钾使用时先制成氢氧化钠水溶液, that is potassium hydroxide is first made up as an aqueous SODIUM hydroxide solution, the same sentence that appears for step (1) at [0032]. Both compounds are recorded and the wording is left as printed. PRINTED TYPO: [0036] reads 苯甲酸盐与与醇的摩尔比, with 与 doubled, and the paragraph is broken across the p07 page break, line 207 stopping at 1: and line 212 carrying the tail (1.05～1.35). procedure_text and molar_ratio_text rejoin the two halves and keep the doubled character as printed. PRODUCT: the identifier is the generic acid A1 recorded, because the alkoxymethyl group is left unspecified here; [0022] says only that R is 2,2,2-trifluoroethyl or 2-tetrahydrofurylmethyl, and no stereodescriptor is printed in this section for the tetrahydrofurfuryl case. LINKAGE: precursor_step is Step 1 and linkage_confirmed is true on rule 24, on both of its tests. The reactant identifier here is the product identifier of step (1), and [0023] refers back explicitly with 该盐进一步与相应的醇或醇钠发生缩合反应. DRAWING: the scheme at line 176 draws one arrow carrying ROH、碱 and 或ROM, which is exactly the two routes the prose offers. Its reactant and product lists are both empty because M and R are placeholders, so it corroborates the reagents and nothing else, and contradicts nothing: no drawing_text_conflict. reagent_written_not_drawn is raised because the four permitted reaction solvents, the six named bases and the hydrochloric acid of the acidification are in the prose and on no arrow. The single structure at line 185 is the symmetric dibenzyl ether of the rejected conventional route, not a step and not a product of this one. ARITHMETIC: as for step (1), this section states no mass, no mole count and no yield, so nothing can fail to close and no arithmetic flag is raisable."
+  }
+]
