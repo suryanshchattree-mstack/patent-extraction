@@ -1,0 +1,90 @@
+[
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 1",
+    "source_lines": [
+      344,
+      351
+    ],
+    "quote_zh": "Durch die  in Schema 1 angegebene Umsetzung einer Verbindung der Formel (II) mit einer Verbindung der Formel (III)",
+    "arithmetic_check": "Nothing to close. Line 344 states no mass, volume, mole, equivalent, yield or molar ratio, and no number of any kind appears in the paragraph other than the literature reference numbers EP-A 0 369 803 and EP-B 0 283 261. No mass balance, molar mass or yield check is possible on this record. Note for A5: the whole of this section is numberless, so the arithmetic in this patent can only be tested in Example 1 and Example 2.",
+    "drawing_evidence": "None usable. The Schema 1 span on line 351 is [IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [], \"conditions\": [], \"products\": []}]}], that is, one arrow with no reactants, no conditions and no products. Nothing was read off the drawing, so the drawing neither agrees nor disagrees with the prose and no comparison was attempted."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 2",
+    "source_lines": [
+      355
+    ],
+    "quote_zh": "Verbindungen oben genannter Formel (III) können gemäß bekannten Methoden aus Verbindungen der Formel (III), in der R für Hydroxy oder Alkoxy steht, hergestellt werden.",
+    "arithmetic_check": "Nothing to close. Line 355 contains no number at all, not even a literature reference. No mass balance, molar mass or yield check is possible.",
+    "drawing_evidence": "None. No [IMAGE_EXTRACT] span and no scheme caption is attached to line 355, so there is no drawing evidence for this step in either direction."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 3",
+    "source_lines": [
+      357,
+      361,
+      366
+    ],
+    "quote_zh": "Verbindungen der Formel (III), in der R1 für Alkoxy steht, können beispielsweise gemäß Schema 2 aus Verbindungen der Formel (IV), in der Hal für Halogen steht, hergestellt werden.",
+    "arithmetic_check": "Nothing to close. Line 357 states no mass, mole, equivalent or yield. The only numerals in the sentence are the formula labels (III), (IV) and the scheme number Schema 2. No mass balance, molar mass or yield check is possible.",
+    "drawing_evidence": "None usable. The Schema 2 span on line 361 is one arrow with empty reactants, conditions and products. The further span on line 366, on the following page, carries exactly one arrow reagent text, R1-Z2, and empty reactants and products; that reagent is the one the prose on line 372 gives for Schema 3, so which scheme the line 366 span belongs to cannot be determined from this input. Neither span supports or contradicts the prose of line 357."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 4",
+    "source_lines": [
+      368
+    ],
+    "quote_zh": "Vebindungen der Formel (III) sind erhältlich durch basenkatalysierte Umsetzung mit Verbindungen R1-H, wie Alkohole, Thioalkohole, Amide, Amine, Heteroaromaten, Heterocyclen.",
+    "arithmetic_check": "Nothing to close. The only numbers on line 368 are the volume, page and year figures of the four literature citations. No mass, mole, equivalent or yield is stated, so no mass balance, molar mass or yield check is possible.",
+    "drawing_evidence": "None. Paragraph 2.1 carries no [IMAGE_EXTRACT] span. The Schema 2 span on line 361 that it sits under is one arrow with empty reactants, conditions and products, and the span on line 366 carries only the reagent text R1-Z2, which belongs to the Schema 3 prose on line 372 and not to R1-H. Nothing in either span supports or contradicts this record."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 5",
+    "source_lines": [
+      370
+    ],
+    "quote_zh": "Vebindungen der Formel (III) sind ebenfalls erhältlich durch Umsetzung mit lithiumorganischen Verbindungen der Formel R1-Li.",
+    "arithmetic_check": "Nothing to close. The only numbers on line 370 are the volume, page and year figures of the two literature citations. No mass, mole, equivalent or yield is stated.",
+    "drawing_evidence": "None. Paragraph 2.2 carries no [IMAGE_EXTRACT] span and the Schema 2 span it sits under is empty of reactants, conditions and products."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 6",
+    "source_lines": [
+      372,
+      374
+    ],
+    "quote_zh": "Verbindungen der Formel (III) sind auch gemäß Schema 3 erhältlich durch basenkatalysierte Umsetzung einer  Verbindung der Formel (V), in der Z1 für OH, SH, NH-Alkyl, NH-Aryl oder NH-Heteroaryl steht, mit kommerziell erhältlichen oder gemäß bekannten Methoden herstellbaren Verbindungen der Formel R1-Z2, in der Z2 für eine Abgangsgruppe steht, wie Halogen, Phenoxy und Alkylsulfonyl.",
+    "arithmetic_check": "Nothing to close. The only numbers on line 372 are the page and year figures of the two literature citations. No mass, mole, equivalent or yield is stated.",
+    "drawing_evidence": "None. The Schema 3 caption on line 374 is followed by no [IMAGE_EXTRACT] span whatsoever, so no part of the Schema 3 drawing is present in this input. The span on line 366, two pages earlier and under the Schema 2 caption, does carry the reagent text R1-Z2 that this paragraph names, which is the only reason to suspect it may in fact be the Schema 3 drawing; that cannot be settled from this input and it is recorded, not resolved."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 7",
+    "source_lines": [
+      376,
+      388
+    ],
+    "quote_zh": "Die  in Schema 4 angegebene Umsetzung einer Verbindung der Formel (Ia) mit einem Halogenierungsreagenz, wie Oxalylchlorid oder Oxalylbromid, führt zu erfindungsgemäßen Verbindungen der Formel (Ib)",
+    "arithmetic_check": "Nothing to close. Line 376 contains no number except the scheme number Schema 4 and the formula labels (Ia) and (Ib). No mass, mole, equivalent or yield is stated.",
+    "drawing_evidence": "None usable. The Schema 4 span on line 388 lists two reactions, step_id 1 and step_id 2, each with empty reactants, conditions and products. Nothing chemical was read off the drawing, so it neither supports nor contradicts this record. The bare labels Ia, Ib and Ic on lines 390, 392 and 394 are the drawing's compound captions surviving as text; they confirm that three structures are drawn but carry no structure and no connectivity."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 8",
+    "source_lines": [
+      376,
+      381,
+      388
+    ],
+    "quote_zh": "die durch Reaktion, gegebenenfalls unter Basenkatalyse, mit Nukleophilen, wie Alkalimetallcyaniden, / Alkalimetallcyanaten, Alkalimetallthiocyanaten,  Alkylthioalkoholen und Thiophenolen zu weiteren erfindungsgemäßen Verbindungen der Formel (Ic), in der R6 für Alkylthio, Halogenalkylthio, Alkenylthio, Halogenalkenylthio, Alkinylthio, Halogenalkinylthio, Cyano, Cyanato, Thiocyanato oder OR12 steht, umgesetzt werden können.",
+    "arithmetic_check": "Nothing to close. The sentence carries no mass, mole, equivalent or yield. Its only numbers are the substituent index in OR12, the R6 label and the citation figures Synthesis 12, 1287 (1992).",
+    "drawing_evidence": "None usable. The Schema 4 span on line 388 has two reactions with empty reactants, conditions and products, so nothing chemical was read off the drawing and no comparison was possible."
+  },
+  {
+    "reaction_id": "Preparation Schemes 1 to 4_Step 9",
+    "source_lines": [
+      381
+    ],
+    "quote_zh": "Durch Reaktion mit einem Oxidationsreagenz, wie Peroxyessigsäure, Wasserstoffperoxid, m-Chlorperoxybenzoesäure und Kaliumperoxymonosulfat, werden erfindungsgemäße Verbindungen der Formel (Ic) erhalten, in der R6 für Alkylsulfinyl, Halogenalkylsulfinyl, Alkenylsulfinyl, Halogenalkenylsulfinyl, Alkinylsulfinyl, Halogenalkinylsulfinyl, Alkylsulfonyl, Halogenalkylsulfonyl, Alkenylsulfonyl, Halogenalkenylsulfonyl, Alkinylsulfonyl oder Halogenalkinylsulfonyl steht.",
+    "arithmetic_check": "Nothing to close. The sentence carries no mass, mole, equivalent or yield. Its only numbers are the R6 label and the citation figures J. Org. Chem. 53, 532 (1988) and Tetrahedron Lett. 21, 1287 (1981).",
+    "drawing_evidence": "None usable. The Schema 4 span on line 388 has two reactions with empty reactants, conditions and products. No structure, no reagent and no arrow label was read, so there is no drawn evidence for or against this transformation."
+  }
+]

@@ -28,7 +28,7 @@ than silent.
 | 3 | [`CN111440099B`](https://patents.google.com/patent/CN111440099B/en) |  |  | 71652835 | CN | Exact Molecule | Purification method of tembotrione product |
 | 4 | [`EP2045236A1`](https://patents.google.com/patent/EP2045236A1/en) |  |  | 38984191 | EP | Exact Molecule | Thermodynamically stable crystal modification of 2-({2-chloro-4- <br>*same family, do not also annotate:* US8722582B2, WO2009027004A1 |
 | 5 | [`US20100041557A1`](https://patents.google.com/patent/US20100041557A1/en) |  |  | 39415042 | US | Exact Molecule | Crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifl <br>*same family, do not also annotate:* US8309769B2 |
-| 6 | [`WO2000021924A1`](https://patents.google.com/patent/WO2000021924A1/en) |  |  | 7884081 | WO | Exact Molecule | Benzoylcyclohexandiones, method for the production and use there |
+| 6 | [`WO2000021924A1`](https://patents.google.com/patent/WO2000021924A1/en) | **Tejas** | blocked | 7884081 | WO | Exact Molecule | Benzoylcyclohexandiones, method for the production and use there |
 | 7 | [`WO2024109718A1`](https://patents.google.com/patent/WO2024109718A1/en) |  |  | 91195273 | WO | Exact Molecule | Method for preparing cyclosulfonone, and intermediates |
 | 8 | [`CN106008290A`](https://patents.google.com/patent/CN106008290A/en) |  |  | 57098239 | CN | Intermediate Molecule | Method for preparing tembotrions |
 | 9 | [`CN112645853A`](https://patents.google.com/patent/CN112645853A/en) |  |  | 75343429 | CN | Intermediate Molecule | Preparation method of 2-chloro-3-alkoxymethyl-4-methylsulfonylbe |
@@ -67,6 +67,29 @@ it, and raise it rather than working around it quietly.
 | `US4695673A` | 27122042 | Process for the production of acylated 1,3-dicarbonyl compounds |
 | `US5744648A` | 24773992 | Process for the manufacture of 1, 3-cyclohexanedione |
 | `US6657074B1` | 23462840 | Process for the preparation of acylated 1,3-dicarbonyl compounds |
+
+## One note, on row 6
+
+`WO2000021924A1` is annotated end to end. Both gates pass, the deliverable is
+assembled, and `runs/WO2000021924A1/NOTES.md` records the run. It is marked
+`blocked` rather than `done` for one reason: `selfcheck` reports 2 fail, and both
+are the same fact.
+
+The review census is 281 claims, which at the pinned 8.7s P90 rate is 40.7 minutes
+against a 15 minute budget, so tier 3 is sampled zero times and the verification
+report carries no statistical bound. The budget is a pinned number and rule 4 of
+CLAUDE.md forbids changing one to make a check pass, so it was left failing.
+
+The census is not inflated. 220 of the 281 claims are `not_checkable` judgements,
+and per compound this run produces fewer census claims than the reference run
+(0.54 against 1.08). The budget was calibrated on a 9 page patent with 75
+compounds; this is a 112 page patent with 520. Any of the longer patents in this
+list will hit the same wall, so the budget probably needs to be a function of the
+gold's size rather than a constant. That is a maintainer's call.
+
+`NOTES.md` also lists six defects this run found in the pipeline itself, three
+fixed and three left alone, plus the fact that the row 12 translation caveat below
+applies to this row too.
 
 ## Status vocabulary
 

@@ -1,0 +1,45 @@
+{
+  "_readme": [
+    "Hand-authored structures for the molecules of one patent that resolve_structures.py",
+    "cannot get any other way. One entry per MOLECULE, keyed by an exact identifier string",
+    "from gold/compounds.json.",
+    "",
+    "Every SMILES below was checked atom by atom against its name, and then against the",
+    "patent's own printed mass/mole pair, before it was committed. Both checks are recorded",
+    "in each note. The gate has no OPSIN and no network, so those two are the only checks",
+    "that exist here and a wrong structure would corrupt a mass balance silently.",
+    "",
+    "DELIBERATELY ABSENT, and listed in no_structure_needed instead: the four Markush genus",
+    "labels. A genus over undefined R groups has no single structure, so any SMILES for",
+    "'compound of formula (I)' would be invented rather than read. They carry chemistry only",
+    "in the sense that the general-method section names them as products.",
+    "",
+    "FIELDS: 'smiles' is required and must parse in RDKit. formula, mw and canonical are NOT",
+    "stored here: resolve_structures.py computes them with RDKit on every run."
+  ],
+  "patent_id": "WO2000021924A1",
+  "no_structure_needed": [
+    "compound of formula (I)",
+    "compound of formula (III)",
+    "compound of formula (Ib)",
+    "compound of formula (Ic)"
+  ],
+  "entries": {
+    "2-chloro-3-methyl-4-methylthio-acetophenone": {
+      "smiles": "CC(=O)c1ccc(SC)c(C)c1Cl",
+      "note": "Product of Example 1 Schritt 1 and charged in Schritt 3. Ring numbered from the acetyl carbon: C1 acetyl, C2 Cl, C3 methyl, C4 methylthio, C5 and C6 unsubstituted. SMILES gives C10H11ClOS, MW 214.72. The patent charges 223.48 g as 1.04 mol at line 563, implying 214.88, so name and printed arithmetic agree to 0.08 percent."
+    },
+    "2-chloro-3-methyl-4-methylsulfonyl-acetophenone": {
+      "smiles": "CC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+      "note": "Product of Example 1 Schritt 3. Same ring numbering as the methylthio precursor with the sulfur oxidised to sulfonyl. SMILES gives C10H11ClO3S, MW 246.71. The patent charges 60.0 g as 0.24 mol at line 565; 60.0/246.71 is 0.2432, which rounds to the printed two significant figures."
+    },
+    "sodium tungstate": {
+      "smiles": "[Na+].[Na+].[O-][W](=O)(=O)[O-]",
+      "note": "Structure follows the NAME, which is the anhydrous salt: Na2O4W, MW 293.82. RECORDED DISAGREEMENT, NOT RESOLVED: the patent charges 27.47 g as 0.08 mol at line 563, implying 343.4, which no anhydrous reading gives. The dihydrate Na2WO4.2H2O at 329.85 gives 0.0833 mol and rounds to the printed 0.08, so the material used was almost certainly the dihydrate. The German prints only Natriumwolframat and never states a hydrate, so the hydrate state is not in the document and is not asserted here."
+    },
+    "3-oxo-1-cyclohexenyl 2-chloro-4-methylsulfonyl-3-phenoxymethyl-benzoic acid": {
+      "smiles": "O=C(OC1=CC(=O)CCC1)c1ccc(S(C)(=O)=O)c(COc2ccccc2)c1Cl",
+      "note": "RECORDED DISAGREEMENT, NOT SILENTLY RESOLVED: the identifier is the name as PRINTED at line 601, and that printed name is internally contradictory, carrying the ester prefix 3-oxo-1-cyclohexenyl together with the free-acid suffix benzoesaeure. A molecule cannot be both. The structure here is the enol ester the procedure actually makes: benzoyl at C1, Cl at C2, phenoxymethyl at C3, methylsulfonyl at C4, esterified to the 1-position of cyclohex-2-ene-1-one. SMILES gives C21H19ClO6S, MW 434.90, against the patent's own 0.51 g as 1.17 mmol at lines 601 and 610, implying 435.9, a 0.23 percent agreement. The free-acid reading C15H13ClO5S at 340.78 is 28 percent away and cannot be what was weighed. The compound record keeps resolved false and keeps the printed name; this file supplies the structure the chemistry and the arithmetic both give."
+    }
+  }
+}

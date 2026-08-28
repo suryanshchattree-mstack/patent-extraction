@@ -1,0 +1,205 @@
+[
+  {
+    "patent_id": "WO2000021924A1",
+    "identifier": "precursors of the compounds in Table 1a",
+    "identifier_type": "functional_ref",
+    "aliases": [
+      "Vorprodukte der Verbindungen in Tabelle 1a"
+    ],
+    "resolved": false,
+    "unresolved_reference": true,
+    "section_label": "Table 1b",
+    "section_type": "formula_definitions",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "reactant",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:intermediate"
+    ],
+    "notes": "Whole molecule class named only by pointer: the caption identifies these as the precursors of the compounds tabulated in Tabelle 1a, so the reference is unresolved here and resolved is false. German as printed kept in aliases. Role reactant is the role the caption gives them relative to the Tabelle 1a compounds. No chemical_family or functional_group tag is emitted because Vorprodukte guarantees no scaffold. This caption record is emitted in addition to the four table rows that carry characterisation data. Both IMAGE_EXTRACT spans in the section returned an empty molecules list, so the scaffold the caption fixes is not readable in this section and no SMILES alias is available."
+  },
+  {
+    "patent_id": "WO2000021924A1",
+    "identifier": "Tabelle 1b, Nr. 3b",
+    "identifier_type": "local_label",
+    "aliases": [
+      "R1 = OCH2CF3",
+      "R7 = H"
+    ],
+    "resolved": false,
+    "unresolved_reference": true,
+    "section_label": "Table 1b",
+    "section_type": "formula_definitions",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "product",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": {
+      "h1": "1H NMR (Me2SO-d6): d 3.35 (s,3H), 4.3 (q, 2H), 5.22 (s,2H), 7.9 (d,1H), 8.05 (d,1H)",
+      "c13": null,
+      "raw_text": "1H NMR (Me2SO-d6): d 3.35 (s,3H), 4.3 (q, 2H), 5.22 (s,2H), 7.9 (d,1H), 8.05 (d,1H)",
+      "solvent": "Me2SO-d6",
+      "frequency_mhz": null
+    },
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:intermediate"
+    ],
+    "notes": "Compound defined by the Tabelle 1b caption plus row Nr. 3b; emitted because the Physikalische Daten cell carries a 1H NMR block, so the patent made and characterised it. No systematic name is constructed: the row fixes R1 = OCH2CF3 and R7 = H, but the Tabelle 1b caption fixes no substituents at all, it only states that these are the precursors of the Tabelle 1a compounds, and both IMAGE_EXTRACT spans in the section returned an empty molecules list, so the scaffold is not available here. The row label is used as the identifier rather than a guessed name. The NMR block is printed in Me2SO-d6, unlike the other three rows of this table, and the delta symbol is printed as a plain d."
+  },
+  {
+    "patent_id": "WO2000021924A1",
+    "identifier": "Tabelle 1b, Nr. 4b",
+    "identifier_type": "local_label",
+    "aliases": [
+      "R1 = O(CH2)2O(CH2)2OEt",
+      "R7 = H"
+    ],
+    "resolved": false,
+    "unresolved_reference": true,
+    "section_label": "Table 1b",
+    "section_type": "formula_definitions",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "product",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": {
+      "h1": "1H NMR (CDCl3): d 1.2 (t,3H), 3.35 (s,3H), 3.6 (m,4H), 3.7 (m,2H), 3.5 (q, 2H), 3.85 (m,2H), 5.25 (s,2H), 7.9 (d,1H), 8.15 (d,1H)",
+      "c13": null,
+      "raw_text": "1H NMR (CDCl3): d 1.2 (t,3H), 3.35 (s,3H), 3.6 (m,4H), 3.7 (m,2H), 3.5 (q, 2H), 3.85 (m,2H), 5.25 (s,2H), 7.9 (d,1H), 8.15 (d,1H)",
+      "solvent": "CDCl3",
+      "frequency_mhz": null
+    },
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:intermediate"
+    ],
+    "notes": "Compound defined by the Tabelle 1b caption plus row Nr. 4b; emitted because the Physikalische Daten cell carries a 1H NMR block, so the patent made and characterised it. No systematic name is constructed: the row fixes R1 = O(CH2)2O(CH2)2OEt and R7 = H, but the Tabelle 1b caption fixes no substituents at all, it only states that these are the precursors of the Tabelle 1a compounds, and both IMAGE_EXTRACT spans in the section returned an empty molecules list, so the scaffold is not available here. The row label is used as the identifier rather than a guessed name. The printed shift list runs out of order, 3.6 and 3.7 before 3.5; reproduced as printed."
+  },
+  {
+    "patent_id": "WO2000021924A1",
+    "identifier": "Tabelle 1b, Nr. 5b",
+    "identifier_type": "local_label",
+    "aliases": [
+      "R1 = [drawn structure, see drawings: (tetrahydro-2H-pyran-2-yl)methoxy]",
+      "R7 = H"
+    ],
+    "resolved": false,
+    "unresolved_reference": true,
+    "section_label": "Table 1b",
+    "section_type": "formula_definitions",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "product",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": {
+      "h1": "1H NMR (CDCl3): d 1.55 (m,6H), 3.35 (s,3H), 3.65 (m,2H), 4.0 (m,2H), 4.35 (m,1H), 5.12 (s,2H), 7.85 (d,1H), 8.1 (d,1H)",
+      "c13": null,
+      "raw_text": "1H NMR (CDCl3): d 1.55 (m,6H), 3.35 (s,3H), 3.65 (m,2H), 4.0 (m,2H), 4.35 (m,1H), 5.12 (s,2H), 7.85 (d,1H), 8.1 (d,1H)",
+      "solvent": "CDCl3",
+      "frequency_mhz": null
+    },
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:intermediate"
+    ],
+    "notes": "Compound defined by the Tabelle 1b caption plus row Nr. 5b; emitted because the Physikalische Daten cell carries a 1H NMR block, so the patent made and characterised it. No systematic name is constructed: the row fixes R1 = [drawn structure, see drawings: (tetrahydro-2H-pyran-2-yl)methoxy] and R7 = H, but the Tabelle 1b caption fixes no substituents at all, it only states that these are the precursors of the Tabelle 1a compounds, and both IMAGE_EXTRACT spans in the section returned an empty molecules list, so the scaffold is not available here. The row label is used as the identifier rather than a guessed name. The R1 cell is a drawing, not text; the substituent name given in the alias is the vision pass reading of that drawing and is not printed on the page."
+  },
+  {
+    "patent_id": "WO2000021924A1",
+    "identifier": "Tabelle 1b, Nr. 9b",
+    "identifier_type": "local_label",
+    "aliases": [
+      "R1 = O-c-Pentyl",
+      "R7 = H"
+    ],
+    "resolved": false,
+    "unresolved_reference": true,
+    "section_label": "Table 1b",
+    "section_type": "formula_definitions",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "product",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": {
+      "h1": "1H NMR (CDCl3): d 1.5-1.85 (m,8H), 3.25 (s,3H), 4.2 (m,1H), 5.1 (s,2H), 7.9 (d,1H), 8.15 (d,1H)",
+      "c13": null,
+      "raw_text": "1H NMR (CDCl3): d 1.5-1.85 (m,8H), 3.25 (s,3H), 4.2 (m,1H), 5.1 (s,2H), 7.9 (d,1H), 8.15 (d,1H)",
+      "solvent": "CDCl3",
+      "frequency_mhz": null
+    },
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:intermediate"
+    ],
+    "notes": "Compound defined by the Tabelle 1b caption plus row Nr. 9b; emitted because the Physikalische Daten cell carries a 1H NMR block, so the patent made and characterised it. No systematic name is constructed: the row fixes R1 = O-c-Pentyl and R7 = H, but the Tabelle 1b caption fixes no substituents at all, it only states that these are the precursors of the Tabelle 1a compounds, and both IMAGE_EXTRACT spans in the section returned an empty molecules list, so the scaffold is not available here. The row label is used as the identifier rather than a guessed name."
+  }
+]

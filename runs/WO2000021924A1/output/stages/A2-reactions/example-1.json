@@ -1,0 +1,2344 @@
+[
+ {
+  "patent_id": "WO2000021924A1",
+  "reaction_id": "Example 1_Step 1",
+  "section_label": "Example 1",
+  "section_type": "experimental_example",
+  "step_index": 1,
+  "step_label": "Step 1",
+  "reaction_class": "nucleophilic_substitution",
+  "reaction_class_confidence": "high",
+  "named_reaction": null,
+  "mechanism_type": "ionic",
+  "scale": "pilot",
+  "is_one_pot": true,
+  "one_pot_steps": [
+   "nucleophilic displacement of one ring chlorine of 2,6-dichlorotoluene by sodium thiomethoxide in hexamethylphosphoric triamide at 100 C for 3 h",
+   "S-methylation with iodomethane at room temperature for 0.5 h after the batch had been allowed to cool"
+  ],
+  "conditions": {
+   "temperature": {
+    "type": "exact",
+    "value_c": 100.0,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 3.0,
+   "reactor_type": null,
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": null,
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "batch poured onto 3.5 l of water",
+    "extracted with ethyl acetate",
+    "combined organic phases washed with water",
+    "dried over magnesium sulfate",
+    "evaporated to dryness on a rotary evaporator"
+   ],
+   "quenching_agent": "water",
+   "extraction_solvent": "ethyl acetate",
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": [
+    "water"
+   ],
+   "drying_agent": "magnesium sulfate",
+   "filtration": null,
+   "concentration_method": "rotary evaporation to dryness",
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "2,6-dichlorotoluene",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 200.0,
+     "volume_ml": null,
+     "mmol": 1240.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged first and dissolved in hexamethylphosphoric triamide",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "hexamethylphosphoric triamide",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 600.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "reaction medium, charged at the start",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "sodium thiomethoxide",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 130.41,
+     "volume_ml": null,
+     "mmol": 1860.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added to the solution of the arene before heating",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "iodomethane",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 88.2,
+     "volume_ml": null,
+     "mmol": 500.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added after the batch had been allowed to cool, then stirred a further 0.5 h at room temperature",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "water",
+    "role": "other",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 3500.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "3.5 l received the batch at quench; further unquantified water washed the combined organic phases",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "ethyl acetate",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "extraction solvent at workup; no volume stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "magnesium sulfate",
+    "role": "drying_agent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "used to dry the combined organic phases",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "2-chloro-6-(methylthio)toluene",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": 208.85,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": 97.0
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "2,6-dichlorotoluene",
+   "sodium thiomethoxide",
+   "iodomethane"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "2-chloro-6-(methylthio)toluene",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": 97.0,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "200 g (1.24 mol) 2,6-Dichlortoluol wurden in 600 ml Hexamethylphosphorsäuretriamid gelöst und mit  130.41 g (1,86 mol) Natriumthiomethylat versetzt. Anschließend wurde für 3 h auf 100 °C erhitzt. Man ließ abkühlen, fügte 88.2 g (0.5 mol) Jodmethan hinzu und ließ 0,5 h bei Raumtemperatur nachrühren. Anschließend wurde der Ansatz auf 3.5 l Wasser gegeben und mit Essigester extrahiert. Die vereinigten organischen Phasen wurden mit Wasser gewaschen, über MgSO4 getrocknet und am Rotationsverdampfer vollständig eingeengt. Ausbeute:\t208.85 g (97 % der Theorie), gelbes Öl",
+  "procedure_summary": "The dichlorotoluene is treated with sodium thiomethylate in hexamethylphosphoric triamide at elevated temperature, then iodomethane is charged after cooling and the mixture stirred on at room temperature. The batch is quenched onto water, extracted with ethyl acetate, washed, dried over magnesium sulfate and evaporated to a yellow oil.",
+  "precursor_step": null,
+  "linkage_confirmed": false,
+  "cross_reference_unresolved": false,
+  "non_synthetic": false,
+  "is_complete": false,
+  "validation_flags": [
+   "molar_mass_inconsistent"
+  ],
+  "tags": [
+   "transformation:thioetherification",
+   "transformation:s_methylation",
+   "mechanism:ionic",
+   "scale:pilot",
+   "solvent_class:aprotic_polar",
+   "catalyst_class:none",
+   "workup_type:aqueous_extraction",
+   "purification:none",
+   "step_role:first_step",
+   "linkage:standalone",
+   "is_one_pot:true"
+  ],
+  "notes": "German heading Schritt 1: 2-Chlor-6-methylthiotoluol, which names the product the label alone does not. ONE-POT. One numbered Schritt, two sequential charges with two hold periods and no workup between them: the thiomethylate displacement at 100 C for 3 h, then iodomethane at room temperature for 0.5 h. reaction_class follows the FINAL transformation and is nucleophilic_substitution, which is also the class of the first transformation. The patent does not say what the iodomethane is for. Two readings are on the evidence: it re-methylates aryl thiolate formed when the 1.86 mol excess of thiomethylate demethylates the product, or it simply consumes the excess thiomethylate before quench. The substoichiometric 0.5 mol charge against 1.24 mol of arene fits either and settles neither, so both are recorded and neither is chosen. Conditions hold one temperature and one time: time_h 3.0 and 100 C are the heating stage, and the 0.5 h room-temperature stage is carried in the iodomethane addition_profile. molar_mass_inconsistent: the text prints 88.2 g (0.5 mol) Jodmethan. Iodomethane is CH3I, MW 141.94, so 88.2 g is 0.62 mol and 0.5 mol is 71.0 g; the printed pair implies 176.4. Both figures are recorded exactly as printed and neither is corrected. mass_balance_implausible is NOT raised on this step: the product side closes, since 1.24 mol gives 214.1 g of theory and the printed 208.85 g is 97.5 % of it against the stated 97 %. Under rule 27 a mass/mole pair that implies the wrong molecular weight is molar_mass_inconsistent, which is the flag raised here. Every other mass/mole pair in the step is correct: 200 g / 1.24 mol gives 161.3 against 161.03 for C7H6Cl2, and 130.41 g / 1.86 mol gives 70.1 against 70.09 for CH3SNa. scale is pilot because the limiting charge is 200 g, above the 100 g threshold. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590, so this section carries no machine-readable structure or scheme and the record rests on the prose alone. No drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn is raised, because no comparison against a drawing was possible."
+ },
+ {
+  "patent_id": "WO2000021924A1",
+  "reaction_id": "Example 1_Step 2",
+  "section_label": "Example 1",
+  "section_type": "experimental_example",
+  "step_index": 2,
+  "step_label": "Step 2",
+  "reaction_class": "acylation",
+  "reaction_class_confidence": "high",
+  "named_reaction": "Friedel-Crafts acylation",
+  "mechanism_type": "ionic",
+  "scale": "pilot",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "room_temperature",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": null,
+   "reactor_type": null,
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": null,
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "reaction mixture poured onto a mixture of 1 l of ice and 300 ml of concentrated hydrochloric acid",
+    "extracted with methylene chloride",
+    "combined organic phases washed with water",
+    "dried over magnesium sulfate",
+    "evaporated to dryness on a rotary evaporator",
+    "residue distilled under vacuum"
+   ],
+   "quenching_agent": "ice and concentrated hydrochloric acid",
+   "extraction_solvent": "dichloromethane",
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": [
+    "water"
+   ],
+   "drying_agent": "magnesium sulfate",
+   "filtration": null,
+   "concentration_method": "rotary evaporation to dryness",
+   "ph_target": null
+  },
+  "purification": "residue distilled under vacuum",
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "acetyl chloride",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 47.36,
+     "volume_ml": null,
+     "mmol": 600.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "dissolved in 200 ml of 1,2-dichloroethane and added dropwise at 15 to 20 C to the aluminium chloride suspension",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "aluminium chloride",
+    "role": "reagent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 90.79,
+     "volume_ml": null,
+     "mmol": 680.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged first as a suspension in 200 ml of 1,2-dichloroethane",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "1,2-dichloroethane",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "reaction medium, charged in three separate portions of 200 ml, 200 ml and 400 ml; the text states no total",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "2-chloro-6-(methylthio)toluene",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 103.14,
+     "volume_ml": null,
+     "mmol": 600.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added dropwise as a solution in 400 ml of 1,2-dichloroethane after the acetyl chloride addition",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "water",
+    "role": "other",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 1000.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "1 l of ice, mixed with the concentrated hydrochloric acid, received the reaction mixture at quench; further unquantified water washed the organic phases",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "hydrochloric acid",
+    "role": "acid",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 300.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "300 ml of concentrated (konz.) acid, mixed with 1 l of ice, formed the quench; strength given only as concentrated, no molarity stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "dichloromethane",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "extraction solvent at workup; no volume stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "magnesium sulfate",
+    "role": "drying_agent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "used to dry the combined organic phases",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "2-chloro-3-methyl-4-methylthio-acetophenone",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": 111.24,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": 87.0
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "acetyl chloride",
+   "2-chloro-6-(methylthio)toluene"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "2-chloro-3-methyl-4-methylthio-acetophenone",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": 87.0,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "47.36 g (0.60 mol) Acetylchlorid in 200 ml 1,2-Dichlorethan wurden bei 15-20 °C zu einer Suspension von 90.79 g (0.68 Mol) Aluminiumchlorid in 200 ml 1,2-Dichlorethan getropft. Anschließend wurde eine Lösung von 103.14 g (0.60 mol) 2-Chlor-6-methylthiotoluol in 400 ml 1,2-Dichlorethan zugetropft. Man ließ über Nacht bei Raumtemperatur rühren und gab das Reaktionsgemisch auf eine Mischung von 1 l Eis und 300 ml konz. Salzsäure. Es wurde mit Methylenchlorid extrahiert. Die vereinigten organischen Phasen wurden mit Wasser gewaschen, über MgSO4 getrocknet und am Rotationsverdampfer vollständig eingeengt. Der Rückstand wurde im Vakuum destilliert. Ausbeute: 111.24 g (87 % der Theorie), farblose Kristalle, Fp.: 45.5-46 °C",
+  "procedure_summary": "Acetyl chloride in dichloroethane is added dropwise under cooling to a suspension of aluminium chloride, then the methylthiotoluene is run in dropwise and the mixture stirred overnight at room temperature. The batch is quenched onto ice and concentrated hydrochloric acid, extracted with methylene chloride, washed, dried over magnesium sulfate, concentrated and the residue distilled under vacuum to colourless crystals.",
+  "precursor_step": "Step 1",
+  "linkage_confirmed": true,
+  "cross_reference_unresolved": false,
+  "non_synthetic": false,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:acylation",
+   "mechanism:ionic",
+   "named_rxn:friedel_crafts_acylation",
+   "scale:pilot",
+   "solvent_class:halogenated",
+   "catalyst_class:acid",
+   "workup_type:aqueous_extraction",
+   "workup_type:distillation",
+   "purification:distillation",
+   "step_role:intermediate_step",
+   "linkage:precursor_linked",
+   "is_one_pot:false"
+  ],
+  "notes": "German heading Schritt 2: 2-Chlor-3-methyl-4-methylthio-acetophenon, which names the product. Friedel-Crafts acylation of the Schritt 1 arene; aluminium chloride is the stoichiometric Lewis acid and is recorded as a reagent, not a catalyst, because 0.68 mol is charged against 0.60 mol of substrate. The 15 to 20 C in the text is the temperature of the dropwise acetyl chloride addition, so per rule 9 it is carried in that compound's addition_profile and not in conditions.temperature; the reaction itself is stated to run ueber Nacht bei Raumtemperatur, which gives temperature room_temperature and leaves time_h null because overnight carries no number. im Vakuum destilliert is a purification, so it sets purification and not reaction pressure. hydrochloric acid is a single merged A1 record covering five charges at different strengths across the section; the identifier is used verbatim and this step's own strength is carried in its addition_profile. Arithmetic closes throughout: 47.36 g / 0.60 mol gives 78.9 against 78.50 for C2H3ClO, 90.79 g / 0.68 mol gives 133.5 against 133.34 for AlCl3, 103.14 g / 0.60 mol gives 171.9 against 172.67 for C8H9ClS, and the printed 111.24 g is 86.4 % of the 128.83 g of theory against the stated 87 %. No scale_discontinuity: Schritt 1 isolated 208.85 g and this step charges 103.14 g, a portion of it. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590, so this section carries no machine-readable structure or scheme and the record rests on the prose alone. No drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn is raised, because no comparison against a drawing was possible."
+ },
+ {
+  "patent_id": "WO2000021924A1",
+  "reaction_id": "Example 1_Step 3",
+  "section_label": "Example 1",
+  "section_type": "experimental_example",
+  "step_index": 3,
+  "step_label": "Step 3",
+  "reaction_class": "oxidation",
+  "reaction_class_confidence": "high",
+  "named_reaction": null,
+  "mechanism_type": "catalytic",
+  "scale": "pilot",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "room_temperature",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 36.0,
+   "reactor_type": null,
+   "concentration": {
+    "value": 30.0,
+    "unit": "%",
+    "reagent": "hydrogen peroxide",
+    "text": "30 %igen Wasserstoffperoxidlösung"
+   },
+   "heating_method": null,
+   "cooling_method": "cooled during the dropwise addition of the hydrogen peroxide solution; no temperature stated",
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "diluted with 1.5 l of water",
+    "precipitated solid filtered off with suction",
+    "washed with water",
+    "dried"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": [
+    "water"
+   ],
+   "drying_agent": null,
+   "filtration": "precipitated solid filtered off with suction",
+   "concentration_method": null,
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "2-chloro-3-methyl-4-methylthio-acetophenone",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 223.48,
+     "volume_ml": null,
+     "mmol": 1040.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged first and dissolved in glacial acetic acid",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "acetic acid",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 1800.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "reaction medium, charged as 1.8 l of glacial acetic acid (Eisessig)",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "sodium tungstate",
+    "role": "catalyst",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 27.47,
+     "volume_ml": null,
+     "mmol": 80.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added to the solution before the peroxide",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "hydrogen peroxide",
+    "role": "oxidant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 203.83,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "203.83 g of a 30 % strength solution added dropwise with cooling; the mass is that of the solution as printed, not of the pure peroxide",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "water",
+    "role": "other",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 1500.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "1.5 l used to dilute the batch and precipitate the product; further unquantified water washed the filter cake",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "2-chloro-3-methyl-4-methylsulfonyl-acetophenone",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": 123.35,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": 48.0
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "2-chloro-3-methyl-4-methylthio-acetophenone"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "2-chloro-3-methyl-4-methylsulfonyl-acetophenone",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": 48.0,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "223.48 g (1.04 mol) 2-Chlor-3-methyl-4-methylthio-acetophenon wurden in 1.8 l Eisessig gelöst und mit 27.47 g (0.08 mol) Natriumwolframat versetzt. Anschließend ließ man unter Kühlung 203.83 g einer 30 %igen Wasserstoffperoxidlösung zutropfen und 1.5 d bei Raumtemperatur nachrühren. Es wurde mit 1.5 l Wasser verdünnt, der ausgefallenen Festtsoff abgesaugt und mit Wasser gewaschen und getrocknet. Ausbeute: 123.35 g (48 % der Theorie), farblose Kristalle, Fp.: 110-111 °C",
+  "procedure_summary": "The methylthio ketone is dissolved in glacial acetic acid with sodium tungstate and oxidised to the sulfone by dropwise addition of aqueous hydrogen peroxide under cooling, then stirred on at room temperature. Dilution with water precipitates the product, which is filtered off with suction, washed with water and dried to colourless crystals.",
+  "precursor_step": "Step 2",
+  "linkage_confirmed": true,
+  "cross_reference_unresolved": false,
+  "non_synthetic": false,
+  "is_complete": false,
+  "validation_flags": [
+   "scale_discontinuity"
+  ],
+  "tags": [
+   "transformation:oxidation",
+   "mechanism:catalytic",
+   "scale:pilot",
+   "solvent_class:protic",
+   "workup_type:precipitation",
+   "workup_type:filtration",
+   "purification:none",
+   "step_role:intermediate_step",
+   "linkage:precursor_linked",
+   "is_one_pot:false"
+  ],
+  "notes": "German heading Schritt 3: 2-Chlor-3-methyl-4-methylsulfonyl-acetophenon, which names the product. Sulfide to sulfone oxidation with hydrogen peroxide catalysed by sodium tungstate, which is charged substoichiometrically (0.08 mol against 1.04 mol of substrate), so mechanism_type is catalytic and the compound is recorded with role catalyst. catalyst_class is skipped rather than guessed: the tag enum has no tungsten value and none of its listed metals applies. 1.5 d is recorded as time_h 36.0. scale_discontinuity: Schritt 2 isolated 111.24 g of this substrate and this step charges 223.48 g, twice what the preceding step produced. The numbers are recorded as printed and nothing is reconciled. SODIUM TUNGSTATE HYDRATION, recorded rather than resolved: 27.47 g / 0.08 mol implies 343.4. Anhydrous Na2WO4 is 293.82, which would make the charge 0.09 mol, while the dihydrate Na2WO4.2H2O is 329.85, which makes it 0.083 mol and rounds to the printed 0.08. The German prints only Natriumwolframat with no hydrate state, so the pair is self-consistent for the ordinary commercial dihydrate and not for the anhydrous salt. molar_mass_inconsistent is not raised because the printed pair does close under the reading the bare name ordinarily carries; both readings are recorded here instead of one being chosen. The substrate pair is correct (223.48 g / 1.04 mol gives 214.9 against 214.71 for C10H11ClOS) and the product closes (123.35 g is 48.1 % of the 256.58 g of theory against the stated 48 %). No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590, so this section carries no machine-readable structure or scheme and the record rests on the prose alone. No drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn is raised, because no comparison against a drawing was possible."
+ },
+ {
+  "patent_id": "WO2000021924A1",
+  "reaction_id": "Example 1_Step 4",
+  "section_label": "Example 1",
+  "section_type": "experimental_example",
+  "step_index": 4,
+  "step_label": "Step 4",
+  "reaction_class": "oxidation",
+  "reaction_class_confidence": "high",
+  "named_reaction": "haloform reaction",
+  "mechanism_type": "ionic",
+  "scale": "lab",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "exact",
+    "value_c": 80.0,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 1.0,
+   "reactor_type": null,
+   "concentration": {
+    "value": 13.0,
+    "unit": "%",
+    "reagent": "sodium hypochlorite",
+    "text": "13 %ige Natriumhypochloritlösung"
+   },
+   "heating_method": null,
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "allowed to cool",
+    "lower phase separated off",
+    "diluted with water",
+    "acidified with hydrochloric acid",
+    "precipitated solid filtered off with suction",
+    "washed with water",
+    "dried"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": [
+    "water"
+   ],
+   "drying_agent": null,
+   "filtration": "precipitated solid filtered off with suction",
+   "concentration_method": null,
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "2-chloro-3-methyl-4-methylsulfonyl-acetophenone",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 60.0,
+     "volume_ml": null,
+     "mmol": 240.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged first and dissolved in dioxane",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "1,4-dioxane",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 510.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "reaction medium, charged at the start",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "sodium hypochlorite",
+    "role": "oxidant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 870.0,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added as 870 g of a 13 % strength solution; the mass is that of the solution as printed, not of the pure hypochlorite",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "hydrochloric acid",
+    "role": "acid",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "used to acidify the separated and diluted aqueous phase at workup; neither strength nor amount is stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "water",
+    "role": "other",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "used to dilute the separated lower phase before acidification and to wash the filter cake; no volume stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "2-chloro-3-methyl-4-methylsulfonyl-benzoic acid",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": 53.02,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": 88.0
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "2-chloro-3-methyl-4-methylsulfonyl-acetophenone"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "2-chloro-3-methyl-4-methylsulfonyl-benzoic acid",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": 88.0,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "60 g (0,24 mol) 2-Chlor-3-methyl-4-methylsulfonyl-acetophenon wurden in 510 ml Dioxan gelöst und mit 870 g 13 %ige Natriumhypochloritlösung versetzt. Anschließend wurde noch 1 h auf 80 °C erwärmt. Nachdem Abkühlen wurde die untere Phase abgetrennt, mit Wasser verdünnt und mit Salzsäure angesäuert. Der ausgefallenen Feststoff wurde abgesaugt, mit Wasser gewaschen und getrocknet. Ausbeute: 53.02 g (88 % der Theorie), farblose Kristalle, Fp.: 230-231 °C",
+  "procedure_summary": "The methyl ketone is dissolved in dioxane, treated with aqueous sodium hypochlorite and warmed, converting it to the benzoic acid by the haloform reaction. The lower phase is separated, diluted, acidified with hydrochloric acid, and the precipitated acid is filtered off with suction, washed with water and dried to colourless crystals.",
+  "precursor_step": "Step 3",
+  "linkage_confirmed": true,
+  "cross_reference_unresolved": false,
+  "non_synthetic": false,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:oxidation",
+   "mechanism:ionic",
+   "named_rxn:haloform_reaction",
+   "scale:lab",
+   "solvent_class:aprotic_polar",
+   "solvent_class:aqueous",
+   "catalyst_class:none",
+   "workup_type:precipitation",
+   "workup_type:filtration",
+   "purification:none",
+   "step_role:intermediate_step",
+   "linkage:precursor_linked",
+   "is_one_pot:false"
+  ],
+  "notes": "German heading Schritt 4: 2-Chlor-3-methyl-4-methylsulfonyl-benzoesäure, which names the product. Haloform oxidation of the aryl methyl ketone to the benzoic acid with aqueous hypochlorite; the loss of one carbon between substrate and product is what identifies it. hydrochloric acid is a single merged A1 record covering five charges at different strengths across the section; the identifier is used verbatim and this step's own strength is carried in its addition_profile. Here the acid is used only to acidify the aqueous phase and the text states neither strength nor volume. ph_value and ph_target_stage are left null: rule 9 admits them only when a pH number is given, and no pH number appears anywhere in this section; the acidification is recorded in workup.steps instead. Arithmetic closes: 60 g / 0.24 mol gives 250.0 against 246.71 for C10H11ClO3S, within the rounding the two significant figures of the mole figure allow, and the printed 53.02 g is 88.8 % of the 59.68 g of theory against the stated 88 %. No scale_discontinuity: Schritt 3 isolated 123.35 g and this step charges 60 g. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590, so this section carries no machine-readable structure or scheme and the record rests on the prose alone. No drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn is raised, because no comparison against a drawing was possible."
+ },
+ {
+  "patent_id": "WO2000021924A1",
+  "reaction_id": "Example 1_Step 5",
+  "section_label": "Example 1",
+  "section_type": "experimental_example",
+  "step_index": 5,
+  "step_label": "Step 5",
+  "reaction_class": "ester_formation",
+  "reaction_class_confidence": "high",
+  "named_reaction": "Fischer esterification",
+  "mechanism_type": "ionic",
+  "scale": "lab",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "not_specified",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 3.0,
+   "reactor_type": null,
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": "reflux",
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "allowed to cool",
+    "concentrated to dryness on a rotary evaporator"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": null,
+   "filtration": null,
+   "concentration_method": "rotary evaporation to dryness",
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "2-chloro-3-methyl-4-methylsulfonyl-benzoic acid",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 53.02,
+     "volume_ml": null,
+     "mmol": 210.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged first and dissolved in the methanol",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "methanol",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 400.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "400 ml charged as the dissolution medium; it is also the alcohol component of the ester and is therefore recorded as a reactant, not a solvent",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "hydrochloric acid",
+    "role": "acid",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "bubbled in as gaseous HCl (mit HCl begast) at reflux temperature for 3 h; no mass, volume, strength or molarity is stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "methyl 2-chloro-3-methyl-4-methylsulfonyl-benzoate",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": 54.93,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": 98.0
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "2-chloro-3-methyl-4-methylsulfonyl-benzoic acid",
+   "methanol"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "methyl 2-chloro-3-methyl-4-methylsulfonyl-benzoate",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": 98.0,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "53.02 g (0.21 mol) 2-Chlor-3-methyl-4-methylsulfonyl-benzoesäure wurden in 400 ml Methanol gelöst und bei Rückflußtemperatur 3 h mit HCl begast. Anschließend ließ man abkühlen und engte am Roatationsverdampfer vollständig ein. Ausbeute: 54.93 g (98 % der Theorie), farblose Kristalle, Fp.: 107-108 °C",
+  "procedure_summary": "The benzoic acid is dissolved in methanol and hydrogen chloride gas is bubbled through the solution at reflux temperature, esterifying the acid. The mixture is cooled and concentrated to dryness on a rotary evaporator to give the methyl ester as colourless crystals.",
+  "precursor_step": "Step 4",
+  "linkage_confirmed": true,
+  "cross_reference_unresolved": false,
+  "non_synthetic": false,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:esterification",
+   "mechanism:ionic",
+   "named_rxn:fischer_esterification",
+   "scale:lab",
+   "solvent_class:protic",
+   "catalyst_class:acid",
+   "workup_type:distillation",
+   "purification:none",
+   "step_role:intermediate_step",
+   "linkage:precursor_linked",
+   "is_one_pot:false"
+  ],
+  "notes": "German heading Schritt 5: Methyl 2-Chlor-3-methyl-4-methylsulfonyl-benzoat, which names the product. METHANOL ROLE, decided from what this step does: the German introduces it as the dissolution medium (in 400 ml Methanol geloest), but the product is the methyl ester, so the methanol supplies the OCH3 of the product and donates atoms to it. Role is therefore reactant here and it also appears in reactant_names. It is still the bulk medium, which is why solvent_class:protic is tagged. A1 records the same compound as a reactant for the same reason, so the two artifacts agree. hydrochloric acid is a single merged A1 record covering five charges at different strengths across the section; the identifier is used verbatim and this step's own strength is carried in its addition_profile. In this step it is gaseous HCl bubbled through the boiling solution and it is the esterification catalyst; no quantity of any kind is given. Rueckflusstemperatur is a heating method and not a temperature, so heating_method is reflux and temperature stays not_specified. The 3 h is the gassing period and is also the reaction period, so it is recorded as time_h. atmosphere is left null: HCl is a charged reagent here, not a blanket gas, and no inert atmosphere is named. Arithmetic closes: 53.02 g / 0.21 mol gives 252.5 against 248.68 for C9H9ClO4S, and the printed 54.93 g is 99.6 % of the 55.17 g of theory that 0.21 mol allows, against the stated 98 %. Continuity is exact: Schritt 4 isolated 53.02 g and this step charges 53.02 g. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590, so this section carries no machine-readable structure or scheme and the record rests on the prose alone. No drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn is raised, because no comparison against a drawing was possible."
+ },
+ {
+  "patent_id": "WO2000021924A1",
+  "reaction_id": "Example 1_Step 6",
+  "section_label": "Example 1",
+  "section_type": "experimental_example",
+  "step_index": 6,
+  "step_label": "Step 6",
+  "reaction_class": "halogenation",
+  "reaction_class_confidence": "high",
+  "named_reaction": "Wohl-Ziegler bromination",
+  "mechanism_type": "radical",
+  "scale": "lab",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "not_specified",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": null,
+   "reactor_type": null,
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": "reflux",
+   "cooling_method": null,
+   "light_source": {
+    "type": "other",
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": 300.0
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "reaction mixture filtered",
+    "filtrate concentrated",
+    "residue taken up in diethyl ether",
+    "n-heptane added to the solution",
+    "precipitated solid filtered off with suction",
+    "dried"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": null,
+   "filtration": "reaction mixture filtered, then the precipitated product filtered off with suction",
+   "concentration_method": "concentration of the filtrate",
+   "ph_target": null
+  },
+  "purification": "precipitated from diethyl ether by addition of n-heptane, filtered off with suction and dried",
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "methyl 2-chloro-3-methyl-4-methylsulfonyl-benzoate",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 44.14,
+     "volume_ml": null,
+     "mmol": 170.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged first and dissolved in carbon tetrachloride",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "carbon tetrachloride",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 600.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "reaction medium, charged at the start",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "N-bromosuccinimide",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 29.91,
+     "volume_ml": null,
+     "mmol": 170.0,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added to the solution as the bromine source",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "dibenzoyl peroxide",
+    "role": "catalyst",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.41,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added as the radical initiator; charged as a mass only, no molar amount stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "diethyl ether",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "the concentrated residue was taken up in it at workup; no volume stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "n-heptane",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added to the ethereal solution as the antisolvent that precipitated the product; no volume stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "methyl 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoate",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": 38.82,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": 67.0
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "methyl 2-chloro-3-methyl-4-methylsulfonyl-benzoate",
+   "N-bromosuccinimide"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "methyl 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoate",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": 67.0,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "44.14 g (0.17 mol) Methyl 2-Chlor-3-methyl-4-methylsulfonyl-benzoat wurden in 600 ml Tetrachlorkohlenstoff gelöst mit 29.91 g (0.17 mol) N-Bromsuccinimid und mit 0.41 g Dibenzoylperoxid versetzt. Anschließend ließ man unter Rückfluß kochen und mit einer 300 W Lampe belichten. Das Reaktionsgemisch wurde filtriert, das Filtrat eingeengt und der Rückstand in Diethylether aufgenommen. Die Lösung wurde mit n-Heptan versetzt, der ausgefallene Feststoff abgesugt und getrocknet. Ausbeute: 38.82 g (67 % der Theorie), farblose Kristalle, Fp.: 74-75 °C",
+  "procedure_summary": "The ring methyl group of the ester is brominated with N-bromosuccinimide in carbon tetrachloride under reflux, initiated by dibenzoyl peroxide and by irradiation from a lamp. The mixture is filtered, the filtrate concentrated, and the residue taken up in diethyl ether and precipitated with n-heptane to give the benzylic bromide as colourless crystals.",
+  "precursor_step": "Step 5",
+  "linkage_confirmed": true,
+  "cross_reference_unresolved": false,
+  "non_synthetic": false,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:bromination",
+   "mechanism:radical",
+   "named_rxn:wohl_ziegler_bromination",
+   "scale:lab",
+   "solvent_class:halogenated",
+   "catalyst_class:none",
+   "workup_type:filtration",
+   "workup_type:precipitation",
+   "purification:recrystallisation",
+   "step_role:intermediate_step",
+   "linkage:precursor_linked",
+   "is_one_pot:false"
+  ],
+  "notes": "German heading Schritt 6: Methyl 3-brommethyl-2-chlor-4-methylsulfonyl-benzoat, which names the product. Benzylic bromination with N-bromosuccinimide, dibenzoyl peroxide and a lamp under reflux: a peroxide initiator with a succinimide bromine source at reflux is radical, and the lamp is a second initiation route rather than a separate mechanism, so mechanism_type stays radical. The procedure spans a page break between lines 569 and 574 and procedure_text joins the two fragments verbatim in document order. unter Rueckfluss kochen gives heating_method reflux and leaves temperature not_specified. NO REACTION TIME IS STATED anywhere in this step, so time_h is null; no time is inferred from the neighbouring steps and conditions_inherited stays false. The German prints only mit einer 300 W Lampe belichten and never says what kind of lamp it is, so light_source.type is other, the schema value for a stated but unspecified source, and the power is recorded in light_source.power_w. purification is recorded as recrystallisation because the residue is redissolved in diethyl ether and the product recovered as colourless crystals on addition of n-heptane, which is an antisolvent crystallisation rather than a trituration. Arithmetic closes: 44.14 g / 0.17 mol gives 259.7 against 262.71 for C10H11ClO4S, 29.91 g / 0.17 mol gives 175.9 against 177.99 for C4H4BrNO2, and the printed 38.82 g is 66.9 % of the 58.07 g of theory against the stated 67 %. No scale_discontinuity: Schritt 5 isolated 54.93 g and this step charges 44.14 g. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590, so this section carries no machine-readable structure or scheme and the record rests on the prose alone. No drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn is raised, because no comparison against a drawing was possible."
+ },
+ {
+  "patent_id": "WO2000021924A1",
+  "reaction_id": "Example 1_Step 7",
+  "section_label": "Example 1",
+  "section_type": "experimental_example",
+  "step_index": 7,
+  "step_label": "Step 7",
+  "reaction_class": "hydrolysis",
+  "reaction_class_confidence": "high",
+  "named_reaction": "Williamson ether synthesis",
+  "mechanism_type": "ionic",
+  "scale": "lab",
+  "is_one_pot": true,
+  "one_pot_steps": [
+   "Williamson etherification of the benzylic bromide with cyclohexanol and potassium tert-butoxide, stirred overnight at room temperature",
+   "saponification of the methyl ester with sodium hydroxide in tetrahydrofuran and water under reflux for 4 h, giving the benzoic acid"
+  ],
+  "conditions": {
+   "temperature": {
+    "type": "room_temperature",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 4.0,
+   "reactor_type": null,
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": "reflux",
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "allowed to cool",
+    "largely concentrated on a rotary evaporator",
+    "aqueous residue treated with 2 M hydrochloric acid",
+    "extracted with methylene chloride",
+    "combined organic phase dried over magnesium sulfate",
+    "concentrated to dryness on a rotary evaporator"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": "dichloromethane",
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": "magnesium sulfate",
+   "filtration": null,
+   "concentration_method": "rotary evaporation to dryness",
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "methyl 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoate",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 1.0,
+     "volume_ml": null,
+     "mmol": 2.93,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged first and dissolved in the cyclohexanol",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "cyclohexanol",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 10.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "10 ml charged as the dissolution medium of the first transformation; it is also the alcohol that supplies the cyclohexanyloxy group of the product and is therefore recorded as a reactant, not a solvent",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "potassium tert-butoxide",
+    "role": "base",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.33,
+     "volume_ml": null,
+     "mmol": 2.93,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added to the cyclohexanol solution; the mixture was then stirred overnight at room temperature",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "tetrahydrofuran",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 16.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "the concentrated residue was dissolved in it together with water before the hydrolysis",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "water",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 8.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "8 ml co-solvent with the tetrahydrofuran for the hydrolysis",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "sodium hydroxide",
+    "role": "base",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.55,
+     "volume_ml": null,
+     "mmol": 13.74,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged with the tetrahydrofuran and water solution and boiled under reflux for 4 h",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "hydrochloric acid",
+    "role": "acid",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "2 M solution added to the aqueous residue after concentration to acidify it before extraction; strength 2 M, volume not stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "dichloromethane",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "extraction solvent at workup; no volume stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "magnesium sulfate",
+    "role": "drying_agent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "used to dry the combined organic phase",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoic acid",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": 0.53,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": 52.0
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "methyl 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoate",
+   "cyclohexanol"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoic acid",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": 52.0,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "1.0 g (2.93 mmol) Methyl 3-brommethyl-2-chlor-4-methylsulfonyl-benzoat wurde in 10 ml Cyclohexanol gelöst und mit 0.33 g (2.93 mmol) Kalium-tert-butylat versetzt. Man ließ über Nacht bei Raumtemperatur rühren und engte anschließend am Rotationsverdampfer ein. Der Rückstand wurde in 16 ml Tetrahydrofuran und 8 ml Wasser gelöst und zusammen mit 0.55 g NaOH (13.74 mmol) 4 h unter Rückfluß gekocht. Anschließend ließ man abkühlen, engte am Rotationsverdampfer weitgehend ein und versetzte anschließend den wässrigen Rückstand mit 2 M HCl. Anschließend wurde mit Methylenchlorid extrahiert, die vereinigte organische Phase über MgSO4 getrocknet und am Rotationsverdampfer vollständig eingeengt. Ausbeute: 0.53 g (52 % der Theorie), farbloses Öl",
+  "procedure_summary": "The benzylic bromide is displaced by cyclohexanol in the presence of potassium tert-butoxide at room temperature to give the cyclohexyl ether, which is carried on without isolation and saponified with sodium hydroxide in aqueous tetrahydrofuran under reflux. The mixture is concentrated, acidified with hydrochloric acid, extracted with methylene chloride, dried over magnesium sulfate and concentrated to the benzoic acid as a colourless oil.",
+  "precursor_step": "Step 6",
+  "linkage_confirmed": true,
+  "cross_reference_unresolved": false,
+  "non_synthetic": false,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:etherification",
+   "transformation:hydrolysis",
+   "mechanism:ionic",
+   "named_rxn:williamson_ether_synthesis",
+   "scale:lab",
+   "solvent_class:protic",
+   "solvent_class:aprotic_polar",
+   "solvent_class:aqueous",
+   "catalyst_class:base",
+   "workup_type:aqueous_extraction",
+   "purification:none",
+   "step_role:intermediate_step",
+   "linkage:precursor_linked",
+   "is_one_pot:true"
+  ],
+  "notes": "German heading Schritt 7: 2-Chlor-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoesäure, which names the product. ONE-POT. One numbered Schritt, two sequential transformations: Williamson etherification of the benzylic bromide with cyclohexanol and potassium tert-butoxide overnight at room temperature, then saponification of the methyl ester with sodium hydroxide in tetrahydrofuran and water at reflux for 4 h. Between them the batch is only concentrated on a rotary evaporator and the residue redissolved; the ether intermediate is never isolated, never purified and never assigned an amount, so the step is kept as one record. reaction_class follows the FINAL transformation and is therefore hydrolysis; named_reaction records Williamson ether synthesis, which names the first transformation, because the saponification carries no canonical name. Conditions likewise: temperature room_temperature is the stated value for the first stage, and heating_method reflux with time_h 4.0 belongs to the hydrolysis; the first stage runs ueber Nacht, which carries no number. CYCLOHEXANOL ROLE, decided from what this step does: the German introduces it as the dissolution medium (in 10 ml Cyclohexanol geloest), but the product carries a cyclohexanyloxymethyl group that the substrate does not, so the cyclohexanol donates atoms to the product. Role is therefore reactant here and it also appears in reactant_names; solvent_class:protic is still tagged because it is the bulk medium of the first stage. A1 records it as a reactant for the same reason, so the two artifacts agree. hydrochloric acid is a single merged A1 record covering five charges at different strengths across the section; the identifier is used verbatim and this step's own strength is carried in its addition_profile. Here it is a 2 M solution used only to acidify the aqueous residue and no volume is stated. Arithmetic closes: 1.0 g / 2.93 mmol gives 341.3 against 341.60 for C10H10BrClO4S, 0.33 g / 2.93 mmol gives 112.6 against 112.21 for C4H9KO, 0.55 g / 13.74 mmol gives 40.0 against 40.00 for NaOH, and the printed 0.53 g is 52.2 % of the 1.016 g of theory against the stated 52 %. No scale_discontinuity: Schritt 6 isolated 38.82 g and this step charges 1.0 g, a small portion of it; the drop in scale is deliberate and is not a discrepancy. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590, so this section carries no machine-readable structure or scheme and the record rests on the prose alone. No drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn is raised, because no comparison against a drawing was possible."
+ },
+ {
+  "patent_id": "WO2000021924A1",
+  "reaction_id": "Example 1_Step 8",
+  "section_label": "Example 1",
+  "section_type": "experimental_example",
+  "step_index": 8,
+  "step_label": "Step 8",
+  "reaction_class": "ester_formation",
+  "reaction_class_confidence": "high",
+  "named_reaction": null,
+  "mechanism_type": "ionic",
+  "scale": "micro",
+  "is_one_pot": true,
+  "one_pot_steps": [
+   "conversion of the benzoic acid to its acid chloride with oxalyl chloride and catalytic N,N-dimethylformamide in methylene chloride, boiled under reflux for 2.5 h",
+   "O-acylation of cyclohexane-1,3-dione with that acid chloride in methylene chloride in the presence of triethylamine, charged at 0 C and stirred a further 4 h at room temperature, giving the enol ester"
+  ],
+  "conditions": {
+   "temperature": {
+    "type": "exact",
+    "value_c": 0.0,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 4.0,
+   "reactor_type": null,
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": "reflux",
+   "cooling_method": "cooled to 0 degrees C before the cyclohexanedione and triethylamine addition",
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "concentrated on a rotary evaporator"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": null,
+   "filtration": null,
+   "concentration_method": "rotary evaporation",
+   "ph_target": null
+  },
+  "purification": "column chromatography on silica gel, ethyl acetate:hexane 1:1",
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoic acid",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.53,
+     "volume_ml": null,
+     "mmol": 1.53,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged first in 23 ml of methylene chloride",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "dichloromethane",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "reaction medium, 23 ml for the acid chloride formation and a further 23 ml for the acylation; the text states no total",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "N,N-dimethylformamide",
+    "role": "catalyst",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged as 2 Tropfen (2 drops) to catalyse the acid chloride formation; no numeric quantity is stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "oxalyl chloride",
+    "role": "reagent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.59,
+     "volume_ml": null,
+     "mmol": 4.58,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged with the N,N-dimethylformamide and boiled under reflux for 2.5 h",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "cyclohexane-1,3-dione",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.19,
+     "volume_ml": null,
+     "mmol": 1.68,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added at 0 C with the triethylamine to the redissolved acid chloride",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "triethylamine",
+    "role": "base",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.46,
+     "volume_ml": null,
+     "mmol": 4.58,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "added at 0 C with the cyclohexanedione as the acid scavenger",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "silica gel",
+    "role": "other",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "chromatography stationary phase (Kieselgel)",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "ethyl acetate",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "chromatography eluent component, Essigester:Hexan = 1:1",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "hexane",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "chromatography eluent component, Essigester:Hexan = 1:1",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "3-oxo-1-cyclohexenyl 2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoate",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": 0.1,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": 15.0
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoic acid",
+   "cyclohexane-1,3-dione"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "3-oxo-1-cyclohexenyl 2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoate",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": 15.0,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "0.53 g (1.53 mmol) 2-Chlor-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoesäure wurden in 23 ml Methylenchlorid mit 2 Tropfen N,N-Dimethylformamid und 0.59 g (4.58 mmol) Oxalylchlorid versetzt und 2.5 h unter Rückfluß gekocht. Anschließend wurde am Rotationsverdampfer abgezogen, der Rückstand in 23 ml Methylenchlorid aufgenommen und bei 0 °C mit 0.19 g (1.68 mmol) Cyclohexandion und 0.46 g (4.58 mmol) Triethylamin versetzt. Man ließ 4 h bei Raumtemperatur nachrühren. Anschließend wurde am Rotationsverdampfer eingeengt und chromatographisch gereinigt (Kieselgel, Essigester:Hexan = 1:1). Ausbeute: 0.1 g (15 % der Theorie), farbloses Öl",
+  "procedure_summary": "The benzoic acid is converted to its acid chloride with oxalyl chloride and catalytic N,N-dimethylformamide in methylene chloride under reflux; the solvent is then stripped, the residue redissolved and cooled, and cyclohexanedione and triethylamine added before stirring at room temperature. Concentration and chromatography on silica gel give the enol ester as a colourless oil.",
+  "precursor_step": "Step 7",
+  "linkage_confirmed": true,
+  "cross_reference_unresolved": false,
+  "non_synthetic": false,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:chlorination",
+   "transformation:esterification",
+   "mechanism:ionic",
+   "scale:micro",
+   "solvent_class:halogenated",
+   "catalyst_class:base",
+   "workup_type:chromatography",
+   "purification:column_chromatography",
+   "step_role:intermediate_step",
+   "linkage:precursor_linked",
+   "is_one_pot:true"
+  ],
+  "notes": "German heading Schritt 8: 3-Oxo-1-cyclohexenyl 2-chlor-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoat, which names the product. ONE-POT. One numbered Schritt, two sequential transformations: acid chloride formation with oxalyl chloride and catalytic N,N-dimethylformamide at reflux for 2.5 h, then, after a solvent swap only, O-acylation of cyclohexane-1,3-dione with triethylamine at 0 C rising to room temperature for 4 h. There is no aqueous workup and no isolation between them, only stripping on the rotary evaporator and redissolution of the residue in fresh methylene chloride, so the step is kept as one record. reaction_class follows the FINAL transformation and is therefore ester_formation. named_reaction is null: no canonical name covers an oxalyl chloride activation followed by enol esterification, and rule 19 forbids stretching for one. Conditions follow the final transformation: the numeric 0 C before the dione charge is the temperature, heating_method reflux belongs to the first transformation, and time_h 4.0 is the final room-temperature hold; the first stage's 2.5 h reflux is stated here rather than in time_h. The product is the enol (O-acyl) ester, not the C-acylated dione; the C-acyl isomer is made from it in Schritt 9, and the two are isomers with the same formula. N,N-dimethylformamide at 2 drops and cyclohexanedione at 0.19 g show the acid chloride is formed with excess oxalyl chloride (4.58 mmol against 1.53 mmol of acid) that is stripped off before the acylation. Arithmetic closes: 0.53 g / 1.53 mmol gives 346.4 against 346.83 for C15H19ClO5S, 0.59 g / 4.58 mmol gives 128.8 against 126.93 for C2Cl2O2, 0.19 g / 1.68 mmol gives 113.1 against 112.13 for C6H8O2, 0.46 g / 4.58 mmol gives 100.4 against 101.19 for C6H15N, and the printed 0.1 g is 14.8 % of the 0.675 g of theory against the stated 15 %. Continuity is exact: Schritt 7 isolated 0.53 g and this step charges 0.53 g. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590, so this section carries no machine-readable structure or scheme and the record rests on the prose alone. No drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn is raised, because no comparison against a drawing was possible."
+ },
+ {
+  "patent_id": "WO2000021924A1",
+  "reaction_id": "Example 1_Step 9",
+  "section_label": "Example 1",
+  "section_type": "experimental_example",
+  "step_index": 9,
+  "step_label": "Step 9",
+  "reaction_class": "acylation",
+  "reaction_class_confidence": "medium",
+  "named_reaction": null,
+  "mechanism_type": "ionic",
+  "scale": "micro",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "room_temperature",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": null,
+   "reactor_type": null,
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": null,
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "concentrated on a rotary evaporator",
+    "5 ml of water added",
+    "acidified with 5 M hydrochloric acid",
+    "extracted with ethyl acetate",
+    "washed with water",
+    "dried over magnesium sulfate",
+    "evaporated to dryness on a rotary evaporator"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": "ethyl acetate",
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": [
+    "water"
+   ],
+   "drying_agent": "magnesium sulfate",
+   "filtration": null,
+   "concentration_method": "rotary evaporation to dryness",
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "3-oxo-1-cyclohexenyl 2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoate",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.1,
+     "volume_ml": null,
+     "mmol": 0.23,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged first and dissolved in acetonitrile",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "acetone cyanohydrin",
+    "role": "catalyst",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged as 1 Tropfen (1 drop); no numeric quantity is stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "triethylamine",
+    "role": "base",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.04,
+     "volume_ml": null,
+     "mmol": 0.39,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "charged with the substrate and the acetone cyanohydrin at the start",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "acetonitrile",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 5.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "reaction medium, charged at the start",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "water",
+    "role": "other",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 5.0,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "5 ml added to the concentrated residue before acidification; further unquantified water washed the organic phase",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "hydrochloric acid",
+    "role": "acid",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "5 M solution used to acidify the aqueous mixture before extraction; strength 5 M, volume not stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "ethyl acetate",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "extraction solvent at workup; no volume stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "magnesium sulfate",
+    "role": "drying_agent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "used to dry the organic phase",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "2-(2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoyl)-cyclohexane-1,3-dione",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": 0.1,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": 100.0
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "3-oxo-1-cyclohexenyl 2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoate"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "2-(2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoyl)-cyclohexane-1,3-dione",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": 100.0,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "0.10 g (0.23 mmol) 3-Oxo-1-cyclohexenyl 2-chlor-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoat, 1 Tropfen Acetoncyanhydrin und 0.04 g (0.39 mMol) Triethylamin wurden in 5 ml Acetonitril gelöst und über Nacht bei Raumtemperatur gerührt. Anschließend wurde am Rotationsverdampfer eingeengt, mit 5 ml Wasser versetzt und mit 5 M HCl sauer gestellt. Es wurde mit Essigester extrahiert, mit Wasser gewaschen, über MgSO4 getrocknet und am Rotationsverdampfer vollständig eingeengt. Ausbeute:\t0.1 g (100 % der Theorie), farbloses Öl, Rf = 0.07 (SiO2/Essigester)",
+  "procedure_summary": "The enol ester is rearranged to the C-acylated dione in acetonitrile at room temperature with triethylamine and a catalytic drop of acetone cyanohydrin. The mixture is concentrated, diluted with water, acidified with hydrochloric acid, extracted with ethyl acetate, washed, dried over magnesium sulfate and concentrated to the title compound as a colourless oil.",
+  "precursor_step": "Step 8",
+  "linkage_confirmed": true,
+  "cross_reference_unresolved": false,
+  "non_synthetic": false,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:rearrangement",
+   "transformation:acylation",
+   "mechanism:ionic",
+   "scale:micro",
+   "solvent_class:aprotic_polar",
+   "catalyst_class:base",
+   "workup_type:aqueous_extraction",
+   "purification:none",
+   "step_role:final_step",
+   "linkage:precursor_linked",
+   "is_one_pot:false"
+  ],
+  "notes": "German heading Schritt 9: 2-(2-Chlor-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoyl)-cyclohexan-1,3-dion, which is also the title compound of the whole Beispiel and the last step of the section. The transformation is an intramolecular O-to-C acyl migration: substrate and product are isomers of the same formula C21H25ClO6S, which is the clearest evidence that this is a rearrangement rather than a coupling, and it is why the stated yield can reach 100 % of theory. reaction_class is recorded as acylation with medium confidence because the closed class list has no rearrangement value; the rearrangement character is carried in tags as transformation:rearrangement. named_reaction is null: this base-promoted acyl migration resembles a Fries rearrangement in outcome but is not the Lewis-acid Fries reaction and has no widely accepted name, so none is stretched onto it. Acetone cyanohydrin at 1 drop against 0.23 mmol of substrate is catalytic and is recorded as a catalyst. ueber Nacht carries no number, so time_h is null. hydrochloric acid is a single merged A1 record covering five charges at different strengths across the section; the identifier is used verbatim and this step's own strength is carried in its addition_profile. Here it is a 5 M solution used only to acidify the aqueous mixture and no volume is stated. Arithmetic: 0.10 g / 0.23 mmol gives 434.8 against 440.94 for C21H25ClO6S, correct within the rounding two significant figures allow; 0.04 g / 0.39 mmol gives 102.6 against 101.19 for C6H15N. The product side does not fail either test in rule 27: 0.23 mmol allows 0.1014 g of theory and the printed 0.1 g does not exceed it, and the printed mass and the stated 100 % agree to the one significant figure both are printed to, so mass_balance_implausible is not raised. It is nonetheless recorded that a quantitative recovery through a concentration, an aqueous acidification, an extraction and a wash is a strong claim, and that both masses are printed to a single significant figure, which is what allows the yield to round to 100 %. Continuity is exact: Schritt 8 isolated 0.1 g and this step charges 0.10 g. No [IMAGE_EXTRACT: ...] span occurs anywhere in lines 540 to 590, so this section carries no machine-readable structure or scheme and the record rests on the prose alone. No drawing_text_conflict, reagent_drawn_not_written or reagent_written_not_drawn is raised, because no comparison against a drawing was possible."
+ }
+]
