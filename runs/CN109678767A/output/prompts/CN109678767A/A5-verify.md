@@ -33,6 +33,31 @@ PROVENANCE SIDECAR:
 {PROVENANCE_JSON}
 ---
 
+## What else is on disk before you call something lost
+
+Three side-channel files hold what a `CompoundRecord` has no field for. Read them
+before you raise a finding about information being missing or misattributed,
+because a defect that is really a side channel you did not open is a false
+critical, and a false critical costs a reviewer more than a missed one.
+
+- `output/compounds-sections.json` - every section each compound was seen in.
+  A1 runs per section and `finalise.py` merges by identifier the way production's
+  `mergeCompoundFields` does, so the surviving `section_label` is the LAST section
+  that mentioned the compound and can name a section that holds none of its
+  numbers. That is production's behaviour, mirrored on purpose; this file is the
+  index production does not keep. A merged record is not evidence of a lost one.
+- `output/compounds-equivalence.json` - compounds that are one molecule under
+  several spellings. These are deliberately NOT merged, because `buildCompoundId`
+  is a pure function of the identifier string and production emits them separately
+  too. Fragmentation that appears here is recorded, not undetected.
+- `output/reactions.json` - the per-step record. Every charge, every yield and
+  every purity the document prints survives here, per example. `compounds.json` is
+  a per-compound summary and keeps one merged quantity, so a number absent there is
+  usually present here. Check before calling it gone.
+
+None of this makes a genuine defect less of one. It tells you which artifact to
+file it against, and whether "missing" means missing or means somewhere else.
+
 ## Checks
 
 ### 1. Recall - what is in the text but missing from the artifact
