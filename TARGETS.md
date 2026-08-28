@@ -119,9 +119,12 @@ Full write-ups in `runs/CN111440099B/NOTES.md` and `runs/EP2045236A1/NOTES.md`.
 pass, the `visual` gate passes and the manifest is clean, but `selfcheck` reports
 2 fail and so the row is `blocked` rather than `done`.
 
-Both failures are one number. The review census is 322 claims, 46.7 min at the
+Both failures are one number. The review census is 321 claims, 46.5 min at the
 pessimistic rate against the 15.0 min budget `contracts/REVIEW-PROTOCOL.md` pins
-from what the user said they would spend. This patent has **twenty** worked
+from what the user said they would spend. Re-measured when row 4's verify.py
+fixes landed; it was 322 claims and 46.7 min, and a Chinese patent barely moves
+because most of its enriched lines are substitutions rather than paired
+translations. This patent has **twenty** worked
 examples where the reference run has one, so the same facts recur across them:
 the water volume 18 times, the methyl ester mass 12 times, the yield identity 19
 times. Tier 1 is 26% of claims against the reference's 19%, so the grounding is
@@ -173,15 +176,20 @@ assembled, and `runs/WO2000021924A1/NOTES.md` records the run. It is marked
 `blocked` rather than `done` for one reason: `selfcheck` reports 2 fail, and both
 are the same fact.
 
-The review census is 281 claims, which at the pinned 8.7s P90 rate is 40.7 minutes
+The review census is 178 claims, which at the pinned 8.7s P90 rate is 25.8 minutes
 against a 15 minute budget, so tier 3 is sampled zero times and the verification
 report carries no statistical bound. The budget is a pinned number and rule 4 of
 CLAUDE.md forbids changing one to make a check pass, so it was left failing.
 
-The census is not inflated. 220 of the 281 claims are `not_checkable` judgements,
-and per compound this run produces fewer census claims than the reference run
-(0.54 against 1.08). The budget was calibrated on a 9 page patent with 75
-compounds; this is a 112 page patent with 520. Any of the longer patents in this
+Re-measured when row 4's verify.py fixes landed. It was 281 claims and 40.7
+minutes, and 103 of those claims were the machine's own English being counted as
+uncited source, which is most of the gap and the reason a German patent felt so
+much worse than a Chinese one. The remaining overrun is real.
+
+The census is not inflated. 117 of the 178 claims are `not_checkable` judgements,
+and per compound this run produces fewer census claims than the reference run.
+The budget was calibrated on a 9 page patent with 75 compounds; this is a 112
+page patent with 520. Any of the longer patents in this
 list will hit the same wall, so the budget probably needs to be a function of the
 gold's size rather than a constant. That is a maintainer's call.
 
