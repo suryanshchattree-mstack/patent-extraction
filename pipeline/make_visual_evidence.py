@@ -1161,11 +1161,29 @@ def build(root: Path, patent_id: str) -> int:
 
             # between_markers can carry prose where a marker is not visible on
             # the page, so say "between X and Y" only when there really are two.
-            marks = [m.strip() for m in between if MARKER.match(m.strip())]
-            if len(marks) >= 2:
-                where = f"between {marks[0]} and {marks[1]}"
-            elif len(marks) == 1:
-                where = f"just above {marks[0]}"
+            #
+            # WHICH SLOT, NOT HOW MANY. between_markers is [before, after], so the
+            # list already says which side of the drawing each marker is on, and
+            # flattening it to a count throws that away. Counting then has to assume
+            # a lone survivor is the trailing one, which is true of the reference
+            # run's two prose cases and false whenever the MISSING marker is the
+            # trailing one. US20040236146A1 has two drawings inside claim 6, below
+            # [0034], and the claims carry no [00NN] markers at all, so there is
+            # nothing to put in the second slot; the caption told the reviewer to
+            # look above [0034] for a drawing printed below it.
+            def _mark(i):
+                if len(between) > i and isinstance(between[i], str):
+                    t = between[i].strip()
+                    if MARKER.match(t):
+                        return t
+                return None
+            lead, trail = _mark(0), _mark(1)
+            if lead and trail:
+                where = f"between {lead} and {trail}"
+            elif trail:
+                where = f"just above {trail}"
+            elif lead:
+                where = f"just below {lead}"
             else:
                 where = "no paragraph marker printed beside it"
             header = (f"Drawing {drawing_no} of {total_drawings}   -   page "
