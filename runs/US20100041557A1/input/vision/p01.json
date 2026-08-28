@@ -1,0 +1,177 @@
+{
+ "page": "p01.png",
+ "page_label": null,
+ "doc_part": "front_page",
+ "header": "US 20100041557A1  [caption printed under the Code 39 barcode that spans the top of the page. The barcode itself is an artifact and carries no text of its own. There is no running 'US 2010/0041557 A1 / Feb. 18, 2010' band on this page: that band appears on the body pages, and on the front page the same publication number is printed instead as INID field (10), which is recorded as content in paragraphs. The caption is the only text on the page a downstream pass should drop.]",
+ "footer": "[No footer, no page number and no sheet marking are printed on this page. Verified by an ink-density scan of the image: ink stops at about 44 percent of the sheet height and the lower 56 percent is blank.]",
+ "paragraphs": [
+  {
+   "marker": "(19)",
+   "zh": "United States",
+   "en": "United States",
+   "notes": "PASS CONVENTION (stated once, on the first paragraph of the page): this patent is in English, so the zh field carries the English exactly as printed on the page image and the en field carries the same English, lightly normalised (wrapped lines joined, dot leaders reduced to '...'). The zh key keeps its name because build_enriched.py reads it by name. MARKER CONVENTION: the front page has no numbered paragraphs, so the marker is the INID code as printed, e.g. '(54)', '(57)'. Blocks the page prints with no INID code of their own carry a square-bracketed descriptive marker, e.g. '[correspondence-address]'. SOURCE OF TRUTH: every field below was read off runs/US20100041557A1/input/pages/p01.png at 3x to 12x magnification; /tmp/us2010/page01.txt was used only as a cross-check and lost against the image wherever the two disagree. The disagreements are recorded in the notes of the paragraph each one falls in, and mirrored in discrepancies[]."
+  },
+  {
+   "marker": "(12)",
+   "zh": "Patent Application Publication",
+   "en": "Patent Application Publication",
+   "notes": "Document-kind line. Confirms an A1 pre-grant publication of an application, not a granted patent. Set in large bold serif type across the top left."
+  },
+  {
+   "marker": "(10)",
+   "zh": "Pub. No.: US 2010/0041557 A1",
+   "en": "Publication number: US 2010/0041557 A1",
+   "notes": "Value set in bold, as every INID value on this page is. The text layer reproduces this line correctly; it is the barcode caption above it that the layer corrupts (see header)."
+  },
+  {
+   "marker": "[first-named-inventor]",
+   "zh": "Hupe et al.",
+   "en": "Hupe et al.",
+   "notes": "Printed in bold under '(12) Patent Application Publication', with no INID code of its own. It is the first-named-inventor line, and it names Eike Hupe, the first of the six inventors listed at (75)."
+  },
+  {
+   "marker": "(43)",
+   "zh": "Pub. Date: Feb. 18, 2010",
+   "en": "Publication date: Feb. 18, 2010 (18 February 2010)",
+   "notes": null
+  },
+  {
+   "marker": "(54)",
+   "zh": "CRYSTALLINE FORMS OF\n2-[2-CHLORO-4-METHYLSULFONYL-3-\n(2,2,2-TRIFLUOROETHOXYMETHYL)\nBENZOYL]CYCLOHEXAN-1,3-DIONE",
+   "en": "Title: Crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+   "notes": "Printed in bold small capitals across four lines; the four printed lines are kept as four lines here. Joined, the name is '2-[2-CHLORO-4-METHYLSULFONYL-3-(2,2,2-TRIFLUOROETHOXYMETHYL)BENZOYL]CYCLOHEXAN-1,3-DIONE'. No line break falls inside a word: the hyphen ending line 2 is the name's own locant hyphen in '-3-', so nothing has to be guessed at the joins. OCR DAMAGE, CONFIRMED ON THE IMAGE AT 9x TO 12x. (a) SQUARE BRACKETS. The image prints a true opening square bracket in '2-[2-CHLORO' and a true closing square bracket in 'BENZOYL]CYCLOHEXAN'. The text layer prints '2-2-CHLORO' and 'BENZOYLCYCLOHEXAN'. Note the correction to the shared briefing: the brackets are not flattened to hyphens, they are DROPPED, and the hyphen that survives in '2-2-' is the name's own hyphen from '2-[2-'. The closing bracket leaves no trace at all. (b) LOCANT COMMAS. The image prints '(2,2,2-TRIFLUOROETHOXYMETHYL)' with three commas, each with a clearly descending tail, verified at 12x. The text layer prints '(2.2.2-TRIFLUOROETHOXYMETHYL)' with full stops. The layer reproduces the comma in '-1,3-DIONE' correctly, so the substitution is not systematic and cannot be repaired by a blanket rule. INTERNAL INCONSISTENCY IN THE PATENT ITSELF, not an OCR artifact: the title prints 'TRIFLUOROETHOXYMETHYL' unhyphenated, while the (57) abstract prints 'trifluoro-ethoxymethyl' with a hyphen. Both are recorded as printed and neither is corrected to the other."
+  },
+  {
+   "marker": "(75)",
+   "zh": "Inventors: Eike Hupe, Ludwigshafen (DE); Markus Gewehr, Kastellaun (DE); Peter Erk, Frankenthal (DE); Heidi Emilia Saxell, Ludwigshafen (DE); Ulrich Griesser, Axams (AT); Michaela Tischler, Schluesslberg (AT)",
+   "en": "Inventors: Eike Hupe, Ludwigshafen (DE); Markus Gewehr, Kastellaun (DE); Peter Erk, Frankenthal (DE); Heidi Emilia Saxell, Ludwigshafen (DE); Ulrich Griesser, Axams (AT); Michaela Tischler, Schluesslberg (AT)",
+   "notes": "Six inventors, printed across six wrapped lines and recorded here as one unwrapped string. The wraps fall mid-entry, after 'Heidi' and after 'Schluesslberg', so the printed line breaks carry no information and are not reproduced. Each surname is bold and each city and country code is roman. Four inventors are German (Ludwigshafen, Kastellaun, Frankenthal, Ludwigshafen) and two are Austrian (Axams, Schluesslberg): 4 DE, 2 AT. OCR DAMAGE: after 'Axams (AT)' the image prints a semicolon, verified at 3x; the text layer prints a colon, '(AT):'. Trivial in itself, but it is the same class of defect as the comma-to-full-stop substitutions in the chemical names and is recorded for that reason. Everything else in this block, including 'Schluesslberg' and 'Kastellaun', the layer reproduces correctly."
+  },
+  {
+   "marker": "[correspondence-address]",
+   "zh": "Correspondence Address:\nBRINKS, HOFER, GILSON & LIONE\nP.O. BOX 1340\nMORRISVILLE, NC 27560 (US)",
+   "en": "Correspondence address: Brinks, Hofer, Gilson & Lione, P.O. Box 1340, Morrisville, NC 27560 (US)",
+   "notes": "No INID code is printed for this block. The four printed lines are genuine address lines, not word wrap, so they are kept as four lines. The firm name, box and city lines are bold; the 'Correspondence Address:' label is roman. Reproduced correctly by the text layer."
+  },
+  {
+   "marker": "(73)",
+   "zh": "Assignee: BASF SE, Ludwigshafen (DE)",
+   "en": "Assignee: BASF SE, Ludwigshafen (DE)",
+   "notes": "Single assignee. 'BASF SE' is bold, 'Ludwigshafen (DE)' roman. Same city as two of the six inventors. Reproduced correctly by the text layer."
+  },
+  {
+   "marker": "(21)",
+   "zh": "Appl. No.: 12/530,666",
+   "en": "Application number: 12/530,666",
+   "notes": "US national-phase application serial number, printed in bold with a comma as the thousands separator. The text layer reproduces '12/530,666' correctly, comma included, which is worth noting alongside the comma-to-full-stop failures in the chemical names: the layer's comma handling is inconsistent, not uniformly broken."
+  },
+  {
+   "marker": "(22)",
+   "zh": "PCT Filed: Mar. 14, 2008",
+   "en": "PCT filing date: Mar. 14, 2008 (14 March 2008)",
+   "notes": "The international filing date, one day short of one year after the EP priority date of Mar. 15, 2007 at (30)."
+  },
+  {
+   "marker": "(86)",
+   "zh": "PCT No.: PCT/EP08/53060",
+   "en": "PCT number: PCT/EP08/53060",
+   "notes": "OCR DAMAGE, CONFIRMED ON THE IMAGE AT 3x: the image prints 'PCT/EP08/53060', a digit 5 opening the serial. The text layer prints 'PCT/EP08/S3060', reading that 5 as a capital letter S. STRUCTURAL OCR DAMAGE, worth more than the character itself: the layer does not merely misread the number, it moves it. In /tmp/us2010/page01.txt the string appears on line 35, below the '(30) Foreign Application Priority Data' heading, so the layer's reading order attaches the PCT number to the priority-data section and leaves the (86) label with no value. On the image the number sits on the same line as '(86) PCT No.:', at the top of the right column, well above the (30) heading. A pass working from the layer alone would mis-assign this field, not just mis-transcribe it. One further layer artifact: the layer prints the label as '(86). PCT No.:' with a full stop after the INID code. The image prints '(86)' with no full stop."
+  },
+  {
+   "marker": "(86)-371-date",
+   "zh": "§ 371 (c)(1),\n(2), (4) Date: Sep. 10, 2009",
+   "en": "35 U.S.C. section 371(c)(1), (2), (4) date: Sep. 10, 2009 (10 September 2009)",
+   "notes": "Part of the (86) block on the page, printed as two lines directly under the PCT number with no INID code repeated, so it is given the sub-marker '(86)-371-date' rather than a marker of its own. The two printed lines are kept. OCR DAMAGE, CONFIRMED ON THE IMAGE AT 3x: the image prints a section sign followed by a space and then '371', that is 'section-sign 371 (c)(1),'. The text layer prints 'S371 (c)(1),': the section sign is read as a capital letter S and the space after it is lost, welding the glyph onto the statute number. A layer-only reader sees a token 'S371' and no section sign anywhere on the page. The date itself, 'Sep. 10, 2009', the layer reproduces correctly, though it splits it onto its own line."
+  },
+  {
+   "marker": "(30)",
+   "zh": "Foreign Application Priority Data\nMar. 15, 2007 (EP) ... 07104275.8",
+   "en": "Foreign application priority data: Mar. 15, 2007 (EP) 07104275.8",
+   "notes": "The heading is centred and bold; the priority line sits under it. The page prints a long dot leader between '(EP)' and the number, reduced here to '...'; it is a typesetting leader, not content, and is deliberately not reproduced dot for dot. OCR DAMAGE, CONFIRMED ON THE IMAGE AT 3x: the image prints '07104275.8', beginning with the digit zero, which is narrow and oval and unmistakably a digit in this face. The text layer prints 'O7104275.8', reading it as a capital letter O. This is the single most consequential character on the page: the EP priority application number is the key that ties this publication to its family, and a leading letter O makes it unmatchable. The date and the country code the layer reproduces correctly."
+  },
+  {
+   "marker": "[Publication Classification]",
+   "zh": "Publication Classification",
+   "en": "Publication Classification",
+   "notes": "Centred bold section heading with no INID code, sitting between the (30) priority line and the (51) Int. Cl. block. Recorded so that the printed order of the front page is recoverable."
+  },
+  {
+   "marker": "(51)",
+   "zh": "Int. Cl.\nA01N 35/00 (2006.01)\nC07C 317/14 (2006.01)\nA01P 13/00 (2006.01)",
+   "en": "International classification: A01N 35/00 (2006.01); C07C 317/14 (2006.01); A01P 13/00 (2006.01)",
+   "notes": "Three IPC symbols, each set in bold italic with its (2006.01) edition in roman, printed one per line in the order given. The printed line structure is kept. A01N 35/00 covers biocides and plant growth regulators containing aldehyde or ketone groups, which fits a triketone herbicide; C07C 317/14 covers sulfones; A01P 13/00 covers herbicidal activity. OCR DAMAGE, CONFIRMED ON THE IMAGE AT 3x. (a) The image prints 'A01N 35/00', with digit zero and digit one. The text layer prints 'AOIN 35/00': the zero is read as capital O and the one as capital I. (b) The image prints 'A01P 13/00' with a space between the symbol and the subgroup. The text layer prints 'AOIPI3/00': zero to O, both ones to I, and the space lost, so 'A01P 13/00' collapses into a nine-character token in which no digit boundary survives. (c) 'C07C 317/14' the layer reproduces correctly, zero included. So on one three-line block the layer gets the zeros wrong twice and right once. That is the evidence that the layer cannot be repaired by rule and has to be checked against the image field by field."
+  },
+  {
+   "marker": "(52)",
+   "zh": "U.S. Cl. ... 504/348; 568/31",
+   "en": "US classification: 504/348; 568/31",
+   "notes": "Dot leader between the label and the values, reduced to '...' as at (30). '504/348' is printed in bold and '568/31' in roman, which is the USPTO convention marking 504/348 as the primary (original reference) classification and 568/31 as a cross-reference: class 504 is plant-protecting compositions, class 568 is organic compounds containing oxygen. The bold and roman distinction is visible on the page and is lost entirely in the text layer, which prints both as plain text. The digits themselves the layer reproduces correctly."
+  },
+  {
+   "marker": "(57)",
+   "zh": "ABSTRACT The present invention relates to two crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoro-ethoxymethyl)benzoyl]cyclohexan-1,3-dione, which is also known under the common name tembotrione. The invention also relates to a process for the production of these crystalline forms and formulations for plant protection which contain one of these crystalline forms of tembotrione.",
+   "en": "Abstract. The present invention relates to two crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoro-ethoxymethyl)benzoyl]cyclohexan-1,3-dione, which is also known under the common name tembotrione. The invention also relates to a process for the production of these crystalline forms and formulations for plant protection which contain one of these crystalline forms of tembotrione.",
+   "notes": "The centred 'ABSTRACT' caption and the abstract body are recorded as one paragraph, caption first, on a single line: the body is printed justified across seven wrapped lines and is unwrapped here. The wraps fall inside the chemical name, after '2-[2-' and after '(2,2,2-trifluoro-ethoxymethyl)', and no hyphen is added or removed at either join, so the unwrapped name is exactly what the page prints. OCR DAMAGE, CONFIRMED ON THE IMAGE AT 4x TO 6x. (a) Square brackets: the image prints '2-[2-chloro' and 'benzoyl]cyclohexan'; the layer prints '2-2-' and 'benzoylcyclohexan', dropping both brackets exactly as it does in the title. (b) Locant commas: the image prints '(2,2,2-trifluoro-ethoxymethyl)'; the layer prints '(2.2.2-trifluoro-ethoxymethyl)'. The layer again gets the comma in 'cyclohexan-1,3-dione' right, so within a single name it is wrong about three commas and right about one. (c) Word joining: the last line of the image reads 'crystalline forms of tembotrione.'; the layer reads 'crystalline forms oftembotrione.', losing the space. Read together, (a) and (b) mean that a downstream pass taking the compound name from the text layer would receive '2-2-chloro-4-methylsulfonyl-3-(2.2.2-trifluoro-ethoxymethyl)benzoylcyclohexan-1,3-dione', which no name-to-structure tool can parse and which, if parsed loosely, describes a different substitution pattern from the one printed. CHEMISTRY: the abstract identifies the compound by common name as tembotrione, so the identification here is the patent's own and not inferred. NO STRUCTURES ON THIS PAGE: nothing is drawn anywhere on this front page. Ink stops at about 44 percent of the sheet height, below which the page is blank. The empty drawings array is therefore an observation, not an omission."
+  }
+ ],
+ "drawings": [],
+ "discrepancies": [
+  {
+   "what": "OCR: the barcode caption's space is read as a full stop. Recorded here with drawing_says meaning 'what the page image prints' and text_says meaning 'what the extracted text layer at /tmp/us2010/page01.txt says'. Every entry below uses the same two senses; there are no drawings on this page.",
+   "drawing_says": "US 20100041557A1",
+   "text_says": "US 2010.0041557A1"
+  },
+  {
+   "what": "OCR: both square brackets of the title's chemical name are dropped, not flattened to hyphens.",
+   "drawing_says": "2-[2-CHLORO-4-METHYLSULFONYL-3- ... BENZOYL]CYCLOHEXAN-1,3-DIONE",
+   "text_says": "2-2-CHLORO-4-METHYLSULFONYL-3- ... BENZOYLCYCLOHEXAN-1,3-DIONE"
+  },
+  {
+   "what": "OCR: the title's three locant commas are read as full stops, while the comma in -1,3-DIONE survives.",
+   "drawing_says": "(2,2,2-TRIFLUOROETHOXYMETHYL)",
+   "text_says": "(2.2.2-TRIFLUOROETHOXYMETHYL)"
+  },
+  {
+   "what": "OCR: same two failures inside the (57) abstract's chemical name, plus the space lost in 'of tembotrione'.",
+   "drawing_says": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoro-ethoxymethyl)benzoyl]cyclohexan-1,3-dione ... crystalline forms of tembotrione.",
+   "text_says": "2-2-chloro-4-methylsulfonyl-3-(2.2.2-trifluoro-ethoxymethyl)benzoylcyclohexan-1,3-dione ... crystalline forms oftembotrione."
+  },
+  {
+   "what": "OCR: at (51) the digit zero is read as capital O and the digit one as capital I, and in the third symbol the space is lost as well. The second symbol on the same block is read correctly, so no blanket repair rule is available.",
+   "drawing_says": "A01N 35/00 (2006.01) / C07C 317/14 (2006.01) / A01P 13/00 (2006.01)",
+   "text_says": "AOIN 35/00 (2006.01) / C07C 317/14 (2006.01) / AOIPI3/00 (2006.01)"
+  },
+  {
+   "what": "OCR: at (86) the section sign is read as capital S and the following space is lost.",
+   "drawing_says": "§ 371 (c)(1), (2), (4) Date:",
+   "text_says": "S371 (c)(1), (2), (4) Date:"
+  },
+  {
+   "what": "OCR: at (86) the digit 5 opening the PCT serial is read as capital S.",
+   "drawing_says": "PCT No.: PCT/EP08/53060",
+   "text_says": "(86). PCT No.: ... PCT/EP08/S3060"
+  },
+  {
+   "what": "OCR, reading order rather than character shape: the layer places the PCT number below the (30) priority heading, so the (86) label is left with no value and the number appears to belong to the priority-data section. Mis-assignment, not just mis-transcription.",
+   "drawing_says": "'(86) PCT No.: PCT/EP08/53060' on one line at the top of the right column, above the (30) heading",
+   "text_says": "'(86). PCT No.:' on line 29, then 'PCT/EP08/S3060' on line 35, below 'Foreign Application Priority Data' on line 34"
+  },
+  {
+   "what": "OCR: the leading digit zero of the EP priority application number is read as capital O. The most consequential single character on the page, since this number identifies the patent family.",
+   "drawing_says": "Mar. 15, 2007 (EP) 07104275.8",
+   "text_says": "Mar. 15, 2007 (EP) O7104275.8"
+  },
+  {
+   "what": "OCR: the semicolon after the fifth inventor's country code is read as a colon.",
+   "drawing_says": "Ulrich Griesser, Axams (AT);",
+   "text_says": "Ulrich Griesser, Axams (AT):"
+  },
+  {
+   "what": "Internal to the patent, not an OCR artifact and not resolved here: the (54) title and the (57) abstract hyphenate the trifluoroethoxymethyl fragment differently. Both are recorded as printed.",
+   "drawing_says": "(54) prints '(2,2,2-TRIFLUOROETHOXYMETHYL)' with no hyphen after TRIFLUORO",
+   "text_says": "(57) prints '(2,2,2-trifluoro-ethoxymethyl)' with a hyphen after trifluoro"
+  }
+ ],
+ "illegible": [],
+ "page_confidence": "high"
+}

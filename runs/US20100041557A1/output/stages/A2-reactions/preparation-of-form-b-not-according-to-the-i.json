@@ -1,0 +1,415 @@
+[
+  {
+    "patent_id": "US20100041557A1",
+    "reaction_id": "Preparation of Form B (Not According to the Invention)_Step 1",
+    "section_label": "Preparation of Form B (Not According to the Invention)",
+    "section_type": "comparative_example",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "other",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": true,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the solute; not named on line 356, see notes",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "n-pentanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the crystallization solvent of this preparation, replacing the solvent of the reference process",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2,2-dimethylpropanol",
+        "role": "other",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "named only as the solvent that n-pentanol replaces; not present in this preparation",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione crystalline form A",
+        "role": "other",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "named only as the reference process this preparation is run analogously to; not a participant",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the dissolved tembotrione: the same substance as the charge, now in solution",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "tembotrione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "[0066] The production of the modification B is effected analogously to the production of the modification A, using n-pentanol instead of 2,2-dimethylpropanol as the solvent.",
+    "procedure_summary": "Tembotrione is dissolved in n-pentanol to give the solution the crystallization of modification B is run from, the paragraph stating the process only by reference to another one and naming no temperature, no time and no quantity.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": true,
+    "non_synthetic": true,
+    "is_complete": false,
+    "validation_flags": [
+      "conditions_unresolved",
+      "cross_reference_unresolved",
+      "a1_missing_compound"
+    ],
+    "tags": [
+      "transformation:dissolution",
+      "mechanism:not_determinable",
+      "scale:not_specified",
+      "solvent_class:protic",
+      "catalyst_class:none",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "Step i) of the modification B process, [0066] at line 356, the whole of this section. reaction_class is other, not recrystallisation: this step dissolves and crystallises nothing. recrystallisation belongs to step ii), and stretching it to cover the dissolution half would double-count the crystallisation. No enum value covers a dissolution. The product of this step is a solution of the same substance that entered it, so the identifier tembotrione carries both the reactant and the product role in compounds[]. That is not a duplication error: dissolution is a phase change, the same substance is on both sides of the arrow, and A1 holds no identifier for a solution. missing_product is deliberately NOT raised, because the record has a product; it is the same substance. STEP COUNT: 2, matching A0's estimate of 2 for two printed lines, one of which is the EN convenience line. The count is not read off this sentence, which letters nothing; it is the shape of whichever reference process is meant, and both candidates have the same two lettered steps, i) prepare a solution and ii) effect the crystallization. Returning one record instead was considered: it would say only that form B is crystallized from n-pentanol, and would lose the fact that the dissolution stage is itself disputed, since reading one does not require a hot solution and reading two does. That disputed stage is why the split is kept. THE SENTENCE IS INTERNALLY INCONSISTENT, BOTH READINGS ARE CARRIED, NEITHER IS RESOLVED. Line 356 reads: 'The production of the modification B is effected analogously to the production of the modification A, using n-pentanol instead of 2,2-dimethylpropanol as the solvent.' Elsewhere in this document 2,2-dimethylpropanol is the solvent of modification C, at [0046] and [0052], and it is not one of the nine polar organic solvents of the modification A process at [0013]. So the sentence names a solvent that does not belong to the process it names. Reading one: the reference process is the modification A process and 'instead of 2,2-dimethylpropanol' is the error, the solvent replaced being one of the nine polar organic solvents. Then form B comes from a slow crystallization, at at most 100 deg C, with a cooling rate preferably below 10 K/min, or by antisolvent addition or concentration. Reading two: '2,2-dimethylpropanol' is right and 'modification A' is the error, the reference process being the modification C process. Then form B comes from a hot n-pentanol solution with rapid cooling at at least 30 K/hr. The two readings do not differ in the shape of the process, and that is why the step count survives the ambiguity: both candidate reference processes are the same two lettered steps, i) prepare a solution and ii) effect the crystallization. They differ in the entire temperature programme, which is what decides which crystal form is obtained, so nothing about temperature, cooling rate or seeding was imported from either. Every conditions field is left null with conditions_inherited true, and conditions_unresolved and cross_reference_unresolved are raised. Which half of the sentence is the error cannot be told from this page and is not decided here. precursor_step is deliberately NOT set to a step of the form A process: putting it there would attach form B to that process silently, which is the one thing this paragraph does not license. The reference process is named in these notes instead, where a reader can see that it is a reference and that it is disputed. EVIDENCE THAT DOES NOT RESOLVE IT, recorded because A0 recorded it: Comparative Example 1 at lines 439 and 443, the worked run for this same form and the same solvent, cools a boiling n-pentanol solution in an ice-water bath, which resembles the form C protocol of Example 14 rather than any form A protocol. That is evidence for reading two, from a different section, and it is not treated as settling reading one, because a worked example can differ from the generic process it illustrates and because the error may be in this sentence's solvent rather than in its process name. TWO COMPOUNDS ARE CARRIED WITH ROLE OTHER BECAUSE THEY ARE NOT PARTICIPANTS: tembotrione crystalline form A is named only as the process this one is run analogously to, and 2,2-dimethylpropanol only as the solvent n-pentanol replaces, so it is not present in this preparation at all. A1 gave 2,2-dimethylpropanol role solvent, which is right for a compound pass recording what the line names; role solvent on a reaction record would assert that it is a solvent of THIS step, which it is not. Both are kept in compounds[] rather than dropped, because they are the two halves of the inconsistency and dropping either would hide it from anyone reading the structured fields. a1_missing_compound: this record carries tembotrione as the reactant and A1 recorded no starting material for this section, on the ground that none is named on line 356. That reading of the line is right, and the flag is not a criticism of it: a crystallization of a modification of tembotrione has tembotrione as its solute whether or not the sentence names it, so A2 must carry the solute, and the flag is the honest signal that the two passes disagree about a section-scoped absence rather than about the document. The identifier is the run's canonical tembotrione and joins the document-wide record that other sections carry. The patent disowns this form: [0063] says modification B, unlike A and C, cannot be stably formulated, and the worked run for it is headed 'not According to Invention'. No claim recites it, so unlike the form A and form C processes this one has no counterpart in Claims 16-33 and is counted once in this document. No yield, no isolated mass and no measured purity is stated anywhere in this patent, and this section states no figure of any kind: the only digits on line 356 are the 2,2 inside a chemical name. Every yield, mass and purity field is null and nothing was computed or converted. No reagent, catalyst, base, acid, oxidant or reductant appears: the only participants are a solute, a solvent and, where stated, an antisolvent or seed crystals. No bond is formed or broken, so non_synthetic is true and mechanism_type is not_determinable."
+  },
+  {
+    "patent_id": "US20100041557A1",
+    "reaction_id": "Preparation of Form B (Not According to the Invention)_Step 2",
+    "section_label": "Preparation of Form B (Not According to the Invention)",
+    "section_type": "comparative_example",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "recrystallisation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "not_determinable",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": true,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "tembotrione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "present dissolved in the n-pentanol solution prepared in step i)",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "n-pentanol",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "the crystallization medium",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2,2-dimethylpropanol",
+        "role": "other",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "named only as the solvent that n-pentanol replaces; not present in this preparation",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione crystalline form A",
+        "role": "other",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "named only as the reference process this preparation is run analogously to; not a participant",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione crystalline form B",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "tembotrione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione crystalline form B",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "[0066] The production of the modification B is effected analogously to the production of the modification A, using n-pentanol instead of 2,2-dimethylpropanol as the solvent.",
+    "procedure_summary": "The tembotrione dissolved in n-pentanol is crystallized as modification B, the paragraph giving the crystallization only by reference to another process and stating no temperature, no cooling rate, no seeding and no workup.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": true,
+    "non_synthetic": true,
+    "is_complete": false,
+    "validation_flags": [
+      "conditions_unresolved",
+      "cross_reference_unresolved",
+      "a1_missing_compound"
+    ],
+    "tags": [
+      "transformation:crystallisation",
+      "transformation:polymorph_conversion",
+      "mechanism:not_determinable",
+      "scale:not_specified",
+      "solvent_class:protic",
+      "catalyst_class:none",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Step ii) of the modification B process, [0066] at line 356, the whole of this section. reaction_class is recrystallisation: crystallisation of a solid form from a solution of the same molecule. The enum has no polymorph-specific value and recrystallisation is the closest true one. The class is the one thing that survives the ambiguity intact: under either reading this is a crystallization of a solid form from a solution of the same molecule, so recrystallisation is right whichever half of the sentence is in error. THE SENTENCE IS INTERNALLY INCONSISTENT, BOTH READINGS ARE CARRIED, NEITHER IS RESOLVED. Line 356 reads: 'The production of the modification B is effected analogously to the production of the modification A, using n-pentanol instead of 2,2-dimethylpropanol as the solvent.' Elsewhere in this document 2,2-dimethylpropanol is the solvent of modification C, at [0046] and [0052], and it is not one of the nine polar organic solvents of the modification A process at [0013]. So the sentence names a solvent that does not belong to the process it names. Reading one: the reference process is the modification A process and 'instead of 2,2-dimethylpropanol' is the error, the solvent replaced being one of the nine polar organic solvents. Then form B comes from a slow crystallization, at at most 100 deg C, with a cooling rate preferably below 10 K/min, or by antisolvent addition or concentration. Reading two: '2,2-dimethylpropanol' is right and 'modification A' is the error, the reference process being the modification C process. Then form B comes from a hot n-pentanol solution with rapid cooling at at least 30 K/hr. The two readings do not differ in the shape of the process, and that is why the step count survives the ambiguity: both candidate reference processes are the same two lettered steps, i) prepare a solution and ii) effect the crystallization. They differ in the entire temperature programme, which is what decides which crystal form is obtained, so nothing about temperature, cooling rate or seeding was imported from either. Every conditions field is left null with conditions_inherited true, and conditions_unresolved and cross_reference_unresolved are raised. Which half of the sentence is the error cannot be told from this page and is not decided here. precursor_step is deliberately NOT set to a step of the form A process: putting it there would attach form B to that process silently, which is the one thing this paragraph does not license. The reference process is named in these notes instead, where a reader can see that it is a reference and that it is disputed. EVIDENCE THAT DOES NOT RESOLVE IT, recorded because A0 recorded it: Comparative Example 1 at lines 439 and 443, the worked run for this same form and the same solvent, cools a boiling n-pentanol solution in an ice-water bath, which resembles the form C protocol of Example 14 rather than any form A protocol. That is evidence for reading two, from a different section, and it is not treated as settling reading one, because a worked example can differ from the generic process it illustrates and because the error may be in this sentence's solvent rather than in its process name. TWO COMPOUNDS ARE CARRIED WITH ROLE OTHER BECAUSE THEY ARE NOT PARTICIPANTS: tembotrione crystalline form A is named only as the process this one is run analogously to, and 2,2-dimethylpropanol only as the solvent n-pentanol replaces, so it is not present in this preparation at all. A1 gave 2,2-dimethylpropanol role solvent, which is right for a compound pass recording what the line names; role solvent on a reaction record would assert that it is a solvent of THIS step, which it is not. Both are kept in compounds[] rather than dropped, because they are the two halves of the inconsistency and dropping either would hide it from anyone reading the structured fields. a1_missing_compound: this record carries tembotrione as the reactant and A1 recorded no starting material for this section, on the ground that none is named on line 356. That reading of the line is right, and the flag is not a criticism of it: a crystallization of a modification of tembotrione has tembotrione as its solute whether or not the sentence names it, so A2 must carry the solute, and the flag is the honest signal that the two passes disagree about a section-scoped absence rather than about the document. The identifier is the run's canonical tembotrione and joins the document-wide record that other sections carry. linkage_confirmed is false, unlike the form A and form C processes where the document's own i) and ii) lettering sequences the two steps. Here the two-step split is adopted from a reference process that cannot be identified, so the identifier match between this step's reactant and step i)'s product is a match between two reconstructions, not a link the page confirms. Rule 24 would let the identifier match count as confirmation; it is refused here because both identifiers are this pass's own. No workup, no purification and no process control is stated, so those fields are empty rather than filled from either candidate process, and no workup_type or purification tag is emitted: skipping the category is right where the referenced process has a workup that cannot be identified, and tagging none would assert there is none. No yield, no isolated mass and no measured purity is stated anywhere in this patent, and this section states no figure of any kind: the only digits on line 356 are the 2,2 inside a chemical name. Every yield, mass and purity field is null and nothing was computed or converted. No reagent, catalyst, base, acid, oxidant or reductant appears: the only participants are a solute, a solvent and, where stated, an antisolvent or seed crystals. No bond is formed or broken, so non_synthetic is true and mechanism_type is not_determinable. Extraction model: Claude Opus 5 (1M context) via Claude Code, A2 pass. The A2 reading of this section is a language model's, not a human's."
+  }
+]

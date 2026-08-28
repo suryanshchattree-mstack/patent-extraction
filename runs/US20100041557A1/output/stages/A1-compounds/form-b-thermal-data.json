@@ -1,0 +1,51 @@
+[
+  {
+    "patent_id": "US20100041557A1",
+    "identifier": "tembotrione crystalline form B",
+    "identifier_type": "other",
+    "aliases": [
+      "Form B"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Form B - Thermal Data",
+    "section_type": "assay_data",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "other",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": {
+      "min_c": 118.0,
+      "max_c": 123.0,
+      "range_text": "The melting point, determined as the onset of the melting peak, typically lies in the range from about 118° C. to 123° C.",
+      "decomposition": null
+    },
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [
+      {
+        "method": "dsc",
+        "value": null,
+        "unit": null,
+        "conditions": "differential calorimetry (differential scanning calorimetry: DSC, aluminum closed cup, heating rate 10 K/min)",
+        "raw_text": "Thermogram of form B at line 354: three stated ranges, all from DSC. A characteristic melting peak in the range 110 to 130 deg C, a peak maximum typically in the range 120 to 130 deg C, and a melting point taken as the onset of the melting peak typically in the range 118 to 123 deg C, in particular 119 to 122 deg C. Values summarised rather than pasted; the onset bounds are also carried in melting_point."
+      }
+    ],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:active_ingredient",
+      "chemical_family:cyclohexanedione",
+      "chemical_family:aryl_sulfone",
+      "functional_group:sulfone",
+      "functional_group:ketone",
+      "functional_group:ether",
+      "functional_group:trifluoromethyl",
+      "functional_group:halide_chloro"
+    ],
+    "notes": "Tembotrione crystalline form B: the same molecule as tembotrione differing only in crystal lattice, not a distinct chemical entity. The patent explicitly excludes form B, labelling it not according to the invention. LIMITATION OF THE EVIDENCE: the melting onset range recorded here lies almost entirely inside the onset range the patent states for form A, so melting point alone does not distinguish the claimed form from the excluded one; only the X-ray diffraction data does. Every thermal value here is a range, so analytics[].value is null and melting_point carries the onset bounds. The aluminum closed cup is DSC sample-pan hardware and is not recorded as a compound."
+  }
+]

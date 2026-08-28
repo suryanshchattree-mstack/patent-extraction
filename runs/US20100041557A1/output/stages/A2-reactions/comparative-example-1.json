@@ -1,0 +1,175 @@
+[
+ {
+  "patent_id": "US20100041557A1",
+  "reaction_id": "Comparative Example 1_Step 1",
+  "section_label": "Comparative Example 1",
+  "section_type": "comparative_example",
+  "step_index": 1,
+  "step_label": "Step 1",
+  "reaction_class": "recrystallisation",
+  "reaction_class_confidence": "high",
+  "named_reaction": null,
+  "mechanism_type": "not_determinable",
+  "scale": "micro",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "not_specified",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 0.67,
+   "reactor_type": "sealed test vessel",
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": "dissolution in the boiling solvent",
+   "cooling_method": "sealed test vessel placed in an ice-water bath, a rapid quench",
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "crystalline prisms isolated"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": null,
+   "filtration": null,
+   "concentration_method": null,
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "tembotrione",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.15,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "dissolved in boiling n-pentanol in a test vessel",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "n-pentanol",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": 0.2,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "used boiling as the crystallisation solvent",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "tembotrione crystalline form B",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "tembotrione"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "tembotrione crystalline form B",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": null,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "150 mg of tembotrione were dissolved in 0.20 ml of boiling n-pentanol in a test vessel. The test vessel was sealed and placed in an ice-water bath and left there for about 40 mins. In this manner, tembotrione was obtained in the form of crystalline prisms, which were isolated and analyzed by X-ray powder diffractometry (XRD). On the basis of the characteristic reflections, form B was identified.",
+  "procedure_summary": "Tembotrione is dissolved in boiling n-pentanol in a test vessel, the vessel is sealed and quenched in an ice-water bath, and the crystalline prisms that form are isolated and identified by X-ray powder diffractometry as form B.",
+  "precursor_step": null,
+  "linkage_confirmed": false,
+  "cross_reference_unresolved": false,
+  "non_synthetic": true,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:crystallisation",
+   "analytics:xrpd",
+   "scale:micro",
+   "solvent_class:protic",
+   "workup_type:crystallisation",
+   "step_role:final_step",
+   "linkage:standalone",
+   "mechanism:not_determinable",
+   "catalyst_class:none",
+   "purification:none",
+   "is_one_pot:false"
+  ],
+  "notes": "Produced by the A2 pass, run by Claude Opus 5 (claude-opus-5[1m]), reading lines 439-444 of the enriched text together with the p09 vision record. The heading at 439-440, 'Preparation of Form B of Tembotrione by Crystallization from n-Pentanol (not According to Invention)', is the only place in the document where 'not According to Invention' is printed in words, and it governs this example alone. NO BOND IS MADE OR BROKEN: tembotrione is dissolved and recovered as crystalline form B, the same molecule in a different lattice, so reaction_class is recrystallisation and mechanism_type is not_determinable. There is no reagent, catalyst, base, acid, oxidant or reductant in the step, only a solute and a solvent. The solvent is used at its boiling point but the page prints no number for it, so temperature.type is not_specified and the boiling point is carried as heating_method; no boiling point is imported from outside the document. time_h 0.67 is the 'about 40 mins' the sealed vessel spent in the ice-water bath, which is the crystallisation hold and not an addition time; the page words it as approximate. The ice-water bath is a rapid quench and is recorded as cooling_method, since the solvent and the temperature programme are the whole content of the step. The sealed test vessel is recorded in reactor_type. It is not recorded as an atmosphere, because no atmosphere is named, and not as elevated pressure, because none is stated. The text does not mention stirring. 'left there' implies the vessel stood undisturbed, but that is an inference, so stirring.type is null rather than none. purification is null and the purification tag is none: the crystallisation is itself the transformation and is carried in reaction_class, and the text states no further purification of the crystals. Recording it twice would create two sources of truth. X-ray powder diffractometry identifies the isolated solid, so it is analytics and not in-process monitoring; process_control is left empty. The form is an identification, not a purity measurement, so product_purity_method stays null. No yield, no isolated product mass and no assay purity is stated anywhere in this section, and nothing is computed from the charge. safety_notes is empty because the section states none; the hazards of the solvent are not the document's words and hazard assessment belongs to A5. selectivity is null throughout. The modification obtained is the identity of the product, recorded in compounds and product_name; it is not a stated regio-, stereo- or chemoselectivity and the document reports no ee, de or dr. non_synthetic is true. The field has no prose definition in the prompt set or in reactions.schema.json, so the only thing carrying meaning in it is consistency across the run, and the run's discriminator is whether a bond changes. No bond is formed or broken in this step: the same substance stands on both sides, and only the lattice differs. Every recrystallisation step in both runs on disk that has any, CN111440099B and EP2045236A1, is true, while every bond-forming step in those runs is false, and the inventive Example sections, the formulation records and the claims records of this run all set it true. CORRECTED FROM FALSE after the adversarial audit found these six files were the only dissent in the run; the value is the only thing that changed. is_one_pot is false: the step is a single crystallisation with one charge and one isolation. PURE FORM, NOT A MIXTURE: this example and Comparative Example 2 are the only two comparative preparations in this set that give one named form; every row of TABLE 3, TABLE 4 and TABLE 5 gives a mixture. CONTRAST, RECORDED NOT RESOLVED: comparative example 15 in TABLE 4 crystallises tembotrione from this same n-pentanol under slow cooling and gets B + C, not pure B, so the solvent alone does not fix the form here either. Comparative Example 2 at [0079] takes its procedure from this step by reference."
+ }
+]

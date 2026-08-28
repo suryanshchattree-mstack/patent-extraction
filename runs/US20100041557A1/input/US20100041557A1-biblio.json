@@ -1,0 +1,89 @@
+{
+  "patent_id": "US20100041557A1",
+  "family_id": "39415042",
+  "title_en": "Crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+  "title_zh": null,
+  "title_en_note": "The patent is in English, so title_en is the printed title and title_zh is null. Two things were repaired from the PDF text layer rather than copied from it, because that layer is OCR output and not clean born-digital text. The printed title is '...2-[2-CHLORO-4-METHYLSULFONYL-3-(2,2,2-TRIFLUOROETHOXYMETHYL)BENZOYL]CYCLOHEXAN-1,3-DIONE'; the layer renders it '2-2-CHLORO-...BENZOYLCYCLOHEXAN-1,3-DIONE'. The square brackets are DROPPED, not flattened: the hyphen that survives in '2-2-' is the name's own locant hyphen from '2-[2-', and the closing bracket leaves no trace at all. The locant commas of 2,2,2- become full stops, while the comma in -1,3-DIONE survives. Both were verified on the page image at up to 12x by the vision pass. This is the same class of artifact as elsewhere on the front page, where A01N came out as AOIN, A01P 13/00 as AOIPI3/00, the section sign before 371 as S, and the priority number 07104275.8 as O7104275.8. Note that C07C 317/14 on the same block came through correctly, so there is no blanket repair rule for zeros and the layer must be checked symbol by symbol. The bracket structure and the commas are restored here from the chemical sense of the name and from the abstract at (57). The compound is tembotrione, which the patent names for itself at (57) and at [0001].",
+  "application_number": "US:12/530,666",
+  "publication_number": "US20100041557A1",
+  "publication_date": "2010-02-18",
+  "priority_date": "2007-03-15",
+  "filing_date": "2008-03-14",
+  "grant_date": null,
+  "grant_publication": null,
+  "jurisdiction": "us",
+  "language": "en",
+  "assignees": [
+    {
+      "name": "BASF SE",
+      "country": "DE",
+      "type": "company",
+      "name_note": "Printed at (73) as 'BASF SE, Ludwigshafen (DE)'. Note this is a different applicant from the other tembotrione polymorph patent in this set: EP2045236A1 is Bayer CropScience's and this one is BASF's, and the two disclose different crystalline forms of the same molecule. The name contains no punctuation, so it survives finalise.py building the assignee tag as name.lower().replace(' ', '_') without tripping patent.schema.json's tag-value pattern. The resulting tag is assignee:basf_se."
+    }
+  ],
+  "inventors": [
+    {
+      "name": "Hupe, Eike",
+      "country": "DE"
+    },
+    {
+      "name": "Gewehr, Markus",
+      "country": "DE"
+    },
+    {
+      "name": "Erk, Peter",
+      "country": "DE"
+    },
+    {
+      "name": "Saxell, Heidi Emilia",
+      "country": "DE"
+    },
+    {
+      "name": "Griesser, Ulrich",
+      "country": "AT"
+    },
+    {
+      "name": "Tischler, Michaela",
+      "country": "AT"
+    }
+  ],
+  "inventors_note": "Written as objects rather than bare names, because a bare name takes its country from `jurisdiction` and that would be a wrong guess here: the jurisdiction is us and not one of the six inventors is in the United States. Four give German addresses (Ludwigshafen, Kastellaun, Frankenthal, Ludwigshafen) and two Austrian (Axams, Schluesslberg), so each carries its own country. The text layer prints 'Ulrich Griesser, Axams (AT):' with a colon where a semicolon belongs, another OCR artifact. Names are kept in surname-first form as the front page sets them.",
+  "legal_status": "Active",
+  "abstract_zh": "The present invention relates to two crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoro-ethoxymethyl)benzoyl]cyclohexan-1,3-dione, which is also known under the common name tembotrione. The invention also relates to a process for the production of these crystalline forms and formulations for plant protection which contain one of these crystalline forms of tembotrione.",
+  "abstract_note": "Transcribed from (57). The field is named abstract_zh because the pipeline was built on a Chinese patent and the biblio schema says of it that it holds the abstract in the patent's own language despite the field name; here that language is English. Two OCR artifacts in the text layer were repaired: the bracket flattening in the chemical name, as described in title_en_note, and 'crystalline forms oftembotrione' printed with no space, which the layer does at several word boundaries.",
+  "ipc_codes": [
+    "A01N 35/00",
+    "C07C 317/14",
+    "A01P 13/00"
+  ],
+  "ipc_note": "Printed at (51) as 'AOIN 35/00', 'C07C 317/14' and 'AOIPI3/00'. The first and third are OCR of A01N 35/00 and A01P 13/00: the digit 0 has been read as the letter O and the digit 1 as the letter I, the same substitution the layer makes in 'O7104275.8' for the priority number. Restored here. Note that A01P 13/00 is a herbicidal-activity code and A01N 35/00 classifies the use rather than the compound, so only C07C 317/14 is a compound class, and it differs from the C07C 317/24 that all four earlier runs carry. The classification edition is dropped and a space inserted before the subgroup, which is the form every existing run uses. The front page also prints a US classification at (52), 504/348 and 568/31, which has no field in this schema and is recorded here rather than dropped.",
+  "pct_note": "This is the US national-phase publication of PCT/EP2008/053060, filed 14 March 2008, which claims priority from EP 07104275.8 of 15 March 2007. The 371(c)(1),(2),(4) date is 10 September 2009. filing_date is the PCT filing date and priority_date the EP priority date, which is how the four existing runs treat the earliest and the application date respectively.",
+  "legal_status_note": "Google Patents reports this application as Active (legalStatusCat: active). TARGETS.md lists US8309769B2 as the granted member of the same family, 39415042, and as do-not-also-annotate.",
+  "source": "https://patents.google.com/patent/US20100041557A1/en",
+  "retrieved": "2026-08-28",
+  "text_provenance": {
+    "pdf": "input/pdf/US20100041557A1.pdf, 15 pages, fetched from patentimages.storage.googleapis.com/6f/69/ec/bfb476a972fde2/US20100041557A1.pdf",
+    "text_layer_chars_per_page": [
+      1483,
+      143,
+      93,
+      4945,
+      6393,
+      6053,
+      7041,
+      5107,
+      5445,
+      7377,
+      7493,
+      7612,
+      7079,
+      7010,
+      3940
+    ],
+    "total_text_layer_chars": 77214,
+    "prose_source": "The text layer, but with less trust than the previous four runs gave theirs. This layer is OCR output rather than born-digital text, and it is wrong in ways that matter to chemistry. On the front page alone it renders A01N as AOIN, A01P 13/00 as AOIPI3/00, 371 as S371, the priority number 07104275.8 as O7104275.8, and it drops the space in 'oftembotrione'. In the body it flattens the square brackets of substituent names to hyphens and the locant separators of 2,2,2-trifluoro to full stops, so a chemical name copied from it is not the printed name. Figure captions come out as 'Figure l' with a lower-case L for the digit 1, and '2-theta' as '2-heta'. Every chemical name and every number taken from this layer therefore needs checking against the page image, which is the opposite of the position on EP2045236A1.",
+    "what_the_text_layer_does_not_contain": "The drawn structures, and there are several. Paragraph 0002 draws tembotrione as formula I together with its two tautomers I' and I'', and the text layer reduces all three to noise: 'o1 Ner,', '4. Y-H,', bare '(I)' markers and stray digits. A triketone in equilibrium with two enol forms is the chemical substance of this document's first page and none of it survives the layer. Pages 2 and 3 carry 143 and 93 characters, which is the running header and a figure caption, and are the two drawing sheets: the X-ray powder diffractograms of the crystalline forms. Their content is entirely image.",
+    "why_this_patent_is_shaped_differently": "It is the second polymorph patent in this set and the first from a different applicant. EP2045236A1 is Bayer CropScience's and discloses three crystal modifications of tembotrione; this is BASF SE's and discloses two crystalline forms of the same molecule. Unlike the Bayer document it is rich in experiment: Example 1, Examples 2 to 9, Examples 10 to 13, Examples 14 and 15, and Comparative Examples 1, 2, 3 to 10, 11 to 20 and 21 to 22, with five tables. So this run should produce a real comparative_example population, which no earlier run in this set has, and its crystallisations have stated conditions to compare rather than a single qualitative sentence."
+  },
+  "ocr_structural_note": "One OCR failure on the front page is structural rather than character-level and is worth stating separately, because a consumer that repairs characters would still get it wrong. The text layer MOVES the PCT number: PCT/EP08/53060 is printed on the (86) line at the top of the right column, and the layer places it below the (30) Foreign Application Priority Data heading, leaving (86) with no value. So a layer-only reader mis-assigns the field rather than merely mis-transcribing it. The layer also renders that number as PCT/EP08/S3060. Verified against the page image by the vision pass. Related: the (52) US classification prints 504/348 in bold as the primary and 568/31 in roman as a cross-reference, and that distinction exists only on the image; the layer carries the digits correctly and loses which is which."
+}

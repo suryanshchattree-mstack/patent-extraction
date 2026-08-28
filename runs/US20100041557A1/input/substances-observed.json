@@ -1,0 +1,7598 @@
+{
+ "patent_id": "US20100041557A1",
+ "reader": "llm",
+ "what_this_is_en": "Every substance named on every line of the enriched markdown of US20100041557A1, read independently of the compound extraction and asked only that one question: not roles, not quantities, not whether the substance matters. `specific` names one substance a reader could identify (a compound, a named mineral or earth, an ISO common name, a defined polymer); `generic` refers to a substance without naming one, and is counted apart, because in this document the class terms ARE how the patent names most of its formulation ingredients (polar organic solvents, aromatic hydrocarbon solvents, anionic and nonionic surface-active substances, protective colloids, rheology modifiers, antifreeze agents, fillers, binders, buffers). Spans are checked against the ENGLISH rendering of the line, which is what verify.py compares them with: `source.text_en.get(n) or source.lines.get(n)`. This patent is in English, so build_enriched.py writes each printed line and then an identical `> EN:` line; the two are two keys over one English text and both carry the same spans, exactly as a German line and its translation do in EP2045236A1. Where the vision pass could not align a paragraph line for line, text_en gives every line of that paragraph the whole paragraph's English, so those lines carry the paragraph's spans; that is the engine's own rule and not a choice made here. Table rows are lines like any other: TABLE 1 and TABLE 2 name the solvents of examples 2 to 13, TABLE 3, TABLE 4 and TABLE 5 name the solvents of the comparative examples, and each of those rows carries its own solvent as a mention. The three `[IMAGE_EXTRACT]` lines 74, 76 and 78 carry the SMILES of tembotrione and of its two drawn enol tautomers I' and I'' as specific mentions, following EP2045236A1 line 61: the molecule really is on that line, and a SMILES joins by structure rather than by string. The molecular formula printed beside each of those SMILES, C17H16ClF3O6S, is not filed as a separate mention.\nTWO PRINTED TRAPS, RECORDED AS PRINTED AND NOT MERGED. (1) The patent glosses `2,2-dimethylpropanol` as `tert. amyl alcohol` on lines 291, 292, 303 and 304. Those are two different compounds, neopentyl alcohol and 2-methylbutan-2-ol, and both names are filed as separate specific mentions on every line that prints them; nothing here decides which one the examples actually used. The same paragraph also prints the hyphenated `2,2-dimethyl-propanol`, filed as its own mention, as is the hyphenated form in claim 23. (2) Claim 16, lines 714 and 726, prints the systematic name malformed, `...(2,2,2-trifluoroethoxymethyebenzoyl]...`, with an unclosed bracket and `methye` for `methyl)`; it is filed exactly as the line reads, with a note. Line 305 prints `cylcoheptane` with l and c transposed, and line 51's abstract prints `2,2,2-trifluoro-ethoxymethyl` with an extra hyphen: both are filed as printed. `H2O` in TABLE 2 rows 12 and 13 is filed as `H2O`, which the vision notes confirm against the page image where the OCR layer had read `HO`.\nRULES USED, so that a later reader can tell an omission from a decision. Excluded on purpose: plant genera and species (line 544 is a pure species list and carries no mention), crop and weed names, trade and product names (Exxsol, Solvesso, Borresperse, Morwet, Nekal, Sokalan, Mowiol, Lupasol, Attaclay, Kelzan, Rhodopol, Veegum, Silikon SRE, Rhodorsil, Proxel, Acticide, Kathon MK) and the company names beside them, C.I. colour-index designations (the whole of line 600 except `Rhodamin B`, which is a substance name rather than an index entry), instrument and software names (Bruker-AXS D-5000, Mettler Toledo DSC 25, SHELX-97), space group symbols, wavelengths, 2-theta values, d spacings, unit cell parameters and publication numbers (WO 00/21924). Also excluded: formulation FORMS and dosage words (suspension concentrate, SC, OD, WP, WG, powder, granules, dusting agent), physical state words (oil, amorphous solid, crystals, prisms, needles, agglomerates, precipitate), crystal form labels (form A, form B, form C, modification, polymorph, solvate) and process streams (mother liquor, reaction mixture, spray fluid). Three further decisions, each applied everywhere: (a) a bare `solvent` or `solvents` is filed as generic only on a line that names no solvent and carries no qualified solvent class, since elsewhere it is an anaphor back to names that are on the same line; (b) a generic term whose span is a substring of another generic term filed on the same line is not filed twice, so `organic solvent` is filed and the `solvent` inside it is not, while two chemicals that happen to nest, `hexane` inside `isohexane` on line 214, are both filed because both are printed as separate items; (c) `active substance` and `active substances` are filed as generic only where they stand for substances this document never names (the polymorphism discussion on lines 82 to 85, and `other active substances` in the formulation paragraphs), and not where the same line names tembotrione or its form A or C, which is the role word for the compound named in the same breath. By the same reasoning `herbicides` and `safeners` are filed where they stand for unnamed mixing partners (lines 546, 706, 710) and not where they describe tembotrione's own use (`suitable as herbicides`, line 533; `suitable as desiccants`, line 552). Table COLUMN HEADERS (`Solvent`, `1st Solvent`, `2nd Solvent`) are labels and carry no mention, while the same words in the running text of lines 406, 509 and 378 do, because there they stand for solvents the line does not name.\nONE DEPARTURE FROM EP2045236A1, stated because it goes the other way. Materials named as part of the apparatus ARE filed here: `aluminum` (the closed DSC cup, lines 161, 284 and 354), `graphite` (the monochromator, line 368), `polystyrene` (the container of comparative examples 11 to 20, line 479), `ice-water` (the bath of examples 1 to 15) and the generic `oil` of the oil bath on line 437. The exclusion in the brief covers instrument and software NAMES, and these are substances the page names; filing them costs a reviewer a moment and omitting them would have been a silent judgement that a substance named as hardware is not named. `tylose` on line 602 is filed as specific with a note: it is a trade name for a cellulose ether, but it is printed lower case inside a list of materials and reads as one of them. `Xanthan Gum` on line 585 is filed although the page sets a registered mark on it, because it is the substance's name and not a brand.\nTWO ELISIONS THAT HAVE NO LITERAL SPAN, so they are filed under the printed string with a note rather than invented: `m- and p-cymene` on line 305, where m-cymene is named only by that elision and `p-cymene` is the only literal span, and `calcium and magnesium sulfate` on lines 564 and 637, where neither `calcium sulfate` nor `magnesium sulfate` is printed in full. Nothing in this file is a span that is not literally on its line.\nWHAT THIS CANNOT SEE, and it is the limit of the whole step: this is one language model, Claude Opus 5 (1M context), reading a document that another language model read for the vision pass and that a third pass extracted compounds from. Where this list and the extraction agree, that agreement is weaker evidence than it looks, and where both missed the same substance nothing in this pipeline can see it. Nothing under runs/US20100041557A1/output/ was opened, listed or grepped while this was written; the read was made against input/US20100041557A1-enriched-numbered.md as rendered by verify.py's own Source, and against input/vision/p*.json for the printed-versus-OCR notes. Blank lines carry no key; every other line carries one, including the ones with nothing on them, because 'a reader looked here and found nothing' and 'nobody looked here' must not be the same colour.",
+ "verified_en": "Every span in this file is a literal substring of the ENGLISH rendering of the line it is filed under, checked with verify.py's own Source class rather than a reimplementation, so this check and the engine read one definition of what line n says in English: `text = source.text_en.get(n) or source.lines.get(n)`. Source constructed cleanly on this document with no patching (786 lines, 34 blank, 752 keys here); rdkit is not installed in this environment and was stubbed for the import alone, which Source never touches. Spans were not typed from memory. The document was grouped into its 363 distinct English line texts and the read was written against those texts; the nine systematic names, in their six different printed spellings, and the three SMILES were extracted from the line text by regex rather than transcribed, because a systematic name typed by hand is exactly the failure this file exists to detect. All 1604 spans were then re-checked one at a time against text_en at the line number each is filed under, and all 1604 pass. A second sweep looked for every span recorded anywhere in this file appearing on a line where it was NOT recorded, and for chemical-looking tokens on lines given no mention at all; both sweeps were resolved before this file was written, and the first of them is what caught claim 28 (lines 775 and 776) having been missed entirely on the first pass.",
+ "lines": {
+  "1": [],
+  "4": [],
+  "6": [],
+  "7": [],
+  "8": [],
+  "9": [],
+  "10": [],
+  "11": [],
+  "12": [],
+  "13": [],
+  "14": [],
+  "15": [],
+  "16": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "17": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "18": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "19": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "20": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "21": [],
+  "22": [],
+  "23": [],
+  "24": [],
+  "25": [],
+  "26": [],
+  "27": [],
+  "28": [],
+  "29": [],
+  "30": [],
+  "31": [],
+  "32": [],
+  "33": [],
+  "34": [],
+  "35": [],
+  "36": [],
+  "37": [],
+  "38": [],
+  "39": [],
+  "40": [],
+  "41": [],
+  "42": [],
+  "43": [],
+  "44": [],
+  "45": [],
+  "46": [],
+  "47": [],
+  "48": [],
+  "49": [],
+  "50": [],
+  "51": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoro-ethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "52": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoro-ethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "54": [],
+  "56": [],
+  "57": [],
+  "58": [],
+  "59": [],
+  "61": [],
+  "63": [],
+  "64": [],
+  "66": [],
+  "68": [
+   {
+    "span": "2-[2-CHLORO-4-METHYLSULFONYL-3-(2,2,2-TRIFLUOROETHOXYMETHYL)BENZOYL]CYCLOHEXAN-1,3-DIONE",
+    "kind": "specific"
+   }
+  ],
+  "69": [
+   {
+    "span": "2-[2-CHLORO-4-METHYLSULFONYL-3-(2,2,2-TRIFLUOROETHOXYMETHYL)BENZOYL]CYCLOHEXAN-1,3-DIONE",
+    "kind": "specific"
+   }
+  ],
+  "70": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "71": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "72": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "73": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "74": [
+   {
+    "span": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+    "kind": "specific"
+   }
+  ],
+  "76": [
+   {
+    "span": "CS(=O)(=O)c1ccc(C(=O)C2=C(O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+    "kind": "specific"
+   }
+  ],
+  "78": [
+   {
+    "span": "CS(=O)(=O)c1ccc(C(O)=C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+    "kind": "specific"
+   }
+  ],
+  "80": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "isoxadifen",
+    "kind": "specific"
+   }
+  ],
+  "81": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "isoxadifen",
+    "kind": "specific"
+   }
+  ],
+  "82": [
+   {
+    "span": "active substances",
+    "kind": "generic"
+   }
+  ],
+  "83": [
+   {
+    "span": "active substances",
+    "kind": "generic"
+   }
+  ],
+  "84": [
+   {
+    "span": "active substance",
+    "kind": "generic"
+   }
+  ],
+  "85": [
+   {
+    "span": "active substance",
+    "kind": "generic"
+   }
+  ],
+  "86": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "87": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "88": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "89": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "90": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "91": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "92": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "93": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "94": [],
+  "95": [],
+  "96": [],
+  "97": [],
+  "98": [],
+  "99": [],
+  "100": [],
+  "101": [],
+  "102": [],
+  "103": [],
+  "104": [],
+  "105": [],
+  "106": [],
+  "107": [],
+  "108": [],
+  "109": [],
+  "110": [],
+  "111": [],
+  "112": [],
+  "113": [],
+  "114": [],
+  "115": [],
+  "116": [],
+  "117": [],
+  "118": [],
+  "119": [],
+  "121": [],
+  "123": [],
+  "124": [],
+  "125": [],
+  "126": [],
+  "127": [],
+  "128": [],
+  "129": [],
+  "130": [],
+  "131": [],
+  "132": [],
+  "133": [],
+  "134": [],
+  "135": [],
+  "136": [],
+  "137": [],
+  "138": [],
+  "139": [],
+  "140": [],
+  "141": [],
+  "142": [],
+  "143": [],
+  "144": [],
+  "145": [],
+  "146": [],
+  "147": [],
+  "148": [],
+  "149": [],
+  "150": [],
+  "151": [],
+  "152": [],
+  "153": [],
+  "154": [],
+  "155": [],
+  "156": [],
+  "157": [],
+  "158": [],
+  "159": [],
+  "160": [],
+  "161": [
+   {
+    "span": "aluminum",
+    "kind": "specific"
+   }
+  ],
+  "162": [
+   {
+    "span": "aluminum",
+    "kind": "specific"
+   }
+  ],
+  "163": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "polar organic solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "cyclic ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "tetrahydrofuran",
+    "kind": "specific"
+   },
+   {
+    "span": "dioxan",
+    "kind": "specific"
+   },
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "nitromethane",
+    "kind": "specific"
+   },
+   {
+    "span": "acetic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "methyl ethyl ketone",
+    "kind": "specific"
+   },
+   {
+    "span": "pyridine",
+    "kind": "specific"
+   },
+   {
+    "span": "dimethyl sulfoxide",
+    "kind": "specific"
+   }
+  ],
+  "164": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "polar organic solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "cyclic ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "tetrahydrofuran",
+    "kind": "specific"
+   },
+   {
+    "span": "dioxan",
+    "kind": "specific"
+   },
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "nitromethane",
+    "kind": "specific"
+   },
+   {
+    "span": "acetic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "methyl ethyl ketone",
+    "kind": "specific"
+   },
+   {
+    "span": "pyridine",
+    "kind": "specific"
+   },
+   {
+    "span": "dimethyl sulfoxide",
+    "kind": "specific"
+   }
+  ],
+  "165": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "166": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "167": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   }
+  ],
+  "168": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   }
+  ],
+  "169": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvent",
+    "kind": "generic"
+   }
+  ],
+  "170": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvent",
+    "kind": "generic"
+   }
+  ],
+  "171": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "organic impurities",
+    "kind": "generic"
+   }
+  ],
+  "172": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "organic impurities",
+    "kind": "generic"
+   }
+  ],
+  "173": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvents",
+    "kind": "generic"
+   }
+  ],
+  "174": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvents",
+    "kind": "generic"
+   }
+  ],
+  "175": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "176": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "177": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "polar organic solvents",
+    "kind": "generic"
+   }
+  ],
+  "178": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "polar organic solvents",
+    "kind": "generic"
+   }
+  ],
+  "179": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "reagents",
+    "kind": "generic"
+   },
+   {
+    "span": "side products",
+    "kind": "generic"
+   }
+  ],
+  "180": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "reagents",
+    "kind": "generic"
+   },
+   {
+    "span": "side products",
+    "kind": "generic"
+   }
+  ],
+  "181": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "182": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "183": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvent",
+    "kind": "generic"
+   }
+  ],
+  "184": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvent",
+    "kind": "generic"
+   }
+  ],
+  "185": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "solvent mixture",
+    "kind": "generic"
+   },
+   {
+    "span": "reagents",
+    "kind": "generic"
+   },
+   {
+    "span": "side products",
+    "kind": "generic"
+   },
+   {
+    "span": "catalysts",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   }
+  ],
+  "186": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "solvent mixture",
+    "kind": "generic"
+   },
+   {
+    "span": "reagents",
+    "kind": "generic"
+   },
+   {
+    "span": "side products",
+    "kind": "generic"
+   },
+   {
+    "span": "catalysts",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   }
+  ],
+  "187": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "188": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "189": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "190": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "191": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solubility-decreasing solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "nonpolar organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "192": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solubility-decreasing solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "nonpolar organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "193": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "194": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "195": [],
+  "196": [],
+  "197": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "198": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "199": [],
+  "200": [],
+  "201": [],
+  "202": [],
+  "204": [],
+  "206": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "207": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "208": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvent",
+    "kind": "generic"
+   }
+  ],
+  "209": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvent",
+    "kind": "generic"
+   }
+  ],
+  "210": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "non-solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "solubility decreasing solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "nonpolar solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "polar organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "solvent mixture",
+    "kind": "generic"
+   }
+  ],
+  "211": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "non-solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "solubility decreasing solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "nonpolar solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "polar organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "solvent mixture",
+    "kind": "generic"
+   }
+  ],
+  "212": [
+   {
+    "span": "nonpolar solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "213": [
+   {
+    "span": "nonpolar solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "214": [
+   {
+    "span": "nonpolar solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic and cycloaliphatic hydrocarbons",
+    "kind": "generic"
+   },
+   {
+    "span": "pentane",
+    "kind": "specific"
+   },
+   {
+    "span": "hexane",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclopentane",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclohexane",
+    "kind": "specific"
+   },
+   {
+    "span": "isohexane",
+    "kind": "specific"
+   },
+   {
+    "span": "heptane",
+    "kind": "specific"
+   },
+   {
+    "span": "cycloheptane",
+    "kind": "specific"
+   },
+   {
+    "span": "octane",
+    "kind": "specific"
+   },
+   {
+    "span": "decane",
+    "kind": "specific"
+   }
+  ],
+  "215": [
+   {
+    "span": "nonpolar solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic and cycloaliphatic hydrocarbons",
+    "kind": "generic"
+   },
+   {
+    "span": "pentane",
+    "kind": "specific"
+   },
+   {
+    "span": "hexane",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclopentane",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclohexane",
+    "kind": "specific"
+   },
+   {
+    "span": "isohexane",
+    "kind": "specific"
+   },
+   {
+    "span": "heptane",
+    "kind": "specific"
+   },
+   {
+    "span": "cycloheptane",
+    "kind": "specific"
+   },
+   {
+    "span": "octane",
+    "kind": "specific"
+   },
+   {
+    "span": "decane",
+    "kind": "specific"
+   }
+  ],
+  "216": [
+   {
+    "span": "organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "217": [
+   {
+    "span": "organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "218": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "219": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "220": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxy)methylbenzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "221": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxy)methylbenzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "222": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "223": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "224": [],
+  "225": [],
+  "226": [],
+  "227": [],
+  "228": [],
+  "229": [],
+  "230": [],
+  "231": [],
+  "232": [],
+  "233": [],
+  "234": [],
+  "235": [],
+  "236": [],
+  "237": [],
+  "238": [],
+  "239": [],
+  "240": [],
+  "241": [],
+  "242": [],
+  "243": [],
+  "244": [],
+  "245": [],
+  "246": [],
+  "247": [],
+  "248": [],
+  "249": [],
+  "250": [],
+  "251": [],
+  "252": [],
+  "253": [],
+  "254": [],
+  "255": [],
+  "256": [],
+  "257": [],
+  "258": [],
+  "259": [],
+  "260": [],
+  "261": [],
+  "262": [],
+  "263": [],
+  "264": [],
+  "265": [],
+  "266": [],
+  "267": [],
+  "268": [],
+  "269": [],
+  "270": [],
+  "271": [],
+  "272": [],
+  "273": [],
+  "274": [],
+  "275": [],
+  "276": [],
+  "277": [],
+  "278": [],
+  "279": [],
+  "280": [],
+  "281": [],
+  "282": [],
+  "283": [],
+  "284": [
+   {
+    "span": "aluminum",
+    "kind": "specific"
+   }
+  ],
+  "285": [
+   {
+    "span": "aluminum",
+    "kind": "specific"
+   }
+  ],
+  "287": [],
+  "289": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "290": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "291": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "tert. amyl alcohol",
+    "kind": "specific"
+   }
+  ],
+  "292": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "tert. amyl alcohol",
+    "kind": "specific"
+   }
+  ],
+  "293": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aromatic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic solvent",
+    "kind": "generic"
+   }
+  ],
+  "294": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aromatic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic solvent",
+    "kind": "generic"
+   }
+  ],
+  "295": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "296": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "297": [],
+  "298": [],
+  "299": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "300": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "301": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "organic impurities",
+    "kind": "generic"
+   }
+  ],
+  "302": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "organic impurities",
+    "kind": "generic"
+   }
+  ],
+  "303": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "tert. amyl alcohol",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethyl-propanol",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "304": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "tert. amyl alcohol",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethyl-propanol",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "305": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aromatic hydrocarbon solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic hydrocarbon solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "toluene",
+    "kind": "specific"
+   },
+   {
+    "span": "xylenes",
+    "kind": "specific"
+   },
+   {
+    "span": "mesitylene",
+    "kind": "specific"
+   },
+   {
+    "span": "cumene",
+    "kind": "specific"
+   },
+   {
+    "span": "isopropylbenzene",
+    "kind": "specific"
+   },
+   {
+    "span": "ethylbenzene",
+    "kind": "specific"
+   },
+   {
+    "span": "ethyltoluenes",
+    "kind": "specific"
+   },
+   {
+    "span": "cymenes",
+    "kind": "specific"
+   },
+   {
+    "span": "isopropyltoluenes",
+    "kind": "specific"
+   },
+   {
+    "span": "p-cymene",
+    "kind": "specific",
+    "note": "printed elided as 'm- and p-cymene'; m-cymene is named only by that elision and has no literal span"
+   },
+   {
+    "span": "saturated linear, branched or cyclic hydrocarbons",
+    "kind": "generic"
+   },
+   {
+    "span": "n-hexane",
+    "kind": "specific"
+   },
+   {
+    "span": "n-heptane",
+    "kind": "specific"
+   },
+   {
+    "span": "n-octane",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclopentane",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclohexane",
+    "kind": "specific"
+   },
+   {
+    "span": "methylcyclohexane",
+    "kind": "specific"
+   },
+   {
+    "span": "cylcoheptane",
+    "kind": "specific",
+    "note": "printed misspelling of cycloheptane, recorded as printed"
+   },
+   {
+    "span": "cyclooctane",
+    "kind": "specific"
+   },
+   {
+    "span": "aromatic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "hydrocarbon solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "306": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "aromatic hydrocarbon solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic hydrocarbon solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "toluene",
+    "kind": "specific"
+   },
+   {
+    "span": "xylenes",
+    "kind": "specific"
+   },
+   {
+    "span": "mesitylene",
+    "kind": "specific"
+   },
+   {
+    "span": "cumene",
+    "kind": "specific"
+   },
+   {
+    "span": "isopropylbenzene",
+    "kind": "specific"
+   },
+   {
+    "span": "ethylbenzene",
+    "kind": "specific"
+   },
+   {
+    "span": "ethyltoluenes",
+    "kind": "specific"
+   },
+   {
+    "span": "cymenes",
+    "kind": "specific"
+   },
+   {
+    "span": "isopropyltoluenes",
+    "kind": "specific"
+   },
+   {
+    "span": "p-cymene",
+    "kind": "specific",
+    "note": "printed elided as 'm- and p-cymene'; m-cymene is named only by that elision and has no literal span"
+   },
+   {
+    "span": "saturated linear, branched or cyclic hydrocarbons",
+    "kind": "generic"
+   },
+   {
+    "span": "n-hexane",
+    "kind": "specific"
+   },
+   {
+    "span": "n-heptane",
+    "kind": "specific"
+   },
+   {
+    "span": "n-octane",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclopentane",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclohexane",
+    "kind": "specific"
+   },
+   {
+    "span": "methylcyclohexane",
+    "kind": "specific"
+   },
+   {
+    "span": "cylcoheptane",
+    "kind": "specific",
+    "note": "printed misspelling of cycloheptane, recorded as printed"
+   },
+   {
+    "span": "cyclooctane",
+    "kind": "specific"
+   },
+   {
+    "span": "aromatic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "hydrocarbon solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "307": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "308": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "309": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrocarbon solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "solvent mixture",
+    "kind": "generic"
+   }
+  ],
+  "310": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrocarbon solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "solvent mixture",
+    "kind": "generic"
+   }
+  ],
+  "311": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvent",
+    "kind": "generic"
+   }
+  ],
+  "312": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvent",
+    "kind": "generic"
+   }
+  ],
+  "313": [],
+  "314": [],
+  "315": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "316": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "317": [],
+  "318": [],
+  "319": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrocarbon solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "solvent mixture",
+    "kind": "generic"
+   }
+  ],
+  "320": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrocarbon solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "solvent mixture",
+    "kind": "generic"
+   }
+  ],
+  "321": [],
+  "322": [],
+  "323": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "324": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "325": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "326": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "327": [],
+  "328": [],
+  "330": [],
+  "332": [],
+  "333": [],
+  "334": [],
+  "335": [],
+  "336": [],
+  "337": [],
+  "338": [],
+  "339": [],
+  "340": [],
+  "341": [],
+  "342": [],
+  "343": [],
+  "344": [],
+  "345": [],
+  "346": [],
+  "347": [],
+  "348": [],
+  "349": [],
+  "350": [],
+  "351": [],
+  "352": [],
+  "353": [],
+  "354": [
+   {
+    "span": "aluminum",
+    "kind": "specific"
+   }
+  ],
+  "355": [
+   {
+    "span": "aluminum",
+    "kind": "specific"
+   }
+  ],
+  "356": [
+   {
+    "span": "n-pentanol",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   }
+  ],
+  "357": [
+   {
+    "span": "n-pentanol",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   }
+  ],
+  "358": [],
+  "359": [],
+  "360": [],
+  "361": [],
+  "362": [],
+  "363": [],
+  "364": [],
+  "365": [],
+  "366": [],
+  "367": [],
+  "368": [
+   {
+    "span": "graphite",
+    "kind": "specific"
+   }
+  ],
+  "369": [
+   {
+    "span": "graphite",
+    "kind": "specific"
+   }
+  ],
+  "370": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "Organic Solvent",
+    "kind": "generic"
+   }
+  ],
+  "371": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "Organic Solvent",
+    "kind": "generic"
+   }
+  ],
+  "372": [],
+  "373": [],
+  "374": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ice-water",
+    "kind": "specific",
+    "note": "the cooling medium of the bath; water and ice"
+   }
+  ],
+  "375": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ice-water",
+    "kind": "specific",
+    "note": "the cooling medium of the bath; water and ice"
+   }
+  ],
+  "376": [],
+  "377": [],
+  "378": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "ice-water",
+    "kind": "specific",
+    "note": "the cooling medium of the bath; water and ice"
+   }
+  ],
+  "379": [],
+  "380": [],
+  "381": [],
+  "382": [
+   {
+    "span": "acetic acid",
+    "kind": "specific"
+   }
+  ],
+  "383": [
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   }
+  ],
+  "384": [
+   {
+    "span": "dioxan",
+    "kind": "specific"
+   }
+  ],
+  "385": [
+   {
+    "span": "tetrahydrofuran",
+    "kind": "specific"
+   }
+  ],
+  "386": [
+   {
+    "span": "ethyl methyl ketone",
+    "kind": "specific"
+   }
+  ],
+  "387": [
+   {
+    "span": "pyridine",
+    "kind": "specific"
+   }
+  ],
+  "388": [
+   {
+    "span": "dimethyl sulfoxide",
+    "kind": "specific"
+   }
+  ],
+  "389": [
+   {
+    "span": "nitromethane",
+    "kind": "specific"
+   }
+  ],
+  "390": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "ice-water",
+    "kind": "specific",
+    "note": "the cooling medium of the bath; water and ice"
+   }
+  ],
+  "391": [],
+  "392": [],
+  "393": [],
+  "394": [
+   {
+    "span": "acetic acid",
+    "kind": "specific"
+   }
+  ],
+  "395": [
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   }
+  ],
+  "396": [
+   {
+    "span": "dioxan",
+    "kind": "specific"
+   }
+  ],
+  "397": [
+   {
+    "span": "tetrahydrofuran",
+    "kind": "specific"
+   }
+  ],
+  "398": [
+   {
+    "span": "ethyl methyl ketone",
+    "kind": "specific"
+   }
+  ],
+  "399": [
+   {
+    "span": "pyridine",
+    "kind": "specific"
+   }
+  ],
+  "400": [
+   {
+    "span": "dimethyl sulfoxide",
+    "kind": "specific"
+   }
+  ],
+  "401": [
+   {
+    "span": "nitromethane",
+    "kind": "specific"
+   }
+  ],
+  "402": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "Organic Solvent",
+    "kind": "generic"
+   }
+  ],
+  "403": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "Organic Solvent",
+    "kind": "generic"
+   }
+  ],
+  "404": [],
+  "405": [],
+  "406": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "1st solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "2nd solvent",
+    "kind": "generic"
+   }
+  ],
+  "407": [],
+  "408": [],
+  "409": [],
+  "410": [
+   {
+    "span": "pyridine",
+    "kind": "specific"
+   },
+   {
+    "span": "n-heptane",
+    "kind": "specific"
+   }
+  ],
+  "411": [
+   {
+    "span": "dioxan",
+    "kind": "specific"
+   },
+   {
+    "span": "n-heptane",
+    "kind": "specific"
+   }
+  ],
+  "412": [
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "H2O",
+    "kind": "specific"
+   }
+  ],
+  "413": [
+   {
+    "span": "dioxan",
+    "kind": "specific"
+   },
+   {
+    "span": "H2O",
+    "kind": "specific"
+   }
+  ],
+  "414": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "1st solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "2nd solvent",
+    "kind": "generic"
+   }
+  ],
+  "415": [],
+  "416": [],
+  "417": [],
+  "418": [
+   {
+    "span": "pyridine",
+    "kind": "specific"
+   },
+   {
+    "span": "n-heptane",
+    "kind": "specific"
+   }
+  ],
+  "419": [
+   {
+    "span": "dioxan",
+    "kind": "specific"
+   },
+   {
+    "span": "n-heptane",
+    "kind": "specific"
+   }
+  ],
+  "420": [
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "H2O",
+    "kind": "specific"
+   }
+  ],
+  "421": [
+   {
+    "span": "dioxan",
+    "kind": "specific"
+   },
+   {
+    "span": "H2O",
+    "kind": "specific"
+   }
+  ],
+  "422": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-Dimethylpropanol",
+    "kind": "specific"
+   }
+  ],
+  "423": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-Dimethylpropanol",
+    "kind": "specific"
+   }
+  ],
+  "424": [],
+  "425": [],
+  "426": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ice-water",
+    "kind": "specific",
+    "note": "the cooling medium of the bath; water and ice"
+   }
+  ],
+  "427": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ice-water",
+    "kind": "specific",
+    "note": "the cooling medium of the bath; water and ice"
+   }
+  ],
+  "428": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "Toluene",
+    "kind": "specific"
+   },
+   {
+    "span": "n-Octane",
+    "kind": "specific"
+   }
+  ],
+  "429": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "Toluene",
+    "kind": "specific"
+   },
+   {
+    "span": "n-Octane",
+    "kind": "specific"
+   }
+  ],
+  "430": [],
+  "431": [],
+  "432": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "toluene",
+    "kind": "specific"
+   },
+   {
+    "span": "n-octane",
+    "kind": "specific"
+   }
+  ],
+  "433": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "toluene",
+    "kind": "specific"
+   },
+   {
+    "span": "n-octane",
+    "kind": "specific"
+   }
+  ],
+  "435": [],
+  "437": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "oil",
+    "kind": "generic",
+    "note": "the heating medium of the bath, not named further"
+   }
+  ],
+  "438": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "oil",
+    "kind": "generic",
+    "note": "the heating medium of the bath, not named further"
+   }
+  ],
+  "439": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "n-Pentanol",
+    "kind": "specific"
+   }
+  ],
+  "440": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "n-Pentanol",
+    "kind": "specific"
+   }
+  ],
+  "441": [],
+  "442": [],
+  "443": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "n-pentanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ice-water",
+    "kind": "specific",
+    "note": "the cooling medium of the bath; water and ice"
+   }
+  ],
+  "444": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "n-pentanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ice-water",
+    "kind": "specific",
+    "note": "the cooling medium of the bath; water and ice"
+   }
+  ],
+  "445": [],
+  "446": [],
+  "447": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "ethyl acetate",
+    "kind": "specific"
+   }
+  ],
+  "448": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "ethyl acetate",
+    "kind": "specific"
+   }
+  ],
+  "449": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "450": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "451": [],
+  "452": [],
+  "453": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "ice-water",
+    "kind": "specific",
+    "note": "the cooling medium of the bath; water and ice"
+   }
+  ],
+  "454": [],
+  "455": [],
+  "456": [],
+  "457": [
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   }
+  ],
+  "458": [
+   {
+    "span": "1-propanol",
+    "kind": "specific"
+   }
+  ],
+  "459": [
+   {
+    "span": "1-butanol",
+    "kind": "specific"
+   }
+  ],
+  "460": [
+   {
+    "span": "2-propanol",
+    "kind": "specific"
+   }
+  ],
+  "461": [
+   {
+    "span": "1-hexanol",
+    "kind": "specific"
+   }
+  ],
+  "462": [
+   {
+    "span": "tetrachloromethane",
+    "kind": "specific"
+   }
+  ],
+  "463": [
+   {
+    "span": "toluene",
+    "kind": "specific"
+   }
+  ],
+  "464": [
+   {
+    "span": "xylene",
+    "kind": "specific"
+   }
+  ],
+  "465": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "ice-water",
+    "kind": "specific",
+    "note": "the cooling medium of the bath; water and ice"
+   }
+  ],
+  "466": [],
+  "467": [],
+  "468": [],
+  "469": [
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   }
+  ],
+  "470": [
+   {
+    "span": "1-propanol",
+    "kind": "specific"
+   }
+  ],
+  "471": [
+   {
+    "span": "1-butanol",
+    "kind": "specific"
+   }
+  ],
+  "472": [
+   {
+    "span": "2-propanol",
+    "kind": "specific"
+   }
+  ],
+  "473": [
+   {
+    "span": "1-hexanol",
+    "kind": "specific"
+   }
+  ],
+  "474": [
+   {
+    "span": "tetrachloromethane",
+    "kind": "specific"
+   }
+  ],
+  "475": [
+   {
+    "span": "toluene",
+    "kind": "specific"
+   }
+  ],
+  "476": [
+   {
+    "span": "xylene",
+    "kind": "specific"
+   }
+  ],
+  "477": [],
+  "478": [],
+  "479": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "polystyrene",
+    "kind": "specific",
+    "note": "named as the material of the container"
+   }
+  ],
+  "480": [],
+  "481": [],
+  "482": [],
+  "483": [
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   }
+  ],
+  "484": [
+   {
+    "span": "1-propanol",
+    "kind": "specific"
+   }
+  ],
+  "485": [
+   {
+    "span": "1-butanol",
+    "kind": "specific"
+   }
+  ],
+  "486": [
+   {
+    "span": "2-propanol",
+    "kind": "specific"
+   }
+  ],
+  "487": [
+   {
+    "span": "n-pentanol",
+    "kind": "specific"
+   }
+  ],
+  "488": [
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   }
+  ],
+  "489": [
+   {
+    "span": "1-hexanol",
+    "kind": "specific"
+   }
+  ],
+  "490": [
+   {
+    "span": "tetrachloromethane",
+    "kind": "specific"
+   }
+  ],
+  "491": [
+   {
+    "span": "toluene",
+    "kind": "specific"
+   }
+  ],
+  "492": [
+   {
+    "span": "xylene",
+    "kind": "specific"
+   }
+  ],
+  "493": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "polystyrene",
+    "kind": "specific",
+    "note": "named as the material of the container"
+   }
+  ],
+  "494": [],
+  "495": [],
+  "496": [],
+  "497": [
+   {
+    "span": "ethanol",
+    "kind": "specific"
+   }
+  ],
+  "498": [
+   {
+    "span": "1-propanol",
+    "kind": "specific"
+   }
+  ],
+  "499": [
+   {
+    "span": "1-butanol",
+    "kind": "specific"
+   }
+  ],
+  "500": [
+   {
+    "span": "2-propanol",
+    "kind": "specific"
+   }
+  ],
+  "501": [
+   {
+    "span": "n-pentanol",
+    "kind": "specific"
+   }
+  ],
+  "502": [
+   {
+    "span": "2,2-dimethylpropanol",
+    "kind": "specific"
+   }
+  ],
+  "503": [
+   {
+    "span": "1-hexanol",
+    "kind": "specific"
+   }
+  ],
+  "504": [
+   {
+    "span": "tetrachloromethane",
+    "kind": "specific"
+   }
+  ],
+  "505": [
+   {
+    "span": "toluene",
+    "kind": "specific"
+   }
+  ],
+  "506": [
+   {
+    "span": "xylene",
+    "kind": "specific"
+   }
+  ],
+  "507": [],
+  "508": [],
+  "509": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "1st solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "2nd solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "hexane",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "510": [],
+  "511": [],
+  "512": [],
+  "513": [
+   {
+    "span": "acetone",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "514": [
+   {
+    "span": "trichloromethane",
+    "kind": "specific"
+   },
+   {
+    "span": "n-hexane",
+    "kind": "specific"
+   }
+  ],
+  "515": [
+   {
+    "span": "dichloromethane",
+    "kind": "specific"
+   },
+   {
+    "span": "n-hexane",
+    "kind": "specific"
+   }
+  ],
+  "516": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "1st solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "2nd solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "hexane",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "517": [],
+  "518": [],
+  "519": [],
+  "520": [
+   {
+    "span": "acetone",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "521": [
+   {
+    "span": "trichloromethane",
+    "kind": "specific"
+   },
+   {
+    "span": "n-hexane",
+    "kind": "specific"
+   }
+  ],
+  "522": [
+   {
+    "span": "dichloromethane",
+    "kind": "specific"
+   },
+   {
+    "span": "n-hexane",
+    "kind": "specific"
+   }
+  ],
+  "523": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "524": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "525": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "526": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "527": [],
+  "528": [],
+  "529": [],
+  "530": [],
+  "531": [],
+  "532": [],
+  "533": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "534": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "536": [],
+  "538": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "539": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "540": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "541": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "542": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "543": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "544": [],
+  "545": [],
+  "546": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "herbicides",
+    "kind": "generic"
+   }
+  ],
+  "547": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "herbicides",
+    "kind": "generic"
+   }
+  ],
+  "548": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "549": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "550": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "551": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "552": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "553": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "554": [],
+  "555": [],
+  "556": [],
+  "557": [],
+  "558": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "559": [
+   {
+    "span": "Tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "560": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   },
+   {
+    "span": "carriers",
+    "kind": "generic"
+   },
+   {
+    "span": "other active substances",
+    "kind": "generic"
+   }
+  ],
+  "561": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   },
+   {
+    "span": "carriers",
+    "kind": "generic"
+   },
+   {
+    "span": "other active substances",
+    "kind": "generic"
+   }
+  ],
+  "562": [
+   {
+    "span": "carriers",
+    "kind": "generic"
+   }
+  ],
+  "563": [
+   {
+    "span": "carriers",
+    "kind": "generic"
+   }
+  ],
+  "564": [
+   {
+    "span": "Solid carriers",
+    "kind": "generic"
+   },
+   {
+    "span": "mineral earths",
+    "kind": "generic"
+   },
+   {
+    "span": "silicic acids",
+    "kind": "specific"
+   },
+   {
+    "span": "silica gels",
+    "kind": "specific"
+   },
+   {
+    "span": "silicates",
+    "kind": "generic"
+   },
+   {
+    "span": "talc",
+    "kind": "specific"
+   },
+   {
+    "span": "kaolin",
+    "kind": "specific"
+   },
+   {
+    "span": "limestone",
+    "kind": "specific"
+   },
+   {
+    "span": "lime",
+    "kind": "specific"
+   },
+   {
+    "span": "chalk",
+    "kind": "specific"
+   },
+   {
+    "span": "bole",
+    "kind": "specific"
+   },
+   {
+    "span": "loess",
+    "kind": "specific"
+   },
+   {
+    "span": "clay",
+    "kind": "generic"
+   },
+   {
+    "span": "dolomite",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   },
+   {
+    "span": "calcium and magnesium sulfate",
+    "kind": "specific",
+    "note": "printed as one elided pair; names calcium sulfate and magnesium sulfate, neither of which has its own span"
+   },
+   {
+    "span": "magnesium oxide",
+    "kind": "specific"
+   },
+   {
+    "span": "ground plastics",
+    "kind": "generic"
+   },
+   {
+    "span": "fertilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "ammonium sulfate",
+    "kind": "specific"
+   },
+   {
+    "span": "ammonium phosphate",
+    "kind": "specific"
+   },
+   {
+    "span": "ammonium nitrate",
+    "kind": "specific"
+   },
+   {
+    "span": "ureas",
+    "kind": "generic"
+   },
+   {
+    "span": "plant products",
+    "kind": "generic"
+   },
+   {
+    "span": "cereal flour",
+    "kind": "generic"
+   },
+   {
+    "span": "tree bark",
+    "kind": "generic"
+   },
+   {
+    "span": "wood and nutshell flour",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose powder",
+    "kind": "specific"
+   }
+  ],
+  "565": [
+   {
+    "span": "Solid carriers",
+    "kind": "generic"
+   },
+   {
+    "span": "mineral earths",
+    "kind": "generic"
+   },
+   {
+    "span": "silicic acids",
+    "kind": "specific"
+   },
+   {
+    "span": "silica gels",
+    "kind": "specific"
+   },
+   {
+    "span": "silicates",
+    "kind": "generic"
+   },
+   {
+    "span": "talc",
+    "kind": "specific"
+   },
+   {
+    "span": "kaolin",
+    "kind": "specific"
+   },
+   {
+    "span": "limestone",
+    "kind": "specific"
+   },
+   {
+    "span": "lime",
+    "kind": "specific"
+   },
+   {
+    "span": "chalk",
+    "kind": "specific"
+   },
+   {
+    "span": "bole",
+    "kind": "specific"
+   },
+   {
+    "span": "loess",
+    "kind": "specific"
+   },
+   {
+    "span": "clay",
+    "kind": "generic"
+   },
+   {
+    "span": "dolomite",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   },
+   {
+    "span": "calcium and magnesium sulfate",
+    "kind": "specific",
+    "note": "printed as one elided pair; names calcium sulfate and magnesium sulfate, neither of which has its own span"
+   },
+   {
+    "span": "magnesium oxide",
+    "kind": "specific"
+   },
+   {
+    "span": "ground plastics",
+    "kind": "generic"
+   },
+   {
+    "span": "fertilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "ammonium sulfate",
+    "kind": "specific"
+   },
+   {
+    "span": "ammonium phosphate",
+    "kind": "specific"
+   },
+   {
+    "span": "ammonium nitrate",
+    "kind": "specific"
+   },
+   {
+    "span": "ureas",
+    "kind": "generic"
+   },
+   {
+    "span": "plant products",
+    "kind": "generic"
+   },
+   {
+    "span": "cereal flour",
+    "kind": "generic"
+   },
+   {
+    "span": "tree bark",
+    "kind": "generic"
+   },
+   {
+    "span": "wood and nutshell flour",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose powder",
+    "kind": "specific"
+   }
+  ],
+  "566": [
+   {
+    "span": "Liquid carriers",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "organic liquids",
+    "kind": "generic"
+   },
+   {
+    "span": "mineral oil fractions",
+    "kind": "generic"
+   },
+   {
+    "span": "kerosene",
+    "kind": "specific"
+   },
+   {
+    "span": "diesel oil",
+    "kind": "specific"
+   },
+   {
+    "span": "coal tar oils",
+    "kind": "specific"
+   },
+   {
+    "span": "oils of plant or animal origin",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic, cyclic and aromatic hydrocarbons",
+    "kind": "generic"
+   },
+   {
+    "span": "paraffins",
+    "kind": "generic"
+   },
+   {
+    "span": "tetrahydronaphthalene",
+    "kind": "specific"
+   },
+   {
+    "span": "alkylated naphthalenes",
+    "kind": "generic"
+   },
+   {
+    "span": "alkylated benzenes",
+    "kind": "generic"
+   },
+   {
+    "span": "aromatic and non-aromatic hydrocarbon mixtures",
+    "kind": "generic"
+   },
+   {
+    "span": "alcohols",
+    "kind": "generic"
+   },
+   {
+    "span": "propanol",
+    "kind": "specific"
+   },
+   {
+    "span": "butanol",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclohexanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ketones",
+    "kind": "generic"
+   },
+   {
+    "span": "cyclohexanone",
+    "kind": "specific"
+   },
+   {
+    "span": "strongly polar solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "amides",
+    "kind": "generic"
+   },
+   {
+    "span": "N-methyl-pyrrolidone",
+    "kind": "specific"
+   }
+  ],
+  "567": [
+   {
+    "span": "Liquid carriers",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "organic liquids",
+    "kind": "generic"
+   },
+   {
+    "span": "mineral oil fractions",
+    "kind": "generic"
+   },
+   {
+    "span": "kerosene",
+    "kind": "specific"
+   },
+   {
+    "span": "diesel oil",
+    "kind": "specific"
+   },
+   {
+    "span": "coal tar oils",
+    "kind": "specific"
+   },
+   {
+    "span": "oils of plant or animal origin",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic, cyclic and aromatic hydrocarbons",
+    "kind": "generic"
+   },
+   {
+    "span": "paraffins",
+    "kind": "generic"
+   },
+   {
+    "span": "tetrahydronaphthalene",
+    "kind": "specific"
+   },
+   {
+    "span": "alkylated naphthalenes",
+    "kind": "generic"
+   },
+   {
+    "span": "alkylated benzenes",
+    "kind": "generic"
+   },
+   {
+    "span": "aromatic and non-aromatic hydrocarbon mixtures",
+    "kind": "generic"
+   },
+   {
+    "span": "alcohols",
+    "kind": "generic"
+   },
+   {
+    "span": "propanol",
+    "kind": "specific"
+   },
+   {
+    "span": "butanol",
+    "kind": "specific"
+   },
+   {
+    "span": "cyclohexanol",
+    "kind": "specific"
+   },
+   {
+    "span": "ketones",
+    "kind": "generic"
+   },
+   {
+    "span": "cyclohexanone",
+    "kind": "specific"
+   },
+   {
+    "span": "strongly polar solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "amides",
+    "kind": "generic"
+   },
+   {
+    "span": "N-methyl-pyrrolidone",
+    "kind": "specific"
+   }
+  ],
+  "568": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "wetting agents",
+    "kind": "generic"
+   },
+   {
+    "span": "emulsifiers",
+    "kind": "generic"
+   },
+   {
+    "span": "dispersant",
+    "kind": "generic"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   },
+   {
+    "span": "viscosity-modifying additives",
+    "kind": "generic"
+   },
+   {
+    "span": "thickeners",
+    "kind": "generic"
+   }
+  ],
+  "569": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "wetting agents",
+    "kind": "generic"
+   },
+   {
+    "span": "emulsifiers",
+    "kind": "generic"
+   },
+   {
+    "span": "dispersant",
+    "kind": "generic"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   },
+   {
+    "span": "viscosity-modifying additives",
+    "kind": "generic"
+   },
+   {
+    "span": "thickeners",
+    "kind": "generic"
+   }
+  ],
+  "571": [],
+  "573": [
+   {
+    "span": "antifoaming agents",
+    "kind": "generic"
+   },
+   {
+    "span": "antifreeze agents",
+    "kind": "generic"
+   },
+   {
+    "span": "pH adjusting agents",
+    "kind": "generic"
+   },
+   {
+    "span": "stabilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "anticaking agents",
+    "kind": "generic"
+   },
+   {
+    "span": "biocides",
+    "kind": "generic"
+   },
+   {
+    "span": "preservatives",
+    "kind": "generic"
+   }
+  ],
+  "574": [
+   {
+    "span": "antifoaming agents",
+    "kind": "generic"
+   },
+   {
+    "span": "antifreeze agents",
+    "kind": "generic"
+   },
+   {
+    "span": "pH adjusting agents",
+    "kind": "generic"
+   },
+   {
+    "span": "stabilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "anticaking agents",
+    "kind": "generic"
+   },
+   {
+    "span": "biocides",
+    "kind": "generic"
+   },
+   {
+    "span": "preservatives",
+    "kind": "generic"
+   }
+  ],
+  "575": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic and nonionic surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "Protective colloids",
+    "kind": "generic"
+   }
+  ],
+  "576": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic and nonionic surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "Protective colloids",
+    "kind": "generic"
+   }
+  ],
+  "577": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic surface-active substance",
+    "kind": "generic"
+   },
+   {
+    "span": "nonionic surface-active substance",
+    "kind": "generic"
+   }
+  ],
+  "578": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic surface-active substance",
+    "kind": "generic"
+   },
+   {
+    "span": "nonionic surface-active substance",
+    "kind": "generic"
+   }
+  ],
+  "579": [
+   {
+    "span": "anionic surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl arylsulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "aromatic sulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "ligninsulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "phenylsulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "naphthalenesulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "dibutylnaphthalenesulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl sulfates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty alcohol sulfates",
+    "kind": "generic"
+   },
+   {
+    "span": "lauryl sulfates",
+    "kind": "specific"
+   },
+   {
+    "span": "hexadecanols",
+    "kind": "specific"
+   },
+   {
+    "span": "heptadecanols",
+    "kind": "specific"
+   },
+   {
+    "span": "octadecanols",
+    "kind": "specific"
+   },
+   {
+    "span": "alkylsulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl ether sulfates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty alcohol (poly)glycol ether sulfates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl aryl ether sulfates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl polyglycol ether phosphates",
+    "kind": "generic"
+   },
+   {
+    "span": "polyarylphenyl ether phosphates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkylsulfosuccinates",
+    "kind": "generic"
+   },
+   {
+    "span": "olefin sulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "paraffin sulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "petroleum sulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "taurides",
+    "kind": "generic"
+   },
+   {
+    "span": "sarcosides",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acids",
+    "kind": "generic"
+   },
+   {
+    "span": "alkylnaphthalenesulfonic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "naphthalenesulfonic acids",
+    "kind": "specific"
+   },
+   {
+    "span": "ligninsulfonic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "sulfonated naphthalenes",
+    "kind": "generic"
+   },
+   {
+    "span": "formaldehyde",
+    "kind": "specific"
+   },
+   {
+    "span": "phenol",
+    "kind": "specific"
+   },
+   {
+    "span": "urea",
+    "kind": "specific"
+   },
+   {
+    "span": "phenolsulfonic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "lignin sulfite waste liquor",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl phosphates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl aryl phosphates",
+    "kind": "generic"
+   },
+   {
+    "span": "tristyryl phosphates",
+    "kind": "generic"
+   },
+   {
+    "span": "polycarboxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polyacrylates",
+    "kind": "generic"
+   },
+   {
+    "span": "maleic anhydride/olefin copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "ammonium salts",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic surface-active substances",
+    "kind": "generic"
+   }
+  ],
+  "580": [
+   {
+    "span": "anionic surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl arylsulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "aromatic sulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "ligninsulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "phenylsulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "naphthalenesulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "dibutylnaphthalenesulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl sulfates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty alcohol sulfates",
+    "kind": "generic"
+   },
+   {
+    "span": "lauryl sulfates",
+    "kind": "specific"
+   },
+   {
+    "span": "hexadecanols",
+    "kind": "specific"
+   },
+   {
+    "span": "heptadecanols",
+    "kind": "specific"
+   },
+   {
+    "span": "octadecanols",
+    "kind": "specific"
+   },
+   {
+    "span": "alkylsulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl ether sulfates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty alcohol (poly)glycol ether sulfates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl aryl ether sulfates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl polyglycol ether phosphates",
+    "kind": "generic"
+   },
+   {
+    "span": "polyarylphenyl ether phosphates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkylsulfosuccinates",
+    "kind": "generic"
+   },
+   {
+    "span": "olefin sulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "paraffin sulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "petroleum sulfonates",
+    "kind": "generic"
+   },
+   {
+    "span": "taurides",
+    "kind": "generic"
+   },
+   {
+    "span": "sarcosides",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acids",
+    "kind": "generic"
+   },
+   {
+    "span": "alkylnaphthalenesulfonic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "naphthalenesulfonic acids",
+    "kind": "specific"
+   },
+   {
+    "span": "ligninsulfonic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "sulfonated naphthalenes",
+    "kind": "generic"
+   },
+   {
+    "span": "formaldehyde",
+    "kind": "specific"
+   },
+   {
+    "span": "phenol",
+    "kind": "specific"
+   },
+   {
+    "span": "urea",
+    "kind": "specific"
+   },
+   {
+    "span": "phenolsulfonic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "lignin sulfite waste liquor",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl phosphates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl aryl phosphates",
+    "kind": "generic"
+   },
+   {
+    "span": "tristyryl phosphates",
+    "kind": "generic"
+   },
+   {
+    "span": "polycarboxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polyacrylates",
+    "kind": "generic"
+   },
+   {
+    "span": "maleic anhydride/olefin copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "ammonium salts",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic surface-active substances",
+    "kind": "generic"
+   }
+  ],
+  "581": [
+   {
+    "span": "non-ionic surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "alkylphenol alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "ethoxylate-copropoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "octylphenol",
+    "kind": "specific"
+   },
+   {
+    "span": "isooctylphenol",
+    "kind": "specific"
+   },
+   {
+    "span": "nonylphenol",
+    "kind": "specific"
+   },
+   {
+    "span": "tributylphenol",
+    "kind": "specific"
+   },
+   {
+    "span": "di- and tristyrylphenol alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "alcohol alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty alcohol ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty alcohol ethoxylate-copropoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkoxylated isotridecanol",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty amine alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polyoxyethylene glycerol fatty acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "castor oil alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid amide alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid polydiethanolamides",
+    "kind": "generic"
+   },
+   {
+    "span": "lanolin ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid polyglycol esters",
+    "kind": "generic"
+   },
+   {
+    "span": "isotridecyl alcohol",
+    "kind": "specific"
+   },
+   {
+    "span": "ethoxylated fatty acid amides",
+    "kind": "generic"
+   },
+   {
+    "span": "ethoxylated fatty acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl polyglycosides",
+    "kind": "generic"
+   },
+   {
+    "span": "ethoxylated alkyl polyglycosides",
+    "kind": "generic"
+   },
+   {
+    "span": "sorbitan fatty acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "ethoxylated sorbitan fatty acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "glycerol fatty acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "polyalkylene oxides",
+    "kind": "generic"
+   },
+   {
+    "span": "polyethylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "polypropylene oxide",
+    "kind": "specific"
+   },
+   {
+    "span": "polyethylene oxide co-propylene oxide di- and tri-block copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "castor oil ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid amide ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "ethylene oxide propylene oxide block copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "nonionic surface-active substances",
+    "kind": "generic"
+   }
+  ],
+  "582": [
+   {
+    "span": "non-ionic surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "alkylphenol alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "ethoxylate-copropoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "octylphenol",
+    "kind": "specific"
+   },
+   {
+    "span": "isooctylphenol",
+    "kind": "specific"
+   },
+   {
+    "span": "nonylphenol",
+    "kind": "specific"
+   },
+   {
+    "span": "tributylphenol",
+    "kind": "specific"
+   },
+   {
+    "span": "di- and tristyrylphenol alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "alcohol alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty alcohol ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty alcohol ethoxylate-copropoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkoxylated isotridecanol",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty amine alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polyoxyethylene glycerol fatty acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "castor oil alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid amide alkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid polydiethanolamides",
+    "kind": "generic"
+   },
+   {
+    "span": "lanolin ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid polyglycol esters",
+    "kind": "generic"
+   },
+   {
+    "span": "isotridecyl alcohol",
+    "kind": "specific"
+   },
+   {
+    "span": "ethoxylated fatty acid amides",
+    "kind": "generic"
+   },
+   {
+    "span": "ethoxylated fatty acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "alkyl polyglycosides",
+    "kind": "generic"
+   },
+   {
+    "span": "ethoxylated alkyl polyglycosides",
+    "kind": "generic"
+   },
+   {
+    "span": "sorbitan fatty acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "ethoxylated sorbitan fatty acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "glycerol fatty acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "polyalkylene oxides",
+    "kind": "generic"
+   },
+   {
+    "span": "polyethylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "polypropylene oxide",
+    "kind": "specific"
+   },
+   {
+    "span": "polyethylene oxide co-propylene oxide di- and tri-block copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "castor oil ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid amide ethoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "ethylene oxide propylene oxide block copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "nonionic surface-active substances",
+    "kind": "generic"
+   }
+  ],
+  "583": [
+   {
+    "span": "Protective colloids",
+    "kind": "generic"
+   },
+   {
+    "span": "amphiphilic polymers",
+    "kind": "generic"
+   },
+   {
+    "span": "surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "proteins",
+    "kind": "generic"
+   },
+   {
+    "span": "denatured proteins",
+    "kind": "generic"
+   },
+   {
+    "span": "casein",
+    "kind": "specific"
+   },
+   {
+    "span": "polysaccharides",
+    "kind": "generic"
+   },
+   {
+    "span": "starch derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "hydrophobically modified starches and celluloses",
+    "kind": "generic"
+   },
+   {
+    "span": "methylcellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "polycarboxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polyacrylic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "acrylic acid copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "maleic acid copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "polyvinyl alcohol",
+    "kind": "specific"
+   },
+   {
+    "span": "polyalkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polyvinylpyrrolidone",
+    "kind": "specific"
+   },
+   {
+    "span": "vinylpyrrolidone copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "polyvinyl amines",
+    "kind": "generic"
+   },
+   {
+    "span": "polyethyleneimines",
+    "kind": "specific"
+   },
+   {
+    "span": "polyalkylene oxides",
+    "kind": "generic"
+   },
+   {
+    "span": "polyethylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "polypropylene oxides",
+    "kind": "specific"
+   },
+   {
+    "span": "polyethylene oxide co-polypropylene oxide di- and tri-block copolymers",
+    "kind": "generic"
+   }
+  ],
+  "584": [
+   {
+    "span": "Protective colloids",
+    "kind": "generic"
+   },
+   {
+    "span": "amphiphilic polymers",
+    "kind": "generic"
+   },
+   {
+    "span": "surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "proteins",
+    "kind": "generic"
+   },
+   {
+    "span": "denatured proteins",
+    "kind": "generic"
+   },
+   {
+    "span": "casein",
+    "kind": "specific"
+   },
+   {
+    "span": "polysaccharides",
+    "kind": "generic"
+   },
+   {
+    "span": "starch derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "hydrophobically modified starches and celluloses",
+    "kind": "generic"
+   },
+   {
+    "span": "methylcellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "polycarboxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polyacrylic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "acrylic acid copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "maleic acid copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "polyvinyl alcohol",
+    "kind": "specific"
+   },
+   {
+    "span": "polyalkoxylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polyvinylpyrrolidone",
+    "kind": "specific"
+   },
+   {
+    "span": "vinylpyrrolidone copolymers",
+    "kind": "generic"
+   },
+   {
+    "span": "polyvinyl amines",
+    "kind": "generic"
+   },
+   {
+    "span": "polyethyleneimines",
+    "kind": "specific"
+   },
+   {
+    "span": "polyalkylene oxides",
+    "kind": "generic"
+   },
+   {
+    "span": "polyethylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "polypropylene oxides",
+    "kind": "specific"
+   },
+   {
+    "span": "polyethylene oxide co-polypropylene oxide di- and tri-block copolymers",
+    "kind": "generic"
+   }
+  ],
+  "585": [
+   {
+    "span": "rheology modifiers",
+    "kind": "generic"
+   },
+   {
+    "span": "layer silicates",
+    "kind": "generic"
+   },
+   {
+    "span": "organically modified layer silicates",
+    "kind": "generic"
+   },
+   {
+    "span": "bentonites",
+    "kind": "specific"
+   },
+   {
+    "span": "attapulgites",
+    "kind": "specific"
+   },
+   {
+    "span": "polysaccharides",
+    "kind": "generic"
+   },
+   {
+    "span": "heteropolysaccharides",
+    "kind": "generic"
+   },
+   {
+    "span": "Xanthan Gum",
+    "kind": "specific",
+    "note": "printed with a registered mark, but it is the substance name"
+   },
+   {
+    "span": "viscosity-modifying additives",
+    "kind": "generic"
+   }
+  ],
+  "586": [
+   {
+    "span": "rheology modifiers",
+    "kind": "generic"
+   },
+   {
+    "span": "layer silicates",
+    "kind": "generic"
+   },
+   {
+    "span": "organically modified layer silicates",
+    "kind": "generic"
+   },
+   {
+    "span": "bentonites",
+    "kind": "specific"
+   },
+   {
+    "span": "attapulgites",
+    "kind": "specific"
+   },
+   {
+    "span": "polysaccharides",
+    "kind": "generic"
+   },
+   {
+    "span": "heteropolysaccharides",
+    "kind": "generic"
+   },
+   {
+    "span": "Xanthan Gum",
+    "kind": "specific",
+    "note": "printed with a registered mark, but it is the substance name"
+   },
+   {
+    "span": "viscosity-modifying additives",
+    "kind": "generic"
+   }
+  ],
+  "587": [
+   {
+    "span": "silicone emulsions",
+    "kind": "generic"
+   },
+   {
+    "span": "long-chain alcohols",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acids",
+    "kind": "generic"
+   },
+   {
+    "span": "aqueous wax dispersion",
+    "kind": "generic"
+   },
+   {
+    "span": "foam suppressants",
+    "kind": "generic"
+   },
+   {
+    "span": "organofluorine compounds",
+    "kind": "generic"
+   },
+   {
+    "span": "antifoaming agents",
+    "kind": "generic"
+   }
+  ],
+  "588": [
+   {
+    "span": "silicone emulsions",
+    "kind": "generic"
+   },
+   {
+    "span": "long-chain alcohols",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acids",
+    "kind": "generic"
+   },
+   {
+    "span": "aqueous wax dispersion",
+    "kind": "generic"
+   },
+   {
+    "span": "foam suppressants",
+    "kind": "generic"
+   },
+   {
+    "span": "organofluorine compounds",
+    "kind": "generic"
+   },
+   {
+    "span": "antifoaming agents",
+    "kind": "generic"
+   }
+  ],
+  "589": [
+   {
+    "span": "preservatives",
+    "kind": "generic"
+   },
+   {
+    "span": "isothiazolones",
+    "kind": "generic"
+   }
+  ],
+  "590": [
+   {
+    "span": "preservatives",
+    "kind": "generic"
+   },
+   {
+    "span": "isothiazolones",
+    "kind": "generic"
+   }
+  ],
+  "591": [
+   {
+    "span": "antifreeze agents",
+    "kind": "generic"
+   },
+   {
+    "span": "liquid polyols",
+    "kind": "generic"
+   },
+   {
+    "span": "ethylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "propylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "glycerine",
+    "kind": "specific"
+   },
+   {
+    "span": "urea",
+    "kind": "specific"
+   }
+  ],
+  "592": [
+   {
+    "span": "antifreeze agents",
+    "kind": "generic"
+   },
+   {
+    "span": "liquid polyols",
+    "kind": "generic"
+   },
+   {
+    "span": "ethylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "propylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "glycerine",
+    "kind": "specific"
+   },
+   {
+    "span": "urea",
+    "kind": "specific"
+   }
+  ],
+  "593": [
+   {
+    "span": "colorants",
+    "kind": "generic"
+   },
+   {
+    "span": "adhesives",
+    "kind": "generic"
+   },
+   {
+    "span": "fillers",
+    "kind": "generic"
+   },
+   {
+    "span": "plasticizers",
+    "kind": "generic"
+   }
+  ],
+  "594": [
+   {
+    "span": "colorants",
+    "kind": "generic"
+   },
+   {
+    "span": "adhesives",
+    "kind": "generic"
+   },
+   {
+    "span": "fillers",
+    "kind": "generic"
+   },
+   {
+    "span": "plasticizers",
+    "kind": "generic"
+   }
+  ],
+  "595": [
+   {
+    "span": "dyes",
+    "kind": "generic"
+   },
+   {
+    "span": "pigments",
+    "kind": "generic"
+   },
+   {
+    "span": "colorants",
+    "kind": "generic"
+   }
+  ],
+  "596": [
+   {
+    "span": "dyes",
+    "kind": "generic"
+   },
+   {
+    "span": "pigments",
+    "kind": "generic"
+   },
+   {
+    "span": "colorants",
+    "kind": "generic"
+   }
+  ],
+  "598": [],
+  "600": [
+   {
+    "span": "dyes",
+    "kind": "generic"
+   },
+   {
+    "span": "pigments",
+    "kind": "generic"
+   },
+   {
+    "span": "Rhodamin B",
+    "kind": "specific"
+   },
+   {
+    "span": "colorant",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "601": [
+   {
+    "span": "dyes",
+    "kind": "generic"
+   },
+   {
+    "span": "pigments",
+    "kind": "generic"
+   },
+   {
+    "span": "Rhodamin B",
+    "kind": "specific"
+   },
+   {
+    "span": "colorant",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "602": [
+   {
+    "span": "binders",
+    "kind": "generic"
+   },
+   {
+    "span": "adhesives",
+    "kind": "generic"
+   },
+   {
+    "span": "thermoplastic polymers",
+    "kind": "generic"
+   },
+   {
+    "span": "poly-vinylpyrrolidone",
+    "kind": "specific",
+    "note": "printed with a line-break hyphen"
+   },
+   {
+    "span": "polyvinyl acetate",
+    "kind": "specific"
+   },
+   {
+    "span": "polyvinyl alcohol",
+    "kind": "specific"
+   },
+   {
+    "span": "tylose",
+    "kind": "specific",
+    "note": "a trade name for a cellulose ether, printed lower case among material names"
+   },
+   {
+    "span": "polyacrylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polymethacrylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polybutenes",
+    "kind": "generic"
+   },
+   {
+    "span": "polyisobutenes",
+    "kind": "generic"
+   },
+   {
+    "span": "polystyrene",
+    "kind": "specific"
+   },
+   {
+    "span": "polyethylene amines",
+    "kind": "generic"
+   },
+   {
+    "span": "polyethylene amides",
+    "kind": "generic"
+   },
+   {
+    "span": "protective colloids",
+    "kind": "generic"
+   },
+   {
+    "span": "polyesters",
+    "kind": "generic"
+   },
+   {
+    "span": "polyether esters",
+    "kind": "generic"
+   },
+   {
+    "span": "polyanhydrides",
+    "kind": "generic"
+   },
+   {
+    "span": "polyester urethanes",
+    "kind": "generic"
+   },
+   {
+    "span": "polyester amides",
+    "kind": "generic"
+   },
+   {
+    "span": "thermoplastic polysaccharides",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose esters",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose ether esters",
+    "kind": "generic"
+   },
+   {
+    "span": "methylcellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "ethylcellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "hydroxymethylcellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "carboxymethylcellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "hydroxypropyl cellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "starch derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "modified starches",
+    "kind": "generic"
+   },
+   {
+    "span": "dextrins",
+    "kind": "generic"
+   },
+   {
+    "span": "maltodextrins",
+    "kind": "generic"
+   },
+   {
+    "span": "alginates",
+    "kind": "generic"
+   },
+   {
+    "span": "chitosans",
+    "kind": "specific"
+   },
+   {
+    "span": "fats",
+    "kind": "generic"
+   },
+   {
+    "span": "oils",
+    "kind": "generic"
+   },
+   {
+    "span": "proteins",
+    "kind": "generic"
+   },
+   {
+    "span": "casein",
+    "kind": "specific"
+   },
+   {
+    "span": "gelatin",
+    "kind": "specific"
+   },
+   {
+    "span": "zein",
+    "kind": "specific"
+   },
+   {
+    "span": "gum Arabic",
+    "kind": "specific"
+   },
+   {
+    "span": "shellac",
+    "kind": "specific"
+   }
+  ],
+  "603": [
+   {
+    "span": "binders",
+    "kind": "generic"
+   },
+   {
+    "span": "adhesives",
+    "kind": "generic"
+   },
+   {
+    "span": "thermoplastic polymers",
+    "kind": "generic"
+   },
+   {
+    "span": "poly-vinylpyrrolidone",
+    "kind": "specific",
+    "note": "printed with a line-break hyphen"
+   },
+   {
+    "span": "polyvinyl acetate",
+    "kind": "specific"
+   },
+   {
+    "span": "polyvinyl alcohol",
+    "kind": "specific"
+   },
+   {
+    "span": "tylose",
+    "kind": "specific",
+    "note": "a trade name for a cellulose ether, printed lower case among material names"
+   },
+   {
+    "span": "polyacrylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polymethacrylates",
+    "kind": "generic"
+   },
+   {
+    "span": "polybutenes",
+    "kind": "generic"
+   },
+   {
+    "span": "polyisobutenes",
+    "kind": "generic"
+   },
+   {
+    "span": "polystyrene",
+    "kind": "specific"
+   },
+   {
+    "span": "polyethylene amines",
+    "kind": "generic"
+   },
+   {
+    "span": "polyethylene amides",
+    "kind": "generic"
+   },
+   {
+    "span": "protective colloids",
+    "kind": "generic"
+   },
+   {
+    "span": "polyesters",
+    "kind": "generic"
+   },
+   {
+    "span": "polyether esters",
+    "kind": "generic"
+   },
+   {
+    "span": "polyanhydrides",
+    "kind": "generic"
+   },
+   {
+    "span": "polyester urethanes",
+    "kind": "generic"
+   },
+   {
+    "span": "polyester amides",
+    "kind": "generic"
+   },
+   {
+    "span": "thermoplastic polysaccharides",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose esters",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose ether esters",
+    "kind": "generic"
+   },
+   {
+    "span": "methylcellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "ethylcellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "hydroxymethylcellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "carboxymethylcellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "hydroxypropyl cellulose",
+    "kind": "specific"
+   },
+   {
+    "span": "starch derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "modified starches",
+    "kind": "generic"
+   },
+   {
+    "span": "dextrins",
+    "kind": "generic"
+   },
+   {
+    "span": "maltodextrins",
+    "kind": "generic"
+   },
+   {
+    "span": "alginates",
+    "kind": "generic"
+   },
+   {
+    "span": "chitosans",
+    "kind": "specific"
+   },
+   {
+    "span": "fats",
+    "kind": "generic"
+   },
+   {
+    "span": "oils",
+    "kind": "generic"
+   },
+   {
+    "span": "proteins",
+    "kind": "generic"
+   },
+   {
+    "span": "casein",
+    "kind": "specific"
+   },
+   {
+    "span": "gelatin",
+    "kind": "specific"
+   },
+   {
+    "span": "zein",
+    "kind": "specific"
+   },
+   {
+    "span": "gum Arabic",
+    "kind": "specific"
+   },
+   {
+    "span": "shellac",
+    "kind": "specific"
+   }
+  ],
+  "604": [
+   {
+    "span": "fillers",
+    "kind": "generic"
+   },
+   {
+    "span": "solid carriers",
+    "kind": "generic"
+   },
+   {
+    "span": "inorganic materials",
+    "kind": "generic"
+   },
+   {
+    "span": "clays",
+    "kind": "generic"
+   },
+   {
+    "span": "chalk",
+    "kind": "specific"
+   },
+   {
+    "span": "bentonite",
+    "kind": "specific"
+   },
+   {
+    "span": "kaolin",
+    "kind": "specific"
+   },
+   {
+    "span": "talc",
+    "kind": "specific"
+   },
+   {
+    "span": "perlite",
+    "kind": "specific"
+   },
+   {
+    "span": "mica",
+    "kind": "specific"
+   },
+   {
+    "span": "silica gel",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   },
+   {
+    "span": "quartz powder",
+    "kind": "specific"
+   },
+   {
+    "span": "montmorillonite",
+    "kind": "specific"
+   },
+   {
+    "span": "organic materials",
+    "kind": "generic"
+   },
+   {
+    "span": "wood flour",
+    "kind": "generic"
+   },
+   {
+    "span": "cereal flour",
+    "kind": "generic"
+   },
+   {
+    "span": "active charcoal",
+    "kind": "specific"
+   }
+  ],
+  "605": [
+   {
+    "span": "fillers",
+    "kind": "generic"
+   },
+   {
+    "span": "solid carriers",
+    "kind": "generic"
+   },
+   {
+    "span": "inorganic materials",
+    "kind": "generic"
+   },
+   {
+    "span": "clays",
+    "kind": "generic"
+   },
+   {
+    "span": "chalk",
+    "kind": "specific"
+   },
+   {
+    "span": "bentonite",
+    "kind": "specific"
+   },
+   {
+    "span": "kaolin",
+    "kind": "specific"
+   },
+   {
+    "span": "talc",
+    "kind": "specific"
+   },
+   {
+    "span": "perlite",
+    "kind": "specific"
+   },
+   {
+    "span": "mica",
+    "kind": "specific"
+   },
+   {
+    "span": "silica gel",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   },
+   {
+    "span": "quartz powder",
+    "kind": "specific"
+   },
+   {
+    "span": "montmorillonite",
+    "kind": "specific"
+   },
+   {
+    "span": "organic materials",
+    "kind": "generic"
+   },
+   {
+    "span": "wood flour",
+    "kind": "generic"
+   },
+   {
+    "span": "cereal flour",
+    "kind": "generic"
+   },
+   {
+    "span": "active charcoal",
+    "kind": "specific"
+   }
+  ],
+  "606": [
+   {
+    "span": "plasticizers",
+    "kind": "generic"
+   },
+   {
+    "span": "oligomeric polyalkylene glycols",
+    "kind": "generic"
+   },
+   {
+    "span": "glycerine",
+    "kind": "specific"
+   },
+   {
+    "span": "dialkyl phthalates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkylbenzyl phthalates",
+    "kind": "generic"
+   },
+   {
+    "span": "glycol benzoates",
+    "kind": "generic"
+   }
+  ],
+  "607": [
+   {
+    "span": "plasticizers",
+    "kind": "generic"
+   },
+   {
+    "span": "oligomeric polyalkylene glycols",
+    "kind": "generic"
+   },
+   {
+    "span": "glycerine",
+    "kind": "specific"
+   },
+   {
+    "span": "dialkyl phthalates",
+    "kind": "generic"
+   },
+   {
+    "span": "alkylbenzyl phthalates",
+    "kind": "generic"
+   },
+   {
+    "span": "glycol benzoates",
+    "kind": "generic"
+   }
+  ],
+  "608": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   }
+  ],
+  "609": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   }
+  ],
+  "610": [
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "solvent mixtures",
+    "kind": "generic"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "tetrahydrofuran",
+    "kind": "specific"
+   },
+   {
+    "span": "methyl glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "methyl diglycol",
+    "kind": "specific"
+   },
+   {
+    "span": "alkanols",
+    "kind": "generic"
+   },
+   {
+    "span": "isopropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "polyols",
+    "kind": "generic"
+   },
+   {
+    "span": "glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "glycerine",
+    "kind": "specific"
+   },
+   {
+    "span": "diethylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "propylene glycol",
+    "kind": "specific"
+   }
+  ],
+  "611": [
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "aqueous solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "solvent mixtures",
+    "kind": "generic"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   },
+   {
+    "span": "ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "tetrahydrofuran",
+    "kind": "specific"
+   },
+   {
+    "span": "methyl glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "methyl diglycol",
+    "kind": "specific"
+   },
+   {
+    "span": "alkanols",
+    "kind": "generic"
+   },
+   {
+    "span": "isopropanol",
+    "kind": "specific"
+   },
+   {
+    "span": "polyols",
+    "kind": "generic"
+   },
+   {
+    "span": "glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "glycerine",
+    "kind": "specific"
+   },
+   {
+    "span": "diethylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "propylene glycol",
+    "kind": "specific"
+   }
+  ],
+  "612": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "613": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "614": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "other active substances",
+    "kind": "generic"
+   }
+  ],
+  "615": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "other active substances",
+    "kind": "generic"
+   }
+  ],
+  "616": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "antifoaming agents",
+    "kind": "generic"
+   },
+   {
+    "span": "thickeners",
+    "kind": "generic"
+   },
+   {
+    "span": "rheology modifiers",
+    "kind": "generic"
+   },
+   {
+    "span": "antifreeze agents",
+    "kind": "generic"
+   },
+   {
+    "span": "stabilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "biocides",
+    "kind": "generic"
+   },
+   {
+    "span": "anticaking agents",
+    "kind": "generic"
+   }
+  ],
+  "617": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "antifoaming agents",
+    "kind": "generic"
+   },
+   {
+    "span": "thickeners",
+    "kind": "generic"
+   },
+   {
+    "span": "rheology modifiers",
+    "kind": "generic"
+   },
+   {
+    "span": "antifreeze agents",
+    "kind": "generic"
+   },
+   {
+    "span": "stabilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "biocides",
+    "kind": "generic"
+   },
+   {
+    "span": "anticaking agents",
+    "kind": "generic"
+   }
+  ],
+  "618": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "nonionic surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "protective colloid",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic surface-active substance",
+    "kind": "generic"
+   },
+   {
+    "span": "nonionic surface-active substance",
+    "kind": "generic"
+   }
+  ],
+  "619": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "nonionic surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "protective colloid",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic surface-active substance",
+    "kind": "generic"
+   },
+   {
+    "span": "nonionic surface-active substance",
+    "kind": "generic"
+   }
+  ],
+  "620": [
+   {
+    "span": "antifoaming agents",
+    "kind": "generic"
+   },
+   {
+    "span": "thickeners",
+    "kind": "generic"
+   },
+   {
+    "span": "antifreeze agents",
+    "kind": "generic"
+   },
+   {
+    "span": "biocides",
+    "kind": "generic"
+   }
+  ],
+  "621": [
+   {
+    "span": "antifoaming agents",
+    "kind": "generic"
+   },
+   {
+    "span": "thickeners",
+    "kind": "generic"
+   },
+   {
+    "span": "antifreeze agents",
+    "kind": "generic"
+   },
+   {
+    "span": "biocides",
+    "kind": "generic"
+   }
+  ],
+  "622": [
+   {
+    "span": "buffers",
+    "kind": "generic"
+   },
+   {
+    "span": "alkali metal salts",
+    "kind": "generic"
+   },
+   {
+    "span": "inorganic or organic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "phosphoric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "boric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "acetic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "propionic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "citric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "fumaric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "tartaric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "oxalic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "succinic acid",
+    "kind": "specific"
+   }
+  ],
+  "623": [
+   {
+    "span": "buffers",
+    "kind": "generic"
+   },
+   {
+    "span": "alkali metal salts",
+    "kind": "generic"
+   },
+   {
+    "span": "inorganic or organic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "phosphoric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "boric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "acetic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "propionic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "citric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "fumaric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "tartaric acid",
+    "kind": "specific"
+   },
+   {
+    "span": "oxalic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "succinic acid",
+    "kind": "specific"
+   }
+  ],
+  "624": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   }
+  ],
+  "625": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvents",
+    "kind": "generic"
+   }
+  ],
+  "627": [],
+  "629": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrocarbons",
+    "kind": "generic"
+   },
+   {
+    "span": "oils",
+    "kind": "generic"
+   },
+   {
+    "span": "C1-C4 alkyl esters",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acids",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid mixtures",
+    "kind": "generic"
+   },
+   {
+    "span": "methyl esters",
+    "kind": "generic"
+   },
+   {
+    "span": "methyl oleate",
+    "kind": "specific"
+   },
+   {
+    "span": "methyl stearate",
+    "kind": "specific"
+   },
+   {
+    "span": "rape oil methyl ester",
+    "kind": "specific"
+   },
+   {
+    "span": "paraffinic mineral oils",
+    "kind": "generic"
+   }
+  ],
+  "630": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "hydrocarbons",
+    "kind": "generic"
+   },
+   {
+    "span": "oils",
+    "kind": "generic"
+   },
+   {
+    "span": "C1-C4 alkyl esters",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acids",
+    "kind": "generic"
+   },
+   {
+    "span": "fatty acid mixtures",
+    "kind": "generic"
+   },
+   {
+    "span": "methyl esters",
+    "kind": "generic"
+   },
+   {
+    "span": "methyl oleate",
+    "kind": "specific"
+   },
+   {
+    "span": "methyl stearate",
+    "kind": "specific"
+   },
+   {
+    "span": "rape oil methyl ester",
+    "kind": "specific"
+   },
+   {
+    "span": "paraffinic mineral oils",
+    "kind": "generic"
+   }
+  ],
+  "631": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "other active substances",
+    "kind": "generic"
+   }
+  ],
+  "632": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "other active substances",
+    "kind": "generic"
+   }
+  ],
+  "633": [
+   {
+    "span": "liquid carrier",
+    "kind": "generic"
+   },
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "antifoaming agents",
+    "kind": "generic"
+   },
+   {
+    "span": "stabilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "biocides",
+    "kind": "generic"
+   }
+  ],
+  "634": [
+   {
+    "span": "liquid carrier",
+    "kind": "generic"
+   },
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "antifoaming agents",
+    "kind": "generic"
+   },
+   {
+    "span": "stabilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "biocides",
+    "kind": "generic"
+   }
+  ],
+  "635": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic and nonionic surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic surface-active substance",
+    "kind": "generic"
+   },
+   {
+    "span": "nonionic surface-active substance",
+    "kind": "generic"
+   }
+  ],
+  "636": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic and nonionic surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "anionic surface-active substance",
+    "kind": "generic"
+   },
+   {
+    "span": "nonionic surface-active substance",
+    "kind": "generic"
+   }
+  ],
+  "637": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solid carrier",
+    "kind": "generic"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   },
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "Solid carriers",
+    "kind": "generic"
+   },
+   {
+    "span": "mineral earths",
+    "kind": "generic"
+   },
+   {
+    "span": "silicic acids",
+    "kind": "specific"
+   },
+   {
+    "span": "silica gels",
+    "kind": "specific"
+   },
+   {
+    "span": "silicates",
+    "kind": "generic"
+   },
+   {
+    "span": "talc",
+    "kind": "specific"
+   },
+   {
+    "span": "kaolin",
+    "kind": "specific"
+   },
+   {
+    "span": "limestone",
+    "kind": "specific"
+   },
+   {
+    "span": "lime",
+    "kind": "specific"
+   },
+   {
+    "span": "chalk",
+    "kind": "specific"
+   },
+   {
+    "span": "bole",
+    "kind": "specific"
+   },
+   {
+    "span": "loess",
+    "kind": "specific"
+   },
+   {
+    "span": "clay",
+    "kind": "generic"
+   },
+   {
+    "span": "dolomite",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   },
+   {
+    "span": "calcium and magnesium sulfate",
+    "kind": "specific",
+    "note": "printed as one elided pair; names calcium sulfate and magnesium sulfate"
+   },
+   {
+    "span": "magnesium oxide",
+    "kind": "specific"
+   },
+   {
+    "span": "ground plastics",
+    "kind": "generic"
+   },
+   {
+    "span": "fertilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "ammonium sulfate",
+    "kind": "specific"
+   },
+   {
+    "span": "ammonium phosphate",
+    "kind": "specific"
+   },
+   {
+    "span": "ammonium nitrate",
+    "kind": "specific"
+   },
+   {
+    "span": "ureas",
+    "kind": "generic"
+   },
+   {
+    "span": "plant products",
+    "kind": "generic"
+   },
+   {
+    "span": "cereal flour",
+    "kind": "generic"
+   },
+   {
+    "span": "tree bark",
+    "kind": "generic"
+   },
+   {
+    "span": "wood and nutshell flour",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose powder",
+    "kind": "specific"
+   },
+   {
+    "span": "drying aids",
+    "kind": "generic"
+   }
+  ],
+  "638": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "solid carrier",
+    "kind": "generic"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   },
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "Solid carriers",
+    "kind": "generic"
+   },
+   {
+    "span": "mineral earths",
+    "kind": "generic"
+   },
+   {
+    "span": "silicic acids",
+    "kind": "specific"
+   },
+   {
+    "span": "silica gels",
+    "kind": "specific"
+   },
+   {
+    "span": "silicates",
+    "kind": "generic"
+   },
+   {
+    "span": "talc",
+    "kind": "specific"
+   },
+   {
+    "span": "kaolin",
+    "kind": "specific"
+   },
+   {
+    "span": "limestone",
+    "kind": "specific"
+   },
+   {
+    "span": "lime",
+    "kind": "specific"
+   },
+   {
+    "span": "chalk",
+    "kind": "specific"
+   },
+   {
+    "span": "bole",
+    "kind": "specific"
+   },
+   {
+    "span": "loess",
+    "kind": "specific"
+   },
+   {
+    "span": "clay",
+    "kind": "generic"
+   },
+   {
+    "span": "dolomite",
+    "kind": "specific"
+   },
+   {
+    "span": "diatomaceous earth",
+    "kind": "specific"
+   },
+   {
+    "span": "calcium and magnesium sulfate",
+    "kind": "specific",
+    "note": "printed as one elided pair; names calcium sulfate and magnesium sulfate"
+   },
+   {
+    "span": "magnesium oxide",
+    "kind": "specific"
+   },
+   {
+    "span": "ground plastics",
+    "kind": "generic"
+   },
+   {
+    "span": "fertilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "ammonium sulfate",
+    "kind": "specific"
+   },
+   {
+    "span": "ammonium phosphate",
+    "kind": "specific"
+   },
+   {
+    "span": "ammonium nitrate",
+    "kind": "specific"
+   },
+   {
+    "span": "ureas",
+    "kind": "generic"
+   },
+   {
+    "span": "plant products",
+    "kind": "generic"
+   },
+   {
+    "span": "cereal flour",
+    "kind": "generic"
+   },
+   {
+    "span": "tree bark",
+    "kind": "generic"
+   },
+   {
+    "span": "wood and nutshell flour",
+    "kind": "generic"
+   },
+   {
+    "span": "cellulose powder",
+    "kind": "specific"
+   },
+   {
+    "span": "drying aids",
+    "kind": "generic"
+   }
+  ],
+  "639": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "protective colloids",
+    "kind": "generic"
+   }
+  ],
+  "640": [
+   {
+    "span": "surface-active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "surfactants",
+    "kind": "generic"
+   },
+   {
+    "span": "protective colloids",
+    "kind": "generic"
+   }
+  ],
+  "641": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "other active substances",
+    "kind": "generic"
+   }
+  ],
+  "642": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "other active substances",
+    "kind": "generic"
+   }
+  ],
+  "643": [],
+  "644": [],
+  "645": [],
+  "646": [],
+  "647": [
+   {
+    "span": "sodium salt of diisobutylnaphthalenesulfonic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "sodium salt of a ligninsulfonic acid",
+    "kind": "generic"
+   },
+   {
+    "span": "sulfite waste liquor",
+    "kind": "generic"
+   },
+   {
+    "span": "silica gel",
+    "kind": "specific"
+   }
+  ],
+  "648": [
+   {
+    "span": "sodium salt of diisobutylnaphthalenesulfonic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "sodium salt of a ligninsulfonic acid",
+    "kind": "generic"
+   },
+   {
+    "span": "sulfite waste liquor",
+    "kind": "generic"
+   },
+   {
+    "span": "silica gel",
+    "kind": "specific"
+   }
+  ],
+  "649": [],
+  "650": [],
+  "651": [
+   {
+    "span": "kaolin",
+    "kind": "specific"
+   }
+  ],
+  "652": [
+   {
+    "span": "kaolin",
+    "kind": "specific"
+   }
+  ],
+  "653": [],
+  "654": [],
+  "655": [
+   {
+    "span": "calcium salt of dodecylbenzenesulfonic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "fatty alcohol polyglycol ether",
+    "kind": "generic"
+   },
+   {
+    "span": "sodium salt of a phenolsulfonic acid urea formaldehyde condensate",
+    "kind": "generic"
+   },
+   {
+    "span": "paraffinic mineral oil",
+    "kind": "generic"
+   }
+  ],
+  "656": [
+   {
+    "span": "calcium salt of dodecylbenzenesulfonic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "fatty alcohol polyglycol ether",
+    "kind": "generic"
+   },
+   {
+    "span": "sodium salt of a phenolsulfonic acid urea formaldehyde condensate",
+    "kind": "generic"
+   },
+   {
+    "span": "paraffinic mineral oil",
+    "kind": "generic"
+   }
+  ],
+  "657": [],
+  "658": [],
+  "659": [
+   {
+    "span": "dispersants",
+    "kind": "generic"
+   },
+   {
+    "span": "wetting agents",
+    "kind": "generic"
+   },
+   {
+    "span": "paraffinic mineral oil",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "660": [
+   {
+    "span": "dispersants",
+    "kind": "generic"
+   },
+   {
+    "span": "wetting agents",
+    "kind": "generic"
+   },
+   {
+    "span": "paraffinic mineral oil",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "661": [],
+  "662": [],
+  "663": [
+   {
+    "span": "poly(ethylene glycol) (propylene glycol) block copolymer",
+    "kind": "generic"
+   },
+   {
+    "span": "phenolsulfonic acid formaldehyde condensate",
+    "kind": "generic"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   },
+   {
+    "span": "thickeners",
+    "kind": "generic"
+   },
+   {
+    "span": "foam suppressants",
+    "kind": "generic"
+   },
+   {
+    "span": "propylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "664": [
+   {
+    "span": "poly(ethylene glycol) (propylene glycol) block copolymer",
+    "kind": "generic"
+   },
+   {
+    "span": "phenolsulfonic acid formaldehyde condensate",
+    "kind": "generic"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   },
+   {
+    "span": "thickeners",
+    "kind": "generic"
+   },
+   {
+    "span": "foam suppressants",
+    "kind": "generic"
+   },
+   {
+    "span": "propylene glycol",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "665": [],
+  "666": [],
+  "667": [
+   {
+    "span": "dispersants",
+    "kind": "generic"
+   },
+   {
+    "span": "wetting agents",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "668": [
+   {
+    "span": "dispersants",
+    "kind": "generic"
+   },
+   {
+    "span": "wetting agents",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "669": [],
+  "670": [],
+  "671": [
+   {
+    "span": "dispersants",
+    "kind": "generic"
+   },
+   {
+    "span": "wetting agents",
+    "kind": "generic"
+   }
+  ],
+  "672": [
+   {
+    "span": "dispersants",
+    "kind": "generic"
+   },
+   {
+    "span": "wetting agents",
+    "kind": "generic"
+   }
+  ],
+  "674": [],
+  "676": [
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "677": [
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "678": [],
+  "679": [],
+  "680": [
+   {
+    "span": "dispersants",
+    "kind": "generic"
+   },
+   {
+    "span": "wetting agents",
+    "kind": "generic"
+   },
+   {
+    "span": "silica gel",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "681": [
+   {
+    "span": "dispersants",
+    "kind": "generic"
+   },
+   {
+    "span": "wetting agents",
+    "kind": "generic"
+   },
+   {
+    "span": "silica gel",
+    "kind": "specific"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "682": [],
+  "683": [],
+  "684": [
+   {
+    "span": "dispersant",
+    "kind": "generic"
+   },
+   {
+    "span": "gelling agent",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvent",
+    "kind": "generic"
+   }
+  ],
+  "685": [
+   {
+    "span": "dispersant",
+    "kind": "generic"
+   },
+   {
+    "span": "gelling agent",
+    "kind": "generic"
+   },
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "organic solvent",
+    "kind": "generic"
+   }
+  ],
+  "686": [],
+  "687": [],
+  "688": [
+   {
+    "span": "carriers",
+    "kind": "generic"
+   }
+  ],
+  "689": [
+   {
+    "span": "carriers",
+    "kind": "generic"
+   }
+  ],
+  "690": [
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "fertilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "other active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "mineral salts",
+    "kind": "generic"
+   },
+   {
+    "span": "non-phytotoxic oils",
+    "kind": "generic"
+   },
+   {
+    "span": "oil concentrates",
+    "kind": "generic"
+   }
+  ],
+  "691": [
+   {
+    "span": "water",
+    "kind": "specific"
+   },
+   {
+    "span": "fertilizers",
+    "kind": "generic"
+   },
+   {
+    "span": "other active substances",
+    "kind": "generic"
+   },
+   {
+    "span": "mineral salts",
+    "kind": "generic"
+   },
+   {
+    "span": "non-phytotoxic oils",
+    "kind": "generic"
+   },
+   {
+    "span": "oil concentrates",
+    "kind": "generic"
+   }
+  ],
+  "692": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "693": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "694": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "695": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "696": [],
+  "697": [],
+  "698": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "699": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "700": [],
+  "701": [],
+  "702": [],
+  "703": [],
+  "704": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "705": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   }
+  ],
+  "706": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "safeners",
+    "kind": "generic"
+   }
+  ],
+  "707": [
+   {
+    "span": "tembotrione",
+    "kind": "specific"
+   },
+   {
+    "span": "safeners",
+    "kind": "generic"
+   }
+  ],
+  "708": [
+   {
+    "span": "1,2,4-thiadiazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "1,3,4-thiadiazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "amides",
+    "kind": "generic"
+   },
+   {
+    "span": "aminophosphoric acids",
+    "kind": "generic"
+   },
+   {
+    "span": "aminotriazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "anilides",
+    "kind": "generic"
+   },
+   {
+    "span": "aryloxy-/heteroaryloxyalkanoic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "benzoic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "benzothiadiazinones",
+    "kind": "generic"
+   },
+   {
+    "span": "2-(heteroyl-/aroyl)-1,3-cyclohexanediones",
+    "kind": "generic"
+   },
+   {
+    "span": "heteroaryl aryl ketones",
+    "kind": "generic"
+   },
+   {
+    "span": "benzylisoxazolidinones",
+    "kind": "generic"
+   },
+   {
+    "span": "meta-CF3-phenyl derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "carbamates",
+    "kind": "generic"
+   },
+   {
+    "span": "quinolinecarboxylic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "chloracetanilides",
+    "kind": "generic"
+   },
+   {
+    "span": "cyclohexanone oxime ether derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "diazines",
+    "kind": "generic"
+   },
+   {
+    "span": "dichloropropionic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "dihydrobenzofurans",
+    "kind": "generic"
+   },
+   {
+    "span": "dihydrofuran-3-ones",
+    "kind": "generic"
+   },
+   {
+    "span": "dinitroanilines",
+    "kind": "generic"
+   },
+   {
+    "span": "dinitrophenols",
+    "kind": "generic"
+   },
+   {
+    "span": "diphenyl ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "dipyridyls",
+    "kind": "generic"
+   },
+   {
+    "span": "halogen-carboxylic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "ureas",
+    "kind": "generic"
+   },
+   {
+    "span": "3-phenyluracils",
+    "kind": "generic"
+   },
+   {
+    "span": "imidazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "imidazolinones",
+    "kind": "generic"
+   },
+   {
+    "span": "N-phenyl-3,4,5,6-tetra-hydrophthalimides",
+    "kind": "generic"
+   },
+   {
+    "span": "oxadiazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "oxiranes",
+    "kind": "generic"
+   },
+   {
+    "span": "phenols",
+    "kind": "generic"
+   },
+   {
+    "span": "aryloxy- and heteroaryloxyphenoxypropionic acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "phenylacetic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "2-phenylpropionic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "pyrazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "phenylpyrazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "pyridazines",
+    "kind": "generic"
+   },
+   {
+    "span": "pyridinecarboxylic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "pyrimidyl ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "sulfonamides",
+    "kind": "generic"
+   },
+   {
+    "span": "sulfonylureas",
+    "kind": "generic"
+   },
+   {
+    "span": "triazines",
+    "kind": "generic"
+   },
+   {
+    "span": "triazinones",
+    "kind": "generic"
+   },
+   {
+    "span": "triazolinones",
+    "kind": "generic"
+   },
+   {
+    "span": "triazolecarboxamides",
+    "kind": "generic"
+   },
+   {
+    "span": "uracils",
+    "kind": "generic"
+   },
+   {
+    "span": "phenylpyrazolines",
+    "kind": "generic"
+   },
+   {
+    "span": "isoxazolines",
+    "kind": "generic"
+   },
+   {
+    "span": "coherbicides",
+    "kind": "generic"
+   },
+   {
+    "span": "terbuthylazin",
+    "kind": "specific"
+   },
+   {
+    "span": "bromoxynil",
+    "kind": "specific"
+   },
+   {
+    "span": "C4-C8 carboxylic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "dicamba",
+    "kind": "specific"
+   },
+   {
+    "span": "S-metolachlor",
+    "kind": "specific"
+   },
+   {
+    "span": "pethoxamid",
+    "kind": "specific"
+   },
+   {
+    "span": "safeners",
+    "kind": "generic"
+   },
+   {
+    "span": "isoxadifen",
+    "kind": "specific"
+   }
+  ],
+  "709": [
+   {
+    "span": "1,2,4-thiadiazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "1,3,4-thiadiazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "amides",
+    "kind": "generic"
+   },
+   {
+    "span": "aminophosphoric acids",
+    "kind": "generic"
+   },
+   {
+    "span": "aminotriazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "anilides",
+    "kind": "generic"
+   },
+   {
+    "span": "aryloxy-/heteroaryloxyalkanoic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "benzoic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "benzothiadiazinones",
+    "kind": "generic"
+   },
+   {
+    "span": "2-(heteroyl-/aroyl)-1,3-cyclohexanediones",
+    "kind": "generic"
+   },
+   {
+    "span": "heteroaryl aryl ketones",
+    "kind": "generic"
+   },
+   {
+    "span": "benzylisoxazolidinones",
+    "kind": "generic"
+   },
+   {
+    "span": "meta-CF3-phenyl derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "carbamates",
+    "kind": "generic"
+   },
+   {
+    "span": "quinolinecarboxylic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "chloracetanilides",
+    "kind": "generic"
+   },
+   {
+    "span": "cyclohexanone oxime ether derivatives",
+    "kind": "generic"
+   },
+   {
+    "span": "diazines",
+    "kind": "generic"
+   },
+   {
+    "span": "dichloropropionic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "dihydrobenzofurans",
+    "kind": "generic"
+   },
+   {
+    "span": "dihydrofuran-3-ones",
+    "kind": "generic"
+   },
+   {
+    "span": "dinitroanilines",
+    "kind": "generic"
+   },
+   {
+    "span": "dinitrophenols",
+    "kind": "generic"
+   },
+   {
+    "span": "diphenyl ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "dipyridyls",
+    "kind": "generic"
+   },
+   {
+    "span": "halogen-carboxylic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "ureas",
+    "kind": "generic"
+   },
+   {
+    "span": "3-phenyluracils",
+    "kind": "generic"
+   },
+   {
+    "span": "imidazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "imidazolinones",
+    "kind": "generic"
+   },
+   {
+    "span": "N-phenyl-3,4,5,6-tetra-hydrophthalimides",
+    "kind": "generic"
+   },
+   {
+    "span": "oxadiazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "oxiranes",
+    "kind": "generic"
+   },
+   {
+    "span": "phenols",
+    "kind": "generic"
+   },
+   {
+    "span": "aryloxy- and heteroaryloxyphenoxypropionic acid esters",
+    "kind": "generic"
+   },
+   {
+    "span": "phenylacetic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "2-phenylpropionic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "pyrazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "phenylpyrazoles",
+    "kind": "generic"
+   },
+   {
+    "span": "pyridazines",
+    "kind": "generic"
+   },
+   {
+    "span": "pyridinecarboxylic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "pyrimidyl ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "sulfonamides",
+    "kind": "generic"
+   },
+   {
+    "span": "sulfonylureas",
+    "kind": "generic"
+   },
+   {
+    "span": "triazines",
+    "kind": "generic"
+   },
+   {
+    "span": "triazinones",
+    "kind": "generic"
+   },
+   {
+    "span": "triazolinones",
+    "kind": "generic"
+   },
+   {
+    "span": "triazolecarboxamides",
+    "kind": "generic"
+   },
+   {
+    "span": "uracils",
+    "kind": "generic"
+   },
+   {
+    "span": "phenylpyrazolines",
+    "kind": "generic"
+   },
+   {
+    "span": "isoxazolines",
+    "kind": "generic"
+   },
+   {
+    "span": "coherbicides",
+    "kind": "generic"
+   },
+   {
+    "span": "terbuthylazin",
+    "kind": "specific"
+   },
+   {
+    "span": "bromoxynil",
+    "kind": "specific"
+   },
+   {
+    "span": "C4-C8 carboxylic acids",
+    "kind": "generic"
+   },
+   {
+    "span": "dicamba",
+    "kind": "specific"
+   },
+   {
+    "span": "S-metolachlor",
+    "kind": "specific"
+   },
+   {
+    "span": "pethoxamid",
+    "kind": "specific"
+   },
+   {
+    "span": "safeners",
+    "kind": "generic"
+   },
+   {
+    "span": "isoxadifen",
+    "kind": "specific"
+   }
+  ],
+  "710": [
+   {
+    "span": "herbicides",
+    "kind": "generic"
+   },
+   {
+    "span": "mineral salt solutions",
+    "kind": "generic"
+   },
+   {
+    "span": "non-phytotoxic oils",
+    "kind": "generic"
+   },
+   {
+    "span": "oil concentrates",
+    "kind": "generic"
+   },
+   {
+    "span": "Additives",
+    "kind": "generic"
+   }
+  ],
+  "711": [
+   {
+    "span": "herbicides",
+    "kind": "generic"
+   },
+   {
+    "span": "mineral salt solutions",
+    "kind": "generic"
+   },
+   {
+    "span": "non-phytotoxic oils",
+    "kind": "generic"
+   },
+   {
+    "span": "oil concentrates",
+    "kind": "generic"
+   },
+   {
+    "span": "Additives",
+    "kind": "generic"
+   }
+  ],
+  "712": [],
+  "713": [],
+  "714": [
+   {
+    "span": "2-[2-chloro-4-methyl-sulfonyl-3-(2,2,2-trifluoroethoxymethyebenzoyl]-cyclohexan-1,3-dione",
+    "kind": "specific",
+    "note": "the printed name is OCR-damaged: 'trifluoroethoxymethyebenzoyl' for 'trifluoroethoxymethyl)benzoyl'. Recorded exactly as the line reads"
+   }
+  ],
+  "715": [],
+  "716": [],
+  "717": [],
+  "718": [],
+  "719": [],
+  "720": [],
+  "721": [],
+  "722": [],
+  "723": [],
+  "724": [],
+  "725": [],
+  "726": [
+   {
+    "span": "2-[2-chloro-4-methyl-sulfonyl-3-(2,2,2-trifluoroethoxymethyebenzoyl]-cyclohexan-1,3-dione",
+    "kind": "specific",
+    "note": "the printed name is OCR-damaged: 'trifluoroethoxymethyebenzoyl' for 'trifluoroethoxymethyl)benzoyl'. Recorded exactly as the line reads"
+   }
+  ],
+  "727": [],
+  "728": [],
+  "729": [],
+  "730": [],
+  "731": [],
+  "732": [],
+  "733": [],
+  "734": [],
+  "735": [],
+  "736": [],
+  "737": [],
+  "738": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "739": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "741": [],
+  "743": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "744": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "745": [],
+  "746": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "polar organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "cyclic ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "nitromethane",
+    "kind": "specific"
+   },
+   {
+    "span": "acetic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "methyl ethyl ketone",
+    "kind": "specific"
+   },
+   {
+    "span": "pyridine",
+    "kind": "specific"
+   },
+   {
+    "span": "dimethyl sulfoxide",
+    "kind": "specific"
+   }
+  ],
+  "747": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "748": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "749": [],
+  "750": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "polar organic solvent",
+    "kind": "generic"
+   },
+   {
+    "span": "cyclic ethers",
+    "kind": "generic"
+   },
+   {
+    "span": "acetonitrile",
+    "kind": "specific"
+   },
+   {
+    "span": "methanol",
+    "kind": "specific"
+   },
+   {
+    "span": "nitromethane",
+    "kind": "specific"
+   },
+   {
+    "span": "acetic acid",
+    "kind": "specific"
+   },
+   {
+    "span": "methyl ethyl ketone",
+    "kind": "specific"
+   },
+   {
+    "span": "pyridine",
+    "kind": "specific"
+   },
+   {
+    "span": "dimethyl sulfoxide",
+    "kind": "specific"
+   }
+  ],
+  "751": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "752": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "753": [
+   {
+    "span": "2-[2-chloro-4-methyl-sulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]-cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "754": [
+   {
+    "span": "2-[2-chloro-4-methyl-sulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]-cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "755": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "756": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "757": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]-cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "758": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]-cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "759": [],
+  "760": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethyl-propanol",
+    "kind": "specific"
+   },
+   {
+    "span": "aromatic hydrocarbon",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic hydrocarbon",
+    "kind": "generic"
+   }
+  ],
+  "761": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "762": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "763": [],
+  "764": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "2,2-dimethyl-propanol",
+    "kind": "specific"
+   },
+   {
+    "span": "aromatic hydrocarbon",
+    "kind": "generic"
+   },
+   {
+    "span": "aliphatic hydrocarbon",
+    "kind": "generic"
+   }
+  ],
+  "765": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "766": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "767": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   }
+  ],
+  "768": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   }
+  ],
+  "769": [],
+  "770": [],
+  "771": [],
+  "772": [],
+  "773": [
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "774": [
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "775": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   }
+  ],
+  "776": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   },
+   {
+    "span": "additives",
+    "kind": "generic"
+   }
+  ],
+  "777": [],
+  "778": [],
+  "779": [],
+  "780": [],
+  "781": [
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "782": [
+   {
+    "span": "water",
+    "kind": "specific"
+   }
+  ],
+  "783": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "784": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "785": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ],
+  "786": [
+   {
+    "span": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione",
+    "kind": "specific"
+   }
+  ]
+ }
+}

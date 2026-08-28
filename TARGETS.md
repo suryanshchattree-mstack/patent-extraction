@@ -27,7 +27,7 @@ than silent.
 | 2 | [`CN109678767A`](https://patents.google.com/patent/CN109678767A/en) | **Yash** | done | 66190615 | CN | Exact Molecule | A kind of synthesis technology of herbicide tembotrions |
 | 3 | [`CN111440099B`](https://patents.google.com/patent/CN111440099B/en) | **Sathvik** | done | 71652835 | CN | Exact Molecule | Purification method of tembotrione product |
 | 4 | [`EP2045236A1`](https://patents.google.com/patent/EP2045236A1/en) | **Sathvik** | done | 38984191 | EP | Exact Molecule | Thermodynamically stable crystal modification of 2-({2-chloro-4- <br>*same family, do not also annotate:* US8722582B2, WO2009027004A1 |
-| 5 | [`US20100041557A1`](https://patents.google.com/patent/US20100041557A1/en) | **Sathvik** | claimed | 39415042 | US | Exact Molecule | Crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifl <br>*same family, do not also annotate:* US8309769B2 |
+| 5 | [`US20100041557A1`](https://patents.google.com/patent/US20100041557A1/en) | **Sathvik** | annotated, census over budget | 39415042 | US | Exact Molecule | Crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifl <br>*same family, do not also annotate:* US8309769B2 |
 | 6 | [`WO2000021924A1`](https://patents.google.com/patent/WO2000021924A1/en) |  |  | 7884081 | WO | Exact Molecule | Benzoylcyclohexandiones, method for the production and use there |
 | 7 | [`WO2024109718A1`](https://patents.google.com/patent/WO2024109718A1/en) |  |  | 91195273 | WO | Exact Molecule | Method for preparing cyclosulfonone, and intermediates |
 | 8 | [`CN106008290A`](https://patents.google.com/patent/CN106008290A/en) |  |  | 57098239 | CN | Intermediate Molecule | Method for preparing tembotrions |
@@ -65,8 +65,11 @@ benzoic acid and 3.149 against the benzoyl chloride the paragraph names.
 ## One note, on row 4
 
 `EP2045236A1` is `done`. `run_pipeline.py` reaches the end of all 18 stages and
-`selfcheck` reports **37 pass, 1 warn, 0 fail**, at 7.5 minutes of the 15 minute budget
-over 52 census claims. `validate.py` is clean on all five artifacts. The structures gate
+`selfcheck` reports **37 pass, 1 warn, 0 fail**, at 4.6 minutes of the 15 minute budget
+over 32 census claims. Those two figures read 7.5 minutes over 52 claims when this run was
+finished, and they are lower now because two defects found on row 5 were fixed in
+`verify.py` and this run re-measured against the same gold. Nothing in the annotation
+changed. `pipeline/contracts/PACE-MEASUREMENT.md` carries both numbers and the reason. `validate.py` is clean on all five artifacts. The structures gate
 passes on **one** curated entry and the translations gate on zero.
 
 **This is the first patent here that is neither Chinese nor a synthesis**, and both facts
@@ -91,6 +94,29 @@ tokeniser cannot read the German decimal comma, so `124,0°C` parses as 124 with
 plus a temperature of zero, and `1,637 Mg/m3` becomes the three numbers 1, 637 and 3.
 Nine claims about melting points, densities and polymorphic purity cannot match the
 values printed beside them. The honest fix is in `verify.py`, not in the gold.
+
+## One note, on row 5
+
+`US20100041557A1` is **annotated but not `done`**. `run_pipeline.py` reaches the end of
+all 18 stages, the structures and translations gates both pass and `validate.py` is
+clean, but `selfcheck` reports **33 pass, 3 warn, 2 fail**. Both failures are the same
+measurement and it is one claim wide: the reviewer census is **104 claims, 15.1 minutes
+at the 8.7 s p90, against a 15.0 minute budget**. At the measured per-kind medians the
+same queue costs 10.5 minutes and fits.
+
+It is not marked `done` because the definition is `selfcheck` 0 fail, and it would be
+dishonest to reach that here. The remaining excess is 23 unit conversions the A2 prompt
+mandates and the engine cannot ground by construction, 22 findings from the independent
+read which are a census by design, 6 OPSIN disagreements CLAUDE.md rule 8 says to record
+and never resolve, and 5 crystallographic angles the engine tokenises as temperatures.
+Closing any of them means recording something untrue.
+
+Getting here fixed three defects in the annotation and two in the engine, and the engine
+pair is why row 4 now reads 32 census claims where its own note says 52. The whole
+measurement, before and after, is in `pipeline/contracts/PACE-MEASUREMENT.md`. The most
+useful finding for anyone choosing what to annotate next: this is the second polymorph
+patent, and it is what showed that most of EP2045236A1's census was the engine rather
+than the patent.
 
 **Read this before starting row 12, `DE10113137A1`.** The caveat below about
 `resolve_translations.py` being blind to German is now confirmed by measurement rather

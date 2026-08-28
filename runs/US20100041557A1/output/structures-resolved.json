@@ -1,0 +1,4869 @@
+[
+  {
+    "identifier": "tembotrione",
+    "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+    "canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+    "formula": "C17H16ClF3O6S",
+    "mw": 440.82,
+    "origin": "patent_drawing",
+    "svg": "structures/tembotrione.svg",
+    "aliases": [
+      "tembotrione crystalline form A",
+      "tembotrione crystalline form C",
+      "tembotrione crystalline form B"
+    ],
+    "note": "Drawn in the patent on p04. Structure from the record's own aliases[].",
+    "name_check": {
+      "query": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoro-ethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+      "via": "alias",
+      "outcome": "agree",
+      "opsin_canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+      "note_en": "An independent parse of the name lands on the same molecule."
+    }
+  },
+  {
+    "identifier": "tembotrione crystalline form A",
+    "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+    "canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+    "formula": "C17H16ClF3O6S",
+    "mw": 440.82,
+    "origin": "patent_drawing",
+    "svg": "structures/tembotrione.svg",
+    "aliases": [
+      "tembotrione",
+      "tembotrione crystalline form C",
+      "tembotrione crystalline form B"
+    ],
+    "note": "Drawn in the patent on p04. Structure from input/structures-curated.json. Tembotrione, the active substance of this patent, drawn on page 4 and read into the enriched source at line 74. This one entry carries the three identifiers that name a crystalline form of it. THE LIMIT, STATED BECAUSE THE STRUCTURE CANNOT STATE IT: polymorphism is a property of the solid, not of the molecule. Forms A, B and C are one compound in three lattices, so they share this SMILES exactly, and no structure in this file distinguishes them. What distinguishes them in this patent is the X-ray powder diffraction pattern, which the gold carries on the compound records and not here. A consumer that treats these three as three molecules is wrong; a consumer that treats a structural match between them as evidence that two records describe the same FORM is also wrong. Earlier in this run the entry also carried aliases for 'mixture of ... form A and ... form B', for the B and C mixture and for '... both unchanged'. Those strings were coined product_name values in A2, not names the patent prints, and A1 rule 2 wants the identifier exactly as written while rule 3 forbids inventing one. They were removed from A2 and A3 rather than given a structure, so they are no longer identifiers in the gold and the curated table would refuse them.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'tembotrione crystalline form A', 'form A', 'the form A', 'crystalline form A', 'Form A', 'modification A', 'forms A or C'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "tembotrione crystalline form C",
+    "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+    "canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+    "formula": "C17H16ClF3O6S",
+    "mw": 440.82,
+    "origin": "patent_drawing",
+    "svg": "structures/tembotrione.svg",
+    "aliases": [
+      "tembotrione",
+      "tembotrione crystalline form A",
+      "tembotrione crystalline form B"
+    ],
+    "note": "Drawn in the patent on p04. Structure from input/structures-curated.json. Tembotrione, the active substance of this patent, drawn on page 4 and read into the enriched source at line 74. This one entry carries the three identifiers that name a crystalline form of it. THE LIMIT, STATED BECAUSE THE STRUCTURE CANNOT STATE IT: polymorphism is a property of the solid, not of the molecule. Forms A, B and C are one compound in three lattices, so they share this SMILES exactly, and no structure in this file distinguishes them. What distinguishes them in this patent is the X-ray powder diffraction pattern, which the gold carries on the compound records and not here. A consumer that treats these three as three molecules is wrong; a consumer that treats a structural match between them as evidence that two records describe the same FORM is also wrong. Earlier in this run the entry also carried aliases for 'mixture of ... form A and ... form B', for the B and C mixture and for '... both unchanged'. Those strings were coined product_name values in A2, not names the patent prints, and A1 rule 2 wants the identifier exactly as written while rule 3 forbids inventing one. They were removed from A2 and A3 rather than given a structure, so they are no longer identifiers in the gold and the curated table would refuse them.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'tembotrione crystalline form C', 'form C', 'crystalline form C', 'Form C', 'form A or C', 'forms A or C', 'modification C'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "water",
+    "smiles": "O",
+    "canonical": "O",
+    "formula": "H2O",
+    "mw": 18.02,
+    "origin": "name_parsed",
+    "svg": "structures/water.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "water",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "isoxadifen",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'isoxadifen'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "cyclic ethers",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'cyclic ethers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "acetonitrile",
+    "smiles": "C(C)#N",
+    "canonical": "CC#N",
+    "formula": "C2H3N",
+    "mw": 41.05,
+    "origin": "name_parsed",
+    "svg": "structures/acetonitrile.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "acetonitrile",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CC#N",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "methanol",
+    "smiles": "CO",
+    "canonical": "CO",
+    "formula": "CH4O",
+    "mw": 32.04,
+    "origin": "name_parsed",
+    "svg": "structures/methanol.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "methanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "nitromethane",
+    "smiles": "[N+](=O)([O-])C",
+    "canonical": "C[N+](=O)[O-]",
+    "formula": "CH3NO2",
+    "mw": 61.04,
+    "origin": "name_parsed",
+    "svg": "structures/nitromethane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "nitromethane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "C[N+](=O)[O-]",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "acetic acid",
+    "smiles": "C(C)(=O)O",
+    "canonical": "CC(=O)O",
+    "formula": "C2H4O2",
+    "mw": 60.05,
+    "origin": "name_parsed",
+    "svg": "structures/acetic-acid.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "acetic acid",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CC(=O)O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "methyl ethyl ketone",
+    "smiles": "C(C)C(=O)C",
+    "canonical": "CCC(C)=O",
+    "formula": "C4H8O",
+    "mw": 72.11,
+    "origin": "name_parsed",
+    "svg": "structures/methyl-ethyl-ketone.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "methyl ethyl ketone",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCC(C)=O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "pyridine",
+    "smiles": "N1=CC=CC=C1",
+    "canonical": "c1ccncc1",
+    "formula": "C5H5N",
+    "mw": 79.1,
+    "origin": "name_parsed",
+    "svg": "structures/pyridine.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "pyridine",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "c1ccncc1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "dimethyl sulfoxide",
+    "smiles": "CS(=O)C",
+    "canonical": "CS(C)=O",
+    "formula": "C2H6OS",
+    "mw": 78.14,
+    "origin": "name_parsed",
+    "svg": "structures/dimethyl-sulfoxide.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "dimethyl sulfoxide",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CS(C)=O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "2,2-dimethylpropanol",
+    "smiles": "CC(CO)(C)C",
+    "canonical": "CC(C)(C)CO",
+    "formula": "C5H12O",
+    "mw": 88.15,
+    "origin": "name_parsed",
+    "svg": "structures/2-2-dimethylpropanol.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "2,2-dimethylpropanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CC(C)(C)CO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "aromatic hydrocarbon",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'aromatic hydrocarbon', 'an aromatic hydrocarbon'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "aliphatic hydrocarbon",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'aliphatic hydrocarbon', 'an aliphatic hydrocarbon'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "additives customary for the formulation of plant protection agents",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'additives customary for the formulation of plant protection agents'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "n-pentanol",
+    "smiles": "C(CCCC)O",
+    "canonical": "CCCCCO",
+    "formula": "C5H12O",
+    "mw": 88.15,
+    "origin": "name_parsed",
+    "svg": "structures/n-pentanol.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "n-pentanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCCO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "tembotrione crystalline form B",
+    "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+    "canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+    "formula": "C17H16ClF3O6S",
+    "mw": 440.82,
+    "origin": "patent_drawing",
+    "svg": "structures/tembotrione.svg",
+    "aliases": [
+      "tembotrione",
+      "tembotrione crystalline form A",
+      "tembotrione crystalline form C"
+    ],
+    "note": "Drawn in the patent on p04. Structure from input/structures-curated.json. Tembotrione, the active substance of this patent, drawn on page 4 and read into the enriched source at line 74. This one entry carries the three identifiers that name a crystalline form of it. THE LIMIT, STATED BECAUSE THE STRUCTURE CANNOT STATE IT: polymorphism is a property of the solid, not of the molecule. Forms A, B and C are one compound in three lattices, so they share this SMILES exactly, and no structure in this file distinguishes them. What distinguishes them in this patent is the X-ray powder diffraction pattern, which the gold carries on the compound records and not here. A consumer that treats these three as three molecules is wrong; a consumer that treats a structural match between them as evidence that two records describe the same FORM is also wrong. Earlier in this run the entry also carried aliases for 'mixture of ... form A and ... form B', for the B and C mixture and for '... both unchanged'. Those strings were coined product_name values in A2, not names the patent prints, and A1 rule 2 wants the identifier exactly as written while rule 3 forbids inventing one. They were removed from A2 and A3 rather than given a structure, so they are no longer identifiers in the gold and the curated table would refuse them.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'tembotrione crystalline form B', 'form B', 'Form B', 'modification B'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "ethyl acetate",
+    "smiles": "C(C)(=O)OCC",
+    "canonical": "CCOC(C)=O",
+    "formula": "C4H8O2",
+    "mw": 88.11,
+    "origin": "name_parsed",
+    "svg": "structures/ethyl-acetate.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "ethyl acetate",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCOC(C)=O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "ethanol",
+    "smiles": "C(C)O",
+    "canonical": "CCO",
+    "formula": "C2H6O",
+    "mw": 46.07,
+    "origin": "name_parsed",
+    "svg": "structures/ethanol.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "ethanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "1-propanol",
+    "smiles": "C(CC)O",
+    "canonical": "CCCO",
+    "formula": "C3H8O",
+    "mw": 60.1,
+    "origin": "name_parsed",
+    "svg": "structures/propanol.svg",
+    "aliases": [
+      "propanol"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "1-propanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "1-butanol",
+    "smiles": "C(CCC)O",
+    "canonical": "CCCCO",
+    "formula": "C4H10O",
+    "mw": 74.12,
+    "origin": "name_parsed",
+    "svg": "structures/butanol.svg",
+    "aliases": [
+      "butanol"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "1-butanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "2-propanol",
+    "smiles": "CC(C)O",
+    "canonical": "CC(C)O",
+    "formula": "C3H8O",
+    "mw": 60.1,
+    "origin": "name_parsed",
+    "svg": "structures/2-propanol.svg",
+    "aliases": [
+      "isopropanol"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "2-propanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CC(C)O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "1-hexanol",
+    "smiles": "C(CCCCC)O",
+    "canonical": "CCCCCCO",
+    "formula": "C6H14O",
+    "mw": 102.18,
+    "origin": "name_parsed",
+    "svg": "structures/1-hexanol.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "1-hexanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCCCO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "tetrachloromethane",
+    "smiles": "ClC(Cl)(Cl)Cl",
+    "canonical": "ClC(Cl)(Cl)Cl",
+    "formula": "CCl4",
+    "mw": 153.82,
+    "origin": "name_parsed",
+    "svg": "structures/tetrachloromethane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "tetrachloromethane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "ClC(Cl)(Cl)Cl",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "toluene",
+    "smiles": "CC1=CC=CC=C1",
+    "canonical": "Cc1ccccc1",
+    "formula": "C7H8",
+    "mw": 92.14,
+    "origin": "name_parsed",
+    "svg": "structures/toluene.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "toluene",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "Cc1ccccc1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "xylene",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure, because the NAME does not pin one molecule down. OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+    "name_check": {
+      "query": "xylene",
+      "via": "verbatim",
+      "outcome": "ambiguous",
+      "opsin_canonical": "Cc1ccccc1C",
+      "note_en": "OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure."
+    }
+  },
+  {
+    "identifier": "acetone",
+    "smiles": "CC(=O)C",
+    "canonical": "CC(C)=O",
+    "formula": "C3H6O",
+    "mw": 58.08,
+    "origin": "name_parsed",
+    "svg": "structures/acetone.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "acetone",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CC(C)=O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "trichloromethane",
+    "smiles": "ClC(Cl)Cl",
+    "canonical": "ClC(Cl)Cl",
+    "formula": "CHCl3",
+    "mw": 119.38,
+    "origin": "name_parsed",
+    "svg": "structures/trichloromethane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "trichloromethane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "ClC(Cl)Cl",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "n-hexane",
+    "smiles": "CCCCCC",
+    "canonical": "CCCCCC",
+    "formula": "C6H14",
+    "mw": 86.18,
+    "origin": "name_parsed",
+    "svg": "structures/hexane.svg",
+    "aliases": [
+      "hexane"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "n-hexane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCCC",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "dichloromethane",
+    "smiles": "ClCCl",
+    "canonical": "ClCCl",
+    "formula": "CH2Cl2",
+    "mw": 84.93,
+    "origin": "name_parsed",
+    "svg": "structures/dichloromethane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "dichloromethane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "ClCCl",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "n-octane",
+    "smiles": "CCCCCCCC",
+    "canonical": "CCCCCCCC",
+    "formula": "C8H18",
+    "mw": 114.23,
+    "origin": "name_parsed",
+    "svg": "structures/octane.svg",
+    "aliases": [
+      "octane"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "n-octane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCCCCC",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "dioxan",
+    "smiles": "O1CCOCC1",
+    "canonical": "C1COCCO1",
+    "formula": "C4H8O2",
+    "mw": 88.11,
+    "origin": "name_parsed",
+    "svg": "structures/dioxan.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "dioxan",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "C1COCCO1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "n-heptane",
+    "smiles": "CCCCCCC",
+    "canonical": "CCCCCCC",
+    "formula": "C7H16",
+    "mw": 100.2,
+    "origin": "name_parsed",
+    "svg": "structures/heptane.svg",
+    "aliases": [
+      "heptane"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "n-heptane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCCCC",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "tetrahydrofuran",
+    "smiles": "O1CCCC1",
+    "canonical": "C1CCOC1",
+    "formula": "C4H8O",
+    "mw": 72.11,
+    "origin": "name_parsed",
+    "svg": "structures/tetrahydrofuran.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "tetrahydrofuran",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "C1CCOC1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "silicic acids",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'silicic acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "silica gels",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'silica gels'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "silicates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'silicates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "talc",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'talc'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "kaolin",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'kaolin', 'finely divided kaolin'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "limestone",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'limestone'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "lime",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'lime'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "chalk",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'chalk'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "bole",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'bole'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "loess",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'loess'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "clay",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'clay'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "dolomite",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'dolomite'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "diatomaceous earth",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'diatomaceous earth'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "calcium sulfate",
+    "smiles": "S(=O)(=O)([O-])[O-].[Ca+2]",
+    "canonical": "O=S(=O)([O-])[O-].[Ca+2]",
+    "formula": "CaO4S",
+    "mw": 136.14,
+    "origin": "name_parsed",
+    "svg": "structures/calcium-sulfate.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "calcium sulfate",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=S(=O)([O-])[O-].[Ca+2]",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "magnesium sulfate",
+    "smiles": "S(=O)(=O)([O-])[O-].[Mg+2]",
+    "canonical": "O=S(=O)([O-])[O-].[Mg+2]",
+    "formula": "MgO4S",
+    "mw": 120.37,
+    "origin": "name_parsed",
+    "svg": "structures/magnesium-sulfate.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "magnesium sulfate",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=S(=O)([O-])[O-].[Mg+2]",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "magnesium oxide",
+    "smiles": "[O-2].[Mg+2]",
+    "canonical": "[Mg+2].[O-2]",
+    "formula": "MgO",
+    "mw": 40.3,
+    "origin": "name_parsed",
+    "svg": "structures/magnesium-oxide.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "magnesium oxide",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "[Mg+2].[O-2]",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "ground plastics",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'ground plastics'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "ammonium sulfate",
+    "smiles": "S(=O)(=O)([O-])[O-].[NH4+].[NH4+]",
+    "canonical": "O=S(=O)([O-])[O-].[NH4+].[NH4+]",
+    "formula": "H8N2O4S",
+    "mw": 132.14,
+    "origin": "name_parsed",
+    "svg": "structures/ammonium-sulfate.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "ammonium sulfate",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=S(=O)([O-])[O-].[NH4+].[NH4+]",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "ammonium phosphate",
+    "smiles": "P(=O)([O-])([O-])[O-].[NH4+].[NH4+].[NH4+]",
+    "canonical": "O=P([O-])([O-])[O-].[NH4+].[NH4+].[NH4+]",
+    "formula": "H12N3O4P",
+    "mw": 149.09,
+    "origin": "name_parsed",
+    "svg": "structures/ammonium-phosphate.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "ammonium phosphate",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=P([O-])([O-])[O-].[NH4+].[NH4+].[NH4+]",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "ammonium nitrate",
+    "smiles": "[N+](=O)([O-])[O-].[NH4+]",
+    "canonical": "O=[N+]([O-])[O-].[NH4+]",
+    "formula": "H4N2O3",
+    "mw": 80.04,
+    "origin": "name_parsed",
+    "svg": "structures/ammonium-nitrate.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "ammonium nitrate",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=[N+]([O-])[O-].[NH4+]",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "ureas",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'ureas'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "cereal flour",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'cereal flour'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "tree bark",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'tree bark'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "wood flour",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'wood flour', 'wood and nutshell flour'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "nutshell flour",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'nutshell flour', 'wood and nutshell flour'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "cellulose powder",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'cellulose powder'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "kerosene",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'kerosene'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "diesel oil",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'diesel oil'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "coal tar oils",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'coal tar oils'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "oils of plant or animal origin",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'oils of plant or animal origin'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "paraffins",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'paraffins'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "tetrahydronaphthalene",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure, because the NAME does not pin one molecule down. OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+    "name_check": {
+      "query": "tetrahydronaphthalene",
+      "via": "verbatim",
+      "outcome": "ambiguous",
+      "opsin_canonical": "c1ccc2c(c1)CCCC2",
+      "note_en": "OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure."
+    }
+  },
+  {
+    "identifier": "alkylated naphthalenes",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkylated naphthalenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkylated benzenes",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkylated benzenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "aromatic and non-aromatic hydrocarbon mixtures",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'aromatic and non-aromatic hydrocarbon mixtures', 'Exxsol', 'Solvesso'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "propanol",
+    "smiles": "C(CC)O",
+    "canonical": "CCCO",
+    "formula": "C3H8O",
+    "mw": 60.1,
+    "origin": "name_parsed",
+    "svg": "structures/propanol.svg",
+    "aliases": [
+      "1-propanol"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "propanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "butanol",
+    "smiles": "C(CCC)O",
+    "canonical": "CCCCO",
+    "formula": "C4H10O",
+    "mw": 74.12,
+    "origin": "name_parsed",
+    "svg": "structures/butanol.svg",
+    "aliases": [
+      "1-butanol"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "butanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "cyclohexanol",
+    "smiles": "C1(CCCCC1)O",
+    "canonical": "OC1CCCCC1",
+    "formula": "C6H12O",
+    "mw": 100.16,
+    "origin": "name_parsed",
+    "svg": "structures/cyclohexanol.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "cyclohexanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "OC1CCCCC1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "cyclohexanone",
+    "smiles": "C1(CCCCC1)=O",
+    "canonical": "O=C1CCCCC1",
+    "formula": "C6H10O",
+    "mw": 98.14,
+    "origin": "name_parsed",
+    "svg": "structures/cyclohexanone.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "cyclohexanone",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=C1CCCCC1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "N-methyl-pyrrolidone",
+    "smiles": "CN1C(CCC1)=O",
+    "canonical": "CN1CCCC1=O",
+    "formula": "C5H9NO",
+    "mw": 99.13,
+    "origin": "name_parsed",
+    "svg": "structures/n-methyl-pyrrolidone.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "N-methyl-pyrrolidone",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CN1CCCC1=O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "sodium salt of diisobutylnaphthalenesulfonic acid",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'sodium salt of diisobutylnaphthalenesulfonic acid', 'the sodium salt of diisobutylnaphthalenesulfonic acid'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "sodium salt of a ligninsulfonic acid from a sulfite waste liquor",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'sodium salt of a ligninsulfonic acid from a sulfite waste liquor', 'the sodium salt of a ligninsulfonic acid from a sulfite waste liquor'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "silica gel",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure needed: trivial species, carries none of this patent's chemistry.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'silica gel', 'powdered silica gel'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "calcium salt of dodecylbenzenesulfonic acid",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'calcium salt of dodecylbenzenesulfonic acid', 'the calcium salt of dodecylbenzenesulfonic acid'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty alcohol polyglycol ether",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty alcohol polyglycol ether'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "sodium salt of a phenolsulfonic acid urea formaldehyde condensate",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'sodium salt of a phenolsulfonic acid urea formaldehyde condensate', 'the sodium salt of a phenolsulfonic acid urea formaldehyde condensate'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "paraffinic mineral oil",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'paraffinic mineral oil', 'a paraffinic mineral oil'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "dispersants",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'dispersants', 'dispersants and wetting agents', 'dispersant'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "wetting agents",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'wetting agents'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "poly(ethylene glycol) (propylene glycol) block copolymer",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'poly(ethylene glycol) (propylene glycol) block copolymer', 'a poly(ethylene glycol) (propylene glycol) block copolymer'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "phenolsulfonic acid formaldehyde condensate",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'phenolsulfonic acid formaldehyde condensate', 'a phenolsulfonic acid formaldehyde condensate'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "thickeners",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'thickeners'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "foam suppressants",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'foam suppressants'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "propylene glycol",
+    "smiles": "C(C(C)O)O",
+    "canonical": "CC(O)CO",
+    "formula": "C3H8O2",
+    "mw": 76.09,
+    "origin": "name_parsed",
+    "svg": "structures/propylene-glycol.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "propylene glycol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CC(O)CO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "gelling agent",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'gelling agent'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "organic solvent",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'organic solvent', 'an organic solvent', 'organic'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "carriers",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'carriers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "methyl glycol",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'methyl glycol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "methyl diglycol",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'methyl diglycol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "isopropanol",
+    "smiles": "C(C)(C)O",
+    "canonical": "CC(C)O",
+    "formula": "C3H8O",
+    "mw": 60.1,
+    "origin": "name_parsed",
+    "svg": "structures/2-propanol.svg",
+    "aliases": [
+      "2-propanol"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "isopropanol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CC(C)O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "glycol",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'glycol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "glycerine",
+    "smiles": "OCC(O)CO",
+    "canonical": "OCC(O)CO",
+    "formula": "C3H8O3",
+    "mw": 92.09,
+    "origin": "name_parsed",
+    "svg": "structures/glycerine.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "glycerine",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "OCC(O)CO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "diethylene glycol",
+    "smiles": "C(COCCO)O",
+    "canonical": "OCCOCCO",
+    "formula": "C4H10O3",
+    "mw": 106.12,
+    "origin": "name_parsed",
+    "svg": "structures/diethylene-glycol.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "diethylene glycol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "OCCOCCO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "phosphoric acid",
+    "smiles": "P(O)(O)(O)=O",
+    "canonical": "O=P(O)(O)O",
+    "formula": "H3O4P",
+    "mw": 97.99,
+    "origin": "name_parsed",
+    "svg": "structures/phosphoric-acid.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "phosphoric acid",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=P(O)(O)O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "boric acid",
+    "smiles": "B(O)(O)O",
+    "canonical": "OB(O)O",
+    "formula": "H3BO3",
+    "mw": 61.83,
+    "origin": "name_parsed",
+    "svg": "structures/boric-acid.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "boric acid",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "OB(O)O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "propionic acid",
+    "smiles": "C(CC)(=O)O",
+    "canonical": "CCC(=O)O",
+    "formula": "C3H6O2",
+    "mw": 74.08,
+    "origin": "name_parsed",
+    "svg": "structures/propionic-acid.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "propionic acid",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCC(=O)O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "citric acid",
+    "smiles": "C(CC(O)(C(=O)O)CC(=O)O)(=O)O",
+    "canonical": "O=C(O)CC(O)(CC(=O)O)C(=O)O",
+    "formula": "C6H8O7",
+    "mw": 192.12,
+    "origin": "name_parsed",
+    "svg": "structures/citric-acid.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "citric acid",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=C(O)CC(O)(CC(=O)O)C(=O)O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "fumaric acid",
+    "smiles": "C(\\C=C\\C(=O)O)(=O)O",
+    "canonical": "O=C(O)/C=C/C(=O)O",
+    "formula": "C4H4O4",
+    "mw": 116.07,
+    "origin": "name_parsed",
+    "svg": "structures/fumaric-acid.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "fumaric acid",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=C(O)/C=C/C(=O)O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "tartaric acid",
+    "smiles": "C(C(O)C(O)C(=O)O)(=O)O",
+    "canonical": "O=C(O)C(O)C(O)C(=O)O",
+    "formula": "C4H6O6",
+    "mw": 150.09,
+    "origin": "name_parsed",
+    "svg": "structures/tartaric-acid.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "tartaric acid",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=C(O)C(O)C(O)C(=O)O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "oxalic acid",
+    "smiles": "C(C(=O)O)(=O)O",
+    "canonical": "O=C(O)C(=O)O",
+    "formula": "C2H2O4",
+    "mw": 90.03,
+    "origin": "name_parsed",
+    "svg": "structures/oxalic-acid.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "oxalic acid",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=C(O)C(=O)O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "succinic acid",
+    "smiles": "C(CCC(=O)O)(=O)O",
+    "canonical": "O=C(O)CCC(=O)O",
+    "formula": "C4H6O4",
+    "mw": 118.09,
+    "origin": "name_parsed",
+    "svg": "structures/succinic-acid.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "succinic acid",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "O=C(O)CCC(=O)O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "oils of plant origin",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'oils of plant origin'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "methyl oleate",
+    "smiles": "C(CCCCCCC\\C=C/CCCCCCCC)(=O)OC",
+    "canonical": "CCCCCCCC/C=C\\CCCCCCCC(=O)OC",
+    "formula": "C19H36O2",
+    "mw": 296.49,
+    "origin": "name_parsed",
+    "svg": "structures/methyl-oleate.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "methyl oleate",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCCCCC/C=C\\CCCCCCCC(=O)OC",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "methyl stearate",
+    "smiles": "C(CCCCCCCCCCCCCCCCC)(=O)OC",
+    "canonical": "CCCCCCCCCCCCCCCCCC(=O)OC",
+    "formula": "C19H38O2",
+    "mw": 298.51,
+    "origin": "name_parsed",
+    "svg": "structures/methyl-stearate.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "methyl stearate",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCCCCCCCCCCCCCCC(=O)OC",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "rape oil methyl ester",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'rape oil methyl ester'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "paraffinic mineral oils",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'paraffinic mineral oils'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "rhodamin B",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'rhodamin B', 'Rhodamin B'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "C.I. Pigment Red 112",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'C.I. Pigment Red 112'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "C.I. Solvent Red 1",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'C.I. Solvent Red 1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Blue 15:4",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Blue 15:4'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Blue 15:3",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Blue 15:3'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Blue 15:2",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Blue 15:2'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Blue 15:1",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Blue 15:1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Blue 80",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Blue 80'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Yellow 1",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Yellow 1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Yellow 13",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Yellow 13'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Red 48:2",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Red 48:2'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Red 48:1",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Red 48:1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Red 57:1",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Red 57:1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Red 53:1",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Red 53:1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Orange 43",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Orange 43'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Orange 34",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Orange 34'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Orange 5",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Orange 5'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Green 36",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Green 36'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Green 7",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Green 7'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment White 6",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment White 6'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Pigment Brown 25",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Pigment Brown 25'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Basic Violet 10",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Basic Violet 10'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Basic Violet 49",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Basic Violet 49'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Acid Red 51",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Acid Red 51'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Acid Red 52",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Acid Red 52'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Acid Red 14",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Acid Red 14'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Acid Blue 9",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Acid Blue 9'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Acid Yellow 23",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Acid Yellow 23'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Basic Red 10",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Basic Red 10'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "Basic Red 108",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'Basic Red 108'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyvinylpyrrolidone",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyvinylpyrrolidone', 'poly-vinylpyrrolidone'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyvinyl acetate",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyvinyl acetate'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyvinyl alcohol",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyvinyl alcohol', 'Mowiol types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "tylose",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'tylose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyacrylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyacrylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polymethacrylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polymethacrylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polybutenes",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polybutenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyisobutenes",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyisobutenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polystyrene",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polystyrene'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyethylene amines",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyethylene amines'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyethylene amides",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyethylene amides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyesters",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyesters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyether esters",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyether esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyanhydrides",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyanhydrides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyester urethanes",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyester urethanes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyester amides",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyester amides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "cellulose esters",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'cellulose esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "cellulose ethers",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'cellulose ethers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "cellulose ether esters",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'cellulose ether esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "methylcellulose",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'methylcellulose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "ethylcellulose",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'ethylcellulose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "hydroxymethylcellulose",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'hydroxymethylcellulose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "carboxymethylcellulose",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'carboxymethylcellulose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "hydroxypropyl cellulose",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'hydroxypropyl cellulose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "starch derivatives",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'starch derivatives'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "modified starches",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'modified starches'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "dextrins",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'dextrins'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "maltodextrins",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'maltodextrins'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alginates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alginates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "chitosans",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'chitosans'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fats",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fats'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "oils",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'oils'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "casein",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'casein'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "gelatin",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'gelatin'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "zein",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'zein'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "gum Arabic",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'gum Arabic'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "shellac",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'shellac'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "clays",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'clays'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "bentonite",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'bentonite'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "perlite",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'perlite'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "mica",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'mica'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "quartz powder",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'quartz powder'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "montmorillonite",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'montmorillonite'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "active charcoal",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'active charcoal'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "oligomeric polyalkylene glycols",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'oligomeric polyalkylene glycols'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "dialkyl phthalates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'dialkyl phthalates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkylbenzyl phthalates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkylbenzyl phthalates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "glycol benzoates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'glycol benzoates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkyl arylsulfonates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkyl arylsulfonates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "ligninsulfonates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'ligninsulfonates', 'Borresperse types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "phenylsulfonates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'phenylsulfonates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "naphthalenesulfonates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'naphthalenesulfonates', 'Morwet types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "dibutylnaphthalenesulfonates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'dibutylnaphthalenesulfonates', 'Nekal types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty alcohol sulfates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty alcohol sulfates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "lauryl sulfates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'lauryl sulfates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "sulfated hexadecanols",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'sulfated hexadecanols', 'sulfated hexadeca-; heptadeca- and octadecanols'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "sulfated heptadecanols",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'sulfated heptadecanols', 'sulfated hexadeca-; heptadeca- and octadecanols'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "sulfated octadecanols",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'sulfated octadecanols', 'sulfated hexadeca-; heptadeca- and octadecanols'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkylsulfonates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkylsulfonates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty alcohol (poly)glycol ether sulfates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty alcohol (poly)glycol ether sulfates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkyl aryl ether sulfates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkyl aryl ether sulfates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkyl polyglycol ether phosphates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkyl polyglycol ether phosphates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyarylphenyl ether phosphates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyarylphenyl ether phosphates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkyl-sulfosuccinates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkyl-sulfosuccinates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "olefin sulfonates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'olefin sulfonates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "paraffin sulfonates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'paraffin sulfonates', 'paraffin sulfon-ates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "petroleum sulfonates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'petroleum sulfonates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "taurides",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'taurides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "sarcosides",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'sarcosides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkylnaphthalenesulfonic acids",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkylnaphthalenesulfonic acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "naphthalenesulfonic acids",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'naphthalenesulfonic acids', 'naphthalene-sulfonic acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "ligninsulfonic acids",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'ligninsulfonic acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "condensation products of sulfonated naphthalenes with formaldehyde",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'condensation products of sulfonated naphthalenes with formaldehyde'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "condensation products of sulfonated naphthalenes with formaldehyde and phenol and optionally urea",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'condensation products of sulfonated naphthalenes with formaldehyde and phenol and optionally urea'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "condensation products of phenolsulfonic acid with formaldehyde and urea",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'condensation products of phenolsulfonic acid with formaldehyde and urea'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "sulfonated naphthalenes",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'sulfonated naphthalenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "phenolsulfonic acid",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'phenolsulfonic acid'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "lignin sulfite waste liquor",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'lignin sulfite waste liquor'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkyl phosphates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkyl phosphates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "tristyryl phosphates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'tristyryl phosphates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "maleic anhydride/olefin copolymers",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'maleic anhydride/olefin copolymers', 'Sokalan® CP9'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "formaldehyde",
+    "smiles": "C=O",
+    "canonical": "C=O",
+    "formula": "CH2O",
+    "mw": 30.03,
+    "origin": "name_parsed",
+    "svg": "structures/formaldehyde.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "formaldehyde",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "C=O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "phenol",
+    "smiles": "C1(=CC=CC=C1)O",
+    "canonical": "Oc1ccccc1",
+    "formula": "C6H6O",
+    "mw": 94.11,
+    "origin": "name_parsed",
+    "svg": "structures/phenol.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "phenol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "Oc1ccccc1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "urea",
+    "smiles": "NC(=O)N",
+    "canonical": "NC(N)=O",
+    "formula": "CH4N2O",
+    "mw": 60.06,
+    "origin": "name_parsed",
+    "svg": "structures/urea.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "urea",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "NC(N)=O",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "fatty acids",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkylphenol alkoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkylphenol alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "octylphenol",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure, because the NAME does not pin one molecule down. OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+    "name_check": {
+      "query": "octylphenol",
+      "via": "verbatim",
+      "outcome": "ambiguous",
+      "opsin_canonical": "CCCCCCCCc1ccccc1O",
+      "note_en": "OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure."
+    }
+  },
+  {
+    "identifier": "isooctylphenol",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure, because the NAME does not pin one molecule down. OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+    "name_check": {
+      "query": "isooctylphenol",
+      "via": "verbatim",
+      "outcome": "ambiguous",
+      "opsin_canonical": "CC(C)CCCCCc1ccccc1O",
+      "note_en": "OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure."
+    }
+  },
+  {
+    "identifier": "nonylphenol",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure, because the NAME does not pin one molecule down. OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+    "name_check": {
+      "query": "nonylphenol",
+      "via": "verbatim",
+      "outcome": "ambiguous",
+      "opsin_canonical": "CCCCCCCCCc1ccccc1O",
+      "note_en": "OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure."
+    }
+  },
+  {
+    "identifier": "tributylphenol",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure, because the NAME does not pin one molecule down. OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+    "name_check": {
+      "query": "tributylphenol",
+      "via": "verbatim",
+      "outcome": "ambiguous",
+      "opsin_canonical": "CCCCc1ccc(O)c(CCCC)c1CCCC",
+      "note_en": "OPSIN will not pin this name down to one molecule. OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure."
+    }
+  },
+  {
+    "identifier": "distyrylphenol alkoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'distyrylphenol alkoxylates', 'di- and tristyrylphenol alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "tristyrylphenol alkoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'tristyrylphenol alkoxylates', 'di- and tristyrylphenol alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty alcohol ethoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty alcohol ethoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty alcohol ethoxylate-copropoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty alcohol ethoxylate-copropoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkoxylated isotridecanol",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkoxylated isotridecanol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty amine alkoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty amine alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyoxyethylene glycerol fatty acid esters",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyoxyethylene glycerol fatty acid esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "castor oil alkoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'castor oil alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty acid alkoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty acid alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty acid amide alkoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty acid amide alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty acid polydiethanolamides",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty acid polydiethanolamides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "lanolin ethoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'lanolin ethoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty acid polyglycol esters",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty acid polyglycol esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "isotridecyl alcohol",
+    "smiles": "C(CCCCCCCCCC(C)C)O",
+    "canonical": "CC(C)CCCCCCCCCCO",
+    "formula": "C13H28O",
+    "mw": 200.37,
+    "origin": "name_parsed",
+    "svg": "structures/isotridecyl-alcohol.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "isotridecyl alcohol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CC(C)CCCCCCCCCCO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "ethoxylated fatty acid amides",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'ethoxylated fatty acid amides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "ethoxylated fatty acid esters",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'ethoxylated fatty acid esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "alkyl polyglycosides",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'alkyl polyglycosides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "ethoxylated alkyl polyglycosides",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'ethoxylated alkyl polyglycosides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "sorbitan fatty acid esters",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'sorbitan fatty acid esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "ethoxylated sorbitan fatty acid esters",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'ethoxylated sorbitan fatty acid esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "glycerol fatty acid esters",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'glycerol fatty acid esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "castor oil ethoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'castor oil ethoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty acid ethoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty acid ethoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "fatty acid amide ethoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'fatty acid amide ethoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "ethylene oxide propylene oxide block copolymers",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'ethylene oxide propylene oxide block copolymers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyethylene glycol",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyethylene glycol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polypropylene oxide",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polypropylene oxide', 'polypropylene oxides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyethylene oxide co-propylene oxide di-block copolymers",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyethylene oxide co-propylene oxide di-block copolymers', 'polyethylene oxide co-propylene oxide di- and tri-block copolymers', 'polyethylene oxide co-polypropylene oxide di- and tri-block copolymers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyethylene oxide co-propylene oxide tri-block copolymers",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyethylene oxide co-propylene oxide tri-block copolymers', 'polyethylene oxide co-propylene oxide di- and tri-block copolymers', 'polyethylene oxide co-polypropylene oxide di- and tri-block copolymers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "water-soluble starch derivatives",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'water-soluble starch derivatives'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "cellulose derivatives",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'cellulose derivatives'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyacrylic acid",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyacrylic acid', 'BASF Sokalan types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "acrylic acid copolymers",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'acrylic acid copolymers', 'BASF Sokalan types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "maleic acid copolymers",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'maleic acid copolymers', 'BASF Sokalan types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyalkoxylates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyalkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "vinylpyrrolidone copolymers",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'vinylpyrrolidone copolymers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyvinyl amines",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyvinyl amines'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "polyethyleneimines",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'polyethyleneimines', 'Lupasol types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "layer silicates",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'layer silicates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "bentonites",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'bentonites'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "attapulgites",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'attapulgites', 'Attaclay®'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "xanthan gum",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'xanthan gum', 'Xanthan Gum', 'Xanthan Gum®', 'Kelzan®'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "silicone emulsions",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'silicone emulsions', 'Silikon® SRE', 'Rhodorsil®'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "long-chain alcohols",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'long-chain alcohols'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "aqueous wax dispersions",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'aqueous wax dispersions', 'aqueous wax dispersion', 'wax dispersions', 'wax dispersion'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "solid foam suppressants",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'solid foam suppressants', 'so-called Compounds', 'foam suppressants'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "organofluorine compounds",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'organofluorine compounds'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "isothiazolones",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'isothiazolones', 'isothiazol-ones', 'Proxel®', 'Acticide®', 'Kathon® MK'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "ethylene glycol",
+    "smiles": "C(CO)O",
+    "canonical": "OCCO",
+    "formula": "C2H6O2",
+    "mw": 62.07,
+    "origin": "name_parsed",
+    "svg": "structures/ethylene-glycol.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "ethylene glycol",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "OCCO",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "terbuthylazin",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'terbuthylazin'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "bromoxynil",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'bromoxynil'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "sodium salt of bromoxynil",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'sodium salt of bromoxynil', 'the sodium salt thereof', 'sodium salt thereof'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "esters of bromoxynil with C4-C8 carboxylic acids",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'esters of bromoxynil with C4-C8 carboxylic acids', 'esters thereof with C4-C8 carboxylic acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "dicamba",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'dicamba'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "S-metolachlor",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'S-metolachlor'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "pethoxamid",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'pethoxamid'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "pentane",
+    "smiles": "CCCCC",
+    "canonical": "CCCCC",
+    "formula": "C5H12",
+    "mw": 72.15,
+    "origin": "name_parsed",
+    "svg": "structures/pentane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "pentane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCC",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "hexane",
+    "smiles": "CCCCCC",
+    "canonical": "CCCCCC",
+    "formula": "C6H14",
+    "mw": 86.18,
+    "origin": "name_parsed",
+    "svg": "structures/hexane.svg",
+    "aliases": [
+      "n-hexane"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "hexane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCCC",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "cyclopentane",
+    "smiles": "C1CCCC1",
+    "canonical": "C1CCCC1",
+    "formula": "C5H10",
+    "mw": 70.14,
+    "origin": "name_parsed",
+    "svg": "structures/cyclopentane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "cyclopentane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "C1CCCC1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "cyclohexane",
+    "smiles": "C1CCCCC1",
+    "canonical": "C1CCCCC1",
+    "formula": "C6H12",
+    "mw": 84.16,
+    "origin": "name_parsed",
+    "svg": "structures/cyclohexane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "cyclohexane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "C1CCCCC1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "isohexane",
+    "smiles": "CCCC(C)C",
+    "canonical": "CCCC(C)C",
+    "formula": "C6H14",
+    "mw": 86.18,
+    "origin": "name_parsed",
+    "svg": "structures/isohexane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "isohexane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCC(C)C",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "heptane",
+    "smiles": "CCCCCCC",
+    "canonical": "CCCCCCC",
+    "formula": "C7H16",
+    "mw": 100.2,
+    "origin": "name_parsed",
+    "svg": "structures/heptane.svg",
+    "aliases": [
+      "n-heptane"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "heptane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCCCC",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "cycloheptane",
+    "smiles": "C1CCCCCC1",
+    "canonical": "C1CCCCCC1",
+    "formula": "C7H14",
+    "mw": 98.19,
+    "origin": "name_parsed",
+    "svg": "structures/cycloheptane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "cycloheptane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "C1CCCCCC1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "octane",
+    "smiles": "CCCCCCCC",
+    "canonical": "CCCCCCCC",
+    "formula": "C8H18",
+    "mw": 114.23,
+    "origin": "name_parsed",
+    "svg": "structures/octane.svg",
+    "aliases": [
+      "n-octane"
+    ],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "octane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCCCCC",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "decane",
+    "smiles": "CCCCCCCCCC",
+    "canonical": "CCCCCCCCCC",
+    "formula": "C10H22",
+    "mw": 142.29,
+    "origin": "name_parsed",
+    "svg": "structures/decane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "decane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCCCCCCCCC",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "xylenes",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'xylenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "mesitylene",
+    "smiles": "C1(=CC(=CC(=C1)C)C)C",
+    "canonical": "Cc1cc(C)cc(C)c1",
+    "formula": "C9H12",
+    "mw": 120.19,
+    "origin": "name_parsed",
+    "svg": "structures/mesitylene.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "mesitylene",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "Cc1cc(C)cc(C)c1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "cumene",
+    "smiles": "C1(=CC=CC=C1)C(C)C",
+    "canonical": "CC(C)c1ccccc1",
+    "formula": "C9H12",
+    "mw": 120.19,
+    "origin": "name_parsed",
+    "svg": "structures/cumene.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "cumene",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CC(C)c1ccccc1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "ethylbenzene",
+    "smiles": "C(C)C1=CC=CC=C1",
+    "canonical": "CCc1ccccc1",
+    "formula": "C8H10",
+    "mw": 106.17,
+    "origin": "name_parsed",
+    "svg": "structures/ethylbenzene.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "ethylbenzene",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CCc1ccccc1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "ethyltoluenes",
+    "smiles": null,
+    "canonical": null,
+    "formula": null,
+    "mw": null,
+    "origin": "none",
+    "svg": null,
+    "aliases": [],
+    "note": "No structure. Not drawn in the patent, no entry in input/structures-curated.json, and no resolved synonym.",
+    "name_check": {
+      "outcome": "no_parse",
+      "note_en": "no spelling of this name was accepted; tried 'ethyltoluenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built."
+    }
+  },
+  {
+    "identifier": "m-cymene",
+    "smiles": "C1(=CC(=CC=C1)C)C(C)C",
+    "canonical": "Cc1cccc(C(C)C)c1",
+    "formula": "C10H14",
+    "mw": 134.22,
+    "origin": "name_parsed",
+    "svg": "structures/m-cymene.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "m-cymene",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "Cc1cccc(C(C)C)c1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "p-cymene",
+    "smiles": "C1(=CC=C(C=C1)C)C(C)C",
+    "canonical": "Cc1ccc(C(C)C)cc1",
+    "formula": "C10H14",
+    "mw": 134.22,
+    "origin": "name_parsed",
+    "svg": "structures/p-cymene.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "p-cymene",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "Cc1ccc(C(C)C)cc1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "methylcyclohexane",
+    "smiles": "CC1CCCCC1",
+    "canonical": "CC1CCCCC1",
+    "formula": "C7H14",
+    "mw": 98.19,
+    "origin": "name_parsed",
+    "svg": "structures/methylcyclohexane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "methylcyclohexane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "CC1CCCCC1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  },
+  {
+    "identifier": "cyclooctane",
+    "smiles": "C1CCCCCCC1",
+    "canonical": "C1CCCCCCC1",
+    "formula": "C8H16",
+    "mw": 112.22,
+    "origin": "name_parsed",
+    "svg": "structures/cyclooctane.svg",
+    "aliases": [],
+    "note": "Not drawn in the patent and not curated. The NAME was parsed into this molecule by OPSIN, independently of any reading of this document.",
+    "name_check": {
+      "query": "cyclooctane",
+      "via": "verbatim",
+      "outcome": "is_the_source",
+      "opsin_canonical": "C1CCCCCCC1",
+      "note_en": "This structure IS the parse, so there is nothing independent to compare it against. Nothing drawn in the patent and nothing curated corroborates it."
+    }
+  }
+]

@@ -76,6 +76,15 @@ blocked by default and nothing says so.
 **`finalise.py:364` hardcodes `"country": "CN"` for every inventor.** A US patent's
 inventors are silently labelled Chinese. Not a crash. Wrong data, in the deliverable.
 
+**`make_svgs.py` overwrites the shared documentation diagrams.** Running the pipeline
+for any patent rewrites `pipeline/svg/*.svg` and their JPGs in place, so the eight-step
+route of CN104292137A in the repo's own documentation became the two-step route of
+US20100041557A1 as a side effect of annotating a different patent. The run's own copies
+under `runs/<ID>/output/relevant_output/svg/` are correct and are what the deliverable
+uses; the shared pair is collateral. Measured 2026-08-28 and restored by hand, which is
+the same "whoever ran last wins" failure this document is about, one directory up from
+`runs/`.
+
 **The biblio input has no contract.** 13 fields are required through bare `b["key"]`
 access with no schema, failing one at a time. `grant_date` is fatal for any ungranted
 application, which is most published applications.

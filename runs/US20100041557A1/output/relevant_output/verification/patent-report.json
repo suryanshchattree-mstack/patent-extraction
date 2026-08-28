@@ -1,0 +1,244 @@
+{
+  "artifact": "patent-llm.json",
+  "records_audited": 1,
+  "findings": [
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "US20100041557A1",
+      "field": "novelty_claims",
+      "problem": "The record pairs the +/-0.2 degree tolerance with claim 16's three-of-nine threshold to imply the claim cannot exclude the excluded form B, but on the printed tables form B satisfies only two of claim 16's nine reflections and therefore falls outside the claim.",
+      "source_line": 714,
+      "quote": "displays at least 3 of the following reflections, quoted as 2θ values: 5.6±0.2°, 8.9±0.2°, 11.1±0.2°, 14.0±0.2°, 18.9±0.2°, 23.4±0.2°, 26.7±0.2°, 28.9±0.2° and 36.2±0.2°.",
+      "artifact_says": "with a tolerance of ±0.2° and a threshold of three reflections out of nine, only the full diffraction pattern distinguishes the claimed form from the excluded one at the low-angle end",
+      "should_be": "State the count. Taking the form B table at lines 335 to 353 (5.6, 9.2, 11.2, 12.7, 15.4, 18.5, 22.6, 25.5) against claim 16's nine windows, only 5.6 (exact) and 11.2 (inside 11.1±0.2) match; 9.2 misses 8.9±0.2 by 0.1 and 18.5 misses 18.9±0.2 by 0.2. Two matches is one short of the three-of-nine threshold, so claim 16 does exclude form B on the printed data. The genuine narrower point, that the first reflections of A and B are nearly coincident, should be kept and the threshold argument dropped.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "US20100041557A1",
+      "field": "patent_summary",
+      "problem": "The record's central distinction between the two processes, slow crystallization for form A against rapid cooling for form C, is contradicted by the document's own cooling-rate numbers, and that inconsistency is nowhere recorded.",
+      "source_line": 201,
+      "quote": "[0031] If the crystallization of form A is effected by cooling, the cooling rate is preferably less than 10 K/min.",
+      "artifact_says": "under conditions in which \"the conditions of the crystallization are chosen to achieve a slow crystallization rate\" ([0014], line 165) ... with crystallization effected by rapid cooling",
+      "should_be": "Record that the two stated windows overlap completely: [0031] line 201 puts form A at less than 10 K/min, that is less than 600 K/hr, while [0056] line 311 puts rapid cooling for form C at \"a cooling rate of at least 30 K/hr, for example at a cooling rate of 30 to 120 K/hr\", that is 0.5 to 2 K/min. The entire preferred form C window lies inside the preferred form A window, so the document's stated cooling rates do not separate the two processes at all.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "US20100041557A1",
+      "field": "novelty_claims",
+      "problem": "The record asserts as its sharpest evidence that the process and not the solvent controls the form, but the example tables show the solvent changing the form with the cooling regime held fixed.",
+      "source_line": 374,
+      "quote": "[0073] 150 mg of tembotrione were dissolved in 0.15 ml of boiling methanol in a test vessel. The test vessel was sealed and placed in an ice-water bath and left there for about 40 mins.",
+      "artifact_says": "The sharpest single piece of evidence that the process and not the solvent controls the form is a comparison the patent does not itself draw",
+      "should_be": "Weaken or drop the generalisation. Under one identical regime, boiling solution, sealed vessel, ice-water bath, about 40 mins, methanol gives form A (Example 1, line 374), 2,2-dimethylpropanol gives form C (Example 14, line 426) and n-pentanol gives form B (Comparative Example 1, line 443). With the regime fixed the solvent alone selects the form, so the document supports only the weaker claim that regime and solvent both matter.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "US20100041557A1",
+      "field": "novelty_claims",
+      "problem": "The claim that the cooling regime is the only variable between Example 14 and Comparative Example 16 is unsupported, because the charge, the concentration and the standing time differ too.",
+      "source_line": 426,
+      "quote": "[0076] 150 mg of tembotrione were dissolved in 0.50 ml of boiling 2,2-dimethylpropanol in a test vessel. The test vessel was sealed and placed in an ice-water bath and left there for about 40 mins.",
+      "artifact_says": "so the variable between them is the cooling regime alone",
+      "should_be": "Drop the word alone. Example 14 is a defined charge of 150 mg in 0.50 ml, about 300 g/l, held 40 mins; Comparative Example 16 is one row of \"A saturated solution of about 50 mg of tembotrione\" (line 479) left overnight. Cooling regime, concentration and time all differ.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "US20100041557A1",
+      "field": "novelty_claims",
+      "problem": "Example 14 is described as giving pure form C, but the example reports only that form C was identified and no example in the document reports a polymorph content.",
+      "source_line": 426,
+      "quote": "In this manner, tembotrione was obtained in the form of crystalline prisms, which were isolated and analyzed by X-ray powder diffractometry (XRD). On the basis of the characteristic reflections, form C was identified.",
+      "artifact_says": "while Example 14 uses that same solvent with an ice-water bath and gives pure form C (line 426)",
+      "should_be": "\"gives form C\". The word pure is a defined term in this document, at least 90 wt. % of the modification per [0008] line 90, and no example measures it.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "US20100041557A1",
+      "field": "patent_summary",
+      "problem": "The absolute assertion that no bond is formed or broken anywhere in the document is contradicted by [0021], which offers preparation of the tembotrione by chemical reaction as one of the two ways to obtain the solution.",
+      "source_line": 179,
+      "quote": "[0021] (2) Preparation of the tembotrione by a chemical reaction and transfer of the reaction mixture, if necessary after removal of reagents and/or side products, into an organic solvent suitable according to the invention.",
+      "artifact_says": "No bond is formed or broken anywhere in the document and no synthesis is disclosed",
+      "should_be": "Keep \"no synthesis is disclosed\", which is right, and qualify the first clause: the document contemplates a bond-forming step at [0021] line 179 and [0024] line 185 but discloses no procedure for it, referring it out to WO 00/21924.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "US20100041557A1",
+      "field": "novelty_claims",
+      "problem": "The statement that no chemical assay purity appears anywhere is contradicted by [0039] and [0062], which state a tembotrione content for the product of the crystallization, and by claims 17 and 21.",
+      "source_line": 218,
+      "quote": "[0039] By means of the crystallization according to the invention, the form A is obtained with a tembotrione content of as a rule at least 90 wt. %, often 94 wt. %, in particular at least 96 wt. %.",
+      "artifact_says": "no yield, no isolated product mass and no chemical assay purity appears anywhere",
+      "should_be": "Narrow the scope to the examples: no yield, no isolated mass and no measured assay is reported for any individual preparation, while [0039] line 218 and [0062] line 323 do state a general tembotrione content for the isolated form.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "US20100041557A1",
+      "field": "novelty_claims",
+      "problem": "The assertion that only claims 16 and 20 are independent applies a reference-to-another-claim test that does not hold for the claims of different statutory class.",
+      "source_line": 745,
+      "quote": "19 19. A process for the production of the crystalline form A of claim 16, comprising:",
+      "artifact_says": "so the live claims are 16 to 33 and only 16 and 20 are independent",
+      "should_be": "Claims 19 and 23 (process), 24 and 28 (agent) and 32 and 33 (method of use) refer to claim 16 or 20 but claim a different statutory class and are independent in substance; the dependent claims are 17, 18, 21, 22, 25 to 27 and 29 to 31. Either say \"only 16 and 20 do not refer to another claim\" or count the eight independent claims.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "US20100041557A1",
+      "field": "patent_summary",
+      "problem": "The flat statement that form C crystallization is effected by rapid cooling omits the document's own exception, and the only gram-scale preparation in the document does not use rapid cooling.",
+      "source_line": 311,
+      "quote": "[0056] ... This is understood to mean that the solution is cooled at a cooling rate of at least 30 K/hr, for example at a cooling rate of 30 to 120 K/hr. Rapid cooling is not necessary, when seed crystals of form C are used.",
+      "artifact_says": "with crystallization effected by rapid cooling",
+      "should_be": "Add the exception. Example 15 at line 437, the one preparation above milligram scale, cooled on an oil bath to 101 degrees C, added form C seed crystals, cooled to room temperature and stored overnight at 6 degrees C, which is the seeded route of [0056] and not rapid cooling.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "US20100041557A1",
+      "field": "patent_summary",
+      "problem": "The three X-ray powder diffractograms are characterisation data of the document and are not mentioned at all, including that one of the three sheets belongs to the excluded form B.",
+      "source_line": 362,
+      "quote": "[0069] FIG. 2 shows an X-ray powder diffraction diagram of form B. The X-ray diffraction diagram was recorded under the conditions stated for FIG. 1.",
+      "artifact_says": null,
+      "should_be": "One clause recording that the two drawing sheets carry FIG. 1 (form A), FIG. 2 (form B) and FIG. 3 (form C), [0068] to [0070] at lines 360 to 364, recorded on a Bruker-AXS D-5000 in reflection geometry over 2 theta = 2 to 40 degrees.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "US20100041557A1",
+      "field": "patent_summary",
+      "problem": "patent_summary is 461 words in roughly nine sentences where the A4 prompt allows one to two sentences.",
+      "source_line": 70,
+      "quote": "[0001] The present invention relates to two crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione, which is also known under the common name tembotrione.",
+      "artifact_says": "461 words, 2999 characters",
+      "should_be": "Cut to the one or two sentences rule 1 of A4-patent.md requires, keeping the two forms, the two processes, the agents and the method of use; move the defect inventory and the analysis into novelty_claims or, better, into the run notes.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "US20100041557A1",
+      "field": "novelty_claims",
+      "problem": "novelty_claims is 1606 words in roughly thirty sentences where the A4 prompt allows two to four sentences.",
+      "source_line": 88,
+      "quote": "[0007] It has now surprisingly been found that by suitable processes two previously unknown crystalline, stable modifications of tembotrione which do not display the disadvantages of the amorphous tembotrione are obtained in high purity.",
+      "artifact_says": "1606 words, 9459 characters",
+      "should_be": "Cut to the two to four sentences rule 2 requires: what is claimed as new, the [0003] and [0006] objections it answers, and the fact that the [0008] formulation stability advantage carries no experiment. The remaining material belongs in the run notes.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "US20100041557A1",
+      "field": "novelty_claims",
+      "problem": "novelty_claims closes with commentary about the annotation's own tag vocabulary rather than about what the patent positions as new.",
+      "source_line": 88,
+      "quote": "[0007] ... two previously unknown crystalline, stable modifications of tembotrione which do not display the disadvantages of the amorphous tembotrione are obtained in high purity. These two modifications are also described below as form A and form C.",
+      "artifact_says": "Finally, on the closed tag lists: the substance-of-matter novelty this patent actually asserts, a previously unknown crystalline form of a known compound, has no value in the permitted novelty list, and new_compound would be wrong because no new compound is made, so only novelty:new_process is emitted and the form novelty is left untagged rather than approximated.",
+      "should_be": "Delete the sentence from the deliverable field and record the reasoning in the run notes. The field should say what the patent asserts as new, which is the solid form itself.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "US20100041557A1",
+      "field": "tags",
+      "problem": "The novelty category carries only new_process, but two listed values arguably fit the positioning the document itself states.",
+      "source_line": 88,
+      "quote": "[0007] It has now surprisingly been found that by suitable processes two previously unknown crystalline, stable modifications of tembotrione ... are obtained in high purity.",
+      "artifact_says": "\"novelty:new_process\"",
+      "should_be": "Consider novelty:improved_purity, supported by [0007] line 88 and by [0039] line 218, and novelty:new_formulation, supported by claims 24 to 31 and by the [0008] line 90 formulation stability assertion. Both are values on the closed list, so the record's reason for leaving the form novelty untagged does not cover them. No coined value was emitted and all eight tags match the closed lists and the pattern, so this is a completeness point, not a vocabulary violation.",
+      "confidence": "low"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "precision, quotation fidelity",
+      "what_was_verified": "Every direct quotation in both prose fields was located verbatim at the line it cites. Checked: 72, 80, 86, 88, 90, 97, 118, 161, 163, 165, 181, 185, 218, 220, 244, 256, 291, 293, 295, 303, 307, 311, 325, 335, 354, 356, 374, 378, 426, 432, 443, 447, 453, 479, 488, 507, 509, 515, 525, 527, 529, 531, 645, 680, 684, 686, 712, 714, 738, 745, 753, 755, 760, 767. No quote was found to be paraphrased, truncated in a way that changed its sense, or attributed to the wrong line. The one truncation, formulation IX at line 684 ending at \"70 parts by weight of water\" where the line continues \"or an organic solvent\", is a verbatim prefix and does not affect the 101-part arithmetic."
+    },
+    {
+      "check": "drawings, the three IMAGE_EXTRACT structures",
+      "what_was_verified": "Opened p04.png and compared formulae (I), (I') and (I'') as drawn against the SMILES at lines 74, 76 and 78, atom by atom and position by position. Ring numbering from the benzoyl carbon: the drawn benzene carries Cl on the carbon adjacent to the benzoyl (C2), CH2-O-CH2-CF3 on the next (C3) and S(=O)(=O)CH3 on the next (C4). The SMILES ring order c1(SO2Me), c, c, c(benzoyl), c(Cl), c1(CH2OCH2CF3) reproduces exactly 2-chloro-3-(2,2,2-trifluoroethoxymethyl)-4-methylsulfonyl. Line 74 is the sp3 2-substituted cyclohexane-1,3-dione, line 76 the ring enol with OH on the ring carbon and the exocyclic ketone intact, line 78 the exocyclic enol with both ring carbonyls intact; all three match the drawings including which carbon bears the OH. The molecular formula C17H16ClF3O6S was counted by hand from the drawing and matches. No substituent position appears to have been inferred rather than read."
+    },
+    {
+      "check": "drawings, the diffractogram sheets",
+      "what_was_verified": "Opened p02.png and p03.png. Sheet 1 of 2 carries Figure 1 and Figure 2, sheet 2 of 2 carries Figure 3, exactly as the vision read at lines 56, 58 and 63 describes; both sheets print \"2-Theta\" bare with no unit and \"Intensity (CPS)\" on an unscaled vertical spine, and no peak is annotated. The vision read's refusal to assign a form to any sheet is correct: no sheet names a form. Cross-checked the traces against the body tables and they are consistent with [0068] to [0070]: Figure 1 has its first sharp peak just past the 2 tick with the tallest a little past mid-span, matching form A's 5.5 and 23.4; Figure 2 has a first peak at the same low angle then a dominant pair near 18.5 and 22.6, matching form B; Figure 3 has its first peak clearly further right, near 7.4, and its dominant peak with a shorter close companion between 20 and 30 nearer 20, matching form C's 7.4 and 21.1 / 21.6. No reagent-above-arrow or background-scheme issue arises; the document draws no reaction scheme."
+    },
+    {
+      "check": "biblio, front page facts",
+      "what_was_verified": "Every field of US20100041557A1-biblio.json checked against p01.png. Title matches character by character including both square brackets and all three locant commas of (2,2,2-TRIFLUOROETHOXYMETHYL). Publication number US 2010/0041557 A1, publication date Feb. 18 2010, application number 12/530,666, PCT filed Mar. 14 2008, PCT No. PCT/EP08/53060 printed on the (86) line, section 371(c)(1),(2),(4) date Sep. 10 2009, priority Mar. 15 2007 (EP) 07104275.8, assignee BASF SE Ludwigshafen (DE), all six inventors with their cities and the DE/DE/DE/DE/AT/AT split, Int. Cl. A01N 35/00, C07C 317/14 and A01P 13/00 all (2006.01), U.S. Cl. 504/348 in bold and 568/31 in roman, and the (57) abstract word for word. grant_date and grant_publication correctly null for an A1 application publication. The claim that C07C 317/24 is what all four earlier runs carry was checked against their biblio files and holds."
+    },
+    {
+      "check": "biblio, the OCR repair claims",
+      "what_was_verified": "Extracted the PDF text layer with PyMuPDF and confirmed every artifact the biblio notes assert: the title as \"2-2-CHLORO-4-METHYLSULFONYL-3- (2.2.2-TRIFLUOROETHOXYMETHYL) BENZOYLCYCLOHEXAN-1,3-DIONE\" with both square brackets gone and the locant commas as full stops while the comma of -1,3-DIONE survives; \"AOIN 35/00\"; \"AOIPI3/00\"; \"C07C 317/14\" correct, so there is indeed no blanket zero repair; \"S371 (c)(1)\" for the section sign; \"O7104275.8\"; \"crystalline forms oftembotrione\"; \"Ulrich Griesser, Axams (AT):\" with a colon; \"Figure l\" and \"2-heta\" on page 2. The structural claim holds too: the layer places \"PCT/EP08/S3060\" below the (30) Foreign Application Priority Data heading and leaves \"(86). PCT No.:\" with no value. text_layer_chars_per_page reproduced exactly, [1483, 143, 93, 4945, 6393, 6053, 7041, 5107, 5445, 7377, 7493, 7612, 7079, 7010, 3940], total 77214. The biblio's repairs are all in the direction of the page image."
+    },
+    {
+      "check": "precision, the printed defects the record reports",
+      "what_was_verified": "Each defect the record calls printed was confirmed on the page image, not merely in the text layer. Claim 16 on p14.png prints \"2-[2-chloro-4-methyl-sulfonyl-3-(2,2,2-trifluoroethoxymethyebenzoyl]-cyclohexan-1,3-di-one\", so methye and the unclosed parenthesis are genuinely on the page and are not an OCR artifact, and the same crop confirms claim 16's first reflection is printed 5.6 while the [0010] table on p04.png prints 5.5. The form C table on p06.png prints \"1811.3(4) nm3\" and the form A table on p05.png prints \"1778.0(2) A3\". Formulation VIII on p14.png prints \"form A or form B\". The heading \"Comparative Examples 21 to 22\" on p09.png stands over a TABLE 5 whose third row is 23, dichloromethane. [0048] line 295 really does print \"a hot solution of tembotrione in is prepared\"."
+    },
+    {
+      "check": "arithmetic, crystallography",
+      "what_was_verified": "The unit cells close and confirm that nm3 is a misprint. Form A: 31.14 x 10.34 x 5.52 = 1777.4 A3 against the printed 1778.0(2). Form C, monoclinic: 15.89 x 7.10 x 16.14 x sin(95.91 degrees) = 1811.4 A3 against the printed 1811.3(4), so the number is right and only the unit is wrong. Densities close with Z = 4 and M = 440.82 g/mol for C17H16ClF3O6S: 1.647 against the printed 1.643 Mg/m3 for A and 1.6165 against the printed 1.616 for C, which independently confirms both Z and the molecular formula read off the drawing. Bragg cross-check with lambda = 1.54178 A: the form A pair 5.5 / 15.92 corresponds to 2 theta = 5.55 and the form B pair 5.6 / 15.77 to 2 theta = 5.60, so the two d values are self-consistent and the claim 16 value of 5.6 for form A is the odd one out. Unit handling on temperature is consistent: [0011] and [0043] give -170 degrees C and [0072] line 368 gives 103(2) K, and 103.15 K is -170.0 degrees C."
+    },
+    {
+      "check": "arithmetic, formulation recipes",
+      "what_was_verified": "Summed all ten recipes. I 20+3+17+60, II 5+95, III 20+2+8+2+68, IV 20+10+70, V 10+17+2+1+7+63, VI 20+10+70, VII 50+50, VIII 75+25 and X 0.5+99.5 all reach 100 parts. Only IX, 20+10+1+70, reaches 101, so the record's arithmetic and its claim that IX is the sole offender both hold. The stated active substance contents, 20, 5, 20, 20, 10, 20, 50, 75, 20 and 0.5 wt. %, match the parts by weight of form in each recipe."
+    },
+    {
+      "check": "fidelity, the crystalline form distinctions, checked independently",
+      "what_was_verified": "Built the discrimination matrix by hand from the three reflection tables at lines 97 to 105 (A), 227 to 233 (C) and 335 to 353 (B) against the claim windows at lines 714 and 753. Against claim 16, form C matches none of the nine, its nearest approach being 10.8 against 11.1 plus or minus 0.2, and form B matches two. Against claim 20, form A matches none of the seven, nearest 11.1 against 10.8 plus or minus 0.2, and form B matches none. So the tabulated powder data and the claim thresholds do discriminate all three modifications cleanly, in both directions, and the record's XRPD scepticism is overstated (see the first finding). The DSC data by contrast does not discriminate: onsets are A 118 to 124, B 118 to 123 and C 121 to 125 degrees C at lines 161, 354 and 284, so A and B are indistinguishable by onset, which is what the record says and it is right. The single-crystal data discriminate A from C decisively, orthorhombic Pna2(1) against monoclinic P2(1)/n, and there is no single-crystal data for form B anywhere in the document, so form B rests on powder plus DSC alone."
+    },
+    {
+      "check": "recall, quantitative outcomes",
+      "what_was_verified": "Grepped the whole document for yield, purity, stability and percentage-of-theory language and read every example and table. There is genuinely no yield, no isolated mass and no per-example assay anywhere, and no formulation stability trial: the only stability data are [0083] to [0086] at lines 525 to 531. The record's account of those four paragraphs, including that a mixture containing B goes to A while B alone goes to C and that the document reconciles neither, is accurate and correctly left unresolved."
+    },
+    {
+      "check": "fidelity, counts and structure of the document",
+      "what_was_verified": "Recounted everything the record asserts. Fifteen worked examples, 1 plus 2 to 9 plus 10 to 13 plus 14 plus 15. Twenty-one tabulated comparative rows, Table 3 with 8, Table 4 with 10 and Table 5 with 3, plus Comparative Examples 1 and 2 in prose, 23 comparative preparations in all. Ten formulation recipes I at line 645 to X at line 686, and nine of the ten name form A or form C while VIII names form A or form B. Live claims 16 to 33 after \"1-15 (canceled)\" at line 712. Nine reflections in claim 16 and seven in claim 20. Exactly three IMAGE_EXTRACT spans, at 74, 76 and 78. All eight of claim 16's other reflections match the [0010] table exactly; only the first differs."
+    },
+    {
+      "check": "precision, chemistry of the solvent gloss and the 94 against 90 reading",
+      "what_was_verified": "2,2-dimethylpropanol is neopentyl alcohol, (CH3)3C-CH2OH, a primary C5 alcohol; tert. amyl alcohol is 2-methyl-2-butanol, a tertiary C5 alcohol. They are isomers and different compounds, so the gloss at lines 291 and 303 is a genuine defect and the record is right to leave it unresolved. The 94 against 90 wt. % reading also holds: claims 17 and 21 limit the tembotrione content of the solid while claims 18, 22, 24, 28, 32 and 33 limit the proportion of that tembotrione which is the named form, and [0039] line 218 and [0062] line 323 print both quantities separately for A and for C."
+    },
+    {
+      "check": "vocabulary and schema",
+      "what_was_verified": "All eight tags sit in their closed lists in A4-patent.md, domain agrochemical, target_class herbicide, claim_type composition/process/formulation/use, novelty new_process, process_focus batch, and all eight match ^[a-z_]+:[a-z0-9_/.+-]+$ with no coined value, no case mismatch and no tag from a finalise.py-owned category. claim_type is complete against the claim set: 16 to 18 and 20 to 22 composition, 19 and 23 process, 24 to 31 formulation, 32 and 33 use. The object carries exactly the five permitted keys and no id, no *_uuid, no assignee_type and no enrichment or vector field. key_examples is correctly empty, since no claim cites an example, and honest_uncertainty_flags carries the matching key_examples_not_referenced code. No SMILES, formula or molecular weight appears anywhere in the artifact. No em dash character anywhere in the artifact."
+    },
+    {
+      "check": "recall, internal inconsistencies the record did catch",
+      "what_was_verified": "Independently confirmed each one rather than taking it on trust: the methanol contradiction between [0013] line 163 and [0024] line 185; [0066] line 356 naming 2,2-dimethylpropanol, a form C solvent, as the reference for a process said to be analogous to form A's; the missing solvent at [0048] line 295; formulation VIII naming form B; formulation IX summing to 101; the Table 5 heading covering two examples over three rows; the nm3 misprint; the broken name in claim 16; and the third parenthesis placement at [0040] line 220. All nine are real and all nine are recorded as printed and repaired in neither direction, which is what rule 8 of CLAUDE.md requires."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 26,
+    "present_in_artifact": 20,
+    "missing": [
+      "The three X-ray powder diffractograms and their assignment, FIG. 1 form A, FIG. 2 form B, FIG. 3 form C, [0068] to [0070] at lines 360 to 364, with the Bruker-AXS D-5000 reflection geometry conditions.",
+      "The form A cooling rate of [0031] line 201, less than 10 K/min, which wholly contains the form C rapid cooling window of 30 to 120 K/hr at [0056] line 311, so the two processes' stated cooling rates do not separate them.",
+      "The seeded exception at [0056] line 311, rapid cooling is not necessary when form C seed crystals are used.",
+      "Example 15 at line 437, the only preparation above milligram scale, which used form C seed crystals at 101 degrees C, cooling to room temperature and overnight storage at 6 degrees C rather than rapid cooling.",
+      "The only conversion figures in the document, [0030] line 197 requiring crystallization until at least 80 wt. % of the form A charge has crystallised out and [0058] line 316 requiring at least 60 wt. % for form C, which is the closest the document comes to a yield.",
+      "That no single-crystal unit-cell data exist for form B, so the excluded form is characterised by powder diffraction and DSC only while A and C carry full crystallographic tables."
+    ]
+  }
+}

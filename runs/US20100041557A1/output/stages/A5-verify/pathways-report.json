@@ -1,0 +1,189 @@
+{
+  "artifact": "pathways.json",
+  "records_audited": 58,
+  "findings": [
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "Comparative Examples 3-10_Step 1",
+      "field": "steps[].non_synthetic",
+      "problem": "All 23 comparative-example recrystallisation steps carry non_synthetic false while the 15 chemically identical inventive-example recrystallisation steps carry true, and every pathway's own flag asserts that no bond is formed or broken in any step.",
+      "source_line": 453,
+      "quote": "[0080] A saturated solution of about 50 mg of tembotrione in the solvents stated in Table 3 was prepared in a test vessel at the boiling point of the solvent. The test vessel was sealed and placed in an ice-water bath and left there for about 40 mins.",
+      "artifact_says": "non_synthetic: false on Comparative Example 1_Step 1, Comparative Example 2_Step 1, Comparative Examples 3-10_Step 1 to 8, Comparative Examples 11-20_Step 1 to 10 and Comparative Examples 21 to 22_Step 1 to 3; non_synthetic: true on Example 1_Step 1, Example 14_Step 1, Example 15_Step 1, Examples 2-9_Step 1 to 8 and Examples 10 to 13_Step 1 to 4",
+      "should_be": "non_synthetic: true on all 23 comparative-example steps, matching the 15 inventive recrystallisation steps in this same run and the convention in runs/CN111440099B and runs/EP2045236A1 where every reaction_class recrystallisation and other step is non_synthetic true. Dissolving tembotrione in ethanol and cooling cannot differ in this respect from dissolving it in methanol and cooling. Fix belongs in A2 and the pathways must be rebuilt, since A3 rule 11 copies the field verbatim.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "Preparation of Form B (Not According to the Invention)",
+      "field": "honest_uncertainty_flags",
+      "problem": "The flag form_b_is_explicitly_not_according_to_the_invention_stated_at_line_356_line_362_and_line_439 cites two lines that do not state anything of the kind, and omits the two lines that state it in words.",
+      "source_line": 356,
+      "quote": "[0066] The production of the modification B is effected analogously to the production of the modification A, using n-pentanol instead of 2,2-dimethylpropanol as the solvent.",
+      "artifact_says": "form_b_is_explicitly_not_according_to_the_invention_stated_at_line_356_line_362_and_line_439, on 31 records",
+      "should_be": "Cite line 181 ('the form B also described here, not according to the invention'), line 307 (the same clause repeated in [0054]) and line 439 (the section heading '(not According to Invention)'). Line 356 only describes how form B is made and line 362 only says FIG. 2 shows form B's diffractogram; neither disclaims it. The flag's conclusion is correct, its evidence is not.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "patent-scope pathway to tembotrione crystalline form A",
+      "field": "honest_uncertainty_flags",
+      "problem": "The flag asserts the generic process block is the only two-step telling in the patent, which is false, and is contradicted by the artifact's own two-step Claims 16-33 pathways.",
+      "source_line": 745,
+      "quote": "19 19. A process for the production of the crystalline form A of claim 16, comprising: i) preparing a solution of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione in a polar organic solvent ... and ii) effecting a crystallization",
+      "artifact_says": "patent_scope_chain_taken_from_the_generic_process_block_because_it_is_the_patent_own_statement_of_its_process_and_is_the_only_two_step_telling, on both patent-scope records",
+      "should_be": "Drop the clause 'and is the only two step telling', or replace it with 'and is preferred over the equivalent two step recitations in claim 19 at line 745 and claim 23 at line 759 because it is the description's own account'. Claims 19 and 23 each recite steps i) and ii), and the artifact emits two-step pathways for both.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "all 58 records",
+      "field": "honest_uncertainty_flags",
+      "problem": "The flag claims no assay purity is stated anywhere in the patent, but the patent states the tembotrione content of the product of both inventive crystallizations and recites a content in the claims.",
+      "source_line": 218,
+      "quote": "[0039] By means of the crystallization according to the invention, the form A is obtained with a tembotrione content of as a rule at least 90 wt. %, often 94 wt. %, in particular at least 96 wt. %. The content of form A, based on the total quantity of tembotrione, is typically at least 90% and often at least 95% or at least 96%.",
+      "artifact_says": "no_yield_no_product_mass_and_no_assay_purity_stated_anywhere_in_this_patent, on all 58 records",
+      "should_be": "Narrow to 'no yield and no product mass stated anywhere in this patent; the only purities stated are the generic product content ranges at line 218 for form A and line 323 for form C and the at least 94 wt. % recited in claim 17 at line 738, none of them a measured assay on a specific batch'. The no-yield and no-product-mass halves are true and I verified them; every printed mass in the document is an input charge (150 mg at lines 374, 426 and 443, about 50 mg at lines 378, 406, 453, 479 and 509, 7.6 g at line 432). overall_purity_pct correctly stays null under rule 10 because A2 left product_purity_pct null, so only the flag wording is at issue.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "all 58 records",
+      "field": "tags",
+      "problem": "The pathway tag union omits chemical_family:triketone on 54 of 58 records and chemical_family:aryl_sulfone on 30 of 58, because the endpoint tags were taken from the per-section A1 files rather than the merged compounds.json that A3 rule 14 and the A3 input spec name.",
+      "source_line": 72,
+      "quote": "[0002] Tembotrione is the herbicidal active substance of the formula I or the tautomers I' and I\" and mixtures thereof.",
+      "artifact_says": "Claims 16-33 form A record carries chemical_family:cyclohexanedione and chemical_family:aryl_sulfone but not chemical_family:triketone; Process for Form A record carries chemical_family:triketone and chemical_family:cyclohexanedione but not chemical_family:aryl_sulfone",
+      "should_be": "Add chemical_family:triketone to the 54 records that lack it and chemical_family:aryl_sulfone to the 30 that lack it. compounds.json carries all nine tags for tembotrione and for forms A, B and C; the per-section A1 records carry different subsets (claims-16-33.json and example-1.json have aryl_sulfone but not triketone, process-for-form-a.json has triketone but not aryl_sulfone, comparative-example-1.json and stability-studies-on-the-modifications.json have neither), and the section-file subsets are exactly what the artifact reproduces. Everything else in rule 14 is correct: no extra tags anywhere, order preserved, and chain_length, branching, convergence and lcl all right on all 58.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "Example 15_Step 1",
+      "field": "steps[].compounds[3].role",
+      "problem": "The pathway step gives the form C seed crystals role seed_crystal while the shipped reactions.json gives the same compound on the same reaction role other, so a field A3 rule 11 requires to be a verbatim copy diverges between the two artifacts.",
+      "source_line": 437,
+      "quote": "The solution was cooled on an oil bath to 101° C. and then some seed crystals of the form C (tip of a spatula) were added without stirring.",
+      "artifact_says": "\"identifier\": \"tembotrione crystalline form C\", \"role\": \"seed_crystal\"",
+      "should_be": "Make the two agree. seed_crystal is the better reading of line 437 and is what A2's own stages/A2-reactions/example-15.json and raw-reactions.json both emit, so the divergence is introduced by finalise.py normalising the role to other in reactions.json without applying the same normalisation to pathways.json. Fix the normaliser to cover both artifacts rather than editing either output. This is the only field mismatch across all 61 step projections; I checked all 47 rule-11 fields on every step.",
+      "confidence": "high"
+    },
+    {
+      "check": "linkage",
+      "severity": "minor",
+      "record": "Preparation of Form B (Not According to the Invention)_Step 2",
+      "field": "steps[].linkage_confirmed",
+      "problem": "A genuine precursor link is recorded as unconfirmed: the named precursor Step 1 produces tembotrione and tembotrione is the sole reactant of Step 2.",
+      "source_line": 356,
+      "quote": "[0066] The production of the modification B is effected analogously to the production of the modification A, using n-pentanol instead of 2,2-dimethylpropanol as the solvent.",
+      "artifact_says": "precursor_step: \"Step 1\", linkage_confirmed: false",
+      "should_be": "linkage_confirmed: true, matching Process for Form A_Step 2 and Process for Form C_Step 2, which have the identical configuration (precursor Step 1, product tembotrione, sole reactant tembotrione) and are recorded true. Fix in A2 and rebuild. This is the only linkage disagreement of the five precursor links in the artifact.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Formulation Examples I to X gel formulation pathway",
+      "field": "honest_uncertainty_flags",
+      "problem": "The flag for a step carrying mass_balance_implausible uses an invented code where A3 rule 15 names one.",
+      "source_line": 684,
+      "quote": "[0150] 20 parts by weight of form A or form C, 10 parts by weight of dispersant, 1 part by weight of gelling agent and 70 parts by weight of water or an organic solvent are ground to a fine suspension in a ball mill.",
+      "artifact_says": "mass_balance_implausible_in_chain",
+      "should_be": "inconsistent_step_arithmetic, which A3 rule 15 defines as 'a step carries mass_balance_implausible'. The flag is substantively true: 20 + 10 + 1 + 70 = 101 parts, and 20 in 101 is 19.80 per cent against the stated 20 wt. %, and this is the only one of the ten recipes that does not sum to 100. I checked all ten.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Claims 16-33 form A pathway",
+      "field": "honest_uncertainty_flags",
+      "problem": "The stated reason for emitting one pathway per terminal step is false for 12 of the 56 records that carry it, because those terminal steps are not solvent experiments.",
+      "source_line": 745,
+      "quote": "19 19. A process for the production of the crystalline form A of claim 16, comprising:",
+      "artifact_says": "one_section_scope_pathway_is_emitted_per_terminal_step_rather_than_one_per_section_because_each_terminal_step_is_a_separate_solvent_experiment_following_the_ep2045236a1_polymorph_run",
+      "should_be": "Generalise to 'because each terminal step is a separate experiment or recitation'. The two Claims 16-33 terminal steps are claim recitations and the ten Formulation Examples I to X terminal steps are excipient blends; neither is a solvent experiment. The precedent half of the flag holds: runs/EP2045236A1 emits two section pathways for Claims and two for Preparation - General Process, so it too emits one per terminal step.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Stability Studies on the Modifications pathway to tembotrione crystalline form A",
+      "field": "ksm.identifier",
+      "problem": "The record asserts a route from tembotrione crystalline form A to tembotrione crystalline form A, whereas the source states that a mixture of three forms converted into form A.",
+      "source_line": 527,
+      "quote": "[0084] After 2 days under these conditions, a mixture of forms A, B and C had converted into form A.",
+      "artifact_says": "ksm.identifier: \"tembotrione crystalline form A\", product.identifier: \"tembotrione crystalline form A\"",
+      "should_be": "Either ksm null with ksm_not_stated, since A3 rule 3 does not resolve which of three co-suspended forms is the starting material and picking the first makes the pathway assert a form-A-to-form-A conversion the patent does not disclose, or an identifier naming the mixture. Severity is held at minor because the record already carries the_recited_inputs_are_components_of_one_suspended_mixture_not_alternative_starting_materials and stability_study_not_a_preparation_no_new_material_is_made, so the reader is warned; the structured fields still overstate.",
+      "confidence": "medium"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "recall - pathway count against the transformations the document discloses",
+      "what_was_verified": "I counted the routes in the source myself before looking at the record count and got 56 section-level terminal transformations: the generic form A process (lines 163 to 220), the generic form C process (lines 289 to 323), the form B process (line 356), claim 19 (lines 745 to 748) and claim 23 (lines 759 to 762) at two steps each; 15 worked examples, being Example 1 (line 374), the 8 rows of Table 1 (lines 382 to 389), the 4 rows of Table 2 (lines 410 to 413), Example 14 (line 426) and Example 15 (lines 432 to 437); 23 comparative experiments, being Comparative Example 1 (line 443), Comparative Example 2 (line 447), the 8 rows of Table 3 (lines 457 to 464), the 10 rows of Table 4 (lines 483 to 492) and the 3 rows of Table 5 (lines 513 to 515); 3 stability conversions (lines 527, 529, 531); and 10 formulation examples I to X (lines 645 to 688). The artifact has exactly 56 section-scope records and they map one to one onto the 56 terminal steps in reactions.json with no gap and no extra. No transformation is counted twice and none is collapsed. The heading 'Comparative Examples 21 to 22' against three printed rows 21, 22 and 23 is caught by the artifact's own flag section_heading_says_21_to_22_but_table_5_at_lines_511_to_515_prints_three_rows_21_22_and_23."
+    },
+    {
+      "check": "provenance sidecar absence",
+      "what_was_verified": "There is no pathways-provenance.json, and that is the expected shape rather than a defect: runs/CN104292137A/output/stages/A3-pathways/ and runs/CN111440099B/output/stages/A3-pathways/ each contain pathways.json and nothing else. Both were read only; nothing was written under either. The top-level key set of all three files is identical, 22 keys, so no field is missing from or extra in this artifact relative to the reference runs."
+    },
+    {
+      "check": "precision - key starting material is never a solvent and is always among the cited step's reactants",
+      "what_was_verified": "For all 58 records I checked that ksm.identifier appears in the earliest step's reactant_names and is not any compound with role solvent on that step. All 58 pass. No solvent, wash, drying agent, seed crystal or excipient is nominated as a starting material anywhere. All 58 ksm entries also resolve to a compound_uuid in the finalised pathways.json, so the identity the downstream stage binds from the string exists in compounds.json in every case."
+    },
+    {
+      "check": "precision - no structures, formulae or molecular weights",
+      "what_was_verified": "Every smiles field in the artifact is null and there is no occurrence of molecular_formula, molecular_weight or inchi anywhere in the file, as required. No atmosphere, pressure, reactor_type or concentration value is asserted where the source is silent: all are null except where the text supplies them."
+    },
+    {
+      "check": "fidelity - chain construction, intermediates, product and aggregates",
+      "what_was_verified": "Checked mechanically on all 58 records against reactions.json. intermediates equals the ordered products of every step except the last, on all 58 including the seven two-step chains where the intermediate is 'tembotrione'. product equals the terminal step's product_name on all 58. overall_yield_pct is null on all 58 and is correctly null, because no step in the document carries a yield. overall_purity_pct is null on all 58 and equals the terminal step's product_purity_pct in every case, so no aggregate was computed from a value the patent does not state. Every enrichment field and pathway score is null as rule 13 requires, and no id or uuid field is present that should have been omitted."
+    },
+    {
+      "check": "fidelity - conditions, units and ranges",
+      "what_was_verified": "Boiling and reflux are never recorded as a temperature: 'boiling methanol' at line 374, 'boiling n-pentanol' at line 443 and 'the boiling point of the solvent' at lines 378, 453 and 479 all leave temperature.type not_specified and appear only as prose in heating_method. Ranges are not flattened to points: 20 to 160 C at line 183, 80 to 150 C at line 309, at most 100 C at line 165, at least 80 C at line 297 and 10 to 30 C at line 525 are all carried as min_c and max_c. Time conversions are all correct: 'about 40 mins' to 0.67 h, '16 hrs' to 16.0, and 2, 8 and 3 days at lines 527, 529 and 531 to 48.0, 192.0 and 72.0. Example 15's 6.0 to 110.0 C span matches lines 432 and 437. 'over night' is left null for time on both Example 15 and Comparative Examples 11-20, consistently. scale is micro for the 150 mg and about 50 mg charges and lab for the 7.6 g charge at line 432, matching rule 21's boundaries."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "No step in this document states a product mass or a yield, so no step-level yield arithmetic can be formed and none was fabricated. I summed all ten formulation recipes independently: I 20+3+17+60, II 5+95, III 20+2+8+2+68, IV 20+10+70, V 10+17+2+1+7+63, VI 20+10+70, VII 50+50, VIII 75+25 and X 0.5+99.5 all reach 100, and only IX at line 684 reaches 101 against a stated 20 wt. % content. mass_balance_implausible is raised on that step alone and on no other, and the pathway inherits it. The one loading anomaly in the examples, 150 mg of tembotrione in 0.15 ml of methanol at line 374, is about 1000 g/l against the 100 to 800 g/l the patent gives at line 169, and it is flagged as printed_charge_of_150_mg_against_0_15_ml_of_methanol_is_a_loading_the_solvent_cannot_support_recorded_as_printed rather than repaired."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "There are five precursor links in the artifact. Four substantiate: Claims 16-33_Claim 19 Step ii and Claim 23 Step ii on Claim 19 Step i and Claim 23 Step i, and Process for Form A_Step 2 and Process for Form C_Step 2 on their Step 1, in each case the precursor's product 'tembotrione' being the sole reactant of the linked step. No precursor_step points at a step that does not exist, so unresolved_precursor correctly does not appear. The fifth is the Preparation of Form B case reported above."
+    },
+    {
+      "check": "vocabulary",
+      "what_was_verified": "All 1804 tag occurrences across pathway and step tags match the pattern category:value with lowercase snake_case ASCII values, with no casing errors and no malformed entries. Every value in a closed category is inside its list: solvent_class, catalyst_class, workup_type, purification, step_role, linkage and is_one_pot all check out against the A2 rule 26 lists. reaction_class uses only formulation, other and recrystallisation, all three in the rule 17 list; mechanism_type is not_determinable throughout, in the rule 20 list; scale uses micro, lab and not_specified, all in the rule 21 list; reaction_class_confidence is high throughout. The derived categories are right: chain_length 1 or 2 matching the step count on every record, branching:linear and convergence:linear correct because no step has more than one precursor or feeds more than one step, and lcl:short correct for every 1 and 2 step chain."
+    },
+    {
+      "check": "honest_uncertainty_flags - individual verification",
+      "what_was_verified": "I verified each distinct flag against the source rather than accepting it. Confirmed true: no_synthetic_transformation_in_patent and no_bond_is_formed_or_broken_in_any_step_of_this_patent, since every step is dissolution, crystallisation or blending and tembotrione is unchanged throughout; ksm_not_prepared_in_this_patent_wo_00_21924_cited_at_line_80_and_line_220, both citations checked and both correct; truncated_chain; ksm_taken_as_literal_first_reactant_of_step_0_asserted_present_in_reactant_names_and_components, verified on all 58; two_patent_scope_pathways_emitted_because_the_patent_states_form_a_at_line_92_and_form_c_at_line_222_as_separate_objects_of_equal_standing, both lines checked and both are object-of-the-invention statements; section_sentence_at_line_356_names_modification_a_as_the_reference_process_and_2_2_dimethylpropanol_as_the_solvent_replaced_which_are_incompatible, genuinely incompatible because 2,2-dimethylpropanol is form C's solvent at line 291 and is absent from form A's solvent list at line 163; section_heading_says_21_to_22_but_table_5_prints_three_rows; product_identifier_has_no_a1_compound_record_so_compound_uuid_cannot_resolve, which appears on exactly the 32 records whose product.compound_uuid is null in the finalised file, a count I reproduced independently; form_b_appears_as_a_formulation_input_although_the_patent_excludes_it_from_the_invention, matching the form A or form B at line 680 which is the one formulation example of ten that names form B; comparative_example_not_according_to_the_invention on exactly 23 records; product_is_a_mixture_of_two_modifications_not_a_pure_form on exactly the 21 mixture products; single_step_chain_not_a_multistep_route on exactly the 51 one-step records; recited_inputs_are_alternatives_not_a_single_ksm on exactly the 14 multi-reactant records. I also checked all ten a2_provenance_quote_cites_line_NNN_which_is_an_en_translation_line flags, which look wrong against the per-section A2 provenance files but are correct against the merged reactions-provenance.json that A3 takes as input: in all ten cases the cited line (648, 652, 656, 660, 664, 668, 677, 681, 685, 689) is an '> EN:' line that reactions-provenance.json really does cite, and the line named as the printed source (647, 651, 655, 659, 663, 667, 671, 680, 684, 688) really is the printed line. That was my strongest suspected finding and it does not hold."
+    },
+    {
+      "check": "schema and rule 16 flag inheritance",
+      "what_was_verified": "Every step validation_flag in reactions.json is reflected in its pathway's honest_uncertainty_flags: no_conditions to no_conditions_in_chain on 5 records, cross_reference_unresolved to cross_reference_unresolved_in_chain on 3, conditions_unresolved to conditions_unresolved_in_chain on 1, a1_missing_compound to a1_missing_compound_in_chain on 1, and mass_balance_implausible on 1. No pathway is presented clean when assembled from flagged steps. All 47 rule-11 fields are present on every step, with the single role divergence reported above."
+    },
+    {
+      "check": "drawings",
+      "what_was_verified": "I opened p04.png myself at high magnification and read the three structures in paragraph [0002] off the page. All three IMAGE_EXTRACT spans at lines 74, 76 and 78 are correct in ring system, in every substituent and in every substituent position. Formula I is drawn with an sp3 C2 flanked by two ring ketones and the SMILES gives C2C(=O)CCCC2=O; I' is drawn with a ring ketone, a ring C2=C3 double bond and an OH on C3 and the SMILES gives C2=C(O)CCCC2=O; I'' is drawn with two ring ketones and an exocyclic C(OH)= to the aryl and the SMILES gives C(O)=C2C(=O)CCCC2=O. On all three aryl rings I traced the positions round from the acyl attachment and read Cl ortho, CH2-O-CH2-CF3 meta and SO2CH3 para off the page, which is the 2-chloro, 3-(2,2,2-trifluoroethoxymethyl), 4-methylsulfonyl pattern all three SMILES encode and the title at line 68 names. No position was inferred from the name. The stated formula C17H16ClF3O6S checks by hand atom count for all three tautomers. There are no reaction schemes anywhere in the document, so no above-arrow and below-arrow reagent merge is possible and no background scheme could have been annotated as the invention's route; the only other drawings are the three XRPD plots on p02 and p03, from which the enriched text explicitly refuses to read any 2-theta value. The pathways artifact carries no structural field at all, so this check bears on it only indirectly."
+    },
+    {
+      "check": "the form presented differently from the others",
+      "what_was_verified": "The document claims forms A and C as its two objects (lines 88, 92, 222) and disclaims form B, which is described but excluded: 'the form B also described here, not according to the invention' at lines 181 and 307, 'Unlike the modifications A and C, modification B cannot be stably formulated' at line 325, and the heading '(not According to Invention)' at line 439. The artifact does reflect this asymmetry: form B is never a product of a section labelled as the invention's, its preparation section is named as not according to the invention, 31 records carry a form B disclaimer flag, 23 carry comparative_example_not_according_to_the_invention, and the single formulation example that admits form B is separately flagged. The only defect is the wrong line citations inside that disclaimer flag, reported above."
+    },
+    {
+      "check": "rule 8 deviation",
+      "what_was_verified": "The artifact emits two patent-scope pathways where rule 8 says one, and records this rather than hiding it, in prompt_rule_8_expects_a_single_patent_scope_pathway_and_this_is_a_recorded_deviation_not_an_oversight. I judged this a defensible recorded deviation and not a finding: lines 92 and 222 do present form A and form C as objects of equal standing, so there is no single overall target to choose between them. For contrast, runs/EP2045236A1 emits one patent-scope pathway. Rule 8's instruction to emit both the section and the patent record even when the steps coincide is followed: the two patent-scope records reuse the Process for Form A and Process for Form C step ids, which is what production does and is not a double count."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 56,
+    "present_in_artifact": 56,
+    "missing": []
+  }
+}
