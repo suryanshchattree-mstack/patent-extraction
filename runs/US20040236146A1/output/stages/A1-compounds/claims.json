@@ -98,6 +98,36 @@
   },
   {
     "patent_id": "US20040236146A1",
+    "identifier": "radical initiator",
+    "identifier_type": "other",
+    "aliases": [
+      "a radical initiator",
+      "the radical initiator"
+    ],
+    "resolved": false,
+    "unresolved_reference": true,
+    "section_label": "Claims",
+    "section_type": "claims",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "reagent",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:reagent"
+    ],
+    "notes": "The co-reagent of the claim 6 process, charged alongside N-bromosuccinimide. A class term and not a named compound, so resolved is false and unresolved_reference is true. L154 prints it as a radical initiator and L160 as the radical initiator; per PROMPT-CORRECTIONS section 9 the identifier is the bare noun phrase with the article dropped and both as-printed forms go in aliases, so this record joins the same class term recorded in Background, Summary of the Invention and Process Conditions rather than splitting one class across several keys. Claim 7 (L160) enumerates the two members the class may take, azoisobutyronitrile and dibenzoyl peroxide, and those are kept as their own records: a class name identifies no single molecule, and claim 6 stands without claim 7, so recording only the members would leave the broader claim unrecorded. role is reagent and compound_class is reagent per PROMPT-CORRECTIONS section 8: an initiator is consumed in fragmenting to the chain-carrying radical and so does not meet A1 rule 9's definition of catalyst. commercially_available is false because nothing in this section states it."
+  },
+  {
+    "patent_id": "US20040236146A1",
     "identifier": "azoisobutyronitrile",
     "identifier_type": "trivial_name",
     "aliases": [],
@@ -124,7 +154,7 @@
       "functional_group:azo",
       "functional_group:nitrile"
     ],
-    "notes": "One of the two radical initiators claim 7 (L160) allows for the variant A bromination. Printed correctly on this line, so no alias is carried. The closed role list has no initiator value; reagent is chosen because the list's catalyst is defined as not consumed and an initiator is consumed in fragmenting to the chain-carrying radical. That vocabulary gap is recorded rather than hidden."
+    "notes": "One of the two radical initiators claim 7 (L160) allows for the variant A bromination. Printed correctly on this line, so no alias is carried. It is kept as a record separate from the class term radical initiator that claim 6 charges, which is recorded on its own. The closed role list has no initiator value; reagent is chosen because the list's catalyst is defined as not consumed and an initiator is consumed in fragmenting to the chain-carrying radical. That vocabulary gap is recorded rather than hidden."
   },
   {
     "patent_id": "US20040236146A1",
@@ -154,7 +184,7 @@
       "functional_group:peroxide",
       "hazard:peroxide_former"
     ],
-    "notes": "The second radical initiator claim 7 (L160) allows for the variant A bromination. The closed role list has no initiator value; reagent is chosen because the list's catalyst is defined as not consumed and an initiator is consumed. The examples of this patent show the consumption directly, recharging this initiator through the reaction. That vocabulary gap is recorded rather than hidden."
+    "notes": "The second radical initiator claim 7 (L160) allows for the variant A bromination. It is kept as a record separate from the class term radical initiator that claim 6 charges, which is recorded on its own. The closed role list has no initiator value; reagent is chosen because the list's catalyst is defined as not consumed and an initiator is consumed. The examples of this patent show the consumption directly, recharging this initiator through the reaction. That vocabulary gap is recorded rather than hidden."
   },
   {
     "patent_id": "US20040236146A1",
