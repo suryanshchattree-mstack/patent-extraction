@@ -1,0 +1,3274 @@
+{
+  "patent_id": "WO2000021924A1",
+  "reactions": [
+    {
+      "reaction_id": "Example 1_Step 1",
+      "section_label": "Example 1",
+      "step_label": "Step 1",
+      "reaction_class": "nucleophilic_substitution",
+      "named_reaction": null,
+      "is_one_pot": true,
+      "conditions": {
+        "temperature": {
+          "type": "exact",
+          "value_c": 100.0,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": 3.0,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": "Cc1c(Cl)cccc1Cl.CN(C)P(=O)(N(C)C)N(C)C.C[S-].[Na+].CI.O.CCOC(C)=O.O=S(=O)([O-])[O-].[Mg+2]>>CSc1cccc(Cl)c1C",
+      "participants_total": 8,
+      "participants_resolved": 8,
+      "compounds": [
+        {
+          "identifier": "2,6-dichlorotoluene",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "Cc1c(Cl)cccc1Cl",
+          "formula": "C7H6Cl2",
+          "mw": 161.03,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 200.0,
+            "volume_ml": null,
+            "mmol": 1240.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hexamethylphosphoric triamide",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CN(C)P(=O)(N(C)C)N(C)C",
+          "formula": "C6H18N3OP",
+          "mw": 179.2,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 600.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "sodium thiomethoxide",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "C[S-].[Na+]",
+          "formula": "CH3NaS",
+          "mw": 70.09,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 130.41,
+            "volume_ml": null,
+            "mmol": 1860.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "iodomethane",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "CI",
+          "formula": "CH3I",
+          "mw": 141.94,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 88.2,
+            "volume_ml": null,
+            "mmol": 500.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "water",
+          "role": "other",
+          "is_product": false,
+          "smiles": "O",
+          "formula": "H2O",
+          "mw": 18.02,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 3500.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "ethyl acetate",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CCOC(C)=O",
+          "formula": "C4H8O2",
+          "mw": 88.11,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "magnesium sulfate",
+          "role": "drying_agent",
+          "is_product": false,
+          "smiles": "O=S(=O)([O-])[O-].[Mg+2]",
+          "formula": "MgO4S",
+          "mw": 120.37,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "2-chloro-6-(methylthio)toluene",
+          "role": "product",
+          "is_product": true,
+          "smiles": "CSc1cccc(Cl)c1C",
+          "formula": "C8H9ClS",
+          "mw": 172.68,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 208.85,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 97.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Example 1_Step 2",
+      "section_label": "Example 1",
+      "step_label": "Step 2",
+      "reaction_class": "acylation",
+      "named_reaction": "Friedel-Crafts acylation",
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "room_temperature",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": "CC(=O)Cl.[Cl][Al]([Cl])[Cl].ClCCCl.CSc1cccc(Cl)c1C.O.Cl.ClCCl.O=S(=O)([O-])[O-].[Mg+2]>>CSc1ccc(C(C)=O)c(Cl)c1C",
+      "participants_total": 9,
+      "participants_resolved": 9,
+      "compounds": [
+        {
+          "identifier": "acetyl chloride",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "CC(=O)Cl",
+          "formula": "C2H3ClO",
+          "mw": 78.5,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 47.36,
+            "volume_ml": null,
+            "mmol": 600.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "aluminium chloride",
+          "role": "reagent",
+          "is_product": false,
+          "smiles": "[Cl][Al]([Cl])[Cl]",
+          "formula": "AlCl3",
+          "mw": 133.34,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 90.79,
+            "volume_ml": null,
+            "mmol": 680.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "1,2-dichloroethane",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "ClCCCl",
+          "formula": "C2H4Cl2",
+          "mw": 98.96,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "2-chloro-6-(methylthio)toluene",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "CSc1cccc(Cl)c1C",
+          "formula": "C8H9ClS",
+          "mw": 172.68,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 103.14,
+            "volume_ml": null,
+            "mmol": 600.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "water",
+          "role": "other",
+          "is_product": false,
+          "smiles": "O",
+          "formula": "H2O",
+          "mw": 18.02,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 1000.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hydrochloric acid",
+          "role": "acid",
+          "is_product": false,
+          "smiles": "Cl",
+          "formula": "HCl",
+          "mw": 36.46,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 300.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "dichloromethane",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "ClCCl",
+          "formula": "CH2Cl2",
+          "mw": 84.93,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "magnesium sulfate",
+          "role": "drying_agent",
+          "is_product": false,
+          "smiles": "O=S(=O)([O-])[O-].[Mg+2]",
+          "formula": "MgO4S",
+          "mw": 120.37,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "2-chloro-3-methyl-4-methylthio-acetophenone",
+          "role": "product",
+          "is_product": true,
+          "smiles": "CSc1ccc(C(C)=O)c(Cl)c1C",
+          "formula": "C10H11ClOS",
+          "mw": 214.72,
+          "origin": "curated",
+          "quantity": {
+            "mass_g": 111.24,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 87.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Example 1_Step 3",
+      "section_label": "Example 1",
+      "step_label": "Step 3",
+      "reaction_class": "oxidation",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "room_temperature",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": 36.0,
+        "reactor_type": null,
+        "concentration": {
+          "value": 30.0,
+          "unit": "%",
+          "reagent": "hydrogen peroxide",
+          "text": "30 %igen Wasserstoffperoxidlösung"
+        },
+        "heating_method": null,
+        "cooling_method": "cooled during the dropwise addition of the hydrogen peroxide solution; no temperature stated",
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": "CSc1ccc(C(C)=O)c(Cl)c1C.CC(=O)O.[Na+].[Na+].[O]=[W](=[O])([O-])[O-].OO.O>>CC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+      "participants_total": 6,
+      "participants_resolved": 6,
+      "compounds": [
+        {
+          "identifier": "2-chloro-3-methyl-4-methylthio-acetophenone",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "CSc1ccc(C(C)=O)c(Cl)c1C",
+          "formula": "C10H11ClOS",
+          "mw": 214.72,
+          "origin": "curated",
+          "quantity": {
+            "mass_g": 223.48,
+            "volume_ml": null,
+            "mmol": 1040.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "acetic acid",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CC(=O)O",
+          "formula": "C2H4O2",
+          "mw": 60.05,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 1800.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "sodium tungstate",
+          "role": "catalyst",
+          "is_product": false,
+          "smiles": "[Na+].[Na+].[O]=[W](=[O])([O-])[O-]",
+          "formula": "Na2O4W",
+          "mw": 293.82,
+          "origin": "curated",
+          "quantity": {
+            "mass_g": 27.47,
+            "volume_ml": null,
+            "mmol": 80.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hydrogen peroxide",
+          "role": "oxidant",
+          "is_product": false,
+          "smiles": "OO",
+          "formula": "H2O2",
+          "mw": 34.01,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 203.83,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "water",
+          "role": "other",
+          "is_product": false,
+          "smiles": "O",
+          "formula": "H2O",
+          "mw": 18.02,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 1500.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "2-chloro-3-methyl-4-methylsulfonyl-acetophenone",
+          "role": "product",
+          "is_product": true,
+          "smiles": "CC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+          "formula": "C10H11ClO3S",
+          "mw": 246.71,
+          "origin": "curated",
+          "quantity": {
+            "mass_g": 123.35,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 48.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Example 1_Step 4",
+      "section_label": "Example 1",
+      "step_label": "Step 4",
+      "reaction_class": "oxidation",
+      "named_reaction": "haloform reaction",
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "exact",
+          "value_c": 80.0,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": 1.0,
+        "reactor_type": null,
+        "concentration": {
+          "value": 13.0,
+          "unit": "%",
+          "reagent": "sodium hypochlorite",
+          "text": "13 %ige Natriumhypochloritlösung"
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": "CC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl.C1COCCO1.[Na+].[O-]Cl.Cl.O>>Cc1c(S(C)(=O)=O)ccc(C(=O)O)c1Cl",
+      "participants_total": 6,
+      "participants_resolved": 6,
+      "compounds": [
+        {
+          "identifier": "2-chloro-3-methyl-4-methylsulfonyl-acetophenone",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "CC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+          "formula": "C10H11ClO3S",
+          "mw": 246.71,
+          "origin": "curated",
+          "quantity": {
+            "mass_g": 60.0,
+            "volume_ml": null,
+            "mmol": 240.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "1,4-dioxane",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "C1COCCO1",
+          "formula": "C4H8O2",
+          "mw": 88.11,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 510.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "sodium hypochlorite",
+          "role": "oxidant",
+          "is_product": false,
+          "smiles": "[Na+].[O-]Cl",
+          "formula": "ClNaO",
+          "mw": 74.44,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 870.0,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hydrochloric acid",
+          "role": "acid",
+          "is_product": false,
+          "smiles": "Cl",
+          "formula": "HCl",
+          "mw": 36.46,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "water",
+          "role": "other",
+          "is_product": false,
+          "smiles": "O",
+          "formula": "H2O",
+          "mw": 18.02,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "2-chloro-3-methyl-4-methylsulfonyl-benzoic acid",
+          "role": "product",
+          "is_product": true,
+          "smiles": "Cc1c(S(C)(=O)=O)ccc(C(=O)O)c1Cl",
+          "formula": "C9H9ClO4S",
+          "mw": 248.69,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 53.02,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 88.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Example 1_Step 5",
+      "section_label": "Example 1",
+      "step_label": "Step 5",
+      "reaction_class": "ester_formation",
+      "named_reaction": "Fischer esterification",
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "not_specified",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": 3.0,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": "reflux",
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": "Cc1c(S(C)(=O)=O)ccc(C(=O)O)c1Cl.CO.Cl>>COC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+      "participants_total": 4,
+      "participants_resolved": 4,
+      "compounds": [
+        {
+          "identifier": "2-chloro-3-methyl-4-methylsulfonyl-benzoic acid",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "Cc1c(S(C)(=O)=O)ccc(C(=O)O)c1Cl",
+          "formula": "C9H9ClO4S",
+          "mw": 248.69,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 53.02,
+            "volume_ml": null,
+            "mmol": 210.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "methanol",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "CO",
+          "formula": "CH4O",
+          "mw": 32.04,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 400.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hydrochloric acid",
+          "role": "acid",
+          "is_product": false,
+          "smiles": "Cl",
+          "formula": "HCl",
+          "mw": 36.46,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "methyl 2-chloro-3-methyl-4-methylsulfonyl-benzoate",
+          "role": "product",
+          "is_product": true,
+          "smiles": "COC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+          "formula": "C10H11ClO4S",
+          "mw": 262.71,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 54.93,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 98.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Example 1_Step 6",
+      "section_label": "Example 1",
+      "step_label": "Step 6",
+      "reaction_class": "halogenation",
+      "named_reaction": "Wohl-Ziegler bromination",
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "not_specified",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": "reflux",
+        "cooling_method": null,
+        "light_source": {
+          "type": "other",
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": 300.0
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": "COC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl.ClC(Cl)(Cl)Cl.O=C1CCC(=O)N1Br.O=C(OOC(=O)c1ccccc1)c1ccccc1.CCOCC.CCCCCCC>>COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+      "participants_total": 7,
+      "participants_resolved": 7,
+      "compounds": [
+        {
+          "identifier": "methyl 2-chloro-3-methyl-4-methylsulfonyl-benzoate",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "COC(=O)c1ccc(S(C)(=O)=O)c(C)c1Cl",
+          "formula": "C10H11ClO4S",
+          "mw": 262.71,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 44.14,
+            "volume_ml": null,
+            "mmol": 170.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "carbon tetrachloride",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "ClC(Cl)(Cl)Cl",
+          "formula": "CCl4",
+          "mw": 153.82,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 600.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "N-bromosuccinimide",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "O=C1CCC(=O)N1Br",
+          "formula": "C4H4BrNO2",
+          "mw": 177.98,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 29.91,
+            "volume_ml": null,
+            "mmol": 170.0,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "dibenzoyl peroxide",
+          "role": "catalyst",
+          "is_product": false,
+          "smiles": "O=C(OOC(=O)c1ccccc1)c1ccccc1",
+          "formula": "C14H10O4",
+          "mw": 242.23,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.41,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "diethyl ether",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CCOCC",
+          "formula": "C4H10O",
+          "mw": 74.12,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "n-heptane",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CCCCCCC",
+          "formula": "C7H16",
+          "mw": 100.2,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "methyl 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoate",
+          "role": "product",
+          "is_product": true,
+          "smiles": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+          "formula": "C10H10BrClO4S",
+          "mw": 341.61,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 38.82,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 67.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Example 1_Step 7",
+      "section_label": "Example 1",
+      "step_label": "Step 7",
+      "reaction_class": "hydrolysis",
+      "named_reaction": "Williamson ether synthesis",
+      "is_one_pot": true,
+      "conditions": {
+        "temperature": {
+          "type": "room_temperature",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": 4.0,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": "reflux",
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl.OC1CCCCC1.CC(C)(C)[O-].[K+].C1CCOC1.O.[Na+].[OH-].Cl.ClCCl.O=S(=O)([O-])[O-].[Mg+2]>>CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COC1CCCCC1",
+      "participants_total": 10,
+      "participants_resolved": 10,
+      "compounds": [
+        {
+          "identifier": "methyl 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoate",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+          "formula": "C10H10BrClO4S",
+          "mw": 341.61,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 1.0,
+            "volume_ml": null,
+            "mmol": 2.93,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "cyclohexanol",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "OC1CCCCC1",
+          "formula": "C6H12O",
+          "mw": 100.16,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 10.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "potassium tert-butoxide",
+          "role": "base",
+          "is_product": false,
+          "smiles": "CC(C)(C)[O-].[K+]",
+          "formula": "C4H9KO",
+          "mw": 112.21,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.33,
+            "volume_ml": null,
+            "mmol": 2.93,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "tetrahydrofuran",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "C1CCOC1",
+          "formula": "C4H8O",
+          "mw": 72.11,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 16.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "water",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "O",
+          "formula": "H2O",
+          "mw": 18.02,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 8.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "sodium hydroxide",
+          "role": "base",
+          "is_product": false,
+          "smiles": "[Na+].[OH-]",
+          "formula": "HNaO",
+          "mw": 40.0,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.55,
+            "volume_ml": null,
+            "mmol": 13.74,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hydrochloric acid",
+          "role": "acid",
+          "is_product": false,
+          "smiles": "Cl",
+          "formula": "HCl",
+          "mw": 36.46,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "dichloromethane",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "ClCCl",
+          "formula": "CH2Cl2",
+          "mw": 84.93,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "magnesium sulfate",
+          "role": "drying_agent",
+          "is_product": false,
+          "smiles": "O=S(=O)([O-])[O-].[Mg+2]",
+          "formula": "MgO4S",
+          "mw": 120.37,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoic acid",
+          "role": "product",
+          "is_product": true,
+          "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COC1CCCCC1",
+          "formula": "C15H19ClO5S",
+          "mw": 346.83,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.53,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 52.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Example 1_Step 8",
+      "section_label": "Example 1",
+      "step_label": "Step 8",
+      "reaction_class": "ester_formation",
+      "named_reaction": null,
+      "is_one_pot": true,
+      "conditions": {
+        "temperature": {
+          "type": "exact",
+          "value_c": 0.0,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": 4.0,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": "reflux",
+        "cooling_method": "cooled to 0 degrees C before the cyclohexanedione and triethylamine addition",
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": null,
+      "participants_total": 10,
+      "participants_resolved": 9,
+      "compounds": [
+        {
+          "identifier": "2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoic acid",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COC1CCCCC1",
+          "formula": "C15H19ClO5S",
+          "mw": 346.83,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.53,
+            "volume_ml": null,
+            "mmol": 1.53,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "dichloromethane",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "ClCCl",
+          "formula": "CH2Cl2",
+          "mw": 84.93,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "N,N-dimethylformamide",
+          "role": "catalyst",
+          "is_product": false,
+          "smiles": "CN(C)C=O",
+          "formula": "C3H7NO",
+          "mw": 73.09,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "oxalyl chloride",
+          "role": "reagent",
+          "is_product": false,
+          "smiles": "O=C(Cl)C(=O)Cl",
+          "formula": "C2Cl2O2",
+          "mw": 126.93,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.59,
+            "volume_ml": null,
+            "mmol": 4.58,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "cyclohexane-1,3-dione",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "O=C1CCCC(=O)C1",
+          "formula": "C6H8O2",
+          "mw": 112.13,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.19,
+            "volume_ml": null,
+            "mmol": 1.68,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "triethylamine",
+          "role": "base",
+          "is_product": false,
+          "smiles": "CCN(CC)CC",
+          "formula": "C6H15N",
+          "mw": 101.19,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.46,
+            "volume_ml": null,
+            "mmol": 4.58,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "silica gel",
+          "role": "other",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "ethyl acetate",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CCOC(C)=O",
+          "formula": "C4H8O2",
+          "mw": 88.11,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hexane",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CCCCCC",
+          "formula": "C6H14",
+          "mw": 86.18,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "3-oxo-1-cyclohexenyl 2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoate",
+          "role": "product",
+          "is_product": true,
+          "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COC1CCCCC1",
+          "formula": "C21H25ClO6S",
+          "mw": 440.95,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.1,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 15.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Example 1_Step 9",
+      "section_label": "Example 1",
+      "step_label": "Step 9",
+      "reaction_class": "acylation",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "room_temperature",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COC1CCCCC1.CC(C)(O)C#N.CCN(CC)CC.CC#N.O.Cl.CCOC(C)=O.O=S(=O)([O-])[O-].[Mg+2]>>CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COC1CCCCC1",
+      "participants_total": 9,
+      "participants_resolved": 9,
+      "compounds": [
+        {
+          "identifier": "3-oxo-1-cyclohexenyl 2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoate",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COC1CCCCC1",
+          "formula": "C21H25ClO6S",
+          "mw": 440.95,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.1,
+            "volume_ml": null,
+            "mmol": 0.23,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "acetone cyanohydrin",
+          "role": "catalyst",
+          "is_product": false,
+          "smiles": "CC(C)(O)C#N",
+          "formula": "C4H7NO",
+          "mw": 85.11,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "triethylamine",
+          "role": "base",
+          "is_product": false,
+          "smiles": "CCN(CC)CC",
+          "formula": "C6H15N",
+          "mw": 101.19,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.04,
+            "volume_ml": null,
+            "mmol": 0.39,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "acetonitrile",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CC#N",
+          "formula": "C2H3N",
+          "mw": 41.05,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 5.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "water",
+          "role": "other",
+          "is_product": false,
+          "smiles": "O",
+          "formula": "H2O",
+          "mw": 18.02,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 5.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hydrochloric acid",
+          "role": "acid",
+          "is_product": false,
+          "smiles": "Cl",
+          "formula": "HCl",
+          "mw": 36.46,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "ethyl acetate",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CCOC(C)=O",
+          "formula": "C4H8O2",
+          "mw": 88.11,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "magnesium sulfate",
+          "role": "drying_agent",
+          "is_product": false,
+          "smiles": "O=S(=O)([O-])[O-].[Mg+2]",
+          "formula": "MgO4S",
+          "mw": 120.37,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "2-(2-chloro-3-cyclohexanyloxymethyl-4-methylsulfonyl-benzoyl)-cyclohexane-1,3-dione",
+          "role": "product",
+          "is_product": true,
+          "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COC1CCCCC1",
+          "formula": "C21H25ClO6S",
+          "mw": 440.95,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.1,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 100.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Example 2_Step 1",
+      "section_label": "Example 2",
+      "step_label": "Step 1",
+      "reaction_class": "hydrolysis",
+      "named_reaction": "Williamson ether synthesis",
+      "is_one_pot": true,
+      "conditions": {
+        "temperature": {
+          "type": "room_temperature",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": 4.0,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": "reflux",
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl.Oc1ccccc1.CN(C)C=O.[H-].[Na+].C1CCOC1.O.[Na+].[OH-].Cl.ClCCl.O=S(=O)([O-])[O-].[Mg+2]>>CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COc1ccccc1",
+      "participants_total": 11,
+      "participants_resolved": 11,
+      "compounds": [
+        {
+          "identifier": "methyl 3-bromomethyl-2-chloro-4-methylsulfonyl-benzoate",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+          "formula": "C10H10BrClO4S",
+          "mw": 341.61,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 1.0,
+            "volume_ml": null,
+            "mmol": 2.93,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "phenol",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "Oc1ccccc1",
+          "formula": "C6H6O",
+          "mw": 94.11,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.28,
+            "volume_ml": null,
+            "mmol": 2.93,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "N,N-dimethylformamide",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CN(C)C=O",
+          "formula": "C3H7NO",
+          "mw": 73.09,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 20.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "sodium hydride",
+          "role": "base",
+          "is_product": false,
+          "smiles": "[H-].[Na+]",
+          "formula": "HNa",
+          "mw": 24.0,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.14,
+            "volume_ml": null,
+            "mmol": 3.51,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "tetrahydrofuran",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "C1CCOC1",
+          "formula": "C4H8O",
+          "mw": 72.11,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 16.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "water",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "O",
+          "formula": "H2O",
+          "mw": 18.02,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 8.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "sodium hydroxide",
+          "role": "base",
+          "is_product": false,
+          "smiles": "[Na+].[OH-]",
+          "formula": "HNaO",
+          "mw": 40.0,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.23,
+            "volume_ml": null,
+            "mmol": 5.85,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hydrochloric acid",
+          "role": "acid",
+          "is_product": false,
+          "smiles": "Cl",
+          "formula": "HCl",
+          "mw": 36.46,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "dichloromethane",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "ClCCl",
+          "formula": "CH2Cl2",
+          "mw": 84.93,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "magnesium sulfate",
+          "role": "drying_agent",
+          "is_product": false,
+          "smiles": "O=S(=O)([O-])[O-].[Mg+2]",
+          "formula": "MgO4S",
+          "mw": 120.37,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "2-chloro-4-methylsulfonyl-3-phenoxymethyl-benzoic acid",
+          "role": "product",
+          "is_product": true,
+          "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COc1ccccc1",
+          "formula": "C15H13ClO5S",
+          "mw": 340.78,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.67,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 67.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Example 2_Step 2",
+      "section_label": "Example 2",
+      "step_label": "Step 2",
+      "reaction_class": "ester_formation",
+      "named_reaction": null,
+      "is_one_pot": true,
+      "conditions": {
+        "temperature": {
+          "type": "exact",
+          "value_c": 0.0,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": 4.0,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": "reflux",
+        "cooling_method": "cooled to 0 degrees C before the cyclohexanedione and triethylamine addition",
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": null,
+      "participants_total": 10,
+      "participants_resolved": 9,
+      "compounds": [
+        {
+          "identifier": "2-chloro-4-methylsulfonyl-3-phenoxymethyl-benzoic acid",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COc1ccccc1",
+          "formula": "C15H13ClO5S",
+          "mw": 340.78,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.67,
+            "volume_ml": null,
+            "mmol": 1.97,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "dichloromethane",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "ClCCl",
+          "formula": "CH2Cl2",
+          "mw": 84.93,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "N,N-dimethylformamide",
+          "role": "catalyst",
+          "is_product": false,
+          "smiles": "CN(C)C=O",
+          "formula": "C3H7NO",
+          "mw": 73.09,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "oxalyl chloride",
+          "role": "reagent",
+          "is_product": false,
+          "smiles": "O=C(Cl)C(=O)Cl",
+          "formula": "C2Cl2O2",
+          "mw": 126.93,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.76,
+            "volume_ml": null,
+            "mmol": 5.9,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "cyclohexane-1,3-dione",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "O=C1CCCC(=O)C1",
+          "formula": "C6H8O2",
+          "mw": 112.13,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.24,
+            "volume_ml": null,
+            "mmol": 2.16,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "triethylamine",
+          "role": "base",
+          "is_product": false,
+          "smiles": "CCN(CC)CC",
+          "formula": "C6H15N",
+          "mw": 101.19,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.6,
+            "volume_ml": null,
+            "mmol": 5.9,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "silica gel",
+          "role": "other",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "ethyl acetate",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CCOC(C)=O",
+          "formula": "C4H8O2",
+          "mw": 88.11,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hexane",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CCCCCC",
+          "formula": "C6H14",
+          "mw": 86.18,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "3-oxo-1-cyclohexenyl 2-chloro-4-methylsulfonyl-3-phenoxymethyl-benzoic acid",
+          "role": "product",
+          "is_product": true,
+          "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COc1ccccc1",
+          "formula": "C21H19ClO6S",
+          "mw": 434.9,
+          "origin": "curated",
+          "quantity": {
+            "mass_g": 0.51,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 60.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Example 2_Step 3",
+      "section_label": "Example 2",
+      "step_label": "Step 3",
+      "reaction_class": "acylation",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "room_temperature",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COc1ccccc1.CC(C)(O)C#N.CCN(CC)CC.CC#N.O.Cl.CCOC(C)=O.O=S(=O)([O-])[O-].[Mg+2]>>CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COc1ccccc1",
+      "participants_total": 9,
+      "participants_resolved": 9,
+      "compounds": [
+        {
+          "identifier": "3-oxo-1-cyclohexenyl 2-chloro-4-methylsulfonyl-3-phenoxymethyl-benzoic acid",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": "CS(=O)(=O)c1ccc(C(=O)OC2=CC(=O)CCC2)c(Cl)c1COc1ccccc1",
+          "formula": "C21H19ClO6S",
+          "mw": 434.9,
+          "origin": "curated",
+          "quantity": {
+            "mass_g": 0.51,
+            "volume_ml": null,
+            "mmol": 1.17,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "acetone cyanohydrin",
+          "role": "catalyst",
+          "is_product": false,
+          "smiles": "CC(C)(O)C#N",
+          "formula": "C4H7NO",
+          "mw": 85.11,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "triethylamine",
+          "role": "base",
+          "is_product": false,
+          "smiles": "CCN(CC)CC",
+          "formula": "C6H15N",
+          "mw": 101.19,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.21,
+            "volume_ml": null,
+            "mmol": 2.04,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "acetonitrile",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CC#N",
+          "formula": "C2H3N",
+          "mw": 41.05,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 20.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "water",
+          "role": "other",
+          "is_product": false,
+          "smiles": "O",
+          "formula": "H2O",
+          "mw": 18.02,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": 5.0,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hydrochloric acid",
+          "role": "acid",
+          "is_product": false,
+          "smiles": "Cl",
+          "formula": "HCl",
+          "mw": 36.46,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "ethyl acetate",
+          "role": "solvent",
+          "is_product": false,
+          "smiles": "CCOC(C)=O",
+          "formula": "C4H8O2",
+          "mw": 88.11,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "magnesium sulfate",
+          "role": "drying_agent",
+          "is_product": false,
+          "smiles": "O=S(=O)([O-])[O-].[Mg+2]",
+          "formula": "MgO4S",
+          "mw": 120.37,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "2-(2-chloro-4-methylsulfonyl-3-phenoxymethyl-benzoyl)-cyclohexane-1,3-dione",
+          "role": "product",
+          "is_product": true,
+          "smiles": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COc1ccccc1",
+          "formula": "C21H19ClO6S",
+          "mw": 434.9,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": 0.5,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": 98.0
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Preparation Schemes 1 to 4_Step 1",
+      "section_label": "Preparation Schemes 1 to 4",
+      "step_label": "Step 1",
+      "reaction_class": "acylation",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "not_specified",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": null,
+      "participants_total": 5,
+      "participants_resolved": 1,
+      "compounds": [
+        {
+          "identifier": "compound of formula (II)",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "compound of formula (III)",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "DCC",
+          "role": "reagent",
+          "is_product": false,
+          "smiles": "C(=NC1CCCCC1)=NC1CCCCC1",
+          "formula": "C13H22N2",
+          "mw": 206.33,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "cyanide source",
+          "role": "reagent",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "compound of formula (I)",
+          "role": "product",
+          "is_product": true,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Preparation Schemes 1 to 4_Step 2",
+      "section_label": "Preparation Schemes 1 to 4",
+      "step_label": "Step 2",
+      "reaction_class": "other",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "not_specified",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": null,
+      "participants_total": 2,
+      "participants_resolved": 0,
+      "compounds": [
+        {
+          "identifier": "compound of formula (III)",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "compound of formula (III)",
+          "role": "product",
+          "is_product": true,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Preparation Schemes 1 to 4_Step 3",
+      "section_label": "Preparation Schemes 1 to 4",
+      "step_label": "Step 3",
+      "reaction_class": "nucleophilic_substitution",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "not_specified",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": null,
+      "participants_total": 2,
+      "participants_resolved": 0,
+      "compounds": [
+        {
+          "identifier": "compound of formula (IV)",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "compound of formula (III)",
+          "role": "product",
+          "is_product": true,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Preparation Schemes 1 to 4_Step 4",
+      "section_label": "Preparation Schemes 1 to 4",
+      "step_label": "Step 4",
+      "reaction_class": "nucleophilic_substitution",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "not_specified",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": null,
+      "participants_total": 9,
+      "participants_resolved": 0,
+      "compounds": [
+        {
+          "identifier": "compound of formula (IV)",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "R1-H",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "alcohols",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "thio alcohols",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "amides",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "amines",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "heteroaromatics",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "heterocycles",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "compound of formula (III)",
+          "role": "product",
+          "is_product": true,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Preparation Schemes 1 to 4_Step 5",
+      "section_label": "Preparation Schemes 1 to 4",
+      "step_label": "Step 5",
+      "reaction_class": "nucleophilic_substitution",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "not_specified",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": null,
+      "participants_total": 3,
+      "participants_resolved": 0,
+      "compounds": [
+        {
+          "identifier": "compound of formula (IV)",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "R1-Li",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "compound of formula (III)",
+          "role": "product",
+          "is_product": true,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Preparation Schemes 1 to 4_Step 6",
+      "section_label": "Preparation Schemes 1 to 4",
+      "step_label": "Step 6",
+      "reaction_class": "nucleophilic_substitution",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "not_specified",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": null,
+      "participants_total": 3,
+      "participants_resolved": 0,
+      "compounds": [
+        {
+          "identifier": "compound of formula (V)",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "R1-Z2",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "compound of formula (III)",
+          "role": "product",
+          "is_product": true,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Preparation Schemes 1 to 4_Step 7",
+      "section_label": "Preparation Schemes 1 to 4",
+      "step_label": "Step 7",
+      "reaction_class": "halogenation",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "not_specified",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": null,
+      "participants_total": 4,
+      "participants_resolved": 2,
+      "compounds": [
+        {
+          "identifier": "compound of formula (Ia)",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "oxalyl chloride",
+          "role": "reagent",
+          "is_product": false,
+          "smiles": "O=C(Cl)C(=O)Cl",
+          "formula": "C2Cl2O2",
+          "mw": 126.93,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "oxalyl bromide",
+          "role": "reagent",
+          "is_product": false,
+          "smiles": "O=C(Br)C(=O)Br",
+          "formula": "C2Br2O2",
+          "mw": 215.83,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "compound of formula (Ib)",
+          "role": "product",
+          "is_product": true,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Preparation Schemes 1 to 4_Step 8",
+      "section_label": "Preparation Schemes 1 to 4",
+      "step_label": "Step 8",
+      "reaction_class": "nucleophilic_substitution",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "not_specified",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": null,
+      "participants_total": 7,
+      "participants_resolved": 0,
+      "compounds": [
+        {
+          "identifier": "compound of formula (Ib)",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "alkali metal cyanides",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "alkali metal cyanates",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "alkali metal thiocyanates",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "alkylthio alcohols",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "thiophenols",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "compound of formula (Ic)",
+          "role": "product",
+          "is_product": true,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        }
+      ]
+    },
+    {
+      "reaction_id": "Preparation Schemes 1 to 4_Step 9",
+      "section_label": "Preparation Schemes 1 to 4",
+      "step_label": "Step 9",
+      "reaction_class": "oxidation",
+      "named_reaction": null,
+      "is_one_pot": false,
+      "conditions": {
+        "temperature": {
+          "type": "not_specified",
+          "value_c": null,
+          "min_c": null,
+          "max_c": null
+        },
+        "pressure": {
+          "type": "not_specified",
+          "value_kpa": null,
+          "qualitative_text": null
+        },
+        "atmosphere": null,
+        "time_h": null,
+        "reactor_type": null,
+        "concentration": {
+          "value": null,
+          "unit": null,
+          "reagent": null,
+          "text": null
+        },
+        "heating_method": null,
+        "cooling_method": null,
+        "light_source": {
+          "type": null,
+          "color": null,
+          "wavelength_nm": null,
+          "power_w": null
+        },
+        "stirring": {
+          "type": null,
+          "rpm": null
+        },
+        "ph_value": null,
+        "ph_target_stage": null
+      },
+      "reaction_smiles": null,
+      "participants_total": 6,
+      "participants_resolved": 4,
+      "compounds": [
+        {
+          "identifier": "compound of formula (Ic)",
+          "role": "reactant",
+          "is_product": false,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "peroxyacetic acid",
+          "role": "oxidant",
+          "is_product": false,
+          "smiles": "CC(=O)OO",
+          "formula": "C2H4O3",
+          "mw": 76.05,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "hydrogen peroxide",
+          "role": "oxidant",
+          "is_product": false,
+          "smiles": "OO",
+          "formula": "H2O2",
+          "mw": 34.01,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "m-chloroperoxybenzoic acid",
+          "role": "oxidant",
+          "is_product": false,
+          "smiles": "O=C(OO)c1cccc(Cl)c1",
+          "formula": "C7H5ClO3",
+          "mw": 172.57,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "potassium peroxymonosulfate",
+          "role": "oxidant",
+          "is_product": false,
+          "smiles": "O=S(=O)([O-])O[O-].[K+].[K+]",
+          "formula": "K2O5S",
+          "mw": 190.26,
+          "origin": "name_parsed",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        },
+        {
+          "identifier": "compound of formula (Ic)",
+          "role": "product",
+          "is_product": true,
+          "smiles": null,
+          "formula": null,
+          "mw": null,
+          "origin": "none",
+          "quantity": {
+            "mass_g": null,
+            "volume_ml": null,
+            "mmol": null,
+            "equivalents": null,
+            "yield_pct": null
+          }
+        }
+      ]
+    }
+  ]
+}

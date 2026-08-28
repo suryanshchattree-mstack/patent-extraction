@@ -17,7 +17,7 @@
     {
       "name": "Limin Chemical Co Ltd",
       "country": "CN",
-      "type": "company",
+      "type": "sme",
       "name_note": "Printed as 利民化学有限责任公司, literally 'Limin Chemical Limited Liability Company'. Google Patents normalises it to 'Limin Chemical Co ltd'. Written here without commas or full stops on purpose: finalise.py builds the assignee tag as name.lower().replace(' ', '_'), and any punctuation that survives that lands in a tag value, which patent.schema.json constrains to ^[a-z_]+:[a-z0-9_/.+-]+$. A comma in the name fails that pattern several stages later, with a message that points at the tag rather than at this file."
     }
   ],

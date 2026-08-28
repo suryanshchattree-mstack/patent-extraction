@@ -304,3 +304,28 @@ untrue. What is left:
 The honest reading is that 8.7 s is a p90 from 20 claims of one patent, and that at the
 per-kind medians this run costs 10.5 min and fits. The budget was not changed to make it
 pass, and the annotation was not thinned to make it pass either.
+
+## The same two fixes, across every run on the branch
+
+Re-measured 2026-08-28 after merging, so all six are one engine against unchanged gold.
+`runs/CN104292137A/` is deliberately absent: rule 2 makes it read only, and regenerating
+the file every other run is compared against is a maintainer's call.
+
+| run | census before | census after | at 8.7 s p90 | selfcheck |
+|---|--:|--:|--:|---|
+| CN109678767A | | 85 | 12.3 min | 37 pass, 1 warn, 0 fail |
+| CN111440099B | 95 | 53 | 7.7 min | 35 pass, 3 warn, 0 fail |
+| CN112645853A | 321 | 316 | 45.8 min | 35 pass, 1 warn, 2 fail |
+| EP2045236A1 | 52 | 32 | 4.6 min | 37 pass, 1 warn, 0 fail |
+| US20100041557A1 | 197 | 104 | 15.1 min | 33 pass, 3 warn, 2 fail |
+| WO2000021924A1 | 178 | 168 | 24.4 min | 33 pass, 3 warn, 2 fail |
+
+How much a run moves is how much of it is a **paired** translation, and how many of its
+paired blocks run past one line. The two Chinese runs whose enriched lines are mostly
+substitutions barely move. CN111440099B nearly halves. The two rows that were blocked on
+the budget are still blocked, and both overruns are now real rather than an artefact of
+reading the machine's own English back as source.
+
+The earlier fix this pair extends was measured the same way and is written up in the row 4
+and row 6 notes of TARGETS.md. Between the two pairs, WO2000021924A1 went from 281 census
+claims to 168, and none of that was ever a fact about the chemistry.

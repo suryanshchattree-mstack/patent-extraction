@@ -1,0 +1,196 @@
+{
+  "artifact": "patent",
+  "records_audited": 1,
+  "findings": [
+    {
+      "check": "drawings",
+      "severity": "critical",
+      "record": "WO2000021924A1",
+      "field": "patent_summary",
+      "problem": "The summary puts Y and Z in the 3-position side chain of the phenyl ring, but every drawing of formula (I) places Y and Z as ring members of the cyclohexanedione ring while the 3-position substituent is only -L-R1.",
+      "source_line": 334,
+      "quote": "Y und Z    unabhängig voneinander CHR7 oder C(R7)2;",
+      "artifact_says": "the phenyl ring of the benzoyl group carries at its 3-position a radical R1 joined back through a C1-C6 alkylene chain L and the single-atom bridging units Y and Z",
+      "should_be": "the phenyl ring carries at its 3-position the radical R1 joined through a C1-C6 alkylene chain L, while Y and Z are the ring members of the 1,3-dione ring; drop Y and Z from the description of the 3-position substituent",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "The IMAGE_EXTRACT spans covering the three drawings of formula (I) (p001, p004, p081) encode no molecule at all, so nothing in the enriched markdown records the structure the patent_summary describes and the Y and Z placement could only have been inferred.",
+      "source_line": 67,
+      "quote": "[IMAGE_EXTRACT: {\"molecules\": []}]",
+      "artifact_says": null,
+      "should_be": "the vision pass must encode formula (I) as drawn on p004: a 2-aroyl-1,3-dione ring bearing R6, (CH2)v, Z, Y and (R7)w, joined by a carbonyl to a benzene ring carrying R2, L-R1, R3, R4 and R5 at positions 2 to 6",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": null,
+      "field": null,
+      "problem": "The IMAGE_EXTRACT for p006 encodes ten empty reaction steps where the page draws a single four-cornered tautomeric equilibrium of one compound, so drawn arrows in a definitional passage are recorded as if they were reaction steps.",
+      "source_line": 105,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [], \"conditions\": [], \"products\": []}",
+      "artifact_says": null,
+      "should_be": "record p006 as four tautomers of formula (I) in equilibrium, not as ten reaction steps",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "WO2000021924A1",
+      "field": "patent_summary",
+      "problem": "R7 is swept into the R2 to R5 definition, but R7 has its own separate closed list that contains neither hydroxy, thio, amino nor nitro.",
+      "source_line": 79,
+      "quote": "R7\tWasserstoff, Tetrahydropyranyl-3, Tetrahydropyranyl-4, Tetrahydrothiopyranyl-3, Alkyl, Cycloalkyl, Alkoxy, Alkoxyalkyl, Alkylcarbonyl, Alkoxycarbonyl, Alkylthio, Phenyl, wobei die acht letztgenannten Gruppen",
+      "artifact_says": "with R2 to R7 defined as hydrogen, hydroxy, thio, amino, cyano, nitro, halogen or optionally substituted hydrocarbon radicals that may carry phosphorus, oxygen, sulfur, nitrogen or halogen",
+      "should_be": "restrict that definition to R2 to R5, which is the only group the text gives it to (line 75), and describe R7 separately or not at all",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "WO2000021924A1",
+      "field": "patent_summary",
+      "problem": "The summary says R6 additionally covers OR12 and the thio/sulfinyl/sulfonyl series on top of the R2 to R5 definition, but R6 has an exclusive list that never includes hydrogen, hydroxy, thio, amino or nitro.",
+      "source_line": 77,
+      "quote": "R6\tOR12, Alkylthio, Halogenalkylthio, Alkenylthio, Halogenalkenylthio, Alkinylthio, Halogenalkinylthio, Alkylsulfinyl, Halogenalkylsulfinyl, Alkenylsulfinyl, Halogenalkenylsulfinyl, Alkinylsulfinyl, Halogenalkinylsulfinyl, Alkylsulfonyl, Halogenalkylsulfonyl, Alkenylsulfonyl, Halogenalkenylsulfonyl, Alkinylsulfonyl, Ha",
+      "artifact_says": "and with R6 further covering OR12 and the alkylthio, alkylsulfinyl and alkylsulfonyl series",
+      "should_be": "state that R6 is defined only as OR12, the thio, sulfinyl and sulfonyl series, cyano, cyanato, thiocyanato or halogen; remove the word further",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "WO2000021924A1",
+      "field": "abstract",
+      "problem": "The abstract is not verbatim: the four German umlauts of the authoritative (57) Zusammenfassung have been folded to ASCII digraphs, so a field-by-field comparison against the source string cannot match.",
+      "source_line": 36,
+      "quote": "In dieser allgemeinen Formel (I) stehen R1, R2, R3, R4, R5, R6 und R7 für verschiedene Reste, L für eine Alkylenkette, Y und Z für ein einatomiges Brückenelement.",
+      "artifact_says": "R1, R2, R3, R4, R5, R6 und R7 fuer verschiedene Reste, L fuer eine Alkylenkette, Y und Z fuer ein einatomiges Brueckenelement.",
+      "should_be": "restore the three occurrences of für and the one occurrence of Brückenelement in input/WO2000021924A1-biblio.json abstract_zh and re-run, so the German is carried exactly as printed",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "WO2000021924A1",
+      "field": "patent_summary",
+      "problem": "Calling Y and Z single-atom bridging units follows the abstract's shorthand but contradicts the definition, where Z may be a direct bond or SO2.",
+      "source_line": 96,
+      "quote": "Z    . eine direkte Bindung, eine divalente Einheit aus der Gruppe O, S, SO, SO2, N-H, N-Alkyl, CHR7 oder C(R7)2;",
+      "artifact_says": "the single-atom bridging units Y and Z",
+      "should_be": "say divalent units Y and Z, with Z optionally a direct bond, rather than single-atom",
+      "confidence": "medium"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "WO2000021924A1",
+      "field": "novelty_claims",
+      "problem": "Claim 11 is narrowed: the artifact folds it into use in crops of useful plants, but claim 11 covers use for controlling undesired plants generally and only claim 12 adds the crop limitation.",
+      "source_line": 1135,
+      "quote": "11.     Verwendung von Verbindungen der allgemeinen Formel (I) nach einem der Ansprüche 1 bis 7 oder von herbiziden Mitteln nach Anspruch 8 oder 9 zur Bekämpfung unerwünschter Pflanzen.",
+      "artifact_says": "and to use in crops of useful plants including transgenic crops (claims 11 to 13)",
+      "should_be": "to use for controlling undesired plants (claim 11), narrowed to crops of useful plants (claim 12) and to transgenic crops (claim 13)",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "WO2000021924A1",
+      "field": "tags",
+      "problem": "Claim 10 is a Verfahren claim, a distinct statutory category from the use claims 11 to 13, and no claim_type:process tag was emitted for it.",
+      "source_line": 1128,
+      "quote": "10.     Verfahren zur Bekämpfung unerwünschter Pflanzen, dadurch gekennzeichnet, daß man eine wirksame Menge mindestens einer Verbindung der allgemeinen Formel (I) nach einem der Ansprüche 1 bis 7 oder eines herbiziden",
+      "artifact_says": "claim_type:composition, claim_type:formulation, claim_type:use",
+      "should_be": "add claim_type:process",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "WO2000021924A1",
+      "field": "novelty_claims",
+      "problem": "The description states that the base salts of formula (I) are themselves a subject of the invention, and neither narrative field mentions that the claimed subject matter extends to salts.",
+      "source_line": 113,
+      "quote": "Solche Salze sind ebenfalls Gegenstand der Erfindung.",
+      "artifact_says": null,
+      "should_be": "note that the description also claims the salts formed by removing the acidic proton with a base as a subject of the invention",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "WO2000021924A1",
+      "field": "bibliographic.family_id",
+      "problem": "family_id 7884081 and legal_status Ceased appear nowhere in the 1343 line source; the front page prints only the IPC, the numbers and the dates, and with no patent-provenance.json in this run nothing in the artifact records that these two values came from the Google Patents scrape rather than the document.",
+      "source_line": 6,
+      "quote": "(51) (51) Internationale Patentklassifikation 7 : C07C 317/24, A01N 35/06, 41/10",
+      "artifact_says": "\"family_id\": \"7884081\", \"legal_status\": \"Ceased\"",
+      "should_be": "keep the values, which the biblio input attributes to https://patents.google.com/patent/WO2000021924A1/en, but emit a patent-provenance.json so the two externally sourced fields are distinguishable from the ones read off the front page",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "WO2000021924A1",
+      "field": null,
+      "problem": "There is no provenance sidecar for this artifact: output/ holds compounds-provenance.json and reactions-provenance.json only, so no field of patent.json can be checked against a recorded source anchor and the absence must not be read as a pass on the provenance check.",
+      "source_line": 4,
+      "quote": "<!-- page p001 :: PCT / WELTORGANISATION FÜR GEISTIGES EIGENTUM / Internationales Büro / INTERNATIONALE ANMELDUNG VERÖFFENTLICHT NACH DEM VERTRAG ÜBER DIE INTERNATIONALE ZUSAMMENARBEIT AUF DEM GEBIET DES PATENTWESENS (PCT) :: front_page :: confidence=high -->",
+      "artifact_says": null,
+      "should_be": "state explicitly in the run notes that the patent record carries no provenance sidecar, so every finding above was anchored by the auditor rather than checked against a recorded anchor",
+      "confidence": "high"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "arithmetic",
+      "what_was_verified": "extraction_rollup recomputed from the three sibling artifacts: reaction_count 21, compound_count 520 and pathway_count 10 are exact; section_summary {experimental_example 12, summary_of_invention 9} matches the section_type field of reactions.json and sums to 21; scale_distribution {pilot 3, lab 5, micro 4, not_specified 9} matches the scale field exactly and sums to 21; best_overall_yield_pct 9.22 is the maximum non-null overall_yield_pct in pathways.json and 2d3f1d18-4589-55dd-b559-0022976b6200 is that pathway's uuid; chemistry_focus is the top five reaction_class values by count (nucleophilic_substitution 6, acylation 4, oxidation 3, ester_formation 3, halogenation 2). One caveat rather than a defect: halogenation and hydrolysis both occur twice, so the fifth slot is a silent tie-break that drops hydrolysis."
+    },
+    {
+      "check": "precision",
+      "what_was_verified": "No SMILES, molecular weight, molecular formula or structure string anywhere in patent.json. All twelve rollup entries carry smiles null, and every one of the twelve compound_uuid values resolves to a record in compounds.json whose identifier matches character for character and whose role is product for the five target_compounds and reactant for the seven key_starting_materials."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "The front page carries two abstracts that disagree. The printed English (57) at line 34 reads 'The invention relates to benzocyclohexandiones of general formula (I)', naming a class the patent does not claim, while the German (57) at line 36 reads 'Es werden Benzoylcyclohexandione der allgemeinen Formel (I)'. The artifact's abstract field follows the German, which is the authoritative text, and the drawing on p001 confirms an aroyl carbonyl bridging the two rings. The English title at line 28 was also checked against the German Bezeichnung at line 30 and they agree."
+    },
+    {
+      "check": "fidelity",
+      "what_was_verified": "Every bibliographic value read off the rendered front page p001.png and lines 6 to 22: publication_date 2000-04-20 against '20. April 2000 (20.04.00)', filing_date 1999-09-09 against '9. September 1999 (09.09.99)', priority_date 1998-10-10 against '198 46 792.3 10. Oktober 1998 (10.10.98) DE', jurisdiction wo and kind code A1, the three ipc_codes with the printed shorthand '41/10' correctly expanded to A01N 41/10, the assignee AVENTIS CROPSCIENCE GMBH [DE/DE] as a DE company, and all five inventor names and their DE addresses. grant_date, patent_type, cpc_codes and examiners are null and the document supports no value for any of them."
+    },
+    {
+      "check": "vocabulary",
+      "what_was_verified": "All 150 tags match ^[a-z_]+:[a-z0-9_]+$, with no duplicates and no casing defect. The seven LLM-derived tags are domain:agrochemical, target_class:herbicide, claim_type:composition, claim_type:formulation, claim_type:use, novelty:new_compound and novelty:improved_selectivity, each inside its A4 closed list, with domain and target_class emitted once as required. Omitting the process_focus category is permitted by A4 rule 4 and the claims support no value in it. The remaining 143 tags were each traced either to a tag actually present on a record in compounds.json, reactions.json or pathways.json, or to the biblio metadata union (jurisdiction:wo, patent_family:7884081, time_period:2000, assignee:aventis_cropscience_gmbh, assignee_type:company); none is unexplained, and no downstream tag is missing from the union."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "The key set of patent.json is identical to that of the reference run runs/CN104292137A/output/patent.json at every level: the same 14 top-level fields, the same 10 bibliographic fields, the same 3 parties fields and the same 10 extraction_rollup fields. patent_uuid and the nested compound_uuid and pathway_uuid values are present in the reference gold as well, so they are part of this record shape rather than leaked enrichment. No id, vector or enrichment field is present. source_refs matches the reference byte for byte."
+    },
+    {
+      "check": "recall",
+      "what_was_verified": "key_examples is correctly empty. All thirteen claims were read at lines 904 to 1140 and none cites an example label, so the empty array plus the honest_uncertainty_flags entry key_examples_not_referenced is the right outcome. The novelty_claims observation that the claim set contains no preparation process claim was independently confirmed: claims 1 to 7 are compound claims, 8 and 9 composition claims, 10 a method of controlling plants, and 11 to 13 use claims, while the title at line 28 and the abstract at line 36 both promise 'Verfahren zu ihrer Herstellung'. The five background documents quoted in novelty_claims (JP-A 08 020554, JP-A 02 00222, WO 99/10327, WO 99/07688, WO 99/03845) are exactly the five cited at line 56, with no sixth omitted, and the prior-art objection quoted at line 59 is reproduced faithfully."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "The patent record has no precursor_step field. Its only cross-artifact links are the twelve compound_uuid values in extraction_rollup and the one best_overall_yield_pathway_uuid, and all thirteen resolve to existing records in the sibling artifacts."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 20,
+    "present_in_artifact": 14,
+    "missing": [
+      "German title (54) Bezeichnung at line 30: the record carries one title field and it holds the English (54)",
+      "priority application number 198 46 792.3 at line 18: only the priority date is carried",
+      "international application number PCT/EP99/06627 at line 14: present in the biblio input as PCT/EP1999/006627 but absent from patent.json bibliographic",
+      "designated states (81) at line 24: no field carries them",
+      "publication note 'Mit internationalem Recherchenbericht' at line 26",
+      "applicant and inventor postal addresses at lines 20 and 22: only names and country codes are carried"
+    ]
+  }
+}

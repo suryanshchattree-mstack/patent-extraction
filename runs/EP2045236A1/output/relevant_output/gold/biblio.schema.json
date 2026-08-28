@@ -56,8 +56,8 @@
           "name": {"type": "string", "minLength": 1},
           "country": {"type": ["string", "null"]},
           "type": {
-            "enum": ["company", "university", "individual", "institute", "government", "hospital", "foundation"],
-            "description": "An enum rather than prose, because the prose version accepted \"Co Ltd\" and \"pharma\" and this value is carried into a tag."
+            "enum": ["multinational_corp", "sme", "university", "government", "individual", "consortium"],
+            "description": "An enum rather than prose, because the prose version accepted \"Co Ltd\" and \"pharma\" and this value is carried into a tag. THE VOCABULARY IS production's, from patent.schema.json, and not a friendlier one of our own. finalise.py copies this value straight into patent.json's parties.assignees[].type with no mapping, so a value legal here and illegal there fails validate.py after nine stages have already run. This enum used to read company | university | individual | institute | government | hospital | foundation, which intersects production's at university, government and individual only: every company-assigned patent was unannotatable, and the pack did not find out because the one worked run, CN104292137A, is assigned to a university. Found on CN112645853A, whose assignee is a limited company. If you widen this, widen it to whatever patent.schema.json says and nothing else."
           }
         }
       }

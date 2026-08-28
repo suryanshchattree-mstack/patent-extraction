@@ -1,0 +1,51 @@
+[
+  {
+    "reaction_id": "Summary of the Invention_Step 1",
+    "source_lines": [
+      159,
+      189,
+      191,
+      193,
+      195,
+      197,
+      199,
+      201,
+      203,
+      255
+    ],
+    "quote_zh": "(1)原料2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯在碱性物质存在下于三级醇溶剂中发生酯解反应得到2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐；",
+    "arithmetic_check": "No mass, no mole count and no yield is printed anywhere in this section, so there is no arithmetic to close for this step. What is stated is ranges: the raw material to basic substance molar ratio 1:(1～1.1) at [0029] and again at [0056], and 700～3500mL of tertiary alcohol per 1mol of raw material at [0028] and [0056]. Both ranges are self consistent between the two paragraphs that print them. mass_balance_implausible and molar_mass_inconsistent are therefore not raisable here and are not raised, and scale_discontinuity cannot be checked because no charge is stated. This is an absence of numbers, not a check that passed.",
+    "drawing_evidence": "[IMAGE_EXTRACT reactions] at line 164, introduced by [0016] as the reaction equation of this step. One arrow, one reactant, SMILES COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl with formula C10H10BrClO4S, which is the named methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate atom for atom. Its single condition is 碱 (base) and its products list is empty, because [0018] leaves M a generic alkali metal, so the drawing names no product. It agrees with the prose as far as it goes and contradicts nothing, hence no drawing_text_conflict; the tertiary alcohol solvent and the eight specific bases of [0027] and [0030] appear only in the prose, hence reagent_written_not_drawn."
+  },
+  {
+    "reaction_id": "Summary of the Invention_Step 2",
+    "source_lines": [
+      168,
+      205,
+      207,
+      212,
+      214,
+      216,
+      218,
+      220,
+      222,
+      224,
+      226,
+      228,
+      230,
+      232,
+      234,
+      236,
+      238,
+      240,
+      242,
+      244,
+      246,
+      248,
+      257
+    ],
+    "quote_zh": "(2)2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐在碱性物质存在下与醇反应或者将2-氯-3-溴甲基-4-甲磺酰基苯甲酸盐与碱金属醇盐反应，得到所述2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸。",
+    "arithmetic_check": "Again no mass, no mole count and no yield is printed, so nothing can fail to close. The stated ranges are the benzoate salt to alcohol molar ratio 1:(1.05～1.35) at [0036] and [0057], the salt to basic substance ratio 1:(1.2～1.5) at [0040] and [0057], the salt to alkali metal alkoxide ratio 1:(1.2～1.5) at [0041] and [0057], and 700～3500mL of solvent per 1mol of salt at [0048]. Every one of them is printed identically in both places it appears, so there is no internal disagreement to flag. No arithmetic flag is raisable and none is raised. Note that this is absence of data, not a passing check.",
+    "drawing_evidence": "[IMAGE_EXTRACT reactions] at line 176, introduced by [0020] as the reaction equation of this step. One arrow carrying two conditions, ROH、碱 and 或ROM, which is exactly the pair of alternative routes [0019] recites, the alcohol plus base route and the alkali metal alkoxide route. Its reactants and products lists are both empty because M and R are placeholders on the page, per [0022]. It corroborates the reagents and the fact that there are two routes, and contradicts nothing, hence no drawing_text_conflict; the four permitted solvents, the six named bases and the acidification hydrochloric acid are written and drawn nowhere, hence reagent_written_not_drawn. The other span in this section, [IMAGE_EXTRACT molecules] at line 185, is the symmetric dibenzyl ether by-product of the conventional route [0024] rejects; it is a single structure, not an arrow, and no record is emitted for it."
+  }
+]

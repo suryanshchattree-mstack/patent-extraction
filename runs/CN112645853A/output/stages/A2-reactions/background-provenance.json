@@ -1,0 +1,27 @@
+[
+  {
+    "reaction_id": "Background_Step 1",
+    "source_lines": [
+      137,
+      142,
+      143,
+      147
+    ],
+    "quote_zh": "以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯为原料，在碱作用下与相应的醇或直接与相应的醇钠反应制备得到目标物甲酯",
+    "arithmetic_check": "Nothing to close. This section states no mass, no volume, no mole count, no equivalents and no yield for either arrow, and an overview scheme carries none either, so no mass balance check, no molar mass check and no yield check is possible on this record. The only figures anywhere in the section are the market share, the growth rates, the launch and expiry dates in the background prose and the impurity proportions of [0010], and none of them is a charge. Neither mass_balance_implausible nor molar_mass_inconsistent nor scale_discontinuity is raised, and that is a measured absence of numbers and not a skipped check. For A5: the arithmetic of this patent can only be tested in the experimental sections, which do print masses and moles.",
+    "drawing_evidence": "IMAGE_EXTRACT reactions span at line 143, arrow step_id 1. Reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl, formula C10H10BrClO4S, which is methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate atom for atom and matches the name [0007] gives it. Conditions ROH and the word for base. Products empty. It agrees with the prose on the reactant and on the alcohol plus base pair and adds no reagent the prose lacks, so no drawing_text_conflict and no reagent_drawn_not_written. The empty product list is a limit of the read, since the drawn product carries a generic R and so can have no SMILES, and is not a disagreement. The prose alternative of reacting directly with the corresponding sodium alkoxide sits on no arrow, which is the reagent_written_not_drawn flag. The span at line 128 draws tembotrione and tefuryltrione and is not a transformation, and the span at line 135 returned an empty molecule list. The scheme lies between the markers [0008] and [0009] and the page read classifies it as prior art, consistent with [0007] attributing the route to five earlier publications, so route_attribution_unclear is not raised."
+  },
+  {
+    "reaction_id": "Background_Step 2",
+    "source_lines": [
+      132,
+      137,
+      143,
+      145,
+      147
+    ],
+    "quote_zh": "在进一步皂化制备得到2-氯-3-烷氧基甲基-4-甲磺酰基苯甲酸",
+    "arithmetic_check": "Nothing to close, for the same reason as arrow one: no mass, no volume, no mole count, no equivalents and no yield is printed for this arrow, and an overview scheme carries none. No mass balance, molar mass or yield check is possible, so mass_balance_implausible, molar_mass_inconsistent and scale_discontinuity are not raised, and that is a measured absence and not a skipped check. The impurity proportions [0010] prints, about 3 to 5 percent where R is trifluoroethyl and up to 8 to 12 percent where R is 2-tetrahydrofurylmethyl, are normalised shares of the impurity inside the product of this route, not a charge, not a yield and not a purity of the product, so nothing about them can be closed or contradicted either.",
+    "drawing_evidence": "IMAGE_EXTRACT reactions span at line 143, arrow step_id 2. Reactants empty, products empty, conditions a numbered pair, the base as stage one and an acid as stage two. The span therefore supplies no structure for this arrow; the connectivity comes from the arrow standing after arrow one plus the prose of [0007], which saponifies the methyl ester of arrow one to the acid, and the product identity comes from [0005] at line 132. Both drawn structures on this arrow carry a generic R, which is why the read could give them no SMILES and no name, and [0009] at line 145 leaves R generic too. The arrow agrees with the prose that a base takes the methyl ester to the acid. It disagrees by carrying an acid stage the prose never mentions, which is the reagent_drawn_not_written flag; that acid is recorded in workup and not as a reagent of the transformation."
+  }
+]

@@ -1,0 +1,1282 @@
+{
+ "patent_id": "CN112645853A",
+ "engine": "OPSIN via https://opsin.ch.cam.ac.uk/opsin/",
+ "what_this_is_en": "Every compound identifier in the gold, read a second time by a name parser that knows nothing about this patent. A parse is used as a structure only where nothing better exists, and is compared against every structure the pipeline already had.",
+ "summary": {
+  "ambiguous": 3,
+  "parsed": 52,
+  "unparseable": 31
+ },
+ "names": [
+  {
+   "identifier": "2-chloro-3-(alkoxymethyl)-4-(methanesulfonyl)benzoic acid",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried '2-chloro-3-(alkoxymethyl)-4-(methanesulfonyl)benzoic acid'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "2-chloro-3-(alkoxymethyl)-4-(methanesulfonyl)benzoic acid",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+   "outcome": "parsed",
+   "query": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC)C=CC(=C1CBr)S(=O)(=O)C",
+   "canonical": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+   "attempts": [
+    {
+     "query": "methyl 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt",
+   "outcome": "parsed",
+   "query": "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+   "via": "dropped 'salt'",
+   "smiles": "ClC1=C(C(=O)[O-])C=CC(=C1CBr)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr",
+   "attempts": [
+    {
+     "query": "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate salt",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+     "via": "dropped 'salt'",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "tembotrione",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'tembotrione'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "tembotrione",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "tefuryltrione",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'tefuryltrione'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "tefuryltrione",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+   "outcome": "parsed",
+   "query": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid",
+   "outcome": "parsed",
+   "query": "2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COCC1OCCC1)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1",
+   "attempts": [
+    {
+     "query": "2-chloro-3-{[(RS)-tetrahydrofuran-2-yl]methoxymethyl}-4-(methanesulfonyl)benzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "mesotrione",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'mesotrione'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "mesotrione",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "the methyl ester of the target compound",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'the methyl ester of the target compound', 'methyl ester of the target compound'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "the methyl ester of the target compound",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "methyl ester of the target compound",
+     "via": "dropped 'the'",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-(methoxymethyl)-4-(methanesulfonyl)benzoic acid",
+   "outcome": "parsed",
+   "query": "2-chloro-3-(methoxymethyl)-4-(methanesulfonyl)benzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COC)S(=O)(=O)C",
+   "canonical": "COCc1c(S(C)(=O)=O)ccc(C(=O)O)c1Cl",
+   "attempts": [
+    {
+     "query": "2-chloro-3-(methoxymethyl)-4-(methanesulfonyl)benzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "methanol",
+   "outcome": "parsed",
+   "query": "methanol",
+   "via": "verbatim",
+   "smiles": "CO",
+   "canonical": "CO",
+   "attempts": [
+    {
+     "query": "methanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "tertiary alcohol",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'tertiary alcohol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "tertiary alcohol",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "starting material",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'starting material'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "starting material",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "basic substance",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'basic substance'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "basic substance",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "target compound",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'target compound'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "target compound",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "tert-butanol",
+   "outcome": "parsed",
+   "query": "tert-butanol",
+   "via": "verbatim",
+   "smiles": "C(C)(C)(C)O",
+   "canonical": "CC(C)(C)O",
+   "attempts": [
+    {
+     "query": "tert-butanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "tert-amyl alcohol",
+   "outcome": "parsed",
+   "query": "tert-amyl alcohol",
+   "via": "verbatim",
+   "smiles": "C(C)(C)(CC)O",
+   "canonical": "CCC(C)(C)O",
+   "attempts": [
+    {
+     "query": "tert-amyl alcohol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-methyl-2-pentanol",
+   "outcome": "parsed",
+   "query": "2-methyl-2-pentanol",
+   "via": "verbatim",
+   "smiles": "CC(C)(CCC)O",
+   "canonical": "CCCC(C)(C)O",
+   "attempts": [
+    {
+     "query": "2-methyl-2-pentanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium hydroxide",
+   "outcome": "parsed",
+   "query": "sodium hydroxide",
+   "via": "verbatim",
+   "smiles": "[OH-].[Na+]",
+   "canonical": "[Na+].[OH-]",
+   "attempts": [
+    {
+     "query": "sodium hydroxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium hydroxide",
+   "outcome": "parsed",
+   "query": "potassium hydroxide",
+   "via": "verbatim",
+   "smiles": "[OH-].[K+]",
+   "canonical": "[K+].[OH-]",
+   "attempts": [
+    {
+     "query": "potassium hydroxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium tert-butoxide",
+   "outcome": "parsed",
+   "query": "sodium tert-butoxide",
+   "via": "verbatim",
+   "smiles": "CC(C)(C)[O-].[Na+]",
+   "canonical": "CC(C)(C)[O-].[Na+]",
+   "attempts": [
+    {
+     "query": "sodium tert-butoxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium tert-butoxide",
+   "outcome": "parsed",
+   "query": "potassium tert-butoxide",
+   "via": "verbatim",
+   "smiles": "CC(C)(C)[O-].[K+]",
+   "canonical": "CC(C)(C)[O-].[K+]",
+   "attempts": [
+    {
+     "query": "potassium tert-butoxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium hydride",
+   "outcome": "parsed",
+   "query": "sodium hydride",
+   "via": "verbatim",
+   "smiles": "[H-].[Na+]",
+   "canonical": "[H-].[Na+]",
+   "attempts": [
+    {
+     "query": "sodium hydride",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium hydride",
+   "outcome": "parsed",
+   "query": "potassium hydride",
+   "via": "verbatim",
+   "smiles": "[H-].[K+]",
+   "canonical": "[H-].[K+]",
+   "attempts": [
+    {
+     "query": "potassium hydride",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium metal",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sodium metal'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sodium metal",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium metal",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'potassium metal'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "potassium metal",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "2,2,2-trifluoroethanol",
+   "outcome": "parsed",
+   "query": "2,2,2-trifluoroethanol",
+   "via": "verbatim",
+   "smiles": "FC(CO)(F)F",
+   "canonical": "OCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2,2,2-trifluoroethanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "tetrahydrofurfuryl alcohol",
+   "outcome": "parsed",
+   "query": "tetrahydrofurfuryl alcohol",
+   "via": "verbatim",
+   "smiles": "C(C1CCCO1)O",
+   "canonical": "OCC1CCCO1",
+   "attempts": [
+    {
+     "query": "tetrahydrofurfuryl alcohol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "acetonitrile",
+   "outcome": "parsed",
+   "query": "acetonitrile",
+   "via": "verbatim",
+   "smiles": "C(C)#N",
+   "canonical": "CC#N",
+   "attempts": [
+    {
+     "query": "acetonitrile",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "N,N-dimethylformamide",
+   "outcome": "parsed",
+   "query": "N,N-dimethylformamide",
+   "via": "verbatim",
+   "smiles": "CN(C=O)C",
+   "canonical": "CN(C)C=O",
+   "attempts": [
+    {
+     "query": "N,N-dimethylformamide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "dimethyl sulfoxide",
+   "outcome": "parsed",
+   "query": "dimethyl sulfoxide",
+   "via": "verbatim",
+   "smiles": "CS(=O)C",
+   "canonical": "CS(C)=O",
+   "attempts": [
+    {
+     "query": "dimethyl sulfoxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "tetrahydrofuran",
+   "outcome": "parsed",
+   "query": "tetrahydrofuran",
+   "via": "verbatim",
+   "smiles": "O1CCCC1",
+   "canonical": "C1CCOC1",
+   "attempts": [
+    {
+     "query": "tetrahydrofuran",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "hydrochloric acid",
+   "outcome": "parsed",
+   "query": "hydrochloric acid",
+   "via": "verbatim",
+   "smiles": "Cl",
+   "canonical": "Cl",
+   "attempts": [
+    {
+     "query": "hydrochloric acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "water",
+   "outcome": "parsed",
+   "query": "water",
+   "via": "verbatim",
+   "smiles": "O",
+   "canonical": "O",
+   "attempts": [
+    {
+     "query": "water",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+   "outcome": "parsed",
+   "query": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)[O-])C=CC(=C1CBr)S(=O)(=O)C.[Na+]",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+]",
+   "attempts": [
+    {
+     "query": "sodium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium 2,2,2-trifluoroethoxide",
+   "outcome": "parsed",
+   "query": "sodium 2,2,2-trifluoroethoxide",
+   "via": "verbatim",
+   "smiles": "FC(C[O-])(F)F.[Na+]",
+   "canonical": "[Na+].[O-]CC(F)(F)F",
+   "attempts": [
+    {
+     "query": "sodium 2,2,2-trifluoroethoxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+   "outcome": "parsed",
+   "query": "potassium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)[O-])C=CC(=C1CBr)S(=O)(=O)C.[K+]",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+]",
+   "attempts": [
+    {
+     "query": "potassium 2-chloro-3-(bromomethyl)-4-(methanesulfonyl)benzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium (tetrahydrofuran-2-yl)methoxide",
+   "outcome": "parsed",
+   "query": "sodium (tetrahydrofuran-2-yl)methoxide",
+   "via": "verbatim",
+   "smiles": "O1C(CCC1)C[O-].[Na+]",
+   "canonical": "[Na+].[O-]CC1CCCO1",
+   "attempts": [
+    {
+     "query": "sodium (tetrahydrofuran-2-yl)methoxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium (tetrahydrofuran-2-yl)methoxide",
+   "outcome": "parsed",
+   "query": "potassium (tetrahydrofuran-2-yl)methoxide",
+   "via": "verbatim",
+   "smiles": "O1C(CCC1)C[O-].[K+]",
+   "canonical": "[K+].[O-]CC1CCCO1",
+   "attempts": [
+    {
+     "query": "potassium (tetrahydrofuran-2-yl)methoxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium 2,2,2-trifluoroethoxide",
+   "outcome": "parsed",
+   "query": "potassium 2,2,2-trifluoroethoxide",
+   "via": "verbatim",
+   "smiles": "FC(C[O-])(F)F.[K+]",
+   "canonical": "[K+].[O-]CC(F)(F)F",
+   "attempts": [
+    {
+     "query": "potassium 2,2,2-trifluoroethoxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "benzyl alcohol",
+   "outcome": "parsed",
+   "query": "benzyl alcohol",
+   "via": "verbatim",
+   "smiles": "C(C1=CC=CC=C1)O",
+   "canonical": "OCc1ccccc1",
+   "attempts": [
+    {
+     "query": "benzyl alcohol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "dibenzyl ether type compounds",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'dibenzyl ether type compounds'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "dibenzyl ether type compounds",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "double-attachment impurity",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'double-attachment impurity'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "double-attachment impurity",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoic acid",
+   "outcome": "parsed",
+   "query": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methanesulfonylbenzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+   "outcome": "parsed",
+   "query": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "2-chloro-3-(2,2,2-trifluoroethoxy)methyl-4-methylsulfonylbenzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-[(RS)-tetrahydrofuran-2-ylmethoxymethyl]-4-methanesulfonylbenzoic acid",
+   "outcome": "parsed",
+   "query": "2-chloro-3-[(RS)-tetrahydrofuran-2-ylmethoxymethyl]-4-methanesulfonylbenzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COCC1OCCC1)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1",
+   "attempts": [
+    {
+     "query": "2-chloro-3-[(RS)-tetrahydrofuran-2-ylmethoxymethyl]-4-methanesulfonylbenzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-[(RS)-tetrahydrofuran-2-ylmethoxymethyl]-4-methylsulfonylbenzoic acid",
+   "outcome": "parsed",
+   "query": "2-chloro-3-[(RS)-tetrahydrofuran-2-ylmethoxymethyl]-4-methylsulfonylbenzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COCC1OCCC1)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC1CCCO1",
+   "attempts": [
+    {
+     "query": "2-chloro-3-[(RS)-tetrahydrofuran-2-ylmethoxymethyl]-4-methylsulfonylbenzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-bromomethyl-4-methanesulfonylbenzoic acid methyl ester",
+   "outcome": "parsed",
+   "query": "2-chloro-3-bromomethyl-4-methanesulfonylbenzoic acid methyl ester",
+   "via": "verbatim",
+   "smiles": "COC(C1=C(C(=C(C=C1)S(=O)(=O)C)CBr)Cl)=O",
+   "canonical": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+   "attempts": [
+    {
+     "query": "2-chloro-3-bromomethyl-4-methanesulfonylbenzoic acid methyl ester",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-bromomethyl-4-methanesulfonylbenzoic acid sodium salt",
+   "outcome": "parsed",
+   "query": "2-chloro-3-bromomethyl-4-methanesulfonylbenzoic acid sodium salt",
+   "via": "verbatim",
+   "smiles": "[Na+].ClC1=C(C(=O)[O-])C=CC(=C1CBr)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+]",
+   "attempts": [
+    {
+     "query": "2-chloro-3-bromomethyl-4-methanesulfonylbenzoic acid sodium salt",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-bromomethyl-4-methylsulfonylbenzoic acid sodium salt",
+   "outcome": "parsed",
+   "query": "2-chloro-3-bromomethyl-4-methylsulfonylbenzoic acid sodium salt",
+   "via": "verbatim",
+   "smiles": "[Na+].ClC1=C(C(=O)[O-])C=CC(=C1CBr)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+]",
+   "attempts": [
+    {
+     "query": "2-chloro-3-bromomethyl-4-methylsulfonylbenzoic acid sodium salt",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-chloro-3-methoxymethyl-4-methylsulfonylbenzoic acid",
+   "outcome": "parsed",
+   "query": "2-chloro-3-methoxymethyl-4-methylsulfonylbenzoic acid",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)O)C=CC(=C1COC)S(=O)(=O)C",
+   "canonical": "COCc1c(S(C)(=O)=O)ccc(C(=O)O)c1Cl",
+   "attempts": [
+    {
+     "query": "2-chloro-3-methoxymethyl-4-methylsulfonylbenzoic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-tetrahydrofuranmethanol",
+   "outcome": "parsed",
+   "query": "2-tetrahydrofuranmethanol",
+   "via": "verbatim",
+   "smiles": "O1C(CCC1)CO",
+   "canonical": "OCC1CCCO1",
+   "attempts": [
+    {
+     "query": "2-tetrahydrofuranmethanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-tetrahydrofurfuryl alcohol",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried '2-tetrahydrofurfuryl alcohol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "2-tetrahydrofurfuryl alcohol",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "2-tetrahydrofurylmethanol",
+   "outcome": "parsed",
+   "query": "2-tetrahydrofurylmethanol",
+   "via": "verbatim",
+   "smiles": "O1C(CCC1)CO",
+   "canonical": "OCC1CCCO1",
+   "attempts": [
+    {
+     "query": "2-tetrahydrofurylmethanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "C10H10BrClO4S",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'C10H10BrClO4S'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "C10H10BrClO4S",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "C11H10ClF3O5S",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'C11H10ClF3O5S'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "C11H10ClF3O5S",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "C14H17ClO6S",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'C14H17ClO6S'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "C14H17ClO6S",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "C17H16ClF3O6S",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'C17H16ClF3O6S'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "C17H16ClF3O6S",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "C18H16Cl2O9S2",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'C18H16Cl2O9S2'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "C18H16Cl2O9S2",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "C20H23ClO7S",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'C20H23ClO7S'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "C20H23ClO7S",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "C9H7BrClKO4S",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'C9H7BrClKO4S'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "C9H7BrClKO4S",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "C9H7BrClNaO4S",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'C9H7BrClNaO4S'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "C9H7BrClNaO4S",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "DMF",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'DMF'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "DMF",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "DMSO",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'DMSO'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "DMSO",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "THF",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'THF'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "THF",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Tefuryltrione",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Tefuryltrione'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Tefuryltrione",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Tembotrione",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Tembotrione'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Tembotrione",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "aqueous sodium hydroxide solution",
+   "outcome": "parsed",
+   "query": "sodium hydroxide",
+   "via": "dropped 'aqueous', 'solution'",
+   "smiles": "[OH-].[Na+]",
+   "canonical": "[Na+].[OH-]",
+   "attempts": [
+    {
+     "query": "aqueous sodium hydroxide solution",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "sodium hydroxide",
+     "via": "dropped 'aqueous', 'solution'",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "concentrated hydrochloric acid",
+   "outcome": "parsed",
+   "query": "hydrochloric acid",
+   "via": "dropped 'concentrated'",
+   "smiles": "Cl",
+   "canonical": "Cl",
+   "attempts": [
+    {
+     "query": "concentrated hydrochloric acid",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "hydrochloric acid",
+     "via": "dropped 'concentrated'",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "metallic potassium",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'metallic potassium'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "metallic potassium",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "metallic sodium",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'metallic sodium'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "metallic sodium",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC)C=CC(=C1CBr)S(=O)(=O)C",
+   "canonical": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+   "attempts": [
+    {
+     "query": "methyl 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)OC)C=CC(=C1CBr)S(=O)(=O)C",
+   "canonical": "COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl",
+   "attempts": [
+    {
+     "query": "methyl 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "potassium 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)[O-])C=CC(=C1CBr)S(=O)(=O)C.[K+]",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+]",
+   "attempts": [
+    {
+     "query": "potassium 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "potassium 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)[O-])C=CC(=C1CBr)S(=O)(=O)C.[K+]",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[K+]",
+   "attempts": [
+    {
+     "query": "potassium 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium 2-tetrahydrofuranmethanolate",
+   "outcome": "parsed",
+   "query": "potassium 2-tetrahydrofuranmethanolate",
+   "via": "verbatim",
+   "smiles": "O1C(CCC1)C[O-].[K+]",
+   "canonical": "[K+].[O-]CC1CCCO1",
+   "attempts": [
+    {
+     "query": "potassium 2-tetrahydrofuranmethanolate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium 2-tetrahydrofurfuryl alkoxide",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'potassium 2-tetrahydrofurfuryl alkoxide'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "potassium 2-tetrahydrofurfuryl alkoxide",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium hydroxide solution",
+   "outcome": "parsed",
+   "query": "potassium hydroxide",
+   "via": "dropped 'solution'",
+   "smiles": "[OH-].[K+]",
+   "canonical": "[K+].[OH-]",
+   "attempts": [
+    {
+     "query": "potassium hydroxide solution",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "potassium hydroxide",
+     "via": "dropped 'solution'",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "potassium trifluoroethoxide",
+   "outcome": "ambiguous",
+   "query": "potassium trifluoroethoxide",
+   "via": "verbatim",
+   "guess_smiles": "FC(C[O-])(F)F.[K+]",
+   "guess_canonical": "[K+].[O-]CC(F)(F)F",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "attempts": [
+    {
+     "query": "potassium trifluoroethoxide",
+     "via": "verbatim",
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: Connection of fluoro to ethoxide"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "sodium 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)[O-])C=CC(=C1CBr)S(=O)(=O)C.[Na+]",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+]",
+   "attempts": [
+    {
+     "query": "sodium 2-chloro-3-bromomethyl-4-methanesulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+   "outcome": "parsed",
+   "query": "sodium 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+   "via": "verbatim",
+   "smiles": "ClC1=C(C(=O)[O-])C=CC(=C1CBr)S(=O)(=O)C.[Na+]",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+]",
+   "attempts": [
+    {
+     "query": "sodium 2-chloro-3-bromomethyl-4-methylsulfonylbenzoate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium 2-tetrahydrofuranmethanolate",
+   "outcome": "parsed",
+   "query": "sodium 2-tetrahydrofuranmethanolate",
+   "via": "verbatim",
+   "smiles": "O1C(CCC1)C[O-].[Na+]",
+   "canonical": "[Na+].[O-]CC1CCCO1",
+   "attempts": [
+    {
+     "query": "sodium 2-tetrahydrofuranmethanolate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium 2-tetrahydrofuranmethoxide",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sodium 2-tetrahydrofuranmethoxide'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sodium 2-tetrahydrofuranmethoxide",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium hydroxide solution",
+   "outcome": "parsed",
+   "query": "sodium hydroxide",
+   "via": "dropped 'solution'",
+   "smiles": "[OH-].[Na+]",
+   "canonical": "[Na+].[OH-]",
+   "attempts": [
+    {
+     "query": "sodium hydroxide solution",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "sodium hydroxide",
+     "via": "dropped 'solution'",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium trifluoroethoxide",
+   "outcome": "ambiguous",
+   "query": "sodium trifluoroethoxide",
+   "via": "verbatim",
+   "guess_smiles": "FC(C[O-])(F)F.[Na+]",
+   "guess_canonical": "[Na+].[O-]CC(F)(F)F",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "attempts": [
+    {
+     "query": "sodium trifluoroethoxide",
+     "via": "verbatim",
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: Connection of fluoro to ethoxide"
+    }
+   ]
+  },
+  {
+   "identifier": "trifluoroethanol",
+   "outcome": "ambiguous",
+   "query": "trifluoroethanol",
+   "via": "verbatim",
+   "guess_smiles": "FC(CO)(F)F",
+   "guess_canonical": "OCC(F)(F)F",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "attempts": [
+    {
+     "query": "trifluoroethanol",
+     "via": "verbatim",
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: Connection of fluoro to eth"
+    }
+   ]
+  }
+ ]
+}

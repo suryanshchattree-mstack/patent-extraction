@@ -1,0 +1,80 @@
+[
+  {
+    "patent_id": "WO2000021924A1",
+    "identifier": "compounds of the general formula (I)",
+    "identifier_type": "functional_ref",
+    "aliases": [
+      "Erfindungsgemäße Verbindungen der allgemeinen Formel (I)"
+    ],
+    "resolved": false,
+    "unresolved_reference": true,
+    "section_label": "Table 5",
+    "section_type": "formula_definitions",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "other",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:active_ingredient"
+    ],
+    "notes": "Enumeration table. The caption block fixes R2 = Cl, R3 = SO2Et, R4 = H, R5 = H, R6 = OH, Y = CH2, Z = CH2, v = 1 and w = 0; each row assigns R1 and R7a/R7b. This record is the class term the caption itself names, kept unresolved because formula (I) is defined elsewhere in the document and not in this section. Rows are emitted as their own records only where the Physikalische Daten column carries real characterisation; of the 28 rows here (Nr. 517-544) only Nr. 517 does, and it is the second record in this file. The other 27 rows print an empty data cell and are prophetic enumerations, so they yield nothing. | CONFLICT 1, recorded and not resolved: the fixed-substituent block on line 826 prints R3 = SO2Et, while the scaffold drawn directly beneath the caption is reported to show SO2Me. The IMAGE_EXTRACT span on line 828, which is that drawing, carries an empty molecules array, so the drawn scaffold is not machine-readable anywhere in this section and the SO2Me reading cannot be checked against the text here. Both readings are recorded, neither is resolved and neither is preferred. | CONFLICT 2, recorded and not resolved: row 532 prints R1 as OCH2CF3I, which is not a valid substituent. Kept verbatim. The EN line repeats it unchanged, so this is an error in the printed patent and not a translation artifact. Rows 523 and 537 print OCH2CF3 in the same column; no correction is inferred from that and row 532 is left exactly as printed. Row 532 has an empty data cell, so it yields no record of its own and the conflict is recorded here. | Rows 524 and 538 give R1 as a structure drawn in the cell rather than as text. Both are R-group substituent fragments, not compounds, and both have empty data cells, so neither yields a record. The IMAGE_EXTRACT on line 837 reads OCC1CCOC1, a free alcohol, where the row 524 cell describes an attachment oxygen; it is not attached to any record, since neither is a whole molecule the section names."
+  },
+  {
+    "patent_id": "WO2000021924A1",
+    "identifier": "Tabelle 5, Nr. 517",
+    "identifier_type": "local_label",
+    "aliases": [
+      "O-c-Pentyl",
+      "Me, Me",
+      "517 | O-c-Pentyl | Me, Me"
+    ],
+    "resolved": false,
+    "unresolved_reference": false,
+    "section_label": "Table 5",
+    "section_type": "formula_definitions",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "product",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": {
+      "h1": "1H NMR (CDCl3): d 1.5-1.9 (m,8H), 2.1 (s,6H), 2.42 (t,2H), 2.65 (t,2H), 3.3 (s,3H), 4.15 (m,1H), 5.05 (s,2H), 7.28 (d,1H), d,1H), 8.15 (d,1H)",
+      "c13": null,
+      "raw_text": "1H NMR (CDCl3): d 1.5-1.9 (m,8H), 2.1 (s,6H), 2.42 (t,2H), 2.65 (t,2H), 3.3 (s,3H), 4.15 (m,1H), 5.05 (s,2H), 7.28 (d,1H), d,1H), 8.15 (d,1H)",
+      "solvent": "CDCl3",
+      "frequency_mhz": null
+    },
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:active_ingredient"
+    ],
+    "notes": "Compound defined by the Tabelle 5 caption plus row Nr. 517. The caption fixes R2 = Cl, R3 = SO2Et, R4 = H, R5 = H, R6 = OH, Y = CH2, Z = CH2, v = 1, w = 0; the row fixes R1 = O-c-Pentyl and R7a, R7b = Me, Me. Emitted because its Physikalische Daten cell carries a 1H NMR block, so this is a compound the patent actually made and characterised, unlike the other 27 rows of the section whose data cells are empty. | Identifier is the row label rather than a constructed systematic name. R3 is disputed in this section: the caption prints R3 = SO2Et while the scaffold drawn beneath it is reported to show SO2Me, and the IMAGE_EXTRACT on line 828 that holds that drawing has an empty molecules array, so the drawing cannot be read in this input. Any constructed name would have to commit to one of the two readings, so none is given and resolved stays false. The row's own 1H NMR prints a 3H singlet at 3.3 and no ethyl pattern attributable to a sulfonyl group; that observation is recorded, not used, and the conflict stays open. | The caption does not fix L, and the row does not assign it, so that symbol is undetermined in this section as well."
+  }
+]

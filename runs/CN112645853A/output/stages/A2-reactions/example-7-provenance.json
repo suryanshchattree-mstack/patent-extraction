@@ -1,0 +1,24 @@
+[
+  {
+    "reaction_id": "Example 7_Step 1",
+    "source_lines": [
+      390,
+      396,
+      398
+    ],
+    "quote_zh": "向反应瓶中加入叔丁醇200mL，开动搅拌，室温下将10.3g叔丁醇钠(98％，0.105mol)滴入其中，待叔丁醇钠分散均匀后，控制釜温在25℃，将34.8g 2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯(98％，0.1mol)倒入釜中进行碱解反应，反应过程微微放热，控制釜温为25℃，反应6h。反应结束，液相色谱中控2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐归一含量为98.3％，负压脱尽溶剂直接用于后续醚化反应。",
+    "arithmetic_check": "Closes; nothing to flag. Sodium tert-butoxide: 10.3 g at 98 percent is 10.09 g of C4H9ONa, MW 96.10, i.e. 0.1050 mol against the printed 0.105 mol. Methyl ester: 34.8 g at 98 percent is 34.10 g of C10H10BrClO4S, MW 341.60, i.e. 0.0998 mol against the printed 0.1 mol, so the printed 0.1 mol is a rounding of the purity-corrected charge and not a molar-mass error. Base to substrate is 1.05 to 1, which the text does not state as a ratio. No product mass and no yield is printed for this step: the salt is never isolated, only its in-process normalised HPLC content of 98.3 percent is given, so no mass balance can be computed here and none is asserted. Neither mass_balance_implausible nor molar_mass_inconsistent is raised, and neither was manufactured to meet the pass prompt's expectation of failing arithmetic, which describes the reference patent and not this one.",
+    "drawing_evidence": "One [IMAGE_EXTRACT] reactions span, line 396, immediately under the [0111] marker and after the p13 page-break comment: a single arrow, step_id 1. It corroborates the step boundary and the connectivity. Its reactant COC(=O)c1ccc(S(C)(=O)=O)c(CBr)c1Cl (C10H10BrClO4S) matches the named methyl ester and its product CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] (C9H7BrClNaO4S) matches the named sodium salt, sodium counter-ion included, so drawing and prose agree on substrate, product and alkali metal. It DISAGREES on the reagent: the arrow's only condition text is NaOH, while the prose charges sodium tert-butoxide in tert-butanol and names no sodium hydroxide anywhere. Prose kept in the structured fields; drawing_text_conflict, reagent_drawn_not_written and reagent_written_not_drawn raised. No attribution question arises: this is an experimental example, not an overview scheme, and no drawing in this patent is marked presented_as unclear."
+  },
+  {
+    "reaction_id": "Example 7_Step 2",
+    "source_lines": [
+      400,
+      403,
+      405
+    ],
+    "quote_zh": "向反应釜中加入130mL THF、10.6g三氟乙醇(99％，0.105mol)和11.8g叔丁醇钠(98％，0.12mol)，开动搅拌，控制釜温在10℃，将步骤(1)制备得到的2-氯-3-溴甲基-4-甲磺酰基苯甲酸钠盐(98.3％，0.1mol)分八次加入反应瓶中，总加料时间为3h，加毕保温反应4h。反应完毕，负压脱溶，釜残加水120mL，搅拌溶解后滴加浓盐酸将体系pH值酸化至2，之后经过滤、水淋洗、烘干得到产物32.8g，HPLC定量得目标化合物2-氯-3-(2,2,2-三氟乙氧基)甲基-4-甲磺酰基苯甲酸含量为97.8％，以2-氯-3-溴甲基-4-甲磺酰基苯甲酸甲酯计两步反应收率92.7％。",
+    "arithmetic_check": "Closes on every printed pair; nothing to flag. Trifluoroethanol: 10.6 g at 99 percent is 10.49 g, MW 100.04, i.e. 0.1049 mol against the printed 0.105 mol. Sodium tert-butoxide: 11.8 g at 98 percent is 11.56 g, MW 96.10, i.e. 0.1203 mol against the printed 0.12 mol. Product C11H10ClF3O5S has MW 346.70, so 0.1 mol of substrate gives 34.67 g theoretical; the 32.8 g isolated at 97.8 percent HPLC content is 32.08 g of the acid, i.e. 0.09252 mol. Against the purity-corrected methyl ester charge of step (1), 0.09984 mol, that is 92.68 percent, which rounds to the printed two-step yield of 92.7 percent; against the nominal 0.1 mol it is 92.5 percent. Mass, purity and stated yield are therefore mutually consistent and consistent with the molecular weight of the compound actually named, on either basis. Open point for A5, deliberately not flagged: the step (1) material is charged here as 98.3 percent, 0.1 mol, which is the nominal carry of the entire unisolated step (1) batch, and step (1) prints no output mass at all, so the carry can be neither confirmed nor contradicted; scale_discontinuity is not raised because nothing printed contradicts it, and a guard must not report a finding it could not check.",
+    "drawing_evidence": "One [IMAGE_EXTRACT] reactions span, line 403, under the [0114] marker: a single arrow, step_id 1, and it agrees with the prose. Reactant CS(=O)(=O)c1ccc(C(=O)[O-])c(Cl)c1CBr.[Na+] is the step (1) sodium salt, so the drawing also corroborates the linkage to Step 1; condition texts are CF3CH2OH, C4H9ONa and HCl, all three named in the prose; product CS(=O)(=O)c1ccc(C(=O)O)c(Cl)c1COCC(F)(F)F (C11H10ClF3O5S) matches the named target acid, and the drawn carboxylic acid rather than a salt matches the acidification described. The drawn alkali metal is sodium in both the substrate and the base, agreeing with the prose, so the patent's sodium versus potassium conflict does not arise in this section. The only placement difference is HCl, drawn under the arrow but a workup acidification in the prose and recorded in workup; that is not a disagreement and no flag is raised. Two arrows in the section against two numbered prose steps also corroborates the step count of two."
+  }
+]
