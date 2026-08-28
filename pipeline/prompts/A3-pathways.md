@@ -36,7 +36,8 @@ COMPOUNDS (full `compounds.json`):
 3. `ksm` is the key starting material: the principal `reactant` of the earliest
    step in the chain. Where a step has several reactants, the KSM is the one
    contributing the carbon skeleton that survives to the product, not the reagent.
-   In this patent, step 1's aryl substrate is the KSM, not the sulfonylating agent.
+   So the substrate whose ring or backbone you can still see in the final product is
+   the KSM, and the reagent that decorates it is not, however much of it is charged.
 4. `intermediates` is the ordered list of the products of every step except the
    last.
 5. `product` is the product of the terminal step.
