@@ -58,7 +58,12 @@ BIBLIO_STUB = {
     "grant_date": None,
     "jurisdiction": "",
     "language": "",
-    "assignees": [{"name": "", "country": "", "type": "company"}],
+    # type must be one of the schema's six: multinational_corp, sme, university,
+    # government, individual, consortium. It used to be pre-filled "company",
+    # which is not one of them, so every new run started from a value that fails
+    # validation. It never fired on the reference run, whose assignee is a
+    # university.
+    "assignees": [{"name": "", "country": "", "type": ""}],
     "inventors": [],
     "legal_status": "",
     "source": "",

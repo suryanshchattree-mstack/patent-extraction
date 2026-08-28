@@ -317,6 +317,62 @@ def pathway_section_type(p: dict) -> str:
 NOT_THIS_PATENTS_CHEMISTRY = {"background"}
 
 
+# The biblio schema and the PatentRecord schema define DIFFERENT vocabularies for
+# the same field, and only university, individual and government are in both:
+#
+#   biblio  : company university individual institute government hospital foundation
+#   record  : multinational_corp sme university government individual consortium
+#
+# So a company-owned patent could not validate on both sides at once. The stub
+# new_run.py ships pre-fills "company", which the record rejects; the obvious
+# manual fix, "sme", is what the biblio rejects. Neither is wrong: they are two
+# vocabularies and nothing was translating between them. The reference run's
+# assignee is a university, a word both schemas happen to share, which is the only
+# reason this held for one patent.
+#
+# The biblio keeps its own words, since that is the file a person fills in, and
+# the mapping happens here where the record is built.
+ASSIGNEE_TYPE = {
+    "university": "university",
+    "individual": "individual",
+    "government": "government",
+    # A judgement the biblio does not record. It captures no company size, and the
+    # record's vocabulary forces one, so this maps to the smaller claim: sme
+    # asserts less than multinational_corp does. Where an assignee really is a
+    # multinational, say so in the biblio and this map is the place to widen.
+    "company": "sme",
+    # An institute is academic in the way a university is, and neither hospital nor
+    # foundation has a counterpart in the record's six. They go to the nearest
+    # honest neighbour rather than being dropped, because assignee_type absent and
+    # assignee_type approximate are different claims.
+    "institute": "university",
+    "hospital": "university",
+    "foundation": "consortium",
+}
+
+
+def assignee_type(kind: str) -> str:
+    """A biblio assignee type in the PatentRecord's vocabulary."""
+    return ASSIGNEE_TYPE.get((kind or "").strip().lower(), "sme")
+
+
+def tag_slug(name: str) -> str:
+    """An assignee name as a tag value the schema will accept.
+
+    The pattern is `^[a-z_]+:[a-z0-9_/.+-]+$`, so a comma is not allowed. This was
+    `name.lower().replace(" ", "_")`, which is enough for "Wuhan Institute of
+    Technology" and not for "Zhejiang Zhongshan Chemical Industry Group Co., Ltd.":
+    the commas and the full stops survived and the record failed validation on the
+    second patent this pack ever saw.
+
+    Everything outside the allowed set becomes an underscore, runs collapse, and
+    the ends are trimmed, so the tag stays readable rather than escaped.
+    """
+    import re
+    slug = re.sub(r"[^a-z0-9]+", "_", (name or "").lower()).strip("_")
+    return slug or "unknown"
+
+
 def rollup(mols, rxns, pws):
     """PatentRecord.ExtractionRollup, computed not asked for.
 
@@ -401,8 +457,8 @@ def finalise_patent(llm, mols, rxns, pws):
              f"patent_family:{b['family_id']}",
              f"time_period:{b['publication_date'][:4]}"]
     for a in b.get("assignees") or []:
-        tags += [f"assignee:{a['name'].lower().replace(' ', '_')}",
-                 f"assignee_type:{a['type']}"]
+        tags += [f"assignee:{tag_slug(a['name'])}",
+                 f"assignee_type:{assignee_type(a.get('type'))}"]
     # full inheritance: union every reaction / compound / pathway tag
     for coll in (mols, rxns, pws):
         for rec in coll:
@@ -434,7 +490,8 @@ def finalise_patent(llm, mols, rxns, pws):
             "cpc_codes": None,
         },
         "parties": {"assignees": [{"name": a["name"], "country": a["country"],
-                                   "type": a["type"]} for a in b["assignees"]],
+                                   "type": assignee_type(a["type"])}
+                                  for a in b["assignees"]],
                     "inventors": inventors(b),
                     "examiners": None},
         "patent_summary": llm.get("patent_summary"),
