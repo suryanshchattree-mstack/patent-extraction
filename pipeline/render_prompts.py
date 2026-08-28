@@ -166,9 +166,16 @@ def render(patent_id: str, *, quiet: bool = False) -> tuple[list[Path], list[str
 
     # A template that still names a patent id after rendering is a template someone
     # added a literal back into. Say so; do not quietly ship it.
+    #
+    # NOT `and patent_id not in t`. Every rendered prompt contains this patent's id,
+    # because substituting it is what rendering IS, so requiring its absence made the
+    # check unable to fire on any file it was ever pointed at. It read as protection
+    # and was not. `CN 104292137 A`, in A0 rule 8, sat under it through every render
+    # of every patent until somebody read the rendered prompt instead of trusting the
+    # absence of a warning.
     stale = [p.name for p in written
-             if patent_id not in (t := p.read_text(encoding="utf-8"))
-             and _looks_like_a_patent_id_other_than(t, patent_id)]
+             if _looks_like_a_patent_id_other_than(p.read_text(encoding="utf-8"),
+                                                   patent_id)]
 
     if not quiet:
         print(f"  {len(written)} prompt(s) -> {shown(RENDERED)}/{patent_id}/")
@@ -207,9 +214,17 @@ def report_per_call(written: list[Path]) -> None:
 
 
 def _looks_like_a_patent_id_other_than(text: str, patent_id: str) -> bool:
+    """Any patent id in this text that is not the one being rendered.
+
+    The spaces are optional because a CNIPA running head prints the number as
+    `CN 109678767 A`, and the tight form alone matched none of them. That was the
+    exact form the A0 prompt quoted as its example of a header line, so the one
+    foreign id in this repo was also the one shape this function could not see.
+    """
     import re
-    for m in re.finditer(r"\b(?:CN|US|EP|JP|KR|WO|GB|IN)\d{6,}[A-Z]?\d?\b", text):
-        if m.group(0) != patent_id:
+    want = patent_id.replace(" ", "")
+    for m in re.finditer(r"\b(?:CN|US|EP|JP|KR|WO|GB|IN)\s?\d{6,}\s?[A-Z]?\d?\b", text):
+        if m.group(0).replace(" ", "") != want:
             return True
     return False
 
