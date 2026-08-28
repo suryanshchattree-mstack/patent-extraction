@@ -193,3 +193,65 @@ attributive fragment carried in from the sentence.** So `radical initiator`, not
 `a radical initiator` and not `radical initiator-induced`. The form with the article
 goes in `aliases`. This matches how the same sweep already handled
 `oxidizing agent`, whose line prints `an additional oxidizing agent`.
+
+## 10. A2 rulings, after the first reaction sweep
+
+Three things the seven A2 sections split on. Settled here and the affected sections
+re-run, for the same reason as sections 8 and 9: a gold set in which one fact is
+recorded two ways measures the annotator, not the patent.
+
+### 10a. One `step_role` per record, and a one-step route is `final_step`
+
+The first sweep put both `step_role:first_step` and `step_role:final_step` on the
+Abstract and Claims records, `first_step` on Background, Process Conditions and
+Summary, and `final_step` on the two Examples. All for the same one-step
+transformation.
+
+The category is single-valued: the reference run carries exactly one `step_role`
+on each of its 33 reactions. So:
+
+- a chain of ONE step takes `step_role:final_step`
+- the first step of a longer chain takes `first_step`, the last `final_step`, and
+  anything between `intermediate_step`
+
+`final_step` for the one-step case because the category exists to locate a step
+within a chain, and `first_step` on a route that is over implies something follows.
+This is a convention, not a fact: the step really is both, and the field holds one
+value. Every affected record says so in `notes`. It is another instance of
+`contracts/SINGLE-VALUED-FIELDS.md`, and naming it is the point.
+
+Under this rule only `Background_Step 2` takes `first_step`, being the ester
+bromination that the hydrolysis at `Background_Step 3` consumes.
+
+### 10b. No seventeenth tag category
+
+The first Background pass emitted `route_attribution:prior_art`, which is not one of
+A2 rule 26's sixteen categories and appears nowhere in the reference run. The
+instruction that produced it was mine and it was wrong: the closed list has no slot
+for attribution.
+
+Prior-art attribution stays where the schema can hold it, in `notes` on every record,
+and it is already carried structurally by `section_type: "background"`. Do not invent
+a category to hold a fact the vocabulary cannot express; record the gap instead.
+
+### 10c. `radical initiator` was a real A1 miss in Process Conditions
+
+`Process Conditions_Step 1` raised `a1_missing_compound` and it was correct. [0016]
+charges "a compound of the formula I with N-bromosuccinimide (NBS) and radical
+initiator in solvent", and the bare class term is printed three times in that
+section, but A1 emitted only its named members. Background and Summary both record
+the class.
+
+A1 `process-conditions` is re-run to hold it, and A2 `process-conditions` is re-run
+after, so the flag clears because the miss is fixed rather than because it was
+waved away. This is A2 rule 7 working exactly as designed and it is worth saying
+that the flag found something.
+
+### Not changed: `compounds[].quantity` shape on reaction records
+
+Section 6's `quantity: null` rule is about A1 compound records, where
+`finalise.py`'s merge replaces a populated value wholesale. Reaction records are not
+merged by identifier, and every access site in `verify.py` reads
+`c.get("quantity") or {}`, so a null and an all-null object are indistinguishable
+downstream. Both shapes are schema-valid and both appear in this run. Recorded rather
+than normalised, because normalising it would change bytes without changing meaning.

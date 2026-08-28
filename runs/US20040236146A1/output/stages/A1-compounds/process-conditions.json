@@ -1,6 +1,35 @@
 [
   {
     "patent_id": "US20040236146A1",
+    "identifier": "radical initiator",
+    "identifier_type": "other",
+    "aliases": [
+      "radical initiators"
+    ],
+    "resolved": false,
+    "unresolved_reference": true,
+    "section_label": "Process Conditions",
+    "section_type": "summary_of_invention",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "reagent",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:reagent"
+    ],
+    "notes": "The class term itself, and the co-reagent of variant A. One record for three appearances: line 79 prints radical initiators twice, as the subject of the sentence and again in its predicate, and line 87 prints radical initiator bare, with no article, in the charge for variant A. Per PROMPT-CORRECTIONS section 9 the identifier is the bare noun phrase, which is the form line 87 prints, and the plural goes in aliases; this joins the same class term recorded in Background and Summary of the Invention rather than splitting it across keys. It is kept separate from the members line 79 lists under it, diaroyl peroxides, azocarboxylic esters, azonitriles, azoisobutyronitrile and dibenzoyl peroxide, because a class name identifies no single molecule; resolved is false and unresolved_reference is true for the same reason. role is reagent and compound_class is reagent per PROMPT-CORRECTIONS section 8: an initiator is consumed in initiating and so does not meet A1 rule 9's definition of catalyst. commercially_available is true because line 79 states these initiators are commercially available. This record was missing from the first A1 pass over this section, which emitted only the members; A2 raised a1_missing_compound against it and the section was re-run."
+  },
+  {
+    "patent_id": "US20040236146A1",
     "identifier": "diaroyl peroxides",
     "identifier_type": "other",
     "aliases": [],
