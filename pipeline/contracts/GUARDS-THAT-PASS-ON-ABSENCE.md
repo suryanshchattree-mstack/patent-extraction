@@ -454,3 +454,40 @@ COMPLETENESS of them is asserted instead:
 Where the content of a list is a judgement, assert that the list is exhaustive rather
 than trying to generate it. Mutation tested by removing the new route: the guard goes
 red and names it.
+
+## The translations gate on a Latin-script patent
+
+Found by measurement on `EP2045236A1`, a German EP application, not by inference.
+
+`resolve_translations.py` defines its subject as `CJK = re.compile(...)` covering CJK
+Extension A, Unified Ideographs and Compatibility Ideographs, and `has_chinese(s)` is
+the only test any of its three gates applies. German is Latin script, so `has_chinese`
+is false on every string in the document.
+
+The gate did not skip, warn or report a limitation. It printed:
+
+    coverage gate: every one of the 0 strings above must have an English form,
+      so that substituting the index leaves no Chinese anywhere
+    all 0 strings resolve, and all 1078 source lines come out of the
+      substitution in English. PASS
+
+That second clause is the dangerous one. It says the source comes out in English, and
+what it verified is that no Chinese remains. On this patent every line was German both
+before and after. A consumer reading the gate's output learns that the deliverable is
+safe to put in front of an English-speaking reviewer, and the gate has no basis for
+saying so.
+
+`TARGETS.md` already carried this as a caveat on row 12, `DE10113137A1`, reasoned from
+the code. It did not carry it on row 4, because nobody had noticed that `EP2045236A1`
+is published in German. So the guard's blind spot was known, written down, and still
+walked into on the next patent that hit it, because the note was attached to one row
+rather than to the gate.
+
+The run supplied English by hand regardless: identifiers resolve to English with the
+source spelling kept as an alias, and notes are English-only with German confined to
+`aliases` and `quote_zh`. That is a discipline, not a check, and nothing in the
+pipeline enforces it.
+
+The general shape: **a guard whose subject is narrower than the risk it is read as
+covering.** The check is correct about Chinese. The sentence it prints, and the gate
+name, are about English.

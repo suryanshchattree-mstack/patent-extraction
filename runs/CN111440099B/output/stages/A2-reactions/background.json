@@ -1,0 +1,893 @@
+[
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Background_Step 1",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "nucleophilic_substitution",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "thionyl chloride",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+      "thionyl chloride"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "环磺酮的制备是通过2‑氯‑3‑(2,2,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酸与氯化亚砜反应生成2‑氯‑3‑(2,2,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酰氯",
+    "procedure_summary": "The substituted benzoic acid is reacted with thionyl chloride to give the corresponding benzoyl chloride.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:acyl_chloride_formation",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "First of the three transformations named in the single sentence at [0009], line 95, which states the whole route in one sentence. procedure_text is that sentence's first clause verbatim; the sentence is not divisible into three self-contained statements, so Step 1 to Step 3 share one source sentence and each carries its own clause. reaction_class is nucleophilic_substitution because the reaction substitutes chloride for hydroxyl at the carboxyl carbon. acylation and halogenation are both defensible for the same transformation, so reaction_class_confidence is medium; the reference run never annotates this step, so there is no precedent to follow. named_reaction is null: no widely accepted name applies. This section states no charge, no temperature, no time, no pressure and no yield anywhere, so scale is not_specified, every quantity field is null and no_conditions is raised. Per rule 5d that is the expected outcome for a route stated as an overview, not a defect in this reading. A0 estimated five steps for this section and five records are emitted, so there is no A0/A2 disagreement to explain. compounds[].role is the role in THIS step, so the benzoyl chloride is product here while the shared canonical table fixes reactant for the compounds artifact, where it has to be one value across the whole document; the two are not in conflict. Whether this route is prior art or the invention's own is not settled by this section; the flag for that sits on the two records from the [0010] drawing, and the same uncertainty applies to this prose record. The prompt's patent-specific paragraphs describe the previous patent, not this one, and none of them led this reading: there is no 'N、<compound name>' step marker anywhere in this section, no experimental step for a single-molecule IMAGE_EXTRACT to precede, no 滴加 dropwise addition, and the claim that 'the prose gives eight steps and the scheme draws nine' is false here, where the prose gives three transformations and the drawing draws two."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Background_Step 2",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "ester_formation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyclohexane-1,3-dione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "enol ester",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+      "cyclohexane-1,3-dione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "enol ester",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "再与环己二酮反应生成烯醇酯",
+    "procedure_summary": "The benzoyl chloride is reacted with cyclohexanedione to give the enol ester.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:esterification",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Second transformation of the [0009] sentence, line 95. reaction_class is ester_formation because the acyl chloride acylates the enol oxygen of the dione to give an O-acyl enol ester. linkage_confirmed is true on two independent grounds: the product identifier of Step 1 is a reactant identifier here, and the clause opens with 再与, an explicit back-reference to the compound the previous clause produced. The locant on the dione is a real gap in this section and is recorded, not fixed: [0009] names it as plain 环己二酮 with no locant, which on this section's prose alone leaves the 1,2, 1,3 and 1,4 isomers open. The locant is fixed by the document itself and not by outside knowledge, the [0010] drawing drawing the 1,3-dione and [0029] and [0053] printing the 1,3 locant explicitly, and A1 resolved it to cyclohexane-1,3-dione on that evidence. This record uses A1's identifier so the two artifacts join, and states here that this section alone does not carry the locant. The product is never named in full anywhere in the document: [0009] calls it only 烯醇酯, a class phrase, and A1 carries it as an unresolved functional_ref whose structure is known from the drawing alone. This section states no charge, no temperature, no time, no pressure and no yield anywhere, so scale is not_specified, every quantity field is null and no_conditions is raised. Per rule 5d that is the expected outcome for a route stated as an overview, not a defect in this reading."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Background_Step 3",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 3,
+    "step_label": "Step 3",
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [
+      "The tembotrione product of this rearrangement is stated to be contaminated with residual cyanide impurities, and the patent says a positive Ames mutagenicity result can be obtained on the contaminant.",
+      "The patent states that the positive Ames result is not an intrinsic property of tembotrione but a result produced by the residual cyanide impurities."
+    ],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "enol ester",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "acetone cyanohydrin",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyanide",
+        "role": "by_product",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "enol ester",
+      "acetone cyanohydrin"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "经过丙酮氰醇重排反应最终生成环磺酮(tembotrione)。 上述经过重排过程生成的生成环磺酮产品，通常会生成催化剂丙酮氰醇以及反应氰化物杂质污染，经过污染物致突变性检测(Ames)能得到正的Ames测试实验结果，但这并不是其固有性质，是残留的氰化物杂质所产生的结果。",
+    "procedure_summary": "The enol ester undergoes an acetone cyanohydrin rearrangement to give tembotrione, which is stated to be contaminated with residual cyanide impurities.",
+    "precursor_step": "Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions"
+    ],
+    "tags": [
+      "transformation:acylation",
+      "transformation:rearrangement",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "safety:cyanide_handling",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Third and last transformation of the [0009] sentence, line 95, extended by [0011], which comments on this same step's product. procedure_text is the [0009] clause followed by the whole of [0011]; [0011] straddles a page break, beginning at line 100 and continuing at line 105 with no marker reprinted, and the two halves are joined here as one sentence. reaction_class is acylation because the transformation converts an O-acyl enol ester into a C-acyl 2-aroyl-1,3-dione. The reference run is not settled on this: it calls the same transformation acylation twice and other once, so reaction_class_confidence is medium. named_reaction is null even though the patent prints its own name for it, 丙酮氰醇重排反应, an acetone cyanohydrin rearrangement, because that is not a widely accepted named reaction and rule 19 forbids stretching for one; the patent's own name is recorded here instead, and transformation:rearrangement is tagged alongside transformation:acylation. acetone cyanohydrin is role catalyst on the patent's own word: [0011] line 100 calls it 催化剂丙酮氰醇, the catalyst acetone cyanohydrin. Mechanistically it acts as the cyanide source, which is what makes the residual cyanide of [0011] a consequence of this step and not of any other. cyanide is carried as a by_product because [0011] says the rearrangement produces cyanide impurity contamination alongside the product; it is the substance the whole patent exists to remove. It is unresolved in A1 as a class, the document never saying which cyanide species. Two oddities in [0011] are recorded and not repaired. The Chinese prints 生成 twice, reading 生成的生成环磺酮产品, and it says the process 生成 (produces) the catalyst acetone cyanohydrin, which reads oddly for a catalyst; both are recorded as printed. byproduct_recovery stays null because [0011] describes contamination, not recovery or reuse. This section states no charge, no temperature, no time, no pressure and no yield anywhere, so scale is not_specified, every quantity field is null and no_conditions is raised. Per rule 5d that is the expected outcome for a route stated as an overview, not a defect in this reading."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Background_Scheme Step 1",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 4,
+    "step_label": "Scheme Step 1",
+    "reaction_class": "ester_formation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "thionyl chloride",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "cyclohexane-1,3-dione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "enol ester",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoic acid",
+      "thionyl chloride",
+      "cyclohexane-1,3-dione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "enol ester",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "反应式如下(式2)：",
+    "procedure_summary": "One drawn arrow carries the substituted benzoic acid to the enol ester, with thionyl chloride written above the arrow and cyclohexanedione drawn below it.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "drawing_text_conflict",
+      "route_attribution_unclear"
+    ],
+    "tags": [
+      "transformation:acyl_chloride_formation",
+      "transformation:esterification",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "First of the two arrows of the drawn scheme introduced at [0009] as 式2 and printed at [0010], read off the page as the IMAGE_EXTRACT reaction span at line 97. Per rule 5d this is an overview and not a procedure: it carries connectivity and reagents but no charge, no condition and no yield, it gets one record per arrow in drawing order, and it is neither merged with nor renumbered against any experimental step of this document. It belongs to the Background section. Per rule 5f it is kept apart from the prose of the same section by step_label, which is why this record is Scheme Step 1 and not Step 4, while step_index still runs on within the section. procedure_text is the lead-in at line 95 that introduces the drawing, 反应式如下(式2)：, because the drawing has no text layer of its own and the [0010] marker at line 99 is printed bare; every IMAGE_EXTRACT span is stripped per rule 5h. The finding on this record is a step-count mismatch between the drawing and the prose. [0009] names THREE transformations and the drawing draws only TWO arrows, because this arrow collapses the acid-to-acyl-chloride stage and the enol ester stage onto a single arrow: SOCl2 is written above the arrow and cyclohexane-1,3-dione is drawn as a full structure below the arrow line rather than written as a label. Its prose counterparts are therefore Step 1 and Step 2 together, and the benzoyl chloride that [0009] names as the product of Step 1 is never drawn anywhere in the scheme. That is why drawing_text_conflict is raised: the two readings of the page differ on how many transformations the route has, and both are recorded. reaction_class is assigned from the final transformation on the arrow, per rule 5, hence ester_formation rather than nucleophilic_substitution; confidence is medium because the arrow covers two transformations and the single class field can only name one. is_one_pot is false and one_pot_steps is empty. The competing reading, that one arrow bearing both reagents depicts a one-pot operation, is recorded here rather than asserted in the field: nothing in the drawing or the prose says the two stages run without a workup between them, and [0009] separates them with 再, then. A collapsed overview arrow is a drawing convention, and reading process intent out of it would be inventing a condition. Attribution is left open and is not resolved here. The vision pass read this drawing as prior art, on three grounds: it sits under the 背景技术 heading, [0009] introduces it as how tembotrione IS prepared rather than as how the invention prepares it, and the invention of this patent is a purification rather than a route. The competing reading is that this is the invention's own route: the same two-arrow route is drawn again at [0031] inside the specific embodiments and a different page's vision pass read that occurrence as invention_route. Nothing in this section decides between the two, so route_attribution_unclear is raised and both readings are recorded rather than averaged away. This section states no charge, no temperature, no time, no pressure and no yield anywhere, so scale is not_specified, every quantity field is null and no_conditions is raised. Per rule 5d that is the expected outcome for a route stated as an overview, not a defect in this reading. The drawing gives SMILES for the acid and for the enol ester, and rule 8 keeps them off this record: reactant_smiles, product_smiles, both source fields and canonical_rxn stay null, and the SMILES lives on A1's aliases. The prompt's patent-specific paragraphs describe the previous patent, not this one, and none of them led this reading: there is no 'N、<compound name>' step marker anywhere in this section, no experimental step for a single-molecule IMAGE_EXTRACT to precede, no 滴加 dropwise addition, and the claim that 'the prose gives eight steps and the scheme draws nine' is false here, where the prose gives three transformations and the drawing draws two."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "reaction_id": "Background_Scheme Step 2",
+    "section_label": "Background",
+    "section_type": "background",
+    "step_index": 5,
+    "step_label": "Scheme Step 2",
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "enol ester",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "acetone cyanohydrin",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "tembotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "enol ester",
+      "acetone cyanohydrin"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "tembotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "反应式如下(式2)：",
+    "procedure_summary": "The second drawn arrow carries the enol ester to tembotrione, with acetone cyanohydrin drawn above the arrow.",
+    "precursor_step": "Scheme Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "route_attribution_unclear"
+    ],
+    "tags": [
+      "transformation:acylation",
+      "transformation:rearrangement",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "safety:cyanide_handling",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "Second and last arrow of the drawn scheme at [0010], read as step_id 2 of the IMAGE_EXTRACT reaction span at line 97. Same overview treatment as Scheme Step 1 under rule 5d, same reason for the Scheme Step label under rule 5f, and procedure_text is again the lead-in at line 95 because the drawing carries no text of its own. linkage_confirmed is true from the drawing itself: this arrow's reactant SMILES is character for character the product SMILES of the first arrow, which is stronger evidence than name similarity. drawing_text_conflict is NOT raised on this record. This arrow and its prose counterpart, Step 3, agree on reactant, on reagent and on product, acetone cyanohydrin being drawn here as a full structure (CH3)2C(OH)CN above the arrow line rather than written as a label, and the product SMILES matching both the name 环磺酮 in the prose and the 式1 structure drawn at line 92. The scheme's disagreement with the prose is a step-count disagreement that arises on the first arrow, so it is recorded there rather than duplicated here. reaction_class is acylation for the same reason as Step 3, the conversion of an O-acyl enol ester into a C-acyl 2-aroyl-1,3-dione, and confidence is medium because the reference run calls this same transformation acylation twice and other once. safety:cyanide_handling is tagged because the arrow itself bears a cyanohydrin. The cyanide by-product and the Ames statement of [0011] are carried on the prose Step 3 record, which is the record [0011] textually follows and comments on; this arrow draws no by-product, and putting them on both records would double-count one statement. Attribution is left open and is not resolved here. The vision pass read this drawing as prior art, on three grounds: it sits under the 背景技术 heading, [0009] introduces it as how tembotrione IS prepared rather than as how the invention prepares it, and the invention of this patent is a purification rather than a route. The competing reading is that this is the invention's own route: the same two-arrow route is drawn again at [0031] inside the specific embodiments and a different page's vision pass read that occurrence as invention_route. Nothing in this section decides between the two, so route_attribution_unclear is raised and both readings are recorded rather than averaged away. This section states no charge, no temperature, no time, no pressure and no yield anywhere, so scale is not_specified, every quantity field is null and no_conditions is raised. Per rule 5d that is the expected outcome for a route stated as an overview, not a defect in this reading."
+  }
+]

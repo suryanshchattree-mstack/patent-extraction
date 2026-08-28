@@ -1,0 +1,465 @@
+[
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methanesulfonyl)benzoyl chloride",
+    "identifier_type": "iupac",
+    "aliases": [
+      "2‑氯‑3‑(2 ,2 ,2‑三氟乙氧基)甲基‑4‑甲磺酰基苯甲酰氯"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "reactant",
+    "quantity": {
+      "mass_g": 231.9,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [
+      {
+        "method": "other",
+        "value": null,
+        "unit": null,
+        "conditions": "in-process control of residual starting material content before the reduced-pressure strip; the patent names no analytical method and states the result as an upper bound",
+        "raw_text": "中控检测原料含量≤0.2％"
+      }
+    ],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:intermediate",
+      "chemical_family:aryl_sulfone",
+      "functional_group:sulfone",
+      "functional_group:ether",
+      "functional_group:trifluoromethyl",
+      "functional_group:halide_chloro"
+    ],
+    "notes": "Charged as the first-step starting material, 231.9 g, into a 2 L three-necked flask with 1 L of the solvent and stirred at 15 C. The text layer prints the mass with a space before the decimal point and prints the locants of the trifluoroethoxy group with spaces inside them; the value is 231.9 and the compound is unchanged. The printed form is kept verbatim in aliases and in the provenance quote and was not normalised. identifier, role, resolved and commercially_available are taken from the shared canonical identifier table for this patent: commercially_available is false because [0009] describes this acid chloride being prepared from the corresponding benzoic acid, even though this example charges it into the flask as a purchased starting material. Both facts are in the document and point opposite ways; rule 11 decides it. This section on its own would have said true, since it shows no preparation of it. FLAG, recorded and not fixed: the paragraph names the charged material as the acid chloride and then adds thionyl chloride to it and strips the excess, which is the operation for converting the acid to the acid chloride. Either the charged material is really the benzoic acid or the thionyl chloride charge is redundant. The record keeps the name the patent prints and does not substitute the acid. compound_class is intermediate, and that is not this section's own reading. Within [0053] this compound is unambiguously the first material charged and nothing here prepares it, so this section alone would have tagged it starting_material, which is what it originally carried. It was changed to intermediate to agree with the background and synthesis-scheme sections, because finalise.py unions tags while rule 18 allows exactly one compound_class, so leaving the two spellings would have put a rule-breaking pair of classes on the merged record rather than a choice. Rule 18's own mapping supports intermediate at document level: [0009] describes this compound being prepared from the corresponding benzoic acid, so a step of the document makes it, which is the same fact that makes commercially_available false. Recorded here rather than changed silently."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "1,2-dichloroethane",
+    "identifier_type": "iupac",
+    "aliases": [
+      "1 ,2‑二氯乙烷",
+      "1,2‑二氯乙烷"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "solvent",
+    "quantity": {
+      "mass_g": null,
+      "volume_ml": 1000.0,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:solvent",
+      "functional_group:halide_chloro"
+    ],
+    "notes": "One record for two separate charges in the same section, merged per rule 4. Two charges were made: 1 L as the reaction solvent charged with the acid chloride at 15 C, and then a fresh 500 ml after the solvent and the excess thionyl chloride had been stripped under reduced pressure to 85 C. quantity keeps volume_ml 1000.0, the larger and first charge, because the schema has a single volume field and cannot hold both; the 500 ml fresh charge is recorded here in notes and in the provenance quote so it is not lost. The text layer prints the locant with a space inside it at the first mention and without at the second; both printed forms are kept in aliases and neither was normalised."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "thionyl chloride",
+    "identifier_type": "iupac",
+    "aliases": [
+      "氯化亚砜"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "reagent",
+    "quantity": {
+      "mass_g": 237.9,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:reagent",
+      "hazard:corrosive"
+    ],
+    "notes": "Added slowly at 15 C, 237.9 g, then reacted 0.5 h at room temperature and held 3 h at 75 C; the excess was stripped off with the solvent under reduced pressure to 85 C. The text layer prints the mass with a space before the decimal point; the value is 237.9 and the printed string is kept in the provenance quote. FLAG, recorded and not fixed: the reduced pressure for that strip is printed as mP, which is not a pressure unit; MPa is plainly meant, and the figure is left exactly as printed rather than corrected. FLAG, recorded and not fixed: this thionyl chloride is charged onto a material the paragraph names as the acid chloride, which is the operation for the acid and not for the acid chloride. See the note on the benzoyl chloride record."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "triethylamine",
+    "identifier_type": "iupac",
+    "aliases": [
+      "三乙胺"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "base",
+    "quantity": {
+      "mass_g": 200.0,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:base"
+    ],
+    "notes": "Charged 200 g together with the fresh 500 ml of solvent, before the dione and the acetone cyanohydrin. role base is from the shared canonical identifier table and this section supports it: the triethylamine salt filtered off afterwards is the acid acceptor's salt."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "cyclohexane-1,3-dione",
+    "identifier_type": "iupac",
+    "aliases": [
+      "1,3环己二酮"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "reactant",
+    "quantity": {
+      "mass_g": 92.0,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:starting_material",
+      "chemical_family:cyclohexanedione",
+      "functional_group:ketone"
+    ],
+    "notes": "Charged 92 g together with 0.5 g of acetone cyanohydrin and held 6 h at 40 C, with no workup between the two charges. This section prints the 1,3 locant, so the identifier is fixed by the document itself and not by outside knowledge; two of the four mentions elsewhere in the patent carry no locant. This section states no molar amount, so mmol is null and none was computed from the mass."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "acetone cyanohydrin",
+    "identifier_type": "trivial_name",
+    "aliases": [
+      "丙酮氰醇"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "catalyst",
+    "quantity": {
+      "mass_g": 0.5,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:catalyst",
+      "functional_group:nitrile",
+      "hazard:cyanide_handling"
+    ],
+    "notes": "Charged 0.5 g with the dione and held 6 h at 40 C. role catalyst is from the shared canonical identifier table; this section charges it as a reagent and states no role, and on its own reading this section would have said reagent. The sub-stoichiometric 0.5 g against 92 g of dione is consistent with the table's catalyst. hazard cyanide_handling is emitted because the cyanide impurity this patent exists to reduce is what this charge introduces."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "triethylamine salt",
+    "identifier_type": "other",
+    "aliases": [
+      "三乙胺盐"
+    ],
+    "resolved": false,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "by_product",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:by_product"
+    ],
+    "notes": "Filtered off before the mixture was concentrated. resolved is false because the counter-ion is never stated anywhere in the document; it is not read as the hydrochloride. unresolved_reference is false: the name is not a reference to another compound, it is a compound the patent underspecifies. This section states no amount and no characterisation for it, so quantity, nmr and melting_point are null rather than objects of nulls."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "tembotrione",
+    "identifier_type": "trivial_name",
+    "aliases": [
+      "环磺酮",
+      "环磺酮产品"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": true,
+    "commercially_available": false,
+    "role": "product",
+    "quantity": {
+      "mass_g": 262.1,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": {
+      "h1": "δ2.12(m，2H)2.47(t，2H)，2.81(t，2H)，3.25(S，3H)，4.01(q，2H)，5.21(s，2H)，7.33(d，H)，8.12(d，H)，15.37(s，H)。",
+      "c13": null,
+      "raw_text": "1HNMR(CDCl3)，δ2.12(m，2H)2.47(t，2H)，2.81(t，2H)，3.25(S，3H)，4.01(q，2H)，5.21(s，2H)，7.33(d，H)，8.12(d，H)，15.37(s，H)。",
+      "solvent": "CDCl3",
+      "frequency_mhz": null
+    },
+    "melting_point": null,
+    "appearance": "pale yellow solid",
+    "color": "pale yellow",
+    "physical_form": "solid",
+    "analytics": [
+      {
+        "method": "other",
+        "value": null,
+        "unit": null,
+        "conditions": "in-process check that the one-pot dione stage had gone to completion; the patent names no analytical method",
+        "raw_text": "检测反应完全"
+      }
+    ],
+    "purity_pct": 95.0,
+    "purity_method": null,
+    "tags": [
+      "compound_class:active_ingredient",
+      "chemical_family:triketone"
+    ],
+    "notes": "The product of this section and the only compound in the document carrying an isolated amount: 262.1 g at 95% content after crystallisation at pH 2 and drying. purity_method is null because the patent does not say how the content was measured. The patent states no yield percentage anywhere, so yield_pct is null and none was computed from the charges. One record merged from the crude and the purified material, per the shared canonical identifier table: the document distinguishes them by adjective only and never by name. Two physical states of the same compound are printed here. The isolated product is a pale yellow solid, recorded in color and physical_form. Before purification the same compound is a red-brown solid, obtained by concentrating the filtrate under reduced pressure after the triethylamine salt was filtered off; that crude state is recorded here rather than overwriting the isolated product's colour. The 1H NMR is one datum printed across [0054] and [0055], split by a paragraph marker. raw_text carries both parts joined with nothing inserted at the boundary, because the patent prints no separator there; no peak was reordered, renumbered or normalised, the capital S in the 3.25 multiplicity and the full-width commas are as printed. There is no 13C data, so c13 is null. commercially_available is false per rule 11 because this section prepares the compound; tembotrione is a marketed herbicide, so the field is answering whether a step of this document makes it and not whether it can be bought. FLAG, recorded and not fixed: the stirring speed for the hot filtration and crystallisation is printed as 280 revolutions/h, which is outside claim 3's range of 150 to 200 revolutions, so the one worked example of the invention falls outside its own claim. Neither figure was adjusted. None of the canonical do-not-emit terms appears in this section. The only generic words here are the words for starting material and for solvent, and both refer to compounds already emitted as records, so nothing was dropped as a class term. The pale yellow solid recorded in color and physical_form is the dried isolated product of this section, taken after crystallisation at pH 2. It is a different state from the red-brown crude of the synthesis scheme at [0029], which this same paragraph also passes through before purification, and these isolated-product values are the ones that should reach the merged deliverable."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "methanol",
+    "identifier_type": "iupac",
+    "aliases": [
+      "甲醇"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "solvent",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:solvent"
+    ],
+    "notes": "The purification solvent. Charged onto the crude product as 40% aqueous methanol and warmed to 60 C. That is a mixture, not a compound, so methanol and water are emitted separately and the 40% composition belongs to the reaction record, not to the identifier. No amount of the mixture is given, so quantity is null rather than an object of nulls."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "water",
+    "identifier_type": "trivial_name",
+    "aliases": [
+      "水"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "solvent",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:solvent"
+    ],
+    "notes": "Present twice as the water of a stated mixture and never charged as a named amount: as the water of the 40% aqueous methanol used for the purification, and as the water of the 10% aqueous hydrochloric acid added to bring the pH to 2. Emitted as a compound per rule 1. No amount is stated, so quantity is null."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "activated carbon",
+    "identifier_type": "other",
+    "aliases": [
+      "活性炭"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "additive",
+    "quantity": {
+      "mass_g": 5.0,
+      "volume_ml": null,
+      "mmol": null,
+      "equivalents": null,
+      "yield_pct": null
+    },
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:workup_agent"
+    ],
+    "notes": "5 g added at 60 C and held 1 h, then filtered hot. This is the adsorbent the claims describe generically. role is additive because the role enum has no value for an adsorbent, which is why a decolourising carbon is not tagged as a catalyst or a reagent; the value is fixed by the shared canonical identifier table. This 5 g is the value that reaches the merged deliverable, and it is the outlier rather than the representative charge. This section charges 5 g of activated carbon at the 231.9 g scale of a full synthesis. Every other adsorbent charge in the document is 1 g at the 5 g product scale: activated carbon at 1 g in batches 1 to 14, that is all six batches of Example 1, all four of Example 2, all three of Example 3 and batch 14 of Example 4; and diatomaceous earth at 1 g in batch 15 of Example 4 and in all four batches of Example 5, through the single treatment description at [0050]. The schema holds one mass per compound, and this file's 5 g survives the merge only because example-6 sorts last among the example files, not because it is typical of the document."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "hydrochloric acid",
+    "identifier_type": "trivial_name",
+    "aliases": [
+      "盐酸水溶液"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "acid",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:acid"
+    ],
+    "notes": "Added dropwise under temperature control as a 10% aqueous solution to adjust the pH to 2 before recrystallisation. The 10% is a concentration and belongs in the reaction record, not in the identifier. No amount is stated, so quantity is null."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "chloroform",
+    "identifier_type": "trivial_name",
+    "aliases": [
+      "CDCl3"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Example 6",
+    "section_type": "experimental_example",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "solvent",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:solvent",
+      "chemical_family:chloroalkane",
+      "functional_group:halide_chloro"
+    ],
+    "notes": "The deuterated NMR solvent, printed CDCl3 at [0054], and recorded as a compound per rule 1, which makes a solvent a compound whatever its role. It is the only compound in this document that appears solely inside a characterisation datum: CDCl3 is printed once, at [0054], it is charged into no step and it takes part in no procedure, so it carries no amount and quantity, nmr and melting_point are the literal null rather than objects of nulls. The identifier chloroform drops the deuteration, which is a real loss of information about what was in the tube. It is used anyway because chloroform is the identifier both existing runs carry, CN104292137A and CN109678767A each holding a chloroform record and neither holding one under CDCl3, and because finalise.py keys the compound id on the exact identifier string, so any other spelling would stop the three runs joining on this compound. The printed CDCl3 is kept as an alias so the deuterated form is not lost. identifier_type is trivial_name, matching both existing runs: chloroform is a retained trivial name and the systematic form is trichloromethane. The alias rests on a vision judgement rather than on the pixels: the p10 vision read records that the scan renders the lower-case l of CDCl3 with very nearly the same glyph as the digit 1, so on the pixels alone it reads CDC13, and the text layer's CDCl3 was taken in preference. This record was found missing by the independent reading of step 6 and not by the extraction pass, which had carried the substance only as nmr.solvent on tembotrione."
+  }
+]

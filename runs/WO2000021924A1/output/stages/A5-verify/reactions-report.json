@@ -1,0 +1,292 @@
+{
+  "artifact": "reactions",
+  "records_audited": 21,
+  "findings": [
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "Example 1_Step 1",
+      "field": "notes",
+      "problem": "The notes carry computed molecular formulae and molecular weights that appear nowhere in the source, which A2 rule 32 forbids (notes must introduce no number absent from the text) and which A5 check 2 lists among the things this annotation is not permitted to contain.",
+      "source_line": 548,
+      "quote": "Man ließ abkühlen, fügte 88.2 g (0.5 mol) Jodmethan hinzu und ließ 0,5 h bei Raumtemperatur nachrühren.",
+      "artifact_says": "notes: \"Iodomethane is CH3I, MW 141.94, so 88.2 g is 0.62 mol and 0.5 mol is 71.0 g; the printed pair implies 176.4\" and \"200 g / 1.24 mol gives 161.3 against 161.03 for C7H6Cl2\"",
+      "should_be": "Strip the derived molecular weights and molecular formulae from notes and leave them only in reactions-provenance.json arithmetic_check, which is where A2 says they live. The same defect is present in the notes of Example 1 Steps 2 to 9 (13, 14, 13, 6, 8, 11, 9, 9 and 4 derived numbers respectively); Example 2 Steps 1 to 3 and all nine Preparation Schemes records already do this correctly, writing \"the figures are set out in the provenance arithmetic_check\" instead, so the rule was applied unevenly inside one artifact.",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "major",
+      "record": "Preparation Schemes 1 to 4_Step 7",
+      "field": "validation_flags",
+      "problem": "Page p033 draws Schema 4 as Ia to Ib to Ic with two completely bare arrows carrying no reagent text, while the prose names Oxalylchlorid and Oxalylbromid, so reagent_written_not_drawn applies and is not raised.",
+      "source_line": 376,
+      "quote": "Die  in Schema 4 angegebene Umsetzung einer Verbindung der Formel (Ia) mit einem Halogenierungsreagenz, wie Oxalylchlorid oder Oxalylbromid, führt zu erfindungsgemäßen Verbindungen der Formel (Ib)",
+      "artifact_says": "validation_flags: [\"no_conditions\", \"cross_reference_unresolved\"]; notes: \"No drawing-versus-text comparison was possible anywhere in this section, so drawing_text_conflict, reagent_drawn_not_written and reagent_written_not_drawn are not raised on any record\"",
+      "should_be": "Add \"reagent_written_not_drawn\" to validation_flags. The drawing does exist on page p033; only the vision read of it is empty, and declining the flag on the ground that no comparison was possible turns \"we could not check\" into \"the answer is no\". The same correction is due on Preparation Schemes 1 to 4 Steps 3, 8 and 9, whose reagents are likewise written but not on the arrows of Schema 2 (p030) and Schema 4 (p033).",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "major",
+      "record": "Preparation Schemes 1 to 4_Step 1",
+      "field": "validation_flags",
+      "problem": "Page p030 draws Schema 1 as (II) plus (III) over a bare arrow to (I), with nothing written above or below the arrow, while the prose names DCC and a cyanide source as reagents of two of the three variants, so reagent_written_not_drawn applies and is not raised.",
+      "source_line": 344,
+      "quote": "Dazu wird die Verbindung der Formel (II) im Fall von R = Hydroxy in Gegenwart wasserentziehender Mittel, wie DCC, oder im Fall von R = Chlor oder Brom basenkatalysiert und in Anwesenheit einer Cyanid-Quelle, oder im Fall von R = Cyano basenkatalysiert direkt mit (III) umgesetzt.",
+      "artifact_says": "validation_flags: [\"no_conditions\", \"cross_reference_unresolved\", \"a1_missing_compound\"]",
+      "should_be": "Add \"reagent_written_not_drawn\" to validation_flags for this record.",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "major",
+      "record": null,
+      "field": "IMAGE_EXTRACT",
+      "problem": "The vision read of every scheme drawing in this document is empty, so nine records rest on prose alone and no drawing check anywhere in the artifact could be performed; the pages themselves carry complete structures.",
+      "source_line": 351,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [], \"conditions\": [], \"products\": []}]}]",
+      "artifact_says": "notes on all nine Preparation Schemes records: \"the drawing was not machine-readable in this input and this record rests on the prose alone\"",
+      "should_be": "Re-run the vision pass over pages p030, p031 and p033 and populate the spans. Page p030 draws (II) plus (III) to (I) for Schema 1 and (IV) to (III) for Schema 2; page p031 draws (V) to (III) for Schema 3 with R1-Z2 on the arrow; page p033 draws Ia to Ib to Ic for Schema 4. The span at line 361 for Schema 2 and the two-arrow span at line 388 for Schema 4 are empty in the same way, and Schema 3's caption at line 374 has no span attached to it at all.",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": "Preparation Schemes 1 to 4_Step 3",
+      "field": "notes",
+      "problem": "The only readable drawing fragment in the section, the arrow reagent R1-Z2 at line 366, is Schema 3's arrow and not Schema 2's, and the page settles a question the record declares undeterminable.",
+      "source_line": 366,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [], \"conditions\": [{\"text\": \"R1-Z2\"}], \"products\": []}]}]",
+      "artifact_says": "notes: \"The span on line 366, which sits under the Schema 2 caption on the page after it ... Which scheme that span belongs to is not determinable from this input; A1 assigned it to Schema 2 and this pass follows that assignment without treating it as settled.\"",
+      "should_be": "Reassign the line 366 span to Schema 3, that is to Preparation Schemes 1 to 4_Step 6, and remove the undeterminability claim from the notes of Steps 3 and 6. Page p031 shows paragraphs 2.1 and 2.2, then the Schema 3 lead-in, then the caption Schema 3 followed by the only arrow on the page, drawn from (V) to (III) with R1-Z2 written above it; Schema 2's arrow is on page p030 and is bare.",
+      "confidence": "high"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": "Preparation Schemes 1 to 4_Step 3",
+      "field": "validation_flags",
+      "problem": "Schema 2 on page p030 and Schema 3 on page p031 label the benzene ring R2, R4, R5 and R6, putting R6 on the ring, whereas Schema 1 on the same page p030 and the definition of formula (I) label the same ring R2, R3, R4 and R5 and reserve R6 for the cyclohexenone; the drawings disagree with the text they illustrate and no downstream field records it.",
+      "source_line": 77,
+      "quote": "R6 R6\tOR12, Alkylthio, Halogenalkylthio, Alkenylthio, Halogenalkenylthio, Alkinylthio, Halogenalkinylthio, Alkylsulfinyl",
+      "artifact_says": "no drawing flag on any record of this section",
+      "should_be": "Raise \"drawing_text_conflict\" on the Schema 2 record (Step 3) and the Schema 3 record (Step 6) and record both labellings in notes, correcting neither. This is the patent's own drawing error and is invisible to every text-only check, which is why it has to be carried on the record.",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Example 1_Step 1",
+      "field": "one_pot_steps",
+      "problem": "A structured field asserts an S-methylation that the text does not state and that the record's own notes say cannot be decided between two readings.",
+      "source_line": 548,
+      "quote": "Man ließ abkühlen, fügte 88.2 g (0.5 mol) Jodmethan hinzu und ließ 0,5 h bei Raumtemperatur nachrühren.",
+      "artifact_says": "one_pot_steps[1]: \"S-methylation with iodomethane at room temperature for 0.5 h after the batch had been allowed to cool\"; tags include \"transformation:s_methylation\"; notes: \"The patent does not say what the iodomethane is for. Two readings are on the evidence ... so both are recorded and neither is chosen.\"",
+      "should_be": "Word one_pot_steps[1] as the text words it, for example \"iodomethane charged after cooling and stirred 0.5 h at room temperature, purpose not stated\", and drop the tag transformation:s_methylation, keeping the two candidate readings in notes where they already are.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "Example 1_Step 3",
+      "field": "compounds[hydrogen peroxide].quantity.mass_g",
+      "problem": "203.83 g is the mass of the 30 per cent solution, not of hydrogen peroxide, and it is recorded as the mass of the compound named hydrogen peroxide with purity_pct left null.",
+      "source_line": 563,
+      "quote": "Anschließend ließ man unter Kühlung 203.83 g einer 30 %igen Wasserstoffperoxidlösung zutropfen",
+      "artifact_says": "compounds: {\"identifier\": \"hydrogen peroxide\", \"role\": \"oxidant\", \"quantity\": {\"mass_g\": 203.83}}, purity_pct null",
+      "should_be": "Keep mass_g 203.83 as printed but set purity_pct to 30.0 on the compound, as the same artifact already does for the 60 per cent sodium hydride in Example 2 Step 1, so that a consumer cannot read 203.83 g as 203.83 g of H2O2. The conditions.concentration block already carries the 30 per cent, but it does not bind to the compound record.",
+      "confidence": "medium"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "Example 1_Step 4",
+      "field": "compounds[sodium hypochlorite].quantity.mass_g",
+      "problem": "870 g is the mass of the 13 per cent solution, not of sodium hypochlorite, and it is recorded as the mass of the compound named sodium hypochlorite with purity_pct left null.",
+      "source_line": 565,
+      "quote": "60 g (0,24 mol) 2-Chlor-3-methyl-4-methylsulfonyl-acetophenon wurden in 510 ml Dioxan gelöst und mit 870 g 13 %ige Natriumhypochloritlösung versetzt.",
+      "artifact_says": "compounds: {\"identifier\": \"sodium hypochlorite\", \"role\": \"oxidant\", \"quantity\": {\"mass_g\": 870.0}}, purity_pct null",
+      "should_be": "Keep mass_g 870.0 as printed and set purity_pct to 13.0 on the compound.",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 1_Step 6",
+      "field": "tags",
+      "problem": "The record tags catalyst_class:none while its own compounds array carries dibenzoyl peroxide with role catalyst, which contradicts the tag and departs from the convention the same artifact states for Example 1 Step 3.",
+      "source_line": 569,
+      "quote": "29.91 g (0.17 mol) N-Bromsuccinimid und mit 0.41 g Dibenzoylperoxid versetzt",
+      "artifact_says": "tags include \"catalyst_class:none\"; compounds include {\"identifier\": \"dibenzoyl peroxide\", \"role\": \"catalyst\"}",
+      "should_be": "Drop the catalyst_class:none tag and skip the category, as Example 1 Step 3 does for sodium tungstate with the stated reason that the closed tag list has no fitting value. A peroxide radical initiator has no value in the list either.",
+      "confidence": "high"
+    },
+    {
+      "check": "linkage",
+      "severity": "minor",
+      "record": "Preparation Schemes 1 to 4_Step 1",
+      "field": "precursor_step",
+      "problem": "precursor_step is null although line 355 makes an explicit textual back-reference from Step 2's product to the formula (III) used in this step, which is the kind of back-reference rule 24 accepts as confirmation.",
+      "source_line": 355,
+      "quote": "Verbindungen oben genannter Formel (III) können gemäß bekannten Methoden aus Verbindungen der Formel (III), in der R für Hydroxy oder Alkoxy steht, hergestellt werden.",
+      "artifact_says": "precursor_step: null, linkage_confirmed: false, no linkage tag; notes: \"several later steps make formula (III) at different positions, so no single precursor step can be named\"",
+      "should_be": "Set precursor_step to \"Step 2\" with linkage_confirmed true. The words oben genannter Formel (III), the above-named formula (III), point back specifically at the formula (III) of line 344, which is this step's acylating partner, and Step 2 is the only record whose product is that formula (III); Steps 3 to 6 install R1, a different symbol, which the artifact's own notes already argue.",
+      "confidence": "medium"
+    },
+    {
+      "check": "linkage",
+      "severity": "minor",
+      "record": "Preparation Schemes 1 to 4_Step 9",
+      "field": "linkage_confirmed",
+      "problem": "linkage_confirmed is false while the record simultaneously carries the tag linkage:precursor_linked, and the identifier test rule 24 states is in fact satisfied.",
+      "source_line": 381,
+      "quote": "Durch Reaktion mit einem Oxidationsreagenz, wie Peroxyessigsäure, Wasserstoffperoxid, m-Chlorperoxybenzoesäure und Kaliumperoxymonosulfat, werden erfindungsgemäße Verbindungen der Formel (Ic) erhalten",
+      "artifact_says": "precursor_step: \"Step 8\", linkage_confirmed: false, tags include \"linkage:precursor_linked\"",
+      "should_be": "Resolve the contradiction one way: either set linkage_confirmed true, since Step 8's product identifier \"compound of formula (Ic)\" is literally among this step's reactant identifiers and that is the test rule 24 sets, or drop the linkage:precursor_linked tag so that field and tag agree. Leaving the record asserting both is worse than either.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "The five formulation examples on pages p077 and p078 state quantified compositions and named unit operations and carry no record, although reaction_class has a formulation value and the schema carries a non_synthetic flag for exactly this case.",
+      "source_line": 848,
+      "quote": "Ein Stäubemittel wird erhalten, indem man 10 Gew.-Teile einer Verbindung der allgemeinen Formel (I) und 90 Gew.-Teile Talkum als Inertstoff mischt und in einer Schlagmühle zerkleinert.",
+      "artifact_says": "no record for any section between line 620 and line 899",
+      "should_be": "Emit one record per formulation example (lines 848, 852, 856, 860 and 864 to 871) with reaction_class formulation, non_synthetic true and scale not_specified, or state on the record set that formulation is deliberately out of scope. What would settle it is whether the project intends the formulation value of the reaction_class enum and the non_synthetic field to be populated at all, or whether A0's gate of contains_procedure false on sections 26 to 30 is authoritative.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "The four biological examples on pages p078 to p080 state dosed application procedures with rates and assessment intervals and carry no record, although reaction_class has a biological_assay value.",
+      "source_line": 877,
+      "quote": "Die in Form von benetzbaren Pulvern oder Emulsionskonzentraten formulierten erfindungsgemäßen Verbindungen werden dann als wäßrige Suspension bzw. Emulsion mit einer Wasseraufwandmenge von umgerechnet 600 bis 800 l/ha in einer Dosierung von umgerechnet 1 kg Aktivsubstanz oder weniger pro Hektar auf die Oberfläche der Abdeckerde appliziert.",
+      "artifact_says": "no record for any section between line 620 and line 899",
+      "should_be": "Emit one record per biological example (lines 877, 884, 888 and 897) with reaction_class biological_assay and non_synthetic true, or state that assays are deliberately out of scope for this artifact. Same open question as the formulation finding.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Example 1_Step 8",
+      "field": "purification",
+      "problem": "The purification string says column chromatography where the text says only chromatographisch gereinigt and names the stationary phase and eluent; no column is mentioned.",
+      "source_line": 578,
+      "quote": "Anschließend wurde am Rotationsverdampfer eingeengt und chromatographisch gereinigt (Kieselgel, Essigester:Hexan = 1:1).",
+      "artifact_says": "purification: \"column chromatography on silica gel, ethyl acetate:hexane 1:1\"",
+      "should_be": "Word it as the text does, for example \"purified chromatographically on silica gel, ethyl acetate:hexane 1:1\", and leave the enum tag purification:column_chromatography as the nearest closed-list value. The identical wording appears on Example 2 Step 2 for the same sentence at line 606.",
+      "confidence": "medium"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "Example 1_Step 7",
+      "field": "named_reaction",
+      "problem": "reaction_class follows the final transformation of the one-pot step, as rule 5 requires, but named_reaction names the first, so the two classification fields on one record describe different transformations.",
+      "source_line": 576,
+      "quote": "1.0 g (2.93 mmol) Methyl 3-brommethyl-2-chlor-4-methylsulfonyl-benzoat wurde in 10 ml Cyclohexanol gelöst und mit 0.33 g (2.93 mmol) Kalium-tert-butylat versetzt.",
+      "artifact_says": "reaction_class: \"hydrolysis\", named_reaction: \"Williamson ether synthesis\", tags include \"named_rxn:williamson_ether_synthesis\"",
+      "should_be": "Either set named_reaction null, since the saponification that reaction_class names carries no canonical name, or say in notes that named_reaction deliberately names the first of the two one-pot transformations while reaction_class names the last. The same pairing is on Example 2 Step 1. Flagged at low confidence because rule 19 does not explicitly tie named_reaction to the transformation reaction_class was taken from.",
+      "confidence": "low"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "arithmetic",
+      "what_was_verified": "Every stated mass, mole and yield in Examples 1 and 2 was recomputed independently from the compound named in each step heading. Twelve of the twelve experimental steps close on the product side to within the rounding the printed significant figures allow, and the two failures the artifact reports are real and correctly located: line 548 prints 88.2 g (0.5 mol) Jodmethan, which implies 176.4 against 141.94 for CH3I, and line 563 charges 223.48 g of a substrate that line 561 isolated only 111.24 g of. Both carry the right flag, molar_mass_inconsistent and scale_discontinuity respectively, and neither number has been corrected in the record."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "The sodium tungstate judgement call that the provenance sidecar explicitly asked A5 to re-examine was re-examined and holds. 27.47 g against 0.08 mol implies 343.4; anhydrous Na2WO4 at 293.82 would give 0.0935 mol, which prints as 0.09 and not the 0.08 the page shows, while Na2WO4 dihydrate at 329.86 gives 0.0833 mol, which prints as 0.08. The German at line 563 says only Natriumwolframat. Not raising molar_mass_inconsistent is correct, and both readings are carried in notes rather than one being chosen."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "The Example 1 Step 9 yield of 100 per cent was re-examined. The transformation is an O to C acyl migration so substrate and product are isomers; 0.23 mmol allows 0.1014 g and the printed 0.1 g is 98.6 per cent of it, which rounds to the printed 100 per cent at the one significant figure both masses carry. Not raising mass_balance_implausible is correct, and the record says so rather than staying silent."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "Step to step continuity was checked across all twelve experimental steps. Example 1 Step 3 is the only step that consumes more than the preceding step produced and it is flagged; Example 1 Steps 2, 4, 6 and 7 and Example 2 Step 1 each take a portion of the preceding output, and the artifact's stated reading of scale_discontinuity as exceeds rather than differs from is applied consistently across all six and documented in each record's notes."
+    },
+    {
+      "check": "fidelity",
+      "what_was_verified": "Every number in Examples 1 and 2 was read off the rendered page images p045, p046, p047 and p049 and compared against the enriched markdown and against the artifact. All masses, volumes, molarities, percentages, temperatures, times and melting points transcribe correctly, including the awkward ones: 88.2 g (0.5 mol) Jodmethan, 15 to 20 degrees C, 1.5 d, 870 g 13 per cent hypochlorite, 300 W, 2 M and 5 M HCl. No unit was mishandled: 1.8 l and 1.5 l became 1800 and 1500 ml, 1.5 d became time_h 36.0, and every mol figure became mmol correctly."
+    },
+    {
+      "check": "fidelity",
+      "what_was_verified": "Reflux was nowhere recorded as a temperature. Example 1 Steps 5, 6, 7 and 8 and Example 2 Steps 1 and 2 all carry heating_method reflux with temperature not_specified or with the separately stated numeric value, exactly as rule 9 requires. The 15 to 20 degrees C range at line 556 was not flattened to a point and was not put in conditions.temperature at all; it is carried in the acetyl chloride addition_profile because it is the addition temperature, which is the correct handling."
+    },
+    {
+      "check": "precision",
+      "what_was_verified": "No condition reads like a default. atmosphere is null on all 21 records, nitrogen appears nowhere, pressure.type is not_specified on all 21, stirring.type is null on all 21, ph_value is null on all 21, and reactor_type is null on all 21. Every non-null condition traces to an explicit phrase in the German."
+    },
+    {
+      "check": "precision",
+      "what_was_verified": "Every compound identifier in every record was matched against output/compounds.json. All 21 records join, with exactly one exception, cyanide source in Preparation Schemes Step 1, and that record correctly raises a1_missing_compound as rule 7 directs."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "The key set of all 21 records is identical to the key set of the reference run runs/CN104292137A/output/reactions.json, so no enrichment or vector field leaked in and no required field is missing. id and reaction_uuid are present but are computed by finalise.py after A2, and they are present in the reference run too, so they are not a schema defect in the finalised file. reactant_smiles, smiles_source, product_smiles, product_smiles_source and canonical_rxn are null on all 21, and no molecular weight, formula or SMILES appears in any structured field."
+    },
+    {
+      "check": "vocabulary",
+      "what_was_verified": "Every enum-valued field was checked against its closed list in the A2 prompt. All 21 reaction_class values, 21 mechanism_type values, 21 scale values, 21 reaction_class_confidence values, 21 temperature.type values and 21 pressure.type values are inside their lists. All 214 tags are category:value with a lowercase snake_case ASCII value, every category is one of the 16 named, every value in the eight closed-list categories is inside its list, and no record repeats a tag."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "Internal consistency was checked mechanically on all 21 records: is_complete is true exactly when validation_flags is empty, the cross_reference_unresolved field agrees with the flag, each record has exactly one compound with is_product true, product_name equals that compound's identifier, product_yield_pct equals that compound's quantity.yield_pct, and every entry of reactant_names appears in compounds."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "Every compound and reagent name in the two experimental sections and in the schemes section was compared German against the EN line on the same line. No pair names different things. Natriumthiomethylat and sodium thiomethylate, Essigester and ethyl acetate, Methylenchlorid and methylene chloride, Kalium-tert-butylat and potassium tert-butoxide, Acetoncyanhydrin and acetone cyanohydrin, Peroxyessigsäure and peroxyacetic acid all agree, and the artifact follows the German in every case. translation_conflict is correctly absent from all 21 records."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "The one naming anomaly in the document is in the German itself, not between German and English: line 601 heads Example 2 Step 2 with 3-Oxo-1-cyclohexenyl ... benzoesäure where the procedure beneath makes the enol ester, and line 578 prints benzoat for the same class of product in Example 1 Step 8. The EN line at 602 renders the German faithfully as benzoic acid. The artifact reproduces the printed German name byte for byte on Example 2 Steps 2 and 3, does not correct it, and carries molar_mass_inconsistent on both records with the numbers set out. That is the correct handling and I verified the arithmetic behind it: 0.51 g at 1.17 mmol implies 435.9, which is 434.89 for the ester C21H19ClO6S and not 340.78 for the acid."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "All twelve linkage_confirmed true values were substantiated mechanically: in each case the named precursor record's product_name string is present among that step's non-product compound identifiers. The cross-section link Example 2 Step 1 to Example 1::Step 6 was checked in both directions and holds, and Example 1 Step 1 is correctly the only experimental record with a null precursor."
+    },
+    {
+      "check": "recall",
+      "what_was_verified": "The claims, lines 900 to 1141, were read in full. Claims 1 to 7 are compound claims, 8 and 9 composition claims, 10 a method of controlling plants, and 11 to 13 use claims. There is no process-of-preparation claim, so the absence of any Claims record here is correct and is not a recall miss, even though the reference run CN104292137A does carry eight Claims records."
+    },
+    {
+      "check": "recall",
+      "what_was_verified": "Every solvent, wash, quench and drying agent in the two experimental sections was checked line by line against the workup block. Hexamethylphosphoric triamide, ethyl acetate, 1,2-dichloroethane, methylene chloride, glacial acetic acid, dioxane, methanol, carbon tetrachloride, diethyl ether, n-heptane, cyclohexanol, tetrahydrofuran, dimethylformamide, acetonitrile and hexane are all present; every water wash, every MgSO4 drying and every rotary evaporation is present; the ice and concentrated hydrochloric acid quench at line 556 and the 2 M and 5 M acidifications are all present. No workup step in either example is missing from its record."
+    },
+    {
+      "check": "recall",
+      "what_was_verified": "Rule 5 says the document contains at least two one-pot steps. Five were located and they are exactly the five the artifact marks is_one_pot true: Example 1 Steps 1, 7 and 8 and Example 2 Steps 1 and 2. Each has two sequential charges with no workup between them, each lists both transformations in one_pot_steps in document order, and each takes reaction_class from the final transformation. No numbered Schritt was wrongly split and none was wrongly merged."
+    },
+    {
+      "check": "precision",
+      "what_was_verified": "procedure_text was checked against the source mechanically for all 21 records. Every sentence is a verbatim substring of the German, no IMAGE_EXTRACT span survives in any of them, and the two apparent mismatches are page-break joins at lines 569 to 574 and 376 to 381 where the record correctly stitches the two halves with the page marker removed. procedure_summary contains no digit on any of the 21 records, as rule 31 requires."
+    },
+    {
+      "check": "drawings",
+      "what_was_verified": "The tautomer diagram on page p006, which the vision pass reported at line 105 as ten empty reactions, was opened and is four tautomers of formula (I) linked by equilibrium arrows, not ten transformations. Its absence from reactions.json is correct: tautomerisation is not a synthetic step and has no value in the reaction_class enum."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 31,
+    "present_in_artifact": 21,
+    "missing": [
+      "Formulation Example 1, dusting agent, line 848: 10 parts compound of formula (I) plus 90 parts talc, mixed and comminuted in a hammer mill",
+      "Formulation Example 2, dispersible powder, line 852: 25 parts active, 64 parts kaolin quartz, 10 parts potassium ligninsulfonate, 1 part sodium oleoylmethyltaurate, ground in a pinned-disc mill",
+      "Formulation Example 3, dispersion concentrate, line 856: 20 parts active, 6 parts Triton X 207, 3 parts isotridecanol polyglycol ether, 71 parts paraffinic mineral oil, ground below 5 microns in an attritor ball mill",
+      "Formulation Example 4, emulsifiable concentrate, line 860: 15 parts active, 75 parts cyclohexanone, 10 parts oxyethylated nonylphenol",
+      "Formulation Example 5a, water-dispersible granule, lines 864 to 869: 75 parts active, 10 calcium ligninsulfonate, 5 sodium lauryl sulfate, 3 polyvinyl alcohol, 7 kaolin, pin-milled then fluid-bed granulated with water",
+      "Formulation Example 5b, second water-dispersible granule, line 871: 25 parts active, 5 sodium dinaphthylmethanedisulfonate, 2 sodium oleoylmethyltaurate, 1 polyvinyl alcohol, 17 calcium carbonate, 50 water, colloid-milled then bead-milled and spray dried",
+      "Biological Example 1, pre-emergence weed control, line 877",
+      "Biological Example 2, post-emergence weed control, line 884",
+      "Biological Example 3, activity in rice under paddy conditions, line 888",
+      "Biological Example 4, crop plant tolerance, line 897"
+    ]
+  }
+}

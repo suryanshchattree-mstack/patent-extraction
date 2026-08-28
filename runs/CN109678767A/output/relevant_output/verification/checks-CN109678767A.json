@@ -15205,7 +15205,7 @@
         312,
         313
       ],
-      "claim_id": "85b203403a48b5ca",
+      "claim_id": "5d177d60e9aa8301",
       "claimed_en": "2 mol",
       "claimed_unit": "mmol",
       "claimed_value": 2.0,
@@ -15252,7 +15252,7 @@
       ],
       "evidence_width": 2,
       "family": "completeness",
-      "field": "__quantity__[312:2mmol]",
+      "field": "__quantity__[312:2000mmol]",
       "field_label_en": "A quantity the patent prints that nothing records",
       "highlights": [],
       "load_bearing": true,
@@ -15260,7 +15260,7 @@
       "quantity_verdict": "gap",
       "question_en": "Line 312 prints 2 mol. The annotation does not record it anywhere. Should it have?",
       "rec": "cmp:be500d5a-38e6-504a-9f46-f98c953997b6",
-      "rec_field": "__quantity__.line_312.2mmol",
+      "rec_field": "__quantity__.line_312.2000mmol",
       "record_id": "CN109678767A_2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
       "record_kind": "compound",
       "record_label_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
@@ -15598,70 +15598,6 @@
       "record_id": "CN109678767A_line_260",
       "record_kind": "source_line",
       "record_label_en": "Source line 260",
-      "risk": 0.3,
-      "risk_reasons_en": [
-        "An uncited line carrying chemistry is a candidate miss."
-      ],
-      "section_en": "Example 4",
-      "severity": "medium",
-      "severity_action_en": "Nothing cites this line. Decide whether the extraction missed it or a nearby record already has it.",
-      "stratum": "source_line:Example 4",
-      "structure_svg_path": null,
-      "tier": 2,
-      "work_kind": "judgement"
-    },
-    {
-      "about": "extraction",
-      "auto": "not_checkable",
-      "auto_reason_en": "No record in the whole annotation cites this line, and it carries the name of a compound the annotation knows. Either the extraction missed something here, or the line repeats what a nearby record already captured.",
-      "basis": null,
-      "cited_lines": [
-        260,
-        261
-      ],
-      "claim_id": "63ae9f1ca9cde3e7",
-      "claimed_en": "line 261: This example provides a process for the synthesis of tembotrione, comprising the following steps:",
-      "claimed_unit": null,
-      "claimed_value": null,
-      "evidence_class": "narrow",
-      "evidence_en": "This example provides a process for the synthesis of tembotrione, comprising the following steps: This example provides a process for the synthesis of tembotrione, comprising the following steps:",
-      "evidence_lines": [
-        {
-          "is_translation": true,
-          "kind": "prose",
-          "matched": false,
-          "n": 260,
-          "names_en": [
-            "tembotrione"
-          ],
-          "pairing": "exact",
-          "text_en": "This example provides a process for the synthesis of tembotrione, comprising the following steps:"
-        },
-        {
-          "is_translation": true,
-          "kind": "translation",
-          "matched": true,
-          "n": 261,
-          "names_en": [
-            "tembotrione"
-          ],
-          "pairing": "self",
-          "text_en": "This example provides a process for the synthesis of tembotrione, comprising the following steps:"
-        }
-      ],
-      "evidence_width": 2,
-      "family": "completeness",
-      "field": "__coverage__",
-      "field_label_en": "Source line no record cites",
-      "highlights": [],
-      "load_bearing": true,
-      "needs_human": true,
-      "question_en": "Line 261 carries chemistry that no record cites. Did the annotation miss it?",
-      "rec": "pt:CN109678767A",
-      "rec_field": "__coverage__.line_261",
-      "record_id": "CN109678767A_line_261",
-      "record_kind": "source_line",
-      "record_label_en": "Source line 261",
       "risk": 0.3,
       "risk_reasons_en": [
         "An uncited line carrying chemistry is a candidate miss."
@@ -110021,20 +109957,20 @@
         "uncited_chemistry_lines": 0
       },
       {
-        "claims": 108,
+        "claims": 107,
         "found": 96,
         "lines_total": 25,
-        "not_checkable": 11,
+        "not_checkable": 10,
         "not_found": 0,
         "not_reconciled": 0,
         "partial": 1,
-        "records": 12,
+        "records": 11,
         "section_en": "Example 4",
         "substance_accounted": 19,
         "substance_none": 11,
         "substance_unaccounted": 0,
         "substance_unread": 0,
-        "uncited_chemistry_lines": 2
+        "uncited_chemistry_lines": 1
       },
       {
         "claims": 39,
@@ -110070,14 +110006,14 @@
       }
     ],
     "score": {
-      "covered_pct": 87.7,
+      "covered_pct": 92.4,
       "grounded_pct": 97.2,
       "structure_pct": 80.3
     },
-    "verdict_en": "666 claims were put to the source. 588 were found on the lines the annotation itself cites, 14 were only partly found, 3 were NOT found and are the ones to read first, and 59 are judgements no string match can settle. Of the 605 grounding claims a machine can decide, 97.2% are grounded. 2 source lines carry chemistry that no record cites, and each has its own entry in the queue. 43 record checks fail and 77 warn. 53 of 66 compound identifiers resolve to a drawable structure. Nothing here is a verdict: every line is a prompt for a human to agree or overrule."
+    "verdict_en": "665 claims were put to the source. 588 were found on the lines the annotation itself cites, 14 were only partly found, 3 were NOT found and are the ones to read first, and 58 are judgements no string match can settle. Of the 605 grounding claims a machine can decide, 97.2% are grounded. 1 source lines carry chemistry that no record cites, and each has its own entry in the queue. 43 record checks fail and 77 warn. 53 of 66 compound identifiers resolve to a drawable structure. Nothing here is a verdict: every line is a prompt for a human to agree or overrule."
   },
   "engine_version": 1,
-  "generated_at": "2026-08-28T05:44:27Z",
+  "generated_at": "2026-08-28T08:11:35Z",
   "patent_id": "CN109678767A",
   "records": [
     {
@@ -115420,7 +115356,7 @@
           ],
           "detail_en": "It is not asserted by any claim on any record citing line 312. The field that would hold it is quantity.mmol. The field that would hold this is empty. The patent prints the number and the annotation records nothing, so either it was missed or it was left out on purpose.",
           "family": "completeness",
-          "id": "completeness.quantity.mmol[312:2mmol]",
+          "id": "completeness.quantity.mmol[312:2000mmol]",
           "needs_human": true,
           "status": "fail",
           "title_en": "The quantity 2 mol printed on line 312"
@@ -115474,7 +115410,7 @@
         "fd052cbb605cadd2",
         "c0425cb409e81845",
         "c4cdc734dfcadf0e",
-        "85b203403a48b5ca"
+        "5d177d60e9aa8301"
       ],
       "label_en": "2-chloro-3-[(2,2,2-trifluoroethoxy)methyl]-4-(methylsulfonyl)benzoic acid",
       "rec": "cmp:be500d5a-38e6-504a-9f46-f98c953997b6",
@@ -121340,26 +121276,6 @@
       "section_en": "Example 4",
       "stratum": "source_line:Example 4",
       "uuid": null
-    },
-    {
-      "annotation_flags_en": [],
-      "checks": [],
-      "cited_lines": [
-        260,
-        261
-      ],
-      "claim_ids": [
-        "63ae9f1ca9cde3e7"
-      ],
-      "label_en": "Source line 261",
-      "rec": "pt:CN109678767A",
-      "record_id": "CN109678767A_line_261",
-      "record_kind": "source_line",
-      "risk": 0.3,
-      "risk_band": "medium",
-      "section_en": "Example 4",
-      "stratum": "source_line:Example 4",
-      "uuid": null
     }
   ],
   "source": {
@@ -122771,7 +122687,7 @@
         "n": 85,
         "section_en": "Technical Field",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Technical field:"
       },
@@ -122823,7 +122739,7 @@
         "n": 89,
         "section_en": "Background",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Background art:"
       },
@@ -123236,7 +123152,7 @@
         "n": 110,
         "section_en": "Summary of the Invention",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Summary of the invention:"
       },
@@ -123288,7 +123204,7 @@
         "n": 114,
         "section_en": "Summary of the Invention",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "The present invention is realised by the following technical scheme:"
       },
@@ -124153,7 +124069,7 @@
         "n": 159,
         "section_en": "Beneficial Effects",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "The beneficial effects of the present invention are as follows:"
       },
@@ -124303,7 +124219,7 @@
         "n": 169,
         "section_en": "Detailed Embodiments Lead-in",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Detailed embodiments:"
       },
@@ -124325,7 +124241,7 @@
         "n": 171,
         "section_en": "Detailed Embodiments Lead-in",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "The following gives a further detailed description of this aspect in conjunction with the examples, but this description shall not constitute a limitation on this aspect."
       },
@@ -124347,7 +124263,7 @@
         "n": 173,
         "section_en": "Example 1",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Example 1"
       },
@@ -124906,7 +124822,7 @@
         "n": 203,
         "section_en": "Example 2",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Example 2"
       },
@@ -125407,7 +125323,7 @@
         "n": 231,
         "section_en": "Example 3",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Example 3"
       },
@@ -125906,7 +125822,7 @@
         "n": 259,
         "section_en": "Example 4",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Example 4"
       },
@@ -125932,7 +125848,7 @@
         "signals": [
           "reagent"
         ],
-        "status": "uncited_with_chemistry",
+        "status": "covered",
         "substance": "accounted",
         "text_en": "This example provides a process for the synthesis of tembotrione, comprising the following steps:"
       },
@@ -126436,7 +126352,7 @@
         "n": 289,
         "section_en": "Comparative Example",
         "signals": [],
-        "status": "uncited_plain",
+        "status": "covered",
         "substance": "none",
         "text_en": "Comparative Example"
       },
@@ -126917,10 +126833,10 @@
       }
     ],
     "summary": {
-      "covered": 267,
+      "covered": 280,
       "total": 315,
-      "uncited_plain": 46,
-      "uncited_with_chemistry": 2
+      "uncited_plain": 34,
+      "uncited_with_chemistry": 1
     }
   },
   "summary": {
@@ -126949,15 +126865,15 @@
     },
     "claims": {
       "found": 588,
-      "needs_human": 135,
-      "not_checkable": 59,
+      "needs_human": 134,
+      "not_checkable": 58,
       "not_found": 3,
       "not_reconciled": 2,
       "partial": 14,
-      "total": 666
+      "total": 665
     },
     "claims_by_family": {
-      "completeness": 20,
+      "completeness": 19,
       "consistency": 31,
       "drawing": 0,
       "grounding": 613,
@@ -126971,23 +126887,23 @@
       "critical": 3,
       "high": 43,
       "low": 3,
-      "medium": 84,
+      "medium": 83,
       "none": 533
     },
     "claims_by_subject": {
-      "extraction": 597,
+      "extraction": 596,
       "patent": 66,
       "schema": 3
     },
     "claims_by_tier": {
       "1": 79,
-      "2": 23,
+      "2": 22,
       "3": 531,
       "4": 33
     },
     "claims_by_work_kind": {
       "comparison": 607,
-      "judgement": 59
+      "judgement": 58
     },
     "field_basis": {
       "concentration": {
@@ -127248,7 +127164,7 @@
           "verdict": "schema_loss_second"
         },
         {
-          "claim_id": "85b203403a48b5ca",
+          "claim_id": "5d177d60e9aa8301",
           "field": "quantity.mmol",
           "line": 312,
           "printed_en": "2 mol",
@@ -127268,14 +127184,14 @@
       "patent": 1,
       "pathway": 14,
       "reaction": 36,
-      "source_line": 2,
+      "source_line": 1,
       "total": 117
     },
     "source_coverage": {
-      "covered": 267,
+      "covered": 280,
       "total": 315,
-      "uncited_plain": 46,
-      "uncited_with_chemistry": 2
+      "uncited_plain": 34,
+      "uncited_with_chemistry": 1
     },
     "substance_coverage": {
       "accounted": 318,
@@ -127377,9 +127293,9 @@
       },
       "2": {
         "agrees": true,
-        "claims": 23,
-        "from_en": "2 source lines no record cites, plus 18 quantities on cited lines no claim asserts, plus 3 schema tickets pooled from 6 instances",
-        "population": 23
+        "claims": 22,
+        "from_en": "1 source lines no record cites, plus 18 quantities on cited lines no claim asserts, plus 3 schema tickets pooled from 6 instances",
+        "population": 22
       },
       "3": {
         "agrees": true,

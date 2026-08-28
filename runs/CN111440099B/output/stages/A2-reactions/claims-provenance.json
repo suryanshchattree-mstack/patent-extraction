@@ -1,0 +1,32 @@
+[
+  {
+    "reaction_id": "Claims_Step 1",
+    "source_lines": [
+      51,
+      54
+    ],
+    "quote_zh": "1）将环磺酮产品溶解在含水溶液中，升温；……所述步骤1）中所述含水溶液，为乙腈、甲醇、乙醇、二甲基甲酰胺与水混合得到的溶液；所述含水溶液中含水量为20%～40%；所述升温，是将温度升至30℃～60℃；",
+    "arithmetic_check": "Nothing to check. Claim 1 states no charge, no mass, no mole, no volume and no yield, so no mass balance and no molar mass can be tested. The only numbers in this step are the 20% to 40% water content and the 30 C to 60 C temperature, both ranges and both process parameters rather than quantities. Neither is written into a numeric field: concentration.value is null and the range is in concentration.text, and the temperature range is in min_c and max_c because temperature.type range holds both ends. No number in the gold record is absent from the claim and no number in the claim is silently narrowed.",
+    "drawing_evidence": "None. The Claims section carries no IMAGE_EXTRACT span of any kind, neither a reactions scheme nor a molecules structure, so there is no drawing to corroborate the step boundary or to contradict the prose, and no drawing_text_conflict is possible in this section. The prompt's rules 5a to 5g describe the previous patent's Summary section and have no purchase here."
+  },
+  {
+    "reaction_id": "Claims_Step 2",
+    "source_lines": [
+      52,
+      56
+    ],
+    "quote_zh": "2）加入吸附剂，进行保温、热过滤；……步骤2）中所述保温的时间在0.2h～1h；所述吸附剂为活性炭或硅藻土。",
+    "arithmetic_check": "Nothing to check. No charge of adsorbent is stated, in mass, in volume or as a loading on the tembotrione, so no ratio can be tested. The only number is the 0.2 h to 1 h hold, a range, and conditions.time_h is left null rather than set to either end, so the record introduces no number the claim does not state. The 30 C to 60 C repeated in the temperature object is step 1's, carried under conditions_inherited because 保温 says to maintain it; it is not a second measurement and does not double-count.",
+    "drawing_evidence": "None. No IMAGE_EXTRACT span in this section, so the adsorbent treatment and the hot filtration rest on the claim text alone."
+  },
+  {
+    "reaction_id": "Claims_Step 3",
+    "source_lines": [
+      53,
+      67
+    ],
+    "quote_zh": "3）控温调节含水溶液pH至3以下，降温、从溶液中结晶出纯化的环磺酮；……2.根据权利要求1所述的环磺酮产品的纯化方法，其特征在于，步骤3）所述控温调节含水溶液pH至3以下的步骤，包括，将含水溶液中加入盐酸调节pH至3以下。……3.根据权利要求1所述的环磺酮产品的纯化方法，其特征在于，所述步骤3）中，搅拌速度在150转至200转。",
+    "arithmetic_check": "Nothing to check, and one number deliberately not written. No mass, no mole, no volume, no yield and no purity is stated, so mass balance, molar mass and yield reconciliation are all inapplicable, and product_yield_pct is null as it is on every record in this patent. The pH is printed as 至3以下, below 3, which is a one-sided bound: ph_value and workup.ph_target are null rather than 3.0, because 3 is the value the process must stay under and not the value it reaches, and no other statement in the section justifies a number in its place. The 150转至200转 stirring speed is not written into stirring.rpm either, on two grounds: it is a range, and 转 is printed with no per-minute or per-hour base, so the unit the field expects is not in evidence. Both figures are recorded in notes as printed. No arithmetic in this section fails to close, because there is no arithmetic.",
+    "drawing_evidence": "None. No IMAGE_EXTRACT span in this section. The product identity 纯化的环磺酮 rests on the claim text, and there is no drawn structure preceding the step to cross-check it against, so the prompt's rule 5b expectation of a structure before each experimental step does not hold in the claims."
+  }
+]

@@ -317,59 +317,27 @@ def pathway_section_type(p: dict) -> str:
 NOT_THIS_PATENTS_CHEMISTRY = {"background"}
 
 
-# The biblio schema and the PatentRecord schema define DIFFERENT vocabularies for
-# the same field, and only university, individual and government are in both:
+# ONE VOCABULARY, NOT TWO. THERE IS NOTHING TO TRANSLATE HERE ANY MORE.
+#
+# The two schemas used to define different vocabularies for the same field, and
+# only university, individual and government were in both:
 #
 #   biblio  : company university individual institute government hospital foundation
 #   record  : multinational_corp sme university government individual consortium
 #
-# So a company-owned patent could not validate on both sides at once. The stub
-# new_run.py ships pre-fills "company", which the record rejects; the obvious
-# manual fix, "sme", is what the biblio rejects. Neither is wrong: they are two
-# vocabularies and nothing was translating between them. The reference run's
-# assignee is a university, a word both schemas happen to share, which is the only
-# reason this held for one patent.
+# Two branches fixed that at once and both landed. One added a map here from the
+# biblio's words to the record's. The other changed biblio.schema.json's enum to
+# BE the record's words. Together they left a map standing between two sides that
+# already agreed, and a map that no longer recognises the values it is handed:
+# multinational_corp and consortium are not keys, so both fell through the default
+# to sme. A biblio saying "this is a multinational" produced a record saying "this
+# is a small company", silently, and only for the two values a person is most
+# likely to reach for.
 #
-# The biblio keeps its own words, since that is the file a person fills in, and
-# the mapping happens here where the record is built.
-#
-# WIDENED for US20040236146A1. biblio.schema.json's enum was moved to production's
-# six words when CN112645853A was annotated, so the biblio now speaks the record's
-# vocabulary directly. This map still held only the OLD biblio words, so three of
-# the six legal values - multinational_corp, sme, consortium - had no key, and the
-# lookup's default sent them to "sme". A biblio that correctly said
-# multinational_corp shipped its assignee as a small enterprise, and the tag
-# assignee_type:sme with it.
-#
-# It held for two runs by coincidence: the reference's assignee is a university, a
-# word both vocabularies share, and CN112645853A's is an sme, which the default
-# happened to be. The first multinational to arrive was the first to be wrong.
-ASSIGNEE_TYPE = {
-    # Production's own six, identity, so a value the biblio states survives to the
-    # record instead of being reinterpreted on the way.
-    "multinational_corp": "multinational_corp",
-    "sme": "sme",
-    "university": "university",
-    "government": "government",
-    "individual": "individual",
-    "consortium": "consortium",
-    # The old biblio words, kept so a hand-authored file written before the schema
-    # moved still maps rather than silently defaulting. "company" records no size
-    # and the record's vocabulary forces one, so it takes the smaller claim.
-    "company": "sme",
-    # An institute is academic in the way a university is, and neither hospital nor
-    # foundation has a counterpart in the record's six. They go to the nearest
-    # honest neighbour rather than being dropped, because assignee_type absent and
-    # assignee_type approximate are different claims.
-    "institute": "university",
-    "hospital": "university",
-    "foundation": "consortium",
-}
-
-
-def assignee_type(kind: str) -> str:
-    """A biblio assignee type in the PatentRecord's vocabulary."""
-    return ASSIGNEE_TYPE.get((kind or "").strip().lower(), "sme")
+# The map is gone. biblio.schema.json's own comment already says the value is
+# copied straight into the record with no mapping; that is now true. An unknown
+# value fails validate.py loudly instead of becoming sme quietly, which is the
+# behaviour this repo asks for: a guard that passes on absence is worse than none.
 
 
 def tag_slug(name: str) -> str:
@@ -474,7 +442,7 @@ def finalise_patent(llm, mols, rxns, pws):
              f"time_period:{b['publication_date'][:4]}"]
     for a in b.get("assignees") or []:
         tags += [f"assignee:{tag_slug(a['name'])}",
-                 f"assignee_type:{assignee_type(a.get('type'))}"]
+                 f"assignee_type:{a['type']}"]
     # full inheritance: union every reaction / compound / pathway tag
     for coll in (mols, rxns, pws):
         for rec in coll:
@@ -506,7 +474,7 @@ def finalise_patent(llm, mols, rxns, pws):
             "cpc_codes": None,
         },
         "parties": {"assignees": [{"name": a["name"], "country": a["country"],
-                                   "type": assignee_type(a["type"])}
+                                   "type": a["type"]}
                                   for a in b["assignees"]],
                     "inventors": inventors(b),
                     "examiners": None},

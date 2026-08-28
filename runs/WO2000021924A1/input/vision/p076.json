@@ -1,0 +1,42 @@
+{
+  "page": "p076.png",
+  "page_label": "WO 00/21924    74    PCT/EP99/06627",
+  "doc_part": "description",
+  "header": "WO 00/21924    74    PCT/EP99/06627",
+  "footer": "",
+  "paragraphs": [
+    {
+      "marker": "Nr. 531-544",
+      "zh": "Nr. | R1 | R7a, R7b | Physikalische Daten 531 | O-c-Pentyl | Et, Et | 532 | OCH2CF3I | Et, Et | 533 | OCH2CF2H | Et, Et | 534 | OCH2CH2F | Et, Et | 535 | OCH2CH2Cl | Et, Et | 536 | OCH2CH2Br | Et, Et | 537 | OCH2CF3 | Et, Et | 538 | [drawn structure, see drawings] | Et, Et | 539 | O(CH2)2O(CH2)2O(CH2)2OMe | Et, Et | 540 | O(CH2)2O(CH2)2O(CH2)2OEt | Et, Et | 541 | O(CH2)2O(CH2)2OMe | Et, Et | 542 | O(CH2)2O(CH2)2OEt | Et, Et | 543 | c-Bu | Et, Et | 544 | c-Hexyl | Et, Et |",
+      "en": "Nr. | R1 | R7a, R7b | Physikalische Daten 531 | O-c-Pentyl | Et, Et | 532 | OCH2CF3I | Et, Et | 533 | OCH2CF2H | Et, Et | 534 | OCH2CH2F | Et, Et | 535 | OCH2CH2Cl | Et, Et | 536 | OCH2CH2Br | Et, Et | 537 | OCH2CF3 | Et, Et | 538 | [drawn structure, see drawings] | Et, Et | 539 | O(CH2)2O(CH2)2O(CH2)2OMe | Et, Et | 540 | O(CH2)2O(CH2)2O(CH2)2OEt | Et, Et | 541 | O(CH2)2O(CH2)2OMe | Et, Et | 542 | O(CH2)2O(CH2)2OEt | Et, Et | 543 | c-Bu | Et, Et | 544 | c-Hexyl | Et, Et |",
+      "notes": "Markush enumeration table, recorded as one entry per the pass instructions. The en field is identical to the zh field: every cell is a chemical symbol or a compound number, and the only German-language tokens on the page are the column heads 'Nr.' (Nummer, i.e. No.) and 'Physikalische Daten' (physical data), which are left as printed so the header row matches the source. The table continues from the preceding page: it opens mid-sequence at Nr. 531 with no Tabelle caption on this page, so the shared substituents that caption fixes and the scaffold it draws are not visible here and are not reproduced. The column heads are printed with superscripts, R with a raised 1 and with raised 7a and 7b; they are transcribed inline as R1, R7a, R7b. Likewise the subscript digits in OCH2CF3, OCH2CF2H, OCH2CH2F, OCH2CH2Cl, OCH2CH2Br and O(CH2)2 are printed as true subscripts and transcribed inline. The header row is set on a grey stippled ground; that is print shading, not content. The Physikalische Daten column is present but empty on every one of the fourteen rows; the trailing empty cell is kept in each transcribed line so the column count matches the printed table. The R1 cell of Nr. 538 holds a small drawn ring instead of text; it is recorded in drawings and the cell is marked with a placeholder here rather than being converted to a text formula. The R1 cell of Nr. 532 reads OCH2CF3I as printed: a clean CF with subscript 3 followed by a full-height vertical stroke. That stroke is transcribed verbatim as printed and NOT corrected, but note that CF3I on a single carbon is pentavalent and so cannot be the intended group; in this sans-serif face capital I and lowercase l are the same glyph, and the scan gives no way to tell whether the printed source has a stray character, a broken subscript 2, or something else. A faint speck sits in the Physikalische Daten cell of Nr. 532, well clear of any printed character, and faint stray dots sit in the left margin beside the header line and in the blank lower half of the page; these read as scan artifacts, not content. The table body ends after Nr. 544 and the lower half of the page is blank. The page carries no footer."
+    }
+  ],
+  "drawings": [
+    {
+      "kind": "structure",
+      "between_markers": [
+        "Nr. 537",
+        "Nr. 539"
+      ],
+      "presented_as": "intermediate_structure",
+      "structures": [
+        {
+          "position_in_drawing": "1st and only, inside the R1 cell of table row Nr. 538",
+          "core": "tetrahydrofuran (oxolane), five-membered saturated ring with one ring oxygen",
+          "substituents": [
+            "CH2-O at C3, the CH2 bonded to the ring carbon and the terminal O drawn with an open valence as the point of attachment to the scaffold"
+          ],
+          "name": "(tetrahydrofuran-3-yl)methoxy",
+          "smiles": "OCC1CCOC1",
+          "confidence": "high"
+        }
+      ],
+      "arrows": [],
+      "notes": "Belongs to table row Nr. 538; it is the value of that row's R1 column, drawn rather than written. Read off the drawing atom by atom: a terminal O with an open valence sits at the upper left, a bond runs right and down from it to a CH2 vertex, and that vertex bonds down to a ring carbon. Walking the ring from that attachment carbon: right-and-up to a CH2, down to a CH2, down-left to the labelled ring O at the bottom, then up-left to a CH2 and back up to the attachment carbon. The attachment carbon is therefore separated from the ring oxygen by one carbon on one side and two on the other, which places it at C3 of the tetrahydrofuran. Position is read from the drawing, not inferred. The SMILES given writes the group as drawn with the free valence shown as a terminal O, i.e. the fragment O-CH2-(tetrahydrofuran-3-yl); as an R1 substituent the terminal O is the bond to the scaffold, which is not drawn on this page. No stereochemistry is drawn at C3, no wedge or hash bond, so the centre is left unspecified."
+    }
+  ],
+  "discrepancies": [],
+  "illegible": [],
+  "page_confidence": "medium"
+}

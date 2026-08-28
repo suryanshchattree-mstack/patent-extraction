@@ -1,0 +1,139 @@
+[
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "tembotrione",
+    "identifier_type": "trivial_name",
+    "aliases": [
+      "环磺酮",
+      "环磺酮产品",
+      "纯化的环磺酮",
+      "磺酮",
+      "磺酮产品"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Abstract",
+    "section_type": "abstract",
+    "is_section_product": true,
+    "commercially_available": false,
+    "role": "product",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:active_ingredient",
+      "chemical_family:triketone"
+    ],
+    "notes": "One record merged from every mention in the abstract: 环磺酮产品 in the opening clause and in step 1), 纯化的环磺酮 in step 3), and 磺酮产品 twice in the closing sentence. The abstract is one of the two places in this document (the other is [0026]) where the patent drops the leading character and prints 磺酮 instead of 环磺酮; that is an alias of tembotrione, not a second compound, and the slip is kept verbatim in aliases rather than corrected. commercially_available is false under rule 11 because the Synthesis Scheme at [0029] and Example 6 at [0053] prepare it; it is a marketed herbicide, so the field is answering whether a step of this document makes it. The abstract says the method raises the product purity but prints no purity figure, so purity_pct is null. The 1327ppm and below-100ppm figures are the cyanide impurity content and are recorded on the cyanide record, not here. Seen in this section and deliberately not emitted as a compound: Ames (Ames检测), which is an assay and not a substance. The abstract draws no structure, so no functional_group tags are emitted."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "water",
+    "identifier_type": "trivial_name",
+    "aliases": [
+      "含水溶液"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Abstract",
+    "section_type": "abstract",
+    "is_section_product": false,
+    "commercially_available": true,
+    "role": "solvent",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:solvent"
+    ],
+    "notes": "The abstract never prints 水 on its own. The dissolution and crystallisation medium is named 含水溶液 (aqueous solution) in steps 1) and 3), and water is extracted from that mixture the same way the shared identifier list extracts water from 含水甲醇: the mixture is not itself a compound. Step 3) adjusts the same solution to pH below 3 but names no acid, so this section emits no acid record."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "adsorbent",
+    "identifier_type": "functional_ref",
+    "aliases": [
+      "吸附剂"
+    ],
+    "resolved": false,
+    "unresolved_reference": true,
+    "section_label": "Abstract",
+    "section_type": "abstract",
+    "is_section_product": false,
+    "commercially_available": null,
+    "role": "additive",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:workup_agent"
+    ],
+    "notes": "Step 2) charges 吸附剂 generically and the abstract never says which adsorbent, so resolved is false and unresolved_reference is true. The examples name activated carbon and diatomaceous earth, but that identification is not in this section and is not imported into it. role is additive because the role enum has no value for an adsorbent. compound_class has no adsorbent value either, and workup_agent was chosen by analogy with rule 18's MgSO4/brine mapping: the adsorbent is stirred in, held and filtered off to remove an impurity, which is the same job. The value was aligned with the claims, summary of the invention and Example 4 sections because finalise.py unions tags across sections and cannot choose between two compound_class values, and rule 18 allows only one. commercially_available is null because the abstract does not say and the substance is unidentified."
+  },
+  {
+    "patent_id": "CN111440099B",
+    "identifier": "cyanide",
+    "identifier_type": "other",
+    "aliases": [
+      "氰化物杂质"
+    ],
+    "resolved": false,
+    "unresolved_reference": false,
+    "section_label": "Abstract",
+    "section_type": "abstract",
+    "is_section_product": false,
+    "commercially_available": false,
+    "role": "by_product",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": [
+      {
+        "method": "other",
+        "value": 1327.0,
+        "unit": "ppm",
+        "conditions": "cyanide impurity content of the tembotrione product before purification; the abstract credits the figure to an Ames test",
+        "raw_text": "原本氰化物杂质含量由1327ppm降至100ppm以下"
+      },
+      {
+        "method": "other",
+        "value": null,
+        "unit": "ppm",
+        "conditions": "cyanide impurity content after purification, printed as an upper bound rather than a measured value",
+        "raw_text": "降至100ppm以下"
+      }
+    ],
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:impurity",
+      "hazard:cyanide_handling"
+    ],
+    "notes": "Named only as 氰化物杂质 (cyanide impurity). It is a class, not one compound, and the abstract never says which cyanide species is present, so resolved is false and no chemical_family or functional_group tag is emitted. unresolved_reference is false because this is a class name and not a reference to a compound named elsewhere. Both ppm figures are the cyanide impurity content and belong here rather than on tembotrione. The abstract attributes them to an Ames test (通过将纯化前的环磺酮产品与纯化后的产品进行Ames检测), which is a bacterial mutagenicity assay and does not report an impurity content in ppm; the attribution is recorded as printed and not corrected, and analytics method is other because the enum has no value for it. The second figure is an upper bound (100ppm以下), so its value is left null and the bound is kept in raw_text. hazard:cyanide_handling is emitted because reducing this impurity is the stated purpose of the whole document."
+  }
+]
