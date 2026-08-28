@@ -17,7 +17,7 @@
     {
       "name": "BASF SE",
       "country": "DE",
-      "type": "company",
+      "type": "multinational_corp",
       "name_note": "Printed at (73) as 'BASF SE, Ludwigshafen (DE)'. Note this is a different applicant from the other tembotrione polymorph patent in this set: EP2045236A1 is Bayer CropScience's and this one is BASF's, and the two disclose different crystalline forms of the same molecule. The name contains no punctuation, so it survives finalise.py building the assignee tag as name.lower().replace(' ', '_') without tripping patent.schema.json's tag-value pattern. The resulting tag is assignee:basf_se."
     }
   ],
