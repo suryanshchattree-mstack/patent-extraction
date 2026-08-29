@@ -3484,12 +3484,17 @@ class Run(Engine):
                         and not any(any(p in e for p in PERCENT) for e in english)):
                     lost = (zh, "a strength", "the percentage it is used at")
                     break
-                hit = next((w for pfx, w in QUALIFIERS.items()
-                            if zh.startswith(pfx) and not any(w in e.lower()
-                                                              for e in english)),
+                # QUALIFIERS values are a TUPLE of acceptable English renderings,
+                # because one Chinese modifier does not always come out as one
+                # English word: 冰水 is ice water but 冰醋酸 is glacial acetic acid.
+                hit = next((ws for pfx, ws in QUALIFIERS.items()
+                            if zh.startswith(pfx)
+                            and not any(w in e.lower() for w in ws
+                                        for e in english)),
                            None)
                 if hit:
-                    lost = (zh, f"the word {hit!r}", f"whether it is {hit}")
+                    shown = " or ".join(repr(w) for w in hit)
+                    lost = (zh, f"the word {shown}", f"whether it is {hit[0]}")
                     break
 
             if lost is None:
