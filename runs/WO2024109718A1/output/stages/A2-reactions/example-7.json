@@ -6,7 +6,7 @@
     "section_type": "experimental_intermediate",
     "step_index": 1,
     "step_label": "Step 1",
-    "reaction_class": "other",
+    "reaction_class": "other_cross_coupling",
     "reaction_class_confidence": "high",
     "named_reaction": null,
     "mechanism_type": "catalytic",
@@ -278,8 +278,8 @@
     "canonical_rxn": null,
     "procedure_text": "向高压釜中加入式(IV)化合物40g、水20g、三乙胺26.49g、PdCl2催化剂0.4g、配体1,3-双(二苯基膦)丙烷3.95g、溶剂四氢呋喃400g，抽真空，氮气置换，以约1～4MPa的压力通入CO，在80℃反应约12h。通过高效液相色谱监测反应完成后，过滤，旋蒸除去溶剂四氢呋喃，加入甲醇溶解，调酸至pH为2～3，析出白色固体，过滤，滤饼经水洗、打浆后过滤，得到式(V)化合物，收率67.57％，熔点155-157℃。",
     "procedure_summary": "The formula (IV) aryl bromide is hydroxycarbonylated in an autoclave with carbon monoxide and water over a palladium chloride catalyst with a bis(diphenylphosphino)propane ligand, triethylamine as base and tetrahydrofuran as solvent. After the solvent is stripped the residue is taken up in methanol, acidified, and the precipitated white solid is filtered, water washed and slurried to give the formula (V) carboxylic acid.",
-    "precursor_step": null,
-    "linkage_confirmed": false,
+    "precursor_step": "Example 5::Step 1",
+    "linkage_confirmed": true,
     "cross_reference_unresolved": false,
     "non_synthetic": false,
     "is_complete": true,
@@ -301,6 +301,6 @@
       "linkage:cross_section_linked",
       "is_one_pot:false"
     ],
-    "notes": "One step, matching the A0 estimate of one. Palladium catalysed hydroxycarbonylation of the formula (IV) aryl bromide with carbon monoxide and water; the class list has no carbonylation entry and this is not a cross coupling with an organometallic partner, so reaction_class is other. The starting material 式(IV)化合物 is the product of the section that prepares it (Example 5 in the compound registry), so this is a cross section link expressed by compound identifier; precursor_step is left null because the step label of that section is not known here and the text does not refer back to it in words. Pressure is recorded as an elevated condition with the printed range in qualitative_text, not as a quantity. The drawn scheme immediately above the procedure shows the same single arrow, the same aryl bromide reactant, H2O and CO on the arrow and the carboxylic acid product, and so agrees with the prose; nothing is flagged. The autoclave is 高压釜; no stirrer is named, so stirring type is left null. No isolated mass is printed, only a yield percentage, so no mass balance arithmetic is available to contradict. Melting point of the product is reported in the text and carried on the A1 compound record."
+    "notes": "One step, matching the A0 estimate of one. Palladium catalysed hydroxycarbonylation of the formula (IV) aryl bromide with carbon monoxide and water; the class list has no carbonylation entry, so reaction_class is other_cross_coupling, the same value Example 6 carries for the identical transformation. The starting material 式(IV)化合物 is the section product of Example 5 under the identical A1 identifier and the identical drawn SMILES, so the charge is matched by compound identity; precursor_step is Example 5::Step 1 and linkage_confirmed is true. Pressure is recorded as an elevated condition with the printed range in qualitative_text, not as a quantity. The drawn scheme immediately above the procedure shows the same single arrow, the same aryl bromide reactant, H2O and CO on the arrow and the carboxylic acid product, and so agrees with the prose; nothing is flagged. The autoclave is 高压釜; no stirrer is named, so stirring type is left null. No isolated mass is printed, only a yield percentage, so no mass balance arithmetic is available to contradict. Melting point of the product is reported in the text and carried on the A1 compound record. Reaction class across the carbonylations of this document: Examples 6 and 7 are the same transformation of the same substrate under CO, differing only in the phosphine ligand and the solvent, and Examples 9, 10 and 11 carbonylate the same aryl bromide as well. The class list has no carbonylation entry, so one value is chosen and used for all of them, other_cross_coupling: every one of them replaces a C-Br bond on an arene by a new carbon-carbon bond over a palladium/phosphine catalyst, which is the cross-coupling family, and other is reserved for transformations that fit no family at all. Using other for one of a matched pair and other_cross_coupling for the other would make two examples of one procedure look like two different reactions. Example 10 is the exception: it is one-pot and rule 5 takes its class from the final transformation, the rearrangement, not from its carbonylation stage."
   }
 ]

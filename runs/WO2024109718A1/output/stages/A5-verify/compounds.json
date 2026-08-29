@@ -231,6 +231,18 @@
       "confidence": "medium"
     },
     {
+      "check": "drawings",
+      "severity": "minor",
+      "record": "HCl",
+      "field": null,
+      "problem": "In every drawing of the diazotisation step the page puts NaNO2 and CH3SNa above the arrow and HCl below it, but the vision read flattens all three into one conditions list, so the artifact cannot tell which reagent was written where.",
+      "source_line": 426,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"Cc1c(N)cccc1Cl\", ...}], \"conditions\": [{\"text\": \"NaNO2\"}, {\"text\": \"CH3SNa\"}, {\"text\": \"HCl\"}], ...",
+      "artifact_says": "three separate compound records with no above/below distinction",
+      "should_be": "No change to the compound records, which correctly carry all three; note the flattening so a later pass does not read the order as significant. Verified against input/pages/p17.png and p02.png, where HCl is plainly the below-arrow label. Same flattening at lines 65, 74, 254, 414 and 416.",
+      "confidence": "high"
+    },
+    {
       "check": "vocabulary",
       "severity": "minor",
       "record": "water, formic acid, cyclohexane-1,3-dione, CO, sodium hydroxide, 式(VI)化合物",
@@ -282,7 +294,7 @@
     },
     {
       "check": "drawings - reagents above versus below the arrow",
-      "what_was_verified": "Opened input/pages/p17.png. In the first full scheme, 1,3-cyclohexanedione is drawn above the arrow of the esterification step and 丙酮氰醇 is written above the last arrow; in the second scheme CO sits above the arrow and the dione below it. The vision reads at lines 414 and 416 place them on the right steps and do not merge one step's above-arrow reagent into another step's. The two [illegible] conditions in the read at line 416 are 溴代试剂 and 丙酮氰醇, both already present in the artifact from other lines, so no compound is lost by them."
+      "what_was_verified": "Opened input/pages/p17.png. In the first full scheme, 1,3-cyclohexanedione is drawn above the arrow of the esterification step and 丙酮氰醇 is written above the last arrow; in the second scheme CO sits above the arrow of the carbonylation and the dione below it. The vision reads at lines 414 and 416 attach each reagent to the correct step, and no reagent has migrated from one step's arrow to another's. Within a step the above/below distinction is flattened, which is reported separately as a minor drawings finding. The two [illegible] conditions in the read at line 416 are 溴代试剂 and 丙酮氰醇, both already present in the artifact from other lines, so no compound is lost by them."
     },
     {
       "check": "precision - formula (A) is not resolved to a single compound",
@@ -315,10 +327,18 @@
     {
       "check": "schema - id and compound_uuid",
       "what_was_verified": "id and compound_uuid are present, as they are in the reference run runs/CN104292137A/output/compounds.json; finalise.py computes them, so their presence in the finalised artifact is correct and is not reported as a defect."
+    },
+    {
+      "check": "recall - how the recall_estimate below was counted",
+      "what_was_verified": "found_in_text is the number of DISTINCT molecules I could enumerate from the source; present_in_artifact is the record count. Every molecule I found has at least one record, so nothing is missing on recall. The gap of 23 is the fragmentation reported in the precision findings above: the same molecule recorded under two or three spellings (SMILES string, Chinese label, English label, Unicode subscript variant). It inflates the artifact's record count by about 17% relative to the chemistry."
+    },
+    {
+      "check": "provenance - every record anchors to a line that carries its quote",
+      "what_was_verified": "All 284 provenance entries were checked mechanically against the numbered source: for every entry the quoted Chinese appears verbatim on at least one of its cited source_lines, and every identifier in compounds.json has a provenance entry and vice versa with no orphans on either side. 59 of the 414 individual line citations are extra lines in a multi-line span that do not themselves carry the quote, which is normal for a span that includes the drawing next to the prose, not a broken anchor."
     }
   ],
   "recall_estimate": {
-    "found_in_text": 137,
+    "found_in_text": 114,
     "present_in_artifact": 137,
     "missing": []
   }
