@@ -215,6 +215,29 @@ Each was found by this patent and each affects any run shaped like it.
    so nothing is lost from the deliverable. Changing the winner is a policy change
    affecting every run and is a maintainer's call.
 
+## A live defect: every run rewrites the repo's shared diagrams
+
+`pipeline/svg/` holds the documentation diagrams for the reference run
+CN104292137A. A stage in this pipeline regenerates them IN PLACE on every run,
+so after annotating this patent `approach.svg` read "How the gold annotation of
+WO2024109718A1 was built" and the other three carried this patent's numbers.
+
+It is reproducible: a clean re-run on a clean tree dirties all eight files
+again. They were restored byte for byte from upstream before this branch was
+pushed, because a silent rewrite of the repo's own documentation has no business
+in an annotation PR, but **the stage that writes them is not fixed** and the next
+person to run any patent will hit it.
+
+An earlier run recorded the same thing about `make_svgs.py` writing into a shared
+directory. It is still there. Whoever fixes it should make the stage write into
+`runs/<ID>/output/` like every other stage, and the two copies under
+`output/relevant_output/svg/` show it already knows how.
+
+Two other files differ after a re-run, `manifest.json` and the verification
+checks file, and those are only a `generated_at` timestamp and the hashes that
+follow from it. The selfcheck's own determinism test, which compares claim
+content across two builds, passes.
+
 ## One deviation from the rules, declared
 
 CLAUDE.md rule 3 says never hand-edit anything under `output/`. The repairs after
