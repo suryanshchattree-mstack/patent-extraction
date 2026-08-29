@@ -68,8 +68,16 @@ pack of 33 sites and 16 marker labels for the visual evidence.
 
 ## The census, which is why this row is blocked
 
-152 claims, 22.0 minutes at the pinned P90 rate against a 15.0 minute budget.
-21 of the claims are substance tickets pooling 77 instances.
+150 claims, 21.8 minutes at the pinned P90 rate against a 15.0 minute budget.
+19 of the claims are substance tickets pooling 51 instances.
+
+It started at 152 claims and 77 instances. Three join defects were found and
+fixed while chasing it, described below, and between them they removed 26 false
+findings without touching a single record. They did not move the census far,
+because tickets pool per record and a record keeps its ticket until its LAST
+instance clears. What they did change is the quality of the queue: what remains
+is 51 specific questions a reviewer can answer, where before roughly half the
+list was the engine failing to recognise a name it already held.
 
 The budget is a pinned number and rule 4 forbids editing one to make a check
 pass, so it is left failing. This is the same wall rows 6, 8 and 9 are blocked
@@ -79,9 +87,61 @@ run's note: the budget was calibrated on a 9 page patent with 75 compounds, and
 every patent larger than that exceeds it.
 
 For comparison: CN112645853A 321 claims, CN106008290A 131, WO2000021924A1 178,
-this one 152.
+this one 150.
 
-## The 77 unaccounted substance mentions are mostly one defect
+## Three join defects in the substance sweep, all fixed
+
+The sweep asks, for each substance the independent read saw on a line, whether a
+record citing that line holds it. On this patent it was answering no while the
+record sat there holding it, three different ways. None of these is a defect in
+the annotation; all three are in the engine, and all three will fire on any
+Chinese patent read in English.
+
+1. **The join was language blind.** The reading is English and half the
+   identifiers in a Chinese patent are Chinese, so a name join between them can
+   never close. `式(I)化合物` and the span "compound of formula (I)" sat on
+   opposite sides of a comparison with no way to meet. `verify.py` now also keys
+   each record on the translation index's English for its own identifiers, which
+   asks the pipeline's existing verified answer rather than inventing an
+   equivalence.
+
+2. **The index rendered five of the eight formula labels as molecular formulae.**
+   `式(I)化合物` came out as `C8H8BrClS` while `式(VI)化合物` came out as
+   "compound of formula (VI)", so the same kind of label read two ways and the
+   language fix above had nothing to match on five of them. Fixed with five
+   `override: true` curated entries, which is the mechanism the stage documents
+   for exactly this. A reviewer also gets the better answer: the formula is a
+   fact about the molecule, not a translation of its name.
+
+3. **A name carrying its own abbreviation did not match the same name without
+   it.** The patent writes "benzoyl peroxide (BPO)" once and "BPO" after, and the
+   extraction records whichever form it met. `name_and_abbrev()` now splits both
+   halves so either answers either. **The guard is the interesting part**: a
+   parenthesised roman numeral is a label index and not an abbreviation, so
+   "compound of formula (I)" must never collapse to "compound of formula", which
+   is equally the base of formula (II) and of every other. Getting that wrong
+   would silently make eight molecules one, which is a far worse defect than the
+   one being fixed.
+
+Effect: 77 unaccounted mentions to 51, 21 tickets to 19, and every
+abbreviation-form and formula-label false finding gone.
+
+## What the remaining 51 are, and one structural gap
+
+The remainder is heterogeneous and each one is a real question. The largest
+groups are synonyms the gold does not carry, such as "sodium trifluoroethoxide"
+against a record identified `CF3CH2ONa`, and label spellings such as "(VIII)
+ester compound" against `式(VIII)化合物`.
+
+One is structural rather than a miss. `record_identifiers()` returns nothing for
+a record of kind `patent`, and the sweep falls back to attaching a miss to the
+patent record when no other record cites the line. So **every substance named on
+a front page line is unaccountable by construction**: `cyclosulfonone` on lines
+40, 42 and 44 is reported as unrecorded because the patent record holds no
+substances and can hold none. That is worth an owner's eye, not a workaround
+here.
+
+## The duplicate identifiers are NOT a defect to fix
 
 The independent read saw 77 substance mentions on lines whose records do not
 hold them. Reading the 21 tickets, most are not missing chemistry: they are the
@@ -98,12 +158,23 @@ are five identifiers for one molecule, and `compounds-equivalence.json` records
 one group in the whole run. The A5 audit of `compounds.json` raised this as its
 largest cluster, about 23 of the 137 records.
 
-**It is not fixed here, and that is a deliberate stop.** Collapsing them changes
-what a record IS, and production joins on the identifier, which the gold mirrors
-on purpose. It is also the direct cause of a large part of the census overrun, so
-whoever decides it is deciding two things at once. Left for an owner.
+**They must not be merged, and `finalise.equivalence_index`'s docstring says so
+in as many words:** production's `buildCompoundId` is a pure function of the
+identifier string, so it would emit separate records too, and collapsing them
+here would make the gold disagree with production for a reason that has nothing
+to do with extraction quality. My first instinct was to merge them and that
+would have been wrong.
 
-## Six defects found in shared pipeline code, five fixed
+What the index is for is making the fragmentation VISIBLE, and on this patent it
+fails at that: it found 1 group of the 24, because its key is a string
+normalisation and this patent's fragmentation is Chinese against SMILES against
+IUPAC, which no string rule can bridge. The data to do it properly already
+exists, since `structures-resolved.json` carries an RDKit canonical SMILES for
+every identifier. Reporting those groups belongs in `resolve_structures.py`,
+which is the stage that knows structures, and it is left for an owner because it
+is a new report rather than a bug fix.
+
+## Nine defects found in shared pipeline code, eight fixed
 
 Each was found by this patent and each affects any run shaped like it.
 
