@@ -5,7 +5,7 @@ A method for preparing tembotrione. Anhui Jiuyi Agriculture Co., Ltd., filed
 characters of text layer on all seven, so every readable character in this run
 came from the vision pass.
 
-## Status: blocked on one thing, and it is a known open question
+## Status as of 2026-08-28: blocked on the census budget (superseded, see the 2026-08-30 sections)
 
 `selfcheck` reports **35 pass, 1 warn, 2 fail**. The two failures are the same
 measurement counted twice: the reviewer census is 131 claims, 19.0 minutes at the
@@ -254,5 +254,57 @@ Two sources, two fixes, neither touching the gold:
 After this: `visual` passes, `selfcheck` is 35 pass, 1 warn, 2 fail, and both
 failures are the census budget described above. Still blocked on that, still
 unowned, still not built here.
+
+This session's edits were produced by Claude Fable 5.
+
+## Session 2026-08-30, second pass: the census overrun was mostly not what it looked like
+
+The first session read the 131-claim census as a property of the queue meeting a
+patent with five tellings. Most of it was a `verify.py` matcher gap on this patent's
+number formats, and the rest was four records citing the wrong lines. Pulled apart:
+
+1. **`verify.py` did not know this patent's units.** `UNIT_ALTERNATION` had `ml`,
+   `h`, `hr` and `hrs`; the patent prints `1000mL`, `5小时`, `0.5-12h` and its
+   translation prints `5 hours`. `mL` read as a bare 1000 and every reaction time
+   read as a bare number, so every solvent volume and time on the patent reported
+   `partial`, and a partial promotes its whole record into the tier 1 census. `NUMBER`
+   also had no sign, so `-10-8℃` on line 167 was `-10` on no line of the document.
+   Added `mL`, `hours`, `hour`, `小时`, `分钟` and a guarded leading minus (only where
+   nothing alphanumeric or hyphen-like precedes it, so the `-2` in `1,2-dichloro` and
+   the `-10` in `5-10℃` stay what they are). The reference run, re-verified on a
+   scratch copy under `ANNOTATION_RUNS_ROOT`, still reports 37 pass, 1 warn, 0 fail;
+   its census moved 81 to 82 because the sign fix surfaced a real candidate miss,
+   line 48 prints -15℃ and no record holds it. `runs/CN104292137A/` was not written.
+2. **Four Summary records cited only their opening line.** Their own `quote_zh`
+   named lines 105 to 127 as the source of the conditions and ratios, but
+   `source_lines` said `[95, 96]`, and a two-element `source_lines` is read as a
+   range. Set to the explicit line lists the quotes already named, in
+   `output/stages/A2-reactions/summary-of-the-invention-provenance.json`.
+3. **One substance, two identifiers, twice.** A1 named 三氟乙醇 `trifluoroethanol`
+   in the abstract and `2,2,2-trifluoroethanol` in three other sections, and HBTU
+   `O-benzotriazol-` in the claims and `O-benzotriazolyl-` in the summary, so the
+   gold carried two records for each and the recall sweep found the printed English
+   form on neither. Harmonised to one identifier each with the printed form as an
+   alias, in the A1 section files and their provenance sidecars. Gold compounds
+   53 to 51. A first attempt also put an alias on the A2 background reaction's
+   compound; the reactions schema forbids that key and validate said so, reverted.
+
+Items 2 and 3 are edits to LLM-pass outputs under `output/stages/`, made by the same
+kind of agent that wrote them and recorded here field by field. The A5 audits were
+run against the records before these edits and were not re-run; nothing they found
+depended on the identifiers or line lists that changed.
+
+Result: pipeline reaches the end, `selfcheck` **37 pass, 1 warn, 0 fail**, census 97
+claims at 14.1 minutes, grounded 99.5 percent. The `verify` gate is red on exactly one
+claim and is left red: line 105 says M is one of the Li, Na and K ions and the sweep
+asks whether Summary step 1 should record them. It should not, they are the cations
+of an unspecified base, not substances charged, and recording the disagreement is
+worth more than making the gate green.
+
+Two things about the runner, observed and not fixed. It plans every stage's
+staleness before any stage runs, so an edit under `output/stages/` takes two or
+three invocations to cascade through merge, finalise and validate; and
+`make_svgs.py:22` still writes to the shared `pipeline/svg/`, restored with
+`git checkout` after every run again.
 
 This session's edits were produced by Claude Fable 5.

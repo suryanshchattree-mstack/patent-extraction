@@ -5,7 +5,7 @@ against anyone's OCR. Every item below is a defect in the **patent**, not in the
 annotation. The annotation records them and changes nothing.
 
 - 18 reactions extracted, of which 18 carry at least one flag
-- 53 unique compounds, 9 pathways
+- 51 unique compounds, 9 pathways
 - 11 discrepancies raised by the page-vision pass
 
 ## Flags raised, by kind

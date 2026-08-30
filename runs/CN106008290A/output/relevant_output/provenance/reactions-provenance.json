@@ -143,7 +143,19 @@
     "reaction_id": "Summary of the Invention_Step 1",
     "source_lines": [
       95,
-      96
+      96,
+      105,
+      106,
+      107,
+      108,
+      112,
+      113,
+      114,
+      115,
+      124,
+      125,
+      126,
+      127
     ],
     "quote_zh": "步骤a：以2-氯-3-溴甲基-4-甲磺基苯甲酸甲酯（化合物I）与三氟乙醇钠为反应底物，加入MOH或M2CO3，在反应溶剂中进行反应，获得2-氯-3-三氟乙氧甲基-4-甲磺基苯甲酸（化合物II），具体化学反应式如下式（1）所示：  (conditions and stoichiometry from the qualifying paragraphs: line 105 [0011] 其中，所述步骤a中，M为Li、Na、K离子中的一种。 / line 107 [0012] 进一步地，所述步骤a中，三氟乙醇钠与化合物I的摩尔比为1.1-1.2:1。 / line 112 [0013] 进一步地，所述步骤a中，MOH/M2CO3与化合物I的摩尔比为1-1.5:1。 / line 114 [0014] 进一步地，所述步骤a中，反应温度为0-5℃，反应时间为2-10小时。 / line 124 [0019] 进一步地，所述步骤a或/和步骤b中，反应溶剂为己烷、环己烷、N,N-二甲基甲酰胺、苯、甲苯、二甲苯、二氯甲烷、1,2-二氯乙烷、氯仿、1,4-二氧六环、乙醚、四氢呋喃、乙腈中的一种或多种。 / line 126 [0020] 进一步地，所述反应溶剂与化合物I或化合物II的重量比为2-8:1。)",
     "arithmetic_check": "Nothing to close. No mass, volume, mole, equivalent, purity or yield figure is stated for this step or anywhere in this section. Every quantitative statement is a range: molar ratios 1.1-1.2:1 and 1-1.5:1, a solvent weight ratio 2-8:1, 0-5 C, 2-10 h. A range is not a charge, so no mass balance, no molar-mass check and no yield check is possible, and neither mass_balance_implausible nor molar_mass_inconsistent can be assessed. What can be checked is the formula bookkeeping of the transformation, and it supports the two-fold change recorded as one_pot: compound I is C10H10BrClO4S and compound II is C11H10ClF3O5S, so the step both replaces Br by OCH2CF3 and converts CO2CH3 to CO2H. Note for A5: the worked examples, not this section, are where the arithmetic of this route can actually be tested.",
@@ -153,7 +165,19 @@
     "reaction_id": "Summary of the Invention_Step 2",
     "source_lines": [
       100,
-      101
+      101,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127
     ],
     "quote_zh": "步骤b：以步骤a的化合物II与1,3-环己二酮（化合物III）为反应底物，在缩合剂和碱催化剂的作用下，在反应溶剂中进行缩合反应，获得环磺酮（化合物IV），具体化学反应式如下式（2）所示：  (conditions and stoichiometry from the qualifying paragraphs: line 116 [0015] 进一步地，所述步骤b中，化合物III与化合物II的摩尔比为1-1.3:1；所述碱催化剂与化合物II的摩尔比为1-3:1；所述缩合剂与化合物II的摩尔比为1-2:1。 / line 118 [0016] 进一步地，所述步骤b中，碱催化剂选自碳酸钠、碳酸钾、氢氧化钙、三乙胺、吡啶中的一种或多种。 / line 120 [0017] 进一步地，所述步骤b中，缩合剂选自CDI、HBTU、HOBT、DBU中的一种或多种，其中，CDI为N,N’-羰基二咪唑，HBTU为O-苯并三氮唑-四甲基脲六氟磷酸酯，HOBT为1-羟基苯并三唑，DBU为1,8-二氮杂二环十一碳-7-烯。 / line 122 [0018] 进一步地，所述步骤b中，缩合反应的温度为-10-30℃，反应时间为0.5-12h。 / line 124 [0019] 进一步地，所述步骤a或/和步骤b中，反应溶剂为己烷、环己烷、N,N-二甲基甲酰胺、苯、甲苯、二甲苯、二氯甲烷、1,2-二氯乙烷、氯仿、1,4-二氧六环、乙醚、四氢呋喃、乙腈中的一种或多种。 / line 126 [0020] 进一步地，所述反应溶剂与化合物I或化合物II的重量比为2-8:1。)",
     "arithmetic_check": "Nothing to close, for the same reason: the only quantitative statements are the ranges 1-1.3:1, 1-3:1, 1-2:1, 2-8:1, -10 to 30 C and 0.5-12 h. No charge, no mass, no yield, so no mass balance and no molar-mass check is possible. The formula bookkeeping does close and is worth recording: compound II C11H10ClF3O5S plus 1,3-cyclohexanedione C6H8O2 gives C17H16ClF3O6S plus H2O, balanced on both sides, and C17H16ClF3O6S with molecular weight 440.82 is tembotrione. This is the one arithmetic in the section that can be verified, and it verifies.",
@@ -162,7 +186,8 @@
   {
     "reaction_id": "Summary of the Invention_Scheme Step 1",
     "source_lines": [
-      98,
+      95,
+      96,
       98
     ],
     "quote_zh": "No Chinese on the arrow: MOH/M2CO3 is written above it and nothing below it. Introduced by the step sentence at line 95, 具体化学反应式如下式（1）所示： Equation number (1) is printed at the right margin, and faint roman-numeral labels reading I and II are printed under the reactant and the product.",
@@ -172,7 +197,8 @@
   {
     "reaction_id": "Summary of the Invention_Scheme Step 2",
     "source_lines": [
-      103,
+      100,
+      101,
       103
     ],
     "quote_zh": "Two Chinese labels on the arrow, 缩合剂 above the line and 碱催化剂 below it. Introduced by the step sentence at line 100, 具体化学反应式如下式（2）所示： Equation number (2) is printed at the right margin and the structures are labelled II, III and IV.",
