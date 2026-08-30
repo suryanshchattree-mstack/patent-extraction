@@ -221,3 +221,38 @@ and the strength is a fact about what was charged.
 Step 6 keyed all 183 lines with 584 spans, 432 specific and 152 generic, every span
 verified as a literal substring of the English rendering `verify.py:3020` compares
 it against.
+
+## Session 2026-08-30: the visual gate, which the first session did not report
+
+Re-running the pipeline on this branch showed a second gate failure the notes above
+never mentioned: `visual` failed with Chinese characters in 20 lines of
+`drawing-claims.json`. The status line at the top counted selfcheck's two failures
+and missed that the runner had also printed `GATE FAILED: visual`. Recorded here
+because a report that says "blocked on one thing" and is blocked on two is the
+silent kind of wrong this repo is about.
+
+Two sources, two fixes, neither touching the gold:
+
+1. **Nine vision-pass discrepancy fields quote the patent in Chinese** (p02#0 to #4,
+   p04#2, p04#3, p05#1). The stage's mechanism for this is the hand-authored
+   `output/relevant_output/visual/quote-translations.json`, which the reference run
+   has and this run did not. Written, one whole English sentence per field, using
+   `output/translations.json`'s English for every compound name.
+
+2. **Claim 1 on page 2 runs over three unnumbered sub-paragraphs**, which the vision
+   pass keyed by their opening words, `步骤a`, `步骤b`, `其中`, and the two drawn
+   schemes anchor between them. Those anchors are what `build_enriched.py` places the
+   drawings by, so they cannot be rewritten without moving both schemes in the
+   enriched text and invalidating every line key downstream. Instead they are given
+   English handles in `marker_labels_en`, the map the stage already applies to
+   Chinese INID labels on the front page. `make_visual_evidence.py` applied that map
+   to `markers_out` but copied `between_markers` through unmapped, one line at
+   `between_markers_en`; it now maps both. The reference run's `between_markers` are
+   all `[00NN]` or prose and none of its `marker_labels_en` keys appear there, so its
+   output is unchanged by inspection. Not re-run: rule 2.
+
+After this: `visual` passes, `selfcheck` is 35 pass, 1 warn, 2 fail, and both
+failures are the census budget described above. Still blocked on that, still
+unowned, still not built here.
+
+This session's edits were produced by Claude Fable 5.

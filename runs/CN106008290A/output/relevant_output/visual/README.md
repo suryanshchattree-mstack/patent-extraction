@@ -8,7 +8,7 @@ A SMILES string is unreadable to them. Two drawings side by side are not.
 | asset | what is exact | what is a guess |
 |---|---|---|
 | `page-index.json` marker to page | EXACT. Read off the per-page paragraph lists of the vision pass. | nothing |
-| `page-index.json` marker to position down the page | CORROBORATED on 4 of 7 pages, covering 43 of 53 markers: the paragraph openings measured in the ink were counted against the printed markers the vision pass recorded, and only pages where the two agreed are placed. | the measurement itself. Where the counts disagreed the whole page is left unplaced, because a y that points at the wrong paragraph is worse than no y. |
+| `page-index.json` marker to position down the page | CORROBORATED on 4 of 7 pages, covering 43 of 56 markers: the paragraph openings measured in the ink were counted against the printed markers the vision pass recorded, and only pages where the two agreed are placed. | the measurement itself. Where the counts disagreed the whole page is left unplaced, because a y that points at the wrong paragraph is worse than no y. |
 | `page-index.json` line to page | EXACT. Read off the page comments the numbered source writes ahead of each page's lines. | nothing |
 | `page-index.json` drawing regions | the page, and that a drawing is on it | APPROXIMATE. Found by measuring ink. Deliberately loose. |
 | `comparisons/*.png` left half | EXACT. Rendered by RDKit from the SMILES text in the gold, with the same settings as `resolve_structures.py`. | nothing |
