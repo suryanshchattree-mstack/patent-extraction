@@ -1261,7 +1261,10 @@ def build(root: Path, patent_id: str) -> int:
                 "drawing_number": drawing_no,
                 "page": page,
                 "page_number": int(page[1:]),
-                "between_markers_en": [m for m in between],
+                # the same curated map markers_out goes through above; a Chinese
+                # ad hoc marker (a claims page prints none) otherwise lands here
+                # untranslated and fails the English gate
+                "between_markers_en": [inp.marker_labels.get(m, m) for m in between],
                 "kind_en": dr.get("kind"),
                 "presented_as_en": dr.get("presented_as"),
                 "structure_count": len(structures),
