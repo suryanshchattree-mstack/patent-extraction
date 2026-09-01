@@ -795,9 +795,14 @@ def compose(patent_img, ours, header, left_caption, right_caption,
     else:
         right = fit(patent_img, PANEL_W * 2 + pad)
         body_w = right.width
-        cols = min(5, len(ours))
+        # `ours` is empty when the gold linked NOTHING to this drawing, which is a
+        # finding rather than an error: the patent drew a molecule and the
+        # annotation has no record of it. Keep the panel so a reviewer sees the
+        # empty box beside the drawing. Without the max() the cell arithmetic
+        # divides by zero and the whole visual stage dies on the first such case.
+        cols = max(1, min(5, len(ours)))
         cell = (body_w - pad * (cols - 1)) // cols
-        rows = (len(ours) + cols - 1) // cols
+        rows = max(1, (len(ours) + cols - 1) // cols)
         f_n = load_font(FONT_BOLD, 16)
         label_lines, cap_lines = 3, []
         probe0 = ImageDraw.Draw(Image.new("RGB", (10, 10), "white"))
@@ -1141,7 +1146,11 @@ def build(root: Path, patent_id: str) -> int:
                     label = "no record"
                 ours.append((im, f"{si + 1}. {label}" if not single else label))
                 panels.append({
-                    "position_en": st.get("position_in_drawing"),
+                    # Named _en, so it has to BE English. The vision pass writes this
+                    # field in its own prose and can quote a Chinese label inside it,
+                    # and until this ran through the index it shipped that label raw
+                    # to a reviewer who cannot read one.
+                    "position_en": inp.translate(st.get("position_in_drawing") or ""),
                     # Translated for the same reason as identifier_en below: the
                     # vision pass names a drawn structure however the page names
                     # it, and on this patent that includes a parenthesised Chinese
@@ -1161,29 +1170,17 @@ def build(root: Path, patent_id: str) -> int:
 
             # between_markers can carry prose where a marker is not visible on
             # the page, so say "between X and Y" only when there really are two.
-            #
-            # WHICH SLOT, NOT HOW MANY. between_markers is [before, after], so the
-            # list already says which side of the drawing each marker is on, and
-            # flattening it to a count throws that away. Counting then has to assume
-            # a lone survivor is the trailing one, which is true of the reference
-            # run's two prose cases and false whenever the MISSING marker is the
-            # trailing one. US20040236146A1 has two drawings inside claim 6, below
-            # [0034], and the claims carry no [00NN] markers at all, so there is
-            # nothing to put in the second slot; the caption told the reviewer to
-            # look above [0034] for a drawing printed below it.
-            def _mark(i):
-                if len(between) > i and isinstance(between[i], str):
-                    t = between[i].strip()
-                    if MARKER.match(t):
-                        return t
-                return None
-            lead, trail = _mark(0), _mark(1)
-            if lead and trail:
-                where = f"between {lead} and {trail}"
-            elif trail:
-                where = f"just above {trail}"
-            elif lead:
-                where = f"just below {lead}"
+            # It can also carry None on either side, and that is the vision pass
+            # being honest rather than a defect: a drawing at the top of a page
+            # has no marker above it and one at the foot has none below. This run
+            # has 21 of them. Filter before matching, or the strip() below dies on
+            # the first such drawing and the whole visual stage produces nothing.
+            marks = [m.strip() for m in between
+                     if isinstance(m, str) and MARKER.match(m.strip())]
+            if len(marks) >= 2:
+                where = f"between {marks[0]} and {marks[1]}"
+            elif len(marks) == 1:
+                where = f"just above {marks[0]}"
             else:
                 where = "no paragraph marker printed beside it"
             header = (f"Drawing {drawing_no} of {total_drawings}   -   page "
@@ -1267,6 +1264,10 @@ def build(root: Path, patent_id: str) -> int:
                      "This picture answers one question and no other. It does not say "
                      "the chemistry is right, only whether we wrote down the molecule "
                      "the patent drew."]
+            if not ours:
+                notes.insert(0, "NOTHING IN THE GOLD IS LINKED TO THIS DRAWING. The "
+                                "empty box on the left is the finding: the patent "
+                                "draws this and the annotation has no record of it.")
 
             img = compose(patent_img, ours, header, left_caption, right_caption,
                           question, notes, side_by_side=single,
@@ -1279,7 +1280,10 @@ def build(root: Path, patent_id: str) -> int:
                 "drawing_number": drawing_no,
                 "page": page,
                 "page_number": int(page[1:]),
-                "between_markers_en": [m for m in between],
+                # the same curated map markers_out goes through above; a Chinese
+                # ad hoc marker (a claims page prints none) otherwise lands here
+                # untranslated and fails the English gate
+                "between_markers_en": [inp.marker_labels.get(m, m) for m in between],
                 "kind_en": dr.get("kind"),
                 "presented_as_en": dr.get("presented_as"),
                 "structure_count": len(structures),
@@ -1467,8 +1471,12 @@ def build(root: Path, patent_id: str) -> int:
             # those points the reviewer at something that cannot answer them.
             says = fields["drawing_says"].strip().lower()
             drawing_involved = bool(says) and not says.startswith(("n/a", "no drawing"))
+            # between_markers_en carries None on either side where the drawing
+            # sits at the top or the foot of a page with no marker beside it.
+            # Same honest null as at the marks[] filter above.
             near = next((c for c in page_comps
-                         if set(markers) & {m.strip() for m in c["between_markers_en"]}),
+                         if set(markers) & {m.strip() for m in c["between_markers_en"]
+                                            if isinstance(m, str)}),
                         None) if drawing_involved else None
             if drawing_involved:
                 why = ["The patent's drawing and the patent's words disagree here."]
