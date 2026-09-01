@@ -1,0 +1,770 @@
+[
+ {
+  "patent_id": "US20100041557A1",
+  "reaction_id": "Examples 10 to 13_Step 1",
+  "section_label": "Examples 10 to 13",
+  "section_type": "experimental_example",
+  "step_index": 1,
+  "step_label": "Step 1",
+  "reaction_class": "recrystallisation",
+  "reaction_class_confidence": "high",
+  "named_reaction": null,
+  "mechanism_type": "not_determinable",
+  "scale": "micro",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "room_temperature",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 16.0,
+   "reactor_type": "sealed test vessel",
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": null,
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "crystals isolated from the test vessel"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": null,
+   "filtration": null,
+   "concentration_method": null,
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": [],
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "tembotrione",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.05,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "pyridine",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "1st solvent, used at room temperature to prepare a saturated solution",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "n-heptane",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "2nd solvent, added dropwise until the onset of crystallization",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "tembotrione crystalline form A",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "tembotrione"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "tembotrione crystalline form A",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": null,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "A saturated solution of about 50 mg of tembotrione in the 1st solvent stated in Table 2 was prepared at room temperature in a test vessel. Next the 2nd solvent was added dropwise until the onset of crystallization. The test vessel was sealed and left at room temperature for 16 hrs. In this manner, tembotrione was obtained in the form of crystals, which were isolated and analyzed by X-ray powder diffractometry (XRD). On the basis of the characteristic reflections, form A was identified.\nTABLE 2\n| Example | 1st Solvent | 2nd Solvent | Crystal form |\n| --- | --- | --- | --- |\n| 10 | pyridine | n-heptane | prisms |",
+  "procedure_summary": "A solution of tembotrione saturated in pyridine at room temperature is treated dropwise with n-heptane until crystallization sets in, and the sealed vessel is then left at room temperature. The crystals that grow are isolated and identified as form A by X-ray powder diffractometry.",
+  "precursor_step": null,
+  "linkage_confirmed": false,
+  "cross_reference_unresolved": false,
+  "non_synthetic": true,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:recrystallisation",
+   "transformation:antisolvent_crystallisation",
+   "mechanism:not_determinable",
+   "analytics:xrpd",
+   "scale:micro",
+   "solvent_class:aprotic_polar",
+   "solvent_class:hydrocarbon",
+   "catalyst_class:none",
+   "workup_type:crystallisation",
+   "purification:none",
+   "step_role:final_step",
+   "linkage:standalone",
+   "is_one_pot:false"
+  ],
+  "notes": "This step is printed Example 10, the row of TABLE 2 whose first solvent is pyridine and whose second solvent is n-heptane. Four steps for this section, one per table row, which matches A0's estimate of 4. step_label is Step 1 to Step 4 in table order; the printed example number is recorded here. Printed heading above the group: Preparation of Form A of Tembotrione by Crystallization from an Organic Solvent by Addition of a 2nd Solvent, then Examples 10 to 13. THE SECOND SOLVENT IS AN ANTISOLVENT AND STILL A SOLVENT: it is added dropwise to bring on crystallization, not to react, so it carries role solvent and its manner of addition sits in addition_profile. There is no reagent, catalyst, base or acid anywhere in this step. Both solvents are listed in compounds[] and neither is a reactant, so reactant_names holds tembotrione alone. READ THE TABLE COLUMN CORRECTLY: the column headed Crystal form gives the HABIT, printed here as prisms, and not the polymorph; the prose of [0075] identifies form A from the characteristic reflections for every row, so product_name is the form A record for all four steps. Tembotrione is on both sides of this step: it is a polymorph patent and no bond is formed or broken, so the charged solute and the isolated crystalline form are the same substance. That is not a duplicate. non_synthetic is set true for the same reason, and reaction_class is recrystallisation because the form is grown from solution. This section crystallises at room temperature rather than by cooling, so temperature is room_temperature with value_c null and cooling_method is null: no bath and no cooling step is mentioned. The stated sixteen hours at room temperature is the crystallisation hold and sits in time_h. The charge is worded about 50 mg and is carried as the printed fifty milligrams in grams; neither solvent volume is stated, since the first is added to saturation and the second only until crystals appear, so both volume_ml are null. The crystals were identified by X-ray powder diffractometry from the characteristic reflections; that is product characterisation, not in-process monitoring, so process_control is left null and the analysis is carried as an analytics tag. No yield, no isolated product mass and no assay purity is stated for this preparation, so every yield, purity and product-mass field is null and nothing is computed from the charge even though the molecular weight of tembotrione is known elsewhere in the document. No IMAGE_EXTRACT span falls in this section; the document's only three are at lines 74, 76 and 78 and are single structures, so no drawing bears on this step. step_role is final_step: in a single-step section the step is both the first and the last thing in the section, so the tag carries nothing as a position marker, and what it can usefully say is that the step yields the section's claimed product, which this one does. It also keeps this half of the run consistent with the comparative sections, which already use final_step. The reference run's Example 1_Step 1 is first_step, but that Example is an eight-step synthesis, so its value is a genuine position in a chain and does not bear on the single-step case."
+ },
+ {
+  "patent_id": "US20100041557A1",
+  "reaction_id": "Examples 10 to 13_Step 2",
+  "section_label": "Examples 10 to 13",
+  "section_type": "experimental_example",
+  "step_index": 2,
+  "step_label": "Step 2",
+  "reaction_class": "recrystallisation",
+  "reaction_class_confidence": "high",
+  "named_reaction": null,
+  "mechanism_type": "not_determinable",
+  "scale": "micro",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "room_temperature",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 16.0,
+   "reactor_type": "sealed test vessel",
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": null,
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "crystals isolated from the test vessel"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": null,
+   "filtration": null,
+   "concentration_method": null,
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": [],
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "tembotrione",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.05,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "dioxan",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "1st solvent, used at room temperature to prepare a saturated solution",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "n-heptane",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "2nd solvent, added dropwise until the onset of crystallization",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "tembotrione crystalline form A",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "tembotrione"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "tembotrione crystalline form A",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": null,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "A saturated solution of about 50 mg of tembotrione in the 1st solvent stated in Table 2 was prepared at room temperature in a test vessel. Next the 2nd solvent was added dropwise until the onset of crystallization. The test vessel was sealed and left at room temperature for 16 hrs. In this manner, tembotrione was obtained in the form of crystals, which were isolated and analyzed by X-ray powder diffractometry (XRD). On the basis of the characteristic reflections, form A was identified.\nTABLE 2\n| Example | 1st Solvent | 2nd Solvent | Crystal form |\n| --- | --- | --- | --- |\n| 11 | dioxan | n-heptane | needles and prisms |",
+  "procedure_summary": "A solution of tembotrione saturated in dioxan at room temperature is treated dropwise with n-heptane until crystallization sets in, and the sealed vessel is then left at room temperature. The crystals that grow are isolated and identified as form A by X-ray powder diffractometry.",
+  "precursor_step": null,
+  "linkage_confirmed": false,
+  "cross_reference_unresolved": false,
+  "non_synthetic": true,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:recrystallisation",
+   "transformation:antisolvent_crystallisation",
+   "mechanism:not_determinable",
+   "analytics:xrpd",
+   "scale:micro",
+   "solvent_class:aprotic_polar",
+   "solvent_class:hydrocarbon",
+   "catalyst_class:none",
+   "workup_type:crystallisation",
+   "purification:none",
+   "step_role:final_step",
+   "linkage:standalone",
+   "is_one_pot:false"
+  ],
+  "notes": "This step is printed Example 11, the row of TABLE 2 whose first solvent is dioxan and whose second solvent is n-heptane. Four steps for this section, one per table row, which matches A0's estimate of 4. step_label is Step 1 to Step 4 in table order; the printed example number is recorded here. Printed heading above the group: Preparation of Form A of Tembotrione by Crystallization from an Organic Solvent by Addition of a 2nd Solvent, then Examples 10 to 13. Spelling: the page prints dioxan, never dioxane, and the A1 identifier keeps the printed spelling. Its solvent_class tag is aprotic_polar, the usual filing for 1,4-dioxan as a water-miscible ether, though the call is borderline against aprotic_apolar. THE SECOND SOLVENT IS AN ANTISOLVENT AND STILL A SOLVENT: it is added dropwise to bring on crystallization, not to react, so it carries role solvent and its manner of addition sits in addition_profile. There is no reagent, catalyst, base or acid anywhere in this step. Both solvents are listed in compounds[] and neither is a reactant, so reactant_names holds tembotrione alone. READ THE TABLE COLUMN CORRECTLY: the column headed Crystal form gives the HABIT, printed here as needles and prisms, and not the polymorph; the prose of [0075] identifies form A from the characteristic reflections for every row, so product_name is the form A record for all four steps. Tembotrione is on both sides of this step: it is a polymorph patent and no bond is formed or broken, so the charged solute and the isolated crystalline form are the same substance. That is not a duplicate. non_synthetic is set true for the same reason, and reaction_class is recrystallisation because the form is grown from solution. This section crystallises at room temperature rather than by cooling, so temperature is room_temperature with value_c null and cooling_method is null: no bath and no cooling step is mentioned. The stated sixteen hours at room temperature is the crystallisation hold and sits in time_h. The charge is worded about 50 mg and is carried as the printed fifty milligrams in grams; neither solvent volume is stated, since the first is added to saturation and the second only until crystals appear, so both volume_ml are null. The crystals were identified by X-ray powder diffractometry from the characteristic reflections; that is product characterisation, not in-process monitoring, so process_control is left null and the analysis is carried as an analytics tag. No yield, no isolated product mass and no assay purity is stated for this preparation, so every yield, purity and product-mass field is null and nothing is computed from the charge even though the molecular weight of tembotrione is known elsewhere in the document. No IMAGE_EXTRACT span falls in this section; the document's only three are at lines 74, 76 and 78 and are single structures, so no drawing bears on this step. step_role is final_step: in a single-step section the step is both the first and the last thing in the section, so the tag carries nothing as a position marker, and what it can usefully say is that the step yields the section's claimed product, which this one does. It also keeps this half of the run consistent with the comparative sections, which already use final_step. The reference run's Example 1_Step 1 is first_step, but that Example is an eight-step synthesis, so its value is a genuine position in a chain and does not bear on the single-step case."
+ },
+ {
+  "patent_id": "US20100041557A1",
+  "reaction_id": "Examples 10 to 13_Step 3",
+  "section_label": "Examples 10 to 13",
+  "section_type": "experimental_example",
+  "step_index": 3,
+  "step_label": "Step 3",
+  "reaction_class": "recrystallisation",
+  "reaction_class_confidence": "high",
+  "named_reaction": null,
+  "mechanism_type": "not_determinable",
+  "scale": "micro",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "room_temperature",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 16.0,
+   "reactor_type": "sealed test vessel",
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": null,
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "crystals isolated from the test vessel"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": null,
+   "filtration": null,
+   "concentration_method": null,
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": [],
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "tembotrione",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.05,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "acetonitrile",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "1st solvent, used at room temperature to prepare a saturated solution",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "water",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "2nd solvent, added dropwise until the onset of crystallization",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "tembotrione crystalline form A",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "tembotrione"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "tembotrione crystalline form A",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": null,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "A saturated solution of about 50 mg of tembotrione in the 1st solvent stated in Table 2 was prepared at room temperature in a test vessel. Next the 2nd solvent was added dropwise until the onset of crystallization. The test vessel was sealed and left at room temperature for 16 hrs. In this manner, tembotrione was obtained in the form of crystals, which were isolated and analyzed by X-ray powder diffractometry (XRD). On the basis of the characteristic reflections, form A was identified.\nTABLE 2\n| Example | 1st Solvent | 2nd Solvent | Crystal form |\n| --- | --- | --- | --- |\n| 12 | acetonitrile | H2O | prisms, needles |",
+  "procedure_summary": "A solution of tembotrione saturated in acetonitrile at room temperature is treated dropwise with water until crystallization sets in, and the sealed vessel is then left at room temperature. The crystals that grow are isolated and identified as form A by X-ray powder diffractometry.",
+  "precursor_step": null,
+  "linkage_confirmed": false,
+  "cross_reference_unresolved": false,
+  "non_synthetic": true,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:recrystallisation",
+   "transformation:antisolvent_crystallisation",
+   "mechanism:not_determinable",
+   "analytics:xrpd",
+   "scale:micro",
+   "solvent_class:aprotic_polar",
+   "solvent_class:aqueous",
+   "catalyst_class:none",
+   "workup_type:crystallisation",
+   "purification:none",
+   "step_role:final_step",
+   "linkage:standalone",
+   "is_one_pot:false"
+  ],
+  "notes": "This step is printed Example 12, the row of TABLE 2 whose first solvent is acetonitrile and whose second solvent is H2O. Four steps for this section, one per table row, which matches A0's estimate of 4. step_label is Step 1 to Step 4 in table order; the printed example number is recorded here. Printed heading above the group: Preparation of Form A of Tembotrione by Crystallization from an Organic Solvent by Addition of a 2nd Solvent, then Examples 10 to 13. OCR CORRECTION THAT MATTERS: the second solvent of this row is printed H2O with a subscript two, which the text layer read as HO with the subscript lost. The vision note for paragraph [0075] on page p08 says the image wins, and the enriched line carries H2O. The A1 identifier for it is water. THE SECOND SOLVENT IS AN ANTISOLVENT AND STILL A SOLVENT: it is added dropwise to bring on crystallization, not to react, so it carries role solvent and its manner of addition sits in addition_profile. There is no reagent, catalyst, base or acid anywhere in this step. Both solvents are listed in compounds[] and neither is a reactant, so reactant_names holds tembotrione alone. READ THE TABLE COLUMN CORRECTLY: the column headed Crystal form gives the HABIT, printed here as prisms, needles, and not the polymorph; the prose of [0075] identifies form A from the characteristic reflections for every row, so product_name is the form A record for all four steps. Tembotrione is on both sides of this step: it is a polymorph patent and no bond is formed or broken, so the charged solute and the isolated crystalline form are the same substance. That is not a duplicate. non_synthetic is set true for the same reason, and reaction_class is recrystallisation because the form is grown from solution. This section crystallises at room temperature rather than by cooling, so temperature is room_temperature with value_c null and cooling_method is null: no bath and no cooling step is mentioned. The stated sixteen hours at room temperature is the crystallisation hold and sits in time_h. The charge is worded about 50 mg and is carried as the printed fifty milligrams in grams; neither solvent volume is stated, since the first is added to saturation and the second only until crystals appear, so both volume_ml are null. The crystals were identified by X-ray powder diffractometry from the characteristic reflections; that is product characterisation, not in-process monitoring, so process_control is left null and the analysis is carried as an analytics tag. No yield, no isolated product mass and no assay purity is stated for this preparation, so every yield, purity and product-mass field is null and nothing is computed from the charge even though the molecular weight of tembotrione is known elsewhere in the document. No IMAGE_EXTRACT span falls in this section; the document's only three are at lines 74, 76 and 78 and are single structures, so no drawing bears on this step. step_role is final_step: in a single-step section the step is both the first and the last thing in the section, so the tag carries nothing as a position marker, and what it can usefully say is that the step yields the section's claimed product, which this one does. It also keeps this half of the run consistent with the comparative sections, which already use final_step. The reference run's Example 1_Step 1 is first_step, but that Example is an eight-step synthesis, so its value is a genuine position in a chain and does not bear on the single-step case."
+ },
+ {
+  "patent_id": "US20100041557A1",
+  "reaction_id": "Examples 10 to 13_Step 4",
+  "section_label": "Examples 10 to 13",
+  "section_type": "experimental_example",
+  "step_index": 4,
+  "step_label": "Step 4",
+  "reaction_class": "recrystallisation",
+  "reaction_class_confidence": "high",
+  "named_reaction": null,
+  "mechanism_type": "not_determinable",
+  "scale": "micro",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "room_temperature",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 16.0,
+   "reactor_type": "sealed test vessel",
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": null,
+    "text": null
+   },
+   "heating_method": null,
+   "cooling_method": null,
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": false,
+  "workup": {
+   "steps": [
+    "crystals isolated from the test vessel"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": null,
+   "filtration": null,
+   "concentration_method": null,
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": [],
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "tembotrione",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": 0.05,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "dioxan",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "1st solvent, used at room temperature to prepare a saturated solution",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "water",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "2nd solvent, added dropwise until the onset of crystallization",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "tembotrione crystalline form A",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "tembotrione"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "tembotrione crystalline form A",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": null,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "A saturated solution of about 50 mg of tembotrione in the 1st solvent stated in Table 2 was prepared at room temperature in a test vessel. Next the 2nd solvent was added dropwise until the onset of crystallization. The test vessel was sealed and left at room temperature for 16 hrs. In this manner, tembotrione was obtained in the form of crystals, which were isolated and analyzed by X-ray powder diffractometry (XRD). On the basis of the characteristic reflections, form A was identified.\nTABLE 2\n| Example | 1st Solvent | 2nd Solvent | Crystal form |\n| --- | --- | --- | --- |\n| 13 | dioxan | H2O | prisms |",
+  "procedure_summary": "A solution of tembotrione saturated in dioxan at room temperature is treated dropwise with water until crystallization sets in, and the sealed vessel is then left at room temperature. The crystals that grow are isolated and identified as form A by X-ray powder diffractometry.",
+  "precursor_step": null,
+  "linkage_confirmed": false,
+  "cross_reference_unresolved": false,
+  "non_synthetic": true,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:recrystallisation",
+   "transformation:antisolvent_crystallisation",
+   "mechanism:not_determinable",
+   "analytics:xrpd",
+   "scale:micro",
+   "solvent_class:aprotic_polar",
+   "solvent_class:aqueous",
+   "catalyst_class:none",
+   "workup_type:crystallisation",
+   "purification:none",
+   "step_role:final_step",
+   "linkage:standalone",
+   "is_one_pot:false"
+  ],
+  "notes": "This step is printed Example 13, the row of TABLE 2 whose first solvent is dioxan and whose second solvent is H2O. Four steps for this section, one per table row, which matches A0's estimate of 4. step_label is Step 1 to Step 4 in table order; the printed example number is recorded here. Printed heading above the group: Preparation of Form A of Tembotrione by Crystallization from an Organic Solvent by Addition of a 2nd Solvent, then Examples 10 to 13. Spelling: the page prints dioxan, never dioxane, and the A1 identifier keeps the printed spelling. Its solvent_class tag is aprotic_polar, the usual filing for 1,4-dioxan as a water-miscible ether, though the call is borderline against aprotic_apolar. OCR CORRECTION THAT MATTERS: the second solvent of this row is printed H2O with a subscript two, which the text layer read as HO with the subscript lost. The vision note for paragraph [0075] on page p08 says the image wins, and the enriched line carries H2O. The A1 identifier for it is water. THE SECOND SOLVENT IS AN ANTISOLVENT AND STILL A SOLVENT: it is added dropwise to bring on crystallization, not to react, so it carries role solvent and its manner of addition sits in addition_profile. There is no reagent, catalyst, base or acid anywhere in this step. Both solvents are listed in compounds[] and neither is a reactant, so reactant_names holds tembotrione alone. READ THE TABLE COLUMN CORRECTLY: the column headed Crystal form gives the HABIT, printed here as prisms, and not the polymorph; the prose of [0075] identifies form A from the characteristic reflections for every row, so product_name is the form A record for all four steps. Tembotrione is on both sides of this step: it is a polymorph patent and no bond is formed or broken, so the charged solute and the isolated crystalline form are the same substance. That is not a duplicate. non_synthetic is set true for the same reason, and reaction_class is recrystallisation because the form is grown from solution. This section crystallises at room temperature rather than by cooling, so temperature is room_temperature with value_c null and cooling_method is null: no bath and no cooling step is mentioned. The stated sixteen hours at room temperature is the crystallisation hold and sits in time_h. The charge is worded about 50 mg and is carried as the printed fifty milligrams in grams; neither solvent volume is stated, since the first is added to saturation and the second only until crystals appear, so both volume_ml are null. The crystals were identified by X-ray powder diffractometry from the characteristic reflections; that is product characterisation, not in-process monitoring, so process_control is left null and the analysis is carried as an analytics tag. No yield, no isolated product mass and no assay purity is stated for this preparation, so every yield, purity and product-mass field is null and nothing is computed from the charge even though the molecular weight of tembotrione is known elsewhere in the document. No IMAGE_EXTRACT span falls in this section; the document's only three are at lines 74, 76 and 78 and are single structures, so no drawing bears on this step. step_role is final_step: in a single-step section the step is both the first and the last thing in the section, so the tag carries nothing as a position marker, and what it can usefully say is that the step yields the section's claimed product, which this one does. It also keeps this half of the run consistent with the comparative sections, which already use final_step. The reference run's Example 1_Step 1 is first_step, but that Example is an eight-step synthesis, so its value is a genuine position in a chain and does not bear on the single-step case."
+ }
+]

@@ -1,0 +1,236 @@
+# What is wrong with US20100041557A1
+
+Produced by annotating the patent by hand, against the scanned pages rather than
+against anyone's OCR. Every item below is a defect in the **patent**, not in the
+annotation. The annotation records them and changes nothing.
+
+- 61 reactions extracted, of which 10 carry at least one flag
+- 306 unique compounds, 58 pathways
+- 70 discrepancies raised by the page-vision pass
+
+## Flags raised, by kind
+
+| flag | count | what it means |
+|---|---:|---|
+| `no_conditions` | 6 | no reaction conditions stated at all |
+| `cross_reference_unresolved` | 3 |  |
+| `conditions_unresolved` | 2 |  |
+| `a1_missing_compound` | 2 |  |
+| `mass_balance_implausible` | 1 | stated product mass cannot be reconciled with the stated input moles and yield |
+
+## The headline findings
+
+No hand-written analysis exists for US20100041557A1. The generated sections above and below are complete; this section is not, and is omitted rather than filled with another patent's findings.
+
+## Everything the page-vision pass raised
+
+- **[p01.png]** OCR: the barcode caption's space is read as a full stop. Recorded here with drawing_says meaning 'what the page image prints' and text_says meaning 'what the extracted text layer at /tmp/us2010/page01.txt says'. Every entry below uses the same two senses; there are no drawings on this page.
+  - drawing: US 20100041557A1
+  - text: US 2010.0041557A1
+- **[p01.png]** OCR: both square brackets of the title's chemical name are dropped, not flattened to hyphens.
+  - drawing: 2-[2-CHLORO-4-METHYLSULFONYL-3- ... BENZOYL]CYCLOHEXAN-1,3-DIONE
+  - text: 2-2-CHLORO-4-METHYLSULFONYL-3- ... BENZOYLCYCLOHEXAN-1,3-DIONE
+- **[p01.png]** OCR: the title's three locant commas are read as full stops, while the comma in -1,3-DIONE survives.
+  - drawing: (2,2,2-TRIFLUOROETHOXYMETHYL)
+  - text: (2.2.2-TRIFLUOROETHOXYMETHYL)
+- **[p01.png]** OCR: same two failures inside the (57) abstract's chemical name, plus the space lost in 'of tembotrione'.
+  - drawing: 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoro-ethoxymethyl)benzoyl]cyclohexan-1,3-dione ... crystalline forms of tembotrione.
+  - text: 2-2-chloro-4-methylsulfonyl-3-(2.2.2-trifluoro-ethoxymethyl)benzoylcyclohexan-1,3-dione ... crystalline forms oftembotrione.
+- **[p01.png]** OCR: at (51) the digit zero is read as capital O and the digit one as capital I, and in the third symbol the space is lost as well. The second symbol on the same block is read correctly, so no blanket repair rule is available.
+  - drawing: A01N 35/00 (2006.01) / C07C 317/14 (2006.01) / A01P 13/00 (2006.01)
+  - text: AOIN 35/00 (2006.01) / C07C 317/14 (2006.01) / AOIPI3/00 (2006.01)
+- **[p01.png]** OCR: at (86) the section sign is read as capital S and the following space is lost.
+  - drawing: § 371 (c)(1), (2), (4) Date:
+  - text: S371 (c)(1), (2), (4) Date:
+- **[p01.png]** OCR: at (86) the digit 5 opening the PCT serial is read as capital S.
+  - drawing: PCT No.: PCT/EP08/53060
+  - text: (86). PCT No.: ... PCT/EP08/S3060
+- **[p01.png]** OCR, reading order rather than character shape: the layer places the PCT number below the (30) priority heading, so the (86) label is left with no value and the number appears to belong to the priority-data section. Mis-assignment, not just mis-transcription.
+  - drawing: '(86) PCT No.: PCT/EP08/53060' on one line at the top of the right column, above the (30) heading
+  - text: '(86). PCT No.:' on line 29, then 'PCT/EP08/S3060' on line 35, below 'Foreign Application Priority Data' on line 34
+- **[p01.png]** OCR: the leading digit zero of the EP priority application number is read as capital O. The most consequential single character on the page, since this number identifies the patent family.
+  - drawing: Mar. 15, 2007 (EP) 07104275.8
+  - text: Mar. 15, 2007 (EP) O7104275.8
+- **[p01.png]** OCR: the semicolon after the fifth inventor's country code is read as a colon.
+  - drawing: Ulrich Griesser, Axams (AT);
+  - text: Ulrich Griesser, Axams (AT):
+- **[p01.png]** Internal to the patent, not an OCR artifact and not resolved here: the (54) title and the (57) abstract hyphenate the trifluoroethoxymethyl fragment differently. Both are recorded as printed.
+  - drawing: (54) prints '(2,2,2-TRIFLUOROETHOXYMETHYL)' with no hyphen after TRIFLUORO
+  - text: (57) prints '(2,2,2-trifluoro-ethoxymethyl)' with a hyphen after trifluoro
+- **[p02.png]** The extracted text layer for this page shows only one figure caption; the image shows two.
+  - drawing: Two captions are printed on the sheet, "Figure 1" above the upper plot and "Figure 2" above the lower plot, both verified at high magnification.
+  - text: /tmp/us2010/page02.txt contains "Figure l" and no occurrence of "Figure 2" at all. The image wins: the "Figure 2" caption exists and the text layer dropped it.
+- **[p02.png]** The figure number on the upper plot is OCRed as a lower-case letter L.
+  - drawing: "Figure 1", a serif digit one with a full base serif.
+  - text: "Figure l". The image wins; this is the digit-1-as-l error listed in the briefing.
+- **[p02.png]** The x axis title is corrupted in the text layer.
+  - drawing: "2-Theta", printed below each of the two x axes.
+  - text: "2-heta", with the capital T lost. The image wins.
+- **[p02.png]** The y axis carries a unit in its label that the plot does not support with any scale.
+  - drawing: The y axis label reads "Intensity (CPS)", but the y axis has no tick marks and no numeric tick labels on either plot, so no count rate can be read from either diffractogram.
+  - text: The text layer records neither the label nor any y-axis number. Recorded here so no downstream pass treats the y axis as quantitative.
+- **[p03.png]** The sheet carries one figure and one caption only, so Figure 2 is not on this sheet; the caption's digit was confirmed on the image rather than taken from the OCR.
+  - drawing: A single plot captioned "Figure 3", with no second plot and no other caption anywhere on the sheet.
+  - text: The text layer for this page reads "Figure 3" and carries no other figure label; it agrees with the image here, unlike the companion sheet where it reads Figure 1 as "Figure l".
+- **[p03.png]** Both axis captions printed on the sheet are missing from the text layer.
+  - drawing: Horizontal axis captioned "2-Theta"; vertical axis captioned "Intensity (CPS)".
+  - text: Neither string appears in the 93 characters of page03.txt.
+- **[p04.png]** Paragraph markers are printed with square brackets on this page, contrary to the run briefing, which says they are bare four-digit numbers.
+  - drawing: The image prints bold '[0001]', '[0002]' ... '[0011]', square brackets included, verified at 3x magnification on [0001], [0002], [0003], [0009], [0010] and [0011].
+  - text: The text layer prints them bare, as '0001.' and '0002', and the briefing was written from the text layer. The brackets are dropped by the OCR the same way it drops the brackets in '2-[2-chloro-...]cyclohexan-1,
+- **[p04.png]** The three structures drawn under [0002] agree with the compound named in the prose, and no reagent or condition is drawn or written on this page.
+  - drawing: Three formulae labelled (I), (I') and (I"): the 1,3-dione, the ring enol at C3, and the exocyclic enol. All three carry the same aryl substitution pattern, 2-Cl, 3-CH2OCH2CF3, 4-SO2CH3.
+  - text: [0002] 'Tembotrione is the herbicidal active substance of the formula I or the tautomers I' and I" and mixtures thereof.', and [0001] names it 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl
+- **[p04.png]** The invention names its two crystalline modifications A and C, with no form B and no explanation.
+  - drawing: Not applicable; no drawing bears on this.
+  - text: [0007] 'These two modifications are also described below as form A and form C.' and [0008], [0009], [0010], [0011] use only A and C. Nothing on p04 mentions a form B. Recorded rather than resolved; the reason, 
+- **[p04.png]** Within one sentence of [0009] the same kind of figure is printed two different ways.
+  - drawing: Not applicable.
+  - text: 'at least 90 wt. % in particular at least 95%' - the first figure carries 'wt.' and a space before the percent sign, the second carries neither. Both checked on the image and transcribed as printed.
+- **[p05.png]** The page image prints every paragraph marker in bold with square brackets and the OCR text layer strips them, reading some closing brackets as a full stop. The record follows the page, so the markers in this file are bracketed. The layer carries no bracketed marker on any of the 15 pages, which is why the bare form was proposed; the pipeline agrees with the page, since make_visual_evidence.py matches markers against ^\[\d{4}\]$ and would silently discard the marker placement for a bare number.
+  - drawing: the page image prints [0012], [0013], [0014] and so on, in bold, with square brackets
+  - text: the OCR text layer prints 0012, 0013 and 0014. with no brackets, the closing bracket read as a full stop on some paragraphs
+- **[p05.png]** The publication number in the running header is split by a spurious space in the OCR layer.
+  - drawing: US 2010/0041557 A1
+  - text: US 2010/004 1557 A1
+- **[p05.png]** The crystallographic table's row labels and superscripts are corrupted throughout the OCR layer; every value in this file was read off the image.
+  - drawing: a / b / c, alpha / beta / gamma, Z, 1778.0(2) angstrom cubed, 1.643 Mg/m cubed, R superscript 1; wR superscript 2
+  - text: 8. / b / C, C. / (beta missing) / y, Z., 1778.0(2) A, 1.643 Mg/m, R"; wR
+- **[p05.png]** Solvent name in paragraph 0013 is two words on the page and one word in the OCR layer.
+  - drawing: dimethyl sulfoxide
+  - text: dimethylsulfoxide
+- **[p05.png]** The percent unit is spaced on the page and closed up in the OCR layer, in paragraphs 0017, 0018, 0024 and 0030.
+  - drawing: wt. %
+  - text: wt.%
+- **[p05.png]** The OCR layer capitalises several mid-sentence words that are lower case on the page.
+  - drawing: suitable (0021), solution (0018), such (0024)
+  - text: Suitable, Solution, Such
+- **[p05.png]** The OCR layer runs words together across the page's justified spacing.
+  - drawing: of tembotrione, form B also, form A before, solvent or
+  - text: oftembotrione, form Balso, form Abefore, solventor
+- **[p05.png]** No chemical structure or reaction scheme is drawn anywhere on this page, so there is nothing to cross-check the prose against. The empty drawings array is a finding.
+  - drawing: the only non-prose element is the crystallographic data table, recorded inside the first paragraph entry
+  - text: the prose describes crystallization of form A and draws nothing
+- **[p07.png]** The page glosses one alcohol with the name of a different alcohol, and does so twice.
+  - drawing: There is no drawing anywhere on this page, so this is not a drawing against prose conflict. It is recorded here because discrepancies is the only field on this schema that travels downstream, and a later pass t
+  - text: [0046] and [0052] both print "2,2-dimethylpropanol (tert. amyl alcohol)". 2,2-dimethylpropanol is neopentyl alcohol, 2,2-dimethyl-1-propanol, a primary alcohol; tert. amyl alcohol is 2-methyl-2-butanol, a terti
+- **[p07.png]** The solvent is missing from the step i) sentence.
+  - drawing: No drawing on this page.
+  - text: [0048] prints "in a first step i) a hot solution of tembotrione in is prepared", with nothing after "in". From [0046] and [0047] the intended solvent is one of 2,2-dimethylpropanol or an aromatic solvent or aro
+- **[p07.png]** A solvent name is misspelled in the aliphatic list.
+  - drawing: No drawing on this page.
+  - text: [0053] prints "cylcoheptane" where cycloheptane is meant, between methylcyclohexane and cyclooctane. Verified at magnification on the image, so the typo is the printed original's. Transcribed as printed; a down
+- **[p07.png]** The table this page's last paragraph announces is not on this page.
+  - drawing: No drawing and no table on this page.
+  - text: [0064] ends "quoted in the following table as 2θ values or as interplanar spacings d:" and the page stops. The form B reflection table begins on the next page. No rows are recorded here and none should be attri
+- **[p08.png]** The description names three X-ray powder diffraction figures, FIG. 1 for form A, FIG. 2 for form B and FIG. 3 for form C, but the run's page set contains only two drawing sheets.
+  - drawing: There is no drawing on p08 at all, so this page cannot settle it. Reported because the two drawing sheets in this run are p02 and p03, headed Sheet 1 of 2 and Sheet 2 of 2, and their text layers are reported in
+  - text: 0068: 'FIG. 1 shows an X-ray powder diffraction diagram of form A'; 0069: 'FIG. 2 shows an X-ray powder diffraction diagram of form B'; 0070: 'FIG. 3 shows an X-ray powder diffraction diagram of form C'. All th
+- **[p08.png]** Paragraph 0071 prints an unsigned lower bound against a signed upper bound for the DSC temperature programme, which is internally odd and suggests a minus sign lost in typesetting or scanning.
+  - drawing: No drawing bears on this; it is a text-internal inconsistency, recorded here rather than only in a note because it is a measured temperature programme and a later pass must not repair it quietly.
+  - text: 0071 as printed: 'a heating rate of 10 K/min in the range from 25 deg to +140 deg C.' The image was checked at 6x: there is no minus sign and no ink in front of the 25. Transcribed exactly as printed and left a
+- **[p09.png]** Paragraph markers are printed with square brackets on this page, contrary to the shared brief, which says they are bare four-digit numbers.
+  - drawing: The image prints bold [0078], [0079], [0080], [0081], [0082], [0083], [0084], [0085], [0086], [0087], brackets clearly visible at 2x magnification.
+  - text: The OCR layer drops the brackets and renders them as 0078, 0079, 0080, 0081. and I0082., I0083. through I0087., which is where the brief's 'bare number' reading comes from.
+- **[p09.png]** The Modification column of Tables 3 and 4 reads 'B + C' throughout on the page; the text layer turns the plus into a minus in seven rows.
+  - drawing: Image: Table 3 rows 5 and 7 'B + C'; Table 4 rows 13, 15, 16, 17, 19 'B + C'.
+  - text: Layer: 'B - C' in each of those seven rows. Chemically a mixture, so the plus is right and the image wins.
+- **[p09.png]** Comparative example number 20 in Table 4.
+  - drawing: Image: 20 (digit two, digit zero).
+  - text: Layer: 2O (digit two, capital letter O).
+- **[p09.png]** The heading over Table 5 names two comparative examples but the table lists three.
+  - drawing: TABLE 5 has body rows for Comp. Ex. 21, 22 and 23.
+  - text: The heading above paragraph [0082] is printed 'Comparative Examples 21 to 22'. Recorded as printed on both sides; this is an inconsistency in the published document, not an OCR artifact, and is not resolved her
+- **[p09.png]** Case of several table cells and of one word of prose.
+  - drawing: Image: 'xylene', 'small prisms', 'small agglomerates', 'acetone', 'solution' all lower case.
+  - text: Layer: 'Xylene', 'Small prisms', 'Small agglomerates', 'acetOne', 'Solution'.
+- **[p09.png]** The running header.
+  - drawing: Image: US 2010/0041557 A1.
+  - text: Layer: US 2010/004 1557 A1, with a space inserted inside the number.
+- **[p09.png]** Word spacing around 'tembotrione' throughout the page.
+  - drawing: Image: 'of tembotrione', spaced normally, in paragraphs [0078], [0080], [0081], [0082] and [0083].
+  - text: Layer: 'oftembotrione' run together in every one of those places.
+- **[p10.png]** Paragraph markers are printed WITH square brackets on this page, contrary to the shared vision brief, which states they are bare four-digit numbers.
+  - drawing: The image prints bold, bracketed [0088] through [0102] in an unbroken run, brackets clearly visible at 2.4x magnification on every one of the fifteen markers.
+  - text: The OCR layer drops the brackets and gives '0088', '0089' and so on, and misreads [0095] as '0.095' and [0100] as '0100' preceded by a line break. The brief's 'bare number' reading comes from this layer, not fr
+- **[p10.png]** The publication number in the running header.
+  - drawing: Image: US 2010/0041557 A1, one unbroken number.
+  - text: Layer: 'US 2010/004 1557 A1', with a space inserted inside the serial number.
+- **[p10.png]** The percent notation in [0098], which carries the only three numbers on the page.
+  - drawing: Image: 'at least 90 wt. %', 'from 1 to 98 wt. %', 'from 10 to 95 wt. %', each with a space between the full stop and the percent sign.
+  - text: Layer: 'wt.%' closed up in all three places. The digits themselves agree between image and layer.
+- **[p10.png]** The two solvent trade names in [0101].
+  - drawing: Image: 'Exxsol' and 'Solvesso', initial capital only.
+  - text: Layer: 'EXXSol' and 'Solves.so', the second with a spurious full stop inside the word, which would split one trade name into two tokens.
+- **[p10.png]** The tea genus in the crop list of [0090].
+  - drawing: Image: 'Camellia sinensis', double L, hyphen-broken as 'Camellia sin-ensis' across two lines.
+  - text: Layer: 'Camelia sin ensis', single L and the line break left as a word space, giving two nonexistent words.
+- **[p10.png]** Sentence boundary after the sorghum entry in the crop list of [0090].
+  - drawing: Image: 'Sorghum bicolor (S. vulgare), Theobroma cacao', a comma after the closing bracket, so the list continues.
+  - text: Layer: 'Sorghum bicolor (S. vulgare). Theobroma cacao', a full stop, which would falsely end the list and start a new sentence.
+- **[p10.png]** The OCR layer inserts spurious capital S at the start of many lowercase words throughout the page.
+  - drawing: Image, all lowercase: suitable, substance, soya, sugar, sunflower, suspensions, scattering, solvents, sylvestre, simum.
+  - text: Layer: Suitable, Substance, Soya, Sugar, Sunflower, Suspensions, Scattering, Sol vents, Sylvestre, Simum. None of these is a capital on the page.
+- **[p10.png]** The patent spells the same mustard genus two ways within two paragraphs of each other.
+  - drawing: N/A, no drawing on this page.
+  - text: The image prints 'Sinapsis' in the weed list of [0088] and 'Sinapis alba' in the crop list of [0090]. Both verified at magnification. This is the document's own inconsistency, not an OCR artifact, and both are 
+- **[p10.png]** Two further genus names in this page's lists are misspelled by the patent itself, not by the OCR.
+  - drawing: N/A, no drawing on this page.
+  - text: The image prints 'Imparato' in [0088], where the grass genus is Imperata, and 'Fragara vesca' in [0090], where the strawberry genus is Fragaria. Both verified letter by letter at 6x to 7x magnification, and the
+- **[p10.png]** The page carries no table, no chemical structure and no reaction scheme, so the empty drawings array is a finding and not an omission.
+  - drawing: N/A, there is no drawing. The full page is two columns of continuous prose from top to bottom with no ruled block, no figure and no caption anywhere.
+  - text: The task briefing expected Comparative Examples 11 to 20 with TABLE 4 and possibly TABLE 5 on this page. Those are one page earlier: input/vision/p09.json already carries Tables 3, 4 and 5 with the comparative 
+- **[p11.png]** There are no drawings, no chemical structures, no formula labels and no tables anywhere on this page, so `drawings` is empty as a finding and not as an omission. Every cross-check below is text against text, or the image against the OCR layer.
+  - drawing: n/a - the page is two columns of unbroken prose, [0102] tail through [0113], with no figure, no scheme, no structure and no table rule.
+  - text: The page is the formulation-auxiliaries part of the description: surfactants, protective colloids, rheology modifiers, antifoams, preservatives, antifreeze agents and seed-treatment components. No experimental 
+- **[p11.png]** The OCR text layer inserts a letter that does not exist on the page and turns one anionic surfactant class into a name for nothing.
+  - drawing: n/a - no drawing on this page.
+  - text: The image prints 'alkyl-sulfos-' at a line end and 'uccinates' at the head of the next line, i.e. 'alkyl-sulfosuccinates'. /tmp/us2010/page11.txt reads 'alkyl-sulfos' / 'luccinates', inventing an l. Transcribed
+- **[p11.png]** The OCR layer closes up the unit and the image does not.
+  - drawing: n/a - no drawing on this page.
+  - text: Every quantity on the page is printed 'wt. %' with a space before the percent sign: 0.1 to 50, 0.5 to 30, 0.5 to 100, 0.1 to 5, 0.1 to 1, 0.05 to 0.5, 1 to 20, 5 to 10. The layer writes 'wt.%'. Recorded as prin
+- **[p11.png]** The OCR layer capitalises words at random inside chemical names, including inside substance classes, and it renders every registered-trade-mark symbol as ASCII.
+  - drawing: n/a - no drawing on this page.
+  - text: Layer 'olefin Sulfonates', 'naphthalene-Sulfonic acids', 'Sorbitan fatty acid esters', 'Surface-active Substances', 'lignin Sulfite waste liquor' are all lower case on the image. Layer 'Sokalan R CP9', 'Attacla
+- **[p11.png]** Three hyphens printed in mid-line look like OCR damage but are genuinely on the page, and one printed article is duplicated. All four are reproduced verbatim in zh rather than repaired.
+  - drawing: n/a - no drawing on this page.
+  - text: [0105] 'paraffin sulfon-ates' and 'naphthalene-sulfonic acids'; [0110] 'isothiazol-ones'; [0111] 'those with an a aqueous carrier'. Each was checked at high magnification against the possibility of a line break
+- **[p11.png]** The page prints its paragraph markers WITH square brackets, contrary to the shared brief, which describes bare four-digit markers.
+  - drawing: n/a - no drawing on this page.
+  - text: The image shows '[0103]', '[0104]' and so on in bold with both brackets, verified at 2x magnification. The OCR layer strips the brackets, which is the likely source of the brief's claim. Markers are recorded in
+- **[p11.png]** Two trade or company names are printed in forms that differ from the usual spelling, and are kept as printed.
+  - drawing: n/a - no drawing on this page.
+  - text: [0110] 'Rohm & Hass Co.' for the company normally written Rohm & Haas. [0108] 'Rhone Poulenc' with no accent. Neither has been normalised.
+- **[p12.png]** There is no drawing, no structural formula, no reaction scheme, no table and no figure anywhere on p12. The page is solid two-column running prose from the top text line to the bottom, so the empty drawings array is a finding and not an omission, and no drawing-versus-prose cross-check is possible for this page.
+  - drawing: no drawing of any kind present on p12
+  - text: every substance on the page is given by name in running prose only, in the formulation part of the description (colorants, adhesives, fillers, plasticizers, solvents, surfactants, buffer acids); the only molecu
+- **[p12.png]** Nothing on this page is presented as prior art. The whole page describes the invention's own formulations: [0117] opens "A preferred embodiment of the invention relates to liquid formulations of the forms A or C", and [0118], [0119], [0122] and [0124] all say "according to the invention". Recorded because rule 11 of the pass requires the invention/prior-art call to be made explicitly, even where there is no drawing to classify.
+  - drawing: no drawing to classify
+  - text: invention's own subject matter throughout, formulation description, no background or prior-art passage on p12
+- **[p14.png]** Paragraph markers are printed WITH square brackets on this page, contradicting the shared vision brief, which says they are bare four-digit numbers.
+  - drawing: The image, checked at 3x, prints bold '[0147]', '[0148]', '[0149]', '[0150]', '[0162]' and so on, square brackets included, for all 17 description markers on the page.
+  - text: The OCR text layer at /tmp/us2010/page14.txt strips the brackets and yields '0147', '0148', '0161' (and once '0.161'), which is where the brief's rule 3 appears to come from. Recorded as the image prints them, 
+- **[p14.png]** Claim 16 prints a malformed chemical name; claim 17 prints the same compound correctly. The claim's scope depends on the name, so this is recorded and not repaired.
+  - drawing: Claim 16, as printed: '2-[2-chloro-4-methyl-sulfonyl-3-(2,2,2-trifluoroethoxymethyebenzoyl]-cyclohexan-1,3-dione'. The '(' before 2,2,2 is never closed, 'methye' is missing the 'l)', and 'methyl-sulfonyl' and '
+  - text: Claim 17, as printed: '2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione'. This is the well formed name and is the same compound, tembotrione.
+- **[p14.png]** Paragraph [0148] specifies form B, where every other formulation paragraph on the page and both claims on the page speak of forms A and C.
+  - drawing: [0148] reads '75 parts by weight of form A or form B are ground', confirmed on the image at 4x.
+  - text: [0150], [0152], [0153], [0154], [0156] and [0157] all read 'form A or form C', and claims 16 and 17 recite form A only. Left as printed; whether 'B' is an original error is not for this pass to decide.
+- **[p14.png]** The OCR text layer corrupts numbers and names on this page in ways the image contradicts. Listed so a later reader does not trust the layer over this transcription.
+  - drawing: Image: 'C4-C8 carboxylic acids'; '2θ values'; the nine reflections each with a '±' sign; '[0161]'; 'of tembotrione'; lower-case 'substance', 'solution', 'suspension'.
+  - text: Layer: 'Ca-Cs carboxylic acids'; '20 values'; '8.9-0.2°', '23.40.2°', '28.90.2', '36.2-0.2°' with the plus-minus lost or turned into a hyphen; '0.161'; 'oftembotrione'; 'Solution', 'Suspension', 'Substance' spu
+- **[p15.png]** OCR text layer against the page image: three of the seven 2theta values in claim 20 are corrupted in the layer. Read off the image at 3x magnification, which wins.
+  - drawing: image: 7.4±0.2°, 10.8±0.2°, 14.8±0.2°, 16.6±0.2°, 21.1±0.2°, 21.6±0.2° and 33.6±0.2°
+  - text: layer: 7.4+0.2°, 10.8+0.2°, 14.8+0.29, 16.6+0.2°, 21.10.2°, 21.6+0.2° and 33.6+0.2°
+- **[p15.png]** OCR text layer against the page image: the compound name is corrupted in the layer in every one of the sixteen claims on this page. Brackets flattened and locant commas turned into full stops.
+  - drawing: image: 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione
+  - text: layer: 2-2-chloro-4-methylsulfonyl-3-(2.2.2-trifluoroethoxymethyl)benzoylcyclohexan-1,3-dione
+- **[p15.png]** OCR text layer against the page image: the running header. The layer splits the publication number and loses the centred page number entirely.
+  - drawing: image: 'US 2010/0041557 A1' left, 'Feb. 18, 2010' right, '12' centred on the line below
+  - text: layer: 'US 2010/004 1557 A1' at the top and 'Feb. 18, 2010' stranded in the middle of the claim text; no page number
+- **[p15.png]** OCR text layer against the page image: the end-of-document mark after the last claim.
+  - drawing: image: '* * * * *', five spaced asterisks centred under claim 33
+  - text: layer: five stray 'c' characters on separate lines
+- **[p15.png]** OCR text layer against the page image: the X-ray source in claim 20.
+  - drawing: image: 'Cu' and 'K' followed by Greek alpha, joined by a long dash, transcribed as 'Cu-Kα' because the repo forbids the em dash character
+  - text: layer: 'Cu' then a long dash then 'KC.' (the long dash is written out in words here rather than quoted, because the repo forbids the character)

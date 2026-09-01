@@ -1,0 +1,40 @@
+[
+  {
+    "patent_id": "US20100041557A1",
+    "identifier": "tembotrione",
+    "identifier_type": "trivial_name",
+    "aliases": [
+      "Tembotrione",
+      "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+      "CS(=O)(=O)c1ccc(C(=O)C2=C(O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+      "CS(=O)(=O)c1ccc(C(O)=C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F"
+    ],
+    "resolved": true,
+    "unresolved_reference": false,
+    "section_label": "Formula I and Tautomers I' and I''",
+    "section_type": "formula_definitions",
+    "is_section_product": true,
+    "commercially_available": true,
+    "role": "product",
+    "quantity": null,
+    "ms_mz": null,
+    "nmr": null,
+    "melting_point": null,
+    "appearance": null,
+    "color": null,
+    "physical_form": null,
+    "analytics": null,
+    "purity_pct": null,
+    "purity_method": null,
+    "tags": [
+      "compound_class:active_ingredient",
+      "chemical_family:cyclohexanedione",
+      "functional_group:sulfone",
+      "functional_group:ketone",
+      "functional_group:ether",
+      "functional_group:trifluoromethyl",
+      "functional_group:halide_chloro"
+    ],
+    "notes": "ONE record, deliberately, for the three structures drawn in this section. The section states that tembotrione is the herbicidal active substance of the formula I or the tautomers I' and I\" and mixtures thereof, so the patent names one active substance in three tautomeric forms and not three substances. The three [IMAGE_EXTRACT: molecules] spans at lines 74, 76 and 78 are the only such spans in the whole document: formula I is the cyclohexane-1,3-dione, I' is the enol of a ring carbonyl, I\" is the enol of the exocyclic carbonyl. They are three distinct molecules by connectivity, not polymorphs, and all three read as C17H16ClF3O6S. The document also carries three distinct InChI keys, which is independent confirmation that these are three compounds and not one written three ways; the keys are deliberately left out of the aliases because the spans already hold them. The three SMILES aliases are the strings the document's own spans print at lines 74, 76 and 78, verbatim. build_enriched.py canonicalised them through RDKit from the vision pass's reading of the drawing, so they are the canonical writings of what was actually drawn and not a reconstruction of it. They are three distinct molecules by connectivity, carried as aliases of one substance because the patent treats tembotrione as one active in three tautomeric forms. They are carried per rule 4b and the structure field is left unpopulated per rule 4c; that decision is the run owner's. Formula I as printed at line 74 was checked atom by atom against the substitution pattern in the printed name, and it is byte-identical to the tembotrione structure the reference run carries. The labels formula I, I' and I\" are local labels for this substance and are not emitted as compounds. The section enumerates no Markush substituent, so no R-group fragment is emitted. Tembotrione is kept as an alias because the section prints it capitalised at the head of the sentence."
+  }
+]

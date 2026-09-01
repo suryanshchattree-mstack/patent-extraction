@@ -1,0 +1,233 @@
+[
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Example 4_Step 1",
+    "section_label": "Example 4",
+    "section_type": "experimental_intermediate",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "ester_formation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "lab",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "range",
+        "value_c": null,
+        "min_c": 25.0,
+        "max_c": 30.0
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": 2.0,
+      "reactor_type": "round bottomed flask",
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "quenched with water (160mL)",
+        "separated the organic layer",
+        "concentrated the organic layer"
+      ],
+      "quenching_agent": "water",
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": "concentration of the separated organic layer, method not stated",
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": [],
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": {
+        "type": null,
+        "value_pct": null
+      },
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 27.0,
+          "volume_ml": null,
+          "mmol": 110.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the flask under stirring at 25-30°C, after the dichloromethane and together with the 1,3-cyclohexanedione, before the DCC",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "1,3-cyclohexanedione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 12.0,
+          "volume_ml": null,
+          "mmol": 110.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the flask under stirring at 25-30°C, together with the NMSBA and before the DCC; in Example 5 the same two reagents are charged in the opposite order",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "N,N’-dicyclohexylcarbodiimide",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": 24.0,
+          "volume_ml": null,
+          "mmol": 120.0,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added to the mixture of the two substrates in dichloromethane, in one portion so far as the text says, then stirred for about2 hours at 25-30°C",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloromethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 160.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "charged first into the clean and pre-dried flask",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "water",
+        "role": "other",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": 160.0,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "added after the stir to quench the reaction mixture; the organic layer was then separated. A work-up medium, never a reaction solvent",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "enol ester of formula (II)",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": 25.4,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": 68.0
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": 85.0,
+        "purity_method": "hplc"
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulphonyl benzoic acid",
+      "1,3-cyclohexanedione"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "enol ester of formula (II)",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": 68.0,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": 85.0,
+    "product_purity_method": "hplc",
+    "canonical_rxn": null,
+    "procedure_text": "To a clean and pre-dried 250mL round bottomed flask, dichloromethane (160mL) NMSBA (27g, 0.11mol) and 1,3-cyclohexanedione(12g, 0.11mol) were added under stirring at the temperature of 25-30°C. To this mixture, N,N’-dicyclohexylcarbodiimide (DCC) (24g, 0.12mol) was added and stirred for about2 hours at 25-30°C. The reaction mixture was quenched with water (160mL) and separated the organic layer. The organic layer obtained was concentrated to obtain enol ester as white crystalline solid. HPLC purity >85%; Yield: 25.4g (68%); Melting point: 158-163°C and Solvent recovery: >85%.",
+    "procedure_summary": "The carboxylic acid NMSBA and 1,3-cyclohexanedione are stirred together in dichloromethane at ambient temperature and the carbodiimide coupling agent is then added, esterifying the acid onto the enol oxygen of the dione without any acid chloride. The mixture is quenched with water and the separated organic layer is concentrated to give the enol ester as a white crystalline solid.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:esterification",
+      "mechanism:ionic",
+      "analytics:hplc",
+      "analytics:melting_point",
+      "scale:lab",
+      "solvent_class:halogenated",
+      "catalyst_class:none",
+      "workup_type:aqueous_extraction",
+      "purification:none",
+      "green_chemistry:solvent_recovery",
+      "step_role:intermediate_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "ONE reaction record, matching A0's estimated_steps of 1. This is step (ii) of the invention's three-step route: NMSBA of formula (III) coupled with 1,3-cyclohexanedione to the enol ester of formula (II), with N,N’-dicyclohexylcarbodiimide as the coupling agent and dichloromethane as solvent. The section carries no numbered step markers of its own, so step_label is the synthetic \"Step 1\". This is the first of three sections (Examples 4, 5 and 6) that perform this same step.\n\nNO ACID CHLORIDE. The inventive point of this step is that it proceeds directly from the acid, and the section bears that out: the only reagents charged are the two substrates, the carbodiimide and the solvent. 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) appears nowhere in lines 291-303, in no role, and appears in no field of this record.\n\nREACTOR. \"a clean and pre-dried 250mL round bottomed flask\". The 250 mL volume is recorded here rather than in a numeric field because no field holds it. atmosphere is left null and NOT set to \"dry\": \"pre-dried\" describes preparation of the glassware before the charge, and the text names no drying tube, no inert gas and no maintained dry atmosphere over the reaction. Recording \"dry\" from a pre-dried flask would be inventing a condition the patent does not state. \"under stirring\" names a stirrer without saying which kind, so stirring.type is left null per prompt rule 9; a stirrer is fitted.\n\nTEMPERATURE. 25-30°C, recorded as a range. The patent prints it twice for this step, once for the charge (\"under stirring at the temperature of 25-30°C\") and once for the stir after the DCC addition (\"stirred for about2 hours at 25-30°C\"). They are the same range, so no choice arises: it is the step's temperature and also the addition temperature, and it is recorded in both places per prompt rule 9.\n\nTIME. time_h is 2.0, and this is one of the few steps in this document where the field can be filled. The patent prints \"about2 hours\", a SINGLE figure with a printing fault (no space after \"about\"), not a range. Contrast Examples 1 to 3, whose \"6-8hours\" is a range and where time_h must stay null because the scalar field cannot hold a range without stating a bound or a midpoint the patent does not print. Here 2 is the only number printed, so 2.0 is a transcription and not a computation. The qualifier \"about\" is an approximation on the patent's part and is preserved verbatim in procedure_text and in provenance; no field holds it. Example 5 at line 308 prints the same time as \"about 2 hours\" with the space; the closed-up form is this section's and is transcribed as printed.\n\nPRESSURE. Left not_specified. The text states no pressure, and \"concentrated\" gives no method, so no reduced-pressure reading can be taken from it either.\n\nWORKUP AND ISOLATION. Quenched with water (160mL), the organic layer separated, and that layer concentrated to give the product directly. quenching_agent is water. extraction_solvent is left null: no extraction solvent is added, and the separated organic layer is the dichloromethane already charged as the reaction solvent, so recording it as an extraction solvent would overstate what the text describes. extraction_count, extraction_volume_ml and washes are null for the same reason: one phase separation, no repeat, no wash. concentration_method is \"concentration of the separated organic layer, method not stated\": the text says only \"concentrated\" and names neither distillation nor reduced pressure. purification is null and the purification tag is \"none\" - the product comes out of the concentration as a white crystalline solid and the text states no recrystallisation, no chromatography and no trituration.\n\nPURITY AND YIELD. The unmarked analytical line at 302 belongs to paragraph [0050] above it. \"HPLC purity >85%\" is a MEASUREMENT on the one batch this Example made, reported as a lower bound rather than an equality, so the number is recorded: product_purity_pct 85.0 and the product compound's purity_pct 85.0, purity_method hplc. The inequality is kept verbatim in procedure_text and in provenance, and 85.0 is that printed bound, not an assayed equality. This is the same reading A1 took for the same compound, whose analytics entry holds raw_text \"HPLC purity >85%\" with the conditions note \"purity printed as a lower bound\", so A1 and A2 agree on the printed fact. It is a different kind of statement from the Detailed Description's \"at least 85%\", which is a specification of the invention in general and belongs in no numeric field. \"Yield: 25.4g (68%)\" gives both a mass and a percentage and both are measurements: mass_g 25.4 and yield_pct 68.0 on the product compound, product_yield_pct 68.0. The melting point 158-163°C has no field on a reaction record and lives on the A1 compound. Note the printed form here is \">85%\" closed up, where Example 5 prints \"> 85%\" with a space.\n\nSOLVENT RECOVERY. The same line prints \"Solvent recovery: >85%\". That is a property of the dichloromethane, not of the product, so it is recorded in neither product_purity_pct nor any compound's purity_pct. byproduct_recovery is left EMPTY rather than used for it: rule 14 scopes that field to a by-product being recovered or reused, and recovered reaction solvent is not a by-product. The text also names no recovery method and no reuse. The genuine by-product of a carbodiimide coupling, N,N’-dicyclohexylurea, is nowhere named in this section, so it gets no compound entry and no recovery entry. The printed recovery figure is tagged green_chemistry:solvent_recovery because the patent prints it, and it is a bound, not an assay.\n\nPROCESS CONTROL. None. The HPLC figure is an analysis of the isolated product, not in-process monitoring, so process_control is left empty. The stir is timed, not followed to an endpoint.\n\nCLASSIFICATION. ester_formation, high confidence: the carboxylic acid of NMSBA is joined to the enol oxygen of 1,3-cyclohexanedione, and the product is the O-acylated enol, an ester. named_reaction is null. \"Steglich esterification\" was considered and deliberately rejected: Steglich is carbodiimide coupling WITH an acyl-transfer catalyst, normally DMAP, and this procedure charges no such catalyst, so the name would be a stretch of the kind the prompt warns against. mechanism_type is ionic - the acid adds across the carbodiimide to an O-acylisourea and the enol then displaces the urea, an addition-elimination at the carbonyl with no radical, no catalytic cycle and no pericyclic step. catalyst_class is \"none\": DCC is charged at 1.09 equivalents on the acid and is consumed to N,N’-dicyclohexylurea, so it is a stoichiometric reagent, not a catalyst, and A1 typed it role reagent for the same reason.\n\nPRODUCT IDENTITY. product_name is \"enol ester of formula (II)\", the exact identifier string of the compounds[] entry with is_product true, taken from A1 verbatim. The section never gives this compound a systematic chemical name; the heading names it by its class term plus its formula number and the prose calls it \"enol ester\", which A1 carries as an alias. No description was coined for this field. Formula (II) and mesotrione of formula (I) are ISOMERS, both C14H13NO7S (confirmed with RDKit on the O-acylated and the C-acylated structures), and are different compounds; this step makes the O-acylated ester and step (iii) rearranges it.\n\nSCALE. lab. The limiting reagent charge is 12 g of 1,3-cyclohexanedione, or 27 g of the acid, both inside the 1 to 100 g band.\n\nDRAWING: THIS SECTION'S SCHEME IS PRINTED OUTSIDE ITS LINE RANGE. There is NO [IMAGE_EXTRACT: ...] span anywhere in lines 291-303; the count inside the range is zero and was checked. This section's own scheme is stranded at line 287, inside Example 3's range: p16.json records one drawing on the page, kind \"scheme\", between_markers [0049] to [0050], sitting between the Example 4 title line and [0050], which is this section's procedure; build_enriched.py anchored it on the first marker and so emitted it between Example 3's procedure and Example 3's analytical line. A0's note on Example 3 says the same and instructs A2 to attribute it here. It is attributed here in notes and provenance ONLY. Nothing was imported from it: no separate scheme record was emitted, and no reagent, solvent, condition or SMILES in this record comes from the drawing. Every structured field above comes from the prose of lines 295 to 302. A separate \"Scheme Step\" record under prompt rule 5f would be wrong here: that rule covers a section that recites a route in prose AND draws it as an overview, whereas this scheme draws the single transformation this Example's prose performs, in an experimental section, so it is corroboration for the one record rather than an overview of its own.\n\nDRAWING VERSUS PROSE. Where they overlap they agree, and where they differ the drawing is silent rather than contradictory. Connectivity and structure agree exactly: the drawing has NMSBA (C8H7NO6S, labelled Formula III) plus an unlabelled cyclohexane-1,3-dione (C6H8O2) joined by a printed '+', one solid arrow, and the enol ester (C14H13NO7S, labelled Formula II). All three of p16.json's SMILES canonicalise with RDKit to the same strings as the enriched span's, so the two readings of the drawing are one chemistry written from different ends. The arrow, however, is BARE: p16.json records reagents_above [] and reagents_below [] and states in terms that nothing whatsoever is written above or below it and that this is an absence on the page rather than a failed read. So the drawing contributes no reagent, no solvent and no condition, while the prose names dichloromethane, DCC, 25-30°C and about2 hours. reagent_written_not_drawn is raised on that basis, for DCC and for dichloromethane. drawing_text_conflict is deliberately NOT raised: an empty arrow states nothing that the prose contradicts, and per prompt rule 5c a conflict flag on a scheme that does not contradict its prose is a false finding. route_attribution_unclear is not raised either: the vision pass set presented_as \"invention_route\", and the scheme stands under the EXAMPLES heading drawing step (ii) of the invention's own route, not the four-step prior art of US 7,820,863. The second reactant is drawn with no printed label at all, so its identity in the drawing is read off the structure; the prose names it one paragraph later with its locants. That is p16.json's second recorded discrepancy and it changes no field, since the prose's name is what the record carries.\n\nARITHMETIC. Every printed pair closes, and the mass balance closes too. NMSBA: 27 g / 245.212 g/mol (C8H7NO6S, RDKit) = 0.11011 mol, printed 0.11 mol. 1,3-cyclohexanedione: 12 g / 112.128 g/mol = 0.10702 mol, printed 0.11 mol at two decimals. DCC: 24 g / 206.333 g/mol = 0.11632 mol, printed 0.12 mol at two decimals. Product: 25.4 g / 339.325 g/mol (C14H13NO7S) = 0.07486 mol, which on the printed 0.11 mol of acid is 68.05%, against the printed 68%; and 68% of the 37.33 g theoretical is 25.38 g, against the printed 25.4 g. mass_balance_implausible and molar_mass_inconsistent are therefore NOT raised, and nothing was corrected in either direction. One observation that changes no field: the dione at 0.10702 mol is very slightly the limiting reagent, so on the dione the yield would be 69.9%; the patent's 68% is computed on the acid. equivalents are left null throughout because the patent states none, and molar_ratio_text is null because the patent words no ratio.\n\nLINKAGE. precursor_step is left NULL, and this is a recorded ambiguity rather than a gap. NMSBA is charged here as a starting material with no back-reference: the section says nothing like \"the product of Example 3\" and gives no batch. Three earlier sections each prepare it - Example 1 from 61.2 g NMST, Example 2 from 5.0 g, Example 3 from 20 g - so a precursor is not absent but ambiguous, and naming one would resolve silently what the document leaves open. The identifier does match, so rule 24's test would pass for any of the three, which is precisely why no single one can be confirmed; linkage_confirmed is false. One quantitative observation, recorded because it is a fact about the printed numbers and not because it settles anything: this step charges 27 g of NMSBA, more than Example 3's stated 68% of 20 g of NMST could have yielded, so if a single earlier batch were meant it could not be Example 3's. The examples read as independent illustrations at their own scales rather than as one linked campaign. The tag is linkage:standalone, mirroring the null precursor_step rather than asserting a link the record's own fields do not carry: a linkage:cross_section_linked tag would send a consumer looking for a precursor step this record does not name. That the starting material is nonetheless one this document prepares elsewhere is recorded here in words, and matches how Examples 1 and 6 tag the same situation. scale_discontinuity is NOT raised: with no precursor step recorded there is no previous step's output for this charge to disagree with, and the mass observation above is stated in full here instead of being compressed into a flag.\n\nTRANSLATION. None to record. The document is English throughout and each \"> EN:\" line in this range is a byte-identical duplicate of the source line above it, so no translation_conflict arises and every quote is taken from the source line, not the EN partner. The page comment for p17 at line 298 is a rendering artefact of the p16/p17 page break that cuts [0050]; it is not text and is stripped from procedure_text, which rejoins line 295 to line 300 as the patent's one sentence.\n\nMODEL PROVENANCE. This record was produced by Claude Opus 5 reading lines 291-303, the p16 vision report, and the A1 compound file for this section."
+  }
+]

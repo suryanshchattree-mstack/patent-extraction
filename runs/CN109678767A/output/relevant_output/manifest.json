@@ -8,7 +8,7 @@
       "title": "render the annotation prompts for THIS patent, for the agent to follow",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 render_prompts.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python render_prompts.py --patent-id CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -161,7 +161,7 @@
       "title": "vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 build_enriched.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python build_enriched.py --patent-id CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -297,7 +297,7 @@
       "title": "concatenate the per-section A1 and A2 stage files into the raw arrays",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 merge_stages.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python merge_stages.py --patent-id CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -560,7 +560,7 @@
       "title": "deterministic ids and uuids, rollup, bibliographic merge",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 finalise.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python finalise.py --patent-id CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -638,7 +638,7 @@
       "title": "JSON Schema conformance of the finalised artifacts",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 schemas/validate.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python schemas/validate.py --patent-id CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -710,7 +710,7 @@
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python make_relevant_output.py --patent-id CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -998,7 +998,7 @@
       "title": "read every compound name a second time, with a parser instead of a model",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_names.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python resolve_names.py --patent-id CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -1036,7 +1036,7 @@
       "title": "reading B: ChemDataExtractor over the same lines reading A read",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 mentions.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python mentions.py --patent-id CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -1063,7 +1063,7 @@
       "title": "identifier -> drawable molecule over six tiers, plus the coverage gate",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_structures.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python resolve_structures.py --patent-id CN109678767A"
       ],
       "gate": true,
       "inputs": [
@@ -1341,7 +1341,7 @@
       "title": "Chinese string -> English for everything that can reach a screen, plus the coverage gate",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_translations.py CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python resolve_translations.py CN109678767A"
       ],
       "gate": true,
       "inputs": [
@@ -1404,8 +1404,8 @@
       "title": "the five method diagrams, the route diagram and the one-page summary",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN109678767A",
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python make_svgs.py --patent-id CN109678767A",
+        "/private/tmp/ep2045/venv/bin/python make_approach.py --patent-id CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -1573,7 +1573,7 @@
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 svg2jpg.py --all"
+        "/private/tmp/ep2045/venv/bin/python svg2jpg.py --all"
       ],
       "gate": false,
       "inputs": [
@@ -1681,7 +1681,7 @@
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python make_relevant_output.py --patent-id CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -2494,7 +2494,7 @@
       "title": "every reaction joined to the structures of its participants",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 export_reactions.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python export_reactions.py --patent-id CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -2537,7 +2537,7 @@
       "title": "the page index, the structure comparisons and the drawing claims the UI shows",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_visual_evidence.py --patent-id CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python make_visual_evidence.py --patent-id CN109678767A"
       ],
       "gate": true,
       "inputs": [
@@ -2950,7 +2950,7 @@
       "title": "the verification contract file the reviewer UI reads",
       "status": "failed (1)",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 verify.py CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python verify.py CN109678767A"
       ],
       "gate": true,
       "inputs": [
@@ -2977,7 +2977,7 @@
       "title": "grade the verification engine's own output without trusting its exit code",
       "status": "ran",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 verify_selfcheck.py CN109678767A"
+        "/private/tmp/ep2045/venv/bin/python verify_selfcheck.py CN109678767A"
       ],
       "gate": false,
       "inputs": [
@@ -2993,8 +2993,8 @@
         },
         {
           "path": "output/relevant_output/verification/checks-CN109678767A.json",
-          "sha256": "555e9f19f987c2c76c9cc8d89170b3f6ff21d49696d2ad07c8e977be160240ab",
-          "bytes": 7683262
+          "sha256": "2e47dfd04f2cadc2004be29bfc7b88a111ba22428389d1d977f1db128d8839a7",
+          "bytes": 7680598
         }
       ],
       "outputs": []
@@ -11052,8 +11052,8 @@
     },
     {
       "path": "output/relevant_output/verification/checks-CN109678767A.json",
-      "sha256": "555e9f19f987c2c76c9cc8d89170b3f6ff21d49696d2ad07c8e977be160240ab",
-      "bytes": 7683262,
+      "sha256": "2e47dfd04f2cadc2004be29bfc7b88a111ba22428389d1d977f1db128d8839a7",
+      "bytes": 7680598,
       "stage": "verify",
       "input_sha256": [
         "6a0cb0136c5eaf9c0a4584a99aef6c1562d62c1044563e8246077f1b58d0570b",
@@ -14255,7 +14255,7 @@
     "artifacts_produced": 226,
     "artifacts_unclaimed": 1,
     "artifacts_stray": 0,
-    "bytes_produced": 28692975
+    "bytes_produced": 28690311
   },
   "deliverable_matches_output": true,
   "stale_copies": []

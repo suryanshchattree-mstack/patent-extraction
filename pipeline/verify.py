@@ -1373,14 +1373,29 @@ class Engine:
     # ------------------------------------------------- the three review queues
 
     def promoted_fields(self) -> dict[str, list[str]]:
-        """Record -> the claim-field prefixes some failing check on it names."""
+        """Record -> the claim-field prefixes some failing check on it names.
+
+        A check that names no field promotes nothing. This used to append "" for
+        such a check, and "" is a prefix of every field name, so ONE fieldless
+        failure pulled every claim on its record into the census. Two
+        `completeness.unmapped` checks on US20100041557A1's tembotrione record
+        promoted all 33 of its claims that way, and the two numbers behind them
+        are "at least 95 wt. % consists of the crystalline form A": a limit on
+        what the patent claims, which no field on a compound record can hold and
+        which recording as purity_pct would misreport as an assay.
+
+        Nothing is hidden by dropping the blanket. A failing check is already a
+        tier 1 claim in its own right through the `_finding` branch of
+        assign_tiers, and the completeness family also emits its own tier 2
+        `__quantity__` claim per number, so the reviewer still meets every one.
+        """
         out: dict[str, list[str]] = {}
         for rec in self.records:
             for c in rec.checks:
                 if c["status"] != "fail":
                     continue
                 out.setdefault(rec.record_id, [])
-                out[rec.record_id].extend(c["about_fields"] or [""])
+                out[rec.record_id].extend(f for f in (c["about_fields"] or []) if f)
         return out
 
     def assign_tiers(self) -> None:
@@ -4138,7 +4153,7 @@ class Run(Engine):
                 sigs = self.signals(n, reagent_names)
                 if citers:
                     status = "covered"
-                elif kind == "translation":
+                elif kind == "translation" or n in self.source.en_hint:
                     # A translation line is not source. build_enriched.py writes
                     # one under each paragraph, and a record cites the original,
                     # not its rendering. Counting it as uncited chemistry asks a
@@ -4146,6 +4161,26 @@ class Run(Engine):
                     # patent prints and once about the machine's English for it.
                     # On a German patent that is most of the census, because
                     # every paragraph has such a partner.
+                    #
+                    # `kind` alone is not enough, and this is measured, not
+                    # supposed. Only the FIRST line of a translation carries the
+                    # "    > EN: " mark; every continuation line after it looks
+                    # exactly like a line of the patent, so `kind` sees one line
+                    # of a block and calls the rest source. Every table in
+                    # US20100041557A1 is repeated inside its own translation, and
+                    # 40 of that run's 64 coverage claims were the English copy of
+                    # a table row a record already cites in the original.
+                    #
+                    #   714  16 A crystalline form A of ...     <- source
+                    #   717  | 1 | 5.6+-0.2 deg |               <- source, cited
+                    #   726      > EN: A crystalline form A ...  <- kind=translation
+                    #   727  | 1 | 5.6+-0.2 deg |               <- English, NOT source
+                    #
+                    # en_hint is resolve_translations.py's paragraph walk, which is
+                    # the only thing that knows where a block ends. A regex cannot:
+                    # tried here first, it read claim 16's own 2theta table as
+                    # English because a claim number does not close a run the way a
+                    # paragraph marker does.
                     status = "covered"
                 elif sigs:
                     status = "uncited_with_chemistry"

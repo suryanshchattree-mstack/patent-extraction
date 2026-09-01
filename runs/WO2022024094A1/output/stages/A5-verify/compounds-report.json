@@ -1,0 +1,303 @@
+{
+  "artifact": "compounds",
+  "records_audited": 43,
+  "findings": [
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "mesotrione",
+      "field": "quantity",
+      "problem": "The record for the patent's target compound carries no mass and no yield although Example 7 prints both, because the cross-section merge overwrote Example 7's quantity object with the empty quantity of an alphabetically later section while keeping Example 7's melting point and appearance.",
+      "source_line": 331,
+      "quote": "HPLC purity >95%; Yield: 17g (85%); Melting point of the solid was 155-157°C;and solvent recovery: > 85%.",
+      "artifact_says": "quantity: {mass_g: null, volume_ml: null, mmol: null, equivalents: null, yield_pct: null}, while melting_point, appearance and purity_pct on the same record all come from Example 7",
+      "should_be": "quantity.mass_g 17.0 and quantity.yield_pct 85.0; fix finalise's merge so the most complete quantity survives (A1 rule 4), not by hand-editing the artifact. Note that the reference run runs/CN104292137A/output/compounds.json does keep mass_g and yield_pct on its Example 1 products, so this is not production-parity behaviour that the format requires.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "enol ester of formula (II)",
+      "field": "quantity",
+      "problem": "Same merge defect: the enol ester record carries no mass, mmol or yield although three examples print its isolated mass and yield and Example 7 prints its charge.",
+      "source_line": 318,
+      "quote": "HPLC purity > 85%; Yield: 22.8g (66%). Melting point 157-163°C and Solvent recovery >85%.",
+      "artifact_says": "quantity all null (melting_point 157-163 and appearance from the same Example 6 record did survive)",
+      "should_be": "quantity.mass_g 22.8 and quantity.yield_pct 66.0 (Example 6, the last example section that makes it a product); the Example 4, 5 and 7 numbers remain in reactions.json",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "2-nitro-4-methylsulphonyl benzoic acid",
+      "field": "quantity",
+      "problem": "Same merge defect: no mass, mmol or yield on the NMSBA record although it is charged by mass in Examples 4 to 6 and produced with a stated yield in Examples 1 to 3.",
+      "source_line": 316,
+      "quote": "dichloromethane (100mL) NMSBA (25g, 0.10mol) and 1, 3-cyclohexanedione (12g, 0.11mol) were added under stirring",
+      "artifact_says": "quantity all null; the three HPLC purities (95, 92, 95) from Examples 1 to 3 did survive because analytics is a list",
+      "should_be": "quantity.mass_g 25.0 and quantity.mmol 100.0 (Example 6, the last section that gives it a quantity)",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "2-nitro-4-methylsulfonyl toluene",
+      "field": "quantity",
+      "problem": "Same merge defect: the starting material carries no mass or mmol although every one of Examples 1 to 3 charges it by mass and moles.",
+      "source_line": 285,
+      "quote": "NMST (20g, 0.088mol), sodium hypochlorite (150ml, 0.222mol) and ruthenium oxide (0.5g, 0.004mol) were charged into a 500ml round bottomed flask.",
+      "artifact_says": "quantity all null",
+      "should_be": "quantity.mass_g 20.0 and quantity.mmol 88.0 (Example 3, the last example section)",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "1,3-cyclohexanedione",
+      "field": "quantity",
+      "problem": "Same merge defect on a reactant: no mass or mmol although Examples 4 to 6 all charge it by mass and moles.",
+      "source_line": 316,
+      "quote": "1, 3-cyclohexanedione (12g, 0.11mol)",
+      "artifact_says": "quantity all null",
+      "should_be": "quantity.mass_g 12.0 and quantity.mmol 110.0 (Example 6)",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "ruthenium oxide",
+      "field": "quantity",
+      "problem": "Same merge defect on the catalyst: no mass or mmol although all three oxidation examples charge it, and its printed g/mol pair is the only evidence in the document that fixes the oxide as RuO2 (0.5 g / 0.004 mol implies 125 g/mol, 1.5 g / 0.011 mol implies 136 g/mol; RuO2 is 133.07).",
+      "source_line": 285,
+      "quote": "ruthenium oxide (0.5g, 0.004mol) were charged into a 500ml round bottomed flask",
+      "artifact_says": "quantity all null",
+      "should_be": "quantity.mass_g 0.5 and quantity.mmol 4.0 (Example 3)",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "2-nitro-4-methylsulphonyl benzoic acid",
+      "field": "melting_point",
+      "problem": "Example 2's melting point is absent from every delivered artifact: melting_point is a single object, the merge kept only 210-214 from Examples 1 and 3, and reactions.json has no melting point field at all, so 207-210 survives nowhere outside the pre-merge raw dump.",
+      "source_line": 279,
+      "quote": "HPLC purity > 92%; Yield: 67%; and Melting point: 207-210°C.",
+      "artifact_says": "melting_point {min_c: 210.0, max_c: 214.0, range_text: \"Melting point: 210-214°C\"}",
+      "should_be": "carry the second range as well, or record it in notes; the minimal fix is a note on this record naming 207-210°C as Example 2's value. Do not overwrite the surviving range.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": "enol ester of formula (II)",
+      "field": "melting_point",
+      "problem": "Two of the three printed melting point ranges for the enol ester are absent from every delivered artifact for the same single-slot reason.",
+      "source_line": 302,
+      "quote": "HPLC purity >85%; Yield: 25.4g (68%); Melting point: 158-163°C and Solvent recovery: >85%.",
+      "artifact_says": "melting_point {min_c: 157.0, max_c: 163.0} only (Example 6); Example 4's 158-163 and Example 5's 152-158 appear nowhere",
+      "should_be": "record the other two ranges in notes on this record (Example 4: 158-163°C, Example 5: 152-158°C)",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "enol ester of formula (II)",
+      "field": "appearance",
+      "problem": "The three examples describe the enol ester differently and only the last survives; Example 4's 'white crystalline solid' and Example 5's 'off white crystalline solid' (physical_form crystals in the pre-merge record) are absent from every delivered artifact.",
+      "source_line": 300,
+      "quote": "The organic layer obtained was concentrated to obtain enol ester as white crystalline solid.",
+      "artifact_says": "appearance \"off white colour solid\", color \"off white\", physical_form \"solid\"",
+      "should_be": "note the other two descriptions on the record; the difference between white and off white crystalline material across a 1 g and a 27 g run is exactly the kind of disagreement CLAUDE.md rule 8 says must not be averaged away silently",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "mesotrione",
+      "field": "notes",
+      "problem": "The notes assert a disagreement between two sections that does not exist anywhere in the annotation: no record in any artifact carries a triketone family tag, and the Claims record tags chemical_family:cyclohexanedione, identical to Background.",
+      "source_line": 40,
+      "quote": "Abstract: The present disclosure provides a new and improved process for preparation of intermediate compounds and synthesis of mesotrione therefrom.",
+      "artifact_says": "\"chemical_family is skipped rather than guessed, the abstract giving only the trivial name; the two sections annotated earlier disagree on it, Background choosing cyclohexanedione and Claims triketone\"",
+      "should_be": "delete the clause about the Claims section, or correct it: grep for 'triketone' across output/ returns only this note. A false statement in the field the repo relies on to carry disagreements is worse than no note.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": "compounds-equivalence.json",
+      "problem": "The equivalence side channel is an empty object, so a consumer reads it as 'no fragmentation', yet at least two pairs of records in compounds.json are one molecule under two spellings: '(CH3CH2 )3N' and 'triethylamine', and 'cyclohexanedione' and '1,3-cyclohexanedione', which carry the identical SMILES alias O=C1CCCC(=O)C1 on both records.",
+      "source_line": 68,
+      "quote": "\"conditions\": [{\"text\": \"(CH3CH2 )3N\"}, {\"text\": \"Solvent\"}]",
+      "artifact_says": "output/compounds-equivalence.json == {}   (the record's own notes say \"The condensed formula is triethylamine\")",
+      "should_be": "list the two groups in compounds-equivalence.json. What would settle whether this is a generator limitation rather than an omission: whether finalise's equivalence key looks only at normalised names (in which case a formula-versus-name pair and a locant-versus-no-locant pair can never be detected, and the file must not be read as evidence of absence).",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "1,3-cyclohexanedione",
+      "field": "tags",
+      "problem": "Two compound_class tags on one record, from a union of per-section tags; A1 rule 18 requires exactly one.",
+      "source_line": 316,
+      "quote": "1, 3-cyclohexanedione (12g, 0.11mol)",
+      "artifact_says": "tags: [\"compound_class:reagent\", \"chemical_family:cyclohexanedione\", \"functional_group:ketone\", \"compound_class:starting_material\"]",
+      "should_be": "one compound_class tag; starting_material fits rule 18's mapping for a purchased material that no step of this patent prepares",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "2-nitro-4-methylsulphonyl benzoyl chloride",
+      "field": "role",
+      "problem": "role 'other' is less specific than the text supports and contradicts the record's own notes, which say the role was recorded as product; the merge took the value from the alphabetically last section rather than the most specific one.",
+      "source_line": 64,
+      "quote": "(ii) conversion of NMSBA to 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC), and (iii) reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester",
+      "artifact_says": "role: \"other\"; notes: \"Product of step (ii) of US 7,820,863 and the acylating reactant of step (iii); role recorded as product and the second use noted.\"",
+      "should_be": "role 'product' (per rule 9, the most specific role the text supports), or amend the notes so the record does not contradict itself",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "cyclohexanedione",
+      "field": "unresolved_reference",
+      "problem": "unresolved_reference is true for a bare ambiguous chemical name, while the three other locant-ambiguous or class names in the same artifact (dichloroethane, dichloropropanes, alkali metal hypochlorite) carry false with the same resolved:false; the flag is applied inconsistently.",
+      "source_line": 64,
+      "quote": "(iii) reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester",
+      "artifact_says": "resolved: false, unresolved_reference: true",
+      "should_be": "unresolved_reference false (A1 rule 6 attaches the flag to a local label or functional reference, not to an ambiguous name), or set it true on the other four unresolved names for consistency",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "dichloromethane",
+      "field": null,
+      "problem": "The repeated 'solvent recovery > 85%' figure survives only as prose inside notes; byproduct_recovery is an empty list on all seven example reactions in reactions.json, so nothing structured carries it. File against reactions.json.",
+      "source_line": 302,
+      "quote": "HPLC purity >85%; Yield: 25.4g (68%); Melting point: 158-163°C and Solvent recovery: >85%.",
+      "artifact_says": "compounds.json notes: \"The unmarked line 302 also prints 'Solvent recovery: >85%' ... recorded here in words only\"; reactions.json byproduct_recovery: []",
+      "should_be": "a byproduct_recovery entry for dichloromethane on Examples 4, 6 and 7 in reactions.json",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "minor",
+      "record": "mesotrione",
+      "field": "purity_pct",
+      "problem": "A printed lower bound is stored as a point value: purity_pct 95.0 for a patent that says only '>95%'. The bound is flagged in analytics.conditions and in notes, but a scorer reading purity_pct sees an exact number the patent never states. Recurs on 2-nitro-4-methylsulphonyl benzoic acid (95.0) and on the enol ester (85.0).",
+      "source_line": 331,
+      "quote": "HPLC purity >95%",
+      "artifact_says": "purity_pct: 95.0, purity_method: \"hplc\"",
+      "should_be": "either keep the bound out of purity_pct and leave it to analytics.raw_text, as was done for [0037]'s 'at least 85%', or state the convention once in the run notes so a scorer knows purity_pct means 'stated bound'",
+      "confidence": "low"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "ruthenium oxide",
+      "field": "identifier_type",
+      "problem": "identifier_type 'iupac' for a name that states neither oxidation state nor stoichiometry; the pre-merge records disagreed (trivial_name in Claims and in the Detailed Description, iupac in the three examples and the Summary) and the merge silently took the majority.",
+      "source_line": 348,
+      "quote": "using an oxidant in presence of ruthenium oxide as a catalyst",
+      "artifact_says": "identifier_type: \"iupac\"",
+      "should_be": "'other' or 'trivial_name' for the bare name, the (IV) form staying as the alias it already is; low confidence because the enum has no entry for an underspecified inorganic name and either choice is inside the closed list",
+      "confidence": "low"
+    },
+    {
+      "check": "drawings",
+      "severity": "minor",
+      "record": null,
+      "field": null,
+      "problem": "Three scheme spans are anchored to the wrong place in the enriched markdown: the Example 4 scheme, printed on p16 under the Example 4 heading and above [0050], is emitted at line 287 inside Example 3's paragraph; the Example 1 scheme, printed on p15 under the Example 1 heading, is emitted at line 256 above the EXAMPLES heading; and the three schemes printed inside the steps of claim 1 on p19 are all emitted above 'We Claim:'. The vision content of each is correct; only the position is wrong.",
+      "source_line": 287,
+      "quote": "[IMAGE_EXTRACT: {\"reactions\": [{\"step_id\": 1, \"reactants\": [{\"smiles\": \"CS(=O)(=O)c1ccc(C(=O)O)c([N+](=O)[O-])c1\", \"molecular_formula\": \"C8H7NO6S\"",
+      "artifact_says": "the Example 4 record's notes: \"NO structure span falls in lines 291-303: the scheme drawing for this step is printed at line 287, inside Example 3's range, so no SMILES alias is recorded here\"",
+      "should_be": "re-anchor the spans in the enriched markdown so Example 4's scheme falls inside Example 4. The consequence in compounds.json is limited (the merged enol ester record has the SMILES alias from other sections, and no compound was wrongly attributed to Example 3), but any per-section scoring of drawing-derived aliases inherits the offset.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": null,
+      "field": null,
+      "problem": "'acetate ion', named in the prose of [006] as a component of the US 5,591,890 oxidation, has no record and is not an alias; the artifact carries only the drawing's 'Sodium acetate'.",
+      "source_line": 70,
+      "quote": "the oxidation is carried out in the presence of acetic acid and acetate ion and using cobalt(II) acetate tetra hydrate as a catalyst",
+      "artifact_says": "record 'Sodium acetate', aliases [], notes: \"The prose of [006] names no salt, only 'acetate ion'; the drawing supplies the sodium counter ion. Both readings kept: 'acetate ion' is not recorded as a compound of its own and is not folded in as an alias\"",
+      "should_be": "arguably no change: the decision is explicit and defensible, since the prose names an ion and the drawing names a salt. Listed only so the omission is on the record; low confidence that it should be a separate record at all.",
+      "confidence": "low"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "drawings - structures",
+      "what_was_verified": "Opened p02, p03, p04, p05, p15, p16, p18 and p19 and read every drawn structure against its IMAGE_EXTRACT SMILES atom by atom. All four aryl compounds are drawn with the acyl or methyl group at C1, nitro at C2 and methylsulfonyl at C4, which is what the SMILES encode (nitro ortho to the C1 group, sulfone two bonds further round). The dione drawn on p03 and p19 has its carbonyls two bonds apart, so 1,3 and not 1,4, matching O=C1CCCC(=O)C1. The enol ester is drawn with the ester oxygen on the alkene carbon and the ketone one carbon further round, i.e. 3-oxocyclohex-1-en-1-yl, matching OC2=CC(=O)CCC2. Mesotrione is drawn in the keto tautomer with the 2-position CH, not as the enol, matching C(=O)C2C(=O)CCCC2=O. No substituent position looks inferred rather than read."
+    },
+    {
+      "check": "drawings - arrow text above versus below",
+      "what_was_verified": "p03 lower scheme prints (CH3CH2)3N above the arrow and 'Solvent' below; p04 upper scheme prints three reagents above and nothing below; p04 middle and lower schemes and p05 print reagents above and the temperature below. The spans flatten above and below into one conditions list, but nothing crossed into the wrong artifact: 'Solvent' and 'Oxidant' produced no compound records, the temperatures produced none, and every reagent word that names a compound has a record with a sensible role (acetic acid additive, sodium acetate additive, cobalt(II) acetate tetra hydrate catalyst, sulfuric acid acid, nitric acid oxidant, vanadium pentoxide catalyst, O2 oxidant, (CH3CH2 )3N base)."
+    },
+    {
+      "check": "drawings - background scheme not sold as the invention",
+      "what_was_verified": "Every compound that exists only in the five cited prior-art routes sits on a Background record whose notes name the cited patent (US 7,820,863, US 5,591,890, US5424481, CN105669504A, CN106565561A). The unlocanted 'cyclohexanedione' of US 7,820,863 is kept as its own Background record and is not conflated with the invention's 1,3-cyclohexanedione, and the acid chloride NMSBC, which the invention exists to avoid, is not marked as a product of this document's route."
+    },
+    {
+      "check": "precision - no fabricated names",
+      "what_was_verified": "Every one of the 43 identifiers and every one of their 60 aliases occurs verbatim in the source after whitespace normalisation, checked mechanically against the non-EN lines of the enriched markdown; nothing case-only, nothing absent. SMILES strings in aliases are the drawn structures, which A1 rule 4b requires and rule 4c pairs with a null smiles field; there is no smiles, molecular_formula, molecular_weight, inchi or vector field on any record."
+    },
+    {
+      "check": "precision - no invented characterisation",
+      "what_was_verified": "nmr and ms_mz are null on all 43 records, which is right: the patent prints no NMR, no MS and no elemental analysis. melting_point and appearance are non-null on exactly the three isolated products, never on a reagent or solvent. No condition-like default (atmosphere, pressure) exists on this record type to be invented."
+    },
+    {
+      "check": "provenance",
+      "what_was_verified": "All 109 provenance entries checked mechanically: every quote fragment appears verbatim in the lines it cites, and the identifier set of the sidecar is exactly the identifier set of the artifact, with no orphan on either side."
+    },
+    {
+      "check": "fidelity - quantities that are present",
+      "what_was_verified": "All eight populated quantities re-read against their lines: sodium hypochlorite 150 ml / 222 mmol (line 285), DCC 21 g / 100 mmol (316), sodium cyanide 1.2 g / 25 mmol (329), dichloromethane 60 ml (329), triethylamine 6.6 g / 65 mmol (329), concentrated hydrochloric acid 54 ml / 510 mmol (285), water 100 ml (329), aqueous hydrochloric acid 5.4 ml / 54 mmol (329). Every mol to mmol conversion is exact, no volume was read as a mass, and no quantity from one example leaked into another: each populated record carries the numbers of its own surviving section."
+    },
+    {
+      "check": "fidelity - ranges and reflux",
+      "what_was_verified": "Every temperature the examples print is a range and none was flattened into a point on this artifact (compounds.json carries no temperature field, and the melting points keep min_c and max_c with range_text verbatim, including the printed variants 'Melting point: 210-214°C', 'Melting point 157-163°C' and 'Melting point of the solid was 155-157°C'). 'heated to reflux temperature' was not recorded anywhere as a numeric temperature."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "Every example closes to within rounding, so no validation flag is owed. Example 4: 27 g NMSBA is 0.110 mol, theoretical enol ester 37.4 g, 25.4 g is 67.9 percent against a printed 68. Example 5: 1.0 g is 0.00408 mol, theoretical 1.38 g, 0.89 g is 64.3 against a printed 65. Example 6: 25 g is 0.102 mol, theoretical 34.6 g, 22.8 g is 65.9 against a printed 66. Example 7: enol ester and mesotrione are isomers at 339.3 g/mol, so 17 g from 20 g is 85.0 against a printed 85. Reagent g/mol pairs also check out: RuO2 133.07 against 1.5/0.011 and 0.5/0.004, DCC 206.3 against 21/0.10, NaCN 49.0 against 1.2/0.025, triethylamine 101.2 against 6.6/0.065. The patent's own NMST pairs are 2 to 5 percent off the true 215.2 g/mol (61.2 g called 0.278 mol, 20 g called 0.088 mol); that is a source rounding, it is printed as it stands, and since this artifact carries no NMST quantity there is nothing on the record to flag. Step to step continuity is not violated because the examples are independent batches, not a chain: Example 3 makes about 15 g of NMSBA and Example 4 charges 27 g, which Example 1's 0.278 mol run covers."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "Not applicable, and verified rather than assumed: a codepoint scan finds zero CJK characters in the enriched markdown, the front page states filing and publication language English (lines 22 to 24), and each 'EN:' line is a byte copy of the line above it apart from stripped front-page tags. There is therefore no Chinese for the artifact to have followed or departed from."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "Not applicable to this artifact: CompoundRecord has no precursor_step or linkage_confirmed field. The related claim that is checkable here, that no compound record asserts a step relationship, holds."
+    },
+    {
+      "check": "vocabulary",
+      "what_was_verified": "All 43 identifier_type values, all 43 role values, all physical_form values, all analytics.method values and all purity_method values are inside their closed A1 lists, with no case mismatch. Every tag is category:value with a lowercase snake_case ASCII value, every tag category is one of the four A1 categories, and every compound_class and hazard value is in its list. One violation only, filed above: two compound_class tags on 1,3-cyclohexanedione."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "The 25 keys of every record are exactly the 25 keys of every record in runs/CN104292137A/output/compounds.json, and the id convention matches (patent_id underscore identifier). id and compound_uuid are present by design, not leaked from A1: the A1 prompt tells the pass to omit them because finalise.py computes them, and the reference run carries them too, so flagging them would be a false critical. No enrichment field, no smiles, no vector, no missing required field."
+    },
+    {
+      "check": "recall - compound inventory",
+      "what_was_verified": "Read all 23 pages section by section and listed every chemical entity named in prose or on an arrow. Solvents, washes and acidifying agents were checked explicitly rather than skimmed: dichloromethane, the four other chlorinated alternatives in both [0037] and claim 9, water as quench and as wash, concentrated and aqueous hydrochloric acid as two separately printed forms, and all seven organic bases of [0043] are present. The seven generic phrases that name no compound ('an oxidant', 'Solvent', 'peroxide', 'a cobalt salt', 'the ruthenium catalyst', 'aqueous caustic solution', 'intermediate compounds') are correctly absent, each with a note saying why, and 'ruthenium dioxide' from [0033] is an alias of the ruthenium oxide record rather than a missing record."
+    },
+    {
+      "check": "notes - checkable assertions",
+      "what_was_verified": "Spot-checked the counting claims in notes against the text: mesotrione named eleven times in Background (6 lower case, 5 capitalised), NMST six times and NMSBA seven times in Background, the three sulphonyl spelling variants distributed exactly as the notes say across [005] to [009], and RuO2 eight times, ruthenium (IV) oxide three times, ruthenium oxide and ruthenium dioxide once each in the Detailed Description. All held. The one exception is the triketone claim filed above."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 44,
+    "present_in_artifact": 43,
+    "missing": [
+      "acetate ion (line 70) - named in prose, no record and no alias; the annotation documents the decision on the Sodium acetate record, so this is the only compound-level gap I found and it is a defensible one"
+    ]
+  }
+}

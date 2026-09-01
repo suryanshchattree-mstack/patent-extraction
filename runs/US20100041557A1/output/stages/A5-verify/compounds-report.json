@@ -1,0 +1,516 @@
+{
+  "artifact": "compounds.json",
+  "records_audited": 497,
+  "findings": [
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Rhodopol 23 is named as a rheology modifier in its own right and carries no record, although the coordinate item Xanthan Gum in the same list was emitted.",
+      "source_line": 585,
+      "quote": "such as Xanthan Gum® (Kelzan® from Kelco Co.), Rhodopol® 23 (Rhone Poulenc) or Veegum® (R.T. Vanderbilt Co.) should be mentioned",
+      "artifact_says": "the section emits 'layer silicates', 'bentonites', 'attapulgites' and 'xanthan gum' only",
+      "should_be": "add a record identifier 'Rhodopol 23', role additive, resolved false, in formulation-surface-active-substances-and-au.json",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Veegum is named as a rheology modifier in its own right and carries no record, although the coordinate item Xanthan Gum in the same list was emitted.",
+      "source_line": 585,
+      "quote": "Rhodopol® 23 (Rhone Poulenc) or Veegum® (R.T. Vanderbilt Co.) should be mentioned",
+      "artifact_says": "no record for Veegum",
+      "should_be": "add a record identifier 'Veegum', role additive, resolved false, in formulation-surface-active-substances-and-au.json",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Benzoic acid is printed as the head of a mixing-partner entry and carries no record, even though it is a fully specified single compound and not a class term.",
+      "source_line": 708,
+      "quote": "benzoic acid and derivatives thereof",
+      "artifact_says": "mixtures-with-other-herbicides-and-plant-pro.json holds only tembotrione, the three forms, terbuthylazin, bromoxynil and its salt and esters, dicamba, S-metolachlor, pethoxamid and isoxadifen",
+      "should_be": "add a record identifier 'benzoic acid', identifier_type iupac, resolved true, role other",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "The roughly fifty chemical-class names of paragraph [0162] are omitted wholesale, while class terms of exactly the same kind are emitted elsewhere in the artifact; 'ureas' is printed in this list and is also emitted as a compound from line 564, so the same string is a compound in one section and not in another.",
+      "source_line": 708,
+      "quote": "halogen-carboxylic acids and derivatives thereof, ureas, 3-phenyluracils, imidazoles, imidazolinones, N-phenyl-3,4,5,6-tetra-hydrophthalimides, oxadiazoles, oxiranes, phenols",
+      "artifact_says": "notes on the tembotrione record state 'Those are class terms with no member named and no compound record is made for any of them'",
+      "should_be": "either emit the [0162] class terms as unresolved records, as the formulation sections do for 'ureas', 'fatty acids', 'clays' and 'polyacrylates', or state the distinguishing test and apply it to the formulation sections too",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Emulsifiers are named as an additive class alongside wetting agents and dispersant, both of which the artifact does emit as records, but no emulsifiers record exists anywhere.",
+      "source_line": 568,
+      "quote": "in particular those wetting agents, emulsifiers and dispersant (additives) normally used in plant protection agents",
+      "artifact_says": "'dispersants' and 'wetting agents' records exist in formulation-examples-i-to-x.json; no 'emulsifiers' record exists",
+      "should_be": "add a record identifier 'emulsifiers', role additive, resolved false, in formulation-composition-carriers-and-additiv.json",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Solid foam suppressants are named as a distinct antifoam type and carry no record, although the neighbouring 'foam suppressants of the aqueous wax dispersion type' was emitted as 'aqueous wax dispersions'.",
+      "source_line": 587,
+      "quote": "foam suppressants of the aqueous wax dispersion type, solid foam suppressants (so-called Compounds) and organofluorine compounds",
+      "artifact_says": "the section emits 'aqueous wax dispersions' and 'organofluorine compounds' but nothing for the solid type",
+      "should_be": "add a record identifier 'solid foam suppressants', role additive, resolved false",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "xanthan gum",
+      "field": "aliases",
+      "problem": "Kelzan is printed as the trade name of the same substance and is not carried as an alias, although the artifact did take 'Xanthan Gum' from the same parenthesis pair.",
+      "source_line": 585,
+      "quote": "Xanthan Gum® (Kelzan® from Kelco Co.)",
+      "artifact_says": "aliases: [\"Xanthan Gum\"]",
+      "should_be": "add 'Kelzan' to aliases",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "attapulgites",
+      "field": "aliases",
+      "problem": "Attaclay is printed as the trade name of the attapulgite named here and is not carried as an alias.",
+      "source_line": 585,
+      "quote": "bentonites or attapulgites (for example Attaclay®, Engelhardt Co.)",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'Attaclay' to aliases",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "silicone emulsions",
+      "field": "aliases",
+      "problem": "Silikon SRE is printed as a named silicone emulsion product and is not carried as an alias or as a record.",
+      "source_line": 587,
+      "quote": "the silicone emulsions known for this purpose (Silikon® SRE, Wacker Co. or Rhodorsil® from Rhodia Co.)",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'Silikon SRE' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "silicone emulsions",
+      "field": "aliases",
+      "problem": "Rhodorsil is printed as a second named silicone emulsion product and is not carried as an alias or as a record.",
+      "source_line": 587,
+      "quote": "Silikon® SRE, Wacker Co. or Rhodorsil® from Rhodia Co.",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'Rhodorsil' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "isothiazolones",
+      "field": "aliases",
+      "problem": "Proxel is printed as a named isothiazolone preservative product and is absent from both aliases and records.",
+      "source_line": 589,
+      "quote": "Suitable preservatives are those based on isothiazol-ones, for example Proxel® from ICI Co.",
+      "artifact_says": "aliases: [\"isothiazol-ones\"]",
+      "should_be": "add 'Proxel' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "isothiazolones",
+      "field": "aliases",
+      "problem": "Acticide is printed as a named isothiazolone preservative product and is absent from both aliases and records.",
+      "source_line": 589,
+      "quote": "or Acticide® from Thor Chemie Co.",
+      "artifact_says": "aliases: [\"isothiazol-ones\"]",
+      "should_be": "add 'Acticide' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "isothiazolones",
+      "field": "aliases",
+      "problem": "Kathon MK is printed as a named isothiazolone preservative product and is absent from both aliases and records.",
+      "source_line": 589,
+      "quote": "or Kathon® MK from Rohm & Hass Co.",
+      "artifact_says": "aliases: [\"isothiazol-ones\"]",
+      "should_be": "add 'Kathon MK' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "ligninsulfonates",
+      "field": "aliases",
+      "problem": "Borresperse is printed as the trade name of the ligninsulfonates named here and is not carried as an alias.",
+      "source_line": 579,
+      "quote": "for example ligninsulfonates (Borresperse types, Borregaard)",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'Borresperse types' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "naphthalenesulfonates",
+      "field": "aliases",
+      "problem": "Morwet is printed as the trade name of the naphthalenesulfonates named here and is not carried as an alias.",
+      "source_line": 579,
+      "quote": "naphthalenesulfonates (Morwet types, Akzo Nobel)",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'Morwet types' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "dibutylnaphthalenesulfonates",
+      "field": "aliases",
+      "problem": "Nekal is printed as the trade name of the dibutylnaphthalenesulfonates named here and is not carried as an alias.",
+      "source_line": 579,
+      "quote": "dibutylnaphthalenesulfonates (Nekal types, BASF)",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'Nekal types' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "maleic anhydride/olefin copolymers",
+      "field": "aliases",
+      "problem": "Sokalan CP9 is printed as the trade name of this copolymer and is not carried as an alias.",
+      "source_line": 579,
+      "quote": "maleic anhydride/olefin copolymers (for example Sokalan® CP9, BASF)",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'Sokalan CP9' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "maleic acid copolymers",
+      "field": "aliases",
+      "problem": "The BASF Sokalan types gloss on the maleic acid copolymers is not carried as an alias.",
+      "source_line": 583,
+      "quote": "maleic acid copolymers (BASF Sokalan types)",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'BASF Sokalan types' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "polyvinyl alcohol",
+      "field": "aliases",
+      "problem": "Mowiol is printed as the trade name of the polyvinyl alcohol named here and is not carried as an alias.",
+      "source_line": 583,
+      "quote": "polyvinyl alcohol (Mowiol types from Clariant)",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'Mowiol types' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "polyethyleneimines",
+      "field": "aliases",
+      "problem": "Lupasol is printed as the trade name of the polyethyleneimines named here and is not carried as an alias.",
+      "source_line": 583,
+      "quote": "polyethyleneimines (Lupasol types from BASF)",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'Lupasol types' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "aromatic and non-aromatic hydrocarbon mixtures",
+      "field": "aliases",
+      "problem": "Exxsol is printed as a trade name of these hydrocarbon mixtures and is absent from both aliases and records.",
+      "source_line": 566,
+      "quote": "including aromatic and non-aromatic hydrocarbon mixtures, for example the products marketed under the trade names Exxsol and Solvesso",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'Exxsol' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "aromatic and non-aromatic hydrocarbon mixtures",
+      "field": "aliases",
+      "problem": "Solvesso is printed as a trade name of these hydrocarbon mixtures and is absent from both aliases and records.",
+      "source_line": 566,
+      "quote": "the products marketed under the trade names Exxsol and Solvesso",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'Solvesso' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "arithmetic",
+      "severity": "major",
+      "record": "tembotrione crystalline form C",
+      "field": "notes",
+      "problem": "The note that records the form C cell-volume unit defect states the wrong conversion factor: cubic nanometres and cubic Angstrom differ by 10 cubed, that is 1000, not by 10 to the 21st.",
+      "source_line": 256,
+      "quote": "| volume | 1811.3(4) nm^3 |",
+      "artifact_says": "For edge lengths of 15.89, 7.10 and 16.14 Angstrom the unit is wrong by a factor of 10^21.",
+      "should_be": "replace '10^21' with '10^3'; 15.89 x 7.10 x 16.14 x sin(95.91 deg) = 1811 cubic Angstrom, which is the printed number with the wrong unit, and the printed density 1.616 Mg/m^3 is consistent with 1811 cubic Angstrom, not with 1811 cubic nanometres",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "tembotrione crystalline form C",
+      "field": "notes",
+      "problem": "The notes assert the molecular formula C17H16ClF3O6S on 80 tembotrione and crystal-form records, including sections whose text prints no formula, while A5 check 2 states the annotation is not permitted to contain formulae.",
+      "source_line": 244,
+      "quote": "[0043] Studies on single crystals of form C demonstrate that the underlying crystal structure is monoclinic.",
+      "artifact_says": "Crystalline form C of tembotrione ... Formula C17H16ClF3O6S.",
+      "should_be": "drop the formula sentence from notes, or cite lines 74, 76 and 78 where the [IMAGE_EXTRACT] spans print it, since it is printed nowhere else in the document",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "acetic acid",
+      "field": "tags",
+      "problem": "In the buffer list of [0124] acetic acid is given role acid but tagged compound_class:solvent, while the eight other acids in the same sentence are tagged compound_class:acid.",
+      "source_line": 622,
+      "quote": "such as for example phosphoric acid, boric acid, acetic acid, propionic acid, citric acid, fumaric acid, tartaric acid, oxalic acid and succinic acid",
+      "artifact_says": "role: acid, tags include compound_class:solvent",
+      "should_be": "change the tag on the formulation-liquid-formulations record to compound_class:acid to match its role and its eight neighbours",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "dioxan",
+      "field": "resolved",
+      "problem": "Dioxan is marked resolved true although its own note says the isomer is not stated, while xylene, propanol, butanol and glycol are marked resolved false on exactly that reasoning.",
+      "source_line": 384,
+      "quote": "| 4 | dioxan | needles and prisms |",
+      "artifact_says": "resolved: true, notes: 'No locant is printed anywhere in the document, so which isomer is meant is not stated by the patent.'",
+      "should_be": "set resolved false on the three dioxan records, matching the treatment of xylene",
+      "confidence": "medium"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "water",
+      "field": "identifier_type",
+      "problem": "Water carries identifier_type iupac in two sections and trivial_name in seven, so the merge by identifier in finalise.py will pick one arbitrarily.",
+      "source_line": 412,
+      "quote": "| 12 | acetonitrile | H2O | prisms, needles |",
+      "artifact_says": "iupac in formulation-composition-carriers-and-additiv.json and formulation-liquid-formulations-scs-and-ods.json, trivial_name in the other seven",
+      "should_be": "pick one value for all nine water records",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "dimethyl sulfoxide",
+      "field": "identifier_type",
+      "problem": "Dimethyl sulfoxide carries identifier_type trivial_name in two sections and iupac in a third, so the merged record is nondeterministic.",
+      "source_line": 388,
+      "quote": "| 8 | dimethyl sulfoxide | small prisms, needles |",
+      "artifact_says": "trivial_name in claims-16-33.json and examples-2-9.json, iupac in process-for-form-a.json",
+      "should_be": "pick one value for all three records",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "tetrahydrofuran",
+      "field": "identifier_type",
+      "problem": "Tetrahydrofuran carries identifier_type trivial_name in two sections and iupac in a third, so the merged record is nondeterministic.",
+      "source_line": 385,
+      "quote": "| 5 | tetrahydrofuran | small prisms |",
+      "artifact_says": "trivial_name in examples-2-9.json and process-for-form-a.json, iupac in formulation-liquid-formulations-scs-and-ods.json",
+      "should_be": "pick one value for all three records",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "propylene glycol",
+      "field": "identifier_type",
+      "problem": "Propylene glycol carries identifier_type trivial_name in one section and iupac in two others, so the merged record is nondeterministic.",
+      "source_line": 663,
+      "quote": "in a mixture of 7 parts by weight of propylene glycol and 63 parts by weight of water",
+      "artifact_says": "trivial_name in formulation-examples-i-to-x.json, iupac in the two formulation sections",
+      "should_be": "pick one value for all three records",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "tembotrione crystalline form C",
+      "field": "is_section_product",
+      "problem": "Two records in the claims section carry is_section_product true, where A1 rule 10 allows one per section.",
+      "source_line": 753,
+      "quote": "20 20. A crystalline form C of 2-[2-chloro-4-methyl-sulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]-cyclohexan-1,3-dione",
+      "artifact_says": "is_section_product true on both 'tembotrione crystalline form A' and 'tembotrione crystalline form C' in claims-16-33.json",
+      "should_be": "keep at most one, or record in notes why a claim set with two independent product claims is an intended exception",
+      "confidence": "low"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "tembotrione",
+      "field": "quote_zh",
+      "problem": "The bibliographic-data provenance quote is copied from the machine-normalised EN convenience line rather than from the printed text of lines 16 to 19, so it is not verbatim from the source corpus; it is the only such quote in 501.",
+      "source_line": 16,
+      "quote": "(54) CRYSTALLINE FORMS OF",
+      "artifact_says": "quote_zh: \"Title: Crystalline forms of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)benzoyl]cyclohexan-1,3-dione\"",
+      "should_be": "quote the printed capitalised title as it breaks across lines 16 to 19, or cite line 20 as the source of the quote",
+      "confidence": "high"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "m-cymene",
+      "field": "aliases",
+      "problem": "The identifier m-cymene is split out of a coordinated printed phrase and no alias records the printed form, unlike 'sulfated hexadecanols' and 'wood flour', which both carry the coordinated string they were split from.",
+      "source_line": 305,
+      "quote": "cymenes (isopropyltoluenes) such as m- and p-cymene",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'm- and p-cymene' to aliases, as the sulfated hexadeca-/heptadeca-/octadecanols records do",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "oils of plant origin",
+      "field": "aliases",
+      "problem": "The identifier is a constructed contraction of the printed phrase and no alias records what the page actually prints.",
+      "source_line": 629,
+      "quote": "hydrocarbons and oils, in particular those of plant origin",
+      "artifact_says": "aliases: []",
+      "should_be": "add 'oils, in particular those of plant origin' to aliases",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "tembotrione crystalline form C",
+      "field": "aliases",
+      "problem": "In four sections the form C record has empty aliases although the only printed evidence for it is the combined phrase 'the forms A or C', while the paired form A record in the same section does carry an alias, so the asymmetry loses the printed string on one of the two records.",
+      "source_line": 637,
+      "quote": "[0129] The forms A and C of tembotrione according to the invention can also be formulated as solid plant protection agents.",
+      "artifact_says": "form A carries aliases ['form A'] and form C carries [] in formulation-solid-plant-protection-agents.json; the same asymmetry appears at lines 533, 540 and 593",
+      "should_be": "carry the printed combined phrase on both records, as formulation-examples-i-to-x.json already does with 'form A or C'",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "tembotrione crystalline form A",
+      "field": "identifier",
+      "problem": "The identifier string 'tembotrione crystalline form A' is printed nowhere in the document; it is a constructed identifier on 80 records, and because buildCompoundId is a pure function of the identifier string it will not join to a production extractor that emits 'form A' or 'crystalline form A'.",
+      "source_line": 92,
+      "quote": "[0009] Accordingly, a first object of the present invention relates to the crystalline form A of tembotrione.",
+      "artifact_says": "identifier: 'tembotrione crystalline form A', identifier_type: 'other', printed forms in aliases",
+      "should_be": "either use a printed string such as 'crystalline form A of tembotrione' as the identifier, or record the constructed identifier and its join consequence in the run notes so the benchmark can normalise for it",
+      "confidence": "low"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "drawings",
+      "what_was_verified": "All three [IMAGE_EXTRACT] spans, at lines 74, 76 and 78, were checked against the rendered page image input/pages/p04.png. Formula (I) is drawn as the 2-benzoylcyclohexane-1,3-dione with a ring CH at C2; the SMILES CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F encodes exactly that. Aryl substituent positions were read off the page and not inferred: benzoyl at C1, Cl at C2, CH2-O-CH2-CF3 at C3, SO2CH3 at C4, which is what the SMILES ring closure order c1(SO2Me) c c c(benzoyl) c(Cl) c1(CH2O) gives and what the printed name requires. (I') is drawn with OH on a ring carbon and the exocyclic C=O intact, matching C2=C(O)CCCC2=O with C(=O) outside the ring. (I'') is drawn with OH on the exocyclic carbon and both ring carbonyls intact, matching C(O)=C2C(=O)CCCC2=O. All three read C17H16ClF3O6S by hand count. No reaction scheme and no arrow appears anywhere in the document, so there is no above-arrow and below-arrow merge to check, and no background scheme was annotated as the invention's route. The three drawing-sheet sections correctly hold zero compounds: pages p02 and p03 carry only diffractograms, whose axis labels 2-Theta and Intensity (CPS) name no substance, and the figure-to-form mapping was correctly taken from [0068] to [0070] rather than from the sheets."
+    },
+    {
+      "check": "fidelity",
+      "what_was_verified": "Every numeric quantity in the artifact was checked against the rendered page, not against the PDF text layer. Example 1: 150 mg tembotrione, 0.15 ml methanol on p08 -> mass_g 0.15, volume_ml 0.15. Example 14: 150 mg, 0.50 ml 2,2-dimethylpropanol on p08 -> 0.15 and 0.5. Example 15: 7.6 g, 20 ml toluene, 20 ml n-octane on p08 -> 7.6, 20.0, 20.0. Comparative Example 1: 150 mg, 0.20 ml n-pentanol on p09 -> 0.15 and 0.2. Examples 2-9, 10-13 and Comparative Examples 3-10, 11-20, 21-23 all print 'about 50 mg' -> 0.05 g. No mmol was invented anywhere and no volume was converted to a mass. Melting points: form A onset 118 to 124 (p05/[0012]), form B onset 118 to 123 (p08/[0065]), form C onset 121 to 125 (p06/[0044]) are recorded as ranges with the printed sentence in range_text; no range was flattened to a point and no boiling point or reflux was recorded as a temperature."
+    },
+    {
+      "check": "fidelity",
+      "what_was_verified": "All five example tables were read off the page images and compared row by row against the artifact, looking for transposition. TABLE 1 on p08: 2 acetic acid, 3 acetonitrile, 4 dioxan, 5 tetrahydrofuran, 6 ethyl methyl ketone, 7 pyridine, 8 dimethyl sulfoxide, 9 nitromethane. TABLE 2 on p08: 10 pyridine/n-heptane, 11 dioxan/n-heptane, 12 acetonitrile/H2O, 13 dioxan/H2O. TABLE 3 on p09: 3 ethanol A+B, 4 1-propanol A+B, 5 1-butanol B+C, 6 2-propanol A+B, 7 1-hexanol B+C, 8 tetrachloromethane B+C, 9 toluene B+C, 10 xylene B+C. TABLE 4 on p09: 11 to 20, with n-pentanol at 15 and 2,2-dimethylpropanol at 16, both B+C. TABLE 5 on p09: 21 acetone/water A+B, 22 trichloromethane/n-hexane A+B, 23 dichloromethane/n-hexane A+B. The artifact's per-record notes name the correct row number, solvent and modification in every case. Nothing is transposed. The page prints 'B + C' where the PDF text layer gives 'B - C', and the artifact followed the page, which is correct. The form A, form B and form C reflection tables were also checked cell by cell against p05, p06 and p08 and match line for line."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "The parts-by-weight compositions of the ten formulation examples were summed against the page. I: 20+3+17+60=100. II: 5+95=100. III: 20+2+8+2+68=100. IV: 20+10+70=100. V: 10+17+2+1+7+63=100. VI: 20+10+70=100. VII: 50+50=100. VIII: 75+25=100. IX: 20+10+1+70=101. X: 0.5+99.5=100. Only example IX fails to close and the artifact records that on two of its records without repairing it. The crystallographic tables also close: 31.14 x 10.34 x 5.52 = 1777 cubic Angstrom against the printed 1778.0(2), and 4 x 440.8 / (0.6022 x 1778) = 1.65 Mg/m^3 against the printed 1.643; for form C 15.89 x 7.10 x 16.14 x sin(95.91) = 1811 against the printed 1811.3(4), and 4 x 440.8 / (0.6022 x 1811) = 1.62 against the printed 1.616, which confirms that the form C volume figure is right and only its printed unit is wrong. No step in this patent states a product mass or a yield, so there is no yield closure to test and no step-to-step mass continuity: nothing in the document synthesises tembotrione."
+    },
+    {
+      "check": "precision",
+      "what_was_verified": "Every one of the 305 distinct identifiers was traced to a printed line. Ninety-two identifiers are not printed verbatim in their cited lines; of those, eighty-two carry the printed string as an alias, and the remaining ten are the crystal-form records whose sections name the form only by a letter in a table column or in a combined phrase, which the notes state explicitly. No record is unanchored and no fabrication was found. In particular no condition, atmosphere or default was invented: the A1 schema carries no conditions field. No record carries a smiles, molecular_formula, molecular_weight, id, compound_uuid, enrichment or vector field; the field set is identical across all 497 records. Three SMILES strings do appear, in the aliases of the single formula-I record only, which A1 rule 4b requires and rule 4c satisfies by leaving no structure field, so this is not a forbidden structure assertion."
+    },
+    {
+      "check": "precision",
+      "what_was_verified": "Of 501 provenance quotes, 500 are byte-present in the cited line span once the 'NNNN | ' prefix is stripped and the '    > EN: ' lines are excluded from the corpus. The prefix strip was performed first, so the check actually excludes the EN lines; without it the corpus would have contained every EN line and the check would have passed vacuously. The single failure is reported as a finding."
+    },
+    {
+      "check": "recall",
+      "what_was_verified": "The dense lists were enumerated by hand off the page and diffed against the artifact. Colorants at line 600: all thirty distinct names are present, from Rhodamin B through Basic Red 108, including the four Pigment Blue 15:x shades and the four Pigment Red x:y shades; the source prints 'Basic Red 10' twice and the artifact correctly holds one record. Non-ionic surfactants at line 581: all twenty-eight enumerated members present, including the split of 'di- and tristyrylphenol alkoxylates' into two records and of the di- and tri-block copolymers into two. Protective colloids at line 583: all sixteen enumerated members present. Binders at line 602: all thirty-nine enumerated members present. Fillers at line 604 and plasticizers at line 606: all present. Solid carriers at lines 564 and 637: all twenty-four present, with 'calcium and magnesium sulfate' and 'wood and nutshell flour' correctly split into two records each with the printed phrase kept as an alias. Buffer acids at line 622: all nine present. Non-aqueous phase components at line 629 and water-miscible solvents at line 610: all present. Nonpolar antisolvents at line 214: all nine present. Aromatic and aliphatic hydrocarbon solvents at line 305: all present. Solvents of the form A process at line 163 and of claim 19 at line 746: all present. Where a class name has enumerated members under it, the artifact consistently emits the members and not the umbrella; that policy is applied uniformly across the formulation sections."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "The source is an English-language US national-phase publication, so check 5 was run as a page-versus-record comparison. Every compound name in the artifact was compared against what the page prints. The artifact follows the page in every case where the page and the PDF text layer differ, and it says so: H2O rather than the text layer's HO in TABLE 2, 'acetone' rather than 'acetOne' in TABLE 5, 'B + C' rather than 'B - C' in TABLES 3 and 4, 'dimethyl sulfoxide' as two words. Naming conflicts inside the patent are recorded and not resolved: the 2,2-dimethylpropanol and tert. amyl alcohol gloss at lines 291 and 303 is kept unresolved with a note that the two are different C5H12O alcohols; the 'methyl ethyl ketone' and 'ethyl methyl ketone' word-order split is unified on the description form with the table form as an alias; the malformed claim 16 name 'trifluoroethoxymethyebenzoyl' is transcribed as printed with the defect noted; 'dioxan' is kept in the printed spelling rather than corrected to dioxane; 'terbuthylazin' is kept without the usual final e. No name was silently repaired."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "The A1 CompoundRecord carries no precursor_step and no linkage_confirmed field, so check 6 has no target in this artifact. The nearest substitute was tested instead: for each of the eighteen records with role reactant, the section does state a transformation consuming that substance, and for each of the thirty-four with role product the section does state its formation. The three-form reactant and product assignments in the stability study at lines 523 to 531 are correct: form B is the consumed form, forms A and C are the produced forms, and the contradiction between a B-containing mixture going to A and pure B going to C is recorded rather than resolved."
+    },
+    {
+      "check": "vocabulary",
+      "what_was_verified": "All 497 records were checked field by field against the A1 closed lists. role: only product, reactant, reagent, solvent, catalyst, ligand, base, acid, oxidant, reductant, by_product, additive, drying_agent, other are allowed and only product, reactant, solvent, acid, additive and other occur. identifier_type: only iupac, trivial_name and other occur, all in the list. physical_form: only crystals and null occur, both allowed. analytics method: only xrd and dsc occur, both in the list. Every record carries exactly one compound_class tag and every value is in the thirteen-item list. Every tag is category:value with a lowercase snake_case ASCII value and no duplicates; there are no physical_form, color, role_seen or commercial tags. The only hazard tag is hazard:toxic on the two tetrachloromethane records, which the prompt mandates. No record has a case mismatch except the deliberate upper-case S in S-metolachlor, which the notes justify as a stereodescriptor."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "All 497 records carry the identical twenty-three-key field set and nothing else: patent_id, identifier, identifier_type, aliases, resolved, unresolved_reference, section_label, section_type, is_section_product, commercially_available, role, quantity, ms_mz, nmr, melting_point, appearance, color, physical_form, analytics, purity_pct, purity_method, tags, notes. No id, compound_uuid, smiles or enrichment field is present. patent_id is US20100041557A1 on every record. Every section_label and section_type pair matches the A0 section map. No section file has a duplicate identifier, so the one-record-per-compound-per-section merge rule holds. Unset characterisation fields are null rather than empty objects. The five zero-length section files each ship a provenance entry with identifier null explaining that the section was read and names no compound, which is the right way to distinguish a read-and-empty section from a missing one. A1 has no validation_flag field, so the internal inconsistencies the artifact found are carried in notes, which is the only place available."
+    },
+    {
+      "check": "recall",
+      "what_was_verified": "The document's own defects were all found by the annotation and are recorded rather than repaired, which I verified against the page images independently. The form A first reflection is 5.5 in the [0010] table on p04 and 5.6 in claim 16 on p14, and both readings are carried with the disagreement noted on both records. The form C cell volume is genuinely printed as nm^3 on p06 where cubic Angstrom is meant. Paragraph [0048] on p07 genuinely reads 'a hot solution of tembotrione in is prepared' with the solvent name missing. Formulation example VIII on p14 genuinely prints 'form A or form B' where the other nine print 'form A or form C', and the artifact carries a form B record for it. TABLE 5 on p09 genuinely carries a row 23 under a heading that reads 'Comparative Examples 21 to 22'. Paragraph [0066] on p08 genuinely names 2,2-dimethylpropanol as the solvent of the modification A process, which conflicts with [0013]. None of these was silently averaged away."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 376,
+    "present_in_artifact": 305,
+    "missing": [
+      "Rhodopol 23 (line 585)",
+      "Veegum (line 585)",
+      "emulsifiers (line 568)",
+      "solid foam suppressants, so-called Compounds (line 587)",
+      "benzoic acid (line 708)",
+      "Attaclay (line 585, alias of attapulgites)",
+      "Kelzan (line 585, alias of xanthan gum)",
+      "Silikon SRE (line 587)",
+      "Rhodorsil (line 587)",
+      "Proxel (line 589)",
+      "Acticide (line 589)",
+      "Kathon MK (line 589)",
+      "Borresperse types (line 579)",
+      "Morwet types (line 579)",
+      "Nekal types (line 579)",
+      "Sokalan CP9 (line 579)",
+      "BASF Sokalan types (line 583)",
+      "Mowiol types (line 583)",
+      "Lupasol types (line 583)",
+      "Exxsol (line 566)",
+      "Solvesso (line 566)",
+      "the roughly fifty mixing-partner class names of paragraph [0162] at line 708, among them 1,2,4-thiadiazoles, 1,3,4-thiadiazoles, aminotriazoles, anilides, benzothiadiazinones, carbamates, chloracetanilides, diazines, dichloropropionic acid, dihydrobenzofurans, dihydrofuran-3-ones, dinitroanilines, dinitrophenols, diphenyl ethers, dipyridyls, ureas, 3-phenyluracils, imidazoles, imidazolinones, oxadiazoles, oxiranes, phenols, phenylacetic acid, 2-phenylpropionic acid, pyrazoles, phenylpyrazoles, pyridazines, quinolinecarboxylic acid, pyridinecarboxylic acid, pyrimidyl ethers, sulfonamides, sulfonylureas, triazines, triazinones, triazolinones, triazolecarboxamides, uracils, phenylpyrazolines and isoxazolines"
+    ]
+  }
+}

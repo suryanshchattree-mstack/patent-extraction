@@ -1,0 +1,175 @@
+[
+ {
+  "patent_id": "US20100041557A1",
+  "reaction_id": "Comparative Example 2_Step 1",
+  "section_label": "Comparative Example 2",
+  "section_type": "comparative_example",
+  "step_index": 1,
+  "step_label": "Step 1",
+  "reaction_class": "recrystallisation",
+  "reaction_class_confidence": "high",
+  "named_reaction": null,
+  "mechanism_type": "not_determinable",
+  "scale": "not_specified",
+  "is_one_pot": false,
+  "one_pot_steps": [],
+  "conditions": {
+   "temperature": {
+    "type": "not_specified",
+    "value_c": null,
+    "min_c": null,
+    "max_c": null
+   },
+   "pressure": {
+    "type": "not_specified",
+    "value_kpa": null,
+    "qualitative_text": null
+   },
+   "atmosphere": null,
+   "time_h": 0.67,
+   "reactor_type": "sealed test vessel",
+   "concentration": {
+    "value": null,
+    "unit": null,
+    "reagent": "tembotrione",
+    "text": "saturated solution in boiling ethyl acetate"
+   },
+   "heating_method": "dissolution in the boiling solvent",
+   "cooling_method": "cooled analogously to Comparative Example 1, that is a sealed test vessel placed in an ice-water bath",
+   "light_source": {
+    "type": null,
+    "color": null,
+    "wavelength_nm": null,
+    "power_w": null
+   },
+   "stirring": {
+    "type": null,
+    "rpm": null
+   },
+   "ph_value": null,
+   "ph_target_stage": null
+  },
+  "conditions_inherited": true,
+  "workup": {
+   "steps": [
+    "crystalline prisms and platelets isolated"
+   ],
+   "quenching_agent": null,
+   "extraction_solvent": null,
+   "extraction_count": null,
+   "extraction_volume_ml": null,
+   "washes": null,
+   "drying_agent": null,
+   "filtration": null,
+   "concentration_method": null,
+   "ph_target": null
+  },
+  "purification": null,
+  "process_control": {
+   "method": null,
+   "target_compound": null,
+   "threshold_pct": null,
+   "criterion": null
+  },
+  "byproduct_recovery": null,
+  "safety_notes": [],
+  "molar_ratio_text": null,
+  "selectivity": {
+   "regio": null,
+   "stereo": {
+    "type": null,
+    "value_pct": null
+   },
+   "chemo": null
+  },
+  "compounds": [
+   {
+    "identifier": "tembotrione",
+    "role": "reactant",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "dissolved in boiling ethyl acetate to saturation; no amount is stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "ethyl acetate",
+    "role": "solvent",
+    "is_product": false,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": "used boiling as the crystallisation solvent; no volume is stated",
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   },
+   {
+    "identifier": "tembotrione crystalline form B",
+    "role": "product",
+    "is_product": true,
+    "quantity": {
+     "mass_g": null,
+     "volume_ml": null,
+     "mmol": null,
+     "equivalents": null,
+     "yield_pct": null
+    },
+    "addition_profile": null,
+    "ms_mz": null,
+    "ms_type": null,
+    "purity_pct": null,
+    "purity_method": null
+   }
+  ],
+  "reactant_names": [
+   "tembotrione"
+  ],
+  "reactant_smiles": null,
+  "smiles_source": null,
+  "product_name": "tembotrione crystalline form B",
+  "product_smiles": null,
+  "product_smiles_source": null,
+  "product_yield_pct": null,
+  "product_ms_mz": null,
+  "product_ms_type": null,
+  "product_purity_pct": null,
+  "product_purity_method": null,
+  "canonical_rxn": null,
+  "procedure_text": "Analogously to Comparative Example 1, a saturated solution of tembotrione in boiling ethyl acetate was prepared and cooled. In this manner, tembotrione was obtained in the form of crystalline prisms and platelets, which were isolated and analyzed by X-ray powder diffractometry (XRD). On the basis of the characteristic reflections, form B was identified.",
+  "procedure_summary": "A saturated solution of tembotrione in boiling ethyl acetate is prepared and cooled as in the preceding comparative example, and the crystalline prisms and platelets that form are isolated and identified by X-ray powder diffractometry as form B.",
+  "precursor_step": null,
+  "linkage_confirmed": false,
+  "cross_reference_unresolved": false,
+  "non_synthetic": true,
+  "is_complete": true,
+  "validation_flags": [],
+  "tags": [
+   "transformation:crystallisation",
+   "analytics:xrpd",
+   "scale:not_specified",
+   "solvent_class:aprotic_polar",
+   "workup_type:crystallisation",
+   "step_role:final_step",
+   "linkage:standalone",
+   "mechanism:not_determinable",
+   "catalyst_class:none",
+   "purification:none",
+   "is_one_pot:false"
+  ],
+  "notes": "Produced by the A2 pass, run by Claude Opus 5 (claude-opus-5[1m]), reading lines 445-448 of the enriched text together with the p09 vision record. CONDITIONS INHERITED, AND EXACTLY WHICH: the paragraph says 'Analogously to Comparative Example 1 ... was prepared and cooled', which is the text telling us to carry the regime, so conditions_inherited is true. Carried from [0078] at line 443: the sealed test vessel, the ice-water bath quench and the about 40 mins hold. This section prints no number of its own, so every number in the conditions block comes from Comparative Example 1. The referenced record was found in this same run, so conditions_unresolved is not raised. Stated here and not inherited: the solvent is ethyl acetate and the solution is boiling and saturated. scale is not_specified and the 150 mg of Comparative Example 1 is NOT carried over: this solution is described as saturated rather than as a fixed charge, so the amount of tembotrione is genuinely unstated. The solvent is used at its boiling point but the page prints no number for it, so temperature.type is not_specified and the boiling point is carried as heating_method; no boiling point is imported from outside the document. The sealed test vessel is recorded in reactor_type. It is not recorded as an atmosphere, because no atmosphere is named, and not as elevated pressure, because none is stated. The text does not mention stirring. 'left there' implies the vessel stood undisturbed, but that is an inference, so stirring.type is null rather than none. purification is null and the purification tag is none: the crystallisation is itself the transformation and is carried in reaction_class, and the text states no further purification of the crystals. Recording it twice would create two sources of truth. X-ray powder diffractometry identifies the isolated solid, so it is analytics and not in-process monitoring; process_control is left empty. The form is an identification, not a purity measurement, so product_purity_method stays null. No yield, no isolated product mass and no assay purity is stated anywhere in this section, and nothing is computed from the charge. safety_notes is empty because the section states none; the hazards of the solvent are not the document's words and hazard assessment belongs to A5. selectivity is null throughout. The modification obtained is the identity of the product, recorded in compounds and product_name; it is not a stated regio-, stereo- or chemoselectivity and the document reports no ee, de or dr. non_synthetic is true. The field has no prose definition in the prompt set or in reactions.schema.json, so the only thing carrying meaning in it is consistency across the run, and the run's discriminator is whether a bond changes. No bond is formed or broken in this step: the same substance stands on both sides, and only the lattice differs. Every recrystallisation step in both runs on disk that has any, CN111440099B and EP2045236A1, is true, while every bond-forming step in those runs is false, and the inventive Example sections, the formulation records and the claims records of this run all set it true. CORRECTED FROM FALSE after the adversarial audit found these six files were the only dissent in the run; the value is the only thing that changed. is_one_pot is false: the step is a single crystallisation with one charge and one isolation. The habit differs from Comparative Example 1, prisms and platelets here against prisms there, while the modification is the same form B. precursor_step is null and the linkage tag is standalone: the reference to Comparative Example 1 is a reference to conditions, not to material. Both examples start from tembotrione, so no product of one feeds the other, and tagging this cross_section_linked would tell a consumer the wrong thing. cross_reference_unresolved is false because the reference resolves."
+ }
+]

@@ -8,7 +8,7 @@
       "title": "render the annotation prompts for THIS patent, for the agent to follow",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 render_prompts.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python render_prompts.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -156,7 +156,7 @@
       "title": "vision page reads -> enriched markdown in production's IMAGE_EXTRACT format",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 build_enriched.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python build_enriched.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -287,7 +287,7 @@
       "title": "concatenate the per-section A1 and A2 stage files into the raw arrays",
       "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 merge_stages.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python merge_stages.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -578,9 +578,9 @@
     {
       "stage": "finalise",
       "title": "deterministic ids and uuids, rollup, bibliographic merge",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 finalise.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python finalise.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -656,9 +656,9 @@
     {
       "stage": "validate",
       "title": "JSON Schema conformance of the finalised artifacts",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 schemas/validate.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python schemas/validate.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -728,9 +728,9 @@
     {
       "stage": "publish-gold",
       "title": "mirror gold and provenance into the deliverable, so the resolvers read current gold",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python make_relevant_output.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -1011,9 +1011,9 @@
     {
       "stage": "names",
       "title": "read every compound name a second time, with a parser instead of a model",
-      "status": "current",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_names.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python resolve_names.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -1049,9 +1049,9 @@
     {
       "stage": "mentions",
       "title": "reading B: ChemDataExtractor over the same lines reading A read",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 mentions.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python mentions.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -1076,9 +1076,9 @@
     {
       "stage": "structures",
       "title": "identifier -> drawable molecule over six tiers, plus the coverage gate",
-      "status": "current",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_structures.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python resolve_structures.py --patent-id CN111440099B"
       ],
       "gate": true,
       "inputs": [
@@ -1224,9 +1224,9 @@
     {
       "stage": "translations",
       "title": "Chinese string -> English for everything that can reach a screen, plus the coverage gate",
-      "status": "current",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 resolve_translations.py CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python resolve_translations.py CN111440099B"
       ],
       "gate": true,
       "inputs": [
@@ -1287,10 +1287,10 @@
     {
       "stage": "diagrams",
       "title": "the five method diagrams, the route diagram and the one-page summary",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_svgs.py --patent-id CN111440099B",
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_approach.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python make_svgs.py --patent-id CN111440099B",
+        "/private/tmp/ep2045/venv/bin/python make_approach.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -1451,9 +1451,9 @@
     {
       "stage": "rasterise",
       "title": "every SVG also as a JPG, for readers and tools that will not render SVG",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 svg2jpg.py --all"
+        "/private/tmp/ep2045/venv/bin/python svg2jpg.py --all"
       ],
       "gate": false,
       "inputs": [
@@ -1559,9 +1559,9 @@
     {
       "stage": "assemble",
       "title": "assemble the deliverable: gold, provenance, audits, structures, diagrams",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_relevant_output.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python make_relevant_output.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -2107,9 +2107,9 @@
     {
       "stage": "export",
       "title": "every reaction joined to the structures of its participants",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 export_reactions.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python export_reactions.py --patent-id CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -2150,9 +2150,9 @@
     {
       "stage": "visual",
       "title": "the page index, the structure comparisons and the drawing claims the UI shows",
-      "status": "ran",
+      "status": "not selected",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 make_visual_evidence.py --patent-id CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python make_visual_evidence.py --patent-id CN111440099B"
       ],
       "gate": true,
       "inputs": [
@@ -2355,7 +2355,7 @@
       "title": "the verification contract file the reviewer UI reads",
       "status": "failed (1)",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 verify.py CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python verify.py CN111440099B"
       ],
       "gate": true,
       "inputs": [
@@ -2382,7 +2382,7 @@
       "title": "grade the verification engine's own output without trusting its exit code",
       "status": "ran",
       "commands": [
-        "/opt/homebrew/anaconda3/envs/mstack/bin/python3 verify_selfcheck.py CN111440099B"
+        "/private/tmp/ep2045/venv/bin/python verify_selfcheck.py CN111440099B"
       ],
       "gate": false,
       "inputs": [
@@ -2398,8 +2398,8 @@
         },
         {
           "path": "output/relevant_output/verification/checks-CN111440099B.json",
-          "sha256": "7f0c0ecd1e89aade80e281c8598a41b6e1c899028fa5a3d7e625c90aa3ad7062",
-          "bytes": 4977198
+          "sha256": "9ae531275756ff50a8a03e4cc604c0c368979c895680686cf18f6955706c1c83",
+          "bytes": 4961809
         }
       ],
       "outputs": []
@@ -6731,8 +6731,8 @@
     },
     {
       "path": "output/relevant_output/verification/checks-CN111440099B.json",
-      "sha256": "7f0c0ecd1e89aade80e281c8598a41b6e1c899028fa5a3d7e625c90aa3ad7062",
-      "bytes": 4977198,
+      "sha256": "9ae531275756ff50a8a03e4cc604c0c368979c895680686cf18f6955706c1c83",
+      "bytes": 4961809,
       "stage": "verify",
       "input_sha256": [
         "6a0cb0136c5eaf9c0a4584a99aef6c1562d62c1044563e8246077f1b58d0570b",
@@ -7655,8 +7655,8 @@
     },
     {
       "path": "svg/approach.jpg",
-      "sha256": "79d582b9a9174b45f6dadafe485a5a44e9d99999be81190fed263b691d396c04",
-      "bytes": 577829,
+      "sha256": "3e4bce32e63674cd04fc2df8113a87c9504d8102ae3f61a1be0eac2f7c12b0f8",
+      "bytes": 686117,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -7669,12 +7669,13 @@
         "6a14f750ace316dc3405588b2bc8aae0af78936fa7065f435dde31e2a29d77e8",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 79d582b9a9174b45..."
     },
     {
       "path": "svg/approach.svg",
-      "sha256": "4ded9ee36fdbaf184aed0308cecbb4fd7773ba2b07259faf5439c0be7aa75674",
-      "bytes": 20892,
+      "sha256": "8353ee53e4e223bed1903cfcc498f229ff83bbc7fd39e72df291b37208ccca35",
+      "bytes": 23398,
       "stage": "diagrams",
       "input_sha256": [
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
@@ -7701,7 +7702,8 @@
         "bfa9f0417b59f765bca41eee85da0f8351a75a4cf70ea5593121a1cc84f26f70",
         "65652276adb54d3476b8dff0e124d533e6a4fe996b52b69e7ccd7c2c348b2870",
         "06846fa89e985b58ff4e4fa3046b55f322b899e746b7249b4f2fe5d6f6c60eb2"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 4ded9ee36fdbaf18..."
     },
     {
       "path": "svg/evidence-inverts-with-need.jpg",
@@ -7723,8 +7725,8 @@
     },
     {
       "path": "svg/m1-pass-map.jpg",
-      "sha256": "16736df5c30824ed238aa66c776efe1b9755dc2612398cef941811cc98778267",
-      "bytes": 640613,
+      "sha256": "6d95bfe854e30e56401614c912efe5f09c7d800ca7b31fa3561686c78de303ee",
+      "bytes": 640678,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -7737,12 +7739,13 @@
         "6a14f750ace316dc3405588b2bc8aae0af78936fa7065f435dde31e2a29d77e8",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 16736df5c30824ed..."
     },
     {
       "path": "svg/m1-pass-map.svg",
-      "sha256": "9aff6c2c8707b651a227c7b107dae7b4a5347523f30b46e45f896e1a4ba93a8f",
-      "bytes": 16296,
+      "sha256": "02ecbe13caeb3ff9ab3b9efe0dd98a4410b52a4d61fa6aebed98fa72d5f43eb0",
+      "bytes": 16295,
       "stage": "diagrams",
       "input_sha256": [
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
@@ -7769,12 +7772,13 @@
         "bfa9f0417b59f765bca41eee85da0f8351a75a4cf70ea5593121a1cc84f26f70",
         "65652276adb54d3476b8dff0e124d533e6a4fe996b52b69e7ccd7c2c348b2870",
         "06846fa89e985b58ff4e4fa3046b55f322b899e746b7249b4f2fe5d6f6c60eb2"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 9aff6c2c8707b651..."
     },
     {
       "path": "svg/m2-route.jpg",
-      "sha256": "937daa00b196850d914f15fcdb8cdb979ad68af6e7533a540d9d546ba0db49f1",
-      "bytes": 315983,
+      "sha256": "69aac453872e6fadd519cc40e574150dc7016e40e2f90fbfaf9cb4e6c60780e1",
+      "bytes": 457908,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -7787,12 +7791,13 @@
         "6a14f750ace316dc3405588b2bc8aae0af78936fa7065f435dde31e2a29d77e8",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 937daa00b196850d..."
     },
     {
       "path": "svg/m2-route.svg",
-      "sha256": "29479a9b44df4a1daeca80989dcb15fd33ec935f02d007b5d302225e044bd963",
-      "bytes": 8835,
+      "sha256": "8cecb4d14e0f64c970213df7ae2960173e7beaba5c9f76c5d1993d945c59609d",
+      "bytes": 15209,
       "stage": "diagrams",
       "input_sha256": [
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
@@ -7819,7 +7824,8 @@
         "bfa9f0417b59f765bca41eee85da0f8351a75a4cf70ea5593121a1cc84f26f70",
         "65652276adb54d3476b8dff0e124d533e6a4fe996b52b69e7ccd7c2c348b2870",
         "06846fa89e985b58ff4e4fa3046b55f322b899e746b7249b4f2fe5d6f6c60eb2"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 29479a9b44df4a1d..."
     },
     {
       "path": "svg/m3-artifact-joins.jpg",
@@ -7923,8 +7929,8 @@
     },
     {
       "path": "svg/m5-ocr-comparison.jpg",
-      "sha256": "f9d79f6ff17722e51b0c539ce8aba793cc8a1f1043726ac12d50bc12163835e7",
-      "bytes": 290752,
+      "sha256": "e275ee201f6afaa05e0b3e8f91eb76760f7cb2e0c1786a9dbf12beadd423a2a8",
+      "bytes": 290473,
       "stage": "rasterise",
       "input_sha256": [
         "f63f390b5f4809ca22dd7325b50ac5000f86e8a765216c0a23a88f665aec71a5",
@@ -7937,12 +7943,13 @@
         "6a14f750ace316dc3405588b2bc8aae0af78936fa7065f435dde31e2a29d77e8",
         "ad15b357e909f24af74c0f2585ccc7d91c8dfb9279fefd4dfb11879fe229048d",
         "d491e7a12d7fab3653123da6591ef15e966ea6a1632e4731e63f9205a1f48b01"
-      ]
+      ],
+      "note": "on disk now, but the rasterise stage last ran producing sha256 f9d79f6ff17722e5..."
     },
     {
       "path": "svg/m5-ocr-comparison.svg",
-      "sha256": "6a14f750ace316dc3405588b2bc8aae0af78936fa7065f435dde31e2a29d77e8",
-      "bytes": 9854,
+      "sha256": "c0fc3e1c93b21a8494825a5400e0db154acc3177810582140b521dbbfb98fa46",
+      "bytes": 9853,
       "stage": "diagrams",
       "input_sha256": [
         "f863b1dd6aa81fc57566a61e0d26d648a6a11894a3bbc06f45e6d0ec41f8ba0b",
@@ -7969,7 +7976,8 @@
         "bfa9f0417b59f765bca41eee85da0f8351a75a4cf70ea5593121a1cc84f26f70",
         "65652276adb54d3476b8dff0e124d533e6a4fe996b52b69e7ccd7c2c348b2870",
         "06846fa89e985b58ff4e4fa3046b55f322b899e746b7249b4f2fe5d6f6c60eb2"
-      ]
+      ],
+      "note": "on disk now, but the diagrams stage last ran producing sha256 6a14f750ace316dc..."
     },
     {
       "path": "svg/one-route-four-tellings.jpg",
@@ -8013,7 +8021,7 @@
     "artifacts_produced": 135,
     "artifacts_unclaimed": 0,
     "artifacts_stray": 0,
-    "bytes_produced": 21569633
+    "bytes_produced": 21813121
   },
   "deliverable_matches_output": true,
   "stale_copies": []

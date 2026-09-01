@@ -1,0 +1,984 @@
+[
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Detailed Description of the Invention_Step 1",
+    "section_label": "Detailed Description of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 1,
+    "step_label": "Step 1",
+    "reaction_class": "oxidation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "catalytic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": "reflux",
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [
+        "ruthenium oxide recovered at the end of the reaction as an insoluble solid, present in substantially the same amount as initially",
+        "catalyst filtered off",
+        "recovered catalyst reused, even without treatment, in another cycle"
+      ],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": "the insoluble ruthenium oxide is filtered off and reused",
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulfonyl toluene",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "alkali metal hypochlorite",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "hydrogen peroxide",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium hypochlorite",
+        "role": "oxidant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "named in [0035] as the cheap and readily available oxidant, present in the mixture that is heated to reflux; no charge and no order of addition are given",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ruthenium oxide",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ruthenium dioxide hydrate",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "[0033] prefers the ruthenium to be supplied to the reaction solution in this form",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ruthenium trichloride",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "[0034] alternative salt form, from which the RuO2 catalyst is formed in situ in an aqueous caustic solution containing the starting material",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ruthenate",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "perruthenate",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ruthenium tetroxide",
+        "role": "catalyst",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "chlorine",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "purged as a gas, in the [0034] variant only, into an aqueous caustic solution of ruthenium trichloride and the starting material, to form the RuO2 catalyst in situ",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulfonyl toluene",
+      "alkali metal hypochlorite",
+      "hydrogen peroxide",
+      "sodium hypochlorite"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "2-nitro-4-methylsulphonyl benzoic acid",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "[0031] In certain embodiments, there is provided a process for preparation of 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III) by oxidation of 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) with an oxidant in presence of ruthenium (IV) oxide (RuO2) as a catalyst. [0032] According to embodiments of the present disclosure, the oxidant employed in the above reaction may be any oxidizing agent that can promote the target oxidation reaction. Examples of oxidizing agent include alkali metal hypochlorite and peroxide such as hydrogen peroxide. [0033] In certain embodiments, the ruthenium catalyst is oxidized by the hypochlorite to produce a mixture of ruthenate, perruthenate and ruthenium tetroxide. Preferably, oxidized to the ruthenate. At the end of the reaction, the ruthenium oxide is an insoluble solid present in substantially the same amount as initially so it can be filtered off and reused (for >50 conversion), even without treatment, in another cycle. The ruthenium can be supplied to the reaction solution in the form of a salt or an oxide, ruthenium dioxide and ruthenium dioxide hydrate. Preferably, in the form of ruthenium dioxide hydrate. [0034] In another embodiment, the ruthenium catalyst can be in the form of salt such as ruthenium trichloride. The catalyst RuO2 can be formed in situ in a reaction commencing with ruthenium trichloride in an aqueous caustic solution containing starting material and purging chlorine gas. [0035] In at least one embodiment, 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) can be oxidized to 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III) with RuO2 as a catalyst and cheap and readily available sodium hypochlorite (NaOCl) as an oxidant.In certain embodiments, the mixture of 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV),RuO2 catalyst and sodium hypochlorite (NaOCl) can be heated to reflux temperature under stirring for about more than 2 hours, 3 hours, 4 hours, or 5 hours, preferably in the range of about 2 hours to about 8 hours, more preferably for about 6 hours to about 8 hours. (i) oxidation of 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) with an oxidant in presence of ruthenium (IV) oxide as a catalyst, to produce 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III); and (i) oxidation of 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) with an oxidant in presence of ruthenium (IV) oxide as a catalyst, to produce 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III);",
+    "procedure_summary": "2-Nitro-4-methylsulfonyl toluene is oxidized by an oxidant, preferably sodium hypochlorite, in the presence of a ruthenium oxide catalyst, the mixture being heated to reflux temperature under stirring, to give 2-nitro-4-methylsulphonyl benzoic acid. The catalyst remains an insoluble solid at the end of the reaction and can be filtered off and reused in another cycle.",
+    "precursor_step": null,
+    "linkage_confirmed": false,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:oxidation",
+      "mechanism:catalytic",
+      "scale:not_specified",
+      "catalyst_class:ruthenium",
+      "workup_type:filtration",
+      "purification:none",
+      "green_chemistry:catalyst_recycling",
+      "step_role:first_step",
+      "linkage:standalone",
+      "is_one_pot:false"
+    ],
+    "notes": "PROSE step (i) of the invention's three-step route: [0031] states it, [0032] lists the oxidants, [0033] and [0034] the catalyst forms, [0035] the preferred oxidant and the only conditions this document gives for it, and [0038](i) and [0039](i) recite it again inside the two step lists. Two conventions hold across all three records of this section, the same two the reference run uses: (a) compounds[] carries every species the prose attaches to this step, including the alternatives the paragraph offers, and (b) reactant_names lists the compounds[] entries that are not the product, not a catalyst, not a base and not a solvent. ONE RECORD PER TRANSFORMATION, NOT PER DRAWING. This section prints eight IMAGE_EXTRACT scheme spans, at lines 181, 196, 200, 205, 207, 222, 224 and 226, and they depict only three distinct transformations: four draw step (i), three draw step (ii) and one draws step (iii). Each is printed beside the paragraph that recites the same transformation in words, and lines 205 and 207 are page-top duplicates on p12. Prompt rule 5f asks for separate 'Scheme Step' records where a section carries both prose steps and an overview scheme. That case does not arise here: there is no independent overview scheme, no arrow whose transformation the prose lacks, and no arrow that introduces a reagent or a connectivity the prose does not state, so separate scheme records would restate the same three transformations eight times and would inflate the section from three steps to eleven. This is a deliberate departure from rule 5f, recorded here rather than taken silently. A0 also set estimated_steps to 3 for this section and prompt rule 4 is satisfied without a disagreement. A0's note for this section groups the span at line 205 with step (ii). It is an oxidation span, NMST to NMSBA with 'Oxidant / RuO2' on the arrow, so it belongs to this step. That is the A1 pass's finding and reading the span confirms it; the step of a span is not inferred from its position. DRAWING AND PROSE AGREE, paragraph by paragraph, so no drawing_text_conflict is raised. The generic paragraphs [0031], [0038](i) and [0039](i) say 'an oxidant in presence of ruthenium (IV) oxide as a catalyst' and their own spans, at 181, 205 and 222, print 'Oxidant / RuO2'. The one specific paragraph, [0035], names sodium hypochlorite and its own span, at 196, is the one span in the document that prints 'NaOCl / RuO2'. The drawn label joins reagent and catalyst with a slash and does not separate them while the prose does; that is a granularity limit of the drawing, not a contradiction, and it is recorded here rather than flagged. reagent_written_not_drawn IS raised: alkali metal hypochlorite, hydrogen peroxide, ruthenium dioxide hydrate, ruthenium trichloride, chlorine, ruthenate, perruthenate and ruthenium tetroxide are all named in the prose and appear on no arrow, and the generic word 'Oxidant' on three of the arrows names no compound. OXIDANT: three alternatives are recorded and none is asserted as the one used. [0032] offers alkali metal hypochlorite and 'peroxide such as hydrogen peroxide'; the bare class word 'peroxide' names no compound and is not recorded, which is A1's call. [0035] prefers sodium hypochlorite, which is one instance of the [0032] hypochlorite class and is kept as a separate compound rather than merged with it. CATALYST: six ruthenium species. Ruthenium oxide is the catalyst as named in [0031], [0035], [0038] and [0039]; [0033] prefers ruthenium dioxide hydrate as the form supplied to the reaction solution; ruthenate, perruthenate and ruthenium tetroxide are the mixture [0033] says the ruthenium catalyst is oxidized to by the hypochlorite, with the ruthenate preferred, so they are in-situ species and carry no charge; [0034] offers ruthenium trichloride, from which RuO2 is formed in situ. Chlorine is in compounds[] for that variant but is deliberately left out of reactant_names, against the mechanical convention above, because it makes the catalyst and not the product. 'Aqueous caustic solution' names no compound, so no base and no solvent is recorded from it, which is the call A1 made; for the same reason no solvent_class tag is emitted for this step. TIME: [0035] gives a nested set of preferences, 'for about more than 2 hours, 3 hours, 4 hours, or 5 hours, preferably in the range of about 2 hours to about 8 hours, more preferably for about 6 hours to about 8 hours'. time_h holds one number and the text states no one number, so it is left null and the whole wording is kept here; neither an endpoint nor a midpoint is invented. The no_conditions flag does not fire because heating_method is set. TEMPERATURE: reflux is a heating method, not a temperature, per prompt rule 9, so heating_method is reflux and temperature stays not_specified. No number is given anywhere for it. STIRRING: [0035] says 'under stirring' and names no stirrer type, so stirring.type is null. WORKUP AND RECOVERY: the only operation the section states is [0033]'s recovery of the ruthenium oxide, an insoluble solid at the end of the reaction, present in substantially the same amount as initially, filtered off and reused even without treatment in another cycle. That is a catalyst and not a by-product, so byproduct_recovery stays null per prompt rule 14 and the reuse is carried in workup and in green_chemistry:catalyst_recycling. The same sentence prints '(for >50 conversion)' with no unit and no percent sign; it is left uninterpreted, no threshold_pct is put into process_control, and the section names no in-process monitoring at all. SCALE: no mass, volume, mole, equivalent or ratio is stated anywhere in this section, so scale is not_specified. [0040] and [0041] say the steps can be run at commercial scale, which is a statement about the process and not a charge. SEQUENCE, not one pot: [0040] says the outlined intermediates may each be isolated if desired or the sequence carried forward without isolation, and [0041] says all the reaction steps may be conducted in one and the same reaction vessel without isolation of the intermediates. That is an optional mode of the whole three-step sequence and not a property of any single numbered step, and the section still recites the route as three steps in [0038] and [0039], so is_one_pot is false on every record and one_pot_steps is empty. Both paragraphs are transcribed in step 3's procedure_text, where the sequence completes. The token 'None' at the head of source lines 192, 213, 215, 228, 230, 232 and 239 is the enriched file's null marker column and not document text, so it is stripped from procedure_text; the '> EN:' partner of each of those lines, which is otherwise byte identical, confirms it. The document is English throughout; each '> EN:' line in this range is byte identical to the source line above it, and procedure_text quotes the source lines. [0035] prints 'as an oxidant.In certain embodiments' with no space after the full stop and 'formula (IV),RuO2' with no space after the comma, and both are transcribed as printed."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Detailed Description of the Invention_Step 2",
+    "section_label": "Detailed Description of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 2,
+    "step_label": "Step 2",
+    "reaction_class": "ester_formation",
+    "reaction_class_confidence": "high",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": null,
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "2-nitro-4-methylsulphonyl benzoic acid",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "1,3-cyclohexanedione",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "N,N’-dicyclohexylcarbodiimide",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloromethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of five interchangeable solvents in [0037]; dichloromethane is the preferred one",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloroethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of five interchangeable solvents in [0037]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloropropanes",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of five interchangeable solvents in [0037]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichlorobutanes",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of five interchangeable solvents in [0037]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloropentanes",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of five interchangeable solvents in [0037]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "enol ester of formula (II)",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "2-nitro-4-methylsulphonyl benzoic acid",
+      "1,3-cyclohexanedione",
+      "N,N’-dicyclohexylcarbodiimide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "enol ester of formula (II)",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "[0036] In certain embodiments, there is provided a process for preparation of an enol ester of formula (II) by reaction of 2-nitro-4-methylsulphonyl benzoic acid (NMSBA) of formula (III) with 1, 3-cyclohexanedione. This method is extremely advantageous over the prior art methods for the preparation of enol ester, in that it does not require the additional step of converting NMSBA to an intermediate of 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC). [0037] In at least one embodiment, the enol ester of formula (II) can be prepared by reacting NMSBA of formula(III)with 1, 3-cyclohexanedionein presence of N,N'-dicyclohexylcarbodiimide and a solvent. The solvent may be any solvent in which NMSBA of formula (III) and/or 1,3-cyclohexanedione may be soluble. Examples of solvent include dichloromethane, dichloroethane, dichloropropanes, dichlorobutanes, dichloropentanes,and mixtures thereof. Preferably, the solvent can be dichloromethane. In various embodiments, the disclosed process can produce enol ester of formula (II) in high yields, e.g. at least 65%, with a purity of at least 85%. In another embodiment, the disclosed process can produce solvent recovery of >85%. [0038] In certain embodiments, there is provided a process for preparation of enol ester of formula (II) using 2-nitro-4-methylsulfonyl toluene (NMST) of formula (IV) as starting material, wherein the process can include the steps of: (ii) reaction of NMSBA of formula (III) with 1,3-cyclohexanedione to produce enol ester of formula (II). (ii) reaction of NMSBA of formula (III) with 1,3-cyclohexanedione to produce enol ester of formula (II); and",
+    "procedure_summary": "2-Nitro-4-methylsulphonyl benzoic acid is reacted directly with 1,3-cyclohexanedione in the presence of a carbodiimide and a chlorinated solvent, preferably dichloromethane, to give the enol ester. The stated advantage over the prior art is that no conversion of the acid to its acid chloride is required; no temperature, time or charge is given.",
+    "precursor_step": "Step 1",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:esterification",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "solvent_class:halogenated",
+      "workup_type:none",
+      "purification:none",
+      "green_chemistry:step_economy",
+      "green_chemistry:solvent_recovery",
+      "step_role:intermediate_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "PROSE step (ii) of the invention's three-step route and the inventive contribution: [0036] states it and states why, [0037] gives the coupling reagent, the solvent list and the performance floors, and [0038](ii) and [0039](ii) recite it again inside the two step lists. Two conventions hold across all three records of this section, the same two the reference run uses: (a) compounds[] carries every species the prose attaches to this step, including the alternatives the paragraph offers, and (b) reactant_names lists the compounds[] entries that are not the product, not a catalyst, not a base and not a solvent. NO CONDITIONS AT ALL, and that is the finding, not an omission. The three spans that draw this transformation, at lines 200, 207 and 224, have bare arrows with no text above and none below, and the prose gives no temperature, no time, no pressure, no atmosphere, no pH and no reactor. So no_conditions is raised and every conditions field is null. Nothing is imported from another section or from another step. reagent_written_not_drawn is also raised: the carbodiimide and all five solvents are in the prose and on no arrow. No drawing_text_conflict: the drawn connectivity, NMSBA plus 1,3-cyclohexanedione to the enol ester of formula (II), is exactly what [0036], [0037], [0038](ii) and [0039](ii) say, and a bare arrow states nothing that the prose can contradict. ONE RECORD PER TRANSFORMATION, NOT PER DRAWING. This section prints eight IMAGE_EXTRACT scheme spans, at lines 181, 196, 200, 205, 207, 222, 224 and 226, and they depict only three distinct transformations: four draw step (i), three draw step (ii) and one draws step (iii). Each is printed beside the paragraph that recites the same transformation in words, and lines 205 and 207 are page-top duplicates on p12. Prompt rule 5f asks for separate 'Scheme Step' records where a section carries both prose steps and an overview scheme. That case does not arise here: there is no independent overview scheme, no arrow whose transformation the prose lacks, and no arrow that introduces a reagent or a connectivity the prose does not state, so separate scheme records would restate the same three transformations eight times and would inflate the section from three steps to eleven. This is a deliberate departure from rule 5f, recorded here rather than taken silently. A0 also set estimated_steps to 3 for this section and prompt rule 4 is satisfied without a disagreement. NMSBC IS NOT ON THIS ROUTE. [0036] names 2-nitro-4-methylsulphonyl benzoyl chloride once, and only as the additional step this method does not require. It is therefore absent from compounds[], from reactant_names and from product_name, and the direct acid plus dione coupling is the whole point of the step. A1 carries it for this section with role 'other' for the same reason. PERCENTAGE FLOORS ARE NOT MEASUREMENTS. [0037] says the process 'can produce enol ester of formula (II) in high yields, e.g. at least 65%, with a purity of at least 85%' and that it 'can produce solvent recovery of >85%'. Those are specification minima for a class of embodiments and not assay results for any run, so product_yield_pct, product_purity_pct and product_purity_method are left null, the compounds[] quantity block carries no yield_pct and no purity_pct, and the wording is kept here instead. This is the same call the A1 pass made on the same sentence for this same section. The solvent recovery figure is a property of the solvent charge and not of the product; the solvent is not a by-product, so byproduct_recovery stays null per prompt rule 14 and the statement is carried by green_chemistry:solvent_recovery. SOLVENT: [0037] offers dichloromethane, dichloroethane, dichloropropanes, dichlorobutanes, dichloropentanes 'and mixtures thereof', with dichloromethane preferred. All five are recorded as alternatives, 'and mixtures thereof' names no compound, and no volume is given for any of them. All five are chlorinated, which is why solvent_class:halogenated is safe to tag. NAMED REACTION: none is asserted. The reaction is a carbodiimide-mediated esterification of a carboxylic acid with the enol of a 1,3-diketone. The Steglich name is usually reserved for the carbodiimide plus an acyl transfer catalyst, and no such catalyst is named here, so named_reaction is null per prompt rule 19 rather than stretched. IDENTIFIER: line 209 prints the carbodiimide with the ASCII apostrophe U+0027 and with no space after the first comma. The identifier used here carries U+2019, because prompt rule 7 requires an exact match with the A1 record for this section, which canonicalised on U+2019 to join the Claims and Example files and keeps the printed U+0027 form as an alias. procedure_text and the provenance quote keep the printed form. LINKAGE: precursor_step is Step 1 and linkage_confirmed is true, because Step 1's product identifier is character for character a reactant identifier here and because [0038] enumerates (i) then (ii) with NMSBA passing between them. SEQUENCE, not one pot: [0040] says the outlined intermediates may each be isolated if desired or the sequence carried forward without isolation, and [0041] says all the reaction steps may be conducted in one and the same reaction vessel without isolation of the intermediates. That is an optional mode of the whole three-step sequence and not a property of any single numbered step, and the section still recites the route as three steps in [0038] and [0039], so is_one_pot is false on every record and one_pot_steps is empty. Both paragraphs are transcribed in step 3's procedure_text, where the sequence completes. Line 211, the [0038] header for the two-step process to the enol ester, is transcribed in this record rather than in Step 1's, on the rule that an enumeration header goes with the final step of the enumeration it heads. The token 'None' at the head of source lines 192, 213, 215, 228, 230, 232 and 239 is the enriched file's null marker column and not document text, so it is stripped from procedure_text; the '> EN:' partner of each of those lines, which is otherwise byte identical, confirms it. [0037] prints 'formula(III)with', '1, 3-cyclohexanedionein' and 'dichloropentanes,and' with words and punctuation run together, and all are transcribed as printed. The dione is printed '1, 3-cyclohexanedione' with a space in [0036] and [0037] and '1,3-cyclohexanedione' in [0038] and [0039]; the identifier is A1's closed-up form."
+  },
+  {
+    "patent_id": "WO2022024094A1",
+    "reaction_id": "Detailed Description of the Invention_Step 3",
+    "section_label": "Detailed Description of the Invention",
+    "section_type": "summary_of_invention",
+    "step_index": 3,
+    "step_label": "Step 3",
+    "reaction_class": "acylation",
+    "reaction_class_confidence": "medium",
+    "named_reaction": null,
+    "mechanism_type": "ionic",
+    "scale": "not_specified",
+    "is_one_pot": false,
+    "one_pot_steps": [],
+    "conditions": {
+      "temperature": {
+        "type": "not_specified",
+        "value_c": null,
+        "min_c": null,
+        "max_c": null
+      },
+      "pressure": {
+        "type": "not_specified",
+        "value_kpa": null,
+        "qualitative_text": null
+      },
+      "atmosphere": null,
+      "time_h": null,
+      "reactor_type": null,
+      "concentration": {
+        "value": null,
+        "unit": null,
+        "reagent": null,
+        "text": null
+      },
+      "heating_method": null,
+      "cooling_method": null,
+      "light_source": {
+        "type": null,
+        "color": null,
+        "wavelength_nm": null,
+        "power_w": null
+      },
+      "stirring": {
+        "type": null,
+        "rpm": null
+      },
+      "ph_value": null,
+      "ph_target_stage": null
+    },
+    "conditions_inherited": false,
+    "workup": {
+      "steps": [],
+      "quenching_agent": null,
+      "extraction_solvent": null,
+      "extraction_count": null,
+      "extraction_volume_ml": null,
+      "washes": null,
+      "drying_agent": null,
+      "filtration": null,
+      "concentration_method": null,
+      "ph_target": null
+    },
+    "purification": "optional, and by a conventional procedure known to a person skilled in the art ([0044]); no method, solvent or reagent is named",
+    "process_control": {
+      "method": null,
+      "target_compound": null,
+      "threshold_pct": null,
+      "criterion": null
+    },
+    "byproduct_recovery": null,
+    "safety_notes": [],
+    "molar_ratio_text": null,
+    "selectivity": {
+      "regio": null,
+      "stereo": null,
+      "chemo": null
+    },
+    "compounds": [
+      {
+        "identifier": "enol ester of formula (II)",
+        "role": "reactant",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "sodium cyanide",
+        "role": "reagent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "triethylamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of seven organic bases in [0043]; triethylamine is the more preferred one",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "N,N-diisopropylethylamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of seven organic bases in [0043]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "N,N-diisopropylamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of seven organic bases in [0043]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "ethanolamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of seven organic bases in [0043]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "diethanolamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of seven organic bases in [0043]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "triethanolamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of seven organic bases in [0043]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "N-methylglucamine",
+        "role": "base",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of seven organic bases in [0043]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloromethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of five interchangeable solvents in [0043]; dichloromethane is the preferred one",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloroethane",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of five interchangeable solvents in [0043]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloropropanes",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of five interchangeable solvents in [0043]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichlorobutanes",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of five interchangeable solvents in [0043]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "dichloropentanes",
+        "role": "solvent",
+        "is_product": false,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": "offered as one of five interchangeable solvents in [0043]",
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      },
+      {
+        "identifier": "mesotrione",
+        "role": "product",
+        "is_product": true,
+        "quantity": {
+          "mass_g": null,
+          "volume_ml": null,
+          "mmol": null,
+          "equivalents": null,
+          "yield_pct": null
+        },
+        "addition_profile": null,
+        "ms_mz": null,
+        "ms_type": null,
+        "purity_pct": null,
+        "purity_method": null
+      }
+    ],
+    "reactant_names": [
+      "enol ester of formula (II)",
+      "sodium cyanide"
+    ],
+    "reactant_smiles": null,
+    "smiles_source": null,
+    "product_name": "mesotrione",
+    "product_smiles": null,
+    "product_smiles_source": null,
+    "product_yield_pct": null,
+    "product_ms_mz": null,
+    "product_ms_type": null,
+    "product_purity_pct": null,
+    "product_purity_method": null,
+    "canonical_rxn": null,
+    "procedure_text": "[0039] In certain embodiments, there is provided a process for preparation of mesotrione of formula (I), which includes the steps of: (iii) conversion of the enol ester of formula (II) to mesotrione of formula (I) [0040] In various embodiments, the outlined intermediates, namely NMSBA of formula (III) and enol ester of formula (II) may each be isolated if desired, or the reaction sequence can be carried forward without isolation of said intermediates. In addition, all the reaction steps of the above process can also be carried out under reaction conditions suitable for commercial scale, and typically proceed at reaction rates suitable for large scale operations. [0041] In some embodiments, all the reaction steps of the process for producing the final product mesotrione of formula (I) from the starting material NMST of formula (IV) may be conducted in one and the same reaction vessel without isolation of the intermediates of formula (III) and (II) and without difficulty, so that the process of this disclosure may be worked in a facile way and is very advantageous as a commercial process of producing the mesotrione. [0042] According to embodiments of the present disclosure, the conversion of the enol ester of formula (II) to mesotrione can be achieved by any method known in the art. [0043] In one preferred embodiment, the enol ester of formula (II) can be converted into mesotrione by reacting the enol ester of formula (II) with sodium cyanide in presence of a base and a solvent. The solvent may be any solvent in which the enol ester may be soluble. Examples of solvent include dichloromethane, dichloroethane, dichloropropanes, dichlorobutanes, dichloropentanes, and mixtures thereof. Preferably, the solvent can be dichloromethane. The base that can be used for this purpose includes organic and inorganic base. Preferably, the base may be an organic base such as triethylamine, N,N-diisopropylethylamine (DIPEA), N,N-diisopropylamine, ethanolamine, diethanolamine, triethanolamine or N-methylglucamine. More preferably, the base can be triethylamine. In another embodiment, the disclosed process can produce solvent recovery of >85%. [0044] In some embodiments, mesotrione produced according to the process of the present disclosure may optionally be subjected to purification. Purification of mesotrione may include a conventional procedure known to a person skilled in the art.",
+    "procedure_summary": "The enol ester is converted into mesotrione by reaction with sodium cyanide in the presence of an organic base, preferably triethylamine, and a chlorinated solvent, preferably dichloromethane. Purification of the product is optional and by a conventional procedure; no temperature, time or charge is given.",
+    "precursor_step": "Step 2",
+    "linkage_confirmed": true,
+    "cross_reference_unresolved": false,
+    "non_synthetic": false,
+    "is_complete": false,
+    "validation_flags": [
+      "no_conditions",
+      "reagent_written_not_drawn"
+    ],
+    "tags": [
+      "transformation:acylation",
+      "transformation:rearrangement",
+      "mechanism:ionic",
+      "scale:not_specified",
+      "solvent_class:halogenated",
+      "catalyst_class:base",
+      "workup_type:none",
+      "purification:none",
+      "green_chemistry:solvent_recovery",
+      "safety:cyanide_handling",
+      "step_role:final_step",
+      "linkage:precursor_linked",
+      "is_one_pot:false"
+    ],
+    "notes": "PROSE step (iii) of the invention's three-step route and the last step of the section: [0039] heads the three-step list and [0039](iii) states the step, [0042] says the conversion can be achieved by any method known in the art, [0043] gives the one preferred embodiment with its reagent, base list and solvent list, and [0044] makes purification optional. Two conventions hold across all three records of this section, the same two the reference run uses: (a) compounds[] carries every species the prose attaches to this step, including the alternatives the paragraph offers, and (b) reactant_names lists the compounds[] entries that are not the product, not a catalyst, not a base and not a solvent. NO CONDITIONS AT ALL. The one span that draws this transformation, at line 226, has a bare arrow, and [0043] gives no temperature, no time, no pressure, no atmosphere, no pH, no order of addition and no reactor. So no_conditions is raised and every conditions field is null; nothing is imported from Step 1's reflux or from any other section. reagent_written_not_drawn is raised: sodium cyanide, all seven bases and all five solvents are in the prose and on no arrow. No drawing_text_conflict: the span draws formula (II) to formula (I), which is what [0039](iii), [0042] and [0043] say, and a bare arrow states nothing the prose can contradict. ONE RECORD PER TRANSFORMATION, NOT PER DRAWING. This section prints eight IMAGE_EXTRACT scheme spans, at lines 181, 196, 200, 205, 207, 222, 224 and 226, and they depict only three distinct transformations: four draw step (i), three draw step (ii) and one draws step (iii). Each is printed beside the paragraph that recites the same transformation in words, and lines 205 and 207 are page-top duplicates on p12. Prompt rule 5f asks for separate 'Scheme Step' records where a section carries both prose steps and an overview scheme. That case does not arise here: there is no independent overview scheme, no arrow whose transformation the prose lacks, and no arrow that introduces a reagent or a connectivity the prose does not state, so separate scheme records would restate the same three transformations eight times and would inflate the section from three steps to eleven. This is a deliberate departure from rule 5f, recorded here rather than taken silently. A0 also set estimated_steps to 3 for this section and prompt rule 4 is satisfied without a disagreement. CLASSIFICATION: the transformation is an isomerisation. The span at line 226 draws reactant and product with the same molecular formula, C14H13NO7S, and they are different compounds; the enol ester's aryl carboxylate migrates from the enol oxygen to the ring carbon to give the 2-aroyl-1,3-dione. The closed list in prompt rule 17 has no rearrangement value, so reaction_class is acylation, for the C-acylation that results, with confidence medium because of that list fit rather than because the chemistry is unclear, and both transformation:acylation and transformation:rearrangement are tagged. The reference run classified the identical enol ester to tembotrione step the same way, acylation with medium confidence. No widely accepted name is asserted; the cyanide-promoted acyl migration is sometimes called a Fries-type rearrangement, which is a stretch under prompt rule 19, so named_reaction is null. SODIUM CYANIDE: [0043] words it as 'reacting the enol ester of formula (II) with sodium cyanide in presence of a base and a solvent', so it is kept as role reagent, matching A1, and is listed in reactant_names on the strength of that 'with'. In the mechanism accepted for this transformation the cyanide is catalytic and the reference run recorded its analogue, cyanoacetone, as a catalyst; the difference is recorded here and the document's own wording is followed rather than the reference's. BASE: [0043] says the base 'includes organic and inorganic base' and then names only organic ones, seven of them, with triethylamine more preferred. All seven are recorded as alternatives; the generic phrases name no compound and no inorganic base is named anywhere in this section, so none is recorded. The bases are excluded from reactant_names by the convention above and catalyst_class:base is tagged because the text puts the base in the reaction 'in presence of' the substrate rather than as a co-reactant. SOLVENT: the same five chlorinated solvents as step (ii), listed again in [0043] with dichloromethane preferred; 'and mixtures thereof' names no compound and no volume is given. FLOORS: [0043] repeats 'the disclosed process can produce solvent recovery of >85%'. That is a lower bound on a recovery and not a measurement, and it is a property of the solvent and not of mesotrione, so it is kept in prose only. No yield and no purity figure of any kind is stated for this step, so product_yield_pct, product_purity_pct and product_purity_method are null because the document is silent, not because a floor was rejected. PURIFICATION: [0044] makes it optional and names only 'a conventional procedure known to a person skilled in the art', so the free-text field records exactly that and the purification tag is set to none rather than guessed at. SAFETY: sodium cyanide is the reagent of this step, and safety:cyanide_handling is tagged from that named reagent, but the section makes no safety statement whatsoever, so safety_notes is empty. No hazard assessment is added here; that is A5's work. LINKAGE: precursor_step is Step 2 and linkage_confirmed is true, because Step 2's product identifier is character for character the first reactant identifier here and because [0039] enumerates (i), (ii) and (iii) with the enol ester passing between (ii) and (iii), while [0040] names both intermediates as the outlined intermediates of one sequence. SEQUENCE, not one pot: [0040] says the outlined intermediates may each be isolated if desired or the sequence carried forward without isolation, and [0041] says all the reaction steps may be conducted in one and the same reaction vessel without isolation of the intermediates. That is an optional mode of the whole three-step sequence and not a property of any single numbered step, and the section still recites the route as three steps in [0038] and [0039], so is_one_pot is false on every record and one_pot_steps is empty. Both paragraphs are transcribed in step 3's procedure_text, where the sequence completes. [0040] and [0041] are transcribed in this record's procedure_text because they describe the sequence as a whole and the sequence completes at this step; they are referenced in the notes of Steps 1 and 2 rather than transcribed there. Line 220, the [0039] header for the three-step process to mesotrione, is transcribed here on the rule that an enumeration header goes with the final step of the enumeration it heads. [0040] runs across the p14 page break, so source lines 234 and 239 are joined in procedure_text. The token 'None' at the head of source lines 192, 213, 215, 228, 230, 232 and 239 is the enriched file's null marker column and not document text, so it is stripped from procedure_text; the '> EN:' partner of each of those lines, which is otherwise byte identical, confirms it. [0039](iii) at line 232 ends without a full stop, as printed."
+  }
+]

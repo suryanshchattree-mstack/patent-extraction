@@ -1,0 +1,203 @@
+{
+  "page": "p03.png",
+  "page_label": "2",
+  "doc_part": "description",
+  "header": "WO 2022/024094                    PCT/IB2021/057013",
+  "footer": "",
+  "paragraphs": [
+    {
+      "marker": "[005]",
+      "zh": "The United States Patent No. 7,820,863 describes a process for preparation of mesotrione. In this patent reference, mesotrione is prepared by (i) oxidation of 2-nitro-4-methylsulphonyl toluene (NMST) to give 2-nitro-4-methylsulphonyl benzoic acid (NMSBA), (ii) conversion of NMSBA to 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC), and (iii) reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester followed by a rearrangement process to give mesotrione, as shown in the following reaction scheme:",
+      "en": "The United States Patent No. 7,820,863 describes a process for preparation of mesotrione. In this patent reference, mesotrione is prepared by (i) oxidation of 2-nitro-4-methylsulphonyl toluene (NMST) to give 2-nitro-4-methylsulphonyl benzoic acid (NMSBA), (ii) conversion of NMSBA to 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC), and (iii) reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester followed by a rearrangement process to give mesotrione, as shown in the following reaction scheme:",
+      "notes": "Document is in English; zh and en are the same string, per the brief. Marker is printed with three digits and is transcribed as printed, not zero-padded. This paragraph is prior-art discussion (the process of US 7,820,863); the page prints no section heading of its own, so the heading it sits under is not recoverable from this page alone. Every occurrence of the moiety in this paragraph is spelt 'methylsulphonyl' with a PH; paragraph [006] on the same page spells the same moiety 'methylsulfonyl' with an F. Both are transcribed exactly as printed and not unified. The line number '5' printed in the left margin beside the '(iii) reacting cyclohexanedione' line is margin furniture and is excluded. Paragraph is complete on this page: it opens with its own marker and ends at the colon that introduces the scheme drawn below it."
+    },
+    {
+      "marker": "[006]",
+      "zh": "The United States Patent No. 5,591,890 discloses a process for preparation of 2-nitro-4-methylsulfonyl benzoic acid (NMSBA) by oxidation of 2-nitro-4-methylsulfonyl toluene (NMST) in the presence of a cobalt salt as a catalyst. In particular, the oxidation is carried out in the presence of acetic acid and acetate ion and using cobalt(II) acetate tetra hydrate as a catalyst.",
+      "en": "The United States Patent No. 5,591,890 discloses a process for preparation of 2-nitro-4-methylsulfonyl benzoic acid (NMSBA) by oxidation of 2-nitro-4-methylsulfonyl toluene (NMST) in the presence of a cobalt salt as a catalyst. In particular, the oxidation is carried out in the presence of acetic acid and acetate ion and using cobalt(II) acetate tetra hydrate as a catalyst.",
+      "notes": "Document is in English; zh and en are the same string. Marker printed with three digits, transcribed as printed. This paragraph spells the moiety 'methylsulfonyl' with an F in both of its occurrences, against the PH spelling used throughout [005] one drawing away; neither has been normalised. 'tetra hydrate' is printed as two words and is kept as printed. The line number '10' printed in the left margin beside this paragraph's first line is margin furniture and is excluded. The paragraph ends with a full stop on this page and the rest of the page below it is blank ink-free, so it does not continue onto p04 as an unfinished sentence."
+    }
+  ],
+  "drawings": [
+    {
+      "kind": "scheme",
+      "between_markers": [
+        "[005]",
+        "[006]"
+      ],
+      "presented_as": "prior_art",
+      "structures": [
+        {
+          "position_in_drawing": "1st, top row left, labelled NMST",
+          "core": "benzene",
+          "substituents": [
+            "CH3 at C1",
+            "NO2 at C2",
+            "SO2CH3 at C4"
+          ],
+          "name": "NMST",
+          "smiles": "Cc1ccc(S(C)(=O)=O)cc1[N+](=O)[O-]",
+          "confidence": "high"
+        },
+        {
+          "position_in_drawing": "2nd, top row centre, labelled NMSBA",
+          "core": "benzene",
+          "substituents": [
+            "COOH at C1",
+            "NO2 at C2",
+            "SO2CH3 at C4"
+          ],
+          "name": "NMSBA",
+          "smiles": "OC(=O)c1ccc(S(C)(=O)=O)cc1[N+](=O)[O-]",
+          "confidence": "high"
+        },
+        {
+          "position_in_drawing": "3rd, top row right, labelled NMSBC",
+          "core": "benzene",
+          "substituents": [
+            "C(=O)Cl at C1",
+            "NO2 at C2",
+            "SO2CH3 at C4"
+          ],
+          "name": "NMSBC",
+          "smiles": "ClC(=O)c1ccc(S(C)(=O)=O)cc1[N+](=O)[O-]",
+          "confidence": "high"
+        }
+      ],
+      "arrows": [
+        {
+          "from_structure": "1st",
+          "to_structure": "2nd",
+          "reagents_above": [],
+          "reagents_below": [],
+          "arrow_style": "solid",
+          "confidence": "high"
+        },
+        {
+          "from_structure": "2nd",
+          "to_structure": "3rd",
+          "reagents_above": [],
+          "reagents_below": [],
+          "arrow_style": "solid",
+          "confidence": "high"
+        }
+      ],
+      "notes": "First of two drawing blocks that together make up the single 'following reaction scheme' announced at the end of [005]. They are recorded as two drawings because they are two spatially separate blocks with their own baselines, and the second block redraws NMSBC rather than continuing an arrow from this one; the prose calls them collectively one scheme. presented_as is prior_art because that is how this page presents the route, as the process of US 7,820,863 cited in [005]; the value describes the page's presentation and not any property of the compounds themselves. Labels printed under the structures, left to right: NMST, NMSBA, NMSBC. Both arrows carry nothing at all above or below them. All ink in this block is broken and dotted from the loss of greyscale in the scan, and both arrowheads are solid; recorded as solid arrows per the brief, not as dashed. Ring positions were read off the drawn hexagons, which in all three cases have the C1 substituent on the top vertex, NO2 on the upper-right vertex, and SO2CH3 on the bottom vertex, and were not inferred from the names in the prose."
+    },
+    {
+      "kind": "scheme",
+      "between_markers": [
+        "[005]",
+        "[006]"
+      ],
+      "presented_as": "prior_art",
+      "structures": [
+        {
+          "position_in_drawing": "1st, lower block far left, labelled NMSBC",
+          "core": "benzene",
+          "substituents": [
+            "C(=O)Cl at C1",
+            "NO2 at C2",
+            "SO2CH3 at C4"
+          ],
+          "name": "NMSBC",
+          "smiles": "ClC(=O)c1ccc(S(C)(=O)=O)cc1[N+](=O)[O-]",
+          "confidence": "high"
+        },
+        {
+          "position_in_drawing": "2nd, lower block left of centre, after a printed plus sign",
+          "core": "cyclohexane-1,3-dione",
+          "substituents": [
+            "=O at C1",
+            "=O at C3"
+          ],
+          "name": "cyclohexane-1,3-dione",
+          "smiles": "O=C1CC(=O)CCC1",
+          "confidence": "high"
+        },
+        {
+          "position_in_drawing": "3rd, lower block right of the horizontal arrow, labelled Enolester",
+          "core": "benzene ester-linked to cyclohex-2-en-1-one",
+          "substituents": [
+            "C(=O)O at C1 of the benzene ring",
+            "NO2 at C2 of the benzene ring",
+            "SO2CH3 at C4 of the benzene ring",
+            "ester O on the enol carbon C1 of the cyclohexenone ring",
+            "ring C1=C2 double bond in the cyclohexenone ring",
+            "=O at C3 of the cyclohexenone ring"
+          ],
+          "name": "Enolester",
+          "smiles": "O=C1CCCC(=C1)OC(=O)c1ccc(S(C)(=O)=O)cc1[N+](=O)[O-]",
+          "confidence": "high"
+        },
+        {
+          "position_in_drawing": "4th, lower block bottom centre, labelled Mesotrione",
+          "core": "benzene aroyl-linked to cyclohexane-1,3-dione",
+          "substituents": [
+            "C(=O) bridge at C1 of the benzene ring",
+            "NO2 at C2 of the benzene ring",
+            "SO2CH3 at C4 of the benzene ring",
+            "aroyl group at C2 of the cyclohexane-1,3-dione ring",
+            "=O at C1 of the cyclohexane-1,3-dione ring",
+            "=O at C3 of the cyclohexane-1,3-dione ring"
+          ],
+          "name": "Mesotrione",
+          "smiles": "O=C1CCCC(=O)C1C(=O)c1ccc(S(C)(=O)=O)cc1[N+](=O)[O-]",
+          "confidence": "high"
+        }
+      ],
+      "arrows": [
+        {
+          "from_structure": "1st and 2nd, joined by a printed plus sign",
+          "to_structure": "3rd",
+          "reagents_above": [
+            "(CH3CH2 )3N"
+          ],
+          "reagents_below": [
+            "Solvent"
+          ],
+          "arrow_style": "solid",
+          "confidence": "medium"
+        },
+        {
+          "from_structure": "3rd",
+          "to_structure": "4th",
+          "reagents_above": [],
+          "reagents_below": [],
+          "arrow_style": "solid",
+          "confidence": "high"
+        }
+      ],
+      "notes": "Second of the two drawing blocks belonging to the one scheme announced in [005]. presented_as is prior_art because that is how the page presents it, as the route of US 7,820,863 discussed in the background; the value describes the page's presentation, not what the compounds are. Mesotrione is the target compound of this patent and is drawn here only as the end point of the cited prior-art route, so it is not filed as an intermediate. Labels printed under or beside the structures: NMSBC under the far-left aryl chloride, Enolester to the right of and below the ester, Mesotrione under the bottom structure. Enolester is printed as one word with no space and is kept that way. The reagent above the horizontal arrow is printed with subscripts and with a visible space before the closing bracket, as (CH3CH2 )3N, i.e. triethylamine; subscripts are flattened here because the field is plain text, and the space is transcribed rather than repaired, which is why that arrow is medium and not high. The word below that arrow is the generic 'Solvent' with no solvent named. The second arrow is vertical, running downward from the Enolester to Mesotrione, and carries no text on either side; the prose calls this step a rearrangement process. Every stroke in this block is broken dotted ink from the lost greyscale and both arrowheads are solid, so both arrows are recorded as solid. A stray ink dot sits on the Mesotrione label baseline about 130 px to its right and carries no meaning. The cyclohexenone ring of the Enolester was traced vertex by vertex: the ester oxygen sits on the ring carbon that carries the ring double bond, and the ketone is on the far side of that double bond, giving a 3-oxocyclohex-1-en-1-yl ester. Positions were read off the drawings and not inferred from the prose."
+    }
+  ],
+  "discrepancies": [
+    {
+      "what": "The lower block draws a base and a solvent on the arrow that the prose of [005] never mentions.",
+      "drawing_says": "(CH3CH2 )3N above the arrow and Solvent below it, for the NMSBC plus cyclohexanedione step",
+      "text_says": "step (iii) is only 'reacting cyclohexanedione with 2-nitro-4-methylsulphonyl benzoyl chloride (NMSBC) to form an enol ester', with no base and no solvent named"
+    },
+    {
+      "what": "The prose of [005] names two transformations for the top block whose reagents are drawn nowhere.",
+      "drawing_says": "both top-row arrows are bare, with nothing above or below either of them",
+      "text_says": "(i) 'oxidation of' NMST to NMSBA and (ii) 'conversion of' NMSBA to the benzoyl chloride NMSBC, so an oxidant and a chlorinating agent are implied by the text and absent from the drawing"
+    },
+    {
+      "what": "The prose of [005] leaves the dione unlocated while the drawing fixes it.",
+      "drawing_says": "a cyclohexane ring with the two C=O groups on the 1 and 3 vertices, i.e. cyclohexane-1,3-dione",
+      "text_says": "'cyclohexanedione', with no positions given"
+    },
+    {
+      "what": "The same moiety is spelt two ways on this one page, in the two paragraphs either side of the scheme.",
+      "drawing_says": "the drawings carry only the abbreviations NMST, NMSBA, NMSBC, so they do not settle the spelling",
+      "text_says": "[005] prints 'methylsulphonyl' with a PH in all four of its occurrences, and [006] prints 'methylsulfonyl' with an F in both of its occurrences, for the same compounds NMST and NMSBA"
+    },
+    {
+      "what": "The prose calls the drawn chemistry one scheme, the page lays it out as two blocks.",
+      "drawing_says": "two spatially separate blocks, the second one redrawing NMSBC from scratch rather than being reached by an arrow from the first",
+      "text_says": "'as shown in the following reaction scheme', singular"
+    }
+  ],
+  "illegible": [],
+  "page_confidence": "medium"
+}

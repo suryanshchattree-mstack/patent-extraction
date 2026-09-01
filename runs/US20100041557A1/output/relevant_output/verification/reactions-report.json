@@ -1,0 +1,248 @@
+{
+  "artifact": "reactions.json",
+  "records_audited": 61,
+  "findings": [
+    {
+      "check": "precision",
+      "severity": "major",
+      "record": "Comparative Example 1_Step 1",
+      "field": "non_synthetic",
+      "problem": "Twenty-three records carry non_synthetic false while their own notes state that no bond is made or broken, the exact reason the other thirty-eight records give for setting it true.",
+      "source_line": 443,
+      "quote": "150 mg of tembotrione were dissolved in 0.20 ml of boiling n-pentanol in a test vessel. The test vessel was sealed and placed in an ice-water bath and left there for about 40 mins.",
+      "artifact_says": "non_synthetic: false, with notes reading 'NO BOND IS MADE OR BROKEN: tembotrione is dissolved and recovered as crystalline form B, the same molecule in a different lattice'",
+      "should_be": "non_synthetic: true on all 23 records of comparative-example-1, comparative-example-2, comparative-examples-3-10 (8), comparative-examples-11-20 (10) and comparative-examples-21-to-22 (3). The same five files also default byproduct_recovery to null where the other eleven use [], so the split is a batch artefact and not a per-record judgement: Example 1_Step 1, an identical dissolve-and-quench crystallisation, is true.",
+      "confidence": "high"
+    },
+    {
+      "check": "fidelity",
+      "severity": "major",
+      "record": "Example 15_Step 1",
+      "field": "conditions.temperature",
+      "problem": "The temperature is typed as a range spanning 6 to 110 C, a range the source never states; it is the span of an ordered cooling programme whose printed values are four discrete points.",
+      "source_line": 437,
+      "quote": "The solution was cooled on an oil bath to 101° C. and then some seed crystals of the form C (tip of a spatula) were added without stirring. The turbid solution was cooled to room temperature and then stored over night at 6° C.",
+      "artifact_says": "{\"type\": \"range\", \"value_c\": null, \"min_c\": 6.0, \"max_c\": 110.0}",
+      "should_be": "Record the temperature of the transformation the step is classified from, per the A2 rule that a multi-operation step takes its temperature from the final transformation: either {\"type\":\"exact\",\"value_c\":6.0} for the overnight crystallisation hold or {\"type\":\"exact\",\"value_c\":110.0} for the dissolution, with the full ordered programme left where it already is, in cooling_method and notes. Do not synthesise a min/max pair from two ends of a profile; no line prints 6 to 110.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "Stability Studies Step 2 collapses two separate experiments, pure form A and pure form C held for 8 days, into one record, while its own addition_profile calls each one 'its own experiment'.",
+      "source_line": 529,
+      "quote": "[0085] After 8 days under these conditions, the pure modifications A and C were unchanged.",
+      "artifact_says": "one record, Stability Studies on the Modifications_Step 2, with two reactant entries and two product entries and product_name 'tembotrione crystalline form A and tembotrione crystalline form C, both unchanged'",
+      "should_be": "Two records, one for pure form A and one for pure form C, each with a single reactant and a single unchanged product; the section then holds four experiments (mixture A+B+C, pure A, pure C, pure B) rather than three.",
+      "confidence": "medium"
+    },
+    {
+      "check": "recall",
+      "severity": "major",
+      "record": null,
+      "field": null,
+      "problem": "The generic production process for solid plant protection agents at [0129] has no record anywhere in the artifact, although the equally generic crystallisation processes of [0013] to [0040] and [0045] to [0062] each got two.",
+      "source_line": 637,
+      "quote": "Such formulations can be produced by mixing or simultaneous grinding of the forms A or C of tembotrione with a solid carrier and if necessary other additives, in particular surface-active substances. Granules can be produced by binding of the active substances to solid carriers.",
+      "artifact_says": "no record; section 'Formulation - Solid Plant Protection Agents' (lines 637-642) is marked contains_procedure false in A0-sections/00-sections.json, so A2 never ran on it",
+      "should_be": "One record with reaction_class formulation for the generic solid-formulation route, which the same line goes on to extend with spray drying, extrusion, fluidized bed granulation and spray granulation, or an explicit note in the artifact saying why a generic formulation process is out of scope when a generic crystallisation process is in scope. The defect may belong to A0's section map rather than to A2, but reactions.json is where it is visible.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "major",
+      "record": "Formulation Examples I to X_Step 1",
+      "field": "product_name",
+      "problem": "On 31 of 61 records product_name is coined prose that matches no A1 identifier and no is_product entry in the record's own compounds[], so the flattened field does not join the compound artifact.",
+      "source_line": 647,
+      "quote": "In this manner, a water-dispersible powder which contains the form A or C is obtained.",
+      "artifact_says": "product_name 'water-dispersible powder containing tembotrione crystalline form A or tembotrione crystalline form C' while compounds[] products are the A1 identifiers 'tembotrione crystalline form A' and 'tembotrione crystalline form C'",
+      "should_be": "product_name must be one of the record's compounds[] product identifiers, per A2 rule 8 that these fields are a flattening of compounds[]. Put the composition-level description in notes. Affects all 10 Formulation Examples records, all 21 Comparative Examples 3-10, 11-20 and 21-to-22 records (product_name 'mixture of ... and ...'), and Stability Studies Step 2.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Example 15_Step 1",
+      "field": "compounds[3].role",
+      "problem": "role 'seed_crystal' is outside A1's closed role list, and the same artifact records seed crystals as 'additive' elsewhere.",
+      "source_line": 437,
+      "quote": "some seed crystals of the form C (tip of a spatula) were added without stirring",
+      "artifact_says": "role: \"seed_crystal\"",
+      "should_be": "role: \"additive\", which is in the list and is what Process for Form A_Step 2 already uses for the optional form A seed crystals of [0032]. The coined value was not necessary; a listed one fitted, and the phrase 'seed crystals of form C' is already carried verbatim in addition_profile.",
+      "confidence": "high"
+    },
+    {
+      "check": "vocabulary",
+      "severity": "minor",
+      "record": "Comparative Examples 3-10_Step 1",
+      "field": "tags",
+      "problem": "Single-step standalone experiments are tagged step_role:first_step in the invention's examples and step_role:final_step in the comparative examples, so the same shape of record carries opposite tags.",
+      "source_line": 453,
+      "quote": "A saturated solution of about 50 mg of tembotrione in the solvents stated in Table 3 was prepared in a test vessel at the boiling point of the solvent.",
+      "artifact_says": "step_role:final_step on all 23 one-step comparative records; step_role:first_step on all 16 one-step records of Example 1, Examples 2-9, Examples 10 to 13, Example 14 and Example 15",
+      "should_be": "One convention for a one-step section, applied to both sets. Either value is inside the closed list, so this is a consistency defect, not an illegal value, but a consumer filtering step_role:final_step currently gets the comparative examples and none of the invention's examples.",
+      "confidence": "high"
+    },
+    {
+      "check": "recall",
+      "severity": "minor",
+      "record": "Formulation Examples I to X_Step 2",
+      "field": "conditions.concentration",
+      "problem": "The stated active substance content of the finished formulation is printed as a weight percent in seven of the ten formulation examples and appears in no numeric field of any record.",
+      "source_line": 651,
+      "quote": "In this manner, a dusting agent which contains 5 wt. % of the form A or C is obtained.",
+      "artifact_says": "conditions.concentration = {\"value\": null, \"unit\": null, \"reagent\": null, \"text\": null} on all ten formulation records; the figure survives only inside procedure_text",
+      "should_be": "Populate the concentration block, e.g. {\"value\": 5.0, \"unit\": \"wt. %\", \"reagent\": \"tembotrione crystalline form A or tembotrione crystalline form C\", \"text\": \"contains 5 wt. % of the form A or C\"}, on the seven records that print one: Step 2 (5 wt. %, line 651), Step 4 (20, line 659), Step 6 (20, line 667), Step 7 (50, line 676), Step 8 (75, line 680), Step 9 (20, line 684) and Step 10 (0.5, line 688). The parts-by-weight charges have no home in this schema and leaving those null is correct.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Claims 16-33_Claim 23 Step i",
+      "field": "conditions.heating_method",
+      "problem": "The heating_method and cooling_method fields on both claim 23 records carry auditor commentary about what was not imported rather than the method itself.",
+      "source_line": 760,
+      "quote": "i) preparing a hot solution of 2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoroethoxymethyl)-benzoyl]cyclohexan-1,3-dione in 2,2-dimethyl-propanol or in an aromatic hydrocarbon or in a mixture of an aromatic hydrocarbon with an aliphatic hydrocarbon, and",
+      "artifact_says": "heating_method: \"the claim requires a hot solution and recites no temperature; the description's definition of a hot solution at [0049] is not part of the claim and was not imported\"",
+      "should_be": "heating_method: \"hot solution\" (and on Claim 23 Step ii, cooling_method: \"cooling of the solution\"), with the everything after the semicolon moved into notes, where the same sentences already appear. A condition field that holds an explanation of its own emptiness will diff against every extractor.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Comparative Examples 11-20_Step 1",
+      "field": "conditions.cooling_method",
+      "problem": "cooling_method appends an interpretation the cited line does not print: 'slow cooling' here and 'a rapid quench' on the ice-water-bath records.",
+      "source_line": 479,
+      "quote": "The test vessel was sealed and placed in polystyrene container and left there overnight.",
+      "artifact_says": "cooling_method: \"sealed test vessel placed in a polystyrene container and left overnight, slow cooling\"",
+      "should_be": "Drop the trailing gloss: \"sealed test vessel placed in a polystyrene container and left overnight\". The same applies to the 'a rapid quench' suffix on the ice-water-bath records of comparative-example-1 and comparative-examples-3-10; the patent never characterises either rate. The inference itself is sound and belongs in notes.",
+      "confidence": "medium"
+    },
+    {
+      "check": "precision",
+      "severity": "minor",
+      "record": "Preparation of Form B (Not According to the Invention)_Step 1",
+      "field": "compounds",
+      "problem": "compounds[] carries two entities that the record's own addition_profile says are not present in the step.",
+      "source_line": 356,
+      "quote": "[0066] The production of the modification B is effected analogously to the production of the modification A, using n-pentanol instead of 2,2-dimethylpropanol as the solvent.",
+      "artifact_says": "2,2-dimethylpropanol and tembotrione crystalline form A both appear in compounds[] with role 'other' and addition_profile 'named only as the solvent that n-pentanol replaces; not present in this preparation' / 'not a participant'",
+      "should_be": "Keep both out of compounds[], which A2 rule 6 defines as the per-compound detail for this step, and keep them where the notes already discuss them. Any consumer joining compounds to reactions will otherwise read 2,2-dimethylpropanol as a participant in the form B preparation. The two readings of the sentence are preserved by the notes and by conditions_unresolved without this.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Formulation Examples I to X_Step 1",
+      "field": "compounds[*].is_product",
+      "problem": "An 'or' between two alternative active substances and a '+' between two forms in a mixture are encoded identically, as two entries with is_product true, so the two cases cannot be told apart from the structured fields.",
+      "source_line": 647,
+      "quote": "20 parts by weight of form A or form C are mixed well with 3 parts by weight of the sodium salt of diisobutylnaphthalenesulfonic acid",
+      "artifact_says": "form A and form C both with is_product true and both with role reactant, exactly as Comparative Examples 3-10_Step 1 encodes the genuine 'A + B' mixture of Table 3",
+      "should_be": "No field distinguishes them, so raise a validation flag or record the disjunction in molar_ratio_text or notes as a machine-visible marker on the 10 formulation records. The addition_profile prose does say 'alternatives', but prose is not a field a scorer reads.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Formulation Examples I to X_Step 1",
+      "field": "source_lines",
+      "problem": "All ten formulation provenance entries end their source_lines on an '> EN:' translation line instead of the line that prints the quoted text.",
+      "source_line": 647,
+      "quote": "[0134] 20 parts by weight of form A or form C are mixed well with 3 parts by weight of the sodium salt of diisobutylnaphthalenesulfonic acid",
+      "artifact_says": "source_lines [645, 648], where 648 is '    > EN: 20 parts by weight of form A or form C are mixed well with 3 parts by weight of ...' and the quoted text is printed on 647",
+      "should_be": "Cite the printing line: [645, 647] here, and likewise 651, 655, 659, 663, 667, 671, 680, 684 and 688 for Steps 2 to 10, none of which is currently named. Every other section in the artifact cites printing lines only. Read as an inclusive span the pairs do bracket the right line, which is why this is minor rather than major.",
+      "confidence": "medium"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Example 1_Step 1",
+      "field": "byproduct_recovery",
+      "problem": "byproduct_recovery is an empty array on 38 records where A2 rule 14 says the value is null when no by-product recovery is described.",
+      "source_line": 374,
+      "quote": "In this manner, tembotrione was obtained in the form of crystalline prisms, which were isolated and analyzed by X-ray powder diffractometry (XRD).",
+      "artifact_says": "byproduct_recovery: [] on the 38 records of claims-16-33, example-1, example-14, example-15, examples-2-9, examples-10-to-13, formulation-examples-i-to-x, preparation-of-form-b, process-for-form-a and process-for-form-c",
+      "should_be": "null, as the 23 records of the five comparative files already have. Nothing in the document recovers a by-product, so one of the two encodings is wrong and rule 14 names which.",
+      "confidence": "high"
+    },
+    {
+      "check": "schema",
+      "severity": "minor",
+      "record": "Examples 2-9_Step 1",
+      "field": "step_label",
+      "problem": "Table-row records use 'Step N' where the document's own marker for the row is the printed example number, so the reaction_id cannot be mapped to the printed experiment without reading notes and misleads by one or more.",
+      "source_line": 382,
+      "quote": "| 2 | acetic acid | small prisms, needles |",
+      "artifact_says": "reaction_id 'Examples 2-9_Step 1' for printed Example 2, and 'Comparative Examples 21 to 22_Step 3' for printed Comparative Example 23",
+      "should_be": "A2 rule 2 asks for the document's own marker, as the claims records correctly do with 'Claim 19 Step i'. Either use the printed number in step_label or keep 'Step N' and add the printed number to a field rather than to notes. The mapping is recorded in notes and in the provenance quote for all 33 table-row records, so nothing is lost, only hidden.",
+      "confidence": "medium"
+    }
+  ],
+  "checks_passed": [
+    {
+      "check": "drawings",
+      "what_was_verified": "Opened p04.png and cropped each of the three structures at 2x. The document has exactly three [IMAGE_EXTRACT] spans, at lines 74, 76 and 78, and all three are single structures, so the prompt's requirements about arrows and above-versus-below reagents do not arise and no scheme could be misattributed to the invention. Ring system and every substituent position was checked atom by atom against the drawing. Formula I: cyclohexane-1,3-dione linked at C2 through a ketone to a benzene ring bearing Cl at the position ortho to the benzoyl, CH2-O-CH2-CF3 meta and SO2CH3 para; the SMILES on line 74 walks the ring SO2Me, H, H, benzoyl, Cl, CH2OCH2CF3, which places Cl at C2, the trifluoroethoxymethyl at C3 and the methylsulfonyl at C4, matching the page and the title. Formula I' has the enol inside the cyclohexane ring, C2=C3 with OH on C3 and the exocyclic ketone intact, and line 76 encodes exactly that. Formula I'' has the exocyclic enol, OH on the bridging carbon double bonded to ring C2 with both ring ketones intact, and line 78 encodes exactly that. Molecular formula C17H16ClF3O6S is correct for all three. No position was inferred rather than read."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "Established that check 4 cannot apply, and that this is a faithful reading rather than a recall failure. Grepped the whole source for mass, mole and yield tokens: the only quantities the document prints for any preparation are input charges (150 mg at lines 374, 426 and 443, about 50 mg at lines 378, 406, 453, 479 and 509, 7.6 g at line 432) and solvent volumes (0.15 ml, 0.50 ml, 0.20 ml, 20 ml and 20 ml). No isolated product mass, no mole count and no yield percent is printed anywhere, in any example, comparative example, table or generic process. The word 'yield' appears once, at line 80, as a verb about prior art. The artifact's uniformly null product_yield_pct, mass_g on products and mmol is therefore correct and no mass_balance_implausible flag is owed on any crystallisation record. Step-to-step continuity is not assessable either: every experiment starts from bulk tembotrione and none consumes the product of another."
+    },
+    {
+      "check": "arithmetic",
+      "what_was_verified": "The one place arithmetic does close or fail is the parts-by-weight sums of the formulation examples, and I recomputed all ten. I 20+3+17+60=100, II 5+95=100, III 20+2+8+2+68=100, IV 20+10+70=100, V 10+17+2+1+7+63=100, VI 20+10+70=100, VII 50+50=100, VIII 75+25=100, X 0.5+99.5=100. Only IX sums to 101 (20+10+1+70), and that is the single record carrying mass_balance_implausible, on Formulation Examples I to X_Step 9 citing line 684. The flag is correctly placed and correctly absent from the other nine."
+    },
+    {
+      "check": "fidelity",
+      "what_was_verified": "Checked every temperature, time, mass and volume against its cited line, and against the page image where one was in doubt. Example 1 0.15 g and 0.15 ml and 0.67 h from '150 mg ... 0.15 ml ... about 40 mins' (line 374, and I cropped p08 at 3x to confirm '0.15 ml' is what the page prints, not an OCR artefact); Example 14 0.15 g and 0.5 ml (line 426); Comparative Example 1 0.15 g and 0.2 ml (line 443); Example 15 7.6 g, 20 ml and 20 ml (line 432); 0.05 g from 'about 50 mg' on lines 378, 406, 453, 479 and 509; 16.0 h from '16 hrs' on lines 406 and 509; time_h correctly left null for the 'overnight' hold of line 479 and for the 'over night' of line 437, with no number assumed; room_temperature typed with value_c null on lines 406 and 509. Stability: 48.0, 192.0 and 72.0 h from 2, 8 and 3 days, and the range 10 to 30 C from line 525 with the 0.33 K per minute cyclic ramp carried in cooling_method since no field holds a ramp. Generic processes: 20 to 160 C from [0023] line 183, max 100 C from [0014] line 165, 80 to 150 C from [0055] line 309, min 80 C from [0057] line 313. No range was flattened to a point, no unit was imported, no value was borrowed from a neighbouring step, and reflux and boiling point were kept out of temperature and put in heating_method throughout."
+    },
+    {
+      "check": "recall",
+      "what_was_verified": "Reconstructed all five tables from the source and matched them row by row against the records. TABLE 1 (8 rows, lines 382-389), TABLE 2 (4 rows, 410-413), TABLE 3 (8 rows, 457-464), TABLE 4 (10 rows, 483-492) and TABLE 5 (3 rows, 513-515) map one to one onto 8, 4, 8, 10 and 3 records with the correct solvent, the correct second solvent and the correct modification on every single row. No row was collapsed, none duplicated, and the duplicated printings of every table in the enriched text were correctly not counted twice. The Crystal form column was read as the habit and not as the polymorph, which is the trap in this document, and each row's habit is recorded verbatim in that record's notes. The heading at line 507 says 'Comparative Examples 21 to 22' while TABLE 5 prints rows 21, 22 and 23; I confirmed the third row on p09.png, and the artifact correctly emits three records and records the numbering defect without reconciling it."
+    },
+    {
+      "check": "recall",
+      "what_was_verified": "Walked the two generic process sections number by number. Process for Form A carries the 100 to 800 g/l concentration of [0016], the at most 100 C of [0014], the less than 10 K/min cooling rate of [0031], the 80 and 90 wt. % crystallise-out criterion of [0030] in process_control with threshold_pct 80.0, the 5 to 60, 20 to 55 and 30 to 50 vol. % antisolvent windows and the 10 min to 3 hr addition period and the less than 10 percent v/v per minute rate of [0035], the 0.001 to 10, 0.005 to 5, 0.01 to 1 and 0.05 to 0.5 wt. % seed loadings of [0033], the nine polar solvents of [0013], the nine nonpolar antisolvents of [0037], and the filtration, centrifugation, decantation, water and mixed-solvent washes and the below 30, 25 and 20 C wash temperatures of [0038]. Process for Form C carries the 100 to 600 and 250 to 400 g/l of [0050], the at least 80, 90 and 100 C hot-solution definition of [0049], the 30 K/hr and 30 to 120 K/hr rapid cooling of [0056], the 60 and 80 wt. % criterion of [0058] with threshold_pct 60.0, and the 20:80 to 99:1 and 30:70 to 95:5 aromatic to aliphatic volume ratios of [0053]. Solvents, washes and drying were checked explicitly rather than skimmed; nothing printed in either section is absent from both the fields and the notes."
+    },
+    {
+      "check": "precision",
+      "what_was_verified": "No fabricated conditions anywhere. atmosphere is null on all 61 records, pressure is not_specified on all 61 with no value and no qualitative text, stirring.type is null on all 61 including Example 15 where the text says 'stirred' but names no stirrer, light_source is null on all 61, ph_value is null on all 61, named_reaction is null on all 61, selectivity is entirely null on all 61, and product_ms_mz and product_ms_type are null on all 61. No nitrogen, no inert atmosphere and no default temperature was invented. reactant_smiles, smiles_source, product_smiles, product_smiles_source and canonical_rxn are null on all 61, so the prohibition on structures, formulae and molecular weights in this artifact holds even though the drawings supplied SMILES."
+    },
+    {
+      "check": "linkage",
+      "what_was_verified": "Checked all 61 precursor_step values, the five that are set and the 56 that are null. Claim 19 Step ii to Claim 19 Step i and Claim 23 Step ii to Claim 23 Step i are substantiated by the claims' own 'comprising: i) ... and ii) ...' sequencing at lines 745 and 759, and linkage_confirmed true is earned. Process for Form A_Step 2 to Step 1 and Process for Form C_Step 2 to Step 1 are substantiated by 'in a first step i) ... and then in a second step ii)' at lines 167 and 295. Preparation of Form B Step 2 to Step 1 is set with linkage_confirmed false, which is honest, because the single sentence at line 356 letters no steps and the split is inferred. No linkage_confirmed true is unsupported. Of the 56 nulls I could find no genuine link left out: every worked example and every table row starts from bulk tembotrione, no example consumes another example's isolated product, and the form C seed of Example 15 at line 437 is not attributed by the text to Example 14 or to any other record, so leaving it standalone is right rather than a miss. The generic form A process names forms B and C as possible feedstocks at line 181, but 'essentially any known form of tembotrione can be used' is a permission, not a route, and cross_reference_unresolved true on that record correctly points at the unresolved WO 00/21924 of [0040] instead."
+    },
+    {
+      "check": "vocabulary",
+      "what_was_verified": "Every enum field checked against its closed list in A1-compounds.md and A2-reactions.md. reaction_class uses only recrystallisation, formulation and other, all listed. mechanism_type is not_determinable on all 61, listed. scale uses micro, lab and not_specified, listed, and the one lab is Example 15 at 7.6 g, which is the only charge in the 1 to 100 g band. temperature.type uses range, room_temperature and not_specified, listed. pressure.type is not_specified, listed. reaction_class_confidence is high throughout, listed. All 31 distinct tags parse as category:value with lowercase snake_case ASCII values and no duplicates within a record; solvent_class (aprotic_polar, aqueous, halogenated, hydrocarbon, neat, other, protic), catalyst_class (none), workup_type (crystallisation, filtration, none, precipitation), purification (none, recrystallisation), step_role (first_step, final_step), linkage (standalone, precursor_linked) and is_one_pot (false) are all inside their closed sub-lists. Solvent classes were checked against the actual solvent on each of the 61 records and all are right, including tetrachloromethane, trichloromethane and dichloromethane as halogenated and nitromethane, pyridine and DMSO as aprotic_polar. compounds[].role uses reactant, product, solvent, additive and other, all in A1's list, plus one instance of seed_crystal which is not and is reported above."
+    },
+    {
+      "check": "schema",
+      "what_was_verified": "All 61 records carry the full 45-field ReactionRecord and nothing else: no id, no reaction_uuid, no enrichment or vector field, and no missing required field. patent_id is US20100041557A1 on all 61. reaction_id equals section_label + '_' + step_label on all 61. step_index is 1..N sequential in document order in every one of the 16 files. Every section_label and section_type matches A0-sections/00-sections.json exactly, and the record count matches A0's estimated_steps for all 16 sections. is_complete is true exactly when validation_flags is empty, on all 61. No [IMAGE_EXTRACT] span survives in any procedure_text. procedure_summary carries no quantity on any record (the only digits anywhere are the '2,2' of a chemical name). No em dash, en dash or other non-ASCII dash appears in any of the 32 files."
+    },
+    {
+      "check": "precision",
+      "what_was_verified": "Checked every quote fragment against the corpus built by stripping the 'NNNN | ' prefix first and then excluding the '    > EN: ' lines, which is what makes the check bite: the file numbers its EN lines too, so 229 of the 786 numbered lines are translations. Every one of the 61 provenance quotes is printed verbatim on a single non-EN line, and for 51 of them that line is among the cited source_lines. The ten exceptions are the formulation records reported above, whose spans end on the EN line. Every cited line number exists and, apart from those ten EN endpoints, is a printing line and not blank. procedure_text was checked fragment by fragment against the source: the ten that are not a single verbatim line are legitimate reconstructions, either a claim preamble joined to its lettered step, several [00xx] paragraphs of a generic process joined in order, or a paragraph rejoined across a page break (Example 15 across lines 432 and 437, Formulation VII across the 'indus-' / 'trial' hyphenation at lines 671 and 676), and each constituent fragment is verbatim."
+    },
+    {
+      "check": "translation",
+      "what_was_verified": "The source of this patent is English, so the check as written does not apply; the EN lines are a restatement, not a translation from an authoritative Chinese. I checked instead that no compound or reagent identifier disagrees with the line it was taken from, and that no EN line was used as the source of a value in preference to the printed line. Two identifiers are normalised rather than verbatim: 'ethyl methyl ketone' in TABLE 1 row 6 at line 386 is recorded as 'methyl ethyl ketone', and 'H2O' in TABLE 2 rows 12 and 13 at lines 412 and 413 is recorded as 'water'. Both normalisations follow the A1 identifier, which is required for the two artifacts to join, and both spellings are the document's own elsewhere ([0013] line 163 prints 'methyl ethyl ketone'), so I am not raising them. All 61 records' compounds[] identifiers exist in A1-compounds; no a1_missing_compound flag is owed that is not already raised."
+    },
+    {
+      "check": "recall",
+      "what_was_verified": "Confirmed the two source defects the artifact records without repairing, both against the page images. Claim 16 at line 714 prints its first form A reflection as 5.6 plus or minus 0.2 degrees where the [0010] table at line 97 prints 5.5 for the same reflection, the other eight agreeing; I read both off p14.png and p04.png and both printed values are as transcribed, so the discrepancy is the published document's, and correctly no reflection value was written into any reaction field. Formulation VIII at line 680 prints '75 parts by weight of form A or form B' where every other formulation example prints 'form A or form C'; I confirmed 'form B' on p14.png and the artifact records form B faithfully rather than correcting it to C. Line 356's [0066] is internally inconsistent, naming the modification A process as the model while naming 2,2-dimethylpropanol, which is modification C's solvent, as the solvent replaced; the artifact carries both readings, imports no temperature programme from either, and raises conditions_unresolved and cross_reference_unresolved. All three are handled the way the constitution asks."
+    }
+  ],
+  "recall_estimate": {
+    "found_in_text": 63,
+    "present_in_artifact": 61,
+    "missing": [
+      "Stability Studies on the Modifications: the 8-day hold of pure form C is a separate experiment from the 8-day hold of pure form A ([0085], line 529) and the two are carried in one record, so one experiment has no record of its own.",
+      "The generic production process for solid plant protection agents at [0129], line 637, mixing or simultaneous grinding with a solid carrier, granulation by binding to solid carriers, spray drying, extrusion, fluidized bed granulation and spray granulation, has no record; the section is marked contains_procedure false in A0's section map."
+    ]
+  }
+}

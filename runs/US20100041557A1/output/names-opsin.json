@@ -1,0 +1,4616 @@
+{
+ "patent_id": "US20100041557A1",
+ "engine": "OPSIN via https://opsin.ch.cam.ac.uk/opsin/",
+ "what_this_is_en": "Every compound identifier in the gold, read a second time by a name parser that knows nothing about this patent. A parse is used as a structure only where nothing better exists, and is compared against every structure the pipeline already had.",
+ "summary": {
+  "ambiguous": 6,
+  "parsed": 73,
+  "unparseable": 227
+ },
+ "names": [
+  {
+   "identifier": "tembotrione",
+   "outcome": "parsed",
+   "query": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoro-ethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+   "via": "alias",
+   "smiles": "ClC1=C(C(=O)C2C(CCCC2=O)=O)C=CC(=C1COCC(F)(F)F)S(=O)(=O)C",
+   "canonical": "CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COCC(F)(F)F",
+   "attempts": [
+    {
+     "query": "tembotrione",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "2-[2-chloro-4-methylsulfonyl-3-(2,2,2-trifluoro-ethoxymethyl)benzoyl]cyclohexan-1,3-dione",
+     "via": "alias",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "tembotrione crystalline form A",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'tembotrione crystalline form A', 'form A', 'the form A', 'crystalline form A', 'Form A', 'modification A', 'forms A or C'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "tembotrione crystalline form A",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "form A",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "the form A",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "crystalline form A",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Form A",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "modification A",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "forms A or C",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "tembotrione crystalline form C",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'tembotrione crystalline form C', 'form C', 'crystalline form C', 'Form C', 'form A or C', 'forms A or C', 'modification C'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "tembotrione crystalline form C",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "form C",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "crystalline form C",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Form C",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "form A or C",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "forms A or C",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "modification C",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "water",
+   "outcome": "parsed",
+   "query": "water",
+   "via": "verbatim",
+   "smiles": "O",
+   "canonical": "O",
+   "attempts": [
+    {
+     "query": "water",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "isoxadifen",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'isoxadifen'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "isoxadifen",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "cyclic ethers",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'cyclic ethers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "cyclic ethers",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "acetonitrile",
+   "outcome": "parsed",
+   "query": "acetonitrile",
+   "via": "verbatim",
+   "smiles": "C(C)#N",
+   "canonical": "CC#N",
+   "attempts": [
+    {
+     "query": "acetonitrile",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "methanol",
+   "outcome": "parsed",
+   "query": "methanol",
+   "via": "verbatim",
+   "smiles": "CO",
+   "canonical": "CO",
+   "attempts": [
+    {
+     "query": "methanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "nitromethane",
+   "outcome": "parsed",
+   "query": "nitromethane",
+   "via": "verbatim",
+   "smiles": "[N+](=O)([O-])C",
+   "canonical": "C[N+](=O)[O-]",
+   "attempts": [
+    {
+     "query": "nitromethane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "acetic acid",
+   "outcome": "parsed",
+   "query": "acetic acid",
+   "via": "verbatim",
+   "smiles": "C(C)(=O)O",
+   "canonical": "CC(=O)O",
+   "attempts": [
+    {
+     "query": "acetic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "methyl ethyl ketone",
+   "outcome": "parsed",
+   "query": "methyl ethyl ketone",
+   "via": "verbatim",
+   "smiles": "C(C)C(=O)C",
+   "canonical": "CCC(C)=O",
+   "attempts": [
+    {
+     "query": "methyl ethyl ketone",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "pyridine",
+   "outcome": "parsed",
+   "query": "pyridine",
+   "via": "verbatim",
+   "smiles": "N1=CC=CC=C1",
+   "canonical": "c1ccncc1",
+   "attempts": [
+    {
+     "query": "pyridine",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "dimethyl sulfoxide",
+   "outcome": "parsed",
+   "query": "dimethyl sulfoxide",
+   "via": "verbatim",
+   "smiles": "CS(=O)C",
+   "canonical": "CS(C)=O",
+   "attempts": [
+    {
+     "query": "dimethyl sulfoxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2,2-dimethylpropanol",
+   "outcome": "parsed",
+   "query": "2,2-dimethylpropanol",
+   "via": "verbatim",
+   "smiles": "CC(CO)(C)C",
+   "canonical": "CC(C)(C)CO",
+   "attempts": [
+    {
+     "query": "2,2-dimethylpropanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "aromatic hydrocarbon",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'aromatic hydrocarbon', 'an aromatic hydrocarbon'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "aromatic hydrocarbon",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "an aromatic hydrocarbon",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "aliphatic hydrocarbon",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'aliphatic hydrocarbon', 'an aliphatic hydrocarbon'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "aliphatic hydrocarbon",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "an aliphatic hydrocarbon",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "additives customary for the formulation of plant protection agents",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'additives customary for the formulation of plant protection agents'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "additives customary for the formulation of plant protection agents",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "n-pentanol",
+   "outcome": "parsed",
+   "query": "n-pentanol",
+   "via": "verbatim",
+   "smiles": "C(CCCC)O",
+   "canonical": "CCCCCO",
+   "attempts": [
+    {
+     "query": "n-pentanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "tembotrione crystalline form B",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'tembotrione crystalline form B', 'form B', 'Form B', 'modification B'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "tembotrione crystalline form B",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "form B",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Form B",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "modification B",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "ethyl acetate",
+   "outcome": "parsed",
+   "query": "ethyl acetate",
+   "via": "verbatim",
+   "smiles": "C(C)(=O)OCC",
+   "canonical": "CCOC(C)=O",
+   "attempts": [
+    {
+     "query": "ethyl acetate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "ethanol",
+   "outcome": "parsed",
+   "query": "ethanol",
+   "via": "verbatim",
+   "smiles": "C(C)O",
+   "canonical": "CCO",
+   "attempts": [
+    {
+     "query": "ethanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "1-propanol",
+   "outcome": "parsed",
+   "query": "1-propanol",
+   "via": "verbatim",
+   "smiles": "C(CC)O",
+   "canonical": "CCCO",
+   "attempts": [
+    {
+     "query": "1-propanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "1-butanol",
+   "outcome": "parsed",
+   "query": "1-butanol",
+   "via": "verbatim",
+   "smiles": "C(CCC)O",
+   "canonical": "CCCCO",
+   "attempts": [
+    {
+     "query": "1-butanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "2-propanol",
+   "outcome": "parsed",
+   "query": "2-propanol",
+   "via": "verbatim",
+   "smiles": "CC(C)O",
+   "canonical": "CC(C)O",
+   "attempts": [
+    {
+     "query": "2-propanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "1-hexanol",
+   "outcome": "parsed",
+   "query": "1-hexanol",
+   "via": "verbatim",
+   "smiles": "C(CCCCC)O",
+   "canonical": "CCCCCCO",
+   "attempts": [
+    {
+     "query": "1-hexanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "tetrachloromethane",
+   "outcome": "parsed",
+   "query": "tetrachloromethane",
+   "via": "verbatim",
+   "smiles": "ClC(Cl)(Cl)Cl",
+   "canonical": "ClC(Cl)(Cl)Cl",
+   "attempts": [
+    {
+     "query": "tetrachloromethane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "toluene",
+   "outcome": "parsed",
+   "query": "toluene",
+   "via": "verbatim",
+   "smiles": "CC1=CC=CC=C1",
+   "canonical": "Cc1ccccc1",
+   "attempts": [
+    {
+     "query": "toluene",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "xylene",
+   "outcome": "ambiguous",
+   "query": "xylene",
+   "via": "verbatim",
+   "guess_smiles": "C=1(C(=CC=CC1)C)C",
+   "guess_canonical": "Cc1ccccc1C",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "attempts": [
+    {
+     "query": "xylene",
+     "via": "verbatim",
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: xylen describes multiple structures"
+    }
+   ]
+  },
+  {
+   "identifier": "acetone",
+   "outcome": "parsed",
+   "query": "acetone",
+   "via": "verbatim",
+   "smiles": "CC(=O)C",
+   "canonical": "CC(C)=O",
+   "attempts": [
+    {
+     "query": "acetone",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "trichloromethane",
+   "outcome": "parsed",
+   "query": "trichloromethane",
+   "via": "verbatim",
+   "smiles": "ClC(Cl)Cl",
+   "canonical": "ClC(Cl)Cl",
+   "attempts": [
+    {
+     "query": "trichloromethane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "n-hexane",
+   "outcome": "parsed",
+   "query": "n-hexane",
+   "via": "verbatim",
+   "smiles": "CCCCCC",
+   "canonical": "CCCCCC",
+   "attempts": [
+    {
+     "query": "n-hexane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "dichloromethane",
+   "outcome": "parsed",
+   "query": "dichloromethane",
+   "via": "verbatim",
+   "smiles": "ClCCl",
+   "canonical": "ClCCl",
+   "attempts": [
+    {
+     "query": "dichloromethane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "n-octane",
+   "outcome": "parsed",
+   "query": "n-octane",
+   "via": "verbatim",
+   "smiles": "CCCCCCCC",
+   "canonical": "CCCCCCCC",
+   "attempts": [
+    {
+     "query": "n-octane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "dioxan",
+   "outcome": "parsed",
+   "query": "dioxan",
+   "via": "verbatim",
+   "smiles": "O1CCOCC1",
+   "canonical": "C1COCCO1",
+   "attempts": [
+    {
+     "query": "dioxan",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "n-heptane",
+   "outcome": "parsed",
+   "query": "n-heptane",
+   "via": "verbatim",
+   "smiles": "CCCCCCC",
+   "canonical": "CCCCCCC",
+   "attempts": [
+    {
+     "query": "n-heptane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "tetrahydrofuran",
+   "outcome": "parsed",
+   "query": "tetrahydrofuran",
+   "via": "verbatim",
+   "smiles": "O1CCCC1",
+   "canonical": "C1CCOC1",
+   "attempts": [
+    {
+     "query": "tetrahydrofuran",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "silicic acids",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'silicic acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "silicic acids",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "silica gels",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'silica gels'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "silica gels",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "silicates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'silicates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "silicates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "talc",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'talc'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "talc",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "kaolin",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'kaolin', 'finely divided kaolin'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "kaolin",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "finely divided kaolin",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "limestone",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'limestone'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "limestone",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "lime",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'lime'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "lime",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "chalk",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'chalk'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "chalk",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "bole",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'bole'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "bole",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "loess",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'loess'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "loess",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "clay",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'clay'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "clay",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "dolomite",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'dolomite'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "dolomite",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "diatomaceous earth",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'diatomaceous earth'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "diatomaceous earth",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "calcium sulfate",
+   "outcome": "parsed",
+   "query": "calcium sulfate",
+   "via": "verbatim",
+   "smiles": "S(=O)(=O)([O-])[O-].[Ca+2]",
+   "canonical": "O=S(=O)([O-])[O-].[Ca+2]",
+   "attempts": [
+    {
+     "query": "calcium sulfate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "magnesium sulfate",
+   "outcome": "parsed",
+   "query": "magnesium sulfate",
+   "via": "verbatim",
+   "smiles": "S(=O)(=O)([O-])[O-].[Mg+2]",
+   "canonical": "O=S(=O)([O-])[O-].[Mg+2]",
+   "attempts": [
+    {
+     "query": "magnesium sulfate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "magnesium oxide",
+   "outcome": "parsed",
+   "query": "magnesium oxide",
+   "via": "verbatim",
+   "smiles": "[O-2].[Mg+2]",
+   "canonical": "[Mg+2].[O-2]",
+   "attempts": [
+    {
+     "query": "magnesium oxide",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "ground plastics",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'ground plastics'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "ground plastics",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "ammonium sulfate",
+   "outcome": "parsed",
+   "query": "ammonium sulfate",
+   "via": "verbatim",
+   "smiles": "S(=O)(=O)([O-])[O-].[NH4+].[NH4+]",
+   "canonical": "O=S(=O)([O-])[O-].[NH4+].[NH4+]",
+   "attempts": [
+    {
+     "query": "ammonium sulfate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "ammonium phosphate",
+   "outcome": "parsed",
+   "query": "ammonium phosphate",
+   "via": "verbatim",
+   "smiles": "P(=O)([O-])([O-])[O-].[NH4+].[NH4+].[NH4+]",
+   "canonical": "O=P([O-])([O-])[O-].[NH4+].[NH4+].[NH4+]",
+   "attempts": [
+    {
+     "query": "ammonium phosphate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "ammonium nitrate",
+   "outcome": "parsed",
+   "query": "ammonium nitrate",
+   "via": "verbatim",
+   "smiles": "[N+](=O)([O-])[O-].[NH4+]",
+   "canonical": "O=[N+]([O-])[O-].[NH4+]",
+   "attempts": [
+    {
+     "query": "ammonium nitrate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "ureas",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'ureas'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "ureas",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "cereal flour",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'cereal flour'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "cereal flour",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "tree bark",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'tree bark'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "tree bark",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "wood flour",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'wood flour', 'wood and nutshell flour'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "wood flour",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "wood and nutshell flour",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "nutshell flour",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'nutshell flour', 'wood and nutshell flour'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "nutshell flour",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "wood and nutshell flour",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "cellulose powder",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'cellulose powder'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "cellulose powder",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "kerosene",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'kerosene'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "kerosene",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "diesel oil",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'diesel oil'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "diesel oil",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "coal tar oils",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'coal tar oils'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "coal tar oils",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "oils of plant or animal origin",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'oils of plant or animal origin'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "oils of plant or animal origin",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "paraffins",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'paraffins'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "paraffins",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "tetrahydronaphthalene",
+   "outcome": "ambiguous",
+   "query": "tetrahydronaphthalene",
+   "via": "verbatim",
+   "guess_smiles": "C1CCCC2=CC=CC=C12",
+   "guess_canonical": "c1ccc2c(c1)CCCC2",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "attempts": [
+    {
+     "query": "tetrahydronaphthalene",
+     "via": "verbatim",
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: Ambiguous choice of positions to add hydrogen to on naphthalen"
+    }
+   ]
+  },
+  {
+   "identifier": "alkylated naphthalenes",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkylated naphthalenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkylated naphthalenes",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkylated benzenes",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkylated benzenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkylated benzenes",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "aromatic and non-aromatic hydrocarbon mixtures",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'aromatic and non-aromatic hydrocarbon mixtures', 'Exxsol', 'Solvesso'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "aromatic and non-aromatic hydrocarbon mixtures",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Exxsol",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Solvesso",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "propanol",
+   "outcome": "parsed",
+   "query": "propanol",
+   "via": "verbatim",
+   "smiles": "C(CC)O",
+   "canonical": "CCCO",
+   "attempts": [
+    {
+     "query": "propanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "butanol",
+   "outcome": "parsed",
+   "query": "butanol",
+   "via": "verbatim",
+   "smiles": "C(CCC)O",
+   "canonical": "CCCCO",
+   "attempts": [
+    {
+     "query": "butanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "cyclohexanol",
+   "outcome": "parsed",
+   "query": "cyclohexanol",
+   "via": "verbatim",
+   "smiles": "C1(CCCCC1)O",
+   "canonical": "OC1CCCCC1",
+   "attempts": [
+    {
+     "query": "cyclohexanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "cyclohexanone",
+   "outcome": "parsed",
+   "query": "cyclohexanone",
+   "via": "verbatim",
+   "smiles": "C1(CCCCC1)=O",
+   "canonical": "O=C1CCCCC1",
+   "attempts": [
+    {
+     "query": "cyclohexanone",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "N-methyl-pyrrolidone",
+   "outcome": "parsed",
+   "query": "N-methyl-pyrrolidone",
+   "via": "verbatim",
+   "smiles": "CN1C(CCC1)=O",
+   "canonical": "CN1CCCC1=O",
+   "attempts": [
+    {
+     "query": "N-methyl-pyrrolidone",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium salt of diisobutylnaphthalenesulfonic acid",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sodium salt of diisobutylnaphthalenesulfonic acid', 'the sodium salt of diisobutylnaphthalenesulfonic acid'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sodium salt of diisobutylnaphthalenesulfonic acid",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "the sodium salt of diisobutylnaphthalenesulfonic acid",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium salt of a ligninsulfonic acid from a sulfite waste liquor",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sodium salt of a ligninsulfonic acid from a sulfite waste liquor', 'the sodium salt of a ligninsulfonic acid from a sulfite waste liquor'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sodium salt of a ligninsulfonic acid from a sulfite waste liquor",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "the sodium salt of a ligninsulfonic acid from a sulfite waste liquor",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "silica gel",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'silica gel', 'powdered silica gel'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "silica gel",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "powdered silica gel",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "calcium salt of dodecylbenzenesulfonic acid",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'calcium salt of dodecylbenzenesulfonic acid', 'the calcium salt of dodecylbenzenesulfonic acid'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "calcium salt of dodecylbenzenesulfonic acid",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "the calcium salt of dodecylbenzenesulfonic acid",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty alcohol polyglycol ether",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty alcohol polyglycol ether'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty alcohol polyglycol ether",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium salt of a phenolsulfonic acid urea formaldehyde condensate",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sodium salt of a phenolsulfonic acid urea formaldehyde condensate', 'the sodium salt of a phenolsulfonic acid urea formaldehyde condensate'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sodium salt of a phenolsulfonic acid urea formaldehyde condensate",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "the sodium salt of a phenolsulfonic acid urea formaldehyde condensate",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "paraffinic mineral oil",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'paraffinic mineral oil', 'a paraffinic mineral oil'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "paraffinic mineral oil",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "a paraffinic mineral oil",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "dispersants",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'dispersants', 'dispersants and wetting agents', 'dispersant'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "dispersants",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "dispersants and wetting agents",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "dispersant",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "wetting agents",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'wetting agents'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "wetting agents",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "poly(ethylene glycol) (propylene glycol) block copolymer",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'poly(ethylene glycol) (propylene glycol) block copolymer', 'a poly(ethylene glycol) (propylene glycol) block copolymer'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "poly(ethylene glycol) (propylene glycol) block copolymer",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "a poly(ethylene glycol) (propylene glycol) block copolymer",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "phenolsulfonic acid formaldehyde condensate",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'phenolsulfonic acid formaldehyde condensate', 'a phenolsulfonic acid formaldehyde condensate'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "phenolsulfonic acid formaldehyde condensate",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "a phenolsulfonic acid formaldehyde condensate",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "thickeners",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'thickeners'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "thickeners",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "foam suppressants",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'foam suppressants'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "foam suppressants",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "propylene glycol",
+   "outcome": "parsed",
+   "query": "propylene glycol",
+   "via": "verbatim",
+   "smiles": "C(C(C)O)O",
+   "canonical": "CC(O)CO",
+   "attempts": [
+    {
+     "query": "propylene glycol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "gelling agent",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'gelling agent'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "gelling agent",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "organic solvent",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'organic solvent', 'an organic solvent', 'organic'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "organic solvent",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "an organic solvent",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "organic",
+     "via": "dropped 'solvent'",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "carriers",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'carriers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "carriers",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "methyl glycol",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'methyl glycol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "methyl glycol",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "methyl diglycol",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'methyl diglycol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "methyl diglycol",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "isopropanol",
+   "outcome": "parsed",
+   "query": "isopropanol",
+   "via": "verbatim",
+   "smiles": "C(C)(C)O",
+   "canonical": "CC(C)O",
+   "attempts": [
+    {
+     "query": "isopropanol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "glycol",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'glycol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "glycol",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "glycerine",
+   "outcome": "parsed",
+   "query": "glycerine",
+   "via": "verbatim",
+   "smiles": "OCC(O)CO",
+   "canonical": "OCC(O)CO",
+   "attempts": [
+    {
+     "query": "glycerine",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "diethylene glycol",
+   "outcome": "parsed",
+   "query": "diethylene glycol",
+   "via": "verbatim",
+   "smiles": "C(COCCO)O",
+   "canonical": "OCCOCCO",
+   "attempts": [
+    {
+     "query": "diethylene glycol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "phosphoric acid",
+   "outcome": "parsed",
+   "query": "phosphoric acid",
+   "via": "verbatim",
+   "smiles": "P(O)(O)(O)=O",
+   "canonical": "O=P(O)(O)O",
+   "attempts": [
+    {
+     "query": "phosphoric acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "boric acid",
+   "outcome": "parsed",
+   "query": "boric acid",
+   "via": "verbatim",
+   "smiles": "B(O)(O)O",
+   "canonical": "OB(O)O",
+   "attempts": [
+    {
+     "query": "boric acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "propionic acid",
+   "outcome": "parsed",
+   "query": "propionic acid",
+   "via": "verbatim",
+   "smiles": "C(CC)(=O)O",
+   "canonical": "CCC(=O)O",
+   "attempts": [
+    {
+     "query": "propionic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "citric acid",
+   "outcome": "parsed",
+   "query": "citric acid",
+   "via": "verbatim",
+   "smiles": "C(CC(O)(C(=O)O)CC(=O)O)(=O)O",
+   "canonical": "O=C(O)CC(O)(CC(=O)O)C(=O)O",
+   "attempts": [
+    {
+     "query": "citric acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "fumaric acid",
+   "outcome": "parsed",
+   "query": "fumaric acid",
+   "via": "verbatim",
+   "smiles": "C(\\C=C\\C(=O)O)(=O)O",
+   "canonical": "O=C(O)/C=C/C(=O)O",
+   "attempts": [
+    {
+     "query": "fumaric acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "tartaric acid",
+   "outcome": "parsed",
+   "query": "tartaric acid",
+   "via": "verbatim",
+   "smiles": "C(C(O)C(O)C(=O)O)(=O)O",
+   "canonical": "O=C(O)C(O)C(O)C(=O)O",
+   "attempts": [
+    {
+     "query": "tartaric acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "oxalic acid",
+   "outcome": "parsed",
+   "query": "oxalic acid",
+   "via": "verbatim",
+   "smiles": "C(C(=O)O)(=O)O",
+   "canonical": "O=C(O)C(=O)O",
+   "attempts": [
+    {
+     "query": "oxalic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "succinic acid",
+   "outcome": "parsed",
+   "query": "succinic acid",
+   "via": "verbatim",
+   "smiles": "C(CCC(=O)O)(=O)O",
+   "canonical": "O=C(O)CCC(=O)O",
+   "attempts": [
+    {
+     "query": "succinic acid",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "oils of plant origin",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'oils of plant origin'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "oils of plant origin",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "methyl oleate",
+   "outcome": "parsed",
+   "query": "methyl oleate",
+   "via": "verbatim",
+   "smiles": "C(CCCCCCC\\C=C/CCCCCCCC)(=O)OC",
+   "canonical": "CCCCCCCC/C=C\\CCCCCCCC(=O)OC",
+   "attempts": [
+    {
+     "query": "methyl oleate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "methyl stearate",
+   "outcome": "parsed",
+   "query": "methyl stearate",
+   "via": "verbatim",
+   "smiles": "C(CCCCCCCCCCCCCCCCC)(=O)OC",
+   "canonical": "CCCCCCCCCCCCCCCCCC(=O)OC",
+   "attempts": [
+    {
+     "query": "methyl stearate",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "rape oil methyl ester",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'rape oil methyl ester'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "rape oil methyl ester",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "paraffinic mineral oils",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'paraffinic mineral oils'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "paraffinic mineral oils",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "rhodamin B",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'rhodamin B', 'Rhodamin B'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "rhodamin B",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Rhodamin B",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "C.I. Pigment Red 112",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'C.I. Pigment Red 112'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "C.I. Pigment Red 112",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "C.I. Solvent Red 1",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'C.I. Solvent Red 1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "C.I. Solvent Red 1",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Blue 15:4",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Blue 15:4'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Blue 15:4",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Blue 15:3",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Blue 15:3'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Blue 15:3",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Blue 15:2",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Blue 15:2'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Blue 15:2",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Blue 15:1",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Blue 15:1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Blue 15:1",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Blue 80",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Blue 80'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Blue 80",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Yellow 1",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Yellow 1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Yellow 1",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Yellow 13",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Yellow 13'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Yellow 13",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Red 48:2",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Red 48:2'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Red 48:2",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Red 48:1",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Red 48:1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Red 48:1",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Red 57:1",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Red 57:1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Red 57:1",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Red 53:1",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Red 53:1'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Red 53:1",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Orange 43",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Orange 43'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Orange 43",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Orange 34",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Orange 34'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Orange 34",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Orange 5",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Orange 5'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Orange 5",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Green 36",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Green 36'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Green 36",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Green 7",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Green 7'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Green 7",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment White 6",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment White 6'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment White 6",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Pigment Brown 25",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Pigment Brown 25'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Pigment Brown 25",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Basic Violet 10",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Basic Violet 10'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Basic Violet 10",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Basic Violet 49",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Basic Violet 49'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Basic Violet 49",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Acid Red 51",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Acid Red 51'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Acid Red 51",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Acid Red 52",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Acid Red 52'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Acid Red 52",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Acid Red 14",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Acid Red 14'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Acid Red 14",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Acid Blue 9",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Acid Blue 9'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Acid Blue 9",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Acid Yellow 23",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Acid Yellow 23'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Acid Yellow 23",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Basic Red 10",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Basic Red 10'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Basic Red 10",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "Basic Red 108",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'Basic Red 108'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "Basic Red 108",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyvinylpyrrolidone",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyvinylpyrrolidone', 'poly-vinylpyrrolidone'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyvinylpyrrolidone",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "poly-vinylpyrrolidone",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyvinyl acetate",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyvinyl acetate'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyvinyl acetate",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyvinyl alcohol",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyvinyl alcohol', 'Mowiol types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyvinyl alcohol",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Mowiol types",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "tylose",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'tylose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "tylose",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyacrylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyacrylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyacrylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polymethacrylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polymethacrylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polymethacrylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polybutenes",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polybutenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polybutenes",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyisobutenes",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyisobutenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyisobutenes",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polystyrene",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polystyrene'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polystyrene",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyethylene amines",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyethylene amines'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyethylene amines",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyethylene amides",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyethylene amides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyethylene amides",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyesters",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyesters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyesters",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyether esters",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyether esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyether esters",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyanhydrides",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyanhydrides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyanhydrides",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyester urethanes",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyester urethanes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyester urethanes",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyester amides",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyester amides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyester amides",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "cellulose esters",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'cellulose esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "cellulose esters",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "cellulose ethers",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'cellulose ethers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "cellulose ethers",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "cellulose ether esters",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'cellulose ether esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "cellulose ether esters",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "methylcellulose",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'methylcellulose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "methylcellulose",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "ethylcellulose",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'ethylcellulose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "ethylcellulose",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "hydroxymethylcellulose",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'hydroxymethylcellulose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "hydroxymethylcellulose",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "carboxymethylcellulose",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'carboxymethylcellulose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "carboxymethylcellulose",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "hydroxypropyl cellulose",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'hydroxypropyl cellulose'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "hydroxypropyl cellulose",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "starch derivatives",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'starch derivatives'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "starch derivatives",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "modified starches",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'modified starches'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "modified starches",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "dextrins",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'dextrins'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "dextrins",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "maltodextrins",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'maltodextrins'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "maltodextrins",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alginates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alginates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alginates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "chitosans",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'chitosans'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "chitosans",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fats",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fats'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fats",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "oils",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'oils'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "oils",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "casein",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'casein'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "casein",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "gelatin",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'gelatin'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "gelatin",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "zein",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'zein'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "zein",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "gum Arabic",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'gum Arabic'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "gum Arabic",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "shellac",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'shellac'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "shellac",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "clays",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'clays'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "clays",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "bentonite",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'bentonite'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "bentonite",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "perlite",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'perlite'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "perlite",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "mica",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'mica'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "mica",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "quartz powder",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'quartz powder'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "quartz powder",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "montmorillonite",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'montmorillonite'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "montmorillonite",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "active charcoal",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'active charcoal'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "active charcoal",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "oligomeric polyalkylene glycols",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'oligomeric polyalkylene glycols'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "oligomeric polyalkylene glycols",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "dialkyl phthalates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'dialkyl phthalates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "dialkyl phthalates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkylbenzyl phthalates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkylbenzyl phthalates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkylbenzyl phthalates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "glycol benzoates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'glycol benzoates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "glycol benzoates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkyl arylsulfonates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkyl arylsulfonates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkyl arylsulfonates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "ligninsulfonates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'ligninsulfonates', 'Borresperse types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "ligninsulfonates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Borresperse types",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "phenylsulfonates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'phenylsulfonates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "phenylsulfonates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "naphthalenesulfonates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'naphthalenesulfonates', 'Morwet types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "naphthalenesulfonates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Morwet types",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "dibutylnaphthalenesulfonates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'dibutylnaphthalenesulfonates', 'Nekal types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "dibutylnaphthalenesulfonates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Nekal types",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty alcohol sulfates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty alcohol sulfates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty alcohol sulfates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "lauryl sulfates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'lauryl sulfates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "lauryl sulfates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "sulfated hexadecanols",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sulfated hexadecanols', 'sulfated hexadeca-; heptadeca- and octadecanols'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sulfated hexadecanols",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "sulfated hexadeca-; heptadeca- and octadecanols",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "sulfated heptadecanols",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sulfated heptadecanols', 'sulfated hexadeca-; heptadeca- and octadecanols'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sulfated heptadecanols",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "sulfated hexadeca-; heptadeca- and octadecanols",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "sulfated octadecanols",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sulfated octadecanols', 'sulfated hexadeca-; heptadeca- and octadecanols'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sulfated octadecanols",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "sulfated hexadeca-; heptadeca- and octadecanols",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkylsulfonates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkylsulfonates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkylsulfonates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty alcohol (poly)glycol ether sulfates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty alcohol (poly)glycol ether sulfates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty alcohol (poly)glycol ether sulfates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkyl aryl ether sulfates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkyl aryl ether sulfates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkyl aryl ether sulfates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkyl polyglycol ether phosphates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkyl polyglycol ether phosphates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkyl polyglycol ether phosphates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyarylphenyl ether phosphates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyarylphenyl ether phosphates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyarylphenyl ether phosphates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkyl-sulfosuccinates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkyl-sulfosuccinates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkyl-sulfosuccinates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "olefin sulfonates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'olefin sulfonates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "olefin sulfonates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "paraffin sulfonates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'paraffin sulfonates', 'paraffin sulfon-ates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "paraffin sulfonates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "paraffin sulfon-ates",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "petroleum sulfonates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'petroleum sulfonates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "petroleum sulfonates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "taurides",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'taurides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "taurides",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "sarcosides",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sarcosides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sarcosides",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkylnaphthalenesulfonic acids",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkylnaphthalenesulfonic acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkylnaphthalenesulfonic acids",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "naphthalenesulfonic acids",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'naphthalenesulfonic acids', 'naphthalene-sulfonic acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "naphthalenesulfonic acids",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "naphthalene-sulfonic acids",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "ligninsulfonic acids",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'ligninsulfonic acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "ligninsulfonic acids",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "condensation products of sulfonated naphthalenes with formaldehyde",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'condensation products of sulfonated naphthalenes with formaldehyde'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "condensation products of sulfonated naphthalenes with formaldehyde",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "condensation products of sulfonated naphthalenes with formaldehyde and phenol and optionally urea",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'condensation products of sulfonated naphthalenes with formaldehyde and phenol and optionally urea'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "condensation products of sulfonated naphthalenes with formaldehyde and phenol and optionally urea",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "condensation products of phenolsulfonic acid with formaldehyde and urea",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'condensation products of phenolsulfonic acid with formaldehyde and urea'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "condensation products of phenolsulfonic acid with formaldehyde and urea",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "sulfonated naphthalenes",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sulfonated naphthalenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sulfonated naphthalenes",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "phenolsulfonic acid",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'phenolsulfonic acid'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "phenolsulfonic acid",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "lignin sulfite waste liquor",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'lignin sulfite waste liquor'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "lignin sulfite waste liquor",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkyl phosphates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkyl phosphates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkyl phosphates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "tristyryl phosphates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'tristyryl phosphates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "tristyryl phosphates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "maleic anhydride/olefin copolymers",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'maleic anhydride/olefin copolymers', 'Sokalan® CP9'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "maleic anhydride/olefin copolymers",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Sokalan® CP9",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "formaldehyde",
+   "outcome": "parsed",
+   "query": "formaldehyde",
+   "via": "verbatim",
+   "smiles": "C=O",
+   "canonical": "C=O",
+   "attempts": [
+    {
+     "query": "formaldehyde",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "phenol",
+   "outcome": "parsed",
+   "query": "phenol",
+   "via": "verbatim",
+   "smiles": "C1(=CC=CC=C1)O",
+   "canonical": "Oc1ccccc1",
+   "attempts": [
+    {
+     "query": "phenol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "urea",
+   "outcome": "parsed",
+   "query": "urea",
+   "via": "verbatim",
+   "smiles": "NC(=O)N",
+   "canonical": "NC(N)=O",
+   "attempts": [
+    {
+     "query": "urea",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty acids",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty acids",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkylphenol alkoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkylphenol alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkylphenol alkoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "octylphenol",
+   "outcome": "ambiguous",
+   "query": "octylphenol",
+   "via": "verbatim",
+   "guess_smiles": "C(CCCCCCC)C1=C(C=CC=C1)O",
+   "guess_canonical": "CCCCCCCCc1ccccc1O",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "attempts": [
+    {
+     "query": "octylphenol",
+     "via": "verbatim",
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: Connection of oct to phenol"
+    }
+   ]
+  },
+  {
+   "identifier": "isooctylphenol",
+   "outcome": "ambiguous",
+   "query": "isooctylphenol",
+   "via": "verbatim",
+   "guess_smiles": "C(CCCCC(C)C)C1=C(C=CC=C1)O",
+   "guess_canonical": "CC(C)CCCCCc1ccccc1O",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "attempts": [
+    {
+     "query": "isooctylphenol",
+     "via": "verbatim",
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: Connection of oct to phenol"
+    }
+   ]
+  },
+  {
+   "identifier": "nonylphenol",
+   "outcome": "ambiguous",
+   "query": "nonylphenol",
+   "via": "verbatim",
+   "guess_smiles": "C(CCCCCCCC)C1=C(C=CC=C1)O",
+   "guess_canonical": "CCCCCCCCCc1ccccc1O",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "attempts": [
+    {
+     "query": "nonylphenol",
+     "via": "verbatim",
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: Connection of non to phenol"
+    }
+   ]
+  },
+  {
+   "identifier": "tributylphenol",
+   "outcome": "ambiguous",
+   "query": "tributylphenol",
+   "via": "verbatim",
+   "guess_smiles": "C(CCC)C1=C(C(=C(C=C1)O)CCCC)CCCC",
+   "guess_canonical": "CCCCc1ccc(O)c(CCCC)c1CCCC",
+   "reason": "OPSIN parsed this name but warned that it does not pin one molecule down. Its guess is recorded and is deliberately NOT used as a structure.",
+   "attempts": [
+    {
+     "query": "tributylphenol",
+     "via": "verbatim",
+     "status": "WARNING",
+     "note": "APPEARS_AMBIGUOUS: Connection of but to phenol"
+    }
+   ]
+  },
+  {
+   "identifier": "distyrylphenol alkoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'distyrylphenol alkoxylates', 'di- and tristyrylphenol alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "distyrylphenol alkoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "di- and tristyrylphenol alkoxylates",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "tristyrylphenol alkoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'tristyrylphenol alkoxylates', 'di- and tristyrylphenol alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "tristyrylphenol alkoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "di- and tristyrylphenol alkoxylates",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty alcohol ethoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty alcohol ethoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty alcohol ethoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty alcohol ethoxylate-copropoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty alcohol ethoxylate-copropoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty alcohol ethoxylate-copropoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkoxylated isotridecanol",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkoxylated isotridecanol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkoxylated isotridecanol",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty amine alkoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty amine alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty amine alkoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyoxyethylene glycerol fatty acid esters",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyoxyethylene glycerol fatty acid esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyoxyethylene glycerol fatty acid esters",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "castor oil alkoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'castor oil alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "castor oil alkoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty acid alkoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty acid alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty acid alkoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty acid amide alkoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty acid amide alkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty acid amide alkoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty acid polydiethanolamides",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty acid polydiethanolamides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty acid polydiethanolamides",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "lanolin ethoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'lanolin ethoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "lanolin ethoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty acid polyglycol esters",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty acid polyglycol esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty acid polyglycol esters",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "isotridecyl alcohol",
+   "outcome": "parsed",
+   "query": "isotridecyl alcohol",
+   "via": "verbatim",
+   "smiles": "C(CCCCCCCCCC(C)C)O",
+   "canonical": "CC(C)CCCCCCCCCCO",
+   "attempts": [
+    {
+     "query": "isotridecyl alcohol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "ethoxylated fatty acid amides",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'ethoxylated fatty acid amides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "ethoxylated fatty acid amides",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "ethoxylated fatty acid esters",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'ethoxylated fatty acid esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "ethoxylated fatty acid esters",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "alkyl polyglycosides",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'alkyl polyglycosides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "alkyl polyglycosides",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "ethoxylated alkyl polyglycosides",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'ethoxylated alkyl polyglycosides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "ethoxylated alkyl polyglycosides",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "sorbitan fatty acid esters",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sorbitan fatty acid esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sorbitan fatty acid esters",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "ethoxylated sorbitan fatty acid esters",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'ethoxylated sorbitan fatty acid esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "ethoxylated sorbitan fatty acid esters",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "glycerol fatty acid esters",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'glycerol fatty acid esters'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "glycerol fatty acid esters",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "castor oil ethoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'castor oil ethoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "castor oil ethoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty acid ethoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty acid ethoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty acid ethoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "fatty acid amide ethoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'fatty acid amide ethoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "fatty acid amide ethoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "ethylene oxide propylene oxide block copolymers",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'ethylene oxide propylene oxide block copolymers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "ethylene oxide propylene oxide block copolymers",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyethylene glycol",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyethylene glycol'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyethylene glycol",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polypropylene oxide",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polypropylene oxide', 'polypropylene oxides'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polypropylene oxide",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "polypropylene oxides",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyethylene oxide co-propylene oxide di-block copolymers",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyethylene oxide co-propylene oxide di-block copolymers', 'polyethylene oxide co-propylene oxide di- and tri-block copolymers', 'polyethylene oxide co-polypropylene oxide di- and tri-block copolymers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyethylene oxide co-propylene oxide di-block copolymers",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "polyethylene oxide co-propylene oxide di- and tri-block copolymers",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "polyethylene oxide co-polypropylene oxide di- and tri-block copolymers",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyethylene oxide co-propylene oxide tri-block copolymers",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyethylene oxide co-propylene oxide tri-block copolymers', 'polyethylene oxide co-propylene oxide di- and tri-block copolymers', 'polyethylene oxide co-polypropylene oxide di- and tri-block copolymers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyethylene oxide co-propylene oxide tri-block copolymers",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "polyethylene oxide co-propylene oxide di- and tri-block copolymers",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "polyethylene oxide co-polypropylene oxide di- and tri-block copolymers",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "water-soluble starch derivatives",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'water-soluble starch derivatives'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "water-soluble starch derivatives",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "cellulose derivatives",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'cellulose derivatives'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "cellulose derivatives",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyacrylic acid",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyacrylic acid', 'BASF Sokalan types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyacrylic acid",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "BASF Sokalan types",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "acrylic acid copolymers",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'acrylic acid copolymers', 'BASF Sokalan types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "acrylic acid copolymers",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "BASF Sokalan types",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "maleic acid copolymers",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'maleic acid copolymers', 'BASF Sokalan types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "maleic acid copolymers",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "BASF Sokalan types",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyalkoxylates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyalkoxylates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyalkoxylates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "vinylpyrrolidone copolymers",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'vinylpyrrolidone copolymers'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "vinylpyrrolidone copolymers",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyvinyl amines",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyvinyl amines'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyvinyl amines",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "polyethyleneimines",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'polyethyleneimines', 'Lupasol types'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "polyethyleneimines",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Lupasol types",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "layer silicates",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'layer silicates'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "layer silicates",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "bentonites",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'bentonites'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "bentonites",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "attapulgites",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'attapulgites', 'Attaclay®'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "attapulgites",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Attaclay®",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "xanthan gum",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'xanthan gum', 'Xanthan Gum', 'Xanthan Gum®', 'Kelzan®'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "xanthan gum",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Xanthan Gum",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Xanthan Gum®",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Kelzan®",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "silicone emulsions",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'silicone emulsions', 'Silikon® SRE', 'Rhodorsil®'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "silicone emulsions",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Silikon® SRE",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Rhodorsil®",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "long-chain alcohols",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'long-chain alcohols'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "long-chain alcohols",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "aqueous wax dispersions",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'aqueous wax dispersions', 'aqueous wax dispersion', 'wax dispersions', 'wax dispersion'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "aqueous wax dispersions",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "aqueous wax dispersion",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "wax dispersions",
+     "via": "dropped 'aqueous'",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "wax dispersion",
+     "via": "dropped 'aqueous'",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "solid foam suppressants",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'solid foam suppressants', 'so-called Compounds', 'foam suppressants'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "solid foam suppressants",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "so-called Compounds",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "foam suppressants",
+     "via": "dropped 'solid'",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "organofluorine compounds",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'organofluorine compounds'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "organofluorine compounds",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "isothiazolones",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'isothiazolones', 'isothiazol-ones', 'Proxel®', 'Acticide®', 'Kathon® MK'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "isothiazolones",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "isothiazol-ones",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Proxel®",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Acticide®",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "Kathon® MK",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "ethylene glycol",
+   "outcome": "parsed",
+   "query": "ethylene glycol",
+   "via": "verbatim",
+   "smiles": "C(CO)O",
+   "canonical": "OCCO",
+   "attempts": [
+    {
+     "query": "ethylene glycol",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "terbuthylazin",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'terbuthylazin'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "terbuthylazin",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "bromoxynil",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'bromoxynil'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "bromoxynil",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "sodium salt of bromoxynil",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'sodium salt of bromoxynil', 'the sodium salt thereof', 'sodium salt thereof'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "sodium salt of bromoxynil",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "the sodium salt thereof",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "sodium salt thereof",
+     "via": "dropped 'the'",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "esters of bromoxynil with C4-C8 carboxylic acids",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'esters of bromoxynil with C4-C8 carboxylic acids', 'esters thereof with C4-C8 carboxylic acids'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "esters of bromoxynil with C4-C8 carboxylic acids",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    },
+    {
+     "query": "esters thereof with C4-C8 carboxylic acids",
+     "via": "alias",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "dicamba",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'dicamba'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "dicamba",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "S-metolachlor",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'S-metolachlor'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "S-metolachlor",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "pethoxamid",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'pethoxamid'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "pethoxamid",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "pentane",
+   "outcome": "parsed",
+   "query": "pentane",
+   "via": "verbatim",
+   "smiles": "CCCCC",
+   "canonical": "CCCCC",
+   "attempts": [
+    {
+     "query": "pentane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "hexane",
+   "outcome": "parsed",
+   "query": "hexane",
+   "via": "verbatim",
+   "smiles": "CCCCCC",
+   "canonical": "CCCCCC",
+   "attempts": [
+    {
+     "query": "hexane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "cyclopentane",
+   "outcome": "parsed",
+   "query": "cyclopentane",
+   "via": "verbatim",
+   "smiles": "C1CCCC1",
+   "canonical": "C1CCCC1",
+   "attempts": [
+    {
+     "query": "cyclopentane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "cyclohexane",
+   "outcome": "parsed",
+   "query": "cyclohexane",
+   "via": "verbatim",
+   "smiles": "C1CCCCC1",
+   "canonical": "C1CCCCC1",
+   "attempts": [
+    {
+     "query": "cyclohexane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "isohexane",
+   "outcome": "parsed",
+   "query": "isohexane",
+   "via": "verbatim",
+   "smiles": "CCCC(C)C",
+   "canonical": "CCCC(C)C",
+   "attempts": [
+    {
+     "query": "isohexane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "heptane",
+   "outcome": "parsed",
+   "query": "heptane",
+   "via": "verbatim",
+   "smiles": "CCCCCCC",
+   "canonical": "CCCCCCC",
+   "attempts": [
+    {
+     "query": "heptane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "cycloheptane",
+   "outcome": "parsed",
+   "query": "cycloheptane",
+   "via": "verbatim",
+   "smiles": "C1CCCCCC1",
+   "canonical": "C1CCCCCC1",
+   "attempts": [
+    {
+     "query": "cycloheptane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "octane",
+   "outcome": "parsed",
+   "query": "octane",
+   "via": "verbatim",
+   "smiles": "CCCCCCCC",
+   "canonical": "CCCCCCCC",
+   "attempts": [
+    {
+     "query": "octane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "decane",
+   "outcome": "parsed",
+   "query": "decane",
+   "via": "verbatim",
+   "smiles": "CCCCCCCCCC",
+   "canonical": "CCCCCCCCCC",
+   "attempts": [
+    {
+     "query": "decane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "xylenes",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'xylenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "xylenes",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "mesitylene",
+   "outcome": "parsed",
+   "query": "mesitylene",
+   "via": "verbatim",
+   "smiles": "C1(=CC(=CC(=C1)C)C)C",
+   "canonical": "Cc1cc(C)cc(C)c1",
+   "attempts": [
+    {
+     "query": "mesitylene",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "cumene",
+   "outcome": "parsed",
+   "query": "cumene",
+   "via": "verbatim",
+   "smiles": "C1(=CC=CC=C1)C(C)C",
+   "canonical": "CC(C)c1ccccc1",
+   "attempts": [
+    {
+     "query": "cumene",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "ethylbenzene",
+   "outcome": "parsed",
+   "query": "ethylbenzene",
+   "via": "verbatim",
+   "smiles": "C(C)C1=CC=CC=C1",
+   "canonical": "CCc1ccccc1",
+   "attempts": [
+    {
+     "query": "ethylbenzene",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "ethyltoluenes",
+   "outcome": "unparseable",
+   "reason": "no spelling of this name was accepted; tried 'ethyltoluenes'. Usually a trade name, an abbreviation, a compound class rather than a compound, or a name that cannot be built.",
+   "attempts": [
+    {
+     "query": "ethyltoluenes",
+     "via": "verbatim",
+     "status": "FAILURE",
+     "note": "not parsed"
+    }
+   ]
+  },
+  {
+   "identifier": "m-cymene",
+   "outcome": "parsed",
+   "query": "m-cymene",
+   "via": "verbatim",
+   "smiles": "C1(=CC(=CC=C1)C)C(C)C",
+   "canonical": "Cc1cccc(C(C)C)c1",
+   "attempts": [
+    {
+     "query": "m-cymene",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "p-cymene",
+   "outcome": "parsed",
+   "query": "p-cymene",
+   "via": "verbatim",
+   "smiles": "C1(=CC=C(C=C1)C)C(C)C",
+   "canonical": "Cc1ccc(C(C)C)cc1",
+   "attempts": [
+    {
+     "query": "p-cymene",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "methylcyclohexane",
+   "outcome": "parsed",
+   "query": "methylcyclohexane",
+   "via": "verbatim",
+   "smiles": "CC1CCCCC1",
+   "canonical": "CC1CCCCC1",
+   "attempts": [
+    {
+     "query": "methylcyclohexane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  },
+  {
+   "identifier": "cyclooctane",
+   "outcome": "parsed",
+   "query": "cyclooctane",
+   "via": "verbatim",
+   "smiles": "C1CCCCCCC1",
+   "canonical": "C1CCCCCCC1",
+   "attempts": [
+    {
+     "query": "cyclooctane",
+     "via": "verbatim",
+     "status": "SUCCESS"
+    }
+   ]
+  }
+ ]
+}

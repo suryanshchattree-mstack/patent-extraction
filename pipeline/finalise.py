@@ -422,7 +422,16 @@ def rollup(mols, rxns, pws):
     from collections import Counter
     sec = Counter(r.get("section_type") or "unknown" for r in rxns)
     scale = Counter(r.get("scale") or "not_specified" for r in rxns)
-    cls = Counter(r.get("reaction_class") or "other" for r in rxns)
+    # chemistry_focus must describe THIS patent's chemistry, so the same filter the
+    # yield and the starting materials already get applies here too. Found by the A5
+    # patent audit on WO2022024094A1: that run's rollup named `halogenation`, on the
+    # strength of one background reaction, the NMSBA to acid-chloride step recited from
+    # US 7,820,863 which is precisely the step the invention exists to avoid. The
+    # reference run could not expose this because its A0 marked its background as
+    # carrying no procedures, so it has zero background reactions and the counter had
+    # nothing foreign to pick up.
+    cls = Counter(r.get("reaction_class") or "other" for r in rxns
+                  if (r.get("section_type") or "") not in NOT_THIS_PATENTS_CHEMISTRY)
     ours = [p for p in pws
             if pathway_section_type(p) not in NOT_THIS_PATENTS_CHEMISTRY]
     best = max((p for p in ours if p.get("overall_yield_pct") is not None),
