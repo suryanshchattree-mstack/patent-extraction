@@ -251,9 +251,16 @@ CELSIUS = re.compile(r"\s*(?:℃|°\s*C|deg(?:ree)?s?\.?\s+C)(?![A-Za-z])", re.I
 CELSIUS_MARK = "°"
 
 # Longest first, so mmol is never read as "m" + "mol" and min is never read as "m".
-UNIT_ALTERNATION = r"mmol|mol|min|kg|mg|ml|hrs|hr|[gLl]|h|%|°"
+# CN106008290A prints "1000mL", "5小时", "0.5-12h" and "5 hours": mL was read as a
+# bare 1000 and the hours were read as bare numbers, so every solvent volume and
+# reaction time on the patent reported partial. The Chinese unit words are
+# units, not context.
+UNIT_ALTERNATION = r"mmol|mol|min|hours|hour|hrs|hr|kg|mg|mL|ml|小时|分钟|[gLl]|h|%|°"
 
-NUMBER = r"\d+(?:\.\d+)?"
+# A leading minus is part of the number only when nothing alphanumeric or
+# hyphen-like precedes it: "-10-8℃" reads as -10 to 8, while the "-2" in
+# "1,2-dichloro" and the "-10" in "5-10℃" stay what they are.
+NUMBER = r"(?:(?<![0-9A-Za-z.,\-~])-)?\d+(?:\.\d+)?"
 
 # Two different boundaries, and the difference is measured rather than tidy.
 #
@@ -290,6 +297,8 @@ UNIT_CANON = {
     "l": ("ml", 1000.0), "L": ("ml", 1000.0), "ml": ("ml", 1.0),
     "mol": ("mmol", 1000.0), "mmol": ("mmol", 1.0),
     "h": ("h", 1.0), "hr": ("h", 1.0), "hrs": ("h", 1.0), "min": ("h", 1.0 / 60.0),
+    "hour": ("h", 1.0), "hours": ("h", 1.0), "小时": ("h", 1.0), "分钟": ("h", 1.0 / 60.0),
+    "mL": ("ml", 1.0),
     "%": ("%", 1.0),
     CELSIUS_MARK: ("C", 1.0),
 }
@@ -1064,7 +1073,8 @@ YIELD_WINDOW = 12
 # the document, and 50 min is exactly what line 227 says.
 RAW_UNIT_EN = {"g": "g", "kg": "kg", "mg": "mg", "ml": "ml", "l": "L", "L": "L",
                "mol": "mol", "mmol": "mmol", "h": "h", "hr": "h", "hrs": "h",
-               "min": "min", "%": "%", CELSIUS_MARK: "degrees C"}
+               "min": "min", "%": "%", CELSIUS_MARK: "degrees C",
+               "mL": "ml", "hour": "h", "hours": "h", "小时": "h", "分钟": "min"}
 
 
 def say_quantity(value: float, raw_unit: str | None, high: float | None = None) -> str:

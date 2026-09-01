@@ -1280,16 +1280,10 @@ def build(root: Path, patent_id: str) -> int:
                 "drawing_number": drawing_no,
                 "page": page,
                 "page_number": int(page[1:]),
-                # Named _en, so it has to BE English, and until this ran through
-                # marker_labels_en it shipped the raw marker. The front page numbers
-                # its fields with INID codes and the claims number themselves in
-                # Chinese, so neither is a paragraph marker the index can reach;
-                # that is what marker_labels_en is for. None survives untouched,
-                # because a drawing at the top of a page has no marker above it.
-                "between_markers_en": [
-                    inp.marker_labels.get(m, inp.translate(m))
-                    if isinstance(m, str) else m
-                    for m in between],
+                # the same curated map markers_out goes through above; a Chinese
+                # ad hoc marker (a claims page prints none) otherwise lands here
+                # untranslated and fails the English gate
+                "between_markers_en": [inp.marker_labels.get(m, m) for m in between],
                 "kind_en": dr.get("kind"),
                 "presented_as_en": dr.get("presented_as"),
                 "structure_count": len(structures),
