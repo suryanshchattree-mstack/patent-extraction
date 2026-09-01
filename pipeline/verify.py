@@ -3069,10 +3069,28 @@ class Run(Engine):
                 # document, so checking spans against it would reject every English
                 # reading of a Chinese line. The block dedup below still collapses
                 # the Chinese line and its translation into one fact.
-                text = self.source.text_en.get(n, "") or self.source.lines.get(n, "")
+                # CHECKED AGAINST EITHER THE PRINTED LINE OR ITS ENGLISH RENDERING.
+                #
+                # text_en is the translation on a Chinese line, and the reader records
+                # English, so on a Chinese patent that side is the one that can match
+                # and the raw line would reject every reading. But the `or` fallback
+                # never fires when text_en is non-empty, and on an ENGLISH patent the
+                # EN line is not a translation at all: it is a REPAIR of the same
+                # language. US20040236146A1 prints
+                # "2-chloro-3-methyl4-sulfonylmethylbenzoic acid" on line 122 and its
+                # EN line silently corrects the name, so an as-printed span was
+                # rejected as "not on that line" when it is the only thing literally
+                # on that line. Ten of them, and the only way to satisfy the check
+                # would have been to delete true observations.
+                #
+                # Either side is enough. The span must still be somewhere on the line
+                # it claims, which is the whole of what this check is for: a reader
+                # that invents a substance is what it exists to stop.
+                raw = self.source.lines.get(n, "")
+                text = self.source.text_en.get(n, "") or raw
                 for m in mentions:
                     span = m.get("span") or ""
-                    if span not in text:
+                    if span not in text and span not in raw:
                         bad.append(f"{name} line {n}: {span!r} is not on that line")
                         continue
                     readings.setdefault(n, []).append({**m, "reader": reader,
