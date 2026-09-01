@@ -165,6 +165,42 @@ from resolve_translations import (
     QUALIFIERS,
 )
 
+_ROMAN_ONLY = re.compile(r"^[ivx]+$", re.I)
+_TRAILING_PAREN = re.compile(r"^(.*\S)\s*[\(\[]([^()\[\]]{1,24})[\)\]]\s*$")
+
+
+def name_and_abbrev(s: str):
+    """A printed name that carries its own abbreviation, split into both halves.
+
+    A patent writes "benzoyl peroxide (BPO)" once and "BPO" thereafter, and an
+    extraction records whichever form it met. The substance sweep then compares the
+    two as strings and reports a substance the gold IS holding as unrecorded.
+    Measured on WO2024109718A1: of 62 unaccounted mentions, most were this rather
+    than a missing record.
+
+    THE GUARD IS THE POINT. A parenthesised ROMAN NUMERAL is a label index, not an
+    abbreviation: "compound of formula (I)" must never collapse to "compound of
+    formula", because that is equally the base of formula (II) and of every other,
+    and merging them would silently make eight different molecules one. Anything
+    ending in "formula" is refused for the same reason, and so is a parenthetical
+    carrying no letter.
+
+    Returns (base, abbreviation), or None. Never a partial answer.
+    """
+    m = _TRAILING_PAREN.match(s or "")
+    if not m:
+        return None
+    base, inner = m.group(1).strip(), m.group(2).strip()
+    if _ROMAN_ONLY.match(inner):
+        return None
+    if base.lower().rstrip().endswith(("formula", "式")):
+        return None
+    if not re.search(r"[A-Za-z]", inner):
+        return None
+    return base, inner
+
+
+
 RDLogger.DisableLog("rdApp.*")
 
 from pipeline_context import RUN_ROOT, shown
@@ -3064,6 +3100,12 @@ class Run(Engine):
         canonical = self.substance_canonical(mention["span"])
         if canonical is not None:
             return ("mol", canonical)
+        # A span printed "benzoyl peroxide (BPO)" is the same substance as one
+        # printed "benzoyl peroxide". Key on the base so the two meet. The guard in
+        # name_and_abbrev refuses to do this to a formula label.
+        split = name_and_abbrev(mention["span"])
+        if split:
+            return ("name", normalise_name(split[0]))
         return ("name", normalise_name(mention["span"]))
 
     def substance_canonical(self, span: str):
@@ -3163,6 +3205,31 @@ class Run(Engine):
             keys = set()
             for name in self.record_identifiers(rec):
                 keys.add(("name", normalise_name(name)))
+                # AND THE SAME NAME IN THE OTHER LANGUAGE. The substance reading is
+                # English and half the identifiers in a Chinese patent are Chinese,
+                # so a name join between them can never fire and every Chinese-only
+                # record reads as holding nothing. On WO2024109718A1 that put 式(I)
+                # 化合物 and the span "compound of formula (I)" on opposite sides of
+                # a join that had no way to close, and the sweep reported the
+                # substance as unrecorded when the record was sitting on the cited
+                # line holding it.
+                #
+                # The index is not a guess. resolve_translations built it from the
+                # gold's own data and its coverage gate has already passed on it, so
+                # this asks the pipeline's existing answer rather than inventing an
+                # equivalence. It ADDS a key and never replaces one, so nothing that
+                # matched before stops matching.
+                english = (self.index.get(name) or {}).get("en")
+                if english:
+                    keys.add(("name", normalise_name(english)))
+                # And both halves of a name carrying its own abbreviation, so a
+                # record holding "BPO" answers a line printing "benzoyl peroxide
+                # (BPO)" and a record holding the full name answers the short one.
+                for candidate in (name, english):
+                    split = name_and_abbrev(candidate or "")
+                    if split:
+                        keys.add(("name", normalise_name(split[0])))
+                        keys.add(("name", normalise_name(split[1])))
                 canonical = self.substance_canonical(name)
                 if canonical is not None:
                     keys.add(("mol", canonical))
@@ -3494,12 +3561,17 @@ class Run(Engine):
                         and not any(any(p in e for p in PERCENT) for e in english)):
                     lost = (zh, "a strength", "the percentage it is used at")
                     break
-                hit = next((w for pfx, w in QUALIFIERS.items()
-                            if zh.startswith(pfx) and not any(w in e.lower()
-                                                              for e in english)),
+                # QUALIFIERS values are a TUPLE of acceptable English renderings,
+                # because one Chinese modifier does not always come out as one
+                # English word: 冰水 is ice water but 冰醋酸 is glacial acetic acid.
+                hit = next((ws for pfx, ws in QUALIFIERS.items()
+                            if zh.startswith(pfx)
+                            and not any(w in e.lower() for w in ws
+                                        for e in english)),
                            None)
                 if hit:
-                    lost = (zh, f"the word {hit!r}", f"whether it is {hit}")
+                    shown = " or ".join(repr(w) for w in hit)
+                    lost = (zh, f"the word {shown}", f"whether it is {hit[0]}")
                     break
 
             if lost is None:
